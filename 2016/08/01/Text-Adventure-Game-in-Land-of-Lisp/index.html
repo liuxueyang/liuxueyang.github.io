@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.2.6 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            Text Adventure Game in Land of Lisp | 
+        
+        以前的博客
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="liuxueyang">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="以前的博客">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="liuxueyang.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Text Adventure Game in Land of Lisp | 以前的博客">
+    <meta property="og:description" content="null">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+    body, html {
+        font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    }
+
+    a {
+        color: #00838F;
+    }
+
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important;
+    }
+
+    /* Sidebar User Drop Down Menu Text Color */
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+        color: #0097A7 !important;
+    }
+
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+        color: #0097A7 !important;
+    }
+
+    .toTop {
+        background: #757575 !important;
+    }
+
+    .material-layout .material-post>.material-nav,
+    .material-layout .material-index>.material-nav,
+    .material-nav a {
+        color: #757575;
+    }
+
+    #scheme-Paradox .MD-burger-layer {
+        background-color: #757575;
+    }
+
+    #scheme-Paradox #post-toc-trigger-btn {
+        color: #757575;
+    }
+
+    .post-toc a:hover {
+        color: #00838F;
+        text-decoration: underline;
+    }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5;
+        }
+
+        /* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+
+    <script src="/js/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/css/highlight/solarized-white.css">
+
+    <!-- UC Browser Compatible-->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write('<link rel="stylesheet" href="/css/uc.css">');
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Text Adventure Game in Land of Lisp
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>liuxueyang</strong>
+        <span>8月 01, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Common-Lisp/">Common Lisp</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Text Adventure Game in Land of Lisp&url=liuxueyang.github.io//2016/08/01/Text-Adventure-Game-in-Land-of-Lisp/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Text Adventure Game in Land of Lisp&url=liuxueyang.github.io//2016/08/01/Text-Adventure-Game-in-Land-of-Lisp/index.html&via=liuxueyang" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=liuxueyang.github.io//2016/08/01/Text-Adventure-Game-in-Land-of-Lisp/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=liuxueyang.github.io//2016/08/01/Text-Adventure-Game-in-Land-of-Lisp/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p><strong>Land of LiSP</strong> 这本书里面的第五章和第六章构建了一个字符冒险游戏，游戏截图如下：</p>
+<p><img src="/img/text-adventure-game.png" alt="Text Adventure Game"></p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div></pre></td><td class="code"><pre><div class="line"><span class="comment">;; 2016.07.30 23:22:41 PM</span></div><div class="line"><span class="comment">;; Sabastian</span></div><div class="line"><span class="comment">;; building a text adventure game engine</span></div><div class="line"></div><div class="line"><span class="comment">;; ====================</span></div><div class="line"><span class="comment">;; location</span></div><div class="line"></div><div class="line">(<span class="name">defparameter</span> *nodes*</div><div class="line">  '((living-room (you are in the living-room.</div><div class="line">                  a wizard is snoring loudly on the couch.))</div><div class="line">    (garden (you are in a beautiful garden.</div><div class="line">             there is a well in front of you.))</div><div class="line">    (attic (you are in the attic.</div><div class="line">            there is a giant welding torch in the corner.))))</div><div class="line"></div><div class="line">(<span class="name">defun</span> describe-location (<span class="name">location</span> nodes)</div><div class="line">  <span class="string">"location is a symbol.</span></div><div class="line">nodes is the global variable."</div><div class="line">  (<span class="name">cadr</span> (<span class="name">assoc</span> location nodes)))</div><div class="line"></div><div class="line"><span class="comment">;; ====================</span></div><div class="line"><span class="comment">;; edges</span></div><div class="line"></div><div class="line">(<span class="name">defparameter</span> *edges*</div><div class="line">  '((living-room</div><div class="line">     (garden west door)</div><div class="line">     (attic upstairs ladder))</div><div class="line">    (garden</div><div class="line">     (living-room east door))</div><div class="line">    (attic</div><div class="line">     (living-room downstairs ladder))))</div><div class="line"></div><div class="line">(<span class="name">defun</span> describe-path (<span class="name">edge</span>)</div><div class="line">  `(there is a ,(caddr edge) going ,(cadr edge) from here.))</div><div class="line"></div><div class="line">(<span class="name">defun</span> describe-paths (<span class="name">location</span> edges)</div><div class="line">  <span class="string">"location is a symbol.</span></div><div class="line">edges is the global variable"</div><div class="line">  (<span class="name">apply</span> #'append</div><div class="line">         (<span class="name">mapcar</span> #'describe-path</div><div class="line">                 (<span class="name">cdr</span> (<span class="name">assoc</span> location edges)))))</div><div class="line"></div><div class="line"><span class="comment">;; ====================</span></div><div class="line"><span class="comment">;; objects</span></div><div class="line"></div><div class="line">(<span class="name">defparameter</span> *objects* '(whiskey bucket frog chain))</div><div class="line">(<span class="name">defparameter</span> *object-locations* '((whiskey living-room)</div><div class="line">                                   (bucket living-room)</div><div class="line">                                   (chain garden)</div><div class="line">                                   (frog garden)))</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">;; One Way to write OBJECTS-AT function</span></div><div class="line"></div><div class="line"><span class="comment">;; (defun object-at-location-p (object location object-locations)</span></div><div class="line"><span class="comment">;;   "object and location are symbols.</span></div><div class="line"><span class="comment">;; object-locations is a global variable"</span></div><div class="line"><span class="comment">;;   (eq (cadr (assoc object object-locations))</span></div><div class="line"><span class="comment">;;       location))</span></div><div class="line"></div><div class="line"><span class="comment">;; if the test function in REMOVE-IF-NOT require more than one</span></div><div class="line"><span class="comment">;; arguments, then use a lambda to wrap the function. ;-)</span></div><div class="line"></div><div class="line"><span class="comment">;; (defun objects-at (location objects object-locations)</span></div><div class="line"><span class="comment">;;   (remove-if-not #'(lambda (object)</span></div><div class="line"><span class="comment">;;                      (object-at-location-p object</span></div><div class="line"><span class="comment">;;                                            location</span></div><div class="line"><span class="comment">;;                                            object-locations))</span></div><div class="line"><span class="comment">;;                  objects))</span></div><div class="line"></div><div class="line"><span class="comment">;; A better way for OBJECTS-AT function</span></div><div class="line">(<span class="name">defun</span> objects-at (<span class="name">location</span> objects object-locations)</div><div class="line">  <span class="string">"location is a symbol.</span></div><div class="line">objects and object-locations are global variables.</div><div class="line">return a list of objects in the current location."</div><div class="line">  (<span class="name">labels</span> ((<span class="name">at-location-p</span> (<span class="name">object</span>)</div><div class="line">             (<span class="name">eq</span> location</div><div class="line">                 (<span class="name">cadr</span> (<span class="name">assoc</span> object object-locations)))))</div><div class="line">    (<span class="name">remove-if-not</span> #'at-location-p objects)))</div><div class="line"></div><div class="line">(<span class="name">defun</span> describe-objects (<span class="name">location</span> objects object-locations)</div><div class="line">  <span class="string">"location is a symbol.</span></div><div class="line">objects and object-locations are global variables."</div><div class="line">  (<span class="name">apply</span> #'append</div><div class="line">         (<span class="name">mapcar</span> #'(lambda (object)</div><div class="line">                     `(you see a ,object on the floor.))</div><div class="line">                 (<span class="name">objects-at</span> location objects</div><div class="line">                             object-locations))))</div><div class="line"></div><div class="line"><span class="comment">;; ====================</span></div><div class="line"><span class="comment">;; Describing it ALL</span></div><div class="line"></div><div class="line">(<span class="name">defparameter</span> *location* 'living-room)</div><div class="line"></div><div class="line">(<span class="name">defun</span> look ()</div><div class="line">  (<span class="name">append</span> (<span class="name">describe-location</span> *location* *nodes*)</div><div class="line">          (<span class="name">describe-paths</span> *location* *edges*)</div><div class="line">          (<span class="name">describe-objects</span> *location* *objects*</div><div class="line">                            *object-locations*)))</div><div class="line"></div><div class="line"><span class="comment">;; Walking Around in Our World</span></div><div class="line">(<span class="name">defun</span> walk (<span class="name">direction</span>)</div><div class="line">  (<span class="name">let</span> ((<span class="name">next</span></div><div class="line">          (<span class="name">find</span> direction</div><div class="line">                (<span class="name">cdr</span> (<span class="name">assoc</span> *location* *edges*))</div><div class="line">                <span class="symbol">:key</span> #'cadr)))</div><div class="line">    (<span class="name">cond</span> (<span class="name">next</span></div><div class="line">           (<span class="name">setf</span> *location* (<span class="name">car</span> next))</div><div class="line">           (<span class="name">look</span>))</div><div class="line">          (<span class="name">t</span></div><div class="line">           '(you cannot go that way.)))))</div><div class="line"></div><div class="line"><span class="comment">;; ====================</span></div><div class="line"><span class="comment">;; Pick Up Objects</span></div><div class="line"></div><div class="line">(<span class="name">defun</span> pickup (<span class="name">object</span>)</div><div class="line">  <span class="string">"object is a symbol.</span></div><div class="line">push a new list to *object-locations*, return a message list"</div><div class="line">  (<span class="name">cond</span> ((<span class="name">member</span></div><div class="line">          object</div><div class="line">          (<span class="name">objects-at</span> *location* *objects*</div><div class="line">                      *object-locations*))</div><div class="line">         (<span class="name">push</span> `(,object body) *object-locations*)</div><div class="line">         `(you are now carrying the ,object))</div><div class="line">        (<span class="name">t</span> '(you cannot get that.))))</div><div class="line"></div><div class="line"><span class="comment">;; ====================</span></div><div class="line"><span class="comment">;; Checking Our Inventory</span></div><div class="line"></div><div class="line">(<span class="name">defun</span> inventory ()</div><div class="line">  (<span class="name">cons</span> 'items- (<span class="name">objects-at</span> 'body *objects* *object-locations*)))</div><div class="line"></div><div class="line">(<span class="name">defun</span> game-read ()</div><div class="line">  (<span class="name">let</span> ((<span class="name">cmd</span></div><div class="line">          (<span class="name">read-from-string</span></div><div class="line">           (<span class="name">concatenate</span> 'string <span class="string">"("</span> (<span class="name">read-line</span>) <span class="string">")"</span>))))</div><div class="line">    (<span class="name">cons</span> (<span class="name">car</span> cmd)</div><div class="line">          (<span class="name">mapcar</span> #'(lambda (x)</div><div class="line">                      `',x)</div><div class="line">                  (<span class="name">cdr</span> cmd)))))</div><div class="line"></div><div class="line">(<span class="name">defun</span> tweak-text (<span class="name">lst</span> capital-p literal-p)</div><div class="line">  (<span class="name">let</span> ((<span class="name">item</span> (<span class="name">car</span> lst))</div><div class="line">        (<span class="name">rest</span> (<span class="name">rest</span> lst)))</div><div class="line">    (<span class="name">if</span> item</div><div class="line">        (<span class="name">cond</span> ((<span class="name">member</span> item '(#\! #\? #\.))</div><div class="line">               (<span class="name">cons</span> item (<span class="name">tweak-text</span> rest <span class="literal">t</span> <span class="literal">nil</span>)))</div><div class="line">              ((<span class="name">eq</span> item #\<span class="string">")</span></div><div class="line">               (cons item (tweak-text rest nil (not literal-p))))</div><div class="line">              (literal-p</div><div class="line">               (cons item (tweak-text rest nil literal-p)))</div><div class="line">              (capital-p</div><div class="line">               (cons (char-upcase item)</div><div class="line">                     (if (alpha-char-p item)</div><div class="line">                         (tweak-text rest nil literal-p)</div><div class="line">                         (tweak-text rest t literal-p))))</div><div class="line">              (t</div><div class="line">               (cons (char-downcase item)</div><div class="line">                     (tweak-text rest nil literal-p)))))))</div><div class="line"></div><div class="line">(defun game-print (lst)</div><div class="line">  (princ</div><div class="line">   (coerce</div><div class="line">    (tweak-text</div><div class="line">     (coerce (string-trim "() <span class="string">"</span></div><div class="line">                          (prin1-to-string lst))</div><div class="line">             'list)</div><div class="line">     t nil)</div><div class="line">    'string))</div><div class="line">  (fresh-line))</div><div class="line"></div><div class="line">(defparameter *allowed-commands* '(look walk pickup inventory))</div><div class="line"></div><div class="line">(defun game-eval (sexp)</div><div class="line">  (if (member (first sexp)</div><div class="line">              *allowed-commands*)</div><div class="line">      (eval sexp)</div><div class="line">      '(i do not know that command.)))</div><div class="line"></div><div class="line">(defun game-repl ()</div><div class="line">  (let ((cmd (game-read)))</div><div class="line">    (unless (eq (car cmd)</div><div class="line">                'quit)</div><div class="line">      (game-print (game-eval cmd))</div><div class="line">      (game-repl))))</div></pre></td></tr></table></figure>
+<p>在第七章里，把游戏里面的位置位置关系通过有向图的形式用第三方库画出来：</p>
+<p><img src="/img/wizard.png" alt="adventure game world"></p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div></pre></td><td class="code"><pre><div class="line"><span class="comment">;; 2016/08/01 11:48:58 AM</span></div><div class="line"><span class="comment">;; Xueyang Liu</span></div><div class="line"></div><div class="line">(<span class="name">defparameter</span> *wizard-nodes*</div><div class="line">  '((living-room (you are in the living-room.</div><div class="line">                  a wizard is snoring loudly on the couch.))</div><div class="line">    (garden (you are in a beautiful garden.</div><div class="line">             there is a well in front of you.))</div><div class="line">    (attic (you are in the attic.</div><div class="line">            there is a giant welding torch in the corner.))))</div><div class="line"></div><div class="line">(<span class="name">defparameter</span> *wizard-edges*</div><div class="line">  '((living-room</div><div class="line">     (garden west door)</div><div class="line">     (attic upstairs ladder))</div><div class="line">    (garden</div><div class="line">     (living-room east door))</div><div class="line">    (attic</div><div class="line">     (living-room downstairs ladder))))</div><div class="line"></div><div class="line">(<span class="name">defun</span> dot-name (<span class="name">sexp</span>)</div><div class="line">  (<span class="name">string-downcase</span></div><div class="line">   (<span class="name">substitute-if</span> #\_ (<span class="name">complement</span> #'alphanumericp)</div><div class="line">                  (<span class="name">prin1-to-string</span> sexp))))</div><div class="line"></div><div class="line">(<span class="name">defparameter</span> *max-label-length* <span class="number">30</span>)</div><div class="line"></div><div class="line">(<span class="name">defun</span> dot-label (<span class="name">sexp</span>)</div><div class="line">  (<span class="name">if</span> sexp</div><div class="line">      (<span class="name">let</span> ((<span class="name">s</span> (<span class="name">write-to-string</span> sexp</div><div class="line">                                <span class="symbol">:pretty</span> <span class="literal">nil</span>)))</div><div class="line">        (<span class="name">if</span> (<span class="name">&gt;</span> (<span class="name">length</span> s)</div><div class="line">               *max-label-length*)</div><div class="line">            (<span class="name">concatenate</span> 'string</div><div class="line">                         (<span class="name">string-downcase</span></div><div class="line">                          (<span class="name">subseq</span> s</div><div class="line">                                  <span class="number">0</span> (<span class="name">-</span> *max-label-length* <span class="number">3</span>)))</div><div class="line">                         <span class="string">"..."</span>)</div><div class="line">            s))</div><div class="line">      <span class="string">""</span>))</div><div class="line"></div><div class="line">(<span class="name">defun</span> nodes-&gt;dot (<span class="name">nodes</span>)</div><div class="line">  (<span class="name">mapc</span> (<span class="name">lambda</span> (<span class="name">sexp</span>)</div><div class="line">          (<span class="name">fresh-line</span>)</div><div class="line">          (<span class="name">princ</span> (<span class="name">dot-name</span> (<span class="name">car</span> sexp)))</div><div class="line">          (<span class="name">princ</span> <span class="string">"[label=\""</span>)</div><div class="line">          (<span class="name">princ</span> (<span class="name">dot-label</span> sexp))</div><div class="line">          (<span class="name">princ</span> <span class="string">"\"];"</span>))</div><div class="line">        nodes))</div><div class="line"></div><div class="line">(<span class="name">defun</span> edges-&gt;dot (<span class="name">edges</span>)</div><div class="line">  (<span class="name">mapc</span> (<span class="name">lambda</span> (<span class="name">node</span>)</div><div class="line">          (<span class="name">mapc</span> (<span class="name">lambda</span> (<span class="name">edge</span>)</div><div class="line">                  (<span class="name">fresh-line</span>)</div><div class="line">                  (<span class="name">princ</span> (<span class="name">dot-name</span> (<span class="name">car</span> node)))</div><div class="line">                  (<span class="name">princ</span> <span class="string">"-&gt;"</span>)</div><div class="line">                  (<span class="name">princ</span> (<span class="name">dot-name</span> (<span class="name">car</span> edge)))</div><div class="line">                  (<span class="name">princ</span> <span class="string">"[label=\""</span>)</div><div class="line">                  (<span class="name">princ</span> (<span class="name">string-downcase</span></div><div class="line">                          (<span class="name">prin1-to-string</span> (<span class="name">cdr</span> edge))))</div><div class="line">                  (<span class="name">princ</span> <span class="string">"\"];"</span>))</div><div class="line">                (<span class="name">cdr</span> node)))</div><div class="line">        edges))</div><div class="line"></div><div class="line">(<span class="name">defun</span> uedges-&gt;dot (<span class="name">edges</span>)</div><div class="line">  (<span class="name">maplist</span> (<span class="name">lambda</span> (<span class="name">lst</span>)</div><div class="line">             (<span class="name">mapc</span> (<span class="name">lambda</span> (<span class="name">edge</span>)</div><div class="line">                     (<span class="name">unless</span> (<span class="name">assoc</span> (<span class="name">car</span> edge)</div><div class="line">                                    lst)</div><div class="line">                       (<span class="name">fresh-line</span>)</div><div class="line">                       (<span class="name">princ</span> (<span class="name">dot-name</span> (<span class="name">caar</span> lst)))</div><div class="line">                       (<span class="name">princ</span> <span class="string">"--"</span>)</div><div class="line">                       (<span class="name">princ</span> (<span class="name">dot-name</span> (<span class="name">car</span> edge)))</div><div class="line">                       (<span class="name">princ</span> <span class="string">"[label=\""</span>)</div><div class="line">                       (<span class="name">princ</span> (<span class="name">string-downcase</span></div><div class="line">                               (<span class="name">prin1-to-string</span> (<span class="name">cdr</span> edge))))</div><div class="line">                       (<span class="name">princ</span> <span class="string">"\"];"</span>)))</div><div class="line">                   (<span class="name">cdar</span> lst)))</div><div class="line">           edges))</div><div class="line"></div><div class="line">(<span class="name">defun</span> graph-&gt;dot (<span class="name">nodes</span> edges)</div><div class="line">  (<span class="name">princ</span> <span class="string">"digraph&#123;"</span>)</div><div class="line">  (<span class="name">nodes-&gt;dot</span> nodes)</div><div class="line">  (<span class="name">edges-&gt;dot</span> edges)</div><div class="line">  (<span class="name">princ</span> <span class="string">"&#125;"</span>))</div><div class="line"></div><div class="line">(<span class="name">defun</span> ugraph-&gt;dot (<span class="name">nodes</span> edges)</div><div class="line">  (<span class="name">princ</span> <span class="string">"graph&#123;"</span>)</div><div class="line">  (<span class="name">nodes-&gt;dot</span> nodes)</div><div class="line">  (<span class="name">uedges-&gt;dot</span> edges)</div><div class="line">  (<span class="name">princ</span> <span class="string">"&#125;"</span>))</div><div class="line"></div><div class="line">(<span class="name">defun</span> dot-&gt;png (<span class="name">fname</span> thunk)</div><div class="line">  (<span class="name">with-open-file</span> (<span class="name">*standard-output*</span></div><div class="line">                   fname</div><div class="line">                   <span class="symbol">:direction</span> <span class="symbol">:output</span></div><div class="line">                   <span class="symbol">:if-exists</span> <span class="symbol">:supersede</span>)</div><div class="line">    (<span class="name">funcall</span> thunk))</div><div class="line">  (<span class="name">ext</span><span class="symbol">:shell</span> (<span class="name">concatenate</span> 'string</div><div class="line">                          <span class="string">"dot -Tpng -O "</span> fname)))</div><div class="line"></div><div class="line">(<span class="name">defun</span> graph-&gt;png (<span class="name">fname</span> nodes edges)</div><div class="line">  (<span class="name">dot-&gt;png</span> fname</div><div class="line">            (<span class="name">lambda</span> ()</div><div class="line">              (<span class="name">graph-&gt;dot</span> nodes edges))))</div><div class="line"></div><div class="line">(<span class="name">defun</span> ugraph-&gt;png (<span class="name">fname</span> nodes edges)</div><div class="line">  (<span class="name">dot-&gt;png</span> fname</div><div class="line">            (<span class="name">lambda</span> ()</div><div class="line">              (<span class="name">ugraph-&gt;dot</span> nodes edges))))</div></pre></td></tr></table></figure>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    $('html').ready(function() {
+        setTimeout(function() {
+            var disqus_config = function () {
+                this.page.url = 'liuxueyang.github.io/2016/08/01/Text-Adventure-Game-in-Land-of-Lisp/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//liuxueyang.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        },1500);
+    });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2016/07/31/2016-07-31-17-43-50-PM-杂事/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/08/04/show-and-hide-dot-files-in-Finder-of-OS-X-El-Capitan/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="liuxueyang's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        liuxueyang457@163.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:liuxueyang457@163.com" target="_blank" title="Email Me">
+                        <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+            主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+    <!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+    -->
+
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">13</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">2</span></a>
+        </ul>
+    </li>
+
+    <!-- Categories  -->
+    
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+  	
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+  	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+            文章总数
+            <span class="sidebar-badge">57</span>
+        </a>
+    </li>
+</ul>
+
+
+        <!-- Sidebar Divider -->
+        <div class="sidebar-divider"></div>
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        主题 - Material
+        <span class="sidebar-badge badge-circle">i</span>
+    </div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+    sidebar.help
+    <span class="mdl-button__ripple-container">
+      <span class="mdl-ripple"></span>
+    </span>
+  </div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+    </div>
+
+    <!-- Sidebar Sponsor -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/abel-abel" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;以前的博客
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 使用 DISQUS js 代码 -->
+    <script id="dsq-count-scr" src="//liuxueyang.disqus.com/count.js" async></script>
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>

@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.2.6 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            整理Bilibili安卓客户端缓存的视频 | 
+        
+        以前的博客
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="liuxueyang">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="以前的博客">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="liuxueyang.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="整理Bilibili安卓客户端缓存的视频 | 以前的博客">
+    <meta property="og:description" content="null">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+    body, html {
+        font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    }
+
+    a {
+        color: #00838F;
+    }
+
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important;
+    }
+
+    /* Sidebar User Drop Down Menu Text Color */
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+        color: #0097A7 !important;
+    }
+
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+        color: #0097A7 !important;
+    }
+
+    .toTop {
+        background: #757575 !important;
+    }
+
+    .material-layout .material-post>.material-nav,
+    .material-layout .material-index>.material-nav,
+    .material-nav a {
+        color: #757575;
+    }
+
+    #scheme-Paradox .MD-burger-layer {
+        background-color: #757575;
+    }
+
+    #scheme-Paradox #post-toc-trigger-btn {
+        color: #757575;
+    }
+
+    .post-toc a:hover {
+        color: #00838F;
+        text-decoration: underline;
+    }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5;
+        }
+
+        /* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+
+    <script src="/js/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/css/highlight/solarized-white.css">
+
+    <!-- UC Browser Compatible-->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write('<link rel="stylesheet" href="/css/uc.css">');
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                整理Bilibili安卓客户端缓存的视频
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>liuxueyang</strong>
+        <span>3月 16, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Perl/">Perl</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=整理Bilibili安卓客户端缓存的视频&url=liuxueyang.github.io//2017/03/16/整理Bilibili安卓客户端缓存的视频/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=整理Bilibili安卓客户端缓存的视频&url=liuxueyang.github.io//2017/03/16/整理Bilibili安卓客户端缓存的视频/index.html&via=liuxueyang" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=liuxueyang.github.io//2017/03/16/整理Bilibili安卓客户端缓存的视频/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=liuxueyang.github.io//2017/03/16/整理Bilibili安卓客户端缓存的视频/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>昨天晚上无意中看到了B站竟然有TOUCH。。完全没想到。所以我决定这次要把这部动画片全部下载下来，B站的视频质量看起来还不错。所以最简单的方法就是用安卓客户端缓存，然后在电脑上处理了。</p>
+<p>其实之前我做过这件事情。当初是为了整理「暖暖日记」这部番，因为它每集仅仅有5分钟左右。每个视频只有一个文件，所以只需要找到所有视频然后读json文件找到视频名称，重命名就好了。</p>
+<p>不过这次好像有点不同：每集一般有25分钟，缓存的是高清的。奇怪的是：即使是同一集，最开始我缓存的时候某一集是仅仅有一个mp4文件，然后我又实验了一次，发现它就变成了多个flv文件。。真是迷。。</p>
+<p>处理也不难，如果是单个mp4文件直接重命名就好了。如果是多个flv文件，那么就需要先合并，然后再命名。</p>
+<p>然后看了一下之前写的Perl程序，竟然，看不太懂了。。。T_T，然而还好，最后还是搞定了：</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/perl</span></div><div class="line"></div><div class="line"><span class="comment"># Date  : 2017/03/16 19:14:35</span></div><div class="line"><span class="comment"># Finish: 2017/03/16 22:04:07</span></div><div class="line"></div><div class="line"><span class="comment"># <span class="doctag">NOTE:</span> There MUST NOT be any non-ascii character in the path!!!!!!!!!!</span></div><div class="line"></div><div class="line"><span class="keyword">use</span> strict;</div><div class="line"><span class="keyword">use</span> warnings;</div><div class="line"><span class="keyword">use</span> <span class="number">5.014</span>;</div><div class="line"><span class="keyword">use</span> Cwd;</div><div class="line"><span class="keyword">use</span> JSON <span class="string">qw()</span>;</div><div class="line"><span class="keyword">use</span> <span class="keyword">open</span> <span class="string">':std'</span>, <span class="string">':encoding(UTF-8)'</span>;</div><div class="line"><span class="keyword">use</span> File::Copy;</div><div class="line"></div><div class="line"><span class="keyword">my</span> $cur_dir = <span class="string">'/home/repl/Videos/Bilibili/Fanju/TOUCH/s_2425'</span>;</div><div class="line"><span class="keyword">opendir</span>(DIR, $cur_dir) <span class="keyword">or</span> dir $!;</div><div class="line"></div><div class="line"><span class="keyword">while</span> (<span class="keyword">my</span> $file = <span class="keyword">readdir</span>(DIR)) &#123;</div><div class="line">    <span class="keyword">next</span> <span class="keyword">if</span> ($file =~ <span class="regexp">/^\./</span>);</div><div class="line">    </div><div class="line">    <span class="comment"># get index_title</span></div><div class="line">    <span class="keyword">my</span> $json_file = $cur_dir . <span class="string">"/$file"</span> . <span class="string">'/entry.json'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">my</span> $json_text = <span class="keyword">do</span> &#123;</div><div class="line">	<span class="keyword">open</span>(<span class="keyword">my</span> $json_fh, <span class="string">"&lt;:encoding(UTF-8)"</span>, $json_file)</div><div class="line">	    <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">"Can not open $json_file\"$!\n\""</span>);</div><div class="line">	<span class="keyword">local</span> $/;</div><div class="line">	&lt;$json_fh&gt;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">my</span> $json = JSON-&gt;new;</div><div class="line">    <span class="keyword">my</span> $data = $json-&gt;decode($json_text);</div><div class="line">    <span class="keyword">my</span> $index = $data-&gt;&#123;<span class="string">'ep'</span>&#125;&#123;<span class="string">'index_title'</span>&#125;;</div><div class="line"></div><div class="line">    <span class="comment"># directories like 58116</span></div><div class="line">    <span class="keyword">my</span> $subdir = <span class="string">"$cur_dir/$file"</span>;</div><div class="line">    <span class="keyword">opendir</span>(SUBDIR, $subdir) <span class="keyword">or</span> dir $!;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (<span class="keyword">my</span> $subfile = <span class="keyword">readdir</span>(SUBDIR)) &#123;</div><div class="line">	<span class="keyword">next</span> <span class="keyword">if</span> ($subfile =~ <span class="regexp">/^\./</span>);</div><div class="line">	<span class="keyword">if</span> (-d <span class="string">"$subdir/$subfile"</span>) &#123;</div><div class="line">	    <span class="keyword">if</span> ($subfile =~ <span class="regexp">/hdmp4/</span>) &#123;</div><div class="line">		<span class="comment"># only rename</span></div><div class="line">		<span class="keyword">opendir</span>(DSTDIR, <span class="string">"$subdir/$subfile"</span>);</div><div class="line">		<span class="keyword">while</span> (<span class="keyword">my</span> $dstfile = <span class="keyword">readdir</span>(DSTDIR)) &#123;</div><div class="line">		    <span class="keyword">next</span> <span class="keyword">if</span> ($dstfile =~ <span class="regexp">/^\./</span>);</div><div class="line">		    <span class="keyword">if</span> ($dstfile =~ <span class="regexp">/mp4$/</span>) &#123;</div><div class="line">			$index =~ <span class="regexp">s/ /_/g</span>;</div><div class="line">			<span class="keyword">rename</span>(<span class="string">"$subdir/$subfile/$dstfile"</span>, <span class="string">"$index.mp4"</span>) <span class="keyword">or</span> <span class="keyword">die</span></div><div class="line">			    <span class="string">"failed to copy file"</span> . $index;</div><div class="line">		    &#125;</div><div class="line">		&#125;</div><div class="line">		closedir(DSTDIR);</div><div class="line">	    &#125;</div><div class="line">	    <span class="keyword">if</span> ($subfile =~ <span class="regexp">/flv/</span>) &#123;</div><div class="line">		<span class="comment"># concat flv files</span></div><div class="line">		<span class="keyword">opendir</span>(DSTDIR, <span class="string">"$subdir/$subfile"</span>);</div><div class="line">		<span class="keyword">my</span> @flv = ();</div><div class="line">		<span class="keyword">while</span> (<span class="keyword">my</span> $dstfile = <span class="keyword">readdir</span>(DSTDIR)) &#123;</div><div class="line">		    <span class="keyword">next</span> <span class="keyword">if</span> ($dstfile =~ <span class="regexp">/^\./</span>);</div><div class="line">		    <span class="keyword">if</span> ($dstfile =~ <span class="regexp">/flv$/</span>) &#123;</div><div class="line">			<span class="keyword">push</span> @flv, $dstfile;</div><div class="line">		    &#125;</div><div class="line">		&#125;</div><div class="line">		@flv = <span class="keyword">sort</span> &#123; $a cmp $b &#125; @flv;</div><div class="line">		@flv = <span class="keyword">map</span> &#123; <span class="string">"file './$_'"</span> &#125; @flv;</div><div class="line">		<span class="keyword">my</span> $mylist = <span class="string">"$subdir/$subfile/mylist.txt"</span>;</div><div class="line">		<span class="keyword">open</span> (<span class="keyword">my</span> $fh, <span class="string">"&gt;"</span>, $mylist)</div><div class="line">		    <span class="keyword">or</span> dir $!;</div><div class="line">		<span class="keyword">for</span> (@flv) &#123; <span class="keyword">print</span> $fh <span class="string">"$_\n"</span>; &#125;</div><div class="line">		<span class="keyword">close</span>($fh);</div><div class="line">		<span class="keyword">say</span> <span class="string">"$subdir/$subfile"</span>;</div><div class="line">		<span class="comment"># output file is: output.flv. Chinese filename will crash. T_T</span></div><div class="line">		<span class="keyword">system</span>(<span class="string">"cd $subdir/$subfile &amp;&amp; ffmpeg -f concat -safe 0 -i mylist.txt -c copy output.flv"</span>);</div><div class="line">		<span class="comment"># rename the filename of the output.flv to Chinese filename.</span></div><div class="line">		$index =~ <span class="regexp">s/ /_/g</span>;</div><div class="line">		<span class="keyword">rename</span>(<span class="string">"$subdir/$subfile/output.flv"</span>, <span class="string">"$index.flv"</span>) <span class="keyword">or</span> <span class="keyword">die</span></div><div class="line">		    <span class="string">"failed to copy file"</span> . $index;</div><div class="line">		closedir(DSTDIR);</div><div class="line">	    &#125;</div><div class="line">	&#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">close</span>(SUBDIR);</div><div class="line">&#125;</div><div class="line"></div><div class="line">closedir(DIR);</div><div class="line"><span class="keyword">exit</span> <span class="number">0</span>;</div></pre></td></tr></table></figure>
+<p>遇到几个陷阱：ffmpeg命令的输出文件不能是中文文件名，这个调试很久。然后文件路径最好不要有中文，否则出现一些奇怪的问题，不知道怎么解决，都改成英文名就好了。</p>
+<p>哦，还有一件事情：以前试过很多种从Android传数据到Linux的方法，最后还是发现，<code>adb pull</code>最好用，速度最快。比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb pull /storage/emulated/0/Android/data/tv.danmaku.bili/download/s_2425</div></pre></td></tr></table></figure>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    $('html').ready(function() {
+        setTimeout(function() {
+            var disqus_config = function () {
+                this.page.url = 'liuxueyang.github.io/2017/03/16/整理Bilibili安卓客户端缓存的视频/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//liuxueyang.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        },1500);
+    });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/03/06/复习C/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/04/10/重新整理博客/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="liuxueyang's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        liuxueyang457@163.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:liuxueyang457@163.com" target="_blank" title="Email Me">
+                        <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+            主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+    <!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+    -->
+
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">13</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">2</span></a>
+        </ul>
+    </li>
+
+    <!-- Categories  -->
+    
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+  	
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+  	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+            文章总数
+            <span class="sidebar-badge">57</span>
+        </a>
+    </li>
+</ul>
+
+
+        <!-- Sidebar Divider -->
+        <div class="sidebar-divider"></div>
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        主题 - Material
+        <span class="sidebar-badge badge-circle">i</span>
+    </div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+    sidebar.help
+    <span class="mdl-button__ripple-container">
+      <span class="mdl-ripple"></span>
+    </span>
+  </div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+    </div>
+
+    <!-- Sidebar Sponsor -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/abel-abel" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;以前的博客
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 使用 DISQUS js 代码 -->
+    <script id="dsq-count-scr" src="//liuxueyang.disqus.com/count.js" async></script>
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>

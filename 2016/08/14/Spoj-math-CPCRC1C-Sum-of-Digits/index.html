@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.2.6 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            Spoj, math: CPCRC1C - Sum of Digits | 
+        
+        以前的博客
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="liuxueyang">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="以前的博客">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="liuxueyang.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Spoj, math: CPCRC1C - Sum of Digits | 以前的博客">
+    <meta property="og:description" content="null">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+    body, html {
+        font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    }
+
+    a {
+        color: #00838F;
+    }
+
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important;
+    }
+
+    /* Sidebar User Drop Down Menu Text Color */
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+        color: #0097A7 !important;
+    }
+
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+        color: #0097A7 !important;
+    }
+
+    .toTop {
+        background: #757575 !important;
+    }
+
+    .material-layout .material-post>.material-nav,
+    .material-layout .material-index>.material-nav,
+    .material-nav a {
+        color: #757575;
+    }
+
+    #scheme-Paradox .MD-burger-layer {
+        background-color: #757575;
+    }
+
+    #scheme-Paradox #post-toc-trigger-btn {
+        color: #757575;
+    }
+
+    .post-toc a:hover {
+        color: #00838F;
+        text-decoration: underline;
+    }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5;
+        }
+
+        /* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+
+    <script src="/js/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/css/highlight/solarized-white.css">
+
+    <!-- UC Browser Compatible-->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write('<link rel="stylesheet" href="/css/uc.css">');
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Primary-Problem"><span class="post-toc-number">1.</span> <span class="post-toc-text">Primary Problem</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Intermediate"><span class="post-toc-number">2.</span> <span class="post-toc-text">Intermediate</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Spoj, math: CPCRC1C - Sum of Digits
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>liuxueyang</strong>
+        <span>8月 14, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/spoj/">spoj</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Spoj, math: CPCRC1C - Sum of Digits&url=liuxueyang.github.io//2016/08/14/Spoj-math-CPCRC1C-Sum-of-Digits/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Spoj, math: CPCRC1C - Sum of Digits&url=liuxueyang.github.io//2016/08/14/Spoj-math-CPCRC1C-Sum-of-Digits/index.html&via=liuxueyang" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=liuxueyang.github.io//2016/08/14/Spoj-math-CPCRC1C-Sum-of-Digits/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=liuxueyang.github.io//2016/08/14/Spoj-math-CPCRC1C-Sum-of-Digits/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="Primary-Problem"><a href="#Primary-Problem" class="headerlink" title="Primary Problem"></a>Primary Problem</h2><p><a href="http://www.spoj.com/problems/CPCRC1C/" target="_blank" rel="external">题目大意：</a></p>
+<pre><code>给两个数字a和b，求从a到b所有数字的每一位的和。比如1到3就是：1+2+3=6, 10到12
+就是：1+0 + 1+1 + 1+2=6，范围是10^9
+</code></pre><p>为了表示方便，用[n]表示从1到n的所有数字的每一位的和。要求从a到b，只需要计算[b] -<br>[a]就可以。</p>
+<pre><code>[9]  = 45;
+[19] = [9] + [9] + 10 * 1 = [9] * 2 + 10 * 1
+[99] = [9] + ([9] + 10 * 1) + ([9] + 10 * 2) + ... + ([9] + 10 * 9) = 
+     = [9] * 10 + 10 * [9]
+[999] = [99] + ([99] + 100 * 1) + ([99] + 100 * 2) + ([99] + 100 * 3) + ... + ([99] + 100 * 9) =
+      = [99] * 10 + 100 * [9]
+</code></pre><p>就可以找到规律了：(d是9的个数)</p>
+<pre><code>[10^d-1] = [10^(d-1)-1] * 10 + 10^(d-1) * [9]
+</code></pre><p>比如对于457这个数字：</p>
+<pre><code>[457] = [399] + (457%100 + 1) * 4 + [57]
+      = [99] * 4 + 100 * [3] + (457%100 + 1) * 4 + [57]
+</code></pre><p>用d表示数字有多少位，msd表示数的最左边的数字的值，p=10^(d-1)，那么对于任意的n：</p>
+<pre><code>[n] = [msd*p - 1] + (n%p+1) * msd + [n%p]
+    = [p-1] * msd + p * [msd-1] + (n%p+1) * msd + [n%p]
+</code></pre><p>这样问题就解决了。复杂度是O(log(N))</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * =====================================================================================</div><div class="line"> *</div><div class="line"> *       Filename:  main1.cpp</div><div class="line"> *</div><div class="line"> *    Description:  http://www.spoj.com/problems/CPCRC1C/</div><div class="line"> *</div><div class="line"> *        Version:  1.0</div><div class="line"> *        Created:  08/14/2016 20:39:52</div><div class="line"> *       Compiler:  g++</div><div class="line"> *</div><div class="line"> *         Author:  Sabastian (liuxueyang.github.io), read3valprintloop@gmail.com</div><div class="line"> *</div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> _ ios_base::sync_with_stdio(0);cin.tie(0);</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i, a, n) for (int i = a; i &lt; n; ++i)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> per(i, a, n) for (int i = n-1; i &gt;= a; --i)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> all(x) (x).begin(),(x).end()</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> SZ(x) ((int)(x).size())</span></div><div class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; VI;</div><div class="line"><span class="keyword">typedef</span> <span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; MI;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; PII;</div><div class="line"><span class="keyword">const</span> ll MOD=<span class="number">1000000007</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">num_len</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">floor</span>(<span class="built_in">log10</span>(n))+<span class="number">1</span>;&#125;</div><div class="line"><span class="function">ll <span class="title">solve</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span>(n&lt;=<span class="number">0</span>)<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  <span class="keyword">int</span> d=num_len(n);</div><div class="line">  <span class="keyword">if</span>(d==<span class="number">1</span>)<span class="keyword">return</span> (<span class="number">1</span>+n)*n/<span class="number">2</span>;</div><div class="line">  <span class="keyword">int</span> p=(<span class="keyword">int</span>)<span class="built_in">pow</span>(<span class="number">10</span>,d<span class="number">-1</span>),msd=n/p;</div><div class="line">  <span class="keyword">return</span> solve(p<span class="number">-1</span>)*msd+solve(msd<span class="number">-1</span>)*p+(n%p+<span class="number">1</span>)*msd+solve(n%p);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">( <span class="keyword">void</span> )</span></span></div><div class="line">&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span>  ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"input.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>     <span class="comment">/* -----  ONLINE_JUDGE  ----- */</span></span></div><div class="line">  <span class="keyword">int</span> a,b;<span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&amp;&amp;(a!=<span class="number">-1</span>))<span class="built_in">cout</span>&lt;&lt;solve(b)-solve(a<span class="number">-1</span>)&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;				<span class="comment">/* ----------  end of function main  ---------- */</span></div></pre></td></tr></table></figure>
+<h2 id="Intermediate"><a href="#Intermediate" class="headerlink" title="Intermediate"></a>Intermediate</h2><pre><code>Given Integer A and B, (0&lt;=A,B&lt;=10^15), given Integer k (2&lt;=k&lt;=10). Try to get the sum of digits of numbers from A to B under k-base.
+</code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * =====================================================================================</div><div class="line"> *</div><div class="line"> *       Filename:  main.cpp</div><div class="line"> *</div><div class="line"> *    Description:  给定A，B（A、B &lt; 10^15），求[A,B]内的所有数的</div><div class="line"> *    k(2&lt;=k&lt;=10)进制表示下的个数位之和。</div><div class="line"> *</div><div class="line"> *        Version:  1.0</div><div class="line"> *        Created:  08/15/2016 11:48:47</div><div class="line"> *       Compiler:  g++</div><div class="line"> *</div><div class="line"> *         Author:  Sabastian (liuxueyang.github.io), read3valprintloop@gmail.com</div><div class="line"> *</div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> _ ios_base::sync_with_stdio(0);cin.tie(0);</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i, a, n) for (int i = a; i &lt; n; ++i)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> per(i, a, n) for (int i = n-1; i &gt;= a; --i)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> all(x) (x).begin(),(x).end()</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> SZ(x) ((int)(x).size())</span></div><div class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; VI;</div><div class="line"><span class="keyword">typedef</span> <span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; MI;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; PII;</div><div class="line"><span class="keyword">const</span> ll MOD=<span class="number">1000000007</span>;</div><div class="line"></div><div class="line"><span class="function">ll <span class="title">getSum1</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> k)</span></span>&#123;</div><div class="line">  <span class="comment">// n 是自由位的数目，k是进制，求[0,k^n-1]的所有数字的数位之和.</span></div><div class="line">  <span class="comment">// eg. [0,99] 那么n=2</span></div><div class="line">  <span class="keyword">return</span> (ll)<span class="built_in">pow</span>(k,n)*n*(k<span class="number">-1</span>)/<span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"><span class="function">ll <span class="title">getSum2</span><span class="params">(<span class="keyword">int</span> prefix,<span class="keyword">int</span> n,<span class="keyword">int</span> k)</span></span>&#123;</div><div class="line">  <span class="comment">// 求小区间的数位和，比如[100,199]</span></div><div class="line">  <span class="comment">// prefix是公共前缀和，n是自由位数目，k是进制，比如[51000,51999]公</span></div><div class="line">  <span class="comment">// 共前缀就是5+1=6, n=3, k=10</span></div><div class="line">  <span class="keyword">return</span> getSum1(n,k)+prefix*(ll)<span class="built_in">pow</span>(k,n);</div><div class="line">&#125;</div><div class="line"><span class="function">ll <span class="title">getSum3</span><span class="params">(<span class="keyword">int</span> prefix,ll n,<span class="keyword">int</span> k)</span></span>&#123;</div><div class="line">  <span class="comment">// 求[0,n]的在k进制下的数位和，n的范围是10^15，prefix是公共前缀</span></div><div class="line">  <span class="comment">// 和，n是自由位数目，k是进制</span></div><div class="line">  ll ans=<span class="number">0</span>;</div><div class="line">  <span class="keyword">if</span>(n&lt;k)&#123;rep(i,<span class="number">0</span>,n+<span class="number">1</span>)ans+=i+prefix; <span class="keyword">return</span> ans;&#125;</div><div class="line">  <span class="keyword">int</span> freeNum=(ll)<span class="built_in">log10</span>(n)/(ll)<span class="built_in">log10</span>(k),</div><div class="line">    msd=n/(ll)<span class="built_in">pow</span>(k,freeNum); <span class="comment">// msd is Most Significant Digit</span></div><div class="line">  rep(i,<span class="number">0</span>,msd)ans+=getSum2(i+prefix,freeNum,k);</div><div class="line">  <span class="keyword">return</span> ans+=getSum3(msd+prefix,n%(ll)<span class="built_in">pow</span>(k,freeNum),k);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">ll <span class="title">check</span><span class="params">(ll n,<span class="keyword">int</span> k)</span></span>&#123;</div><div class="line">  ll ans=<span class="number">0</span>;<span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=n;++i)&#123;</div><div class="line">    ll t=i;<span class="keyword">while</span>(t)&#123;ans+=t%k;t/=k;&#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> ans;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">( <span class="keyword">void</span> )</span></span></div><div class="line">&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span>  ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"input.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>     <span class="comment">/* -----  ONLINE_JUDGE  ----- */</span></span></div><div class="line"></div><div class="line">  ll a,b;<span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&amp;&amp;a!=<span class="number">-1</span>)&#123;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;getSum3(<span class="number">0</span>,b,<span class="number">10</span>)-getSum3(<span class="number">0</span>,a<span class="number">-1</span>,<span class="number">10</span>)&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;				<span class="comment">/* ----------  end of function main  ---------- */</span></div></pre></td></tr></table></figure>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    $('html').ready(function() {
+        setTimeout(function() {
+            var disqus_config = function () {
+                this.page.url = 'liuxueyang.github.io/2016/08/14/Spoj-math-CPCRC1C-Sum-of-Digits/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//liuxueyang.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        },1500);
+    });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2016/08/14/Spoj-ANARC09A-Seinfeld/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/12/23/2016-12-23-life-labixiaoxin/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="liuxueyang's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        liuxueyang457@163.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:liuxueyang457@163.com" target="_blank" title="Email Me">
+                        <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+            主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+    <!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+    -->
+
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">13</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">2</span></a>
+        </ul>
+    </li>
+
+    <!-- Categories  -->
+    
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+  	
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+  	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+            文章总数
+            <span class="sidebar-badge">57</span>
+        </a>
+    </li>
+</ul>
+
+
+        <!-- Sidebar Divider -->
+        <div class="sidebar-divider"></div>
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        主题 - Material
+        <span class="sidebar-badge badge-circle">i</span>
+    </div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+    sidebar.help
+    <span class="mdl-button__ripple-container">
+      <span class="mdl-ripple"></span>
+    </span>
+  </div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+    </div>
+
+    <!-- Sidebar Sponsor -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/abel-abel" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;以前的博客
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 使用 DISQUS js 代码 -->
+    <script id="dsq-count-scr" src="//liuxueyang.disqus.com/count.js" async></script>
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>

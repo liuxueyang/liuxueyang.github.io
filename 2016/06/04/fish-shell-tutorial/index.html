@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.2.6 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            fish shell tutorial | 
+        
+        以前的博客
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="liuxueyang">
+    <meta name="description" content="null">
+    <meta name="keywords" content="null">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="以前的博客">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="liuxueyang.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="fish shell tutorial | 以前的博客">
+    <meta property="og:description" content="null">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+    body, html {
+        font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    }
+
+    a {
+        color: #00838F;
+    }
+
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important;
+    }
+
+    /* Sidebar User Drop Down Menu Text Color */
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+        color: #0097A7 !important;
+    }
+
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+        color: #0097A7 !important;
+    }
+
+    .toTop {
+        background: #757575 !important;
+    }
+
+    .material-layout .material-post>.material-nav,
+    .material-layout .material-index>.material-nav,
+    .material-nav a {
+        color: #757575;
+    }
+
+    #scheme-Paradox .MD-burger-layer {
+        background-color: #757575;
+    }
+
+    #scheme-Paradox #post-toc-trigger-btn {
+        color: #757575;
+    }
+
+    .post-toc a:hover {
+        color: #00838F;
+        text-decoration: underline;
+    }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5;
+        }
+
+        /* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+
+    <script src="/js/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/css/highlight/solarized-white.css">
+
+    <!-- UC Browser Compatible-->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write('<link rel="stylesheet" href="/css/uc.css">');
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#日常锻炼"><span class="post-toc-number">1.</span> <span class="post-toc-text">日常锻炼</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6月1日，5-27km"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">6月1日，5.27km</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6月2日，5-26km"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">6月2日，5.26km</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6月3日，5-21km"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">6月3日，5.21km</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6月4日，5-17km"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">6月4日，5.17km</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                fish shell tutorial
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>liuxueyang</strong>
+        <span>6月 04, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Tools/">Tools</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=fish shell tutorial&url=liuxueyang.github.io//2016/06/04/fish-shell-tutorial/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=fish shell tutorial&url=liuxueyang.github.io//2016/06/04/fish-shell-tutorial/index.html&via=liuxueyang" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=liuxueyang.github.io//2016/06/04/fish-shell-tutorial/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=liuxueyang.github.io//2016/06/04/fish-shell-tutorial/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>在fish里面，相邻的列表或者字符串会按照笛卡尔积来展开。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; echo &#123;good,bad&#125;&quot; apples&quot;</div><div class="line">good apples bad apples</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; set -l a x y z</div><div class="line">liu@lisp /p/tmp&gt; echo $a </div><div class="line">x y z</div><div class="line">liu@lisp /p/tmp&gt; set -l b 1 2 3</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; echo $a$b</div><div class="line">x1 y1 z1 x2 y2 z2 x3 y3 z3</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; echo $a&quot;-&quot;$b</div><div class="line">x-1 y-1 z-1 x-2 y-2 z-2 x-3 y-3 z-3</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; echo &#123;x,y,z&#125;$b</div><div class="line">x1 y1 z1 x2 y2 z2 x3 y3 z3</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; echo &#123;$b&#125;word</div><div class="line">1word 2word 3word</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; echo &quot;$b&quot;word</div><div class="line">1 2 3word</div></pre></td></tr></table></figure>
+<p>上面用到了括号扩展的功能：在一个大括号里面以逗号分隔的几个字符串会被扩展成列表里<br>面的每个元素被当作一个新的变量。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; echo input.&#123;c,h,txt&#125; </div><div class="line">input.c input.h input.txt</div><div class="line">liu@lisp /p/tmp&gt; mkdir src </div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; touch  input.&#123;c,h,txt&#125; </div><div class="line">liu@lisp /p/tmp&gt; mv *.&#123;c,h&#125; src </div><div class="line">liu@lisp /p/tmp&gt; ls src </div><div class="line">input.c input.h</div></pre></td></tr></table></figure>
+<p>在其它shell里面，一般都使用```来作为命令替换，在fish里面，就不一样了。它使用的<br>是括号。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; echo In (pwd), running (uname) </div><div class="line">In /private/tmp, running Darwin</div><div class="line">liu@lisp /p/tmp&gt; set os (uname)</div><div class="line">liu@lisp /p/tmp&gt; echo $os </div><div class="line">Darwin</div></pre></td></tr></table></figure>
+<p>其实这种方法变得更简单直接。不过，需要注意的是，这种方法不能使用在双引号里面，它<br>并不会在双引号里面自动把命令替换成命令的输出结果。弥补的做法只能是这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; touch &quot;testing_&quot;(date +%s)&quot;.txt&quot;</div><div class="line">liu@lisp /p/tmp&gt; ls te* </div><div class="line">testing_1465007369.txt</div></pre></td></tr></table></figure>
+<p>也就是说拼接一下就好了。</p>
+<p>另外，一个经常用到的功能就是，不像其它shell那样使用<code>&amp;&amp;</code>和<code>||</code>来作为逻辑与和逻辑<br>或，fish里面用的是英语单词<code>and</code>, <code>or</code>, <code>not</code>，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; touch file1.txt </div><div class="line">liu@lisp /p/tmp&gt; cp file1.txt file1_bak.txt; and echo &quot;Backup successful&quot;; or echo &quot;Backup failed&quot; </div><div class="line">Backup successful</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; cp file2.txt file1_bak.txt; and echo &quot;Backup successful&quot;; or echo &quot;Backup failed&quot; </div><div class="line">cp: file2.txt: No such file or directory</div><div class="line">Backup failed</div></pre></td></tr></table></figure>
+<p>然而，中间还是要加分号分割。</p>
+<p>经常用到的，条件语句这样使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; if grep fish /etc/shells</div><div class="line">                     echo Found fish</div><div class="line">                 else if grep bash /etc/shells</div><div class="line">                     echo Found bash </div><div class="line">                 else </div><div class="line">                     echo Got nothing</div><div class="line">                 end</div><div class="line">/usr/local/bin/fish</div><div class="line">Found fish</div></pre></td></tr></table></figure>
+<p>显然比其它的shell的语法自然好看多了 :joy: 即使你在终端里面直接输入这些代码，它也<br>会自动锁进。</p>
+<p>同样有简单的switch语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; switch (uname)</div><div class="line">                     case Linux</div><div class="line">                         echo Hi Linux!</div><div class="line">                     case Darwin</div><div class="line">                         echo Hi Mac OS X!</div><div class="line">                     case FreeBSD NetBSD</div><div class="line">                         echo Hi BSD</div><div class="line">                     case &apos;*&apos;</div><div class="line">                         echo Hi, stranger!</div><div class="line">                 end</div><div class="line">Hi Mac OS X!</div></pre></td></tr></table></figure>
+<p>不像其它的shell一样使用alias和用特殊的提示符语法之类的……这些事情，在fish里面用函<br>数替换，变得更简单好用。</p>
+<p>函数的参数是放在变量<code>$argv</code>里面的，而不是像别的shell那样放在奇怪的<code>$1</code>里面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; function say_hello</div><div class="line">                     echo Hello $argv</div><div class="line">                 end</div><div class="line">liu@lisp /p/tmp&gt; say_hello </div><div class="line">Hello</div><div class="line">liu@lisp /p/tmp&gt; say_hello everyone!</div><div class="line">Hello everyone!</div></pre></td></tr></table></figure>
+<p><code>functions</code>这个关键字，可以列出所有的函数。有趣的是在这个关键字后面加一个函数的<br>名字可以看到这个函数的源代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; functions</div><div class="line">., N_, abbr, alias, cd, contains_seq, delete-or-exit, dirh, dirs,</div><div class="line">down-or-search, eval, export, fish_config, fish_default_key_bindings,</div><div class="line">fish_fallback_prompt, fish_indent, fish_mode_prompt, fish_prompt,</div><div class="line">fish_sigtrap_handler, fish_update_completions, fish_vi_cursor,</div><div class="line">fish_vi_key_bindings, fish_vi_mode, fisher, funced, funcsave, grep, help,</div><div class="line">history, hostname, imgcat, isatty, it2dl, iterm2_fish_mode_prompt,</div><div class="line">iterm2_fish_prompt, iterm2_precmd, iterm2_preexec, iterm2_prompt_end,</div><div class="line">iterm2_prompt_start, iterm2_set_user_var, iterm2_status, la, ll, ls, man,</div><div class="line">math, nextd, nextd-or-forward-word, open, popd, prevd, prevd-or-backward-word,</div><div class="line">prompt_pwd, psub, pushd, realpath, say_hello, seq, setenv, suspend, trap,</div><div class="line">type, umask, underscore_change, up-or-search, vared,</div><div class="line">liu@lisp /p/tmp&gt; functions fish_vi_mode </div><div class="line">function fish_vi_mode</div><div class="line">	echo &apos;The `fish_vi_mode` function is deprecated.&apos; &gt;&amp;2</div><div class="line">        echo &apos;Please switch to calling `fish_vi_key_bindings`.&apos; &gt;&amp;2</div><div class="line">	# Turn on vi keybindings</div><div class="line">	set -g fish_key_bindings fish_vi_key_bindings</div><div class="line">end</div></pre></td></tr></table></figure>
+<p><code>for</code>循环也很简单直接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; for file in *.txt </div><div class="line">                     cp $file $file.bak</div><div class="line">                 end</div><div class="line">liu@lisp /p/tmp&gt; ls *.txt; ls *.bak </div><div class="line">errors.txt             file1_bak.txt          testing_1465007369.txt</div><div class="line">file1.txt              input.txt</div><div class="line">errors.txt.bak             input.txt.bak</div><div class="line">file1.txt.bak              testing_1465007369.txt.bak</div><div class="line">file1_bak.txt.bak</div></pre></td></tr></table></figure>
+<p><code>seq</code> 这个命令加一个数字<code>n</code>可以生成从1到<code>n</code>的一个列表，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; seq 5 </div><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">liu@lisp /p/tmp&gt; for x in (seq 5)</div><div class="line">                     touch file_$x.txt</div><div class="line">                 end</div><div class="line">liu@lisp /p/tmp&gt; ls file_* </div><div class="line">file_1.txt file_2.txt file_3.txt file_4.txt file_5.txt</div></pre></td></tr></table></figure>
+<p>在别的shell里面，一般用<code>$PS1</code>这个变量来显示提示符，在fish里面，使用的是一个名字<br>叫做<code>fish_prompt</code>的函数，这个函数的输出就作为提示符，比如，你可以像下面这样定制<br>自己的提示符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; function fish_prompt</div><div class="line">                     echo &quot;Sabastian Bach &gt;&gt; &quot;</div><div class="line">                 end</div><div class="line">Sabastian Bach &gt;&gt;</div></pre></td></tr></table></figure>
+<p>可以通过<code>set_color</code>来设置颜色，可以把<a href="http://www.wikiwand.com/en/ANSI_escape_code#/Colors" target="_blank" rel="external">ANSI<br>colors</a>或者RGB的16进制的值<br>作为参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Sabastian Bach &gt;&gt; function fish_prompt </div><div class="line">                      set_color purple</div><div class="line">                      date &quot;+%m/%d/%y&quot;</div><div class="line">                      set_color FF0</div><div class="line">                      echo (pwd) &apos;&gt; &apos;</div><div class="line">                      set_color normal</div><div class="line">                  end</div><div class="line">06/04/16</div><div class="line">/private/tmp &gt;</div></pre></td></tr></table></figure>
+<p>fish里面有一种全局变量，这个变量在fish里面通用，只要设置一次，那么即使重启，这个<br>变量依然存在。比如这样设置<code>EDITOR</code>这个变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> fish $ set -U EDITOR vim</div><div class="line"> fish $ echo $EDITOR                                                        </div><div class="line">vim</div></pre></td></tr></table></figure>
+<p>打开另外一个终端这个变量依然有效。</p>
+<p>另外有意思的一点是，其它shell里面，你一般会在类似于<code>~/.bashrc</code>或者<code>~/.zshrc</code>里面<br>设置<code>$PATH</code>的值，当然，在fish里面，你也可以这样做。比如你可以在<br><code>~/.config/fish/config.fish</code>这个文件里面设置。如果没有这个文件就需要创建一个。其<br>实它就相当于bash里面的<code>~/.bashrc</code>。你可以在这个文件里面定义一些函数，或者设置一<br>些变量。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt; cat ~/.config/fish/config.fish</div><div class="line"></div><div class="line">set -x PATH $PATH /sbin/</div><div class="line"></div><div class="line">function ll</div><div class="line">    ls -lh $argv</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>然而，在fish里面更高效和更常见的做法是，使用自动加载函数和上面提到的全局变量。</p>
+<p>所谓自动加载函数，就是在<code>~/.config/fish/functions/</code>目录里面以命令的名字加上后缀<br><code>.fish</code>作为文件名新建一个文件。比如你可以定义你自己的提示符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; cat ~/.config/fish/functions/fish_prompt.fish</div><div class="line">function fish_prompt</div><div class="line">    echo (pwd) &quot;&gt; &quot;</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>其实函数对应的文件可以自动创建，参见<br><a href="https://fishshell.com/docs/current/commands.html#funced" target="_blank" rel="external">funced</a>和<br><a href="https://fishshell.com/docs/current/commands.html#funcsave" target="_blank" rel="external">funcsave</a></p>
+<p>为了说明这个用法，比如我在终端直接输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Pictures $ function gopi</div><div class="line">               ssh aries@pi</div><div class="line">           end</div><div class="line">Pictures $ funcsave gopi</div></pre></td></tr></table></figure>
+<p>然后以后就可以使用<code>gopi</code>这个命令了……是不是很简单。根本不用打开一个什么文件什么的。<br>（这个命令是用来登陆我的树莓派的…… :joy: ）</p>
+<p>fish有一个插件特别好用，类似于zsh的<code>oh-my-zsh</code>。Github地址是：<a href="https://github.com/fisherman/fisherman" target="_blank" rel="external">fisherman</a></p>
+<p>安装的时候，可能会因为<code>git.io</code>被墙安装失败。其实，只要把<code>git.io/fisher</code>里面的内<br>容复制到<code>~/.config/fish/functions/fisher.fish</code>文件里面就可以了。没有这个文件就新<br>建一个。</p>
+<p>然后就可以愉快地使用了。</p>
+<p>经常会遇到设置环境变量的情况，可以用<a href="https://github.com/fisherman/paths" target="_blank" rel="external">paths</a><br>这个插件愉快地搞定。比如我给<code>$PATH</code>追加一个变量，可以这样做：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir $paths_config/PATH</div><div class="line">echo ~/bin &gt; $paths_config/PATH/HOMEBIN</div></pre></td></tr></table></figure>
+<p>然后重新启动fish才有效。这一点很重要！</p>
+<p>总的来说，仿佛fish和bash、zsh之类的差别很大，然而用过之后才知道，其实它变得更简<br>单并且，更好配置，去掉了别的shell里面那些乱七八糟奇怪的语法，符合更常用的语言的<br>语法规则，所以，我所有的*nix环境都换成了fish :joy: 棒棒哒</p>
+<hr>
+<h3 id="日常锻炼"><a href="#日常锻炼" class="headerlink" title="日常锻炼"></a>日常锻炼</h3><h4 id="6月1日，5-27km"><a href="#6月1日，5-27km" class="headerlink" title="6月1日，5.27km"></a><a href="http://wap.thejoyrun.com/po_22498513_50731646.html" target="_blank" rel="external">6月1日，5.27km</a></h4><p>坚持这件事情，与其说靠的是毅力，不如说是惯性。人的毅力靠不住，习惯却很顽固。</p>
+<h4 id="6月2日，5-26km"><a href="#6月2日，5-26km" class="headerlink" title="6月2日，5.26km"></a><a href="http://wap.thejoyrun.com/po_22498513_50977083.html" target="_blank" rel="external">6月2日，5.26km</a></h4><p>今天跑步听的是友聊FM最新一期《闲聊飞了》，聊的是小米无人机，同样，不知不觉，就跑<br>完了……</p>
+<h4 id="6月3日，5-21km"><a href="#6月3日，5-21km" class="headerlink" title="6月3日，5.21km"></a><a href="http://wap.thejoyrun.com/po_22498513_51240419.html" target="_blank" rel="external">6月3日，5.21km</a></h4><p>最近看周易，跑步的时候默背分宫卦象图 :joy: 我是有……多无聊。。。</p>
+<h4 id="6月4日，5-17km"><a href="#6月4日，5-17km" class="headerlink" title="6月4日，5.17km"></a><a href="http://wap.thejoyrun.com/po_22498513_51525979.html" target="_blank" rel="external">6月4日，5.17km</a></h4><p>Android版的Google拼音输入法比搜狗好用并且好看多了…… </p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    $('html').ready(function() {
+        setTimeout(function() {
+            var disqus_config = function () {
+                this.page.url = 'liuxueyang.github.io/2016/06/04/fish-shell-tutorial/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//liuxueyang.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        },1500);
+    });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2016/05/31/Codeforces-Round-353-Div-2-C-Money-Transfers/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/06/10/problem-when-configuring-vim-taglist-plugin/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="liuxueyang's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        liuxueyang457@163.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:liuxueyang457@163.com" target="_blank" title="Email Me">
+                        <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+            主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+    <!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+    -->
+
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">13</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">2</span></a>
+        </ul>
+    </li>
+
+    <!-- Categories  -->
+    
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+  	
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+  	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+            文章总数
+            <span class="sidebar-badge">57</span>
+        </a>
+    </li>
+</ul>
+
+
+        <!-- Sidebar Divider -->
+        <div class="sidebar-divider"></div>
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        主题 - Material
+        <span class="sidebar-badge badge-circle">i</span>
+    </div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+    sidebar.help
+    <span class="mdl-button__ripple-container">
+      <span class="mdl-ripple"></span>
+    </span>
+  </div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+    </div>
+
+    <!-- Sidebar Sponsor -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/abel-abel" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;以前的博客
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 使用 DISQUS js 代码 -->
+    <script id="dsq-count-scr" src="//liuxueyang.disqus.com/count.js" async></script>
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>
