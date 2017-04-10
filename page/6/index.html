@@ -1,851 +1,1032 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    <!--
-        © Material Theme
-        https://github.com/viosey/hexo-theme-material
-        Version: 1.2.6 -->
 
-    <!-- Title -->
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>以前的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <title>
-        
-        以前的博客
-    </title>
-
-    <!-- Favicons -->
-    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
-    <link rel="icon" sizes="192x192" href="/img/favicon.png">
-    <link rel="apple-touch-icon" href="/img/favicon.png">
-
-    <!-- Meta & Info -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0097A7">
     <meta name="author" content="liuxueyang">
-    <meta name="description" content="null">
-    <meta name="keywords" content="null">
-
-    <!--iOS -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-title" content="Title">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="480">
-
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="以前的博客">
-
-    <!-- The Open Graph protocol -->
-    <meta property="og:url" content="liuxueyang.github.io">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="以前的博客">
-    <meta property="og:description" content="null">
-
-    <!--[if lte IE 9]>
-        <link rel="stylesheet" href="/css/ie-blocker.css">
-
-        
-            <script src="/js/ie-blocker.zhCN.js"></script>
-        
-    <![endif]-->
-
-    <!-- Import CSS -->
-    <link rel="stylesheet" href="/css/material.min.css">
-    <link rel="stylesheet" href="/css/style.min.css">
-    <!-- Config CSS -->
-
-
-<!-- Other Styles -->
-<style>
-    body, html {
-        font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-    }
-
-    a {
-        color: #00838F;
-    }
-
-    .mdl-card__media,
-    #search-label,
-    #search-form-label:after,
-    #scheme-Paradox .hot_tags-count,
-    #scheme-Paradox .sidebar_archives-count,
-    #scheme-Paradox .sidebar-colored .sidebar-header,
-    #scheme-Paradox .sidebar-colored .sidebar-badge{
-        background-color: #0097A7 !important;
-    }
-
-    /* Sidebar User Drop Down Menu Text Color */
-    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
-    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
-        color: #0097A7 !important;
-    }
-
-    #post_entry-right-info,
-    .sidebar-colored .sidebar-nav li:hover > a,
-    .sidebar-colored .sidebar-nav li:hover > a i,
-    .sidebar-colored .sidebar-nav li > a:hover,
-    .sidebar-colored .sidebar-nav li > a:hover i,
-    .sidebar-colored .sidebar-nav li > a:focus i,
-    .sidebar-colored .sidebar-nav > .open > a,
-    .sidebar-colored .sidebar-nav > .open > a:hover,
-    .sidebar-colored .sidebar-nav > .open > a:focus,
-    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
-        color: #0097A7 !important;
-    }
-
-    .toTop {
-        background: #757575 !important;
-    }
-
-    .material-layout .material-post>.material-nav,
-    .material-layout .material-index>.material-nav,
-    .material-nav a {
-        color: #757575;
-    }
-
-    #scheme-Paradox .MD-burger-layer {
-        background-color: #757575;
-    }
-
-    #scheme-Paradox #post-toc-trigger-btn {
-        color: #757575;
-    }
-
-    .post-toc a:hover {
-        color: #00838F;
-        text-decoration: underline;
-    }
-</style>
-
-
-<!-- Theme Background Related-->
-
-    <style>
-        body{
-            background-color: #F5F5F5;
-        }
-
-        /* blog_info bottom background */
-        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
-            background-color: #fff;
-        }
-    </style>
-
-
-
-
-<!-- Fade Effect -->
-
-    <style>
-        .fade {
-            transition: all 800ms linear;
-            -webkit-transform: translate3d(0,0,0);
-            -moz-transform: translate3d(0,0,0);
-            -ms-transform: translate3d(0,0,0);
-            -o-transform: translate3d(0,0,0);
-            transform: translate3d(0,0,0);
-            opacity: 1;
-        }
-
-        .fade.out{
-            opacity: 0;
-        }
-    </style>
-
-
-    <script src="/js/jquery.min.js"></script>
-
-    <link rel="stylesheet" href="/css/highlight/solarized-white.css">
-
-    <!-- UC Browser Compatible-->
-    <script>
-        var agent = navigator.userAgent.toLowerCase();
-        if(agent.indexOf('ucbrowser')>0) {
-            document.write('<link rel="stylesheet" href="/css/uc.css">');
-            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
-        }
-    </script>
-
-    <!-- Custom Head -->
     
+
+    
+    <meta property="og:type" content="website">
+<meta property="og:title" content="以前的博客">
+<meta property="og:url" content="liuxueyang.github.io/page/6/index.html">
+<meta property="og:site_name" content="以前的博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="以前的博客">
+
+    
+    <link rel="alternative" href="/atom.xml" title="以前的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
-
-    
-        <body id="scheme-Paradox">
-            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
-                
-
-                <!-- Main Container -->
-                <main class="material-layout__content" id="main">
-
-                    <!-- Top Anchor -->
-                    <div id="top"></div>
-
-                    
-                        <!-- Hamburger Button -->
-                        <button class="MD-burger-icon sidebar-toggle">
-                            <span class="MD-burger-layer"></span>
-                        </button>
-                    
-
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
-
-    
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2016/05/28/推荐Now-Then-Pro/">推荐Now Then Pro</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            最近我一直在使用一个APP：
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2016/05/28/推荐Now-Then-Pro/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="liuxueyang's avatar">
-            </div>
-            <div>
-                <strong>liuxueyang</strong>
-                <span>5月 28, 2016</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="以前的博客" title="以前的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="以前的博客">以前的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:liuxueyang.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
 </div>
+    </header>
+    <div id="container">
+      <div id="main">
 
-        
-        
+   
     
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
     
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
+      <a href="/2016/05/28/推荐Now-Then-Pro/" title="推荐Now Then Pro" itemprop="url">推荐Now Then Pro</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-28T15:01:55.000Z" itemprop="datePublished"> 发表于 2016-05-28</time>
     
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2016/05/27/推荐KDE-Connect/">推荐 KDE Connect</a></p>
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>最近我一直在使用一个APP：<a href="http://angryaztec.com/nowthen.html" target="_blank" rel="external">Now Then Pro</a>。这<br>是我使用的最好用的一个时间类APP了。</p>
+<p>我一般用它来跟踪我的时间，流程是这样的：</p>
+<ol>
+<li>做事情之前首先新建一个任务</li>
+<li>点击开始计时</li>
+<li>把事情完成，再次点击任务，停止计时</li>
+<li>切换到其它任务，当前任务自动停止，新任务开始计时</li>
+</ol>
+<p>这样我一整天的每一个小时都可以被记录下来，睡前翻看一下回想一下当前做了什么事情是<br>一件很有成就感的事情。它有统计功能，柱状图或者饼状图很直观地显示我的时间分配是怎<br>样的。</p>
+<p>使用了一段时间，很值得推荐。:+1::+1::+1:</p>
+<hr>
+<h3 id="今天跑步3-27km"><a href="#今天跑步3-27km" class="headerlink" title="今天跑步3.27km"></a>今天跑步3.27km</h3>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
     </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            这是Linux里面的一个超级好用的工具。我之前都用AirDroid，但是也有缺点，就是在Linux里面只能在浏览器里面使用，也只是勉强能够使...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2016/05/27/推荐KDE-Connect/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="liuxueyang's avatar">
-            </div>
-            <div>
-                <strong>liuxueyang</strong>
-                <span>5月 27, 2016</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2016/05/23/2016年5月23日/">2016年5月23日</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            今天我发现时间越来越紧迫了起来。
-
-突然想到要整理一下我的浏览器收藏夹，因为我在用三种浏览器，Safari，Chrome
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2016/05/23/2016年5月23日/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="liuxueyang's avatar">
-            </div>
-            <div>
-                <strong>liuxueyang</strong>
-                <span>5月 23, 2016</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2016/05/22/2016年5月22日/">2016年5月22日</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            一天天的，过得飞快。。从现在开始，做事情就好好做，憋半途而废，看书就好好看，憋看到一半就扔了。。写东西就好好写，憋写到一半就废掉了。。我发现...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2016/05/22/2016年5月22日/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="liuxueyang's avatar">
-            </div>
-            <div>
-                <strong>liuxueyang</strong>
-                <span>5月 22, 2016</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2016/03/18/Codeforces-Round-345-Div-2-Problem-B/">Codeforces Round #345 (Div. 2) Problem B</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            题意给一个整数序列...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2016/03/18/Codeforces-Round-345-Div-2-Problem-B/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="liuxueyang's avatar">
-            </div>
-            <div>
-                <strong>liuxueyang</strong>
-                <span>3月 18, 2016</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2016/03/13/2016年春/">2016年春</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            这几天人机大战，李世乭0:3，看得心疼……今天终于、终于赢了！
-这几天很多阴谋论，很多打脸，很多嘲讽，没关系，它们都会随风而去。然而，...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2016/03/13/2016年春/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="liuxueyang's avatar">
-            </div>
-            <div>
-                <strong>liuxueyang</strong>
-                <span>3月 13, 2016</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-
-    
-    <!-- Index nav -->
-        <nav class="material-nav mdl-cell mdl-cell--12-col">
-            <a class="extend prev" rel="prev" href="/page/5/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
-        </nav>
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
-
-        locatePost = locatePost.next();
-    }
-</script>
-
-    
-</div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
 
 
-                    
-                        <!-- Overlay For Active Sidebar -->
-<div class="sidebar-overlay"></div>
-
-<!-- Material sidebar -->
-<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
-    <div id="sidebar-main">
-        <!-- Sidebar Header -->
-        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
-    <!-- Top bar -->
-    <div class="top-bar"></div>
-
-    <!-- Sidebar toggle button -->
-    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
-        <i class="material-icons">clear_all</i>
-        <span class="mdl-button__ripple-container">
-            <span class="mdl-ripple">
-            </span>
-        </span>
-    </button>
-
-    <!-- Sidebar Avatar -->
-    <div class="sidebar-image">
-        <img src="/img/avatar.png" alt="liuxueyang's avatar">
-    </div>
-
-    <!-- Sidebar Email -->
-    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        liuxueyang457@163.com
-        <b class="caret"></b>
-    </a>
-</div>
-
-
-        <!-- Sidebar Navigation  -->
-        <ul class="nav sidebar-nav">
-    <!-- User dropdown  -->
-    <li class="dropdown">
-        <ul id="settings-dropdown" class="dropdown-menu">
-            
-                <li>
-                    <a href="mailto:liuxueyang457@163.com" target="_blank" title="Email Me">
-                        <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
-                        Email Me
-                    </a>
-                </li>
-            
-        </ul>
-    </li>
-
-    <!-- Homepage -->
-    <li id="sidebar-first-li">
-        <a href="/" target="_self">
-            <i class="material-icons sidebar-material-icons">home</i>
-            主页
-        </a>
-    </li>
-
-    <!-- I'm Feeling Lucky -->
-    <!--
-    <li class="dropdown">
-        <a href="" target="_self">
-            <i class="material-icons sidebar-material-icons">explore</i>
-             sidebar.imlucky
-        </a>
-    </li>
-    -->
-
-    <!-- Archives  -->
-    <li class="dropdown">
-        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
-            <i class="material-icons sidebar-material-icons">inbox</i>
-             归档
-            <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-            <li>
-            <a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">13</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">六月 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">2</span></a>
-        </ul>
-    </li>
-
-    <!-- Categories  -->
-    
-
-    <!-- Divider -->
-    <li class="divider"></li>
-
-
-    <!-- Pages  -->
-  	
-        <li>
-            <a href="/about" title="About">
-                
-                    <i class="material-icons sidebar-material-icons">person</i>
-                
-                About
-            </a>
-        </li>
-  	
-
-    <!-- Article Numebr  -->
-    <li>
-        <a href="/archives">
-            文章总数
-            <span class="sidebar-badge">56</span>
-        </a>
-    </li>
-</ul>
-
-
-        <!-- Sidebar Divider -->
-        <div class="sidebar-divider"></div>
-
-        <!-- Sidebar Footer -->
-        <!--
-I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
-If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
-It will not impact the appearance and can give developers a lot of support :)
-
-很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
-如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
-它不会影响美观并可以给开发者很大的支持和动力。 :)
--->
-
-<!-- Theme Material -->
-<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-        主题 - Material
-        <span class="sidebar-badge badge-circle">i</span>
-    </div>
-</a>
-
-<!-- Help & Support -->
-<!--
-<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
-    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-    sidebar.help
-    <span class="mdl-button__ripple-container">
-      <span class="mdl-ripple"></span>
-    </span>
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Tools/">Tools</a>
   </div>
-</a>
--->
 
-<!-- Feedback -->
-<!--
-<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
-    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-         sidebar.feedback
-                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
-</a>
--->
-
-<!-- Abount Theme -->
-<!--
-<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
-    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-         sidebar.about_theme
-        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
-</a>-->
-
-    </div>
-
-    <!-- Sidebar Sponsor -->
-    
-
-</aside>
-
-                    
-
-                    
-                        <!-- Footer Top Button -->
-                        <div class="toTop-wrap">
-    <a href="#top" class="toTop">
-        <i class="material-icons footer_top-i">expand_less</i>
-    </a>
-</div>
-
-                    
-
-                    <!--Footer-->
-<footer class="mdl-mini-footer" id="bottom">
-    
-        <!-- Paradox Footer Left Section -->
-        <div class="mdl-mini-footer--left-section sns-list">
-    <!-- Twitter -->
-    
-
-    <!-- Facebook -->
-    
-
-    <!-- Google + -->
-    
-
-    <!-- Weibo -->
-    
-
-    <!-- Instagram -->
-    
-
-    <!-- Tumblr -->
-    
-
-    <!-- Github -->
-    
-        <a href="https://github.com/liuxueyang" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
-                <span class="visuallyhidden">Github</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- LinkedIn -->
-    
-
-    <!-- Zhihu -->
-    
-
-    <!-- Bilibili -->
-    
-
-    <!-- Telegram -->
-    
 </div>
 
 
-        <!--Copyright-->
-        <div id="copyright">
-            Copyright&nbsp;©&nbsp;
-            <script type="text/javascript">
-                var fd = new Date();
-                document.write(fd.getFullYear());
-            </script>
-            &nbsp;以前的博客
-        </div>
 
-        <!-- Paradox Footer Right Section -->
 
-        <!--
-        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
-        It will not impact the appearance and can give developers a lot of support :)
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/05/28/推荐Now-Then-Pro/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
 
-        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
-        它不会影响美观并可以给开发者很大的支持。 :)
-        -->
-
-        <div class="mdl-mini-footer--right-section">
-            <div>
-                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
-                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
-            </div>
-        </div>
-    
 </footer>
 
 
-                    <!-- Import File -->
-<script src="/js/highlight.min.js"></script>
-<script src="/js/js.min.js"></script>
-<script src="/js/nprogress.js"></script>
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/05/27/推荐KDE-Connect/" title="推荐 KDE Connect" itemprop="url">推荐 KDE Connect</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-27T15:35:58.000Z" itemprop="datePublished"> 发表于 2016-05-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>这是Linux里面的一个超级好用的工具。我之前都用AirDroid，但是也有缺点，就是在Linux<br>里面只能在浏览器里面使用，也只是勉强能够使用而已。</p>
+<p>然而，这个就不一样了，它有Android版。真的是超级好用啊！下面是我经常使用的功能：</p>
+<ol>
+<li>同步剪切板，比如在手机上面复制了一段文字，然后就立刻可以在我的Linux里面用快捷<br>键C-v把刚才复制的内容粘贴到电脑上面。</li>
+<li>比如电脑上面正在播放音乐或者视频，然而我再手机上面就可以控制媒体播放，比如快<br>进、暂停或者播放。这个可以在一个场景使用到：我把笔记本和显示器或者电视机连接起<br>来，然后我就可以用我的android来作为遥控器了。</li>
+<li>图片或者文件互相发送。</li>
+</ol>
+<p>截图以后再补上吧。</p>
+<hr>
+<p>最近我在整理我的硬盘里面的乱七八糟的文档啊之类的。很久之前就想做的事情，只不过<br>一直没有开始做。:joy::joy:</p>
+<hr>
+<p><em>Tips</em></p>
+<p><code>ls -tlh</code> 这个命令里面的<code>t</code>选项经常被我忽略，其实它还是挺有用的，尤其是我想看某<br>个文件夹里面昨天我新增了那些文件的时候。这个选项可以按照时间顺序列出文件。</p>
+<hr>
+<h3 id="今天跑步3-42km-joy-joy"><a href="#今天跑步3-42km-joy-joy" class="headerlink" title="今天跑步3.42km :joy::joy:"></a>今天跑步3.42km :joy::joy:</h3>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Tools/">Tools</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/05/27/推荐KDE-Connect/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/05/23/2016年5月23日/" title="2016年5月23日" itemprop="url">2016年5月23日</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-23T14:18:34.000Z" itemprop="datePublished"> 发表于 2016-05-23</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>今天我发现时间越来越紧迫了起来。</p>
+<hr>
+<p>突然想到要整理一下我的浏览器收藏夹，因为我在用三种浏览器，Safari，Chrome<br>和Firefox，在Mac OS X上面用Safari和Chrome，在旧电脑的Linux上面用Firefox，因为开<br>Chrome实在是，太卡。。:joy::joy::joy:所以同步收藏夹就成了一个问题。一直以来，我<br>都没有整理过我的收藏夹，并且不知道什么时候手贱，在Safari里面点了导入Chrome的收藏<br>夹，然后又在Safari里面导入Firefox的收藏夹，然后在Chrome里面导入Safari的收藏夹，<br>然后在Firefox里面导入Chrome的收藏夹……然后各种同步。。不知道为啥反正就是各种乱，<br>很多重复的，也没办法简单地删除，因为都有后来自己添加的收藏并且没有同步或者导入的<br>别的浏览器的。尝试过各种乱七八糟的去掉收藏夹里面重复网页的浏览器插件，Chrome和<br>Firefox里面的都试过，下午在Linux里面的Firefox里面又试了一下：</p>
+<p><img src="/img/bookmark1.png" alt="firefox addon 1"></p>
+<p>可以看到有13593个重复的收藏被检测到，然而这个插件并不能简单的一次性去重……然后<br>尝试另外一个：</p>
+<p><img src="/img/bookmark3.png" alt="firefox addon 2"></p>
+<p>这个倒是可以，然而点了按钮之后，等了十几分钟，还没结束，觉得这也太慢了。。然后就<br>这样了：</p>
+<p><img src="/img/bookmark2.png" alt="醉了"></p>
+<p>Google了半天也没找到别的比较好的方法。。:sob::sob::sob:</p>
+<p>然后突然想到一个办法：我自己手动去重吧。。然而并不会写浏览器插件，也并不会前端的<br>乱七八糟的东西。所以想了个歪路子：（针对Firefox）</p>
+<ol>
+<li>把收藏夹导出成html文件，然后用awk之类的工具去重。。</li>
+<li>删除浏览器的所有收藏夹。</li>
+<li>导入处理之后的html文件到收藏夹。</li>
+</ol>
+<p>开始不知道怎么想到，一开始就想用awk处理，写的时候发现，然而在awk里面用正则的反向<br>引用并不是那么方便的样子:question::question:额……我为什么不用<br>Perl:exclamation::exclamation::anger:所以，很愉快地用Perl写完了。。</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">my</span> %seen;</div><div class="line"></div><div class="line"><span class="keyword">while</span>(&lt;&gt;) &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="regexp">/&lt;A HREF="http([^\"]+)"/</span>) &#123;</div><div class="line">        <span class="keyword">unless</span> ($seen&#123;$1&#125;) &#123;</div><div class="line">            $seen&#123;$1&#125;++;</div><div class="line">            <span class="keyword">print</span>;</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">print</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># 14595 -&gt; 991 ;-(</span></div><div class="line"></div><div class="line"><span class="keyword">exit</span> <span class="number">0</span>;</div></pre></td></tr></table></figure>
+<p>处理了之后，可以发现，收藏总数从14595减少到了991:scream::scream:棒棒哒！这个去重<br>貌似不彻底诶，然而已经减少了大部分了，再用之前使用的插件搞一下，发现需要手动删除<br>的只有几个而已了，把浏览器里面的全部收藏删除之后，再导入处理之后的html文件。收工:bangbang:</p>
+<p>之后就是寻找一种方法可以各个浏览器之间同步的方法吧？貌似可能有插件可以搞定？随后<br>再找找。。</p>
+<hr>
+<p>哦，对了，我发现把KDE Plasma 5里面的各种特效什么的都关掉，还是可以用的，用得挺流<br>畅，在我的旧电脑上面并不卡。如果追求绝对稳定，当然还是Xfce4靠谱:smiley_cat:</p>
+<hr>
+<p>还有，前两天我又折腾了一下我的树莓派，它支持AirPlay了，最近我发现Real好用，iPad<br>Air上面放的腾讯视频可以很愉快地在电视上面看，并且可以用我的Android手机作为遥控<br>器，甚至不接显示器的时候，也可以把手机上的音乐AirPlay到树莓派上面播放:smile::smile:<br>哦，Android里面的QQ音乐和虾米音乐都支持AirPlay，网易云音乐不支持，有点可惜。<br>这两天它主要承担了给我妈播放电视剧的艰巨任务。。。:joy::joy:另外就是作为我的IRC<br>的一个Bouncer，其实树莓派，还是蛮有用的嘛。:yum:</p>
+<p>自从我的Emacs支持Emoji了之后，我越来越喜欢在Emacs里面用Emoji了……</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/2016/">2016</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/05/23/2016年5月23日/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/05/22/2016年5月22日/" title="2016年5月22日" itemprop="url">2016年5月22日</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-22T01:26:26.000Z" itemprop="datePublished"> 发表于 2016-05-22</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>一天天的，过得飞快。。从现在开始，做事情就好好做，憋半途而废，看书就好好看，憋看<br>到一半就扔了。。写东西就好好写，憋写到一半就废掉了。。我发现我最近经常做这种事情，<br>惭愧。做事情认真一点，专注一点。</p>
+<p>哦，最近我还迷上了学画画，也觉得挺有意思的，尤其是进入一个新的世界，虽然还不会画，<br>但是挺有趣。最近有点放纵，看电影、逛B站、看视频什么的。好好读书啊！</p>
+<p>另外，好好活着，不好么。:joy::joy::joy:</p>
+<p>哦，我的Emacs支持Emoji了。哈哈。棒棒哒！:+1:</p>
+<p><img src="/img/emacs-emoji.png" alt="Emacs棒棒哒！"></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/2016/">2016</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/05/22/2016年5月22日/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/18/Codeforces-Round-345-Div-2-Problem-B/" title="Codeforces Round #345 (Div. 2) Problem B" itemprop="url">Codeforces Round #345 (Div. 2) Problem B</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-18T06:33:20.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给一个整数序列，长度小于1000，每个元素元素小于1000大于1，把这个序列任意排序，使得相邻的两个数字满足$a[$i] &lt; $a[$i+1]的pair的个数最大。只需要输出最大的pair个数。</p>
+<hr>
+<p>其实画图可以很形象地说明问题。这些图都是用Emacs画的，挺有意思。</p>
+<p>首先统计出每个数字的个数。接下来：</p>
+<p>第一种思考角度如下图：</p>
+<p>从小到大比较相邻组的大小，把较小的那一组的大小累加起来，然而要不要累加较大的这一组的大小那就要看是不是有别的组的大小比它还要大。从下面的图的第2列和地5列可以看到这样的情况。因此还要记录一个最大值。</p>
+<p>这个角度从图里面看是从左往右。a -&gt; b -&gt; c -&gt; d这样的顺序。</p>
+<p><img src="/img/Codeforces-Round-345-Div-2-Problem-B-1.png" alt="图1."></p>
+<hr>
+<p>第二种思考方式如下图：</p>
+<p>第一种是从左往右，那么就可以从下往上。其实这样也是合理的。每次从一组里面取出最下面的一个，累加起来。a -&gt; b的顺序。</p>
+<p>不过这个方法实现的时候需要一点技巧。</p>
+<p><img src="/img/Codeforces-Round-345-Div-2-Problem-B-2.png" alt="图2."></p>
+<p>然而，最简单的做法还是这样：）</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$\ = $/;</div><div class="line"><span class="keyword">while</span> (&lt;&gt;) &#123;</div><div class="line">    $n = $_; $h-&gt;&#123;$_&#125;++ <span class="keyword">for</span> <span class="keyword">split</span> <span class="string">' '</span>, &lt;&gt;;</div><div class="line">    <span class="keyword">print</span> $n - (<span class="keyword">sort</span> &#123;$b &lt;=&gt; $a&#125; <span class="keyword">values</span> %&#123;$h&#125;)[<span class="number">0</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其实画图有局限性，从另一个角度想，把数列分成尽可能长的严格递增（或者只含有一个元素）的子序列，那么每一组一定会含有在整个序列中出现次数最多的那个数字X，如果某个子序列不含有数字X，那么它不足够长。如果某个子序列含有两个数字X，那么它不是严格递增。设整个序列长度为N，在序列中出现次数最多的数字X出现的次数为P，那么就可以分成P个子序列。整个序列中，相邻两个数字递增的pair最多为N-1，分成P个子序列之后，相邻两个数字递增的pair减少了P-1个，所以答案就是 <code>(N - 1) - (P - 1) = N - P</code>，也就是整个序列的长度减去出现次数最多的数字出现的次数……</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Codeforces/">Codeforces</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/03/18/Codeforces-Round-345-Div-2-Problem-B/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/13/2016年春/" title="2016年春" itemprop="url">2016年春</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-13T13:16:45.000Z" itemprop="datePublished"> 发表于 2016-03-13</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>这几天人机大战，李世乭0:3，看得心疼……今天终于、终于赢了！</p>
+<p>这几天很多阴谋论，很多打脸，很多嘲讽，没关系，它们都会随风而去。然而，李世乭的今<br>天会被载入史册。</p>
+<hr>
+<p>新的一年，过得很快啊！转眼间，现在已经是3月13日了。这几天学习进度其实略慢。要看<br>的东西比较多：数值分析、高等数学、英语单词、Perl、具体数学、算法、计算机网络。</p>
+<p>一点一点来吧～</p>
+<hr>
+<p>反正就是成天瞎折腾……最近才开始用Tmux，还可以，解放了在一个窗口里面开很多个终端<br>Tab的问题，比较好用的是Session的功能，我可以把不同的窗口分类放到不同的Session里。<br>另外，平常的编辑还是用Vim吧，我的Emacs用来写Lisp系的语言还可以。毕竟再怎么说它还<br>是不如Vim轻量。哦，对了，前天一个偶然的机会发现了Vim也有一个Mark的功能，我以前只<br>知道在一个文件里面可以设置Bookmark，然而我没有想到这个Bookmark是全局的，也就是你<br>可以用<code>:marks</code>命令来浏览最近设置的标签，即使你在别的目录里面的别的文件里面编辑。<br>这就很方便……并且比Emacs里面原装的Bookmark功能更方便更快……Vim的乐趣就是即使用了很<br>长时间，然而总是能够发现新的东西。比如我现在用的Vim配置文件是2013年配的，一直用<br>到现在没出过问题。尽量保持配置文件简单并且Github同步，Emacs的配置也尽量这样。所<br>以我的Emacs配置里只同步一个init.el文件，只针对Emacs24版本以上的，Emacs23就不行了，<br>不过对我来说没关系，我只使用24版的。;-)</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/2016/">2016</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/03/13/2016年春/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/08/17/some-simple-syntax-on-lisp-and-perl/" title="Some simple syntax on lisp and perl" itemprop="url">Some simple syntax on lisp and perl</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2014-08-17T15:55:06.000Z" itemprop="datePublished"> 发表于 2014-08-17</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>I am learning perl and common lisp these days. </p>
+<p>I think perl’s syntax is beautiful and simple and I am getting used to it. I like it very much. I learn it just to do some text tasks. </p>
+<p>Besides, I once thought lisp’s braces are so confusing. I even like those now. It is interesting to write in lisp.</p>
+<p>Here, I place some meaningless codes here to help me remember the syntax in future. ;-)</p>
+<p>#<em>Learning Perl</em></p>
+<p>##chapter 2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env perl </div><div class="line">#===============================================================================</div><div class="line">#</div><div class="line">#         FILE: ch_2.pl</div><div class="line">#</div><div class="line">#        USAGE: ./ch_2.pl  </div><div class="line">#</div><div class="line">#  DESCRIPTION: no</div><div class="line">#</div><div class="line">#      OPTIONS: ---</div><div class="line"># REQUIREMENTS: ---</div><div class="line">#         BUGS: ---</div><div class="line">#        NOTES: ---</div><div class="line">#       AUTHOR: YOUR NAME (), </div><div class="line"># ORGANIZATION: </div><div class="line">#      VERSION: 1.0</div><div class="line">#      CREATED: 08/15/2014 10:27:44 PM</div><div class="line">#     REVISION: ---</div><div class="line">#===============================================================================</div><div class="line"></div><div class="line">#use strict;</div><div class="line">use warnings;</div><div class="line">use utf8;</div><div class="line">use 5.010;</div><div class="line"></div><div class="line">say &quot;Hello world!&quot;;</div><div class="line">say &quot;This is a program for Chapter Two&quot;;</div><div class="line">$count = 0;</div><div class="line">while ($count &lt; 10) &#123;</div><div class="line">	$count += 2;</div><div class="line">	print &quot;count is now $count\n&quot;;</div><div class="line">&#125;</div><div class="line">$n1 = 1.25;</div><div class="line">$n1_1 = 1.;</div><div class="line">$n2 = -1.2e-23;</div><div class="line">say &quot;n1 = $n1&quot;;</div><div class="line">say &quot;n2 = $n2&quot;;</div><div class="line">say &quot;n1_1 = $n1_1&quot;;</div><div class="line">$n3 = 61_298_040_283_768;</div><div class="line">$n4 = 0xff;</div><div class="line">$n5 = 0377;</div><div class="line">$n6 = 0b11111111;</div><div class="line">say &quot;n3 = $n3&quot;;</div><div class="line">say &quot;n4 = $n4&quot;;</div><div class="line">say &quot;n5 = $n5&quot;;</div><div class="line">say &quot;n6 = $n6&quot;;</div><div class="line"></div><div class="line">print &quot;Hello and &quot; . &quot;world\n&quot;;</div><div class="line">print &quot;fred &quot; x 3 . &quot;\n&quot;;</div><div class="line">print 5 x 4.8 . &quot;\n&quot;;</div><div class="line"></div><div class="line">print &quot;The answer is &quot;, 6 * 7, &quot;.\n&quot;;</div><div class="line"></div><div class="line">$meal = &quot;bronto saurus steak&quot;;</div><div class="line">$barney = &quot;fred ate a $meal&quot;;</div><div class="line">print $barney . &quot;\n&quot;;</div><div class="line"></div><div class="line">print &apos;The barney is $barney&apos; . &quot;\n&quot;;</div><div class="line"></div><div class="line">$que = ord(&apos;?&apos;);</div><div class="line">print &quot;que is $que\n&quot;;</div><div class="line">$Que = chr($que);</div><div class="line">print &quot;que is $Que\n&quot;;</div><div class="line"></div><div class="line">$name = &quot;wred&quot;;</div><div class="line">if ($name gt &apos;fred&apos;)</div><div class="line">&#123;</div><div class="line">	print &quot;&apos;$name&apos; comes afger &apos;fred&apos; in sorted order.\n&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">if (! &apos;0&apos;)</div><div class="line">&#123;</div><div class="line">	print &quot;&apos;0&apos; is false!\n&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$still_true = !! &apos;Fred&apos;;</div><div class="line">$still_false = !! &apos;0&apos;;</div><div class="line"></div><div class="line">print &quot;still_true is $still_true\n&quot;;</div><div class="line">print &quot;still_false is $still_false\n&quot;;</div><div class="line"></div><div class="line">$mul_line = &quot;This is multiple</div><div class="line">line\n&quot;;</div><div class="line">print &quot;multiple line is the Following:$mul_line&quot;;</div><div class="line"></div><div class="line">#$line = &lt;STDIN&gt;;</div><div class="line">$line = &quot;Hi\n&quot;;</div><div class="line">if ($line eq &quot;\n&quot;)</div><div class="line">&#123;</div><div class="line">	print &quot;Thas was just a blank line.\n&quot;;</div><div class="line">&#125;</div><div class="line">else</div><div class="line">&#123;</div><div class="line">	print &quot;That line of input was: $line&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#$text = &lt;STDIN&gt;;</div><div class="line">#chomp($text = &lt;STDIN&gt;);</div><div class="line">#print &quot;text = $text\n&quot;;</div><div class="line"></div><div class="line">$n = 1;</div><div class="line">$sum = undef;</div><div class="line">while ($n &lt; 10)</div><div class="line">&#123;</div><div class="line">	$sum += $n;</div><div class="line">	$n += 2;</div><div class="line">&#125;</div><div class="line">print &quot;The total was $sum.\n&quot;;</div><div class="line"></div><div class="line">$un_define = undef;</div><div class="line">print &quot;un_define is &lt;$un_define&gt;\n&quot;;</div><div class="line"></div><div class="line">$madonna = &lt;STDIN&gt;;</div><div class="line">if (defined($madonna)) </div><div class="line">&#123;</div><div class="line">	print &quot;The input was $madonna&quot;;</div><div class="line">&#125;</div><div class="line">else</div><div class="line">&#123;</div><div class="line">	print &quot;No input available!\n&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">print &quot;This is the last line.\n&quot;;</div></pre></td></tr></table></figure>
+<p>##chapter 3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env perl </div><div class="line">#===============================================================================</div><div class="line">#</div><div class="line">#         FILE: ch_3.pl</div><div class="line">#</div><div class="line">#        USAGE: ./ch_3.pl  </div><div class="line">#</div><div class="line">#  DESCRIPTION: just for test some perl&apos;s grammer</div><div class="line">#</div><div class="line">#      OPTIONS: ---</div><div class="line"># REQUIREMENTS: ---</div><div class="line">#         BUGS: ---</div><div class="line">#        NOTES: ---</div><div class="line">#       AUTHOR: YOUR NAME (), </div><div class="line"># ORGANIZATION: </div><div class="line">#      VERSION: 1.0</div><div class="line">#      CREATED: 08/16/2014 04:52:51 PM</div><div class="line">#     REVISION: ---</div><div class="line">#===============================================================================</div><div class="line"></div><div class="line">#use strict;</div><div class="line">use warnings;</div><div class="line">use utf8;</div><div class="line">use 5.010;</div><div class="line"></div><div class="line">$fred[0] = &quot;yabba&quot;;</div><div class="line">$fred[1] = &quot;dabba&quot;;</div><div class="line">$fred[2] = &quot;doo&quot;;</div><div class="line">say $fred[0];</div><div class="line">say $fred[1];</div><div class="line">say $fred[2];</div><div class="line">$fred[2] .= &quot;diddley&quot;;</div><div class="line">say $fred[2];</div><div class="line">$fred[5] = &quot;Fifth&quot;;</div><div class="line">$i = 0;</div><div class="line">while ($i &lt;= 5)</div><div class="line">&#123;</div><div class="line">	if (defined($fred[$i])) </div><div class="line">	&#123;</div><div class="line">		say &quot;$i == &gt; &quot;, $fred[$i];</div><div class="line">	&#125;</div><div class="line">	else &#123;</div><div class="line">		say &quot;does not exist!&quot;;</div><div class="line">	&#125;</div><div class="line">	$i += 1;</div><div class="line">&#125;</div><div class="line">say &quot;There are $#fred elements in fred array.&quot;;</div><div class="line"></div><div class="line">@lst = (2..5);</div><div class="line">say @lst;</div><div class="line">@lst = 2..5;</div><div class="line">say @lst;</div><div class="line">@lst = qw(fred barney bety wilma dino);</div><div class="line">#say @lst;</div><div class="line"></div><div class="line">($fred, $barney, $dino) = qw / flintstone, rubble, undef /;</div><div class="line">say &quot;fred = &quot;, $fred;</div><div class="line">say &quot;barney = &quot;, $barney;</div><div class="line">say &quot;dino = &quot;, $dino;</div><div class="line">($fred, $barney) = ($barney, $fred);</div><div class="line">say &quot;fred = &quot;, $fred;</div><div class="line">say &quot;barney = &quot;, $barney;</div><div class="line">if (defined($dino))</div><div class="line">&#123;</div><div class="line">	say &quot;dino is defined&quot;;</div><div class="line">&#125;</div><div class="line">($fred, $dino) = (&quot;FRED&quot;, undef);</div><div class="line">if (defined($dino))</div><div class="line">&#123;</div><div class="line">	say &quot;dino is defined&quot;;</div><div class="line">&#125;</div><div class="line">else </div><div class="line">&#123;</div><div class="line">	say &quot;dino is not defined&quot;;</div><div class="line">&#125;</div><div class="line">($rocks[0], $rocks[1], $rocks[2], $rocks[3]) = </div><div class="line">qw / talc</div><div class="line">	mica</div><div class="line">	feldspar</div><div class="line">	quartz</div><div class="line">	/;</div><div class="line">@giant = 1..5;</div><div class="line">@stuff = (@giant, undef, @giant);</div><div class="line">$dino = &quot;granite&quot;;</div><div class="line">@tiny = ();</div><div class="line">@quarry = (@rocks, &quot;crushed rock&quot;, @tiny, $dino);</div><div class="line"></div><div class="line">@copy = @quarry;</div><div class="line"></div><div class="line">@array = 5..9;</div><div class="line">say &quot;@array&quot;;</div><div class="line">$fred = pop @array;</div><div class="line">say &quot;@array&quot;;</div><div class="line">push @array, 11;</div><div class="line">say &quot;@array&quot;;</div><div class="line">push @array, @giant;</div><div class="line">say &quot;@array&quot;;</div><div class="line">$m = shift @array;</div><div class="line">say &quot;m = &quot;, $m;</div><div class="line">$m = shift @array;</div><div class="line">say &quot;m = &quot;, $m;</div><div class="line">unshift @array, kk;</div><div class="line">say &quot;@array&quot;;</div><div class="line">@removed = splice @array, 2, 0, $m;</div><div class="line">say &quot;removed = @removed&quot;;</div><div class="line">say &quot;array = @array&quot;;</div><div class="line">$y = &quot;2*4&quot;;</div><div class="line">$y = &quot;2&quot;;</div><div class="line">$y -= 1;</div><div class="line">say &quot;y = $y&quot;;</div><div class="line">$array=&quot;kiss&quot;;</div><div class="line">print &quot;this is $&#123;array&#125;[0]\n&quot;;</div><div class="line">say &quot;This is $array[0]&quot;;</div><div class="line"></div><div class="line">say &quot;rocks = @rocks&quot;;</div><div class="line">$rock = &quot;This is origin rock...&quot;;</div><div class="line">foreach $rock (@rocks) &#123;</div><div class="line">	$rock = &quot;\t$rock&quot;;</div><div class="line">	$rock .= &quot;\n&quot;;</div><div class="line">&#125;</div><div class="line">say &quot;the Rocks are:\n&quot;, @rocks;</div><div class="line">say &quot;Now, Rock is $rock&quot;;</div><div class="line">$_ = &quot;Yabba dabba doo\n&quot;;</div><div class="line">print;</div><div class="line">foreach (1..5)</div><div class="line">&#123;</div><div class="line">	print &quot;I can count to $_!\n&quot;;</div><div class="line">&#125;</div><div class="line">print;</div><div class="line">say &quot;rocks == &gt;\n@rocks&quot;;</div><div class="line">@rocks = reverse @rocks;</div><div class="line">say &quot;rocks == &gt;\n @rocks&quot;;</div><div class="line"></div><div class="line">@rocks = qw /</div><div class="line">	bedrock</div><div class="line">	slate</div><div class="line">	rubble</div><div class="line">	granite</div><div class="line">	/;</div><div class="line">@sort_rocks = sort @rocks;</div><div class="line">say &quot;rocks = @rocks&quot;;</div><div class="line">say &quot;sort_rocks = @sort_rocks&quot;;</div><div class="line">while (($index, $value) = each @rocks)</div><div class="line">&#123;</div><div class="line">	say &quot;$index: $value&quot;;</div><div class="line">&#125;</div><div class="line">@people = qw / fred barney betty /;</div><div class="line">@people_sorted = sort @people;</div><div class="line">$number = 42 + @people;</div><div class="line">say &quot;people is: @people&quot;;</div><div class="line">say &quot;people_sorted is: @people_sorted&quot;;</div><div class="line">say &quot;number = $number&quot;;</div><div class="line"></div><div class="line">$backwards = reverse qw / a b c d /;</div><div class="line">say &quot;backwards is: $backwards&quot;;</div><div class="line"></div><div class="line">@fred = 6 * 7;</div><div class="line">@barney = ( &quot;hello&quot; , &apos; &apos; , &quot;world&quot; );</div><div class="line">say &quot;fred = @fred&quot;;</div><div class="line">say &quot;barney = @barney&quot;;</div><div class="line">say &quot;This is the last line of the program.&quot;;</div><div class="line"></div><div class="line">@rocks = qw / aa bb cc dd /;</div><div class="line">say &quot;rocks = @rocks&quot;;</div><div class="line">say &quot;How many rocks do you have?&quot;;</div><div class="line">print &quot;I have &quot;, scalar @rocks, &quot; rocks!\n&quot;;</div><div class="line"></div><div class="line">chomp(@lines = &lt;STDIN&gt;);</div><div class="line">#@lines = &lt;STDIN&gt;;</div><div class="line">print &quot;lines is:\n@lines&quot;;</div></pre></td></tr></table></figure>
+<p>##chapter 4</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env perl </div><div class="line">#===============================================================================</div><div class="line">#</div><div class="line">#         FILE: ch_4.pl</div><div class="line">#</div><div class="line">#        USAGE: ./ch_4.pl  </div><div class="line">#</div><div class="line">#  DESCRIPTION: no</div><div class="line">#</div><div class="line">#      OPTIONS: ---</div><div class="line"># REQUIREMENTS: ---</div><div class="line">#         BUGS: ---</div><div class="line">#        NOTES: ---</div><div class="line">#       AUTHOR: YOUR NAME (), </div><div class="line"># ORGANIZATION: </div><div class="line">#      VERSION: 1.0</div><div class="line">#      CREATED: 08/16/2014 11:09:22 PM</div><div class="line">#     REVISION: ---</div><div class="line">#===============================================================================</div><div class="line"></div><div class="line">#use strict;</div><div class="line">use warnings;</div><div class="line">use utf8;</div><div class="line">use 5.010;</div><div class="line"></div><div class="line">sub marine</div><div class="line">&#123;</div><div class="line">	$n += 1;</div><div class="line">	print &quot;Hello, sailor number $n\n&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&amp;marine();</div><div class="line">&amp;marine();</div><div class="line">&amp;marine();</div><div class="line">&amp;marine();</div><div class="line"></div><div class="line">$fred = 3;</div><div class="line">$barney = 4;</div><div class="line">$wilma = &amp;sum_of_fred_and_barney;</div><div class="line">print &quot;\$wilma is $wilma.\n&quot;;</div><div class="line"></div><div class="line">$betty = &amp;sum_of_fred_and_barney * 3;</div><div class="line">print &quot;\$wilma is $betty.\n&quot;;</div><div class="line"></div><div class="line">sub sum_of_fred_and_barney</div><div class="line">&#123;</div><div class="line">	print &quot;Hey, you called the sum_of_fred_and_barney subroutine!\n&quot;;</div><div class="line">	$fred + $barney;</div><div class="line">&#125;</div><div class="line"></div><div class="line">sub max</div><div class="line">&#123;</div><div class="line">#	my ($m, $n);</div><div class="line">#	($m, $n) = @_;</div><div class="line">#	my ($m, $n) = @_;</div><div class="line">#	if ($m &gt; $n) &#123;</div><div class="line">#		$m;</div><div class="line">#	&#125;</div><div class="line">#	else &#123;</div><div class="line">#		$n;</div><div class="line">#	&#125;</div><div class="line">	my ($max_so_far) = shift @_;</div><div class="line">	foreach (@_)</div><div class="line">	&#123;</div><div class="line">		if ($_ &gt; $max_so_far) &#123;</div><div class="line">			$max_so_far = $_;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	$max_so_far;</div><div class="line">#	if ($_[0] &gt; $_[1]) &#123;</div><div class="line">#		$_[0];</div><div class="line">#	&#125; else &#123;</div><div class="line">#		$_[1];</div><div class="line">#	&#125;</div><div class="line">&#125;</div><div class="line">$n = &amp;max(10, 15, 3, 5, 100, 101);</div><div class="line">print &quot;n = $n\n&quot;;</div><div class="line"></div><div class="line">foreach (1..5)</div><div class="line">&#123;</div><div class="line">	my ($square) = $_ * $_;</div><div class="line">	print &quot;$_ squared is $square.\n&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">my @names = qw / fred barney betty dino wilma pebbles</div><div class="line">		bamm-bamm/;</div><div class="line">my $result = &amp;which_element_is(&quot;dino&quot;, @names);</div><div class="line">sub which_element_is</div><div class="line">&#123;</div><div class="line">	my ($what, @array) = @_;</div><div class="line">	foreach (0..$#array) &#123;</div><div class="line">		if ($what eq $array[$_]) &#123;</div><div class="line">			return $_;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	-1;</div><div class="line">&#125;</div><div class="line">print &quot;index is: $result.\n&quot;;</div><div class="line"></div><div class="line">sub chomp </div><div class="line">&#123;</div><div class="line">	print &quot;Muuch, muuch!\n&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&amp;chomp;</div><div class="line"></div><div class="line">sub gene_list</div><div class="line">&#123;</div><div class="line">	my ($a, $b) = @_;</div><div class="line">	if ($a &lt; $b) &#123;</div><div class="line">		$a..$b;</div><div class="line">	&#125; else &#123;</div><div class="line">		reverse $b..$a;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">my @re = &amp;gene_list(10, 6);</div><div class="line">say &quot;@re&quot;;</div><div class="line">my @se = &amp;gene_list(6, 10);</div><div class="line">say &quot;@se&quot;;</div><div class="line"></div><div class="line">sub marine </div><div class="line">&#123;</div><div class="line">	state $n = 0;</div><div class="line">	$n += 1;</div><div class="line">	say &quot;Hello, sailor number $n!&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&amp;marine;</div><div class="line">&amp;marine;</div><div class="line">&amp;marine;</div><div class="line"></div><div class="line">sub running_sum </div><div class="line">&#123;</div><div class="line">	state $sum = 0;</div><div class="line">	state @numbers ;</div><div class="line">	foreach my $number (@_)</div><div class="line">	&#123;</div><div class="line">		push @numbers, $number;</div><div class="line">		$sum += $number;</div><div class="line">	&#125;</div><div class="line">	say &quot;The sum of (@numbers) is $sum&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">running_sum(5, 6);</div><div class="line">running_sum(1..3);</div><div class="line">running_sum(4);</div></pre></td></tr></table></figure>
+<p>#<em>ANSI Common Lisp</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div></pre></td><td class="code"><pre><div class="line">(let ((x 1) (y 2))</div><div class="line"> (+ x y))</div><div class="line"></div><div class="line">(defun ask-number ()</div><div class="line"> (format t &quot;Please enter a number.&quot;)</div><div class="line"> (let ((val (read)))</div><div class="line">	(if (numberp val)</div><div class="line">	 val</div><div class="line">	 (ask-number))))</div><div class="line"></div><div class="line">(defparameter *glob* 99)</div><div class="line"></div><div class="line">(defconstant limit (+ *glob* 1))</div><div class="line"></div><div class="line">(setf *glob* 98) </div><div class="line"></div><div class="line">(let ((n 10))</div><div class="line"> (setf n 2)</div><div class="line"> n)</div><div class="line"></div><div class="line">(setf x (list &apos;a &apos;b &apos;c))</div><div class="line"></div><div class="line">(setf (car x) &apos;n)</div><div class="line"></div><div class="line">(setf a &apos;b </div><div class="line"> 			c &apos;d</div><div class="line">			e &apos;f)</div><div class="line"></div><div class="line">(setf lst &apos;(c a r a t))</div><div class="line"></div><div class="line">(remove &apos;a lst)</div><div class="line"></div><div class="line">(setf x (remove &apos;a x))</div><div class="line"></div><div class="line">(defun show-squares (start end)</div><div class="line"> (do ((i start (+ i 1)))</div><div class="line">	((&gt; i end) &apos;done)</div><div class="line">	(format t &quot;~A ~A ~%&quot; i (* i i))))</div><div class="line"></div><div class="line">(defun show-squares-1 (i end)</div><div class="line"> (if (&gt; i end)</div><div class="line">	&apos;done</div><div class="line">	(progn</div><div class="line">	 (format t &quot;~A ~A ~%&quot; i (* i i))</div><div class="line">	 (show-squares-1 (+ i 1) end))))</div><div class="line"></div><div class="line">(defun our-length (lst)</div><div class="line"> (let ((len 0))</div><div class="line">	(dolist (obj lst)</div><div class="line">	 (setf len (+ len 1)))</div><div class="line">	len))</div><div class="line"></div><div class="line">(defun our-length-1 (lst)</div><div class="line"> (if (null lst)</div><div class="line">	0</div><div class="line">	(+ 1 (our-length-1 (cdr lst)))))</div><div class="line"></div><div class="line">(defun our-listp (x)</div><div class="line"> (or (null x) (consp x)))</div><div class="line"></div><div class="line">(defun our-atom (x)</div><div class="line"> (not (consp x)))</div><div class="line"></div><div class="line">(setf x &apos;(a b c)</div><div class="line"> 			y (copy-list x))</div><div class="line"></div><div class="line">(defun n-elt (n elt)</div><div class="line"> (if (&gt; n 1)</div><div class="line">	(list n elt)</div><div class="line">	elt))</div><div class="line"></div><div class="line">(defun compr (current num rst)</div><div class="line"> (if (null rst)</div><div class="line">	(list (n-elt num current))</div><div class="line"> (if (eql current (car rst))</div><div class="line">	(compr current (+ 1 num) (cdr rst))</div><div class="line">	(cons (n-elt num current) (compr (car rst) 1 (cdr rst))))))</div><div class="line"></div><div class="line">(defun his-compr (elt n lst)</div><div class="line"> (if (null lst)</div><div class="line">	(list (n-elts elt n))</div><div class="line">	(let ((next (car lst)))</div><div class="line">	 (if (eql next elt)</div><div class="line">		(his-compr elt (+ 1 n) (cdr lst))</div><div class="line">		(cons (n-elts elt n)</div><div class="line">		 (his-compr next 1 (cdr lst)))))))</div><div class="line"></div><div class="line">(defun compress (lst)</div><div class="line"> (if (null lst)</div><div class="line">	nil</div><div class="line">	(compr (car lst) 1 (cdr lst))))</div><div class="line"></div><div class="line">(defun his-compress (x)</div><div class="line"> (if (consp x)</div><div class="line">	(his-compr (car x) 1 (cdr x))</div><div class="line">	x))</div><div class="line"></div><div class="line"></div><div class="line">(defun n-elts (elt n)</div><div class="line"> (if (&gt; n 1)</div><div class="line">	(list n elt)</div><div class="line">	elt))</div><div class="line"></div><div class="line">(setf lst &apos;(1 1 1 0 1 0 0 0 0 1 2 2 3))</div><div class="line"></div><div class="line">(defun list-of (num cur)</div><div class="line"> (if (zerop num)</div><div class="line">	nil</div><div class="line">	(cons cur (list-of (- num 1) cur))))</div><div class="line"></div><div class="line">(defun uncompress (lst)</div><div class="line"> (if (null lst)</div><div class="line">	nil</div><div class="line">	(let ((current (car lst)))</div><div class="line">	 (if (listp current)</div><div class="line">		(append (list-of (car current) (second current))</div><div class="line">		 (uncompress (cdr lst)))</div><div class="line">		(cons current (uncompress (cdr lst)))))))</div><div class="line"></div><div class="line">(defun his-uncompress (lst)</div><div class="line"> (if (null lst)</div><div class="line">	nil</div><div class="line">	(let ((elt (car lst))</div><div class="line">				(rest (his-uncompress (cdr lst))))</div><div class="line">	 (if (consp elt)</div><div class="line">		(append (apply #&apos;list-of elt) rest)</div><div class="line">		(cons elt rest)))))</div><div class="line"></div><div class="line">(setf lst-c &apos;((3 1) 0 1 (4 0) 1 (2 2) 3))</div></pre></td></tr></table></figure>
+<p>BTW, it feels great to write lisp in vim. I CAN NOT STAND EMACS AT LAST!</p>
+<p>One more thing, I remove those articles whose title are /run-[0-9]/ (RE;-) and backup them on my computer. Maybe I should write more blogs about techniques instead of complaining or those about myself.</p>
+<p>Good night.<br>18/08/2014 00:22 AM</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Common-Lisp/">Common Lisp</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2014/08/17/some-simple-syntax-on-lisp-and-perl/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/08/08/run-9/" title="run-9" itemprop="url">run-9</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2014-08-08T13:48:23.000Z" itemprop="datePublished"> 发表于 2014-08-08</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>昨天立秋，夏天还没过就结束了。今天天气一下子就凉快了许多。</p>
+<p>计算机网络就看到这里吧。下午开始看鸟哥的书。我至少把鸟哥的两本书过一遍。鸟哥的书内容挺多的，一整页里面密密麻麻的都是字儿。不过也确实讲的东西挺全的，也容易懂，就是看着比较枯燥。今天下午看得比较痛苦。。。。%&gt;_&lt;%</p>
+<p>另外开始看得一本书就是<em>Learning Python</em>英文版的，据说中文版的比较坑。这本书我看着还不错，挺全的，O’Reilly经典风格，上下册，两本摞起来比现代汉语词典厚一点。。。虽然是英语，语言挺通俗，看着竟然挺流畅。</p>
+<p>下午自习恶心到了，晚上干脆不出去了……窝在宿舍边看书边写这本python书上的例子。。</p>
+<p>晚上有点不爽其实，难道是因为没有动力，还是为什么？</p>
+<p>还有一本书，<em>Common Lisp the Language</em>，这本书打算平时有空了就看，英文的开源版本，下载了HTML格式的放到iPad里面，这样就可以离线看了，这本书比较枯燥，并且还是英文的，看的会慢一些，不知道什么时候能看完，越快越好！</p>
+<p>诶，对了。佳佳那天唱的那首歌：「房间」，挺好听的。话说佳佳唱歌太好听了有没有！~(≧▽≦)/~</p>
+<p>看会儿书睡觉吧。</p>
+<p>颓废是暂时的。第二天还是一样继续。</p>
+<p>#以后还是少在博客里面扯淡……这是最后一篇了。以后不写了。#</p>
+<p>#『完』</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Article/">Article</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2014/08/08/run-9/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/08/04/run-8/" title="run-8" itemprop="url">run-8</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2014-08-04T13:06:47.000Z" itemprop="datePublished"> 发表于 2014-08-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="8月2日——8月4日"><a href="#8月2日——8月4日" class="headerlink" title="8月2日——8月4日"></a>8月2日——8月4日</h1><p>其实我感觉我有必要总结一下每天都干了点什么。</p>
+<p>这三天一直都在看着两本书《sed &amp; awk》和《Learning the bash Shell》。</p>
+<p>《Learning the bash Shell》还是讲了很多我以前不知道的东西，当然也有很多很熟悉的东西，有些细节书里面根本就没有解释，直接默认读者知道了，要不是之前看的那本书补充，估计会很困惑。总的来说还是收获颇丰。看了200页，还剩100页左右。</p>
+<p>《sed &amp; awk》这本书专门讲sed和awk这两个上古神器，把sed部分看完了之后，除了sed的高级用法有点困惑，还是不太懂之外，一般的sed脚本哥们儿至少能看懂了，能写写简单的脚本，以后多用用就熟练一些吧。awk和sed相比更亲切，语法比较容易懂，和C接近。这本书也看了200页，也是还剩100页左右没看，书后面的实例部分先不打算看。</p>
+<p>明天估计就可以把这两本书该看的部分搞定。这三天集中看这些感觉功力大增，另外，有时候一天看同一本书100+页的时候也感觉挺枯燥的，都是单纯的语法和奇葩的用法以及各种技巧和trick，shell脚本太有用了，很多以前遇到但没解决的问题，现在很多都豁然开朗；sed和awk用来处理文本真是神器，用法很灵活，很专业的工具，虽然……sed脚本不是那么容易读懂=_=</p>
+<p>最近每天都是这么个节奏：</p>
+<ul>
+<li>5-7点左右起床</li>
+<li>看书、写程序</li>
+<li>8点早饭</li>
+<li>看书、写程序</li>
+<li>9点或者10点会感觉困，睡觉</li>
+<li>11点醒，看书、写程序</li>
+<li>午饭</li>
+<li>看书、写程序 或者 午休</li>
+<li>看书、写程序</li>
+<li>17点半晚饭</li>
+<li>看书、写程序</li>
+<li>睡觉</li>
+<li>一天过去了……</li>
+</ul>
+<p>貌似有点小单调。。偶尔也花半小时刷一下微博 or twitter or facebook，看看有什么有意思的信息，偶尔利用午休时间看一部电影。或者看书的时候听听歌，歌曲列表循环几遍之后就听腻了。。或者看看散文杂文英文实在不行软文。</p>
+<p>今天在kindle上买了本电子书《不散的宴席》韩寒《一个》App系列第四本书，前三本都在kindle上买过，很快就看完了，还是在准备准备期末考试的时候，挺有意思，这本省着点看……=_=</p>
+<p>看这种编程语言语法书的时候，难免有一点儿枯燥，一整天看一本书也听没意思的，不如换一本别的类型的书，比如《计算机网络》一类的，换换口味对不对？</p>
+<p>我call，宿舍又停电了！！！现在时间8月4日21点40分……</p>
+<p>那就睡觉吧。</p>
+<hr>
+<h1 id="8月5日-8月7日"><a href="#8月5日-8月7日" class="headerlink" title="8月5日-8月7日"></a>8月5日-8月7日</h1><p>这三天，没干别的，一直在看《计算机网络——自顶向下方法》这本书。说实话很枯燥，看得晕晕乎乎，终于，当我从开始一页一页看到一百三十多页的“可靠数据传输原理”一节的时候，明白一件事：这么一页一页认真地看下去是不可能完成任务的，照这个节奏下去，看完这本书重要的前五章估计面试也就结束了……别想着看其他的了。所以，我还是决定，先把基础的知识点过完，细节先跳过，尤其是太理论性的东西，比如选路算法什么的，这种有点难度的东西以后再说吧。先把前五章基础的东西看完，然后就看别的书，不能吊死在这本书上了。时间宝贵。所以，今天（7日）一下午加一晚上的时间，很愉快地看到了第五章，明天上午基本就可以搞定。</p>
+<p>之前的两本书《Learning the bash Shell》和《sed &amp; awk》，前者差不多搞定了，但是里面有不少高级的东西还是不太明白，目前这本书还不能还，回头看看amzon有没有，入手一本，总的来说还不错。另一本书，还差一点没看完，但是里面还是有很多东西不太会用，需要多写写，多练练，只看没有用，并且很枯燥，关键还是多用一用，才能体会到它的威力。如果这本书也还有卖的话，也想入一本，不错。然后我在简历“熟悉”一栏里脸红地加上了：sed，awk</p>
+<p>今天（8月7日）晚上，在德克士自习的时候，无意间打开iPad看到一条消息：</p>
+<blockquote>
+<p>不是每一位推荐的同学都能获得提前面试的机会的，因为推荐数量巨多，面试官实在简历中优中选优来面试；<br>内推没被面试或面试不通过也不用担心，后续可被直接邀请参加正常校招笔试（8月中旬左右开放学生在前台自行修改职位）<br>8月8日是咱们内推面试截止的时间，若在此之前均无电话面试，那么内推就无面试机会了</p>
+</blockquote>
+<p>好吧，我还是没有猜错，我就觉得这个内推肯定是投了就给推的那种=_= 果然是这样啊。一线希望就又没有了。。不过也没什么，反正我也还没有怎么准备好，继续看书，老老实实走校招吧。</p>
+<p>现在不怎么想别的事情，只想静下心来看书，写程序。</p>
+<p>这几天，每天都是一个节奏，像钟表一样准时。吃饭，学习，看书，无限循环。挺好的其实。这么平静悠闲的日子，人生也不会太多，毕业了肯定就没了。</p>
+<p>诶，今儿发现很多好书都绝版了！看来买书还是要下手快，别等到绝版了欲哭无泪。</p>
+<p>对了，昨天晚上睡觉前躺床上把kindle里刚买的那本《不散的宴席》不知不觉看完了！我只想说：什么时候出下一本！！！</p>
+<p>这两天也懒得在博客里扯淡，晚上自习回来得也挺早，9点多就回来了，到宿舍就感觉很累了，只想去屋顶看着星星躺着休息睡觉。每天都早睡早起，睡到早上五点多自然醒，睡眠充足，白天也精神，很爽。中午午睡每次都是下午两点半准时自然醒。生物钟啊！要保持充足睡眠，就不要定闹钟，早睡早起，睡到自然醒，这才是王道。</p>
+<p>不扯了，睡觉了。</p>
+<p>完。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Article/">Article</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2014/08/04/run-8/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/08/03/write-a-shell-script-to-simulate-the-tree-command/" title="Write a Shell script to simulate the &#39;tree&#39; command" itemprop="url">Write a Shell script to simulate the &#39;tree&#39; command</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2014-08-03T13:55:34.000Z" itemprop="datePublished"> 发表于 2014-08-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>I wrote a shell script to simulate the ‘tree’ tool in Linux.</p>
+<p>This is the code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash - </div><div class="line">#===============================================================================</div><div class="line">#</div><div class="line">#          FILE: RecursiveDir.sh</div><div class="line"># </div><div class="line">#         USAGE: bash RecursiveDir.sh [directory] [longest deepth] [empty]</div><div class="line"># </div><div class="line">#   DESCRIPTION: This script can list the files and dirs </div><div class="line"># 								recursively in the current directory</div><div class="line"># 								if empty argument is set to &quot;empty&quot;, it will print a empty line </div><div class="line"># 								before and after a directory</div><div class="line"># </div><div class="line">#       OPTIONS: longest_deepth	is set to 4 by default</div><div class="line"># 							 directory is set to current directory by default </div><div class="line"># 								empty argument is set to &quot;n&quot; by default</div><div class="line"></div><div class="line">#  REQUIREMENTS: ---</div><div class="line">#          BUGS: ---</div><div class="line">#         NOTES: It print a empty line after a directory</div><div class="line">#        AUTHOR: liuxueyang (lxy), liuxueyang457@163.com</div><div class="line">#  ORGANIZATION: Hunan University</div><div class="line">#       CREATED: 08/02/2014 20:52</div><div class="line">#      REVISION:  ---</div><div class="line">#===============================================================================</div><div class="line"></div><div class="line">set -o nounset                              # Treat unset variables as an error</div><div class="line"></div><div class="line"># this function used to print a empty line before or after a directory</div><div class="line">printempty()</div><div class="line">&#123;</div><div class="line">	if [ $empty = &quot;empty&quot; ]; then </div><div class="line">			NumberOfVeri=$[$&#123;#tab&#125;/2+1]</div><div class="line">			count=0</div><div class="line">			while [ $count -lt $NumberOfVeri ]</div><div class="line">			do </div><div class="line">				echo -n $veri</div><div class="line">				echo -n &apos;       &apos; # This is 7 spaces</div><div class="line">				count=$[$count+1]</div><div class="line">			done</div><div class="line">			echo</div><div class="line">		fi </div><div class="line">&#125;</div><div class="line"></div><div class="line"># This function is recursive </div><div class="line"># It lists the files and directories in the current dir </div><div class="line">recdir()</div><div class="line">&#123;</div><div class="line">	tab=$tab$singletab</div><div class="line">	# to test whether the deepth is greater than required</div><div class="line">	if [ $&#123;#tab&#125; -gt $nu ]</div><div class="line">	then </div><div class="line">		## Note that we must delete a tab before we go upper directory!</div><div class="line">		tab=$&#123;tab%&quot;\t&quot;&#125;</div><div class="line">		return</div><div class="line">	fi</div><div class="line"></div><div class="line">	for file in &quot;$@&quot;</div><div class="line">	do</div><div class="line"># 		echo -en $tab$file</div><div class="line"># 		minus_tab=$&#123;tab%&quot;\t&quot;&#125;</div><div class="line"># 		echo -en $minus_tab</div><div class="line"></div><div class="line">		# print vertical lines</div><div class="line">		NumberOfVeri=$[$&#123;#tab&#125;/2-1]</div><div class="line">		count=0</div><div class="line">		while [ $count -lt $NumberOfVeri ]</div><div class="line">		do </div><div class="line">			echo -n $veri</div><div class="line">			echo -n &apos;       &apos; # This is 7 spaces</div><div class="line">			count=$[$count+1]</div><div class="line">		done</div><div class="line"></div><div class="line">		echo -n $veri</div><div class="line">		# print horizonal lines</div><div class="line">		count=0</div><div class="line">		while [ $count -lt 7 ]</div><div class="line">		do</div><div class="line">			echo -n &quot;-&quot;</div><div class="line">			count=$[$count+1]</div><div class="line">		done</div><div class="line">		echo -n $file</div><div class="line"></div><div class="line">		# we get the path from original directory of the current file </div><div class="line">		# or directory</div><div class="line">		thisfile=$thisfile/$file</div><div class="line"></div><div class="line">		if [ -d &quot;$thisfile&quot; ]</div><div class="line">		then </div><div class="line">			echo /</div><div class="line"></div><div class="line">			# add empty line before a directory begins</div><div class="line">			printempty</div><div class="line"></div><div class="line">			# we force &apos;ls&apos; to be a builtin command instead of some function </div><div class="line">			# or alias that we create by ourself</div><div class="line">			recdir $(command ls $thisfile)</div><div class="line"></div><div class="line">			# add an empty line after a directory ends</div><div class="line">			printempty</div><div class="line"></div><div class="line">		else </div><div class="line">			echo</div><div class="line">		fi</div><div class="line"></div><div class="line">		# we must set thisfile to be the current directory</div><div class="line">		thisfile=$&#123;thisfile%/*&#125;</div><div class="line">	done</div><div class="line"></div><div class="line">	# we delete a tab when we get to the upper directory</div><div class="line">	tab=$&#123;tab%&quot;\t&quot;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># This function init</div><div class="line">recls() </div><div class="line">&#123;</div><div class="line">	tab=&quot;&quot;</div><div class="line">	singletab=&quot;\t&quot;</div><div class="line">	list=$(ls $1)</div><div class="line">	for tryfile in $list    #### HERE! WE CAN NOT WRITE &quot;$list&quot; or shell will </div><div class="line">													#### treat it as one variable!!!!</div><div class="line">													#### I deserve it! :-(</div><div class="line">	do</div><div class="line">		echo -n $tryfile</div><div class="line">		## fix a BUG in book:</div><div class="line">		## we add $1 in order to use any available directory </div><div class="line">		## instead of only current directory of the script path</div><div class="line">		tryfile=$1/$tryfile</div><div class="line">		if [ -d $tryfile ]</div><div class="line">		then </div><div class="line">			echo /</div><div class="line"></div><div class="line">			# add empty line before a directory begins</div><div class="line">			printempty</div><div class="line"></div><div class="line">			thisfile=$tryfile</div><div class="line">			recdir $(command ls $tryfile)</div><div class="line"></div><div class="line">			# add an empty line after a directory ends</div><div class="line">			printempty</div><div class="line"></div><div class="line">		else </div><div class="line">			echo</div><div class="line">		fi</div><div class="line">	done</div><div class="line"></div><div class="line">	# we unset these variables cause we do not use them </div><div class="line">	# By the way, in order not to overwrite system command </div><div class="line">	# in some other script it is better to do this.</div><div class="line">	unset dir singletab tab</div><div class="line">&#125;</div><div class="line"></div><div class="line">result=$&#123;1:-&quot;.&quot;&#125;</div><div class="line">nu=$&#123;2:-4&#125;</div><div class="line">nu=$[($nu-1)*2]</div><div class="line">empty=$&#123;3:-&quot;n&quot;&#125;</div><div class="line"></div><div class="line"># this two variable are used to draw</div><div class="line">hori=&quot;-&quot;</div><div class="line">veri=&quot;|&quot;</div><div class="line"></div><div class="line">recls $result</div><div class="line"></div><div class="line">exit 0</div></pre></td></tr></table></figure>
+<p>My script accepts 3 arguments.</p>
+<p>The first argument is the directory you want to show. It is set by the same directory as the where the script locates.</p>
+<p>The second argument is the Longest depth of the tree. It means that the deepest path you want to see. If there are more deep directory, it will not list the directory instead it will just list the directory’s name. Besides, it is set as 4 by default.</p>
+<p>The third argument is set by “empty” by default which means that you want to show an empty line before a directory begins and ends. If you omit the argument, it will not show that. I think it looks better without those empty lines. ;-)</p>
+<p>This exercise is from the book <em>Learning the bash Shell</em>. Maybe the algorithm is not quite difficult. However, I made a lot of mistakes and debugged a lot before the script ran well when I am not very good at the grammar of shell script.</p>
+<p>Here are some examples:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">Example 1:</div><div class="line"></div><div class="line">~&gt;./RecursiveDir.sh tmpdir</div><div class="line">a0.cpp</div><div class="line">b1.cpp</div><div class="line">c2.cpp</div><div class="line">d3.cpp</div><div class="line">tm1/</div><div class="line">|-------a.c</div><div class="line">|-------tm2/</div><div class="line">|       |-------b.c</div><div class="line">|       |-------tm3/</div><div class="line">|       |       |-------c.dd</div><div class="line">|       |-------z.cc</div><div class="line">~&gt;tree tmpdir/</div><div class="line">tmpdir/</div><div class="line">├── a0.cpp</div><div class="line">├── b1.cpp</div><div class="line">├── c2.cpp</div><div class="line">├── d3.cpp</div><div class="line">└── tm1</div><div class="line">    ├── a.c</div><div class="line">    └── tm2</div><div class="line">        ├── b.c</div><div class="line">        ├── tm3</div><div class="line">        │   └── c.dd</div><div class="line">        └── z.cc</div><div class="line"></div><div class="line">3 directories, 8 files****</div><div class="line"></div><div class="line">Example 2:</div><div class="line">I set the second argument. We can see that the &quot;tm3&quot; directory is not listed in detail.</div><div class="line"></div><div class="line">~&gt;./RecursiveDir.sh tmpdir 3</div><div class="line">a0.cpp</div><div class="line">b1.cpp</div><div class="line">c2.cpp</div><div class="line">d3.cpp</div><div class="line">tm1/</div><div class="line">|-------a.c</div><div class="line">|-------tm2/</div><div class="line">|       |-------b.c</div><div class="line">|       |-------tm3/</div><div class="line">|       |-------z.cc</div><div class="line"></div><div class="line">Example 3:</div><div class="line">I set the third argument to empty. We can see empty lines when a directory begins and ends.</div><div class="line"></div><div class="line">~&gt;./RecursiveDir.sh tmpdir 5 empty</div><div class="line">a0.cpp</div><div class="line">b1.cpp</div><div class="line">c2.cpp</div><div class="line">d3.cpp</div><div class="line">tm1/</div><div class="line">|       </div><div class="line">|-------a.c</div><div class="line">|-------tm2/</div><div class="line">|       |       </div><div class="line">|       |-------b.c</div><div class="line">|       |-------tm3/</div><div class="line">|       |       |       </div><div class="line">|       |       |-------c.dd</div><div class="line">|       |       |       </div><div class="line">|       |-------z.cc</div><div class="line">|       |       </div><div class="line">|</div></pre></td></tr></table></figure>
+<p><em><a href="https://github.com/liuxueyang/learnshell/blob/master/LearningBashShell/RecursiveDir.sh" target="_blank" rel="external">This is the script address on github</a></em></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/shell/">shell</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2014/08/03/write-a-shell-script-to-simulate-the-tree-command/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix">
+    <a class="extend prev" rel="prev" href="/page/5/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">Next<span></span></a>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Diary/" title="Diary">Diary<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Emacs-Fcitx/" title="Emacs Fcitx">Emacs Fcitx<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Organize/" title="Organize">Organize<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Slackware/" title="Slackware">Slackware<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/习惯-整理/" title="习惯 整理">习惯 整理<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Article/" title="Article">Article<sup>11</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tools/" title="Tools">Tools<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Codeforces/" title="Codeforces">Codeforces<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Common-Lisp/" title="Common Lisp">Common Lisp<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C/" title="C++">C++<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Editor/" title="Editor">Editor<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CodeChef/" title="CodeChef">CodeChef<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Raspberry/" title="Raspberry">Raspberry<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Perl/" title="Perl">Perl<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/c/" title="c++">c++<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/assembly/" title="assembly">assembly<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/shell/" title="shell">shell<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m liuxueyang. <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="liuxueyang">liuxueyang</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
 
 <script type="text/javascript">
-    NProgress.configure({
-        showSpinner: true
-    });
-    NProgress.start();
-
-    $('#nprogress .bar').css({
-        'background': '#FF4081'
-    });
-    $('#nprogress .peg').css({
-        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
-    });
-    $('#nprogress .spinner-icon').css({
-        'border-top-color': '#FF4081',
-        'border-left-color': '#FF4081'
-    });
-
-    setTimeout(function() {
-        NProgress.done();
-        $('.fade').removeClass('out');
-    }, 800);
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
 </script>
 
 
@@ -857,31 +1038,65 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
 
-    <!-- 使用 DISQUS js 代码 -->
-    <script id="dsq-count-scr" src="//liuxueyang.disqus.com/count.js" async></script>
+
+
+<!-- Analytics Begin -->
 
 
 
-<!-- Swiftye -->
-
-
-<!-- Local Search-->
-
-
-<!-- Window Load-->
 <script>
-    $(window).load(function() {
-        // Post_Toc parent position fixed
-        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
-    });
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
 
-<!-- MathJax Load-->
 
 
-                </main>
-            </div>
-        </body>
-    
-</html>
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+ </html>
