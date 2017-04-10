@@ -1,0 +1,612 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Longest Increasing Subsequence | 黑历史</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="liuxueyang">
+    
+
+    
+    <meta name="description" content="很久不写算法了== 写个东西练练手 最长上升子序列 输入n，然后是数组a[ ]的n个元素 输出最长上升子序列的长度 一、最简单的方法复杂度O(n * n) DP[ i ] 是以a[ i ] 为结尾的最长上升子序列的长度。 DP[ i ] = max{DP[ j ] + 1 | j &amp;lt; i &amp;amp;&amp;amp; a[ j ] &amp;lt; a[ i ]} 代码： 12345678910111213">
+<meta name="keywords" content="DP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Longest Increasing Subsequence">
+<meta property="og:url" content="liuxueyang.github.io/2014/03/22/Longest-Increasing-Subsequence/index.html">
+<meta property="og:site_name" content="黑历史">
+<meta property="og:description" content="很久不写算法了== 写个东西练练手 最长上升子序列 输入n，然后是数组a[ ]的n个元素 输出最长上升子序列的长度 一、最简单的方法复杂度O(n * n) DP[ i ] 是以a[ i ] 为结尾的最长上升子序列的长度。 DP[ i ] = max{DP[ j ] + 1 | j &amp;lt; i &amp;amp;&amp;amp; a[ j ] &amp;lt; a[ i ]} 代码： 12345678910111213">
+<meta property="og:image" content="http://wstaw.org/m/2017/04/10/301311028597840.png">
+<meta property="og:image" content="http://wstaw.org/m/2017/04/10/301311150946704.png">
+<meta property="og:updated_time" content="2017-04-10T18:19:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Longest Increasing Subsequence">
+<meta name="twitter:description" content="很久不写算法了== 写个东西练练手 最长上升子序列 输入n，然后是数组a[ ]的n个元素 输出最长上升子序列的长度 一、最简单的方法复杂度O(n * n) DP[ i ] 是以a[ i ] 为结尾的最长上升子序列的长度。 DP[ i ] = max{DP[ j ] + 1 | j &amp;lt; i &amp;amp;&amp;amp; a[ j ] &amp;lt; a[ i ]} 代码： 12345678910111213">
+<meta name="twitter:image" content="http://wstaw.org/m/2017/04/10/301311028597840.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="黑历史" title="黑历史"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="黑历史">黑历史</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:liuxueyang.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/03/22/Longest-Increasing-Subsequence/" title="Longest Increasing Subsequence" itemprop="url">Longest Increasing Subsequence</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2014-03-22T15:44:49.000Z" itemprop="datePublished"> 发表于 2014-03-22</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>很久不写算法了== 写个东西练练手</p>
+<p>最长上升子序列</p>
+<p>输入n，然后是数组a[ ]的n个元素</p>
+<p>输出最长上升子序列的长度</p>
+<p>一、最简单的方法复杂度O(n * n)</p>
+<pre><code>DP[ i ] 是以a[ i ] 为结尾的最长上升子序列的长度。
+DP[ i ] = max{DP[ j ] + 1 | j &lt; i &amp;&amp; a[ j ] &lt; a[ i ]}
+</code></pre><p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">/*</span></div><div class="line">  * =====================================================================================</div><div class="line"> *       Filename : LongestIncrSub1.cpp</div><div class="line"> *    Description : O(n^2)</div><div class="line"> *    Version     : a better Algorithm of O(n^2)</div><div class="line"> *        Created : 03/22/14 22:03</div><div class="line"> *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com</div><div class="line"> *         Motto  : How about today?</div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;climits&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1001</span>;</div><div class="line"><span class="keyword">int</span> dp[MAXN], a[MAXN];</div><div class="line"><span class="keyword">int</span> n, i, j;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[] )</span></div><div class="line">&#123;</div><div class="line">    </div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span>  ONLINE_JUDGE</span></div><div class="line">    freopen(<span class="string">"LongestIncrSub.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>     <span class="comment">/* -----  not ONLINE_JUDGE  ----- */</span></span></div><div class="line"></div><div class="line">    <span class="keyword">while</span> ( ~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n) ) &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; n; ++i ) &#123;</div><div class="line">            <span class="built_in">scanf</span> ( <span class="string">"%d"</span>, &amp;a[i] );</div><div class="line">            dp[i] = INT_MAX;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; n; ++i ) &#123;</div><div class="line">            <span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt; n; ++j ) &#123;</div><div class="line">                <span class="keyword">if</span> ( j == <span class="number">0</span> || dp[j<span class="number">-1</span>] &lt; a[i] ) &#123;</div><div class="line">                    <span class="keyword">if</span> ( dp[j] &gt; a[i] ) &#123;</div><div class="line">                        dp[j] = a[i];</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> result = <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> ( j = n - <span class="number">1</span>; j &gt;= <span class="number">0</span>; --j ) &#123;</div><div class="line">            <span class="keyword">if</span> ( dp[j] != INT_MAX ) &#123;</div><div class="line">                result = j + <span class="number">1</span>;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span> ( <span class="string">"%d\n"</span>, result );</div><div class="line">    &#125;</div><div class="line">        <span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;                <span class="comment">/* ----------  end of function main  ---------- */</span></div></pre></td></tr></table></figure>
+<p>二、因为长度相同的几个不同的子序列中，最末位数字最小的在之后比较有优势，所以用DP针对这个最小的末尾元素求解。</p>
+<p>DP[ i ] 表示长度为 i + 1的上升子序列中末尾元素的最小值</p>
+<p>从前往后扫描数组a[ ]，对于每一个元素a[ i ]，只需要在DP[ ] 数组中找到应该插入的位置。</p>
+<p>if j == 0 || a[ i ] &gt; DP[ j-1 ]</p>
+<p>　　DP[ j ] = min{ DP[ j ], a[ i ]}</p>
+<p>由于对于每个a[ i ] 都要扫描一遍DP[ ] 数组，所以复杂度还是O(n * n)</p>
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * =====================================================================================</div><div class="line"> *       Filename : LongestIncrSub1.cpp</div><div class="line"> *    Description : O(n^2)</div><div class="line"> *    Version     : a better Algorithm of O(n^2)</div><div class="line"> *        Created : 03/22/14 22:03</div><div class="line"> *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com</div><div class="line"> *         Motto  : How about today?</div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;climits&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1001</span>;</div><div class="line"><span class="keyword">int</span> dp[MAXN], a[MAXN];</div><div class="line"><span class="keyword">int</span> n, i, j;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[] )</span></div><div class="line">&#123;</div><div class="line">    </div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span>  ONLINE_JUDGE</span></div><div class="line">    freopen(<span class="string">"LongestIncrSub.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>     <span class="comment">/* -----  not ONLINE_JUDGE  ----- */</span></span></div><div class="line"></div><div class="line">    <span class="keyword">while</span> ( ~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n) ) &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; n; ++i ) &#123;</div><div class="line">            <span class="built_in">scanf</span> ( <span class="string">"%d"</span>, &amp;a[i] );</div><div class="line">            dp[i] = INT_MAX;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; n; ++i ) &#123;</div><div class="line">            <span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt; n; ++j ) &#123;</div><div class="line">                <span class="keyword">if</span> ( j == <span class="number">0</span> || dp[j<span class="number">-1</span>] &lt; a[i] ) &#123;</div><div class="line">                    <span class="keyword">if</span> ( dp[j] &gt; a[i] ) &#123;</div><div class="line">                        dp[j] = a[i];</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> result = <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> ( j = n - <span class="number">1</span>; j &gt;= <span class="number">0</span>; --j ) &#123;</div><div class="line">            <span class="keyword">if</span> ( dp[j] != INT_MAX ) &#123;</div><div class="line">                result = j + <span class="number">1</span>;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span> ( <span class="string">"%d\n"</span>, result );</div><div class="line">    &#125;</div><div class="line">        <span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;                <span class="comment">/* ----------  end of function main  ---------- */</span></div></pre></td></tr></table></figure>
+<p>三、对于上一个算法，在DP[ ]数组中找a[ i ]元素的插入位置的时候，采用的是线性查找，由于DP[ ]这个数组是有序的，所以可以采用二分，这要复杂度就降到了O(nlogn)，可以用STL函数lower_bound用来找第一个大于等于a[ i ]的位置。</p>
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * =====================================================================================</div><div class="line"> *       Filename : LongestIncrSub2.cpp</div><div class="line"> *    Description : A better solution</div><div class="line"> *    Version     : algorithm of O(nlogn)</div><div class="line"> *        Created : 03/22/14 22:37</div><div class="line"> *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com</div><div class="line"> *         Motto  : How about today?</div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;climits&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1001</span>;</div><div class="line"><span class="keyword">int</span> a[MAXN], dp[MAXN];</div><div class="line"><span class="keyword">int</span> i, n, result;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[] )</span></div><div class="line">&#123;</div><div class="line">    </div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span>  ONLINE_JUDGE</span></div><div class="line">    freopen(<span class="string">"LongestIncrSub.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>     <span class="comment">/* -----  not ONLINE_JUDGE  ----- */</span></span></div><div class="line">    <span class="keyword">while</span> ( ~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n) ) &#123;</div><div class="line">        fill(dp, dp + n, INT_MAX);</div><div class="line">        <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; n; ++i ) &#123;</div><div class="line">            <span class="built_in">scanf</span> ( <span class="string">"%d"</span>, &amp;a[i] );</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; n; ++i ) &#123;</div><div class="line">            *lower_bound(dp, dp + n, a[i]) = a[i];</div><div class="line">        &#125;</div><div class="line">        result = lower_bound(dp, dp + n, INT_MAX) - dp;</div><div class="line">        <span class="built_in">printf</span> ( <span class="string">"%d\n"</span>, result );</div><div class="line">    &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;                <span class="comment">/* ----------  end of function main  ---------- */</span></div></pre></td></tr></table></figure>
+<p>Source Code on <a href="https://github.com/liuxueyang/learnalgorithm/tree/master/DP" target="_blank" rel="external">GitHub</a></p>
+<p>四、如何打印出最长上升子序列呢？</p>
+<p>用一个position数组，position[ i ] 表示位置 i 的数字在上升子序列中的位置。也就是，插入dp数组中的位置。</p>
+<p>比如</p>
+<p><img src="http://wstaw.org/m/2017/04/10/301311028597840.png" alt="Sample 1"></p>
+<p><img src="http://wstaw.org/m/2017/04/10/301311150946704.png" alt="Sample 2"></p>
+<p>然后在position数组中从后往前找到第一次出现的3对应的a[ i ] = 8，然后接着找第一次出现的2对应的a[ i ] = 3，然后接着找第一次出现的1对应的a[ i ] = 2，最后接着</p>
+<p>找第一次出现的0对应的a[ i ] = -7</p>
+<p>所以，-7, 2, 3, 8就是最长上升子序列的一个解。这个解是在序列中最后出现的。</p>
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">/*</span></div><div class="line"> * =====================================================================================</div><div class="line"> *       Filename : LongestIncrSub2.cpp</div><div class="line"> *    Description : A better solution</div><div class="line"> *    Version     : algorithm of O(nlogn)</div><div class="line"> *        Created : 03/22/14 22:37</div><div class="line"> *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com</div><div class="line"> *         Motto  : How about today?</div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;climits&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1001</span>;</div><div class="line"><span class="keyword">int</span> a[MAXN], dp[MAXN], position[MAXN], sub[MAXN];</div><div class="line"><span class="keyword">int</span> i, n, result;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[] )</span></div><div class="line">&#123;</div><div class="line">    </div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span>  ONLINE_JUDGE</span></div><div class="line"><span class="comment">//    freopen("LongestIncrSub.txt", "r", stdin);</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>     <span class="comment">/* -----  not ONLINE_JUDGE  ----- */</span></span></div><div class="line">    <span class="keyword">while</span> ( ~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n) ) &#123;</div><div class="line">        fill(dp, dp + n, INT_MAX);</div><div class="line">        <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; n; ++i ) &#123;</div><div class="line">            <span class="built_in">scanf</span> ( <span class="string">"%d"</span>, &amp;a[i] );</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> *tmp;</div><div class="line">        <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; n; ++i ) &#123;</div><div class="line">            tmp = lower_bound(dp, dp + n, a[i]);</div><div class="line">            position[i] = tmp - dp;</div><div class="line">            *tmp = a[i];</div><div class="line">        &#125;</div><div class="line">        result = lower_bound(dp, dp + n, INT_MAX) - dp;</div><div class="line">        <span class="built_in">printf</span> ( <span class="string">"%d\n"</span>, result );</div><div class="line">        <span class="keyword">int</span> t = result - <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> ( i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i ) &#123;</div><div class="line">            <span class="keyword">if</span> ( t == position[i] ) &#123;</div><div class="line">                sub[t] = a[i];</div><div class="line">                --t;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; result; ++i ) &#123;</div><div class="line">            <span class="keyword">if</span> ( i ) &#123;</div><div class="line">                <span class="built_in">printf</span> ( <span class="string">" "</span> );</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">printf</span> ( <span class="string">"%d"</span>, sub[i] );</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span> ( <span class="string">"\n"</span> );</div><div class="line">    &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;                <span class="comment">/* ----------  end of function main  ---------- */</span></div></pre></td></tr></table></figure>
+<p>所有的代码在github里面</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/DP/">DP</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="liuxueyang.github.io/2014/03/22/Longest-Increasing-Subsequence/" data-title="Longest Increasing Subsequence | 黑历史" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/03/04/Vim插件管理/" title="Vim插件管理">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Vim插件管理</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/03/30/CodeForces-239A-Triangle/"  title="CodeForces 239A. Triangle">
+ <strong>下一篇：</strong><br/> 
+ <span>CodeForces 239A. Triangle
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Diary/" title="Diary">Diary<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Emacs-Fcitx/" title="Emacs Fcitx">Emacs Fcitx<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Organize/" title="Organize">Organize<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Slackware/" title="Slackware">Slackware<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/习惯-整理/" title="习惯 整理">习惯 整理<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Article/" title="Article">Article<sup>11</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tools/" title="Tools">Tools<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Codeforces/" title="Codeforces">Codeforces<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Common-Lisp/" title="Common Lisp">Common Lisp<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C/" title="C++">C++<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Editor/" title="Editor">Editor<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DP/" title="DP">DP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/masm/" title="masm">masm<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/c/" title="c++">c++<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/水题/" title="水题">水题<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/assembly/" title="assembly">assembly<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/shell/" title="shell">shell<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DP-CodeForce/" title="DP CodeForce">DP CodeForce<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Raspberry/" title="Raspberry">Raspberry<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Perl/" title="Perl">Perl<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m liuxueyang. <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="liuxueyang">liuxueyang</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'liuxueyang';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
