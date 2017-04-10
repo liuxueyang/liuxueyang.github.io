@@ -1,17 +1,93 @@
+<!doctype html>
 
- <!DOCTYPE HTML>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
+
+
   
-    <title>Text Adventure Game in Land of Lisp | 以前的博客</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
-    
-    <meta name="author" content="liuxueyang">
-    
 
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
     
-    <meta name="description" content="Land of LiSP 这本书里面的第五章和第六章构建了一个字符冒险游戏，游戏截图如下：  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081">
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Common Lisp," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Land of LiSP 这本书里面的第五章和第六章构建了一个字符冒险游戏，游戏截图如下：  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081">
 <meta name="keywords" content="Common Lisp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Text Adventure Game in Land of Lisp">
@@ -26,545 +102,568 @@
 <meta name="twitter:description" content="Land of LiSP 这本书里面的第五章和第六章构建了一个字符冒险游戏，游戏截图如下：  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081">
 <meta name="twitter:image" content="/img/text-adventure-game.png">
 
-    
-    <link rel="alternative" href="/atom.xml" title="以前的博客" type="application/atom+xml">
-    
-    
-    <link rel="icon" href="/img/favicon.ico">
-    
-    
-    <link rel="apple-touch-icon" href="/img/jacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
-    
-    <link rel="stylesheet" href="/css/style.css">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="liuxueyang.github.io/2016/08/01/Text-Adventure-Game-in-Land-of-Lisp/"/>
+
+
+
+
+
+  <title> Text Adventure Game in Land of Lisp | 以前的博客 </title>
 </head>
 
-  <body>
-    <header>
-      
-<div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="以前的博客" title="以前的博客"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="以前的博客">以前的博客</a></h1>
-				<h2 class="blog-motto"></h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					<ul>
-					 
-						<li><a href="/">Home</a></li>
-					
-						<li><a href="/archives">Archives</a></li>
-					
-						<li><a href="/about">About</a></li>
-					
-					<li>
- 					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:liuxueyang.github.io">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
-    </header>
-    <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
   
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
     
-      <a href="/2016/08/01/Text-Adventure-Game-in-Land-of-Lisp/" title="Text Adventure Game in Land of Lisp" itemprop="url">Text Adventure Game in Land of Lisp</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-01T15:19:46.000Z" itemprop="datePublished"> 发表于 2016-08-01</time>
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
     
-  </p>
-</header>
-	<div class="article-content">
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
-		
-			
-		
-		</div>
-		
-		<p><strong>Land of LiSP</strong> 这本书里面的第五章和第六章构建了一个字符冒险游戏，游戏截图如下：</p>
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">以前的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/08/01/Text-Adventure-Game-in-Land-of-Lisp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="以前的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Text Adventure Game in Land of Lisp
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-08-01T23:19:46+08:00">
+                2016-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>Land of LiSP</strong> 这本书里面的第五章和第六章构建了一个字符冒险游戏，游戏截图如下：</p>
 <p><img src="/img/text-adventure-game.png" alt="Text Adventure Game"></p>
 <figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div></pre></td><td class="code"><pre><div class="line"><span class="comment">;; 2016.07.30 23:22:41 PM</span></div><div class="line"><span class="comment">;; Sabastian</span></div><div class="line"><span class="comment">;; building a text adventure game engine</span></div><div class="line"></div><div class="line"><span class="comment">;; ====================</span></div><div class="line"><span class="comment">;; location</span></div><div class="line"></div><div class="line">(<span class="name">defparameter</span> *nodes*</div><div class="line">  '((living-room (you are in the living-room.</div><div class="line">                  a wizard is snoring loudly on the couch.))</div><div class="line">    (garden (you are in a beautiful garden.</div><div class="line">             there is a well in front of you.))</div><div class="line">    (attic (you are in the attic.</div><div class="line">            there is a giant welding torch in the corner.))))</div><div class="line"></div><div class="line">(<span class="name">defun</span> describe-location (<span class="name">location</span> nodes)</div><div class="line">  <span class="string">"location is a symbol.</span></div><div class="line">nodes is the global variable."</div><div class="line">  (<span class="name">cadr</span> (<span class="name">assoc</span> location nodes)))</div><div class="line"></div><div class="line"><span class="comment">;; ====================</span></div><div class="line"><span class="comment">;; edges</span></div><div class="line"></div><div class="line">(<span class="name">defparameter</span> *edges*</div><div class="line">  '((living-room</div><div class="line">     (garden west door)</div><div class="line">     (attic upstairs ladder))</div><div class="line">    (garden</div><div class="line">     (living-room east door))</div><div class="line">    (attic</div><div class="line">     (living-room downstairs ladder))))</div><div class="line"></div><div class="line">(<span class="name">defun</span> describe-path (<span class="name">edge</span>)</div><div class="line">  `(there is a ,(caddr edge) going ,(cadr edge) from here.))</div><div class="line"></div><div class="line">(<span class="name">defun</span> describe-paths (<span class="name">location</span> edges)</div><div class="line">  <span class="string">"location is a symbol.</span></div><div class="line">edges is the global variable"</div><div class="line">  (<span class="name">apply</span> #'append</div><div class="line">         (<span class="name">mapcar</span> #'describe-path</div><div class="line">                 (<span class="name">cdr</span> (<span class="name">assoc</span> location edges)))))</div><div class="line"></div><div class="line"><span class="comment">;; ====================</span></div><div class="line"><span class="comment">;; objects</span></div><div class="line"></div><div class="line">(<span class="name">defparameter</span> *objects* '(whiskey bucket frog chain))</div><div class="line">(<span class="name">defparameter</span> *object-locations* '((whiskey living-room)</div><div class="line">                                   (bucket living-room)</div><div class="line">                                   (chain garden)</div><div class="line">                                   (frog garden)))</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">;; One Way to write OBJECTS-AT function</span></div><div class="line"></div><div class="line"><span class="comment">;; (defun object-at-location-p (object location object-locations)</span></div><div class="line"><span class="comment">;;   "object and location are symbols.</span></div><div class="line"><span class="comment">;; object-locations is a global variable"</span></div><div class="line"><span class="comment">;;   (eq (cadr (assoc object object-locations))</span></div><div class="line"><span class="comment">;;       location))</span></div><div class="line"></div><div class="line"><span class="comment">;; if the test function in REMOVE-IF-NOT require more than one</span></div><div class="line"><span class="comment">;; arguments, then use a lambda to wrap the function. ;-)</span></div><div class="line"></div><div class="line"><span class="comment">;; (defun objects-at (location objects object-locations)</span></div><div class="line"><span class="comment">;;   (remove-if-not #'(lambda (object)</span></div><div class="line"><span class="comment">;;                      (object-at-location-p object</span></div><div class="line"><span class="comment">;;                                            location</span></div><div class="line"><span class="comment">;;                                            object-locations))</span></div><div class="line"><span class="comment">;;                  objects))</span></div><div class="line"></div><div class="line"><span class="comment">;; A better way for OBJECTS-AT function</span></div><div class="line">(<span class="name">defun</span> objects-at (<span class="name">location</span> objects object-locations)</div><div class="line">  <span class="string">"location is a symbol.</span></div><div class="line">objects and object-locations are global variables.</div><div class="line">return a list of objects in the current location."</div><div class="line">  (<span class="name">labels</span> ((<span class="name">at-location-p</span> (<span class="name">object</span>)</div><div class="line">             (<span class="name">eq</span> location</div><div class="line">                 (<span class="name">cadr</span> (<span class="name">assoc</span> object object-locations)))))</div><div class="line">    (<span class="name">remove-if-not</span> #'at-location-p objects)))</div><div class="line"></div><div class="line">(<span class="name">defun</span> describe-objects (<span class="name">location</span> objects object-locations)</div><div class="line">  <span class="string">"location is a symbol.</span></div><div class="line">objects and object-locations are global variables."</div><div class="line">  (<span class="name">apply</span> #'append</div><div class="line">         (<span class="name">mapcar</span> #'(lambda (object)</div><div class="line">                     `(you see a ,object on the floor.))</div><div class="line">                 (<span class="name">objects-at</span> location objects</div><div class="line">                             object-locations))))</div><div class="line"></div><div class="line"><span class="comment">;; ====================</span></div><div class="line"><span class="comment">;; Describing it ALL</span></div><div class="line"></div><div class="line">(<span class="name">defparameter</span> *location* 'living-room)</div><div class="line"></div><div class="line">(<span class="name">defun</span> look ()</div><div class="line">  (<span class="name">append</span> (<span class="name">describe-location</span> *location* *nodes*)</div><div class="line">          (<span class="name">describe-paths</span> *location* *edges*)</div><div class="line">          (<span class="name">describe-objects</span> *location* *objects*</div><div class="line">                            *object-locations*)))</div><div class="line"></div><div class="line"><span class="comment">;; Walking Around in Our World</span></div><div class="line">(<span class="name">defun</span> walk (<span class="name">direction</span>)</div><div class="line">  (<span class="name">let</span> ((<span class="name">next</span></div><div class="line">          (<span class="name">find</span> direction</div><div class="line">                (<span class="name">cdr</span> (<span class="name">assoc</span> *location* *edges*))</div><div class="line">                <span class="symbol">:key</span> #'cadr)))</div><div class="line">    (<span class="name">cond</span> (<span class="name">next</span></div><div class="line">           (<span class="name">setf</span> *location* (<span class="name">car</span> next))</div><div class="line">           (<span class="name">look</span>))</div><div class="line">          (<span class="name">t</span></div><div class="line">           '(you cannot go that way.)))))</div><div class="line"></div><div class="line"><span class="comment">;; ====================</span></div><div class="line"><span class="comment">;; Pick Up Objects</span></div><div class="line"></div><div class="line">(<span class="name">defun</span> pickup (<span class="name">object</span>)</div><div class="line">  <span class="string">"object is a symbol.</span></div><div class="line">push a new list to *object-locations*, return a message list"</div><div class="line">  (<span class="name">cond</span> ((<span class="name">member</span></div><div class="line">          object</div><div class="line">          (<span class="name">objects-at</span> *location* *objects*</div><div class="line">                      *object-locations*))</div><div class="line">         (<span class="name">push</span> `(,object body) *object-locations*)</div><div class="line">         `(you are now carrying the ,object))</div><div class="line">        (<span class="name">t</span> '(you cannot get that.))))</div><div class="line"></div><div class="line"><span class="comment">;; ====================</span></div><div class="line"><span class="comment">;; Checking Our Inventory</span></div><div class="line"></div><div class="line">(<span class="name">defun</span> inventory ()</div><div class="line">  (<span class="name">cons</span> 'items- (<span class="name">objects-at</span> 'body *objects* *object-locations*)))</div><div class="line"></div><div class="line">(<span class="name">defun</span> game-read ()</div><div class="line">  (<span class="name">let</span> ((<span class="name">cmd</span></div><div class="line">          (<span class="name">read-from-string</span></div><div class="line">           (<span class="name">concatenate</span> 'string <span class="string">"("</span> (<span class="name">read-line</span>) <span class="string">")"</span>))))</div><div class="line">    (<span class="name">cons</span> (<span class="name">car</span> cmd)</div><div class="line">          (<span class="name">mapcar</span> #'(lambda (x)</div><div class="line">                      `',x)</div><div class="line">                  (<span class="name">cdr</span> cmd)))))</div><div class="line"></div><div class="line">(<span class="name">defun</span> tweak-text (<span class="name">lst</span> capital-p literal-p)</div><div class="line">  (<span class="name">let</span> ((<span class="name">item</span> (<span class="name">car</span> lst))</div><div class="line">        (<span class="name">rest</span> (<span class="name">rest</span> lst)))</div><div class="line">    (<span class="name">if</span> item</div><div class="line">        (<span class="name">cond</span> ((<span class="name">member</span> item '(#\! #\? #\.))</div><div class="line">               (<span class="name">cons</span> item (<span class="name">tweak-text</span> rest <span class="literal">t</span> <span class="literal">nil</span>)))</div><div class="line">              ((<span class="name">eq</span> item #\<span class="string">")</span></div><div class="line">               (cons item (tweak-text rest nil (not literal-p))))</div><div class="line">              (literal-p</div><div class="line">               (cons item (tweak-text rest nil literal-p)))</div><div class="line">              (capital-p</div><div class="line">               (cons (char-upcase item)</div><div class="line">                     (if (alpha-char-p item)</div><div class="line">                         (tweak-text rest nil literal-p)</div><div class="line">                         (tweak-text rest t literal-p))))</div><div class="line">              (t</div><div class="line">               (cons (char-downcase item)</div><div class="line">                     (tweak-text rest nil literal-p)))))))</div><div class="line"></div><div class="line">(defun game-print (lst)</div><div class="line">  (princ</div><div class="line">   (coerce</div><div class="line">    (tweak-text</div><div class="line">     (coerce (string-trim "() <span class="string">"</span></div><div class="line">                          (prin1-to-string lst))</div><div class="line">             'list)</div><div class="line">     t nil)</div><div class="line">    'string))</div><div class="line">  (fresh-line))</div><div class="line"></div><div class="line">(defparameter *allowed-commands* '(look walk pickup inventory))</div><div class="line"></div><div class="line">(defun game-eval (sexp)</div><div class="line">  (if (member (first sexp)</div><div class="line">              *allowed-commands*)</div><div class="line">      (eval sexp)</div><div class="line">      '(i do not know that command.)))</div><div class="line"></div><div class="line">(defun game-repl ()</div><div class="line">  (let ((cmd (game-read)))</div><div class="line">    (unless (eq (car cmd)</div><div class="line">                'quit)</div><div class="line">      (game-print (game-eval cmd))</div><div class="line">      (game-repl))))</div></pre></td></tr></table></figure>
 <p>在第七章里，把游戏里面的位置位置关系通过有向图的形式用第三方库画出来：</p>
 <p><img src="/img/wizard.png" alt="adventure game world"></p>
 <figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div></pre></td><td class="code"><pre><div class="line"><span class="comment">;; 2016/08/01 11:48:58 AM</span></div><div class="line"><span class="comment">;; Xueyang Liu</span></div><div class="line"></div><div class="line">(<span class="name">defparameter</span> *wizard-nodes*</div><div class="line">  '((living-room (you are in the living-room.</div><div class="line">                  a wizard is snoring loudly on the couch.))</div><div class="line">    (garden (you are in a beautiful garden.</div><div class="line">             there is a well in front of you.))</div><div class="line">    (attic (you are in the attic.</div><div class="line">            there is a giant welding torch in the corner.))))</div><div class="line"></div><div class="line">(<span class="name">defparameter</span> *wizard-edges*</div><div class="line">  '((living-room</div><div class="line">     (garden west door)</div><div class="line">     (attic upstairs ladder))</div><div class="line">    (garden</div><div class="line">     (living-room east door))</div><div class="line">    (attic</div><div class="line">     (living-room downstairs ladder))))</div><div class="line"></div><div class="line">(<span class="name">defun</span> dot-name (<span class="name">sexp</span>)</div><div class="line">  (<span class="name">string-downcase</span></div><div class="line">   (<span class="name">substitute-if</span> #\_ (<span class="name">complement</span> #'alphanumericp)</div><div class="line">                  (<span class="name">prin1-to-string</span> sexp))))</div><div class="line"></div><div class="line">(<span class="name">defparameter</span> *max-label-length* <span class="number">30</span>)</div><div class="line"></div><div class="line">(<span class="name">defun</span> dot-label (<span class="name">sexp</span>)</div><div class="line">  (<span class="name">if</span> sexp</div><div class="line">      (<span class="name">let</span> ((<span class="name">s</span> (<span class="name">write-to-string</span> sexp</div><div class="line">                                <span class="symbol">:pretty</span> <span class="literal">nil</span>)))</div><div class="line">        (<span class="name">if</span> (<span class="name">&gt;</span> (<span class="name">length</span> s)</div><div class="line">               *max-label-length*)</div><div class="line">            (<span class="name">concatenate</span> 'string</div><div class="line">                         (<span class="name">string-downcase</span></div><div class="line">                          (<span class="name">subseq</span> s</div><div class="line">                                  <span class="number">0</span> (<span class="name">-</span> *max-label-length* <span class="number">3</span>)))</div><div class="line">                         <span class="string">"..."</span>)</div><div class="line">            s))</div><div class="line">      <span class="string">""</span>))</div><div class="line"></div><div class="line">(<span class="name">defun</span> nodes-&gt;dot (<span class="name">nodes</span>)</div><div class="line">  (<span class="name">mapc</span> (<span class="name">lambda</span> (<span class="name">sexp</span>)</div><div class="line">          (<span class="name">fresh-line</span>)</div><div class="line">          (<span class="name">princ</span> (<span class="name">dot-name</span> (<span class="name">car</span> sexp)))</div><div class="line">          (<span class="name">princ</span> <span class="string">"[label=\""</span>)</div><div class="line">          (<span class="name">princ</span> (<span class="name">dot-label</span> sexp))</div><div class="line">          (<span class="name">princ</span> <span class="string">"\"];"</span>))</div><div class="line">        nodes))</div><div class="line"></div><div class="line">(<span class="name">defun</span> edges-&gt;dot (<span class="name">edges</span>)</div><div class="line">  (<span class="name">mapc</span> (<span class="name">lambda</span> (<span class="name">node</span>)</div><div class="line">          (<span class="name">mapc</span> (<span class="name">lambda</span> (<span class="name">edge</span>)</div><div class="line">                  (<span class="name">fresh-line</span>)</div><div class="line">                  (<span class="name">princ</span> (<span class="name">dot-name</span> (<span class="name">car</span> node)))</div><div class="line">                  (<span class="name">princ</span> <span class="string">"-&gt;"</span>)</div><div class="line">                  (<span class="name">princ</span> (<span class="name">dot-name</span> (<span class="name">car</span> edge)))</div><div class="line">                  (<span class="name">princ</span> <span class="string">"[label=\""</span>)</div><div class="line">                  (<span class="name">princ</span> (<span class="name">string-downcase</span></div><div class="line">                          (<span class="name">prin1-to-string</span> (<span class="name">cdr</span> edge))))</div><div class="line">                  (<span class="name">princ</span> <span class="string">"\"];"</span>))</div><div class="line">                (<span class="name">cdr</span> node)))</div><div class="line">        edges))</div><div class="line"></div><div class="line">(<span class="name">defun</span> uedges-&gt;dot (<span class="name">edges</span>)</div><div class="line">  (<span class="name">maplist</span> (<span class="name">lambda</span> (<span class="name">lst</span>)</div><div class="line">             (<span class="name">mapc</span> (<span class="name">lambda</span> (<span class="name">edge</span>)</div><div class="line">                     (<span class="name">unless</span> (<span class="name">assoc</span> (<span class="name">car</span> edge)</div><div class="line">                                    lst)</div><div class="line">                       (<span class="name">fresh-line</span>)</div><div class="line">                       (<span class="name">princ</span> (<span class="name">dot-name</span> (<span class="name">caar</span> lst)))</div><div class="line">                       (<span class="name">princ</span> <span class="string">"--"</span>)</div><div class="line">                       (<span class="name">princ</span> (<span class="name">dot-name</span> (<span class="name">car</span> edge)))</div><div class="line">                       (<span class="name">princ</span> <span class="string">"[label=\""</span>)</div><div class="line">                       (<span class="name">princ</span> (<span class="name">string-downcase</span></div><div class="line">                               (<span class="name">prin1-to-string</span> (<span class="name">cdr</span> edge))))</div><div class="line">                       (<span class="name">princ</span> <span class="string">"\"];"</span>)))</div><div class="line">                   (<span class="name">cdar</span> lst)))</div><div class="line">           edges))</div><div class="line"></div><div class="line">(<span class="name">defun</span> graph-&gt;dot (<span class="name">nodes</span> edges)</div><div class="line">  (<span class="name">princ</span> <span class="string">"digraph&#123;"</span>)</div><div class="line">  (<span class="name">nodes-&gt;dot</span> nodes)</div><div class="line">  (<span class="name">edges-&gt;dot</span> edges)</div><div class="line">  (<span class="name">princ</span> <span class="string">"&#125;"</span>))</div><div class="line"></div><div class="line">(<span class="name">defun</span> ugraph-&gt;dot (<span class="name">nodes</span> edges)</div><div class="line">  (<span class="name">princ</span> <span class="string">"graph&#123;"</span>)</div><div class="line">  (<span class="name">nodes-&gt;dot</span> nodes)</div><div class="line">  (<span class="name">uedges-&gt;dot</span> edges)</div><div class="line">  (<span class="name">princ</span> <span class="string">"&#125;"</span>))</div><div class="line"></div><div class="line">(<span class="name">defun</span> dot-&gt;png (<span class="name">fname</span> thunk)</div><div class="line">  (<span class="name">with-open-file</span> (<span class="name">*standard-output*</span></div><div class="line">                   fname</div><div class="line">                   <span class="symbol">:direction</span> <span class="symbol">:output</span></div><div class="line">                   <span class="symbol">:if-exists</span> <span class="symbol">:supersede</span>)</div><div class="line">    (<span class="name">funcall</span> thunk))</div><div class="line">  (<span class="name">ext</span><span class="symbol">:shell</span> (<span class="name">concatenate</span> 'string</div><div class="line">                          <span class="string">"dot -Tpng -O "</span> fname)))</div><div class="line"></div><div class="line">(<span class="name">defun</span> graph-&gt;png (<span class="name">fname</span> nodes edges)</div><div class="line">  (<span class="name">dot-&gt;png</span> fname</div><div class="line">            (<span class="name">lambda</span> ()</div><div class="line">              (<span class="name">graph-&gt;dot</span> nodes edges))))</div><div class="line"></div><div class="line">(<span class="name">defun</span> ugraph-&gt;png (<span class="name">fname</span> nodes edges)</div><div class="line">  (<span class="name">dot-&gt;png</span> fname</div><div class="line">            (<span class="name">lambda</span> ()</div><div class="line">              (<span class="name">ugraph-&gt;dot</span> nodes edges))))</div></pre></td></tr></table></figure>
-  
-	</div>
-		<footer class="article-footer clearfix">
-<div class="article-catetags">
 
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Common-Lisp/">Common Lisp</a>
-  </div>
-
-</div>
-
-
-
-	<div class="article-share" id="share">
-	
-	  <div data-url="liuxueyang.github.io/2016/08/01/Text-Adventure-Game-in-Land-of-Lisp/" data-title="Text Adventure Game in Land of Lisp | 以前的博客" data-tsina="null" class="share clearfix">
-	  </div>
-	
-	</div>
-
-
-</footer>
-
-   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2016/07/31/2016-07-31-17-43-50-PM-杂事/" title="2016/07/31 17:43:50 PM 杂事">
-  <strong>上一篇：</strong><br/>
-  <span>
-  2016/07/31 17:43:50 PM 杂事</span>
-</a>
-</div>
-
-
-<div class="next">
-<a href="/2016/08/04/show-and-hide-dot-files-in-Finder-of-OS-X-El-Capitan/"  title="show and hide dot files in Finder of OS X El Capitan">
- <strong>下一篇：</strong><br/> 
- <span>show and hide dot files in Finder of OS X El Capitan
-</span>
-</a>
-</div>
-
-</nav>
-
-	
-
-<section id="comments" class="comment">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
-
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
-
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
- 
- 
- 
-  </div>
-
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
-<aside class="clearfix">
-
-  
-
-
-  
-<div class="categorieslist">
-	<p class="asidetitle">分类</p>
-		<ul>
-		
-		  
-			<li><a href="/categories/Diary/" title="Diary">Diary<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Emacs-Fcitx/" title="Emacs Fcitx">Emacs Fcitx<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Organize/" title="Organize">Organize<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Slackware/" title="Slackware">Slackware<sup>2</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/macOS/" title="macOS">macOS<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/习惯-整理/" title="习惯 整理">习惯 整理<sup>1</sup></a></li>
-		  
-		
-		</ul>
-</div>
-
-
-  
-<div class="tagslist">
-	<p class="asidetitle">标签</p>
-		<ul class="clearfix">
-		
-			
-				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Article/" title="Article">Article<sup>11</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Tools/" title="Tools">Tools<sup>9</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Codeforces/" title="Codeforces">Codeforces<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Common-Lisp/" title="Common Lisp">Common Lisp<sup>4</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/C/" title="C++">C++<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Editor/" title="Editor">Editor<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/CodeChef/" title="CodeChef">CodeChef<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Raspberry/" title="Raspberry">Raspberry<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Perl/" title="Perl">Perl<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/c/" title="c++">c++<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/assembly/" title="assembly">assembly<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/shell/" title="shell">shell<sup>1</sup></a></li>
-			
-		
-		</ul>
-</div>
-
-
-  <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
-    <ul>
-        
-    </ul>
-</div>
-
-  
-
-
-  <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
-</div>
-
-  <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
-    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
-</div>
-
-
-</aside>
-</div>
-    </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<section class="info">
-		<p> Hello ,I&#39;m liuxueyang. <br/>
-			</p>
-	</section>
-	 
-	<div class="social-font" class="clearfix">
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	</div>
-			
-		
-
-		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
-		
-		<a href="/about" target="_blank" title="liuxueyang">liuxueyang</a>
-		
-		
-		</p>
-</div>
-</footer>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-  
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else{
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
       
-      $('#toc.toc-aside').css('display', 'none');
+    </div>
+
+    <div>
+      
         
-    }
-  });
-});
-</script>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Common-Lisp/" rel="tag"># Common Lisp</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/04/show-and-hide-dot-files-in-Finder-of-OS-X-El-Capitan/" rel="next" title="show and hide dot files in Finder of OS X El Capitan">
+                <i class="fa fa-chevron-left"></i> show and hide dot files in Finder of OS X El Capitan
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/31/2016-07-31-17-43-50-PM-杂事/" rel="prev" title="2016/07/31 17:43:50 PM 杂事">
+                2016/07/31 17:43:50 PM 杂事 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="liuxueyang" />
+          <p class="site-author-name" itemprop="name">liuxueyang</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liuxueyang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
 
 <script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  c.click(function(){
-    ta.css('display', 'block').addClass('fadeIn');
-  });
-  o.click(function(){
-    ta.css('display', 'none');
-  });
-  $(window).scroll(function(){
-    ta.css("top",Math.max(140,320-$(this).scrollTop()));
-  });
-});
-</script>
-
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina'),
-      description = $this.attr('description');
-  var html = [
-  '<div class="hoverqrcode clearfix"></div>',
-  '<a class="overlay" id="qrcode"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
-  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-
-  $('.hoverqrcode').hide();
-
-  var myWidth = 0;
-  function updatehoverqrcode(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-    var qrsize = myWidth > 1024 ? 200:100;
-    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
-    var p = $('.article-share-qrcode').position();
-    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
-                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
-                          .qrcode(options);
-  };
-  $(window).resize(function(){
-    $('.hoverqrcode').hide();
-  });
-  $('.article-share-qrcode').click(function(){
-    updatehoverqrcode();
-    $('.hoverqrcode').toggle();
-  });
-  $('.article-share-qrcode').hover(function(){}, function(){
-      $('.hoverqrcode').hide();
-  });
-});   
-</script>
-
-
-
-
-<script type="text/javascript">
-
-var disqus_shortname = 'liuxueyang';
-
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-</script>
-
-
-
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.article-content').each(function(i){
-    $(this).find('img').each(function(){
-      if ($(this).parent().hasClass('fancybox')) return;
-      var alt = this.alt;
-      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
-    });
-    $(this).find('.fancybox').each(function(){
-      $(this).attr('rel', 'article' + i);
-    });
-  });
-  if($.fancybox){
-    $('.fancybox').fancybox();
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
   }
-}); 
 </script>
 
 
 
-<!-- Analytics Begin -->
 
 
 
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
 
 
 
-<!-- Analytics End -->
-
-<!-- Totop Begin -->
-
-	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
-	</div>
-	<script src="/js/totop.js"></script>
-
-<!-- Totop End -->
-
-<!-- MathJax Begin -->
-<!-- mathjax config similar to math.stackexchange -->
+  
 
 
-<!-- MathJax End -->
 
-<!-- Tiny_search Begin -->
 
-<!-- Tiny_search End -->
 
-  </body>
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
 </html>
