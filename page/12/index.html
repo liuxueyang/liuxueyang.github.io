@@ -1,0 +1,1038 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>黑历史</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="liuxueyang">
+    
+
+    
+    <meta property="og:type" content="website">
+<meta property="og:title" content="黑历史">
+<meta property="og:url" content="liuxueyang.github.io/page/12/index.html">
+<meta property="og:site_name" content="黑历史">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑历史">
+
+    
+    <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="黑历史" title="黑历史"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="黑历史">黑历史</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:liuxueyang.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/10/04/计算ffff-0-ffff-b数据的和，结果存在dx中/" title="计算ffff:0~ffff:b数据的和，结果存在dx中" itemprop="url">计算ffff:0~ffff:b数据的和，结果存在dx中</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-10-04T04:28:00.000Z" itemprop="datePublished"> 发表于 2013-10-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">assume cs:sad</div><div class="line">sad segment</div><div class="line">start:</div><div class="line">    mov ax, 0ffffh</div><div class="line">    mov ds, ax</div><div class="line">    mov dx, 0</div><div class="line">    ; add ds:0bh~ds:1h</div><div class="line">    mov cx, 0bh</div><div class="line">s:</div><div class="line">    mov ah, 0</div><div class="line">    mov bx, cx</div><div class="line">    mov al, ds:[bx]</div><div class="line">    add dx, ax</div><div class="line">    loop s</div><div class="line"></div><div class="line">    ; add ds:0h</div><div class="line">    mov bh, 0</div><div class="line">    mov bl, ds:[0]</div><div class="line">    add dx, bx</div><div class="line"></div><div class="line">    mov ax, 4c00h</div><div class="line">    int 21h</div><div class="line">sad ends</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>自己写的==</p>
+<p>下面是看了书上的之后，写的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">assume cs:sad</div><div class="line">sad segment</div><div class="line">start:</div><div class="line">    mov ax, 0ffffh</div><div class="line">    mov ds, ax</div><div class="line">    mov dx, 0</div><div class="line">    mov bx, 0</div><div class="line">    ; c = b + 1</div><div class="line">    mov cx, 0ch</div><div class="line">s:</div><div class="line">    mov ah, 0</div><div class="line">    mov al, [bx]</div><div class="line">    inc bx</div><div class="line">    add dx, ax</div><div class="line">    loop s</div><div class="line"></div><div class="line">    mov ax, 4c00h</div><div class="line">    int 21h</div><div class="line"></div><div class="line">sad ends</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>主要是加上了inc bx的用法==</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/masm/">masm</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/10/04/计算ffff-0-ffff-b数据的和，结果存在dx中/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/10/04/debug不过的程序/" title="debug不过的程序" itemprop="url">debug不过的程序</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-10-04T04:25:00.000Z" itemprop="datePublished"> 发表于 2013-10-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>下面的程序debug是不能通过的。</p>
+<p>至于为什么我还不知道。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">assume cs:codesg</div><div class="line">codesg segment</div><div class="line">start:</div><div class="line">    mov ax,2000h</div><div class="line">    mov ss, ax</div><div class="line">    mov sp, 0</div><div class="line">    add sp, 4</div><div class="line">    pop ax</div><div class="line">    pop bx</div><div class="line">    push ax</div><div class="line">    push bx</div><div class="line">    pop ax</div><div class="line">    pop bx</div><div class="line">    mov ax, 4c00h</div><div class="line">    int 21h</div><div class="line">codesg ends</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>这个问题留在这里，以后解决。</p>
+<p>以后学习的时候，一定要选好书！╮(╯▽╰)╭</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/masm/">masm</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/10/04/debug不过的程序/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/10/03/栈段-——满是疑问/" title="栈段 ——满是疑问==" itemprop="url">栈段 ——满是疑问==</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-10-03T11:14:00.000Z" itemprop="datePublished"> 发表于 2013-10-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>遇到一个问题</p>
+<p>比如：</p>
+<p>用栈操作将10000H~1000FH中的8个字，逆序拷贝到2000H~2000FH中。</p>
+<p>写出以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">mov ax, 2000h</div><div class="line">mov ds, ax</div><div class="line">mov ax, f00h</div><div class="line">mov ss, ax</div><div class="line">mov sp, 1000h</div><div class="line">pop [e]</div><div class="line">pop [c]</div><div class="line">pop [a]</div><div class="line">pop [8]</div><div class="line">pop [6]</div><div class="line">pop [4]</div><div class="line">pop [2]</div><div class="line">pop [0]</div></pre></td></tr></table></figure>
+<p>开始我还以为可能是栈空间太小，跟以前一样的问题，特意把栈的短地址缩小到f00h，可是还是结果不对，跟踪之后我发现，</p>
+<p>拷贝过去的内容是对的，但是10000H处的内容却被改写了。现在我还是不知道为什么，为什么这个内存地址的内容会被改变呢？</p>
+<p>满是疑惑……=_=</p>
+<p>……………………………………………………………………==………………………………………………………………………………</p>
+<p>刚才又遇到了类似的问题。</p>
+<p>貌似明白一点了。只是猜的=_=。虽然不知道为什么，但是表面上懂一点了。</p>
+<p>当内存中的某个段当做栈顶的时候，也就是说寄存器ss改变的时候，可能会在附近记录CS,IP,SS的值。还是没有完全明白……越来越混乱了……==</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/masm/">masm</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/10/03/栈段-——满是疑问/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/10/03/CPU的栈机制的一个小问题/" title="CPU的栈机制的一个小问题" itemprop="url">CPU的栈机制的一个小问题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-10-03T08:10:00.000Z" itemprop="datePublished"> 发表于 2013-10-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>比如要实现下面这个功能。</p>
+<p>我们如果要在10000H处写入自行数据2266H，不能用“mov 内存单元， 寄存器”这类指令。怎么做？</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mov ax, 1000h</div><div class="line">mov ss, ax</div><div class="line">mov sp, 2</div><div class="line">mov ax, 2266h</div><div class="line">push ax</div></pre></td></tr></table></figure>
+<p>这段代码，如果是初学，看起来挺对的，一点也没错。</p>
+<p>可是，用debug跟踪一下，发现，这段代码不能得到正确结果，会发现，在push ax这条指令执行之前，debug自动退出了。</p>
+<p>反正这个问题，我大一的时候，纠结了好久，到处问，好几天也没搞定，记得当初我还以为是自己电脑系统的问题，还重装了系统……⊙﹏⊙b汗</p>
+<p>终于，后来，才明白。这个可能是因为栈溢出的问题？具体因为什么，现在还不太懂。但是知道怎么解决。</p>
+<p>只需要把栈的段址设置小一点就可以了。比如比最大的段址小10h。所以，上面的代码可以改成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mov ax, ff0h</div><div class="line">mov ss, ax</div><div class="line">mov sp, 102</div><div class="line">mov ax, 2266h</div><div class="line">push ax</div></pre></td></tr></table></figure>
+<p>然后用debug跟踪一下，就没有问题了。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/masm/">masm</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/10/03/CPU的栈机制的一个小问题/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/10/02/codeforces-Simple-Molecules/" title="codeforces Simple Molecules" itemprop="url">codeforces Simple Molecules</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-10-02T14:17:00.000Z" itemprop="datePublished"> 发表于 2013-10-02</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>link:<a href="http://codeforces.com/contest/344/problem/B" target="_blank" rel="external">http://codeforces.com/contest/344/problem/B</a></p>
+<p>刚开始想复杂了。一开始就想当然地以为可以有多个点，其实，人家题目要求只有3个点啊！</p>
+<p>然后题目就简单了。</p>
+<p><img src="http://wstaw.org/m/2017/04/10/02221528-82ce2ef9d0954cd6ba694ddb39833e3e.jpg" alt="img"></p>
+<p>A、B、C代表原子的化合价</p>
+<p>x、y、z代表原子之间的化学键</p>
+<p>首先x+y+z一定为偶数，否则不可能有解。</p>
+<p>那么可以列出一个三元一次的方程组，由3个方程组成，可以求出唯一解。</p>
+<p>判断有解的唯一限制条件是：不能出现负数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">  <span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"in.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line">  <span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// ONLINE_JUDGE</span></span></div><div class="line">  <span class="keyword">int</span> a, b, c;</div><div class="line">  <span class="keyword">int</span> x, y, z;</div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;a, &amp;b, &amp;c))</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">int</span> sum = a + b + c;</div><div class="line">    <span class="keyword">if</span> (sum &amp; <span class="number">1</span>)</div><div class="line">    &#123;</div><div class="line">      <span class="built_in">printf</span>(<span class="string">"Impossible\n"</span>); <span class="keyword">continue</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> tmp = b - a + c;</div><div class="line">    <span class="keyword">if</span> (tmp &amp; <span class="number">1</span>)</div><div class="line">    &#123;</div><div class="line">      <span class="built_in">printf</span>(<span class="string">"Impossible\n"</span>);</div><div class="line">      <span class="keyword">continue</span>;</div><div class="line">    &#125;</div><div class="line">    y = tmp &gt;&gt; <span class="number">1</span>;</div><div class="line">    z = c - y;</div><div class="line">    x = a - z;</div><div class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span> || y &lt; <span class="number">0</span> || z &lt; <span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">      <span class="built_in">printf</span>(<span class="string">"Impossible\n"</span>);</div><div class="line">      <span class="keyword">continue</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d %d %d\n"</span>, x, y, z);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看题要认真。不把问题复杂化。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/CodeForces/">CodeForces</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/10/02/codeforces-Simple-Molecules/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/10/02/codeforces-Magnets/" title="codeforces Magnets" itemprop="url">codeforces Magnets</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-10-02T13:39:00.000Z" itemprop="datePublished"> 发表于 2013-10-02</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>link: <a href="http://codeforces.com/contest/344/problem/A" target="_blank" rel="external">http://codeforces.com/contest/344/problem/A</a></p>
+<p>这道题目很简单。</p>
+<p>把输入的01 和10 当做整数，如果相邻两个数字相等的话，那么就属于同一组，否则，就新增加了一组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">using namespace std;</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">  #ifndef ONLINE_JUDGE</div><div class="line">  freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);</div><div class="line">  #endif // ONLINE_JUDGE</div><div class="line">  int n;</div><div class="line">  while (~scanf(&quot;%d&quot;, &amp;n))</div><div class="line">  &#123;</div><div class="line">    int tmp;</div><div class="line">    int pre = -1;</div><div class="line">    int cnt = 0;</div><div class="line">    while (n--)</div><div class="line">    &#123;</div><div class="line">      scanf(&quot;%02d&quot;, &amp;tmp);</div><div class="line">      if (tmp != pre) cnt++;</div><div class="line">      pre = tmp;</div><div class="line">    &#125;</div><div class="line">    printf(&quot;%d\n&quot;, cnt);</div><div class="line">  &#125;</div><div class="line">  return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>==</p>
+<p>其实，现在想那么多没用。其实……也想读研的，但是，又觉得没什么用……所以，很痛苦。</p>
+<p>路在何方呢？在脚下？</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/CodeForces/">CodeForces</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/10/02/codeforces-Magnets/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/10/02/codeforces-Expecting-Trouble/" title="codeforces Expecting Trouble" itemprop="url">codeforces Expecting Trouble</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-10-02T13:23:00.000Z" itemprop="datePublished"> 发表于 2013-10-02</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>link:<a href="http://codeforces.com/contest/345/problem/A" target="_blank" rel="external">http://codeforces.com/contest/345/problem/A</a></p>
+<p>写完这道题目才发现这场比赛只能用Ada语言提交==</p>
+<p>好吧，逗我玩呢</p>
+<p>考的是数学期望公式，二项分布的期望E=np</p>
+<p>C++代码：（我可不会Ada……=_=）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">using namespace std;</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">  char a[51];</div><div class="line">  double p;</div><div class="line">  #ifndef ONLINE_JUDGE</div><div class="line">  freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);</div><div class="line">  #endif // ONLINE_JUDGE</div><div class="line">  while (~scanf(&quot;%s%lf&quot;, a, &amp;p))</div><div class="line">  &#123;</div><div class="line">    int len = strlen(a);</div><div class="line">    int cnt = 0;</div><div class="line">    int cnt1 = 0;</div><div class="line">    for (int i = 0; i &lt; len; ++i)</div><div class="line">    &#123;</div><div class="line">      if (a[i] == &apos;1&apos;) cnt++;</div><div class="line">      else if (a[i] == &apos;?&apos;) cnt1++;</div><div class="line">    &#125;</div><div class="line">    double Cnt = (double)cnt + p * (double)cnt1;</div><div class="line">    printf(&quot;%.5lf\n&quot;, Cnt/(double)len);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从今天起，每天一到两题。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/CodeForces/">CodeForces</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/10/02/codeforces-Expecting-Trouble/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/10/02/空结构体大小是多少？/" title="空结构体大小是多少？" itemprop="url">空结构体大小是多少？</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-10-02T11:00:00.000Z" itemprop="datePublished"> 发表于 2013-10-02</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">    在VC中，空结构体大小是1。</div><div class="line">    在gcc中，空结构体大小是0。</div><div class="line">*/</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="keyword">struct</span> student </div><div class="line">&#123;</div><div class="line">    </div><div class="line">&#125;stu;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, <span class="keyword">sizeof</span> stu);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>不同的平台不一样。</p>
+<p>还有一点。</p>
+<p>sizeof是C语言中的关键字，不是函数，所以，sizeof后面不用括号也是对的。</p>
+<p>另外，define并不是C语言里面的关键字！但是typedef是关键字，这个今天才发现。= =</p>
+<p>C语言的23个关键字：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">auto break case char const continue</div><div class="line">default do double else enum extern</div><div class="line">float for goto if int long</div><div class="line">register return short signed sizeof static</div><div class="line">struct switch typedef union unsigned void</div><div class="line">volatile while</div></pre></td></tr></table></figure>
+<p>见百度百科</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/C/">C</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/10/02/空结构体大小是多少？/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/10/02/strncpy基本用法/" title="strncpy基本用法" itemprop="url">strncpy基本用法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-10-02T01:50:00.000Z" itemprop="datePublished"> 发表于 2013-10-02</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>见<a href="http://baike.baidu.com/item/strncpy" target="_blank" rel="external">百度百科</a>。</p>
+<p>注意这句话：</p>
+<p>（c/c++）复制src中的内容（字符，数字、汉字….）到dest，复制多少由num的值决定，返回指向dest的指针。如果遇到null字符（’\0’），且还没有到num个字符时，就用（num - n）（n是遇到null字符前已经有的非null字符个数）个null字符附加到destination。注意：并不是添加到destination的最后，而是紧跟着由source中复制而来的字符后面。</p>
+<p>示例程序：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line"><span class="comment">//  char *greeting = "hello";</span></div><div class="line"><span class="comment">//  char *temp = (char*)malloc(6);</span></div><div class="line"><span class="comment">//  strncpy(temp, greeting, 3);</span></div><div class="line"><span class="comment">//  strncpy(temp + 3, "p!", 2);</span></div><div class="line"><span class="comment">//  greeting = temp;</span></div><div class="line"><span class="comment">//  printf("%s\n", greeting);</span></div><div class="line">  <span class="keyword">char</span> des[] = <span class="string">"Hello,i am!"</span>;</div><div class="line">  <span class="keyword">int</span> len = <span class="built_in">strlen</span>(des);</div><div class="line">  <span class="keyword">char</span> source[] = <span class="string">"abc\0def"</span>;</div><div class="line">  <span class="built_in">strncpy</span>(des, source, <span class="number">5</span>);</div><div class="line">  <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, des);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i) &#123;</div><div class="line">    <span class="keyword">if</span> (des[i] == <span class="string">'\0'</span>) <span class="built_in">printf</span>(<span class="string">"$"</span>);</div><div class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%c"</span>, des[i]);</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以发现输出是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">abc$$,i am!</div></pre></td></tr></table></figure>
+<p>这正是我们想要的==</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/C/">C</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/10/02/strncpy基本用法/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/09/24/大三就这么欢乐地开始了/" title="大三就这么欢乐地开始了" itemprop="url">大三就这么欢乐地开始了</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-09-24T05:16:00.000Z" itemprop="datePublished"> 发表于 2013-09-24</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>　　前天晚上，补考成绩出来。数字逻辑补考挂了。果然。胸中即使有千万只cnm在奔腾也于事无补了。那天晚上在教务系统上看了成绩知道没过之后，跟舍友骂了几句无比kd的老师，发了几句牢骚，然后当做没事儿似的，继续去做家教了……</p>
+<p>　　昨天，问了一起补考的两个同学，果然，也都没过。大家异口同声的骂了一句**就是个xx，然后早上去院楼找负责选课的老师选上重修的课。答案是，老师不在，下午再来。天空还下着小雨。下午，又跑了一趟，结果发现，别的班的数字逻辑只有3个学分，我们原来的有4个，这样一来，核心课程就少了一个学分，所以，我必须还要再选一门，所以我只能再选一门专业任选课，3个学分的数值分析，为什么我们的数字逻辑是4个学分呢？因为我们的课程旁边写着H，我一直以为代表英语教学，结果老师说，那个代表High，高级，所以呢，院里给你们配的都是最好的老师，嗯，我们点了点头，带着某种微笑。当时就在想，为什么我们班里没有一个人认为这货好？其实还算幸运，有个班的数字逻辑课和我原来的课不冲突，可以选，否则我就只能大四上学期再修这个了……想想都觉得可怕。所以说，我就多了两门课。这样的话，加一块也就24个学分。差一个学分满。</p>
+<p>　　所以说，课表一下子就充实了。大三就这么欢乐地开始了。</p>
+<p>　　跟同学说，这学期真他妈的充实=_=</p>
+<p>　　昨天晚上还有个软件设计基础实验课。要求是学习MFC，然后自己写个小软件。属于老师一点也不教，自己看然后交实验报告的那种课。以前很讨厌MFC这些东西，现在觉得其实貌似也不错，不如认真学一下这货，闲着也是闲着，学着 写个项目神马的。从现在开始，好好学一下MFC吧。又想起一句话，当你排斥一个东西的时候，你就失去了向它学习的机会。</p>
+<p>　　最近读三国演义，发现白话文很有意思，读得津津有味啊，哈哈。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/09/24/大三就这么欢乐地开始了/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix">
+    <a class="extend prev" rel="prev" href="/page/11/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/13/">Next<span></span></a>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Diary/" title="Diary">Diary<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Emacs-Fcitx/" title="Emacs Fcitx">Emacs Fcitx<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Organize/" title="Organize">Organize<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Slackware/" title="Slackware">Slackware<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/习惯-整理/" title="习惯 整理">习惯 整理<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/masm/" title="masm">masm<sup>20</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Article/" title="Article">Article<sup>11</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tools/" title="Tools">Tools<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Codeforces/" title="Codeforces">Codeforces<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Common-Lisp/" title="Common Lisp">Common Lisp<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Algorithm/" title="Algorithm">Algorithm<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Editor/" title="Editor">Editor<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C/" title="C++">C++<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/C/" title="C">C<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DP/" title="DP">DP<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/读书笔记/" title="读书笔记">读书笔记<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数学题/" title="数学题">数学题<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/c/" title="c++">c++<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/水题/" title="水题">水题<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/assembly/" title="assembly">assembly<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/BruteForce/" title="BruteForce">BruteForce<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m liuxueyang. <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="liuxueyang">liuxueyang</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+ </html>

@@ -263,9 +263,454 @@
 
 
 
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/10/17/编写中断例程7ch：计算word型数据的平方/" title="编写中断例程7ch：计算word型数据的平方" itemprop="url">编写中断例程7ch：计算word型数据的平方</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-10-17T12:51:00.000Z" itemprop="datePublished"> 发表于 2013-10-17</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>实现计算一个word型数据的平方。</p>
+<p>这是安装程序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">assume cs:code</div><div class="line"></div><div class="line">code segment</div><div class="line">start:</div><div class="line">    mov ax, cs</div><div class="line">    mov ds, ax</div><div class="line">    mov si, offset sqr</div><div class="line"></div><div class="line">    mov ax, 0</div><div class="line">    mov es, ax</div><div class="line">    mov di, 200h</div><div class="line">    mov cx, offset sqrend - offset sqr</div><div class="line">    cld</div><div class="line">    rep movsb</div><div class="line"></div><div class="line">    mov ax, 0</div><div class="line">    mov es, ax</div><div class="line">    mov word ptr es:[7ch * 4+0], 200h</div><div class="line">    mov word ptr es:[7ch * 4 + 2], 0</div><div class="line"></div><div class="line">    mov ax, 4c00h</div><div class="line">    int 21h</div><div class="line"></div><div class="line">sqr:</div><div class="line">    mul ax</div><div class="line">    iret</div><div class="line">sqrend:</div><div class="line">    nop</div><div class="line"></div><div class="line"></div><div class="line">code ends</div><div class="line"></div><div class="line">end start</div></pre></td></tr></table></figure>
+<p>这是应用程序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">assume cs:code</div><div class="line"></div><div class="line">code segment</div><div class="line">start:</div><div class="line">    mov ax, 2</div><div class="line">    int 7ch</div><div class="line">    add ax, ax</div><div class="line">    adc dx, dx</div><div class="line"></div><div class="line">    mov ax, 4c00h</div><div class="line">    int 21h</div><div class="line">code ends</div><div class="line"></div><div class="line">end start</div></pre></td></tr></table></figure>
+<p>其实都是一个套路。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/masm/">masm</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/10/17/编写中断例程7ch：计算word型数据的平方/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/10/17/编写0号中断的处理程序：处理除法溢出/" title="编写0号中断的处理程序：处理除法溢出" itemprop="url">编写0号中断的处理程序：处理除法溢出</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-10-17T11:49:00.000Z" itemprop="datePublished"> 发表于 2013-10-17</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>在除法溢出的时候，在屏幕中间显示字符串“divide error!”</p>
+<p>安装程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">assume cs:code</div><div class="line"></div><div class="line">code segment</div><div class="line">start:</div><div class="line">    mov ax, cs</div><div class="line">    mov ds, ax</div><div class="line">    mov si, offset do0</div><div class="line"></div><div class="line">    mov ax, 0</div><div class="line">    mov es, ax</div><div class="line">    mov di, 200h</div><div class="line">    mov cx, offset do0end - offset do0</div><div class="line">    cld</div><div class="line">    rep movsb</div><div class="line"></div><div class="line">    mov ax, 0</div><div class="line">    mov ds, ax</div><div class="line">    mov word ptr ds:[0*4], 200h</div><div class="line">    mov word ptr ds:[0*4 + 2], 0</div><div class="line"></div><div class="line">do0:</div><div class="line">    jmp do0start</div><div class="line">    db &quot;divide error!&quot;</div><div class="line">do0start:</div><div class="line">    mov ax, cs</div><div class="line">    mov ds, ax</div><div class="line">    mov si, 202h</div><div class="line"></div><div class="line">    mov ax, 0b800h</div><div class="line">    mov es, ax</div><div class="line">    mov di, 12*160+36*2</div><div class="line"></div><div class="line">    mov cx, 13</div><div class="line">s:</div><div class="line">    mov al, [si]</div><div class="line">    mov es:[di], al</div><div class="line">    mov byte ptr es:[di+1], 01001001b</div><div class="line">    inc si</div><div class="line">    add di, 2</div><div class="line">    loop s</div><div class="line"></div><div class="line">    mov ax, 4c00h</div><div class="line">    int 21h</div><div class="line">do0end:</div><div class="line">    nop</div><div class="line"></div><div class="line">    mov ax, 4c00h</div><div class="line">    int 21h</div><div class="line">code ends</div><div class="line"></div><div class="line">end start</div></pre></td></tr></table></figure>
+<p>测试程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">assume cs:code</div><div class="line"></div><div class="line">code segment</div><div class="line">start:</div><div class="line">    mov dx, 0</div><div class="line">    div dx</div><div class="line"></div><div class="line">    mov ax, 4c00h</div><div class="line">    int 21h</div><div class="line">code  ends</div><div class="line"></div><div class="line">end start</div></pre></td></tr></table></figure>
+<p>debug执行这个程序，会发现执行到div dx的时候，屏幕中间会出现红底蓝字的divide error!</p>
+<p>基本是照着书上的思路写的</p>
+<p>注意，这里有一个要注意的问题，尤其是要显示颜色的时候，在37行，如果不加byte ptr，那么会默认当做字传送，最终会多出一个小方格，也就是乱码，这个问题以前也遇到过，刚才忘了，幸好很快就想到了。这里记录一下。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/masm/">masm</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/10/17/编写0号中断的处理程序：处理除法溢出/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/10/15/实验十一：编写子程序/" title="实验十一：编写子程序" itemprop="url">实验十一：编写子程序</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-10-15T08:45:00.000Z" itemprop="datePublished"> 发表于 2013-10-15</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>将一个0结尾的字符串中的小写字母转化成大写字母</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">assume cs:code, ds:data</div><div class="line"></div><div class="line">data segment</div><div class="line">    db &quot;Beginner&apos;s All-purpose Symbolic Instruction Code.&quot;, 0</div><div class="line">data ends</div><div class="line"></div><div class="line">code segment</div><div class="line">start:</div><div class="line">    mov ax, data</div><div class="line">    mov ds, ax</div><div class="line">    mov si, 0</div><div class="line">    call letterc</div><div class="line"></div><div class="line">    mov ax, 4c00h</div><div class="line">    int 21h</div><div class="line"></div><div class="line">letterc:</div><div class="line">    mov cx, 0</div><div class="line">sad:</div><div class="line">    mov cl, [si]</div><div class="line">    jcxz llh</div><div class="line">    cmp cl, 7ah</div><div class="line">    ja next</div><div class="line">    cmp cl, 61h</div><div class="line">    jb next</div><div class="line">    and cl, 11011111b</div><div class="line">    mov [si], cl</div><div class="line">next:</div><div class="line">    inc si</div><div class="line">    jmp sad</div><div class="line">llh:</div><div class="line">    ret</div><div class="line"></div><div class="line">code ends</div><div class="line"></div><div class="line">end start</div></pre></td></tr></table></figure>
+<p>这货并不复杂……=_=  都是基本的应用</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/masm/">masm</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/10/15/实验十一：编写子程序/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/10/11/试验十-3-数值显示/" title="试验十 3.数值显示" itemprop="url">试验十 3.数值显示</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-10-11T05:01:00.000Z" itemprop="datePublished"> 发表于 2013-10-11</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>题目的意思是：</p>
+<p>　　把一个16进制的数字转化成十进制，然后在屏幕的第3行，第8列，用绿色输出。</p>
+<p>这货倒是不太难，就是学会调用之前写过的函数就行了==</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div></pre></td><td class="code"><pre><div class="line">assume cs:code, ds:data, ss:stack</div><div class="line"></div><div class="line">data segment</div><div class="line">    db 10 dup(0)</div><div class="line">data ends</div><div class="line"></div><div class="line">stack segment</div><div class="line">    dw 10 dup(0)</div><div class="line">stack ends</div><div class="line"></div><div class="line">code segment</div><div class="line">start:</div><div class="line">    mov ax, 12666</div><div class="line">    mov dx, 0</div><div class="line">    mov bx, data</div><div class="line">    mov ds, bx</div><div class="line">    mov si, 0</div><div class="line">    call dtoc</div><div class="line"></div><div class="line">    mov dh, 8</div><div class="line">    mov dl, 3</div><div class="line">    mov cl, 2</div><div class="line">    call show_str</div><div class="line"></div><div class="line">    mov ax, 4c00h</div><div class="line">    int 21h</div><div class="line"></div><div class="line">dtoc:</div><div class="line">    push si</div><div class="line">    mov bx, 10</div><div class="line">    mov cx, ax</div><div class="line">    mov di, 0</div><div class="line">sad:</div><div class="line">    div bx</div><div class="line">    add dx, 30h</div><div class="line">    push dx</div><div class="line">    mov dx, 0</div><div class="line">    inc di</div><div class="line">    mov cx, ax</div><div class="line">    add cx, 1</div><div class="line">    loop sad</div><div class="line"></div><div class="line">    mov bp, 0</div><div class="line">    mov cx, di</div><div class="line">ago:</div><div class="line">    pop dx</div><div class="line">    mov al, dl</div><div class="line">    mov ds:[bp], al</div><div class="line">    inc bp</div><div class="line">    loop ago</div><div class="line"></div><div class="line">    mov ds:[bp], 0</div><div class="line"></div><div class="line">    pop si</div><div class="line"></div><div class="line">    ret</div><div class="line"></div><div class="line">show_str:</div><div class="line">    push dx</div><div class="line">    push cx</div><div class="line"></div><div class="line">    ;row</div><div class="line">    dec dh</div><div class="line">    mov al, 0a0h</div><div class="line">    mul dh</div><div class="line">    push ax</div><div class="line"></div><div class="line">    ;col</div><div class="line">    dec dl</div><div class="line">    mov al, 2h</div><div class="line">    mul dl</div><div class="line"></div><div class="line">    pop bx</div><div class="line">    add ax, bx</div><div class="line">    mov di, 0b800h</div><div class="line">    mov es, di</div><div class="line">    mov bp, ax</div><div class="line">    mov bl, cl</div><div class="line"></div><div class="line">change:</div><div class="line">    mov cl, [si]</div><div class="line">    mov ch, 0</div><div class="line">    jcxz ok</div><div class="line">    mov di, si</div><div class="line">    add di, di</div><div class="line">    mov al, ds:[si]</div><div class="line">    mov byte ptr es:[bp+di], al</div><div class="line">    mov byte ptr es:[bp+di+1], bl</div><div class="line">    inc si  </div><div class="line">    jmp short change</div><div class="line">ok:</div><div class="line">    pop cx</div><div class="line">    pop dx</div><div class="line">    ret</div><div class="line"></div><div class="line">code ends</div><div class="line">end start</div></pre></td></tr></table></figure>
+<p>虽然很长……看起来好腻害的样子=_=</p>
+<p>其实只要注意在函数开始的时候把要修改的寄存器的值压栈，结束的时候要出栈，就可以了</p>
+<p>没怎么优化==</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/masm/">masm</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/10/11/试验十-3-数值显示/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/10/10/解决除法溢出问题/" title="解决除法溢出问题" itemprop="url">解决除法溢出问题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-10-10T15:54:00.000Z" itemprop="datePublished"> 发表于 2013-10-10</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>被除数是dword型，除数是dword型，结果是dword型。</p>
+<p>参数：</p>
+<p>　　ax=dword型数据的低16位</p>
+<p>　　dx=dword型数据的高16位</p>
+<p>　　cx=除数</p>
+<p>返回：</p>
+<p>　　dx=结果的高16位，ax=结果的低16位</p>
+<p>　　cx=除数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">assume cs:code, ss:stack</div><div class="line"></div><div class="line">stack segment</div><div class="line">    dw 10h dup(0)</div><div class="line">stack ends</div><div class="line"></div><div class="line">code segment</div><div class="line">start:</div><div class="line">    mov ax, 4240h</div><div class="line">    mov dx, 0fh</div><div class="line">    mov cx, 0ah</div><div class="line">    call divdw</div><div class="line"></div><div class="line">divdw:</div><div class="line">    ; H=int(X/65536) L=rem(X/65536)</div><div class="line">    push ax</div><div class="line">    ; H / n</div><div class="line">    mov ax, dx</div><div class="line">    mov dx, 0</div><div class="line">    div cx</div><div class="line">    mov si, ax</div><div class="line">    ; (rem(H/n) * 65536 + L) / n</div><div class="line">    pop ax</div><div class="line">    div cx</div><div class="line">    ;remain cx gotten</div><div class="line">    mov cx, dx</div><div class="line">    mov dx, si</div><div class="line">    ret</div><div class="line"></div><div class="line">    mov ax, 4c00h</div><div class="line">    int 21h</div><div class="line">code ends</div><div class="line"></div><div class="line">end start</div></pre></td></tr></table></figure>
+<p>这个程序写了差不多两天==</p>
+<p>我只想说，当初我想复杂了，没有把问题i想清楚，没有分析清楚，搞的我各种分析溢出……写了差不多100行，彻底晕了=_=</p>
+<p>后来才想明白。注意，*65536直接左移16位，也就是一个16位寄存器。 </p>
+<p>哎，今天心情糟糕透了……o(╯□╰)o</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/masm/">masm</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/10/10/解决除法溢出问题/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/10/08/编写子程序，显示字符串/" title="编写子程序，显示字符串" itemprop="url">编写子程序，显示字符串</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-10-08T03:41:00.000Z" itemprop="datePublished"> 发表于 2013-10-08</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>在屏幕的8行3列，用绿色显示data段中的字符串。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">assume cs:code, ds:data</div><div class="line"></div><div class="line">data segment</div><div class="line">    db &apos;Welcome to masm!&apos;, 0</div><div class="line">data ends</div><div class="line"></div><div class="line">code segment</div><div class="line">start:</div><div class="line">    mov dh, 8</div><div class="line">    mov dl, 3</div><div class="line">    mov cl, 2</div><div class="line">    mov ax, data</div><div class="line">    mov ds, ax</div><div class="line">    mov si, 0</div><div class="line">    call show_str</div><div class="line"></div><div class="line">    mov ax, 4c00h</div><div class="line">    int 21h</div><div class="line"></div><div class="line">show_str:</div><div class="line">    push dx</div><div class="line">    push cx</div><div class="line"></div><div class="line">    ;row</div><div class="line">    dec dh</div><div class="line">    mov al, 0a0h</div><div class="line">    mul dh</div><div class="line">    push ax</div><div class="line"></div><div class="line">    ;col</div><div class="line">    dec dl</div><div class="line">    mov al, 2h</div><div class="line">    mul dl</div><div class="line"></div><div class="line">    pop bx</div><div class="line">    add ax, bx</div><div class="line">    mov di, 0b800h</div><div class="line">    mov es, di</div><div class="line">    mov bp, ax</div><div class="line">    mov bl, cl</div><div class="line"></div><div class="line">change:</div><div class="line">    mov cl, [si]</div><div class="line">    mov ch, 0</div><div class="line">    jcxz ok</div><div class="line">    mov di, si</div><div class="line">    add di, di</div><div class="line">    mov al, ds:[si]</div><div class="line">    mov byte ptr es:[bp+di], al</div><div class="line">    mov byte ptr es:[bp+di+1], bl</div><div class="line">    inc si  </div><div class="line">    jmp short change</div><div class="line">ok:</div><div class="line">    pop cx</div><div class="line">    pop dx</div><div class="line">    ret</div><div class="line"></div><div class="line">code ends</div><div class="line"></div><div class="line">end start</div></pre></td></tr></table></figure>
+<p>开始遇到了很奇怪的bug，最终还是不知道为什么，所以换了一种方式解决问题了。</p>
+<p>那个bug是：内存地址一样的位置，数据竟然不一样：<br>这两行地址不一样吗？为什么呢？<br>为什么数据不同呢？<br>后来又遇到了一个bug，就是si的增长方式和在es和ds中是不一样的，所以要用寄存器 di 临时作为es段中的偏移量。</p>
+<p>虽然搞了很久，但最终还是搞出来了=_=</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/masm/">masm</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/10/08/编写子程序，显示字符串/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/10/07/call指令的一个细节/" title="call指令的一个细节" itemprop="url">call指令的一个细节</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-10-07T00:49:00.000Z" itemprop="datePublished"> 发表于 2013-10-07</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>执行下面这个程序之后，ax的值是多少？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">assume cs:code</div><div class="line"></div><div class="line">code segment</div><div class="line">start:</div><div class="line">    mov ax, 0</div><div class="line">    call s</div><div class="line">    inc ax</div><div class="line">s:</div><div class="line">    pop ax</div><div class="line"></div><div class="line">    mov ax, 4c00h</div><div class="line">    int 21h</div><div class="line">code ends</div><div class="line"></div><div class="line">end start</div></pre></td></tr></table></figure>
+<p>答案是0006h</p>
+<p>这道题目要做对首先要明白CPU执行指令的机制，IP值的增加实在指令送入指令缓冲器中进行的，也就是指令执行之前。所以，执行到call s的时候，压入栈的ax值是6h=_=</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/masm/">masm</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2013/10/07/call指令的一个细节/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
 
   <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/9/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span>
+    <a class="extend prev" rel="prev" href="/page/9/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/11/">Next<span></span></a>
   </nav>
 
 </div>
@@ -317,6 +762,10 @@
 		<ul class="clearfix">
 		
 			
+				<li><a href="/tags/masm/" title="masm">masm<sup>20</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
 			
 		
@@ -325,15 +774,19 @@
 			
 		
 			
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>9</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/Tools/" title="Tools">Tools<sup>9</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+				<li><a href="/tags/Codeforces/" title="Codeforces">Codeforces<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Codeforces/" title="Codeforces">Codeforces<sup>5</sup></a></li>
+				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
 			
 		
 			
@@ -345,11 +798,23 @@
 			
 		
 			
+				<li><a href="/tags/Editor/" title="Editor">Editor<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/C/" title="C++">C++<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Editor/" title="Editor">Editor<sup>3</sup></a></li>
+				<li><a href="/tags/C/" title="C">C<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DP/" title="DP">DP<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/读书笔记/" title="读书笔记">读书笔记<sup>2</sup></a></li>
 			
 		
 			
@@ -357,15 +822,7 @@
 			
 		
 			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DP/" title="DP">DP<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/masm/" title="masm">masm<sup>1</sup></a></li>
+				<li><a href="/tags/数学题/" title="数学题">数学题<sup>1</sup></a></li>
 			
 		
 			
@@ -381,19 +838,7 @@
 			
 		
 			
-				<li><a href="/tags/shell/" title="shell">shell<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DP-CodeForce/" title="DP CodeForce">DP CodeForce<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Raspberry/" title="Raspberry">Raspberry<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Perl/" title="Perl">Perl<sup>1</sup></a></li>
+				<li><a href="/tags/BruteForce/" title="BruteForce">BruteForce<sup>1</sup></a></li>
 			
 		
 		</ul>
