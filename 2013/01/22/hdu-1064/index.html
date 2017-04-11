@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="Time Limit: 400/200 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 6666    Accepted Submission(s): 4157">
-<meta name="keywords" content="S">
+    <meta name="description" content="Financial Management Time Limit: 400/200 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 6666    Accepted Submission(s): 4157 Problem DescriptionLarry graduated this">
+<meta name="keywords" content="Hdu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hdu 1064">
 <meta property="og:url" content="liuxueyang.github.io/2013/01/22/hdu-1064/index.html">
 <meta property="og:site_name" content="黑历史">
-<meta property="og:description" content="Time Limit: 400/200 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 6666    Accepted Submission(s): 4157">
-<meta property="og:updated_time" content="2017-04-11T03:27:26.000Z">
+<meta property="og:description" content="Financial Management Time Limit: 400/200 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 6666    Accepted Submission(s): 4157 Problem DescriptionLarry graduated this">
+<meta property="og:updated_time" content="2017-04-11T06:26:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hdu 1064">
-<meta name="twitter:description" content="Time Limit: 400/200 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 6666    Accepted Submission(s): 4157">
+<meta name="twitter:description" content="Financial Management Time Limit: 400/200 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 6666    Accepted Submission(s): 4157 Problem DescriptionLarry graduated this">
 
     
     <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
@@ -101,7 +101,15 @@
 		
 		</div>
 		
-		<p>Time Limit: 400/200 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 6666    Accepted Submission(s): 4157</p>
+		<p>Financial Management</p>
+<p>Time Limit: 400/200 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)<br>Total Submission(s): 6666    Accepted Submission(s): 4157</p>
+<p>Problem Description<br>Larry graduated this year and finally has a job. He’s making a lot of money, but somehow never seems to have enough. Larry has decided that he needs to grab hold of his financial portfolio and solve his financing problems. The first step is to figure out what’s been going on with his money. Larry has his bank account statements and wants to see how much money he has. Help Larry by writing a program to take his closing balance from each of the past twelve months and calculate his average account balance.</p>
+<p>Input<br>The input will be twelve lines. Each line will contain the closing balance of his bank account for a particular month. Each number will be positive and displayed to the penny. No dollar sign will be included.</p>
+<p>Output<br>The output will be a single number, the average (mean) of the closing balances for the twelve months. It will be rounded to the nearest penny, preceded immediately by a dollar sign, and followed by the end-of-line. There will be no other spaces or characters in the output.</p>
+<p>Sample Input<br>100.00 489.12 12454.12 1234.10 823.05 109.20 5.27 1542.25 839.18 83.99 1295.01 1.75</p>
+<p>Sample Output<br>$1581.42</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">    freopen(<span class="string">"1064.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">    <span class="keyword">double</span> sum, n;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; ++i)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%lf"</span>, &amp;n);</div><div class="line">        sum += n;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"$%.2f\n"</span>, <span class="built_in">floor</span>(sum/<span class="number">12.0</span>*<span class="number">1000</span>+<span class="number">0.5</span>)/<span class="number">1000</span>);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这题很简单……</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -110,7 +118,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/Hdu/">Hdu</a>
   </div>
 
 </div>
@@ -215,31 +223,27 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/S/" title="S">S<sup>70</sup></a></li>
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>66</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DP/" title="DP">DP<sup>42</sup></a></li>
+				<li><a href="/tags/DP/" title="DP">DP<sup>48</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>39</sup></a></li>
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>44</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>34</sup></a></li>
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>43</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Uva/" title="Uva">Uva<sup>24</sup></a></li>
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>25</sup></a></li>
 			
 		
 			
@@ -251,7 +255,11 @@
 			
 		
 			
-				<li><a href="/tags/Math/" title="Math">Math<sup>14</sup></a></li>
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>15</sup></a></li>
 			
 		
 			
@@ -260,10 +268,6 @@
 		
 			
 				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>13</sup></a></li>
 			
 		
 			
@@ -279,11 +283,7 @@
 			
 		
 			
-				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+				<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>5</sup></a></li>
 			
 		
 			
@@ -291,7 +291,15 @@
 			
 		
 			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
 			
 		
 		</ul>

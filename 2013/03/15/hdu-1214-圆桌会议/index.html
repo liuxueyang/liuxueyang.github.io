@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 2179    Accepted Submission(s): 1490">
-<meta name="keywords" content="S">
+    <meta name="description" content="圆桌会议 Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 2179    Accepted Submission(s): 1490 Problem DescriptionHDU ACM集训队的队员在暑假集训时经常要讨论自己在做题中遇到的问题">
+<meta name="keywords" content="Math">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hdu 1214 圆桌会议">
 <meta property="og:url" content="liuxueyang.github.io/2013/03/15/hdu-1214-圆桌会议/index.html">
 <meta property="og:site_name" content="黑历史">
-<meta property="og:description" content="Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 2179    Accepted Submission(s): 1490">
-<meta property="og:updated_time" content="2017-04-11T03:24:17.000Z">
+<meta property="og:description" content="圆桌会议 Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 2179    Accepted Submission(s): 1490 Problem DescriptionHDU ACM集训队的队员在暑假集训时经常要讨论自己在做题中遇到的问题">
+<meta property="og:updated_time" content="2017-04-11T05:48:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hdu 1214 圆桌会议">
-<meta name="twitter:description" content="Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 2179    Accepted Submission(s): 1490">
+<meta name="twitter:description" content="圆桌会议 Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 2179    Accepted Submission(s): 1490 Problem DescriptionHDU ACM集训队的队员在暑假集训时经常要讨论自己在做题中遇到的问题">
 
     
     <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
@@ -101,7 +101,17 @@
 		
 		</div>
 		
-		<p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 2179    Accepted Submission(s): 1490</p>
+		<p>圆桌会议</p>
+<p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)<br>Total Submission(s): 2179    Accepted Submission(s): 1490</p>
+<p>Problem Description<br>HDU ACM集训队的队员在暑假集训时经常要讨论自己在做题中遇到的问题.每当面临自己解决不了的问题时,他们就会围坐在一张圆形的桌子旁进行交流,经过大家的讨论后一般没有解决不了的问题,这也只有HDU ACM集训队特有的圆桌会议,有一天你也可以进来体会一下哦:),在一天在讨论的时候,Eddy想出了一个极为古怪的想法,如果他们在每一分钟内,一对相邻的两个ACM队员交换一下位子,那么要多少时间才能得到与原始状态相反的座位顺序呢?(即对于每个队员，原先在他左面的队员后来在他右面，原先在他右面的队员在他左面),这当然难不倒其他的聪明的其他队友们,马上就把这个古怪的问题给解决了,你知道是怎么解决的吗?</p>
+<p>Input<br>对于给定数目N(1&lt;=N&lt;=32767)，表示有N个人,求要多少时间才能得到与原始状态相反的座位顺序(reverse)即对于每个人，原先在他左面的人后来在他右面，原先在他右面的人在他左面。</p>
+<p>Output<br>对每个数据输出一行，表示需要的时间(以分钟为单位)</p>
+<p>Sample Input<br>4 5 6</p>
+<p>Sample Output<br>2 4 6</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">  <span class="keyword">int</span> n;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"1214.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n))&#123;</div><div class="line">    <span class="keyword">int</span> a, b;  a = n / <span class="number">2</span>; b = n - a;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, a*(a<span class="number">-1</span>)/<span class="number">2</span>+b*(b<span class="number">-1</span>)/<span class="number">2</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这道题目意思很好明白，就是每次只能两个人交换位置，求最少交换多少次，才能够产生顺序相反的排列。</p>
+<p>可以先考虑直线的情况，如果有ｎ个元素，利用冒泡的思想，最少要ｎ×（ｎ-1）/ 2 次交换才可以达到目的。</p>
+<p>圆的情况：先把圆分成两段，比如ａ，ｎ-ａ。总次数为：ａ×（ａ-1）/ 2+（ｎ-ａ）×（ｎ-ａ-1）/ 2 ，化简为：ａ×ａ-ａ×ｎ+（ｎ×ｎ-ｎ）/ 2 发现，当ａ= ｎ/ 2 的时候，次数最少，因此，就知道怎么分了。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -110,7 +120,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/Math/">Math</a>
   </div>
 
 </div>
@@ -215,31 +225,27 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/S/" title="S">S<sup>70</sup></a></li>
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>66</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DP/" title="DP">DP<sup>42</sup></a></li>
+				<li><a href="/tags/DP/" title="DP">DP<sup>48</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>39</sup></a></li>
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>44</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>34</sup></a></li>
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>43</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Uva/" title="Uva">Uva<sup>24</sup></a></li>
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>25</sup></a></li>
 			
 		
 			
@@ -251,7 +257,11 @@
 			
 		
 			
-				<li><a href="/tags/Math/" title="Math">Math<sup>14</sup></a></li>
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>15</sup></a></li>
 			
 		
 			
@@ -260,10 +270,6 @@
 		
 			
 				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>13</sup></a></li>
 			
 		
 			
@@ -279,11 +285,7 @@
 			
 		
 			
-				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+				<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>5</sup></a></li>
 			
 		
 			
@@ -291,7 +293,15 @@
 			
 		
 			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
 			
 		
 		</ul>

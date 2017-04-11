@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 4452    Accepted Submission(s): 2680">
-<meta name="keywords" content="S">
+    <meta name="description" content="Eddy’s research I Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 4452    Accepted Submission(s): 2680 Problem DescriptionEddy’s interest is ver">
+<meta name="keywords" content="Hdu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hdu 1164 Eddy's research I">
 <meta property="og:url" content="liuxueyang.github.io/2013/03/12/hdu-1164-Eddy's-research-I/index.html">
 <meta property="og:site_name" content="黑历史">
-<meta property="og:description" content="Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 4452    Accepted Submission(s): 2680">
-<meta property="og:updated_time" content="2017-04-11T03:25:04.000Z">
+<meta property="og:description" content="Eddy’s research I Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 4452    Accepted Submission(s): 2680 Problem DescriptionEddy’s interest is ver">
+<meta property="og:updated_time" content="2017-04-11T06:04:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hdu 1164 Eddy's research I">
-<meta name="twitter:description" content="Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 4452    Accepted Submission(s): 2680">
+<meta name="twitter:description" content="Eddy’s research I Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 4452    Accepted Submission(s): 2680 Problem DescriptionEddy’s interest is ver">
 
     
     <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
@@ -101,7 +101,15 @@
 		
 		</div>
 		
-		<p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 4452    Accepted Submission(s): 2680</p>
+		<p>Eddy’s research I</p>
+<p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)<br>Total Submission(s): 4452    Accepted Submission(s): 2680</p>
+<p>Problem Description<br>Eddy’s interest is very extensive, recently he is interested in prime number. Eddy discover the all number owned can be divided into the multiply of prime number, but he can’t write program, so Eddy has to ask intelligent you to help him, he asks you to write a program which can do the number to divided into the multiply of prime number factor .</p>
+<p>Input<br>The input will contain a number 1 &lt; x&lt;= 65535 per line representing the number of elements of the set.</p>
+<p>Output<br>You have to print a line in the output for each entry with the answer to the previous question.</p>
+<p>Sample Input<br>11 9412</p>
+<p>Sample Output<br>11 2<em>2</em>13*181</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">65535</span>;</div><div class="line"><span class="keyword">int</span> prime[maxn];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"1164.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">  <span class="built_in">memset</span>(prime, <span class="number">0</span>, <span class="keyword">sizeof</span>(prime));</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i * i &lt;= maxn; ++i)</div><div class="line">    <span class="keyword">if</span> (prime[i] == <span class="number">0</span>)</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = i*<span class="number">2</span>; j &lt;= maxn; j+=i)</div><div class="line">        prime[j] = <span class="number">1</span>;</div><div class="line">  <span class="keyword">int</span> n; </div><div class="line"><span class="comment">//  for (int i = 2; i &lt; 100; ++i) if (!prime[i]) printf("%d ", i);</span></div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n))&#123;</div><div class="line">    <span class="keyword">bool</span> flag = <span class="literal">true</span>;</div><div class="line">      <span class="keyword">while</span>(n != <span class="number">1</span>)&#123;</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= maxn; ++i)&#123;</div><div class="line">        <span class="keyword">while</span> (!prime[i] &amp;&amp; !(n%i))&#123;</div><div class="line">          n = n / i; </div><div class="line">          <span class="keyword">if</span> (flag) <span class="built_in">printf</span>(<span class="string">"%d"</span>, i);</div><div class="line">          <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"*%d"</span>, i);</div><div class="line">          flag = <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">break</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">      <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>开始打素数表的时候打错了……</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -110,7 +118,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/Hdu/">Hdu</a>
   </div>
 
 </div>
@@ -215,31 +223,27 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/S/" title="S">S<sup>70</sup></a></li>
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>66</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DP/" title="DP">DP<sup>42</sup></a></li>
+				<li><a href="/tags/DP/" title="DP">DP<sup>48</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>39</sup></a></li>
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>44</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>34</sup></a></li>
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>43</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Uva/" title="Uva">Uva<sup>24</sup></a></li>
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>25</sup></a></li>
 			
 		
 			
@@ -251,7 +255,11 @@
 			
 		
 			
-				<li><a href="/tags/Math/" title="Math">Math<sup>14</sup></a></li>
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>15</sup></a></li>
 			
 		
 			
@@ -260,10 +268,6 @@
 		
 			
 				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>13</sup></a></li>
 			
 		
 			
@@ -279,11 +283,7 @@
 			
 		
 			
-				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+				<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>5</sup></a></li>
 			
 		
 			
@@ -291,7 +291,15 @@
 			
 		
 			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
 			
 		
 		</ul>

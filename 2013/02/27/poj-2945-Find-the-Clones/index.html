@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="DescriptionInputOutputSample InputSample OutputHint">
-<meta name="keywords" content="S">
+    <meta name="description" content="Find the ClonesTime Limit: 5000MS           Memory Limit: 65536KTotal Submissions: 6265           Accepted: 2328 DescriptionDoubleville, a small town in Texas, was attacked by the aliens. They have ab">
+<meta name="keywords" content="POJ,Data Structure">
 <meta property="og:type" content="article">
 <meta property="og:title" content="poj 2945 Find the Clones">
 <meta property="og:url" content="liuxueyang.github.io/2013/02/27/poj-2945-Find-the-Clones/index.html">
 <meta property="og:site_name" content="黑历史">
-<meta property="og:description" content="DescriptionInputOutputSample InputSample OutputHint">
-<meta property="og:updated_time" content="2017-04-11T03:26:37.000Z">
+<meta property="og:description" content="Find the ClonesTime Limit: 5000MS           Memory Limit: 65536KTotal Submissions: 6265           Accepted: 2328 DescriptionDoubleville, a small town in Texas, was attacked by the aliens. They have ab">
+<meta property="og:updated_time" content="2017-04-11T06:18:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="poj 2945 Find the Clones">
-<meta name="twitter:description" content="DescriptionInputOutputSample InputSample OutputHint">
+<meta name="twitter:description" content="Find the ClonesTime Limit: 5000MS           Memory Limit: 65536KTotal Submissions: 6265           Accepted: 2328 DescriptionDoubleville, a small town in Texas, was attacked by the aliens. They have ab">
 
     
     <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
@@ -101,7 +101,19 @@
 		
 		</div>
 		
-		<p>Description<br>Input<br>Output<br>Sample Input<br>Sample Output<br>Hint</p>
+		<p>Find the Clones<br>Time Limit: 5000MS           Memory Limit: 65536K<br>Total Submissions: 6265           Accepted: 2328</p>
+<p>Description<br>Doubleville, a small town in Texas, was attacked by the aliens. They have abducted some of the residents and taken them to the a spaceship orbiting around earth. After some (quite unpleasant) human experiments, the aliens cloned the victims, and released multiple copies of them back in Doubleville. So now it might happen that there are 6 identical person named Hugh F. Bumblebee: the original person and its 5 copies. The Federal Bureau of Unauthorized Cloning (FBUC) charged you with the task of determining how many copies were made from each person. To help you in your task, FBUC have collected a DNA sample from each person. All copies of the same person have the same DNA sequence, and different people have different sequences (we know that there are no identical twins in the town, this is not an issue).</p>
+<p>Input<br>The input contains several blocks of test cases. Each case begins with a line containing two integers: the number 1 ≤ n ≤ 20000 people, and the length 1 ≤ m ≤ 20 of the DNA sequences. The next n lines contain the DNA sequences: each line contains a sequence of m characters, where each character is either <code>A&#39;,</code>C’, <code>G&#39; or</code>T’. </p>
+<p>The input is terminated by a block with n = m = 0 .</p>
+<p>Output<br>For each test case, you have to output n lines, each line containing a single integer. The first line contains the number of different people that were not copied. The second line contains the number of people that were copied only once (i.e., there are two identical copies for each such person.) The third line contains the number of people that are present in three identical copies, and so on: the i -th line contains the number of persons that are present in i identical copies. For example, if there are 11 samples, one of them is from John Smith, and all the others are from copies of Joe Foobar, then you have to print <code>1&#39; in the first andthe tenth lines, and</code>0’ in all the other lines.</p>
+<p>Sample Input</p>
+<p>9 6<br>AAAAAA<br>ACACAC<br>GTTTTG<br>ACACAC<br>GTTTTG<br>ACACAC<br>ACACAC<br>TCCCCC<br>TCCCCC<br>0 0</p>
+<p>Sample Output</p>
+<p>1<br>2<br>0<br>1<br>0<br>0<br>0<br>0<br>0</p>
+<p>Hint<br>Huge input file, ‘scanf’ recommended to avoid TLE.</p>
+<p>用字典树做的，方法比较笨。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> sonnum = <span class="number">26</span>, base = <span class="string">'A'</span>;</div><div class="line"><span class="keyword">char</span> a[<span class="number">20000</span>+<span class="number">10</span>][<span class="number">25</span>];</div><div class="line"><span class="keyword">int</span> b[<span class="number">20000</span>+<span class="number">10</span>];</div><div class="line"><span class="keyword">struct</span> Trie</div><div class="line">&#123;</div><div class="line">  <span class="keyword">int</span> num; <span class="keyword">bool</span> terminal; <span class="keyword">int</span> endsum; </div><div class="line">  Trie *son[sonnum];</div><div class="line">&#125;;</div><div class="line"><span class="function">Trie *<span class="title">NewTrie</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  Trie *temp = <span class="keyword">new</span> Trie;</div><div class="line">  temp-&gt;num = <span class="number">1</span>; temp-&gt;terminal = <span class="literal">false</span>; temp-&gt;endsum = <span class="number">0</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sonnum; ++i) temp-&gt;son[i] = <span class="literal">NULL</span>;</div><div class="line">  <span class="keyword">return</span> temp;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(Trie *pnt, <span class="keyword">char</span> *s, <span class="keyword">int</span> len)</span></span></div><div class="line">&#123;</div><div class="line">  Trie *temp = pnt;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i)</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">if</span> (temp-&gt;son[s[i]-base] == <span class="literal">NULL</span>) temp-&gt;son[s[i]-base] = NewTrie();</div><div class="line">    <span class="keyword">else</span> temp-&gt;son[s[i]-base]-&gt;num++;</div><div class="line">    temp = temp-&gt;son[s[i]-base];</div><div class="line">  &#125;</div><div class="line">  temp-&gt;endsum++; temp-&gt;terminal = <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Find</span><span class="params">(Trie *pnt, <span class="keyword">char</span> *s, <span class="keyword">int</span> len)</span></span></div><div class="line">&#123;</div><div class="line">  Trie *temp = pnt;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i)</div><div class="line">    temp = temp-&gt;son[s[i]-base];</div><div class="line">  <span class="keyword">if</span> (temp-&gt;endsum == <span class="number">1</span>) b[<span class="number">0</span>]++;</div><div class="line">  <span class="keyword">else</span> </div><div class="line">  &#123;</div><div class="line">    <span class="keyword">if</span> (temp-&gt;terminal == <span class="literal">true</span>)</div><div class="line">    &#123;</div><div class="line">      b[temp-&gt;endsum<span class="number">-1</span>]++;</div><div class="line">      temp-&gt;terminal = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Delete</span><span class="params">(Trie *pnt)</span></span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span> (pnt != <span class="literal">NULL</span>)</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sonnum; ++i) <span class="keyword">if</span> (pnt-&gt;son[i] != <span class="literal">NULL</span>) Delete(pnt-&gt;son[i]);</div><div class="line">    <span class="keyword">delete</span> pnt;</div><div class="line">    pnt = <span class="literal">NULL</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">int</span> n, m;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"poj2956.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">  <span class="keyword">while</span> (<span class="number">1</span>)</div><div class="line">  &#123;</div><div class="line">    Trie *pnt = NewTrie();</div><div class="line">    <span class="built_in">memset</span>(b, <span class="number">0</span>, <span class="keyword">sizeof</span>(b));</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</div><div class="line">    &#123;</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) </div><div class="line">      &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, a[i]);</div><div class="line">        Insert(pnt, a[i], m);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) Find(pnt, a[i], m);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, b[i]);</div><div class="line">    Delete(pnt);</div><div class="line">    <span class="keyword">if</span> (!n) <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>没有优化……应该速度可以更快一点儿。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -110,7 +122,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/POJ/">POJ</a><a href="/tags/Data-Structure/">Data Structure</a>
   </div>
 
 </div>
@@ -215,31 +227,27 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/S/" title="S">S<sup>70</sup></a></li>
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>66</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DP/" title="DP">DP<sup>42</sup></a></li>
+				<li><a href="/tags/DP/" title="DP">DP<sup>48</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>39</sup></a></li>
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>44</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>34</sup></a></li>
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>43</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Uva/" title="Uva">Uva<sup>24</sup></a></li>
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>25</sup></a></li>
 			
 		
 			
@@ -251,7 +259,11 @@
 			
 		
 			
-				<li><a href="/tags/Math/" title="Math">Math<sup>14</sup></a></li>
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>15</sup></a></li>
 			
 		
 			
@@ -260,10 +272,6 @@
 		
 			
 				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>13</sup></a></li>
 			
 		
 			
@@ -279,11 +287,7 @@
 			
 		
 			
-				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+				<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>5</sup></a></li>
 			
 		
 			
@@ -291,7 +295,15 @@
 			
 		
 			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
 			
 		
 		</ul>

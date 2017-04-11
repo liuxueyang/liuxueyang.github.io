@@ -11,14 +11,17 @@
     
 
     
-    <meta name="keywords" content="S">
+    <meta name="description" content="A. Escape from Stonestime limit per test2 secondsmemory limit per test256 megabytesinputstandard inputoutputstandard output Squirrel Liss lived in a forest peacefully, but unexpected trouble happens.">
+<meta name="keywords" content="CodeForces">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CodeForce 264 A. Escape from Stones">
 <meta property="og:url" content="liuxueyang.github.io/2013/01/21/CodeForce-264-A.-Escape-from-Stones/index.html">
 <meta property="og:site_name" content="黑历史">
-<meta property="og:updated_time" content="2017-04-11T03:27:34.000Z">
+<meta property="og:description" content="A. Escape from Stonestime limit per test2 secondsmemory limit per test256 megabytesinputstandard inputoutputstandard output Squirrel Liss lived in a forest peacefully, but unexpected trouble happens.">
+<meta property="og:updated_time" content="2017-04-11T06:29:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CodeForce 264 A. Escape from Stones">
+<meta name="twitter:description" content="A. Escape from Stonestime limit per test2 secondsmemory limit per test256 megabytesinputstandard inputoutputstandard output Squirrel Liss lived in a forest peacefully, but unexpected trouble happens.">
 
     
     <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
@@ -98,7 +101,22 @@
 		
 		</div>
 		
-		  
+		<p>A. Escape from Stones<br>time limit per test<br>2 seconds<br>memory limit per test<br>256 megabytes<br>input<br>standard input<br>output<br>standard output</p>
+<p>Squirrel Liss lived in a forest peacefully, but unexpected trouble happens. Stones fall from a mountain. Initially Squirrel Liss occupies an interval [0, 1]. Next, n stones will fall and Liss will escape from the stones. The stones are numbered from 1 to n in order.</p>
+<p>The stones always fall to the center of Liss’s interval. When Liss occupies the interval [k - d, k + d] and a stone falls to k, she will escape to the left or to the right. If she escapes to the left, her new interval will be [k - d, k]. If she escapes to the right, her new interval will be [k, k + d].</p>
+<p>You are given a string s of length n. If the i-th character of s is “l” or “r”, when the i-th stone falls Liss will escape to the left or to the right, respectively. Find the sequence of stones’ numbers from left to right after all the n stones falls.<br>Input</p>
+<p>The input consists of only one line. The only line contains the string s (1 ≤ |s| ≤ 106). Each character in s will be either “l” or “r”.<br>Output</p>
+<p>Output n lines — on the i-th line you should print the i-th stone’s number from the left.<br>Sample test(s)<br>input</p>
+<p>llrlr</p>
+<p>output</p>
+<p>3<br>5<br>4<br>2<br>1<br>题目链接<a href="http://codeforces.com/contest/264/problem/A" target="_blank" rel="external">http://codeforces.com/contest/264/problem/A</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">char</span> s[<span class="number">1000000</span>+<span class="number">10</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">//freopen("cf264.in", "r", stdin);</span></div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s+<span class="number">1</span>);</div><div class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(s+<span class="number">1</span>);</div><div class="line">    <span class="keyword">int</span> a[len];</div><div class="line">    <span class="keyword">int</span> left = <span class="number">1</span>, right = len; </div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len; ++i)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (s[i] == <span class="string">'l'</span>)</div><div class="line">            a[right--] = i;</div><div class="line">        <span class="keyword">else</span> a[left++] = i; </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len; ++i)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, a[i]);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这道题目不能用暴力做，因为精度不够！看看人家的代码，短小精悍，这题目首先要想明白，抓住问题的关键！</p>
+<p>对了，这里有一个小的trick，输入字符串的时候用的scanf(“%s”, s + 1);这样，以后用的时候就可以通过s[k]访问第k个字符了。但是，以后计算字符串长度的时候得用strlen(s+1)……</p>
+<p>下面是暴力的代码，直接用数学做……不能过</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">char</span> str[<span class="number">1000000</span>+<span class="number">10</span>];</div><div class="line"><span class="keyword">long</span> <span class="keyword">double</span> b[<span class="number">1000000</span>+<span class="number">10</span>];</div><div class="line"><span class="keyword">struct</span> stone</div><div class="line">&#123;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">double</span> data;</div><div class="line">    <span class="keyword">int</span> index;</div><div class="line">&#125;c[<span class="number">1000000</span>+<span class="number">10</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *a, <span class="keyword">const</span> <span class="keyword">void</span> *b)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> (*(stone*)a).data &gt;  (*(stone*)b).data ? <span class="number">1</span> : <span class="number">-1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line"><span class="comment">//    freopen("cf264.in", "r", stdin);</span></div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, str);</div><div class="line">    b[<span class="number">0</span>] = <span class="number">0.0</span>;</div><div class="line">    b[<span class="number">1</span>] = <span class="number">0.5</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; str[i] != <span class="string">'\0'</span>; ++i)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (str[i] == <span class="string">'l'</span>)</div><div class="line">            b[i+<span class="number">2</span>] = b[i+<span class="number">1</span>] - (<span class="built_in">fabs</span>(b[i+<span class="number">1</span>]-b[i]) * <span class="number">0.5</span>);</div><div class="line">        <span class="keyword">else</span> b[i+<span class="number">2</span>] = b[i+<span class="number">1</span>] + (<span class="built_in">fabs</span>(b[i+<span class="number">1</span>]-b[i]) * <span class="number">0.5</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(str);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len + <span class="number">1</span>; ++i)</div><div class="line">    &#123;</div><div class="line">        c[i<span class="number">-1</span>].index = i;</div><div class="line">        c[i<span class="number">-1</span>].data = b[i];</div><div class="line">    &#125;</div><div class="line">    qsort(c, len, <span class="keyword">sizeof</span>(c[<span class="number">0</span>]), cmp);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, c[i].index);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中用到了结构体排序。</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -106,7 +124,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/CodeForces/">CodeForces</a>
   </div>
 
 </div>
@@ -211,31 +229,27 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/S/" title="S">S<sup>70</sup></a></li>
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>66</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DP/" title="DP">DP<sup>42</sup></a></li>
+				<li><a href="/tags/DP/" title="DP">DP<sup>48</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>39</sup></a></li>
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>44</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>34</sup></a></li>
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>43</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Uva/" title="Uva">Uva<sup>24</sup></a></li>
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>25</sup></a></li>
 			
 		
 			
@@ -247,7 +261,11 @@
 			
 		
 			
-				<li><a href="/tags/Math/" title="Math">Math<sup>14</sup></a></li>
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>15</sup></a></li>
 			
 		
 			
@@ -256,10 +274,6 @@
 		
 			
 				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>13</sup></a></li>
 			
 		
 			
@@ -275,11 +289,7 @@
 			
 		
 			
-				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+				<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>5</sup></a></li>
 			
 		
 			
@@ -287,7 +297,15 @@
 			
 		
 			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
 			
 		
 		</ul>

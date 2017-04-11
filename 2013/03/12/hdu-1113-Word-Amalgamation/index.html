@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 1834    Accepted Submission(s): 854">
-<meta name="keywords" content="S">
+    <meta name="description" content="Word Amalgamation Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 1834    Accepted Submission(s): 854 Problem DescriptionIn millions of newspape">
+<meta name="keywords" content="Hdu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hdu 1113 Word Amalgamation">
 <meta property="og:url" content="liuxueyang.github.io/2013/03/12/hdu-1113-Word-Amalgamation/index.html">
 <meta property="og:site_name" content="黑历史">
-<meta property="og:description" content="Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 1834    Accepted Submission(s): 854">
-<meta property="og:updated_time" content="2017-04-11T03:25:16.000Z">
+<meta property="og:description" content="Word Amalgamation Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 1834    Accepted Submission(s): 854 Problem DescriptionIn millions of newspape">
+<meta property="og:updated_time" content="2017-04-11T06:08:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hdu 1113 Word Amalgamation">
-<meta name="twitter:description" content="Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 1834    Accepted Submission(s): 854">
+<meta name="twitter:description" content="Word Amalgamation Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 1834    Accepted Submission(s): 854 Problem DescriptionIn millions of newspape">
 
     
     <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
@@ -101,7 +101,24 @@
 		
 		</div>
 		
-		<p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 1834    Accepted Submission(s): 854</p>
+		<p>Word Amalgamation</p>
+<p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)<br>Total Submission(s): 1834    Accepted Submission(s): 854</p>
+<p>Problem Description<br>In millions of newspapers across the United States there is a word game called Jumble. The object of this game is to solve a riddle, but in order to find the letters that appear in the answer it is necessary to unscramble four words. Your task is to write a program that can unscramble words. </p>
+<p>Input<br>The input contains four parts: </p>
+<ol>
+<li>a dictionary, which consists of at least one and at most 100 words, one per line; </li>
+<li>a line containing XXXXXX, which signals the end of the dictionary; </li>
+<li>one or more scrambled `words’ that you must unscramble, each on a line by itself; and </li>
+<li>another line containing XXXXXX, which signals the end of the file.</li>
+</ol>
+<p>All words, including both dictionary words and scrambled words, consist only of lowercase English letters and will be at least one and at most six characters long. (Note that the sentinel XXXXXX contains uppercase X’s.) The dictionary is not necessarily in sorted order, but each word in the dictionary is unique. </p>
+<p>Output<br>For each scrambled word in the input, output an alphabetical list of all dictionary words that can be formed by rearranging the letters in the scrambled word. Each word in this list must appear on a line by itself. If the list is empty (because no dictionary words can be formed), output the line ``NOT A VALID WORD” instead. In either case, output a line containing six asterisks to signal the end of the list.</p>
+<p>Sample Input<br>tarp given score refund only trap work earn course pepper part XXXXXX resco nfudre aptr sett oresuc XXXXXX</p>
+<p>Sample Output<br>score <strong>**</strong> refund <strong>**</strong> part tarp trap <strong>**</strong> NOT A VALID WORD <strong>**</strong> course <strong>**</strong></p>
+<p>Source<br>Mid-Central USA 1998</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">char</span> dic[<span class="number">100</span>+<span class="number">10</span>][<span class="number">20</span>], wor[<span class="number">20</span>];</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> doc&#123;</div><div class="line">  <span class="keyword">int</span> id; <span class="keyword">char</span> a[<span class="number">20</span>];</div><div class="line">&#125;Doc; Doc dii[<span class="number">100</span>+<span class="number">10</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *a, <span class="keyword">const</span> <span class="keyword">void</span> *b)</span></span>&#123;</div><div class="line">  <span class="keyword">return</span> *(<span class="keyword">char</span>*)a - *(<span class="keyword">char</span> *)b;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp2</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *a, <span class="keyword">const</span> <span class="keyword">void</span> *b)</span></span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">strcmp</span>((<span class="keyword">char</span> *)a, (<span class="keyword">char</span> *)b);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"1113.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">  <span class="keyword">char</span> tem[<span class="number">20</span>]; <span class="keyword">int</span> i = <span class="number">0</span>, n;</div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%s"</span>, tem))&#123;</div><div class="line">    <span class="keyword">if</span> (tem[<span class="number">0</span>] == <span class="string">'X'</span>) <span class="keyword">break</span>;</div><div class="line">    <span class="built_in">strcpy</span>(dic[i], tem); i++;</div><div class="line">  &#125; n = i;</div><div class="line">  qsort(dic, n, <span class="number">20</span>*<span class="keyword">sizeof</span>(<span class="keyword">char</span>), cmp2);</div><div class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; ++i)&#123;</div><div class="line">    <span class="built_in">strcpy</span>(dii[i].a, dic[i]);</div><div class="line">    qsort(dii[i].a, <span class="built_in">strlen</span>(dii[i].a), <span class="keyword">sizeof</span>(<span class="keyword">char</span>), cmp); </div><div class="line">    dii[i].id = i;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%s"</span>, tem))&#123;</div><div class="line">    <span class="keyword">if</span> (tem[<span class="number">0</span>] == <span class="string">'X'</span>) <span class="keyword">break</span>;</div><div class="line">    qsort(tem, <span class="built_in">strlen</span>(tem), <span class="keyword">sizeof</span>(<span class="keyword">char</span>), cmp); <span class="keyword">bool</span> flag = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</div><div class="line">      <span class="keyword">if</span> (!<span class="built_in">strcmp</span>(tem, dii[i].a))&#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, dic[dii[i].id]); flag = <span class="literal">true</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (!flag) <span class="built_in">printf</span>(<span class="string">"NOT A VALID WORD\n"</span>);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"******\n"</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结构体排序……</p>
+<p>理清思路，掌握qsort的用法就ＯＫ，还是卡了很久，原因就是当初没有理清思路啊……想错了</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -110,7 +127,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/Hdu/">Hdu</a>
   </div>
 
 </div>
@@ -215,31 +232,27 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/S/" title="S">S<sup>70</sup></a></li>
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>66</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DP/" title="DP">DP<sup>42</sup></a></li>
+				<li><a href="/tags/DP/" title="DP">DP<sup>48</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>39</sup></a></li>
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>44</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>34</sup></a></li>
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>43</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Uva/" title="Uva">Uva<sup>24</sup></a></li>
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>25</sup></a></li>
 			
 		
 			
@@ -251,7 +264,11 @@
 			
 		
 			
-				<li><a href="/tags/Math/" title="Math">Math<sup>14</sup></a></li>
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>15</sup></a></li>
 			
 		
 			
@@ -260,10 +277,6 @@
 		
 			
 				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>13</sup></a></li>
 			
 		
 			
@@ -279,11 +292,7 @@
 			
 		
 			
-				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+				<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>5</sup></a></li>
 			
 		
 			
@@ -291,7 +300,15 @@
 			
 		
 			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
 			
 		
 		</ul>

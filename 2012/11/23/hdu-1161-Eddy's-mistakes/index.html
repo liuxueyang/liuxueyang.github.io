@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 5189    Accepted Submission(s): 2956">
-<meta name="keywords" content="S">
+    <meta name="description" content="Eddy’s mistakes Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 5189    Accepted Submission(s): 2956 Problem DescriptionEddy usually writes arti">
+<meta name="keywords" content="Hdu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hdu 1161 Eddy's mistakes">
 <meta property="og:url" content="liuxueyang.github.io/2012/11/23/hdu-1161-Eddy's-mistakes/index.html">
 <meta property="og:site_name" content="黑历史">
-<meta property="og:description" content="Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 5189    Accepted Submission(s): 2956">
-<meta property="og:updated_time" content="2017-04-11T03:30:12.000Z">
+<meta property="og:description" content="Eddy’s mistakes Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 5189    Accepted Submission(s): 2956 Problem DescriptionEddy usually writes arti">
+<meta property="og:updated_time" content="2017-04-11T06:44:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hdu 1161 Eddy's mistakes">
-<meta name="twitter:description" content="Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 5189    Accepted Submission(s): 2956">
+<meta name="twitter:description" content="Eddy’s mistakes Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 5189    Accepted Submission(s): 2956 Problem DescriptionEddy usually writes arti">
 
     
     <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
@@ -101,7 +101,15 @@
 		
 		</div>
 		
-		<p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 5189    Accepted Submission(s): 2956</p>
+		<p>Eddy’s mistakes</p>
+<p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)<br>Total Submission(s): 5189    Accepted Submission(s): 2956</p>
+<p>Problem Description<br>Eddy usually writes articles ,but he likes mixing the English letter uses, for example “computer science” is written frequently “coMpUtEr scIeNce” by him, this mistakes lets Eddy’s English teacher be extremely discontentment.Now please you to write a procedure to be able in the Bob article English letter to turn completely the small letter. </p>
+<p>Input<br>The input contains several test cases.each line consists a test case，Expressed Eddy writes in an article , by letter, blank space,numeral as well as each kind of punctuation<br>composition, the writing length does not surpass 1000 characters.</p>
+<p>Output<br>For each test case, you should output an only line, after namely the result of transforms the lowercase letter.</p>
+<p>Sample Input<br>weLcOmE tO HDOj Acm 2005!</p>
+<p>Sample Output<br>welcome to hdoj acm 2005!</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">char</span> a[<span class="number">1000</span>+<span class="number">10</span>];</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (gets(a)!=<span class="literal">NULL</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; a[i] != <span class="string">'\0'</span>; ++i)<span class="keyword">if</span>(<span class="built_in">isalpha</span>(a[i]))a[i]=<span class="built_in">tolower</span>(a[i]);</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>水题。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -110,7 +118,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/Hdu/">Hdu</a>
   </div>
 
 </div>
@@ -215,31 +223,27 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/S/" title="S">S<sup>70</sup></a></li>
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>66</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DP/" title="DP">DP<sup>42</sup></a></li>
+				<li><a href="/tags/DP/" title="DP">DP<sup>48</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>39</sup></a></li>
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>44</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>34</sup></a></li>
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>43</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Uva/" title="Uva">Uva<sup>24</sup></a></li>
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>25</sup></a></li>
 			
 		
 			
@@ -251,7 +255,11 @@
 			
 		
 			
-				<li><a href="/tags/Math/" title="Math">Math<sup>14</sup></a></li>
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>15</sup></a></li>
 			
 		
 			
@@ -260,10 +268,6 @@
 		
 			
 				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>13</sup></a></li>
 			
 		
 			
@@ -279,11 +283,7 @@
 			
 		
 			
-				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+				<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>5</sup></a></li>
 			
 		
 			
@@ -291,7 +291,15 @@
 			
 		
 			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
 			
 		
 		</ul>

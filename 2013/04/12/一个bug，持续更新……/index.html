@@ -11,14 +11,17 @@
     
 
     
-    <meta name="keywords" content="S">
+    <meta name="description" content="scanf(“%d%d”, &amp;amp;n, &amp;amp;mz[n]); 这样的写法是不对的…… 全局变量不要和局部变量命名成相同的名字，尤其是循环变量不要设置成全局的，很危险。 数组要初始化，尤其是多case的时候 写代码的时候要全神贯注，千万不要因为一时的疏忽，出现一个最难发现的最弱智的bug…… 还有，memset(a, 1, sizeof(a));貌似有错……慎用。注：这货只能用4个字节都相">
+<meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一个bug，持续更新……">
 <meta property="og:url" content="liuxueyang.github.io/2013/04/12/一个bug，持续更新……/index.html">
 <meta property="og:site_name" content="黑历史">
-<meta property="og:updated_time" content="2017-04-11T02:19:53.000Z">
+<meta property="og:description" content="scanf(“%d%d”, &amp;amp;n, &amp;amp;mz[n]); 这样的写法是不对的…… 全局变量不要和局部变量命名成相同的名字，尤其是循环变量不要设置成全局的，很危险。 数组要初始化，尤其是多case的时候 写代码的时候要全神贯注，千万不要因为一时的疏忽，出现一个最难发现的最弱智的bug…… 还有，memset(a, 1, sizeof(a));貌似有错……慎用。注：这货只能用4个字节都相">
+<meta property="og:updated_time" content="2017-04-11T05:35:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个bug，持续更新……">
+<meta name="twitter:description" content="scanf(“%d%d”, &amp;amp;n, &amp;amp;mz[n]); 这样的写法是不对的…… 全局变量不要和局部变量命名成相同的名字，尤其是循环变量不要设置成全局的，很危险。 数组要初始化，尤其是多case的时候 写代码的时候要全神贯注，千万不要因为一时的疏忽，出现一个最难发现的最弱智的bug…… 还有，memset(a, 1, sizeof(a));貌似有错……慎用。注：这货只能用4个字节都相">
 
     
     <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
@@ -98,16 +101,27 @@
 		
 		</div>
 		
-		  
+		<ul>
+<li>scanf(“%d%d”, &amp;n, &amp;mz[n]); 这样的写法是不对的……</li>
+<li>全局变量不要和局部变量命名成相同的名字，尤其是循环变量不要设置成全局的，很危险。</li>
+<li>数组要初始化，尤其是多case的时候</li>
+<li>写代码的时候要全神贯注，千万不要因为一时的疏忽，出现一个最难发现的最弱智的bug……</li>
+<li>还有，memset(a, 1, sizeof(a));貌似有错……慎用。注：这货只能用4个字节都相同的整数！比如，0x7f7f7f7f 或者 0x3f3f3f3f</li>
+<li>有一点最受不了的就是：为什么最近输入老是忘了写取地址符？果然是敲代码敲得少了么……</li>
+<li>输入格式，要用%lld还是%I64d，也可以用cin,cout如果输入量比较少的话。</li>
+<li>D = 3；1 &lt;&lt; D - 1 的结果是什么？注意优先级！有位运算的需要加上括号！</li>
+<li>==不要写成=，以前以为自己肯定不会犯这种错误，谁知道……唉</li>
+<li>初始化技术变量，尤其是多case的时候</li>
+<li>当多个case运行不对的时候，尝试一下只输入一个case，因为可能是多case的过程中，变量没有初始化</li>
+<li>尤其是开数组的时候，千万不能把大小写错了，或者，当出现运行都出现系统错误的时候，可能是数组越界了，看一下开数组的时候是不是开小了，或者是数字打错了。</li>
+<li>代码错了，自己想办法出数据测试，其实是一种十分重要的能力。</li>
+<li>写线段树的时候，计算中点的时候，int M = L + (R-L)&gt;&gt;1；这么写是不对的。。至于为什么，我也不知道。。反正因为这货卡了好久== 直接这么写就行：int M = L+(R-L)/2；</li>
+</ul>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/S/">S</a>
-  </div>
 
 </div>
 
@@ -211,31 +225,27 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/S/" title="S">S<sup>70</sup></a></li>
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>66</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DP/" title="DP">DP<sup>42</sup></a></li>
+				<li><a href="/tags/DP/" title="DP">DP<sup>48</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>39</sup></a></li>
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>44</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>34</sup></a></li>
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>43</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Uva/" title="Uva">Uva<sup>24</sup></a></li>
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>25</sup></a></li>
 			
 		
 			
@@ -247,7 +257,11 @@
 			
 		
 			
-				<li><a href="/tags/Math/" title="Math">Math<sup>14</sup></a></li>
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>15</sup></a></li>
 			
 		
 			
@@ -256,10 +270,6 @@
 		
 			
 				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>13</sup></a></li>
 			
 		
 			
@@ -275,11 +285,7 @@
 			
 		
 			
-				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+				<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>5</sup></a></li>
 			
 		
 			
@@ -287,7 +293,15 @@
 			
 		
 			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
 			
 		
 		</ul>

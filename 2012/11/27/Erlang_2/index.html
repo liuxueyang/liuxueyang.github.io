@@ -12,13 +12,13 @@
 
     
     <meta name="description" content="1.函数举个例子：判断一个数字是奇数还是偶数 123456789-module(rev).-export([even/1]).even(Value) -&amp;gt;    if         Value rem 2 == 1 -&amp;gt; odd;        Value rem 2 == 0 -&amp;gt; evenend. 文件名和模块名要相同。在终端中引用函数的时候，先编译，c(rev). 然后引">
-<meta name="keywords" content="S">
+<meta name="keywords" content="Erlang">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Erlang_2">
 <meta property="og:url" content="liuxueyang.github.io/2012/11/27/Erlang_2/index.html">
 <meta property="og:site_name" content="黑历史">
 <meta property="og:description" content="1.函数举个例子：判断一个数字是奇数还是偶数 123456789-module(rev).-export([even/1]).even(Value) -&amp;gt;    if         Value rem 2 == 1 -&amp;gt; odd;        Value rem 2 == 0 -&amp;gt; evenend. 文件名和模块名要相同。在终端中引用函数的时候，先编译，c(rev). 然后引">
-<meta property="og:updated_time" content="2017-04-11T03:29:50.000Z">
+<meta property="og:updated_time" content="2017-04-11T06:43:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Erlang_2">
 <meta name="twitter:description" content="1.函数举个例子：判断一个数字是奇数还是偶数 123456789-module(rev).-export([even/1]).even(Value) -&amp;gt;    if         Value rem 2 == 1 -&amp;gt; odd;        Value rem 2 == 0 -&amp;gt; evenend. 文件名和模块名要相同。在终端中引用函数的时候，先编译，c(rev). 然后引">
@@ -102,9 +102,9 @@
 		</div>
 		
 		<p>1.函数<br>举个例子：判断一个数字是奇数还是偶数</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">-<span class="keyword">module</span>(rev).</div><div class="line">-<span class="keyword">export</span>([even/<span class="number">1</span>]).</div><div class="line"></div><div class="line">even(Value) -&gt;</div><div class="line">    <span class="keyword">if</span> </div><div class="line">        Value rem <span class="number">2</span> == <span class="number">1</span> -&gt; odd;</div><div class="line">        Value rem <span class="number">2</span> == <span class="number">0</span> -&gt; even</div><div class="line">end.</div></pre></td></tr></table></figure>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">-module</span><span class="params">(rev)</span>.</div><div class="line"><span class="keyword">-export</span><span class="params">([even/<span class="number">1</span>])</span>.</div><div class="line"></div><div class="line"><span class="function"><span class="title">even</span><span class="params">(Value)</span> -&gt;</span></div><div class="line">    <span class="keyword">if</span> </div><div class="line">        Value <span class="keyword">rem</span> <span class="number">2</span> == <span class="number">1</span> -&gt; odd;</div><div class="line">        Value <span class="keyword">rem</span> <span class="number">2</span> == <span class="number">0</span> -&gt; even</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
 <p>文件名和模块名要相同。在终端中引用函数的时候，先编译，c(rev). 然后引用函数 rev:even(N).  其中N是一个已经赋值的变量。<br>上面的函数的另一种写法：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">-<span class="keyword">module</span>(rev).</div><div class="line">-<span class="keyword">export</span>([even/<span class="number">1</span>]).</div><div class="line"></div><div class="line">even(Value) -&gt;</div><div class="line">    <span class="keyword">case</span> Value rem <span class="number">2</span> of</div><div class="line">        <span class="number">1</span> -&gt; odd;</div><div class="line">        <span class="number">0</span> -&gt; even</div><div class="line">    end.</div></pre></td></tr></table></figure>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">-module</span><span class="params">(rev)</span>.</div><div class="line"><span class="keyword">-export</span><span class="params">([even/<span class="number">1</span>])</span>.</div><div class="line"></div><div class="line"><span class="function"><span class="title">even</span><span class="params">(Value)</span> -&gt;</span></div><div class="line">    <span class="keyword">case</span> Value <span class="keyword">rem</span> <span class="number">2</span> <span class="keyword">of</span></div><div class="line">        <span class="number">1</span> -&gt; odd;</div><div class="line">        <span class="number">0</span> -&gt; even</div><div class="line">    <span class="keyword">end</span>.</div></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -113,7 +113,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/Erlang/">Erlang</a>
   </div>
 
 </div>
@@ -218,31 +218,27 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/S/" title="S">S<sup>70</sup></a></li>
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>66</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DP/" title="DP">DP<sup>42</sup></a></li>
+				<li><a href="/tags/DP/" title="DP">DP<sup>48</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>39</sup></a></li>
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>44</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>34</sup></a></li>
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>43</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Uva/" title="Uva">Uva<sup>24</sup></a></li>
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>25</sup></a></li>
 			
 		
 			
@@ -254,7 +250,11 @@
 			
 		
 			
-				<li><a href="/tags/Math/" title="Math">Math<sup>14</sup></a></li>
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>15</sup></a></li>
 			
 		
 			
@@ -263,10 +263,6 @@
 		
 			
 				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>13</sup></a></li>
 			
 		
 			
@@ -282,11 +278,7 @@
 			
 		
 			
-				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+				<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>5</sup></a></li>
 			
 		
 			
@@ -294,7 +286,15 @@
 			
 		
 			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
 			
 		
 		</ul>

@@ -11,14 +11,17 @@
     
 
     
-    <meta name="keywords" content="S">
+    <meta name="description" content="A. Beautiful Yeartime limit per test2 secondsmemory limit per test256 megabytesinputstandard inputoutputstandard output It seems like the year of 2013 came only yesterday. Do you know a curious fact?">
+<meta name="keywords" content="CodeForces">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CF271 A. Beautiful Year">
 <meta property="og:url" content="liuxueyang.github.io/2013/02/15/CF271-A.-Beautiful-Year/index.html">
 <meta property="og:site_name" content="黑历史">
-<meta property="og:updated_time" content="2017-04-11T03:26:58.000Z">
+<meta property="og:description" content="A. Beautiful Yeartime limit per test2 secondsmemory limit per test256 megabytesinputstandard inputoutputstandard output It seems like the year of 2013 came only yesterday. Do you know a curious fact?">
+<meta property="og:updated_time" content="2017-04-11T06:20:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF271 A. Beautiful Year">
+<meta name="twitter:description" content="A. Beautiful Yeartime limit per test2 secondsmemory limit per test256 megabytesinputstandard inputoutputstandard output It seems like the year of 2013 came only yesterday. Do you know a curious fact?">
 
     
     <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
@@ -98,7 +101,23 @@
 		
 		</div>
 		
-		  
+		<p>A. Beautiful Year<br>time limit per test<br>2 seconds<br>memory limit per test<br>256 megabytes<br>input<br>standard input<br>output<br>standard output</p>
+<p>It seems like the year of 2013 came only yesterday. Do you know a curious fact? The year of 2013 is the first year after the old 1987 with only distinct digits.</p>
+<p>Now you are suggested to solve the following problem: given a year number, find the minimum year number which is strictly larger than the given one and has only distinct digits.<br>Input</p>
+<p>The single line contains integer y (1000 ≤ y ≤ 9000) — the year number.<br>Output</p>
+<p>Print a single integer — the minimum year number that is strictly larger than y and all it’s digits are distinct. It is guaranteed that the answer exists.<br>Sample test(s)<br>input</p>
+<p>1987</p>
+<p>output</p>
+<p>2013</p>
+<p>input</p>
+<p>2013</p>
+<p>output</p>
+<p>2014</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">judge</span><span class="params">(<span class="keyword">int</span> n)</span></span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">int</span> a[<span class="number">10</span>];</div><div class="line">  <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span>(a));</div><div class="line">  <span class="keyword">int</span> k = <span class="number">1</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; ++i)</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">if</span> (a[(n/k)%<span class="number">10</span>] == <span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">      a[(n/k)%<span class="number">10</span>] = <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    k *= <span class="number">10</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">int</span> y;</div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;y))</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; ; ++i)</div><div class="line">    &#123;</div><div class="line">      <span class="keyword">if</span> (judge(y+i))</div><div class="line">      &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, y+i); <span class="keyword">break</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>天下没有水题……</p>
+<p>先看清题目意思，然后认真快速敲代码就可以了。</p>
+<p>意思是给出一个年份，求出严格比它大的，并且这个年份的四个数字互不相同的最小年份，年份的范围是[1000, 9000]</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -106,7 +125,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/CodeForces/">CodeForces</a>
   </div>
 
 </div>
@@ -211,31 +230,27 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/S/" title="S">S<sup>70</sup></a></li>
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>66</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DP/" title="DP">DP<sup>42</sup></a></li>
+				<li><a href="/tags/DP/" title="DP">DP<sup>48</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>39</sup></a></li>
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>44</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>34</sup></a></li>
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>43</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Uva/" title="Uva">Uva<sup>24</sup></a></li>
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>25</sup></a></li>
 			
 		
 			
@@ -247,7 +262,11 @@
 			
 		
 			
-				<li><a href="/tags/Math/" title="Math">Math<sup>14</sup></a></li>
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>15</sup></a></li>
 			
 		
 			
@@ -256,10 +275,6 @@
 		
 			
 				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>13</sup></a></li>
 			
 		
 			
@@ -275,11 +290,7 @@
 			
 		
 			
-				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+				<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>5</sup></a></li>
 			
 		
 			
@@ -287,7 +298,15 @@
 			
 		
 			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
 			
 		
 		</ul>

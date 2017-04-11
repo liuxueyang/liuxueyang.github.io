@@ -11,14 +11,17 @@
     
 
     
-    <meta name="keywords" content="S">
+    <meta name="description" content="A - TeamTime Limit:2000MS     Memory Limit:262144KB     64bit IO Format:%I64d &amp;amp; %I64uSubmit Status Practice CodeForces 231A Description One day three best friends Petya, Vasya and Tonya decided to">
+<meta name="keywords" content="CodeForces">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CF 231A Team">
 <meta property="og:url" content="liuxueyang.github.io/2013/03/10/CF-231A-Team/index.html">
 <meta property="og:site_name" content="黑历史">
-<meta property="og:updated_time" content="2017-04-11T03:25:34.000Z">
+<meta property="og:description" content="A - TeamTime Limit:2000MS     Memory Limit:262144KB     64bit IO Format:%I64d &amp;amp; %I64uSubmit Status Practice CodeForces 231A Description One day three best friends Petya, Vasya and Tonya decided to">
+<meta property="og:updated_time" content="2017-04-11T06:11:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF 231A Team">
+<meta name="twitter:description" content="A - TeamTime Limit:2000MS     Memory Limit:262144KB     64bit IO Format:%I64d &amp;amp; %I64uSubmit Status Practice CodeForces 231A Description One day three best friends Petya, Vasya and Tonya decided to">
 
     
     <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
@@ -98,7 +101,25 @@
 		
 		</div>
 		
-		  
+		<p>A - Team<br>Time Limit:2000MS     Memory Limit:262144KB     64bit IO Format:%I64d &amp; %I64u<br>Submit Status Practice CodeForces 231A</p>
+<p>Description</p>
+<p>One day three best friends Petya, Vasya and Tonya decided to form a team and take part in programming contests. Participants are usually offered several problems during programming contests. Long before the start the friends decided that they will implement a problem if at least two of them are sure about the solution. Otherwise, the friends won’t write the problem’s solution.</p>
+<p>This contest offers n problems to the participants. For each problem we know, which friend is sure about the solution. Help the friends find the number of problems for which they will write a solution.</p>
+<p>Input</p>
+<p>The first input line contains a single integer n (1 ≤ n ≤ 1000) — the number of problems in the contest. Then n lines contain three integers each, each integer is either 0 or 1. If the first number in the line equals 1, then Petya is sure about the problem’s solution, otherwise he isn’t sure. The second number shows Vasya’s view on the solution, the third number shows Tonya’s view. The numbers on the lines are separated by spaces.</p>
+<p>Output</p>
+<p>Print a single integer — the number of problems the friends will implement on the contest.</p>
+<p>Sample Input<br>Input</p>
+<p>3<br>1 1 0<br>1 1 1<br>1 0 0</p>
+<p>Output</p>
+<p>2</p>
+<p>Input</p>
+<p>2<br>1 0 0<br>0 1 1</p>
+<p>Output</p>
+<p>1</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">  <span class="keyword">int</span> n, cnt = <span class="number">0</span>, t; </div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n))&#123;</div><div class="line">    cnt = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</div><div class="line">      <span class="keyword">int</span> cmt = <span class="number">0</span>;</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t); <span class="keyword">if</span> (t) cmt++;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span> (cmt &gt; <span class="number">1</span>) cnt++;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, cnt);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>简单题，木有卡……</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -106,7 +127,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/CodeForces/">CodeForces</a>
   </div>
 
 </div>
@@ -211,31 +232,27 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/S/" title="S">S<sup>70</sup></a></li>
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>66</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DP/" title="DP">DP<sup>42</sup></a></li>
+				<li><a href="/tags/DP/" title="DP">DP<sup>48</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>39</sup></a></li>
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>44</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>34</sup></a></li>
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>43</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Uva/" title="Uva">Uva<sup>24</sup></a></li>
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>25</sup></a></li>
 			
 		
 			
@@ -247,7 +264,11 @@
 			
 		
 			
-				<li><a href="/tags/Math/" title="Math">Math<sup>14</sup></a></li>
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>15</sup></a></li>
 			
 		
 			
@@ -256,10 +277,6 @@
 		
 			
 				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>13</sup></a></li>
 			
 		
 			
@@ -275,11 +292,7 @@
 			
 		
 			
-				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+				<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>5</sup></a></li>
 			
 		
 			
@@ -287,7 +300,15 @@
 			
 		
 			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
 			
 		
 		</ul>

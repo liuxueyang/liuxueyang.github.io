@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 6841    Accepted Submission(s): 3375">
-<meta name="keywords" content="S">
+    <meta name="description" content="Piggy-Bank Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 6841    Accepted Submission(s): 3375 Problem DescriptionBefore ACM can do anything, a">
+<meta name="keywords" content="DP,Hdu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hdu 1114 Piggy-Bank 完全背包">
 <meta property="og:url" content="liuxueyang.github.io/2013/03/28/hdu-1114-Piggy-Bank-完全背包/index.html">
 <meta property="og:site_name" content="黑历史">
-<meta property="og:description" content="Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 6841    Accepted Submission(s): 3375">
-<meta property="og:updated_time" content="2017-04-11T03:23:26.000Z">
+<meta property="og:description" content="Piggy-Bank Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 6841    Accepted Submission(s): 3375 Problem DescriptionBefore ACM can do anything, a">
+<meta property="og:updated_time" content="2017-04-11T05:44:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hdu 1114 Piggy-Bank 完全背包">
-<meta name="twitter:description" content="Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 6841    Accepted Submission(s): 3375">
+<meta name="twitter:description" content="Piggy-Bank Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 6841    Accepted Submission(s): 3375 Problem DescriptionBefore ACM can do anything, a">
 
     
     <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
@@ -101,7 +101,22 @@
 		
 		</div>
 		
-		<p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 6841    Accepted Submission(s): 3375</p>
+		<p>Piggy-Bank</p>
+<p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)<br>Total Submission(s): 6841    Accepted Submission(s): 3375</p>
+<p>Problem Description<br>Before ACM can do anything, a budget must be prepared and the necessary financial support obtained. The main income for this action comes from Irreversibly Bound Money (IBM). The idea behind is simple. Whenever some ACM member has any small money, he takes all the coins and throws them into a piggy-bank. You know that this process is irreversible, the coins cannot be removed without breaking the pig. After a sufficiently long time, there should be enough cash in the piggy-bank to pay everything that needs to be paid. </p>
+<p>But there is a big problem with piggy-banks. It is not possible to determine how much money is inside. So we might break the pig into pieces only to find out that there is not enough money. Clearly, we want to avoid this unpleasant situation. The only possibility is to weigh the piggy-bank and try to guess how many coins are inside. Assume that we are able to determine the weight of the pig exactly and that we know the weights of all coins of a given currency. Then there is some minimum amount of money in the piggy-bank that we can guarantee. Your task is to find out this worst case and determine the minimum amount of cash inside the piggy-bank. We need your help. No more prematurely broken pigs! </p>
+<p>Input<br>The input consists of T test cases. The number of them (T) is given on the first line of the input file. Each test case begins with a line containing two integers E and F. They indicate the weight of an empty pig and of the pig filled with coins. Both weights are given in grams. No pig will weigh more than 10 kg, that means 1 &lt;= E &lt;= F &lt;= 10000. On the second line of each test case, there is an integer number N (1 &lt;= N &lt;= 500) that gives the number of various coins used in the given currency. Following this are exactly N lines, each specifying one coin type. These lines contain two integers each, Pand W (1 &lt;= P &lt;= 50000, 1 &lt;= W &lt;=10000). P is the value of the coin in monetary units, W is it’s weight in grams. </p>
+<p>Output<br>Print exactly one line of output for each test case. The line must contain the sentence “The minimum amount of money in the piggy-bank is X.” where X is the minimum amount of money that can be achieved using coins with the given total weight. If the weight cannot be reached exactly, print a line “This is impossible.”. </p>
+<p>Sample Input<br>3 10 110 2 1 1 30 50 10 110 2 1 1 50 30 1 6 2 10 3 20 4</p>
+<p>Sample Output<br>The minimum amount of money in the piggy-bank is 60. The minimum amount of money in the piggy-bank is 100. This is impossible.</p>
+<p>完全背包，只不过要求的是最小值，同时也要把背包装满，这就要理解一下当要求把背包装满的时候，如何去初始化了。这里我把除了f[0]以外的所有ｆ的值都初始化为ＭＡＸ，这样的话，因为我每次都求的是最小值，所以呢，如果背包被装满了，最后的f[Ｖ]一定是比ＭＡＸ小的，这样就ＯＫ了。<br>但是还有一个困惑，为什么初始化为600000000就得到0呢？数组ｆ里面所有的都为0……很困惑……</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> f[<span class="number">10000</span>+<span class="number">10</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"1114.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">  <span class="keyword">int</span> E, T, F, N, p[<span class="number">510</span>], w[<span class="number">510</span>];</div><div class="line">  <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</div><div class="line">  <span class="keyword">while</span> (T--)&#123;</div><div class="line">    <span class="built_in">memset</span>(f, MAX, <span class="keyword">sizeof</span>(f));</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;E, &amp;F); <span class="keyword">int</span> V = (F-E);</div><div class="line">    f[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;N);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; ++i) <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, p+i,w+i);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">1</span>; i &lt;= N; ++i)&#123;</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> v = w[i]; v &lt;= V; ++v)&#123;</div><div class="line">        f[v] = min(f[v], f[v-w[i]] + p[i]);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (f[V] &lt; MAX) <span class="built_in">printf</span>(<span class="string">"The minimum amount of money in the piggy-bank is %d.\n"</span>, f[V]);</div><div class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"This is impossible.\n"</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>还有一个困惑，再研究一下……</p>
+<p>另外，还有一个很无语的事情，就是开始把输出的那一句话打错了一个字母，把ｉｎ打成了ｉｓ，ＷＡ了一次……次嗷……幸亏有经验，后来特意仔细查看了一下，没有浪费很多时间……</p>
+<p>唉，发现了，知道为毛线那个会成0了，应该是memset函数的问题，我把内个ＭＡＸ的值改成600000000,然后用ｆｏｒ循环赋值，就ＯＫ了……像这种函数使用的细节，唉，还得注意啊，虽然我知道这里出现了问题，也经常用这个函数，但是还会出现这种问题，像这种基础的用法都没有了解深入……</p>
+<p>另外，看了别人的代码，还有一种想法，就是不把其它的ｆ[]赋值成无穷大，可以赋值成-1，就是一种标记的思想，想想挺有意思的，哈哈，贴代码：（据说是ambition神牛的，虽然我这种菜鸟还不认识人家……汗……）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="keyword">int</span> num[<span class="number">10001</span>],w[<span class="number">500</span>],v[<span class="number">500</span>];</div><div class="line">main()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n,m,e,f,t,i,j;</div><div class="line">    <span class="keyword">for</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);t&gt;<span class="number">0</span>;t--)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;e,&amp;f);</div><div class="line">        m=f-e;</div><div class="line">        <span class="keyword">for</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n),i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;v[i],&amp;w[i]);</div><div class="line">        num[<span class="number">0</span>]=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=m;i++)</div><div class="line">            num[i]=<span class="number">-1</span>;</div><div class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">for</span>(j=w[i];j&lt;=m;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(num[j-w[i]]!=<span class="number">-1</span>&amp;&amp;num[j]!=<span class="number">-1</span>)</div><div class="line">                &#123;<span class="keyword">if</span>(num[j-w[i]]+v[i]&lt;num[j]) num[j]=num[j-w[i]]+v[i];&#125;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(num[j-w[i]]!=<span class="number">-1</span>&amp;&amp;num[j]==<span class="number">-1</span>)</div><div class="line">                &#123;num[j]=num[j-w[i]]+v[i];&#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(num[m]!=<span class="number">-1</span>)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"The minimum amount of money in the piggy-bank is %d.\n"</span>,num[m]);</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="built_in">printf</span>(<span class="string">"This is impossible.\n"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>哈哈，跟我的代码一样长撒……恰巧都是30行……</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -110,7 +125,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/DP/">DP</a><a href="/tags/Hdu/">Hdu</a>
   </div>
 
 </div>
@@ -215,31 +230,27 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/S/" title="S">S<sup>70</sup></a></li>
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>66</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DP/" title="DP">DP<sup>42</sup></a></li>
+				<li><a href="/tags/DP/" title="DP">DP<sup>48</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>39</sup></a></li>
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>44</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>34</sup></a></li>
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>43</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Uva/" title="Uva">Uva<sup>24</sup></a></li>
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>25</sup></a></li>
 			
 		
 			
@@ -251,7 +262,11 @@
 			
 		
 			
-				<li><a href="/tags/Math/" title="Math">Math<sup>14</sup></a></li>
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>15</sup></a></li>
 			
 		
 			
@@ -260,10 +275,6 @@
 		
 			
 				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>13</sup></a></li>
 			
 		
 			
@@ -279,11 +290,7 @@
 			
 		
 			
-				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+				<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>5</sup></a></li>
 			
 		
 			
@@ -291,7 +298,15 @@
 			
 		
 			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
 			
 		
 		</ul>

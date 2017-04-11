@@ -11,14 +11,17 @@
     
 
     
-    <meta name="keywords" content="S">
+    <meta name="description" content="B. Prime Matrixtime limit per test2 secondsmemory limit per test256 megabytesinputstandard inputoutputstandard output You’ve got an n × m matrix. The matrix consists of integers. In one move, you can">
+<meta name="keywords" content="CodeForces">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CF271 B. Prime Matrix">
 <meta property="og:url" content="liuxueyang.github.io/2013/02/15/CF271-B.-Prime-Matrix/index.html">
 <meta property="og:site_name" content="黑历史">
-<meta property="og:updated_time" content="2017-04-11T03:27:00.000Z">
+<meta property="og:description" content="B. Prime Matrixtime limit per test2 secondsmemory limit per test256 megabytesinputstandard inputoutputstandard output You’ve got an n × m matrix. The matrix consists of integers. In one move, you can">
+<meta property="og:updated_time" content="2017-04-11T06:21:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF271 B. Prime Matrix">
+<meta name="twitter:description" content="B. Prime Matrixtime limit per test2 secondsmemory limit per test256 megabytesinputstandard inputoutputstandard output You’ve got an n × m matrix. The matrix consists of integers. In one move, you can">
 
     
     <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
@@ -98,7 +101,37 @@
 		
 		</div>
 		
-		  
+		<p>B. Prime Matrix<br>time limit per test<br>2 seconds<br>memory limit per test<br>256 megabytes<br>input<br>standard input<br>output<br>standard output</p>
+<p>You’ve got an n × m matrix. The matrix consists of integers. In one move, you can apply a single transformation to the matrix: choose an arbitrary element of the matrix and increase it by 1. Each element can be increased an arbitrary number of times.</p>
+<p>You are really curious about prime numbers. Let us remind you that a prime number is a positive integer that has exactly two distinct positive integer divisors: itself and number one. For example, numbers 2, 3, 5 are prime and numbers 1, 4, 6 are not.</p>
+<p>A matrix is prime if at least one of the two following conditions fulfills:</p>
+<pre><code>the matrix has a row with prime numbers only;
+the matrix has a column with prime numbers only;
+</code></pre><p>Your task is to count the minimum number of moves needed to get a prime matrix from the one you’ve got.<br>Input</p>
+<p>The first line contains two integers n, m (1 ≤ n, m ≤ 500) — the number of rows and columns in the matrix, correspondingly.</p>
+<p>Each of the following n lines contains m integers — the initial matrix. All matrix elements are positive integers. All numbers in the initial matrix do not exceed 105.</p>
+<p>The numbers in the lines are separated by single spaces.<br>Output</p>
+<p>Print a single integer — the minimum number of moves needed to get a prime matrix from the one you’ve got. If you’ve got a prime matrix, print 0.<br>Sample test(s)<br>input</p>
+<p>3 3<br>1 2 3<br>5 6 1<br>4 4 1</p>
+<p>output</p>
+<p>1</p>
+<p>input</p>
+<p>2 3<br>4 8 8<br>9 2 9</p>
+<p>output</p>
+<p>3</p>
+<p>input</p>
+<p>2 2<br>1 3<br>4 2</p>
+<p>output</p>
+<p>0</p>
+<p>Note</p>
+<p>In the first sample you need to increase number 1 in cell (1, 1). Thus, the first row will consist of prime numbers: 2, 2, 3.</p>
+<p>In the second sample you need to increase number 8 in cell (1, 2) three times. Thus, the second column will consist of prime numbers: 11, 2.</p>
+<p>In the third sample you don’t have to do anything as the second column already consists of prime numbers: 3, 2.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> M 100000+10</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> a[<span class="number">509</span>][<span class="number">509</span>];</div><div class="line"><span class="keyword">int</span> prime[<span class="number">100000</span>+<span class="number">10</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">int</span> n, m;</div><div class="line">  <span class="comment">//freopen("271b.in", "r", stdin);</span></div><div class="line">  prime[<span class="number">0</span>] = prime[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i * i &lt; M; ++i)</div><div class="line">    <span class="keyword">if</span> (!prime[i])</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = i * <span class="number">2</span>; j &lt; M; j+=i)</div><div class="line">        prime[j] = <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m))</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; ++j)</div><div class="line">      &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i][j]);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = a[i][j]; k &lt; M; ++k)</div><div class="line">          <span class="keyword">if</span> (!prime[k])</div><div class="line">          &#123;</div><div class="line">            a[i][j] = k - a[i][j]; </div><div class="line">            <span class="keyword">break</span>;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">    <span class="keyword">int</span> min = (M)*<span class="number">10000</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</div><div class="line">    &#123;</div><div class="line">      <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; ++j)</div><div class="line">        sum += a[i][j];</div><div class="line">      <span class="keyword">if</span> (sum &lt; min)</div><div class="line">        min = sum;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i)</div><div class="line">    &#123;</div><div class="line">      <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j)</div><div class="line">        sum += a[j][i];</div><div class="line">      <span class="keyword">if</span> (sum &lt; min)</div><div class="line">        min = sum;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, min);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>用到了素数筛选法。</p>
+<p>这道题目关键是要有想法。</p>
+<p>求出矩阵里面所有的数字和比它大的最小的素数的差的绝对值，然后求出每行，每列之和的最小值即可。</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -106,7 +139,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/CodeForces/">CodeForces</a>
   </div>
 
 </div>
@@ -211,31 +244,27 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/S/" title="S">S<sup>70</sup></a></li>
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>66</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DP/" title="DP">DP<sup>42</sup></a></li>
+				<li><a href="/tags/DP/" title="DP">DP<sup>48</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>39</sup></a></li>
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>44</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>34</sup></a></li>
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>43</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Uva/" title="Uva">Uva<sup>24</sup></a></li>
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>25</sup></a></li>
 			
 		
 			
@@ -247,7 +276,11 @@
 			
 		
 			
-				<li><a href="/tags/Math/" title="Math">Math<sup>14</sup></a></li>
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>15</sup></a></li>
 			
 		
 			
@@ -256,10 +289,6 @@
 		
 			
 				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>13</sup></a></li>
 			
 		
 			
@@ -275,11 +304,7 @@
 			
 		
 			
-				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+				<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>5</sup></a></li>
 			
 		
 			
@@ -287,7 +312,15 @@
 			
 		
 			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
 			
 		
 		</ul>

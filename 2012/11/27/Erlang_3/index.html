@@ -12,13 +12,13 @@
 
     
     <meta name="description" content="计算阶乘两种写法： 123456789-module(continue).-export([factor/1]).factor(0) -&amp;gt; 1;factor(N) -&amp;gt;    N * factor(N - 1).%factor(N) when N &amp;gt; 0 -&amp;gt;%    N * factor(N - 1);%factor(0) -&amp;gt; 1. 这里注意，第一种写法，如果输入">
-<meta name="keywords" content="S">
+<meta name="keywords" content="Erlang">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Erlang_3">
 <meta property="og:url" content="liuxueyang.github.io/2012/11/27/Erlang_3/index.html">
 <meta property="og:site_name" content="黑历史">
 <meta property="og:description" content="计算阶乘两种写法： 123456789-module(continue).-export([factor/1]).factor(0) -&amp;gt; 1;factor(N) -&amp;gt;    N * factor(N - 1).%factor(N) when N &amp;gt; 0 -&amp;gt;%    N * factor(N - 1);%factor(0) -&amp;gt; 1. 这里注意，第一种写法，如果输入">
-<meta property="og:updated_time" content="2017-04-11T03:29:44.000Z">
+<meta property="og:updated_time" content="2017-04-11T06:42:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Erlang_3">
 <meta name="twitter:description" content="计算阶乘两种写法： 123456789-module(continue).-export([factor/1]).factor(0) -&amp;gt; 1;factor(N) -&amp;gt;    N * factor(N - 1).%factor(N) when N &amp;gt; 0 -&amp;gt;%    N * factor(N - 1);%factor(0) -&amp;gt; 1. 这里注意，第一种写法，如果输入">
@@ -102,7 +102,7 @@
 		</div>
 		
 		<p>计算阶乘两种写法：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">-module(continue).</div><div class="line">-export([factor/1]).</div><div class="line">factor(0) -&gt; 1;</div><div class="line">factor(N) -&gt;</div><div class="line">    N * factor(N - 1).</div><div class="line">%factor(N) when N &gt; 0 -&gt;</div><div class="line">%    N * factor(N - 1);</div><div class="line">%factor(0) -&gt; 1.</div></pre></td></tr></table></figure>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">-module</span><span class="params">(continue)</span>.</div><div class="line"><span class="keyword">-export</span><span class="params">([factor/<span class="number">1</span>])</span>.</div><div class="line"><span class="function"><span class="title">factor</span><span class="params">(<span class="number">0</span>)</span> -&gt;</span> <span class="number">1</span>;</div><div class="line"><span class="function"><span class="title">factor</span><span class="params">(N)</span> -&gt;</span></div><div class="line">    N * factor(N - <span class="number">1</span>).</div><div class="line"><span class="comment">%factor(N) when N &gt; 0 -&gt;</span></div><div class="line"><span class="comment">%    N * factor(N - 1);</span></div><div class="line"><span class="comment">%factor(0) -&gt; 1.</span></div></pre></td></tr></table></figure>
 <p>这里注意，第一种写法，如果输入的值是负数，那么函数进入死循环，内存溢出，第二种写法输入负数，函数会不执行。<br>内置函数：<br>hd/1 返回列表第一个元素<br>tl/1 返回删除第一个元素后的其余部分<br>length/1 返回列表的长度<br>tuple_size/1 返回元组的数目<br>element/2 返回元组的第n个元素 setlement(2, Tuple).<br>setelement/3 替换元组的第一个元素，并返回新的元组 setelement(3, Tuple, Three).<br>erlang:appedn_element/2 向元组添加一个元素作为最后的元素 erlang:append_element(Tuple, 6).</p>
   
 	</div>
@@ -112,7 +112,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/Erlang/">Erlang</a>
   </div>
 
 </div>
@@ -217,31 +217,27 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/S/" title="S">S<sup>70</sup></a></li>
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>66</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DP/" title="DP">DP<sup>42</sup></a></li>
+				<li><a href="/tags/DP/" title="DP">DP<sup>48</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>39</sup></a></li>
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>44</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>34</sup></a></li>
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>43</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Uva/" title="Uva">Uva<sup>24</sup></a></li>
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>25</sup></a></li>
 			
 		
 			
@@ -253,7 +249,11 @@
 			
 		
 			
-				<li><a href="/tags/Math/" title="Math">Math<sup>14</sup></a></li>
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>15</sup></a></li>
 			
 		
 			
@@ -262,10 +262,6 @@
 		
 			
 				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>13</sup></a></li>
 			
 		
 			
@@ -281,11 +277,7 @@
 			
 		
 			
-				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+				<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>5</sup></a></li>
 			
 		
 			
@@ -293,7 +285,15 @@
 			
 		
 			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
 			
 		
 		</ul>

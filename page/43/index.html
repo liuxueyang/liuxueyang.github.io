@@ -92,7 +92,7 @@
     <div class="article-content">
         
         <p>计算阶乘两种写法：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">-module(continue).</div><div class="line">-export([factor/1]).</div><div class="line">factor(0) -&gt; 1;</div><div class="line">factor(N) -&gt;</div><div class="line">    N * factor(N - 1).</div><div class="line">%factor(N) when N &gt; 0 -&gt;</div><div class="line">%    N * factor(N - 1);</div><div class="line">%factor(0) -&gt; 1.</div></pre></td></tr></table></figure>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">-module</span><span class="params">(continue)</span>.</div><div class="line"><span class="keyword">-export</span><span class="params">([factor/<span class="number">1</span>])</span>.</div><div class="line"><span class="function"><span class="title">factor</span><span class="params">(<span class="number">0</span>)</span> -&gt;</span> <span class="number">1</span>;</div><div class="line"><span class="function"><span class="title">factor</span><span class="params">(N)</span> -&gt;</span></div><div class="line">    N * factor(N - <span class="number">1</span>).</div><div class="line"><span class="comment">%factor(N) when N &gt; 0 -&gt;</span></div><div class="line"><span class="comment">%    N * factor(N - 1);</span></div><div class="line"><span class="comment">%factor(0) -&gt; 1.</span></div></pre></td></tr></table></figure>
 <p>这里注意，第一种写法，如果输入的值是负数，那么函数进入死循环，内存溢出，第二种写法输入负数，函数会不执行。<br>内置函数：<br>hd/1 返回列表第一个元素<br>tl/1 返回删除第一个元素后的其余部分<br>length/1 返回列表的长度<br>tuple_size/1 返回元组的数目<br>element/2 返回元组的第n个元素 setlement(2, Tuple).<br>setelement/3 替换元组的第一个元素，并返回新的元组 setelement(3, Tuple, Three).<br>erlang:appedn_element/2 向元组添加一个元素作为最后的元素 erlang:append_element(Tuple, 6).</p>
 
         
@@ -107,7 +107,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/Erlang/">Erlang</a>
   </div>
 
 </div>
@@ -152,9 +152,9 @@
     <div class="article-content">
         
         <p>1.函数<br>举个例子：判断一个数字是奇数还是偶数</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">-<span class="keyword">module</span>(rev).</div><div class="line">-<span class="keyword">export</span>([even/<span class="number">1</span>]).</div><div class="line"></div><div class="line">even(Value) -&gt;</div><div class="line">    <span class="keyword">if</span> </div><div class="line">        Value rem <span class="number">2</span> == <span class="number">1</span> -&gt; odd;</div><div class="line">        Value rem <span class="number">2</span> == <span class="number">0</span> -&gt; even</div><div class="line">end.</div></pre></td></tr></table></figure>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">-module</span><span class="params">(rev)</span>.</div><div class="line"><span class="keyword">-export</span><span class="params">([even/<span class="number">1</span>])</span>.</div><div class="line"></div><div class="line"><span class="function"><span class="title">even</span><span class="params">(Value)</span> -&gt;</span></div><div class="line">    <span class="keyword">if</span> </div><div class="line">        Value <span class="keyword">rem</span> <span class="number">2</span> == <span class="number">1</span> -&gt; odd;</div><div class="line">        Value <span class="keyword">rem</span> <span class="number">2</span> == <span class="number">0</span> -&gt; even</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
 <p>文件名和模块名要相同。在终端中引用函数的时候，先编译，c(rev). 然后引用函数 rev:even(N).  其中N是一个已经赋值的变量。<br>上面的函数的另一种写法：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">-<span class="keyword">module</span>(rev).</div><div class="line">-<span class="keyword">export</span>([even/<span class="number">1</span>]).</div><div class="line"></div><div class="line">even(Value) -&gt;</div><div class="line">    <span class="keyword">case</span> Value rem <span class="number">2</span> of</div><div class="line">        <span class="number">1</span> -&gt; odd;</div><div class="line">        <span class="number">0</span> -&gt; even</div><div class="line">    end.</div></pre></td></tr></table></figure>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">-module</span><span class="params">(rev)</span>.</div><div class="line"><span class="keyword">-export</span><span class="params">([even/<span class="number">1</span>])</span>.</div><div class="line"></div><div class="line"><span class="function"><span class="title">even</span><span class="params">(Value)</span> -&gt;</span></div><div class="line">    <span class="keyword">case</span> Value <span class="keyword">rem</span> <span class="number">2</span> <span class="keyword">of</span></div><div class="line">        <span class="number">1</span> -&gt; odd;</div><div class="line">        <span class="number">0</span> -&gt; even</div><div class="line">    <span class="keyword">end</span>.</div></pre></td></tr></table></figure>
 
         
         
@@ -168,7 +168,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/Erlang/">Erlang</a>
   </div>
 
 </div>
@@ -288,7 +288,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/Erlang/">Erlang</a>
   </div>
 
 </div>
@@ -332,7 +332,15 @@
 </header>
     <div class="article-content">
         
-        <p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 5189    Accepted Submission(s): 2956</p>
+        <p>Eddy’s mistakes</p>
+<p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)<br>Total Submission(s): 5189    Accepted Submission(s): 2956</p>
+<p>Problem Description<br>Eddy usually writes articles ,but he likes mixing the English letter uses, for example “computer science” is written frequently “coMpUtEr scIeNce” by him, this mistakes lets Eddy’s English teacher be extremely discontentment.Now please you to write a procedure to be able in the Bob article English letter to turn completely the small letter. </p>
+<p>Input<br>The input contains several test cases.each line consists a test case，Expressed Eddy writes in an article , by letter, blank space,numeral as well as each kind of punctuation<br>composition, the writing length does not surpass 1000 characters.</p>
+<p>Output<br>For each test case, you should output an only line, after namely the result of transforms the lowercase letter.</p>
+<p>Sample Input<br>weLcOmE tO HDOj Acm 2005!</p>
+<p>Sample Output<br>welcome to hdoj acm 2005!</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">char</span> a[<span class="number">1000</span>+<span class="number">10</span>];</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (gets(a)!=<span class="literal">NULL</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; a[i] != <span class="string">'\0'</span>; ++i)<span class="keyword">if</span>(<span class="built_in">isalpha</span>(a[i]))a[i]=<span class="built_in">tolower</span>(a[i]);</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>水题。</p>
 
         
         
@@ -346,7 +354,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/Hdu/">Hdu</a>
   </div>
 
 </div>
@@ -390,7 +398,15 @@
 </header>
     <div class="article-content">
         
-        <p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)Total Submission(s): 22041    Accepted Submission(s): 9654</p>
+        <p>敌兵布阵</p>
+<p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)<br>Total Submission(s): 22041    Accepted Submission(s): 9654</p>
+<p>Problem Description<br>C国的死对头A国这段时间正在进行军事演习，所以C国间谍头子Derek和他手下Tidy又开始忙乎了。A国在海岸线沿直线布置了N个工兵营地,Derek和Tidy的任务就是要监视这些工兵营地的活动情况。由于采取了某种先进的监测手段，所以每个工兵营地的人数C国都掌握的一清二楚,每个工兵营地的人数都有可能发生变动，可能增加或减少若干人手,但这些都逃不过C国的监视。<br>中央情报局要研究敌人究竟演习什么战术,所以Tidy要随时向Derek汇报某一段连续的工兵营地一共有多少人,例如Derek问:“Tidy,马上汇报第3个营地到第10个营地共有多少人!”Tidy就要马上开始计算这一段的总人数并汇报。但敌兵营地的人数经常变动，而Derek每次询问的段都不一样，所以Tidy不得不每次都一个一个营地的去数，很快就精疲力尽了，Derek对Tidy的计算速度越来越不满:”你个死肥仔，算得这么慢，我炒你鱿鱼!”Tidy想：“你自己来算算看，这可真是一项累人的工作!我恨不得你炒我鱿鱼呢!”无奈之下，Tidy只好打电话向计算机专家Windbreaker求救,Windbreaker说：“死肥仔，叫你平时做多点acm题和看多点算法书，现在尝到苦果了吧!”Tidy说：”我知错了。。。”但Windbreaker已经挂掉电话了。Tidy很苦恼，这么算他真的会崩溃的，聪明的读者，你能写个程序帮他完成这项工作吗？不过如果你的程序效率不够高的话，Tidy还是会受到Derek的责骂的.</p>
+<p>Input<br>第一行一个整数T，表示有T组数据。<br>每组数据第一行一个正整数N（N&lt;=50000）,表示敌人有N个工兵营地，接下来有N个正整数,第i个正整数ai代表第i个工兵营地里开始时有ai个人（1&lt;=ai&lt;=50）。<br>接下来每行有一条命令，命令有4种形式：<br>(1) Add i j,i和j为正整数,表示第i个营地增加j个人（j不超过30）<br>(2)Sub i j ,i和j为正整数,表示第i个营地减少j个人（j不超过30）;<br>(3)Query i j ,i和j为正整数,i&lt;=j，表示询问第i到第j个营地的总人数;<br>(4)End 表示结束，这条命令在每组数据最后出现;<br>每组数据最多有40000条命令</p>
+<p>Output<br>对第i组数据,首先输出“Case i:”和回车,<br>对于每个Query询问，输出一个整数并回车,表示询问的段中的总人数,这个数保持在int以内。</p>
+<p>Sample Input<br>1 10<br>1 2 3 4 5 6 7 8 9 10<br>Query 1 3<br>Add 3 6<br>Query 2 7<br>Sub 10 2<br>Add 6 3<br>Query 3 10<br>End</p>
+<p>Sample Output<br>Case 1: 6 33 59</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> max 50000&lt;&lt;2</span></div><div class="line"><span class="keyword">int</span> sum[max];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> rt)</span></span></div><div class="line">&#123;</div><div class="line">    sum[rt] = sum[rt&lt;&lt;<span class="number">1</span>]+sum[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> rt)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (l==r) &#123;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;sum[rt]);<span class="keyword">return</span>;&#125;</div><div class="line">    <span class="keyword">int</span> m = l+((r-l)&gt;&gt;<span class="number">1</span>);</div><div class="line">    build(l,m,rt&lt;&lt;<span class="number">1</span>);</div><div class="line">    build(m+<span class="number">1</span>,r,rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</div><div class="line">    pushup(rt);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> rt)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (L&lt;=l&amp;&amp;R&gt;=r)<span class="keyword">return</span> sum[rt];</div><div class="line">    <span class="keyword">int</span> m = l+((r-l)&gt;&gt;<span class="number">1</span>);</div><div class="line">    <span class="keyword">int</span> ret = <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (L&lt;=m) ret+=query(L,R,l,m,rt&lt;&lt;<span class="number">1</span>);</div><div class="line">    <span class="keyword">if</span> (R&gt;m) ret+=query(L,R,m+<span class="number">1</span>,r,rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> add, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> rt)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (l==r) &#123;sum[rt]+=add; <span class="keyword">return</span>;&#125;</div><div class="line">    <span class="keyword">int</span> m = l+((r-l)&gt;&gt;<span class="number">1</span>);</div><div class="line">    <span class="keyword">if</span> (p&lt;=m) update(p,add,l,m,rt&lt;&lt;<span class="number">1</span>);</div><div class="line">    <span class="keyword">else</span> update(p,add,m+<span class="number">1</span>,r,rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</div><div class="line">    pushup(rt);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">    freopen(<span class="string">"in.cpp"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">    <span class="keyword">int</span> t;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;t+<span class="number">1</span>;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> n;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);build(<span class="number">1</span>,n,<span class="number">1</span>);</div><div class="line">        <span class="keyword">char</span> a[<span class="number">20</span>]; <span class="built_in">printf</span>(<span class="string">"Case %d:\n"</span>,i);</div><div class="line">        <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%s"</span>,a))</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> (<span class="string">'E'</span>==a[<span class="number">0</span>]) <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">int</span> start,end; <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;start,&amp;end);</div><div class="line">            <span class="keyword">if</span> (<span class="string">'Q'</span>==a[<span class="number">0</span>]) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,query(start,end,<span class="number">1</span>,n,<span class="number">1</span>));</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">'A'</span>==a[<span class="number">0</span>]) update(start,end,<span class="number">1</span>,n,<span class="number">1</span>);</div><div class="line">            <span class="keyword">else</span> update(start,-end,<span class="number">1</span>,n,<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这种题目不要用cin cout </p>
 
         
         
@@ -404,7 +420,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/Hdu/">Hdu</a>
   </div>
 
 </div>
@@ -525,7 +541,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/Ubuntu/">Ubuntu</a>
   </div>
 
 </div>
@@ -569,7 +585,14 @@
 </header>
     <div class="article-content">
         
-        <p>百度文库里面有一个文档，叫做”ubuntu<em>12.04</em>安装<em>iNodeClient</em>教程“，按照那个做，安装上之后然后发现能通过身份验证，但是连不上网，继续执行下面的操作。</p>
+        <p>百度文库里面有一个文档，叫做”<a href="http://wenku.baidu.com/view/c641197402768e9951e73856.html" target="_blank" rel="external">ubuntu<em>12.04</em>安装<em>iNodeClient</em>教程</a>“，按照那个做，安装上之后然后发现能通过身份验证，但是连不上网，继续执行下面的操作。<br>sudo chmod -R 777    /home/suruibin/iNodeClient（后面这个路径改成你自己的安装目录）</p>
+<p>进入目录 cd iNodeClient 安装：sudo ./install.sh</p>
+<p>sudo ln -s /usr/lib/i386-linux-gnu/libtiff.so.4 /usr/lib/i386-linux-gnu/libtiff.so.3</p>
+<p>sudo apt-get install libjpeg62</p>
+<p>从网上找到libtiff.so.4这个文件，执行 sudo cp libtiff.so.4  /usr/lib</p>
+<p>到此iNodeClient安装好了，输入用户名，密码什么的就可以了。</p>
+<p>2012-11-12 22:45:04</p>
+<p>这个方法以前一直可以，但是最近貌似不行了……囧，后来找各种方法，<a href="http://hi.baidu.com/shen1000shen/item/c935a9383b615542033edcf9" target="_blank" rel="external">http://hi.baidu.com/shen1000shen/item/c935a9383b615542033edcf9</a> 这位神牛总结的很好，佩服！终于连上网了，Ubuntu爽到爆～</p>
 
         
         
@@ -583,7 +606,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/Ubuntu/">Ubuntu</a>
   </div>
 
 </div>
@@ -726,31 +749,27 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/S/" title="S">S<sup>70</sup></a></li>
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>66</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DP/" title="DP">DP<sup>42</sup></a></li>
+				<li><a href="/tags/DP/" title="DP">DP<sup>48</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>39</sup></a></li>
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>44</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>34</sup></a></li>
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>43</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Uva/" title="Uva">Uva<sup>24</sup></a></li>
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>25</sup></a></li>
 			
 		
 			
@@ -762,7 +781,11 @@
 			
 		
 			
-				<li><a href="/tags/Math/" title="Math">Math<sup>14</sup></a></li>
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>15</sup></a></li>
 			
 		
 			
@@ -771,10 +794,6 @@
 		
 			
 				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>13</sup></a></li>
 			
 		
 			
@@ -790,11 +809,7 @@
 			
 		
 			
-				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+				<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>5</sup></a></li>
 			
 		
 			
@@ -802,7 +817,15 @@
 			
 		
 			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
 			
 		
 		</ul>

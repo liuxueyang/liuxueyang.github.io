@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="Time Limit: 4000/2000 MS (Java/Others)    Memory Limit: 32768/32768 K (Java/Others)Total Submission(s): 10792    Accepted Submission(s): 5328">
-<meta name="keywords" content="S">
+    <meta name="description" content="Just a Hook Time Limit: 4000/2000 MS (Java/Others)    Memory Limit: 32768/32768 K (Java/Others)Total Submission(s): 10792    Accepted Submission(s): 5328 Problem DescriptionIn the game of DotA, Pudge’">
+<meta name="keywords" content="Hdu,Data Structure">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hdu 1698 Just a Hook">
 <meta property="og:url" content="liuxueyang.github.io/2013/03/04/hdu-1698-Just-a-Hook/index.html">
 <meta property="og:site_name" content="黑历史">
-<meta property="og:description" content="Time Limit: 4000/2000 MS (Java/Others)    Memory Limit: 32768/32768 K (Java/Others)Total Submission(s): 10792    Accepted Submission(s): 5328">
-<meta property="og:updated_time" content="2017-04-11T03:26:22.000Z">
+<meta property="og:description" content="Just a Hook Time Limit: 4000/2000 MS (Java/Others)    Memory Limit: 32768/32768 K (Java/Others)Total Submission(s): 10792    Accepted Submission(s): 5328 Problem DescriptionIn the game of DotA, Pudge’">
+<meta property="og:updated_time" content="2017-04-11T06:14:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hdu 1698 Just a Hook">
-<meta name="twitter:description" content="Time Limit: 4000/2000 MS (Java/Others)    Memory Limit: 32768/32768 K (Java/Others)Total Submission(s): 10792    Accepted Submission(s): 5328">
+<meta name="twitter:description" content="Just a Hook Time Limit: 4000/2000 MS (Java/Others)    Memory Limit: 32768/32768 K (Java/Others)Total Submission(s): 10792    Accepted Submission(s): 5328 Problem DescriptionIn the game of DotA, Pudge’">
 
     
     <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
@@ -101,7 +101,21 @@
 		
 		</div>
 		
-		<p>Time Limit: 4000/2000 MS (Java/Others)    Memory Limit: 32768/32768 K (Java/Others)Total Submission(s): 10792    Accepted Submission(s): 5328</p>
+		<p>Just a Hook</p>
+<p>Time Limit: 4000/2000 MS (Java/Others)    Memory Limit: 32768/32768 K (Java/Others)<br>Total Submission(s): 10792    Accepted Submission(s): 5328</p>
+<p>Problem Description<br>In the game of DotA, Pudge’s meat hook is actually the most horrible thing for most of the heroes. The hook is made up of several consecutive metallic sticks which are of the same length.</p>
+<p>Now Pudge wants to do some operations on the hook.</p>
+<p>Let us number the consecutive metallic sticks of the hook from 1 to N. For each operation, Pudge can change the consecutive metallic sticks, numbered from X to Y, into cupreous sticks, silver sticks or golden sticks.<br>The total value of the hook is calculated as the sum of values of N metallic sticks. More precisely, the value for each kind of stick is calculated as follows:</p>
+<p>For each cupreous stick, the value is 1.<br>For each silver stick, the value is 2.<br>For each golden stick, the value is 3.</p>
+<p>Pudge wants to know the total value of the hook after performing the operations.<br>You may consider the original hook is made up of cupreous sticks.</p>
+<p>Input<br>The input consists of several test cases. The first line of the input is the number of the cases. There are no more than 10 cases.<br>For each case, the first line contains an integer N, 1&lt;=N&lt;=100,000, which is the number of the sticks of Pudge’s meat hook and the second line contains an integer Q, 0&lt;=Q&lt;=100,000, which is the number of the operations.<br>Next Q lines, each line contains three integers X, Y, 1&lt;=X&lt;=Y&lt;=N, Z, 1&lt;=Z&lt;=3, which defines an operation: change the sticks numbered from X to Y into the metal kind Z, where Z=1 represents the cupreous kind, Z=2 represents the silver kind and Z=3 represents the golden kind.</p>
+<p>Output<br>For each case, print a number in a line representing the total value of the hook after the operations. Use the format in the example.</p>
+<p>Sample Input<br>1 10 2 1 5 2 5 9 3</p>
+<p>Sample Output<br>Case 1: The total value of the hook is 24.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> lson l, m, rt&lt;&lt;1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> rson m+1, r, rt&lt;&lt;1|1</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">111111</span>;</div><div class="line"><span class="keyword">int</span> col[maxn&lt;&lt;<span class="number">2</span>], sum[maxn&lt;&lt;<span class="number">2</span>];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">PushUP</span><span class="params">(<span class="keyword">int</span> rt)</span></span>&#123;</div><div class="line">  sum[rt] = sum[rt&lt;&lt;<span class="number">1</span>] + sum[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">PushDown</span><span class="params">(<span class="keyword">int</span> rt, <span class="keyword">int</span> m)</span></span>&#123;</div><div class="line">  <span class="keyword">if</span> (col[rt])&#123;</div><div class="line">    col[rt&lt;&lt;<span class="number">1</span>] = col[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>] = col[rt];</div><div class="line">    sum[rt&lt;&lt;<span class="number">1</span>] = col[rt] * (m - (m&gt;&gt;<span class="number">1</span>));</div><div class="line">    sum[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>] = col[rt] * (m&gt;&gt;<span class="number">1</span>);</div><div class="line">    col[rt] = <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> rt)</span></span>&#123;</div><div class="line">  col[rt] = <span class="number">0</span>; sum[rt] = <span class="number">1</span>; <span class="keyword">if</span> (l == r) <span class="keyword">return</span>;</div><div class="line">  <span class="keyword">int</span> m = (l + r) &gt;&gt; <span class="number">1</span>;</div><div class="line">  build(lson); build(rson); PushUP(rt);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> c, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> rt)</span></span>&#123;</div><div class="line">  <span class="keyword">if</span> (L &lt;= l &amp;&amp; R &gt;= r)&#123;</div><div class="line">    col[rt] = c; sum[rt] = c * (r - l + <span class="number">1</span>); <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line">  PushDown(rt, r - l + <span class="number">1</span>);</div><div class="line">  <span class="keyword">int</span> m = (l + r) &gt;&gt; <span class="number">1</span>;</div><div class="line">  <span class="keyword">if</span> (L &lt;= m) update(L, R, c, lson); <span class="keyword">if</span> (R &gt; m) update(L, R, c, rson);</div><div class="line">  PushUP(rt);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"hdu1698.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">  <span class="keyword">int</span> t; <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; t + <span class="number">1</span>; ++i)&#123;</div><div class="line">    <span class="keyword">int</span> n; <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n); <span class="keyword">int</span> q; build(<span class="number">1</span>, n, <span class="number">1</span>); <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;q);</div><div class="line">    <span class="keyword">while</span> (q--)&#123;</div><div class="line">      <span class="keyword">int</span> a, b, c; <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;a, &amp;b, &amp;c); update(a, b, c, <span class="number">1</span>, n, <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"Case %d: The total value of the hook is %d.\n"</span>, i, sum[<span class="number">1</span>]);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>更新区间的线段树，终于弄懂思想了，再联系一下就理解深刻一点儿了。</p>
+<p>用到了延迟更新。</p>
+<p>还有，写代码的时候要认真，再认真。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -110,7 +124,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/S/">S</a>
+  <span></span> <a href="/tags/Hdu/">Hdu</a><a href="/tags/Data-Structure/">Data Structure</a>
   </div>
 
 </div>
@@ -215,31 +229,27 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/S/" title="S">S<sup>70</sup></a></li>
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>66</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/DP/" title="DP">DP<sup>42</sup></a></li>
+				<li><a href="/tags/DP/" title="DP">DP<sup>48</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>39</sup></a></li>
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>44</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>34</sup></a></li>
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>43</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>26</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Uva/" title="Uva">Uva<sup>24</sup></a></li>
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>25</sup></a></li>
 			
 		
 			
@@ -251,7 +261,11 @@
 			
 		
 			
-				<li><a href="/tags/Math/" title="Math">Math<sup>14</sup></a></li>
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>15</sup></a></li>
 			
 		
 			
@@ -260,10 +274,6 @@
 		
 			
 				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>13</sup></a></li>
 			
 		
 			
@@ -279,11 +289,7 @@
 			
 		
 			
-				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+				<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>5</sup></a></li>
 			
 		
 			
@@ -291,7 +297,15 @@
 			
 		
 			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
 			
 		
 		</ul>
