@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://wstaw.org/m/2016/12/28/dolphin-cant-display-chinese-4.png">
 <meta property="og:image" content="http://wstaw.org/m/2016/12/30/plasma-desktopGh1321.png">
 <meta property="og:image" content="http://wstaw.org/m/2016/12/30/plasma-desktoptk1321.png">
-<meta property="og:updated_time" content="2017-04-11T22:52:20.000Z">
+<meta property="og:updated_time" content="2017-04-11T23:48:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Slackware Dolphin中文文件夹显示乱码">
 <meta name="twitter:description" content="在Slackware里面的KDE 4的默认文件夹管理器Dolphin里面，中文文件夹的名称显示是一堆问号。这个问题是我前两天遇到的，还是记在这里吧。问题描述如下。 Dolphin的侧边栏可以显示中文，如图：  如果我想要建立一个中文名称的文件夹的话：  就会成为这样：  我的locale是这样的：  我的解决方法是这样的： 在/etc/profile.d/lang.sh这个文件里面，有这样一句话：">
@@ -112,7 +112,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -209,22 +209,22 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             Archiv
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
           </a>
         </li>
       
@@ -262,7 +262,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liuxueyang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/uploads/drawing.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -447,7 +447,7 @@
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/uploads/drawing.png"
                alt="liuxueyang" />
           <p class="site-author-name" itemprop="name">liuxueyang</p>
            
@@ -465,6 +465,15 @@
             </div>
           
 
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
           
 
           
@@ -529,7 +538,7 @@
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -572,6 +581,8 @@
 
 
 
+  
+
 
 
   
@@ -592,6 +603,9 @@
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
+  
+  <script type="text/javascript" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
 
   
 
@@ -604,6 +618,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
