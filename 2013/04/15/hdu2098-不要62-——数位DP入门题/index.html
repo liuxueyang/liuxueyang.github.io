@@ -1,0 +1,580 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>hdu2098 不要62 ——数位DP入门题 | 黑历史</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="liuxueyang">
+    
+
+    
+    <meta name="description" content="题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=2089题目大意：　　含有4或者62的数字是不吉利数字，给一个区间，[m, n]，求这个区间内的除了不吉利数字以外的数字的数目。思路：　　由于数据范围只有1~1000000，可以暴力，水题，但是为了练习一下数位DP，没有把它当水题做……　　看的是这个人的代码：http://blog.csdn.net/ac">
+<meta name="keywords" content="DP,Hdu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hdu2098 不要62 ——数位DP入门题">
+<meta property="og:url" content="liuxueyang.github.io/2013/04/15/hdu2098-不要62-——数位DP入门题/index.html">
+<meta property="og:site_name" content="黑历史">
+<meta property="og:description" content="题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=2089题目大意：　　含有4或者62的数字是不吉利数字，给一个区间，[m, n]，求这个区间内的除了不吉利数字以外的数字的数目。思路：　　由于数据范围只有1~1000000，可以暴力，水题，但是为了练习一下数位DP，没有把它当水题做……　　看的是这个人的代码：http://blog.csdn.net/ac">
+<meta property="og:updated_time" content="2017-04-11T02:19:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hdu2098 不要62 ——数位DP入门题">
+<meta name="twitter:description" content="题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=2089题目大意：　　含有4或者62的数字是不吉利数字，给一个区间，[m, n]，求这个区间内的除了不吉利数字以外的数字的数目。思路：　　由于数据范围只有1~1000000，可以暴力，水题，但是为了练习一下数位DP，没有把它当水题做……　　看的是这个人的代码：http://blog.csdn.net/ac">
+
+    
+    <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="黑历史" title="黑历史"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="黑历史">黑历史</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:liuxueyang.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/04/15/hdu2098-不要62-——数位DP入门题/" title="hdu2098 不要62 ——数位DP入门题" itemprop="url">hdu2098 不要62 ——数位DP入门题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-04-15T13:24:00.000Z" itemprop="datePublished"> 发表于 2013-04-15</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>题目链接：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=2089" target="_blank" rel="external">http://acm.hdu.edu.cn/showproblem.php?pid=2089</a><br>题目大意：<br>　　含有4或者62的数字是不吉利数字，给一个区间，[m, n]，求这个区间内的除了不吉利数字以外的数字的数目。<br>思路：<br>　　由于数据范围只有1~1000000，可以暴力，水题，但是为了练习一下数位DP，没有把它当水题做……<br>　　看的是这个人的代码：<a href="http://blog.csdn.net/acm_cxlove/article/details/7819907#" target="_blank" rel="external">http://blog.csdn.net/acm_cxlove/article/details/7819907#</a><br>　　和hdu3555那道题目相似，但是多了一个条件，多了一个不含有4的条件，讨论一下。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> lson l, m, rt&lt;&lt;1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> rson m+1, r, rt&lt;&lt;1|1</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> LL;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN =  <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span>  MIN =  <span class="number">-0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-9</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> dir[<span class="number">8</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">1</span>&#125;,</div><div class="line">  &#123;<span class="number">1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;&#125;;</div><div class="line">LL dp[<span class="number">8</span>][<span class="number">3</span>]; <span class="keyword">int</span> a[<span class="number">8</span>], b[<span class="number">8</span>]; <span class="keyword">bool</span> flag;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</div><div class="line">  <span class="keyword">int</span> len = <span class="number">0</span>; LL temp = k;</div><div class="line">  <span class="keyword">while</span> (k)&#123;</div><div class="line">    a[++len] = k % <span class="number">10</span>; k /= <span class="number">10</span>;</div><div class="line">  &#125;</div><div class="line">  LL ans = <span class="number">0</span>; <span class="keyword">int</span> last = <span class="number">0</span>; flag = <span class="literal">false</span>;</div><div class="line">  a[len+<span class="number">1</span>] = <span class="number">0</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = len; i &gt;= <span class="number">1</span>; --i)&#123;</div><div class="line">    ans += dp[i<span class="number">-1</span>][<span class="number">2</span>] * a[i];</div><div class="line">    <span class="keyword">if</span> (flag)&#123;ans += dp[i<span class="number">-1</span>][<span class="number">0</span>] * a[i];&#125;</div><div class="line">    <span class="comment">//高位位填4，低位的不管</span></div><div class="line">    <span class="keyword">if</span> (!flag &amp;&amp; a[i] &gt; <span class="number">4</span>) &#123;ans += dp[i<span class="number">-1</span>][<span class="number">0</span>];&#125;</div><div class="line">    <span class="comment">// 这一位填6，比它第一位的填2</span></div><div class="line">    <span class="keyword">if</span> (!flag &amp;&amp; a[i] &gt; <span class="number">6</span>) &#123;ans += dp[i<span class="number">-1</span>][<span class="number">1</span>];&#125;</div><div class="line">    <span class="comment">// 这一位填4，但是比它高一位的要保证是6，因为上面没有考虑到上一位等于6的情况</span></div><div class="line">    <span class="keyword">if</span> (!flag &amp;&amp; a[i] &gt; <span class="number">2</span> &amp;&amp; a[i+<span class="number">1</span>] == <span class="number">6</span>) &#123;ans += dp[i][<span class="number">1</span>];&#125; <span class="comment">// 这里很悲剧地写成了dp[i-1][1]我去……</span></div><div class="line">    <span class="comment">// 标记一下这个数字本身也是不符合条件的</span></div><div class="line">    <span class="keyword">if</span> (a[i] == <span class="number">4</span> || (a[i]==<span class="number">2</span>&amp;&amp;a[i+<span class="number">1</span>]==<span class="number">6</span>)) flag = <span class="literal">true</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (flag) ans++; <span class="comment">//求的是从1~n的不符合条件的个数，如果端点本身不符合，要加1，就是加上判断数字本身的情况</span></div><div class="line">  <span class="comment">// 因为上面的每一种情况都没有考虑到这个数字本身是非幸运数字的情况，所以要加上</span></div><div class="line">  <span class="keyword">return</span> temp - ans;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"hdu2089.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">  <span class="keyword">int</span> n, m;</div><div class="line">  <span class="built_in">memset</span>(dp, <span class="number">0</span>, <span class="keyword">sizeof</span>(dp));</div><div class="line">  dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">8</span>; ++i)&#123;</div><div class="line">    dp[i][<span class="number">0</span>] = dp[i<span class="number">-1</span>][<span class="number">0</span>] * <span class="number">9</span> - dp[i<span class="number">-1</span>][<span class="number">1</span>];</div><div class="line">    dp[i][<span class="number">1</span>] = dp[i<span class="number">-1</span>][<span class="number">0</span>];</div><div class="line">    dp[i][<span class="number">2</span>] = dp[i<span class="number">-1</span>][<span class="number">2</span>] * <span class="number">10</span> + dp[i<span class="number">-1</span>][<span class="number">1</span>] + dp[i<span class="number">-1</span>][<span class="number">0</span>];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;m, &amp;n))&#123;</div><div class="line">    <span class="keyword">if</span> (n+m==<span class="number">0</span>) <span class="keyword">break</span>;</div><div class="line">    LL ans1, ans2;</div><div class="line">    ans1 = solve(m<span class="number">-1</span>); <span class="comment">// 这个区间范围要注意，要求 m ~ n 所以要把 1 ~ m - 1 和1 ~ n - 1 的求出来</span></div><div class="line">    ans2 = solve(n);</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; (ans2 - ans1) &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="comment">//可以输出1到10的solve(i)，这种基本的调试技巧要会，别有错误就去问别人……</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这种题目关键是要考虑清楚所有的情况，思维要严谨，思路要清晰。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/DP/">DP</a><a href="/tags/Hdu/">Hdu</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="liuxueyang.github.io/2013/04/15/hdu2098-不要62-——数位DP入门题/" data-title="hdu2098 不要62 ——数位DP入门题 | 黑历史" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2013/04/15/hdu1202-The-calculation-of-GPA-——水题/" title="hdu1202 The calculation of GPA ——水题">
+  <strong>上一篇：</strong><br/>
+  <span>
+  hdu1202 The calculation of GPA ——水题</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2013/04/15/uva10591---Happy-Number-——水题/"  title="uva10591 - Happy Number ——水题">
+ <strong>下一篇：</strong><br/> 
+ <span>uva10591 - Happy Number ——水题
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Diary/" title="Diary">Diary<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Emacs-Fcitx/" title="Emacs Fcitx">Emacs Fcitx<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Organize/" title="Organize">Organize<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Slackware/" title="Slackware">Slackware<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/习惯-整理/" title="习惯 整理">习惯 整理<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/DP/" title="DP">DP<sup>41</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>29</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>28</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/masm/" title="masm">masm<sup>20</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/zoj/" title="zoj">zoj<sup>15</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/run/" title="run">run<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Article/" title="Article">Article<sup>11</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>10</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/tyvj/" title="tyvj">tyvj<sup>10</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tools/" title="Tools">Tools<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/S/" title="S">S<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Codeforces/" title="Codeforces">Codeforces<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m liuxueyang. <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="liuxueyang">liuxueyang</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'liuxueyang';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

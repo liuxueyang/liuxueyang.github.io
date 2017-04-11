@@ -1,0 +1,580 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>hdu3555 Bomb ——数位DP入门题 | 黑历史</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="liuxueyang">
+    
+
+    
+    <meta name="description" content="题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=3555题目大意：　　给一个数字n,范围在1~2^63-1，求1~n之间含有49的数字有多少个。思路：　　经典的数位DP，学习了一下，看的别人的代码：http://www.cnblogs.com/luyi0619/archive/2011/04/29/2033117.html　　状态转移：　　dp[i][">
+<meta name="keywords" content="DP,hdu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hdu3555 Bomb ——数位DP入门题">
+<meta property="og:url" content="liuxueyang.github.io/2013/04/14/hdu3555-Bomb-——数位DP入门题/index.html">
+<meta property="og:site_name" content="黑历史">
+<meta property="og:description" content="题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=3555题目大意：　　给一个数字n,范围在1~2^63-1，求1~n之间含有49的数字有多少个。思路：　　经典的数位DP，学习了一下，看的别人的代码：http://www.cnblogs.com/luyi0619/archive/2011/04/29/2033117.html　　状态转移：　　dp[i][">
+<meta property="og:updated_time" content="2017-04-11T02:19:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hdu3555 Bomb ——数位DP入门题">
+<meta name="twitter:description" content="题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=3555题目大意：　　给一个数字n,范围在1~2^63-1，求1~n之间含有49的数字有多少个。思路：　　经典的数位DP，学习了一下，看的别人的代码：http://www.cnblogs.com/luyi0619/archive/2011/04/29/2033117.html　　状态转移：　　dp[i][">
+
+    
+    <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="黑历史" title="黑历史"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="黑历史">黑历史</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:liuxueyang.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/04/14/hdu3555-Bomb-——数位DP入门题/" title="hdu3555 Bomb ——数位DP入门题" itemprop="url">hdu3555 Bomb ——数位DP入门题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-04-14T03:23:00.000Z" itemprop="datePublished"> 发表于 2013-04-14</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>题目链接：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=3555" target="_blank" rel="external">http://acm.hdu.edu.cn/showproblem.php?pid=3555</a><br>题目大意：<br>　　给一个数字n,范围在1~2^63-1，求1~n之间含有49的数字有多少个。<br>思路：<br>　　经典的数位DP，学习了一下，看的别人的代码：<a href="http://www.cnblogs.com/luyi0619/archive/2011/04/29/2033117.html" target="_blank" rel="external">http://www.cnblogs.com/luyi0619/archive/2011/04/29/2033117.html</a><br>　　状态转移：<br>　　dp[i][0]代表长度为 i 并且不含有49的数字的个数；<br>　　dp[i][1]代表长度为 i 并且不含有49，但是最高位是9的数字的个数；<br>　　dp[i][2]代表长度为 i 并且含有49的数字的个数。<br>　　数组 a[i] 从低位到高位存储 n 的每一位数字。<br>　　则：dp[i][0] = dp[i-1][0] <em> a[i] - dp[i-1][1];  表示长度为 i 的不含有49的数字的个数等于长度为 i - 1 的不含有49的数字的个数</em>当前的数字，因为这个位置可以填0~a[i] - 1，然后再减去长度为 i - 1 的最高位是9的数字的个数，因为如果长度为 i - 1 的最高位是9的话，那么高一位就不能填4了，否则就组成了49。<br>　　　　dp[i][1] = dp[i-1][0]; 表示长度为 i 的并且不含有49同时最高位是9的数字的个数等于，长度为 i - 1 的不含有49的数字的个数，因为只要在它的高一位加上一个9就可以了。<br>　　　　dp[i][2] = dp[i-1][2] <em> a[i] + dp[i-1][1]; 表示长度为 i 的含有49的数字的个数等于，长度为 i - 1 的数字的个数</em>当前的数字，再加上长度为 i - 1 的并且不含有49同时最高位是9的数字的个数，因为这个时候，只要在高一位加上一个4就可以了，这样在最高的两位就组成了一个49。<br>　　做法是从数字的高位向低位扫描，对于第 i 位，<br>　　其实这个题目还有一个地方不懂，就是为什么要在输入 n 后，要把 n 加1。想了一下特例，比如输入49，按照上面的做法，在第3步，并不会把符合条件的数字加上，因为4不是严格大于4，最后的执行结果就是0，但是如果加上1之后，n就变成了50，这样第3步恰好可以执行，结果就是正确的了。但是对于一般的情况，还是不知道为什么要把n加1……o(╯□╰)o<br>　　这题还是卡了很久，照着别人的代码敲的，死活过不了，然后又找了一份代码：<a href="http://blog.csdn.net/acm_cxlove/article/details/7819907" target="_blank" rel="external">http://blog.csdn.net/acm_cxlove/article/details/7819907</a> 才发现输入输出要用%I64d，这不是坑么……原来hdu要用%I64d，囧……<br>　　所以，有时候的bug不是算法或者代码有错误，看看你的输入输出吧！还有，类似的情况，比如，输入文件写错了……更悲剧了。。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> lson l, m, rt&lt;&lt;1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> rson m+1, r, rt&lt;&lt;1|1</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> LL;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN =  <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span>  MIN =  <span class="number">-0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-9</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> dir[<span class="number">8</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">1</span>&#125;,</div><div class="line">  &#123;<span class="number">1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;&#125;;</div><div class="line">LL dp[<span class="number">21</span>][<span class="number">3</span>]; <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> n; <span class="keyword">int</span> a[<span class="number">25</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"hdu3555.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">  <span class="keyword">int</span> t; <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</div><div class="line">  <span class="built_in">memset</span>(dp, <span class="number">0</span>, <span class="keyword">sizeof</span>(dp));</div><div class="line">  dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">21</span>; ++i)&#123;</div><div class="line">    dp[i][<span class="number">0</span>] = dp[i<span class="number">-1</span>][<span class="number">0</span>] * <span class="number">10</span> - dp[i<span class="number">-1</span>][<span class="number">1</span>];</div><div class="line">    dp[i][<span class="number">1</span>] = dp[i<span class="number">-1</span>][<span class="number">0</span>];</div><div class="line">    dp[i][<span class="number">2</span>] = dp[i<span class="number">-1</span>][<span class="number">2</span>] * <span class="number">10</span> + dp[i<span class="number">-1</span>][<span class="number">1</span>];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">while</span> (t--)&#123;</div><div class="line">    <span class="comment">//cin &gt;&gt; n;</span></div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%I64d"</span>, &amp;n);</div><div class="line">    <span class="keyword">int</span> len = <span class="number">0</span>; <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span>(a));</div><div class="line">    n++;</div><div class="line">    <span class="keyword">while</span> (n)&#123;</div><div class="line">      a[++len] = n % <span class="number">10</span>; n /= <span class="number">10</span>;</div><div class="line">    &#125; LL ans = <span class="number">0</span>; <span class="keyword">int</span> last = <span class="number">0</span>; <span class="keyword">bool</span> flag = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = len; i &gt;= <span class="number">1</span>; --i)&#123;</div><div class="line">      ans += (dp[i<span class="number">-1</span>][<span class="number">2</span>] * a[i]);</div><div class="line">      <span class="keyword">if</span> (flag) ans += dp[i<span class="number">-1</span>][<span class="number">0</span>] * a[i];</div><div class="line">      <span class="keyword">if</span> (!flag &amp;&amp; a[i] &gt; <span class="number">4</span>) &#123;ans += dp[i<span class="number">-1</span>][<span class="number">1</span>];&#125;</div><div class="line">      <span class="keyword">if</span> (last == <span class="number">4</span> &amp;&amp; a[i] == <span class="number">9</span>) &#123;flag = <span class="literal">true</span>;&#125;</div><div class="line">      last = a[i];</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//cout &lt;&lt; ans &lt;&lt; endl;</span></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%I64d\n"</span>, ans);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>　　就为了输入输出，纠结好久……所以有的时候还是用cin，cout当输入量不大的时候……<br>　　还是不懂为什么要把 n 加 1，继续想想，，神牛路过明白的解释一下撒~感激不尽……<br>　　貌似有点儿想明白了……也许加 1 的目的就是处理 n 末两位是49的这种特殊情况，如果最后两位不是49，也不影响结果。比如，如果n是149，变成150，结果是1+1 = 2；如果n是123,变成124，结果依然是1；可是，如果要找的是65这种的呢？需要加5么？如果要统计的是一个三位数呢？比如找1~n里面含有123的数字的个数……该怎么做……<br>　　做了后面几道题目，明白了为什么要n++，因为后面的for循环求的是(0,n)的开区间的符合条件的数字的数目，题目要求[1,n]这个区间内的符合条件的数字的数目，所以要把区间的右端点加1。这样的处理方式比较方便，就不用判断这个端点是不是如何条件的数字了。膜拜神牛的想法……</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/DP/">DP</a><a href="/tags/hdu/">hdu</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="liuxueyang.github.io/2013/04/14/hdu3555-Bomb-——数位DP入门题/" data-title="hdu3555 Bomb ——数位DP入门题 | 黑历史" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2013/04/13/2013年4月12日-晴/" title="2013年4月12日 晴">
+  <strong>上一篇：</strong><br/>
+  <span>
+  2013年4月12日 晴</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2013/04/15/uestc1307-windy数-——数位DP入门题/"  title="uestc1307 windy数 ——数位DP入门题">
+ <strong>下一篇：</strong><br/> 
+ <span>uestc1307 windy数 ——数位DP入门题
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Diary/" title="Diary">Diary<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Emacs-Fcitx/" title="Emacs Fcitx">Emacs Fcitx<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Organize/" title="Organize">Organize<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Slackware/" title="Slackware">Slackware<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/习惯-整理/" title="习惯 整理">习惯 整理<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/DP/" title="DP">DP<sup>41</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>29</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>28</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/masm/" title="masm">masm<sup>20</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/zoj/" title="zoj">zoj<sup>15</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/run/" title="run">run<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Article/" title="Article">Article<sup>11</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>10</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/tyvj/" title="tyvj">tyvj<sup>10</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tools/" title="Tools">Tools<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/S/" title="S">S<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Codeforces/" title="Codeforces">Codeforces<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m liuxueyang. <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="liuxueyang">liuxueyang</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'liuxueyang';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

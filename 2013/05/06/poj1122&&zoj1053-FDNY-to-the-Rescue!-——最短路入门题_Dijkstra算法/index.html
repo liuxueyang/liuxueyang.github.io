@@ -1,0 +1,583 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>poj1122&amp;&amp;zoj1053 FDNY to the Rescue! ——最短路入门题_Dijkstra算法 | 黑历史</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="liuxueyang">
+    
+
+    
+    <meta name="description" content="题目链接：http://poj.org/problem?id=1122　　http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=53题目大意：　　给定一个有向图，一个终点S，求多个点到这个点S的最短距离和对应的路径，把最短路排序后输出。题目思路：　　点的范围是20.可以一个一个用Dijkstra。。唯一的新意就是有多个点还需要按照路径">
+<meta name="keywords" content="Graph,POJ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="poj1122&&zoj1053 FDNY to the Rescue! ——最短路入门题_Dijkstra算法">
+<meta property="og:url" content="liuxueyang.github.io/2013/05/06/poj1122&&zoj1053-FDNY-to-the-Rescue!-——最短路入门题_Dijkstra算法/index.html">
+<meta property="og:site_name" content="黑历史">
+<meta property="og:description" content="题目链接：http://poj.org/problem?id=1122　　http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=53题目大意：　　给定一个有向图，一个终点S，求多个点到这个点S的最短距离和对应的路径，把最短路排序后输出。题目思路：　　点的范围是20.可以一个一个用Dijkstra。。唯一的新意就是有多个点还需要按照路径">
+<meta property="og:updated_time" content="2017-04-11T02:15:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="poj1122&&zoj1053 FDNY to the Rescue! ——最短路入门题_Dijkstra算法">
+<meta name="twitter:description" content="题目链接：http://poj.org/problem?id=1122　　http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=53题目大意：　　给定一个有向图，一个终点S，求多个点到这个点S的最短距离和对应的路径，把最短路排序后输出。题目思路：　　点的范围是20.可以一个一个用Dijkstra。。唯一的新意就是有多个点还需要按照路径">
+
+    
+    <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="黑历史" title="黑历史"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="黑历史">黑历史</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:liuxueyang.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/05/06/poj1122&&zoj1053-FDNY-to-the-Rescue!-——最短路入门题_Dijkstra算法/" title="poj1122&amp;&amp;zoj1053 FDNY to the Rescue! ——最短路入门题_Dijkstra算法" itemprop="url">poj1122&amp;&amp;zoj1053 FDNY to the Rescue! ——最短路入门题_Dijkstra算法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-05-06T11:51:00.000Z" itemprop="datePublished"> 发表于 2013-05-06</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>题目链接：<a href="http://poj.org/problem?id=1122" target="_blank" rel="external">http://poj.org/problem?id=1122</a>　　<a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=53" target="_blank" rel="external">http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=53</a><br>题目大意：<br>　　给定一个有向图，一个终点S，求多个点到这个点S的最短距离和对应的路径，把最短路排序后输出。<br>题目思路：<br>　　点的范围是20.可以一个一个用Dijkstra。。唯一的新意就是有多个点还需要按照路径长度排序，同时还要输出对应的路径，考的就是代码能力。用结构体存就可以。注意是有向图，开始就以为是无向图，怎么算最短路都不对。。赶脚这题不难，没什么思维难度，但是做OJ上这题的人却比较少，可能有一个原因，题目比较长，然后读完题目之后觉得没什么意思就不做了。。很简单的一个东西搞这么长的题目，也许就是考的读题吧。。貌似如果不是看的书上的翻译，我也没耐心读题。。。唉，读题确实是关键的一关。<br>　　然后这道题目，Poj上是单case，比较好过，然后数据也貌似比较弱，因为是单case，所以有一个输入的细节就特别好处理。开始Poj一下就过了，还沾沾自喜，结果把单case换成多case的时候，在zoj上交就Segmentation Fault……原来我最初处理输入个数不确定的数字的时候用了 while(~scanf())这种方法，很显然，这货只适用于单case。然后就想，该怎么处理这种输入数字个数不确定的输入呢？看了网上的一个思路，<a href="http://blog.csdn.net/yzldw333/article/details/7858172" target="_blank" rel="external">http://blog.csdn.net/yzldw333/article/details/7858172</a> 哈哈，原来这么简单，就是以前做过的么，按照字符串处理就行了，，，好吧，，原来自己就是怕麻烦，这种方法想都没想。。然后就改了，，还是Segmentation Fault……继续调试，查错。。忍不住看了一下别人的代码，<a href="http://www.cnblogs.com/372465774y/archive/2012/11/19/2777552.html" target="_blank" rel="external">http://www.cnblogs.com/372465774y/archive/2012/11/19/2777552.html</a> 一个注释提示了我，“这题给的字符真的是：\t ‘    ‘”好吧……我还真没注意到，虽然读题的时候注意到了，但是写代码的时候就想当然地只考虑空格，，像以前那样……思维定式啊。。然后就过了。。<br>　　Segmentation Fault的原因是访问了非法内存，在新的OJ上如果用的是Linux的话，归在Runtime Error一类里面。多谢zsl！</p>
+<p>Poj代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> lson l, m, rt&lt;&lt;1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> rson m+1, r, rt&lt;&lt;1|1</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> LL;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN =  <span class="number">0x7fffffff</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span>  MINN =  <span class="number">-0x7fffffff</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-9</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> dir[<span class="number">8</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">1</span>&#125;,</div><div class="line">  &#123;<span class="number">1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;&#125;;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">20</span>;</div><div class="line"><span class="keyword">int</span> edge[MAX][MAX], n, dist[MAX], path[MAX], end;</div><div class="line"><span class="keyword">bool</span> S[MAX];</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> Fire &#123;</div><div class="line">  <span class="keyword">int</span> street[MAX], len, start, E;</div><div class="line">  <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> Fire &amp;other) <span class="keyword">const</span> &#123;</div><div class="line">    <span class="keyword">return</span> len &lt; other.len;</div><div class="line">  &#125;</div><div class="line">&#125;Fire;</div><div class="line">Fire fire[MAX];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dijkstra</span><span class="params">(<span class="keyword">int</span> u0, Fire &amp;su)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i, j, k, u, Min;</div><div class="line">  <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">    dist[i] = edge[u0][i]; S[i] = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">if</span> (i != u0 &amp;&amp; edge[u0][i] != MAXN) path[i] = u0;</div><div class="line">    <span class="keyword">else</span> path[i] = <span class="number">-1</span>;</div><div class="line">  &#125;</div><div class="line">  S[u0] = <span class="literal">true</span>; path[u0] = <span class="number">-1</span>;</div><div class="line">  <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; n; ++i) &#123;</div><div class="line">    Min = MAXN; u = u0;</div><div class="line">    <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= n; ++j) &#123;</div><div class="line">      <span class="keyword">if</span> (S[j] == <span class="literal">false</span> &amp;&amp; dist[j] &lt; Min) &#123;</div><div class="line">        Min = dist[j]; u = j;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    S[u] = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= n;++j) &#123;</div><div class="line">      <span class="keyword">if</span> (S[j] == <span class="literal">false</span> &amp;&amp; edge[u][j] != MAXN) &#123;</div><div class="line">        <span class="keyword">int</span> tmp = edge[u][j] + dist[u];</div><div class="line">        <span class="keyword">if</span> (tmp &lt; dist[j]) &#123;</div><div class="line">          dist[j] = tmp; path[j] = u;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (u == end) <span class="keyword">break</span>;</div><div class="line">  &#125;</div><div class="line">  k = <span class="number">0</span>; su.street[k] = end; <span class="keyword">int</span> ho = path[end];</div><div class="line">  <span class="keyword">while</span> (ho != <span class="number">-1</span>) &#123;</div><div class="line">    su.street[++k] = ho; ho = path[ho];</div><div class="line">  &#125;</div><div class="line">  su.E = k;</div><div class="line">  su.len = dist[end];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"poj1122.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">  <span class="keyword">int</span> i, j;</div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n)) &#123;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">      <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= n; ++j) &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;edge[i][j]);</div><div class="line">        <span class="keyword">if</span> (edge[i][j] == <span class="number">-1</span>) edge[i][j] = MAXN;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;end);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"Org\tDest\tTime\tPath\n"</span>);</div><div class="line">    <span class="keyword">int</span> cnt= <span class="number">0</span>, start;</div><div class="line">    <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;start)) &#123;</div><div class="line">      fire[cnt].start = start;</div><div class="line">      Dijkstra(start, fire[cnt]);</div><div class="line">      cnt++;</div><div class="line">    &#125;</div><div class="line">    sort(fire, fire+cnt);</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; cnt; ++i) &#123;</div><div class="line">      <span class="built_in">printf</span>(<span class="string">"%d\t%d\t%d\t"</span>, fire[i].start, end, fire[i].len);</div><div class="line">      <span class="keyword">for</span> (j = fire[i].E; j &gt; <span class="number">0</span>; --j) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\t"</span>, fire[i].street[j]);</div><div class="line">      &#125;</div><div class="line">      <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, fire[i].street[<span class="number">0</span>]);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Zoj代码： 注意第86行到96行</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> lson l, m, rt&lt;&lt;1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> rson m+1, r, rt&lt;&lt;1|1</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> LL;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN =  <span class="number">0x7fffffff</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span>  MINN =  <span class="number">-0x7fffffff</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-9</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> dir[<span class="number">8</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">1</span>&#125;,</div><div class="line">  &#123;<span class="number">1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;&#125;;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">30</span>;</div><div class="line"><span class="keyword">int</span> edge[MAX][MAX], n, dist[MAX], path[MAX], end;</div><div class="line"><span class="keyword">bool</span> S[MAX];</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> Fire &#123;</div><div class="line">  <span class="keyword">int</span> street[MAX], len, start, E;</div><div class="line">  <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> Fire &amp;other) <span class="keyword">const</span> &#123;</div><div class="line">    <span class="keyword">return</span> len &lt; other.len;</div><div class="line">  &#125;</div><div class="line">&#125;Fire;</div><div class="line">Fire fire[MAX];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dijkstra</span><span class="params">(<span class="keyword">int</span> u0, Fire &amp;su)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> i, j, k, u, Min;</div><div class="line">  <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">    dist[i] = edge[u0][i]; S[i] = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">if</span> (i != u0 &amp;&amp; edge[u0][i] != MAXN) path[i] = u0;</div><div class="line">    <span class="keyword">else</span> path[i] = <span class="number">-1</span>;</div><div class="line">  &#125;</div><div class="line">  S[u0] = <span class="literal">true</span>; path[u0] = <span class="number">-1</span>;</div><div class="line">  <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; n; ++i) &#123;</div><div class="line">    Min = MAXN; u = u0;</div><div class="line">    <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= n; ++j) &#123;</div><div class="line">      <span class="keyword">if</span> (S[j] == <span class="literal">false</span> &amp;&amp; dist[j] &lt; Min) &#123;</div><div class="line">        Min = dist[j]; u = j;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    S[u] = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= n;++j) &#123;</div><div class="line">      <span class="keyword">if</span> (S[j] == <span class="literal">false</span> &amp;&amp; edge[u][j] != MAXN) &#123;</div><div class="line">        <span class="keyword">int</span> tmp = edge[u][j] + dist[u];</div><div class="line">        <span class="keyword">if</span> (tmp &lt; dist[j]) &#123;</div><div class="line">          dist[j] = tmp; path[j] = u;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (u == end) <span class="keyword">break</span>;</div><div class="line">  &#125;</div><div class="line">  k = <span class="number">0</span>; su.street[k] = end; <span class="keyword">int</span> ho = path[end];</div><div class="line">  <span class="keyword">while</span> (ho != <span class="number">-1</span>) &#123;</div><div class="line">    su.street[++k] = ho; ho = path[ho];</div><div class="line">  &#125;</div><div class="line">  su.E = k;</div><div class="line">  su.len = dist[end];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"poj1122.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">  <span class="keyword">int</span> i, j, T;</div><div class="line">  <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> I = <span class="number">0</span>; I &lt; T; ++I)</div><div class="line">  &#123;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">      <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= n; ++j) &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;edge[i][j]);</div><div class="line">        <span class="keyword">if</span> (edge[i][j] == <span class="number">-1</span>) edge[i][j] = MAXN;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;end);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"Org\tDest\tTime\tPath\n"</span>);</div><div class="line">    <span class="keyword">int</span> cnt= <span class="number">0</span>, start;</div><div class="line">    getchar(); <span class="keyword">char</span> ch[<span class="number">100</span>]; gets(ch);</div><div class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(ch);</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; ++i) &#123;</div><div class="line">      <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch[i])) i++;   <span class="comment">// 果然不仅仅有空格！！</span></div><div class="line">      start = <span class="number">0</span>;</div><div class="line">      <span class="keyword">while</span> (<span class="built_in">isdigit</span>(ch[i]) &amp;&amp; i &lt; len) &#123;</div><div class="line">        start = start * <span class="number">10</span> + (ch[i]-<span class="string">'0'</span>);</div><div class="line">        i++;</div><div class="line">      &#125;</div><div class="line">      fire[cnt].start = start;</div><div class="line">      Dijkstra(start, fire[cnt]);</div><div class="line">      cnt++;</div><div class="line">    &#125;</div><div class="line">    sort(fire, fire+cnt);</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; cnt; ++i) &#123;</div><div class="line">      <span class="built_in">printf</span>(<span class="string">"%d\t%d\t%d\t"</span>, fire[i].start, end, fire[i].len);</div><div class="line">      <span class="keyword">for</span> (j = fire[i].E; j &gt; <span class="number">0</span>; --j) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\t"</span>, fire[i].street[j]);</div><div class="line">      &#125;</div><div class="line">      <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, fire[i].street[<span class="number">0</span>]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (I != T<span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>　　赶脚还是要认真读题啊，像今天这种细节。。就是一个致命的错误</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Graph/">Graph</a><a href="/tags/POJ/">POJ</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="liuxueyang.github.io/2013/05/06/poj1122&&zoj1053-FDNY-to-the-Rescue!-——最短路入门题_Dijkstra算法/" data-title="poj1122&amp;&amp;zoj1053 FDNY to the Rescue! ——最短路入门题_Dijkstra算法 | 黑历史" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2013/05/05/zoj2750-Idiomatic-Phrases-Game-——最短路入门题_Dijkstra算法/" title="zoj2750 Idiomatic Phrases Game ——最短路入门题_Dijkstra算法">
+  <strong>上一篇：</strong><br/>
+  <span>
+  zoj2750 Idiomatic Phrases Game ——最短路入门题_Dijkstra算法</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2013/05/07/zoj3696--Alien's-Organ-——概率题/"  title="zoj3696  Alien&#39;s Organ ——概率题">
+ <strong>下一篇：</strong><br/> 
+ <span>zoj3696  Alien&#39;s Organ ——概率题
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Diary/" title="Diary">Diary<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Emacs-Fcitx/" title="Emacs Fcitx">Emacs Fcitx<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Organize/" title="Organize">Organize<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Slackware/" title="Slackware">Slackware<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/macOS/" title="macOS">macOS<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/习惯-整理/" title="习惯 整理">习惯 整理<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/DP/" title="DP">DP<sup>41</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>32</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>29</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/POJ/" title="POJ">POJ<sup>28</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Graph/" title="Graph">Graph<sup>25</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/masm/" title="masm">masm<sup>20</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/zoj/" title="zoj">zoj<sup>15</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/run/" title="run">run<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Article/" title="Article">Article<sup>11</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Uva/" title="Uva">Uva<sup>10</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/tyvj/" title="tyvj">tyvj<sup>10</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Math/" title="Math">Math<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tools/" title="Tools">Tools<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/S/" title="S">S<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Codeforces/" title="Codeforces">Codeforces<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m liuxueyang. <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="liuxueyang">liuxueyang</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'liuxueyang';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
