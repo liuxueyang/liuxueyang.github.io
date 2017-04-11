@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -284,7 +284,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-11-27T15:35:00+08:00">
                 2012-11-27
@@ -408,7 +408,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-11-26T01:16:00+08:00">
                 2012-11-26
@@ -529,7 +529,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-11-24T19:56:00+08:00">
                 2012-11-24
@@ -659,7 +659,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-11-23T18:51:00+08:00">
                 2012-11-23
@@ -788,7 +788,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-11-23T18:46:00+08:00">
                 2012-11-23
@@ -917,7 +917,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-11-23T18:42:00+08:00">
                 2012-11-23
@@ -958,6 +958,20 @@
         
           
             <p>题目链接：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1754" target="_blank" rel="external">http://acm.hdu.edu.cn/showproblem.php?pid=1754</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 200000&lt;&lt;2</span></div><div class="line"><span class="comment">//#define max(a,b) ((a)&gt;(b)?(a):(b))</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> lson l,m,rt&lt;&lt;1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> rson m+1,r,rt&lt;&lt;1|1</span></div><div class="line"><span class="keyword">int</span> Max[maxn];</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> rt)</span></span></div><div class="line">&#123; Max[rt] = max(Max[rt&lt;&lt;<span class="number">1</span>],Max[rt&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]); &#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> rt)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(l==r) &#123;<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;Max[rt]); <span class="keyword">return</span>;&#125;</div><div class="line">    <span class="keyword">int</span> m=l+((r-l)&gt;&gt;<span class="number">1</span>);</div><div class="line">    build(lson);build(rson);</div><div class="line">    pushup(rt);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> ck, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> rt)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (l==r) &#123;Max[rt] = ck; <span class="keyword">return</span>;&#125;</div><div class="line">    <span class="keyword">int</span> m=l+((r-l)&gt;&gt;<span class="number">1</span>);</div><div class="line">    <span class="keyword">if</span> (p &lt;= m) update(p, ck, lson);</div><div class="line">    <span class="keyword">else</span> update(p, ck, rson);</div><div class="line">    pushup(rt);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> rt)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (L &lt;= l &amp;&amp; R &gt;= r) &#123;<span class="keyword">return</span> Max[rt];&#125;</div><div class="line">    <span class="keyword">int</span> m=l+((r-l)&gt;&gt;<span class="number">1</span>);</div><div class="line">    <span class="keyword">int</span> ret = <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (L&lt;=m) ret = max(query(L,R,lson),ret);</div><div class="line">    <span class="keyword">if</span> (R&gt;m) ret = max(query(L,R,rson),ret);</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> N, M;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">    freopen(<span class="string">"in.cpp"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;N, &amp;M) != EOF)</div><div class="line">    &#123;</div><div class="line">        build(<span class="number">1</span>,N,<span class="number">1</span>);</div><div class="line">        <span class="keyword">while</span> (M--)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">char</span> c[<span class="number">3</span>];<span class="keyword">int</span> A,B;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%s%d%d"</span>, c,&amp;A,&amp;B);</div><div class="line">            <span class="keyword">if</span> (c[<span class="number">0</span>]==<span class="string">'U'</span>) update(A,B,<span class="number">1</span>,N,<span class="number">1</span>);</div><div class="line">            <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, query(A,B,<span class="number">1</span>,N,<span class="number">1</span>));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>#include <iostream></iostream></p>
+<p>#include <cstdlib></cstdlib></p>
+<p>#include <cstdio></cstdio></p>
+<p>#include <algorithm></algorithm></p>
+<p>#define maxn 200000&lt;<2 #define="" max(a,b)="" ((a)="">(b)?(a):(b))</2></p>
+<p>#define lson l,m,rt&lt;&lt;1</p>
+<p>#define rson m+1,r,rt&lt;<1|1 int="" max[maxn];="" using="" namespace="" std;="" void="" pushup(int="" rt)="" {="" max[rt]="max(Max[rt<<1],Max[rt<<1|1]);" }="" build(int="" l,="" r,="" if(l="=r)" {scanf("%d",="" &max[rt]);="" return;}="" m="l+((r-l)">&gt;1);<br>    build(lson);build(rson);<br>    pushup(rt);<br>}<br>void update(int p, int ck, int l, int r, int rt)<br>{<br>    if (l==r) {Max[rt] = ck; return;}<br>    int m=l+((r-l)&gt;&gt;1);<br>    if (p &lt;= m) update(p, ck, lson);<br>    else update(p, ck, rson);<br>    pushup(rt);<br>}<br>int query(int L, int R, int l, int r, int rt)<br>{<br>    if (L &lt;= l &amp;&amp; R &gt;= r) {return Max[rt];}<br>    int m=l+((r-l)&gt;&gt;1);<br>    int ret = 0;<br>    if (L&lt;=m) ret = max(query(L,R,lson),ret);<br>    if (R&gt;m) ret = max(query(L,R,rson),ret);<br>    return ret;<br>}<br>int main(void)<br>{<br>    int N, M;</1|1></p>
+<p>#ifndef ONLINE_JUDGE<br>    freopen(“in.cpp”,”r”,stdin);</p>
+<p>#endif<br>    while (scanf(“%d%d”, &amp;N, &amp;M) != EOF)<br>    {<br>        build(1,N,1);<br>        while (M–)<br>        {<br>            char c[3];int A,B;<br>            scanf(“%s%d%d”, c,&amp;A,&amp;B);<br>            if (c[0]==’U’) update(A,B,1,N,1);<br>            else printf(“%d\n”, query(A,B,1,N,1));<br>        }<br>    }<br>    return 0;<br>}<br>```</p>
+<p>发现一个很神奇的东西：库函数中的 max() 比自己定义的效率要高，自己写的 #define max(a,b) ((a)&gt;(b)?(a):(b)) 就会超时。</p>
+<p>如果自己写一个 max 函数，不会超时，1093ms,但是会比用库函数(1078ms)慢一些。</p>
+<p>现在还不知道为什么宏定义为什么会超时。。</p>
+<p>第二次学习线段树，很久不做题目，有点儿手生，比如读入字符c的时候，一般要把c定义为字符数组，这样比较方便，如果定义c为字符，读入的时候可能会出现问题……</p>
 
           
         
@@ -1038,7 +1052,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-11-20T12:07:00+08:00">
                 2012-11-20
@@ -1164,7 +1178,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-11-12T22:46:00+08:00">
                 2012-11-12
@@ -1292,7 +1306,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-11-09T23:42:00+08:00">
                 2012-11-09
@@ -1419,7 +1433,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2012-11-09T08:23:00+08:00">
                 2012-11-09
@@ -1547,20 +1561,11 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">455</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
 
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">6</span>
-                <span class="site-state-item-name">Kategorien</span>
-              
-            </div>
           
 
           
@@ -1568,8 +1573,8 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">53</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-name">tags</span>
               
             </div>
           
@@ -1619,7 +1624,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
