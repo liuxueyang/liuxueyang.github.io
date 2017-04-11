@@ -1,0 +1,686 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="In order to know whether a sort algorithm is stable, we need to know how it works. SelectionSort12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="some sort algorithms">
+<meta property="og:url" content="liuxueyang.github.io/2014/10/09/some-sort-algorithms/index.html">
+<meta property="og:site_name" content="黑历史">
+<meta property="og:description" content="In order to know whether a sort algorithm is stable, we need to know how it works. SelectionSort12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565">
+<meta property="og:updated_time" content="2017-04-11T07:50:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="some sort algorithms">
+<meta name="twitter:description" content="In order to know whether a sort algorithm is stable, we need to know how it works. SelectionSort12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="liuxueyang.github.io/2014/10/09/some-sort-algorithms/"/>
+
+
+
+
+
+  <title> some sort algorithms | 黑历史 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">黑历史</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2014/10/09/some-sort-algorithms/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                some sort algorithms
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-10-09T15:48:33+08:00">
+                2014-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>In order to know whether a sort algorithm is stable, we need to know how it works.</p>
+<h2 id="SelectionSort"><a href="#SelectionSort" class="headerlink" title="SelectionSort"></a>SelectionSort</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * =====================================================================================</div><div class="line"> *       Filename : SelectionSort.cpp</div><div class="line"> *    Description : SelectionSort</div><div class="line"> *    Version     : 0.1</div><div class="line"> *        Created : 10/04/14 14:54</div><div class="line"> *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com</div><div class="line"> *         Motto  : Suicide is Painless</div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[] )</span></div><div class="line">&#123;</div><div class="line">	<span class="comment">// 1, 2, 3, 4, 5, 6, 7, 8</span></div><div class="line">	<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">8</span>;</div><div class="line">	<span class="keyword">int</span> a[<span class="number">8</span>] = &#123; <span class="number">7</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">8</span> &#125;;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"original array:"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; ++i ) &#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>; </div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">	<span class="keyword">int</span> min_index;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i ) &#123;</div><div class="line">		min_index = i;</div><div class="line">		<span class="keyword">for</span> ( <span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; N; ++j ) &#123;</div><div class="line">			<span class="keyword">if</span> ( a[j] &lt; a[min_index] ) &#123;</div><div class="line">				min_index = j;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		swap(a[i], a[min_index]);</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//output</span></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n\nsorted array:"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; ++i ) &#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>; </div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;				<span class="comment">/* ----------  end of function main  ---------- */</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * Is it stable? No.</div><div class="line"> * for example: </div><div class="line"> * 5 4 4 3 2 1</div><div class="line"> *</div><div class="line"> * first loop, we get:</div><div class="line"> * 1 4 4 3 2 5</div><div class="line"> *</div><div class="line"> * second loop, we get:</div><div class="line"> * 1 2 4 3 4 5</div><div class="line"> *</div><div class="line"> * In the second loop, the first 4 is placed after the second 4</div><div class="line"> * so select sort is not stable!</div><div class="line"> *</div><div class="line"> * Got it!</div><div class="line"> */</div></pre></td></tr></table></figure>
+<h2 id="InsertSort"><a href="#InsertSort" class="headerlink" title="InsertSort"></a>InsertSort</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * =====================================================================================</div><div class="line"> *       Filename : InsertSort.cpp</div><div class="line"> *    Description : InsertSort</div><div class="line"> *    Version     : 0.1</div><div class="line"> *        Created : 10/04/14 14:54</div><div class="line"> *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com</div><div class="line"> *         Motto  : Suicide is Painless</div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[] )</span></div><div class="line">&#123;</div><div class="line">	<span class="comment">// 1, 2, 3, 4, 5, 6, 7, 8</span></div><div class="line">	<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">8</span>;</div><div class="line">	<span class="keyword">int</span> a[<span class="number">8</span>] = &#123; <span class="number">7</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">8</span> &#125;;</div><div class="line"></div><div class="line">	<span class="comment">//print initial array</span></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"original array:"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; ++i ) &#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>; </div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; N; ++i ) &#123;</div><div class="line">		<span class="keyword">for</span> ( <span class="keyword">int</span> j = i; j &gt; <span class="number">0</span>; --j ) &#123;</div><div class="line">			<span class="keyword">if</span> ( a[j] &lt; a[j<span class="number">-1</span>] ) &#123;</div><div class="line">				swap(a[j], a[j<span class="number">-1</span>]);</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span> &#123;</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//output</span></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n\nsorted array:"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; ++i ) &#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>; </div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;				<span class="comment">/* ----------  end of function main  ---------- */</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * Obviously, it is stable. ;-)</div><div class="line"> * Because we never exchange two element with the same value.</div><div class="line"> */</div></pre></td></tr></table></figure>
+<h2 id="ShellSort"><a href="#ShellSort" class="headerlink" title="ShellSort"></a>ShellSort</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * =====================================================================================</div><div class="line"> *       Filename : ShellSort.cpp</div><div class="line"> *    Description : ShellSort</div><div class="line"> *    Version     : 0.1</div><div class="line"> *        Created : 10/04/14 14:54</div><div class="line"> *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com</div><div class="line"> *         Motto  : Suicide is Painless</div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[] )</span></div><div class="line">&#123;</div><div class="line">	<span class="comment">// 1, 2, 3, 4, 5, 6, 7, 8</span></div><div class="line">	<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">8</span>;</div><div class="line">	<span class="keyword">int</span> a[<span class="number">8</span>] = &#123; <span class="number">7</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">8</span> &#125;;</div><div class="line"></div><div class="line">	<span class="comment">//print initial array</span></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"original array:"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; ++i ) &#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>; </div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">	<span class="keyword">int</span> h = <span class="number">1</span>;</div><div class="line"></div><div class="line">	<span class="keyword">while</span> ( h &lt; N / <span class="number">3</span> ) &#123;</div><div class="line">		h = h * <span class="number">3</span> + <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">while</span> ( h &gt;= <span class="number">1</span> ) &#123;</div><div class="line">		<span class="keyword">for</span> ( <span class="keyword">int</span> i = h; i &lt; N; ++i ) &#123;</div><div class="line">			<span class="keyword">for</span> ( <span class="keyword">int</span> j = i; j &gt;= h; j -= h ) &#123;</div><div class="line">				<span class="keyword">if</span> ( a[j] &lt; a[j-h] ) &#123;</div><div class="line">					swap(a[j], a[j-h]);</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">else</span> &#123;</div><div class="line">					<span class="keyword">break</span>;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		h /= <span class="number">3</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//output</span></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n\nsorted array:"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; ++i ) &#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>; </div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;				<span class="comment">/* ----------  end of function main  ---------- */</span></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * Obviously, it is unstable. ;-)</div><div class="line"> */</div></pre></td></tr></table></figure>
+<h2 id="QuickSort"><a href="#QuickSort" class="headerlink" title="QuickSort"></a>QuickSort</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * =====================================================================================</div><div class="line"> *       Filename : QuickSort.cpp</div><div class="line"> *    Description : QuickSort</div><div class="line"> *    Version     : 0.1</div><div class="line"> *        Created : 10/04/14 14:54</div><div class="line"> *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com</div><div class="line"> *         Motto  : Suicide is Painless</div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="comment">/*  Name:  QuickSort</span></div><div class="line"> *  Description:  quick sort function</div><div class="line"> */</div><div class="line">	<span class="function"><span class="keyword">void</span></span></div><div class="line"><span class="title">QuickSort</span> <span class="params">( <span class="keyword">int</span> low, <span class="keyword">int</span> high, <span class="keyword">int</span> a[] )</span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (low &gt;= high) <span class="keyword">return</span>;</div><div class="line">	<span class="keyword">int</span> i = low, j = high, tmp = a[low];</div><div class="line">	<span class="keyword">while</span> ( <span class="literal">true</span> ) &#123;</div><div class="line">		<span class="keyword">while</span> ( a[j] &gt;= tmp &amp;&amp; j &gt; i) --j;</div><div class="line">		<span class="keyword">while</span> ( a[i] &lt;= tmp &amp;&amp; i &lt; j ) ++i;</div><div class="line">		<span class="keyword">if</span> (i == j) <span class="keyword">break</span>;</div><div class="line">		swap(a[i], a[j]);</div><div class="line">	&#125;</div><div class="line">	swap(a[i], a[low]);</div><div class="line">	QuickSort(low, i - <span class="number">1</span>, a);</div><div class="line">	QuickSort(i + <span class="number">1</span>, high, a);</div><div class="line">	<span class="keyword">return</span> ;</div><div class="line">&#125;		<span class="comment">/* -----  end of function QuickSort  ----- */</span></div><div class="line">	<span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[] )</span></div><div class="line">&#123;</div><div class="line">	<span class="comment">// 1, 2, 3, 4, 5, 6, 7, 8</span></div><div class="line">	<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">8</span>;</div><div class="line">	<span class="keyword">int</span> a[<span class="number">8</span>] = &#123; <span class="number">7</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">8</span> &#125;;</div><div class="line"></div><div class="line">	<span class="comment">//print initial array</span></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"original array:"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i ) &#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>; </div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">	QuickSort(<span class="number">0</span>, N - <span class="number">1</span>, a);</div><div class="line"></div><div class="line">	<span class="comment">//output</span></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n\nsorted array:"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i ) &#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>; </div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;				<span class="comment">/* ----------  end of function main  ---------- */</span></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * Obviously, it is unstable. ;-)</div><div class="line"> */</div></pre></td></tr></table></figure>
+<h2 id="QuickSort-3partition"><a href="#QuickSort-3partition" class="headerlink" title="QuickSort-3partition"></a>QuickSort-3partition</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * =====================================================================================</div><div class="line"> *       Filename : QuickSort-3partition.cpp</div><div class="line"> *    Description : QuickSort3Partition</div><div class="line"> *    Version     : 0.1</div><div class="line"> *        Created : 10/04/14 14:54</div><div class="line"> *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com</div><div class="line"> *         Motto  : Suicide is Painless</div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="comment">/*  Name:  QuickSort</span></div><div class="line"> *  Description:  quick sort function</div><div class="line"> */</div><div class="line">	<span class="function"><span class="keyword">void</span></span></div><div class="line"><span class="title">QuickSort</span> <span class="params">( <span class="keyword">int</span> low, <span class="keyword">int</span> high, <span class="keyword">int</span> a[] )</span></div><div class="line">&#123;</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * a[low, lt - 1] &lt; tmp</div><div class="line">	 * a[lt, i - 1] == tmp</div><div class="line">	 * a[i, gt] unknown</div><div class="line">	 * a[gt + 1, high] &gt; tmp</div><div class="line">	 */</div><div class="line">	<span class="keyword">if</span> (low &gt;= high) <span class="keyword">return</span>;</div><div class="line">  <span class="keyword">int</span> i = low, lt = low, gt = high, tmp = a[low];</div><div class="line">	<span class="keyword">while</span> ( i &lt;= gt ) &#123;</div><div class="line">		<span class="keyword">if</span> (a[i] == tmp) ++i;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (a[i] &lt; tmp) &#123;</div><div class="line">			swap(a[lt], a[i]);</div><div class="line">			++lt;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> &#123;</div><div class="line">			swap(a[gt], a[i]);</div><div class="line">			--gt;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	QuickSort(low, lt - <span class="number">1</span>, a);</div><div class="line">	QuickSort(gt + <span class="number">1</span>, high, a);</div><div class="line"></div><div class="line">	<span class="keyword">return</span> ;</div><div class="line">&#125;		<span class="comment">/* -----  end of function QuickSort  ----- */</span></div><div class="line">	<span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[] )</span></div><div class="line">&#123;</div><div class="line">	<span class="comment">// 1, 2, 3, 4, 5, 6, 7, 8</span></div><div class="line"><span class="comment">//	const int N = 8;</span></div><div class="line"><span class="comment">//	int a[8] = &#123; 7, 6, 3, 2, 1, 4, 5, 8 &#125;;</span></div><div class="line">	<span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">10</span>;</div><div class="line">	<span class="keyword">int</span> a[<span class="number">10</span>] = &#123; <span class="number">6</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">8</span> &#125;;</div><div class="line"></div><div class="line">	<span class="comment">//print initial array</span></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"original array:"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i ) &#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>; </div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">	QuickSort(<span class="number">0</span>, N - <span class="number">1</span>, a);</div><div class="line"></div><div class="line">	<span class="comment">//output</span></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n\nsorted array:"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i ) &#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>; </div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;				<span class="comment">/* ----------  end of function main  ---------- */</span></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * Obviously, it is not stable. ;-)</div><div class="line"> * notice the case a[i] &lt; tmp </div><div class="line"> */</div></pre></td></tr></table></figure>
+<h2 id="MergeSort"><a href="#MergeSort" class="headerlink" title="MergeSort"></a>MergeSort</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * =====================================================================================</div><div class="line"> *       Filename : MergeSort.cpp</div><div class="line"> *    Description : MergeSort</div><div class="line"> *    Version     : 0.1</div><div class="line"> *        Created : 10/04/14 14:54</div><div class="line"> *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com</div><div class="line"> *         Motto  : Suicide is Painless</div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">8</span>;</div><div class="line"></div><div class="line"><span class="comment">/*  Name:  MergeSort</span></div><div class="line"> *  Description:  MergeSort function</div><div class="line"> */</div><div class="line">	<span class="function"><span class="keyword">void</span></span></div><div class="line"><span class="title">MergeSort</span> <span class="params">( <span class="keyword">int</span> low, <span class="keyword">int</span> high, <span class="keyword">int</span> a[] )</span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> ( low &gt;= high ) <span class="keyword">return</span>;</div><div class="line">	<span class="keyword">int</span> mid = low + ((high - low) &gt;&gt; <span class="number">1</span>);</div><div class="line">	MergeSort(low, mid, a);</div><div class="line">	MergeSort(mid + <span class="number">1</span>, high, a);</div><div class="line"></div><div class="line">	<span class="comment">// Merge </span></div><div class="line">	<span class="keyword">int</span> a_new[N], i, j, k;</div><div class="line">	<span class="keyword">for</span> ( i = low; i &lt;= high; ++i ) &#123;</div><div class="line">		a_new[i] = a[i];</div><div class="line">	&#125;</div><div class="line">	i = low; </div><div class="line">	j = mid + <span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> ( k = low; k &lt;= high; ++k ) &#123;</div><div class="line">		<span class="keyword">if</span> ( i &gt; mid ) &#123;</div><div class="line">			a[k] = a_new[j++];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> ( j &gt; high ) &#123;</div><div class="line">			a[k] = a_new[i++];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (a_new[j] &lt; a_new[i]) &#123;</div><div class="line">			a[k] = a_new[j++];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> &#123;</div><div class="line">			a[k] = a_new[i++];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> ;</div><div class="line">&#125;		<span class="comment">/* -----  end of function MergeSort  ----- */</span></div><div class="line">	<span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[] )</span></div><div class="line">&#123;</div><div class="line">	<span class="comment">// 1, 2, 3, 4, 5, 6, 7, 8</span></div><div class="line">	<span class="keyword">int</span> a[N] = &#123; <span class="number">7</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">8</span> &#125;;</div><div class="line"></div><div class="line">	<span class="comment">//print initial array</span></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"original array:"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i ) &#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>; </div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">	MergeSort(<span class="number">0</span>, N - <span class="number">1</span>, a);</div><div class="line"></div><div class="line">	<span class="comment">//output</span></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n\nsorted array:"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i ) &#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>; </div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;				<span class="comment">/* ----------  end of function main  ---------- */</span></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * Obviously, it is stable. ;-)</div><div class="line"> */</div></pre></td></tr></table></figure>
+<h2 id="HeapSort"><a href="#HeapSort" class="headerlink" title="HeapSort"></a>HeapSort</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * =====================================================================================</div><div class="line"> *       Filename : HeapSort.cpp</div><div class="line"> *    Description : HeapSort</div><div class="line"> *    Version     : 0.1</div><div class="line"> *        Created : 10/04/14 14:54</div><div class="line"> *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com</div><div class="line"> *         Motto  : Suicide is Painless</div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> N = <span class="number">8</span>;</div><div class="line"></div><div class="line"><span class="comment">/*  Name:  sink</span></div><div class="line"> *  Description:  sink one value down the heap</div><div class="line"> */</div><div class="line">	<span class="function"><span class="keyword">void</span></span></div><div class="line"><span class="title">sink</span> <span class="params">( <span class="keyword">int</span> i, <span class="keyword">int</span> a[] )</span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">while</span> ( i * <span class="number">2</span> &lt;= N ) &#123;</div><div class="line">		<span class="keyword">int</span> goal = <span class="number">2</span> * i;</div><div class="line">		<span class="keyword">if</span> ( <span class="number">2</span> * i + <span class="number">1</span> &lt;= N &amp;&amp; a[<span class="number">2</span>*i+<span class="number">1</span>] &gt; a[<span class="number">2</span>*i] ) &#123; <span class="comment">/* I have written a[2*i+1] &gt; a[i] !!! fuck*/</span></div><div class="line">			goal = <span class="number">2</span> * i + <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> ( a[i] &lt; a[goal] ) &#123;</div><div class="line">			swap(a[i], a[goal]);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">break</span>;</div><div class="line">		i = goal;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> ;</div><div class="line">&#125;		<span class="comment">/* -----  end of function sink  ----- */</span></div><div class="line"></div><div class="line"><span class="comment">/*  NAME:  HEAPSORT</span></div><div class="line"> *  DESCRIPTION:  HEAP SORT FUNCTION</div><div class="line"> */</div><div class="line">	<span class="function"><span class="keyword">void</span></span></div><div class="line"><span class="title">HeapSort</span> <span class="params">( <span class="keyword">int</span> a[] )</span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = N &gt;&gt; <span class="number">1</span>; i &gt;= <span class="number">1</span>; --i ) &#123;</div><div class="line">		sink(i, a);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">8</span>; ++i ) &#123;</div><div class="line">		swap(a[<span class="number">1</span>], a[N]);</div><div class="line">		--N;</div><div class="line">		sink(<span class="number">1</span>, a);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> ;</div><div class="line">&#125;		<span class="comment">/* -----  end of function HeapSort  ----- */</span></div><div class="line">	<span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[] )</span></div><div class="line">&#123;</div><div class="line">	<span class="comment">// 1, 2, 3, 4, 5, 6, 7, 8</span></div><div class="line">	<span class="keyword">int</span> a[<span class="number">9</span>] = &#123; <span class="number">0</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">8</span> &#125;;</div><div class="line"></div><div class="line">	<span class="comment">//print initial array</span></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"original array:"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; ++i ) &#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>; </div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">	HeapSort(a);</div><div class="line"></div><div class="line">	<span class="comment">//output</span></div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n\nsorted array:"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">8</span>; ++i ) &#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>; </div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;				<span class="comment">/* ----------  end of function main  ---------- */</span></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> * Obviously, it is unstable. ;-)</div><div class="line"> */</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/10/23/create-print-insert-delete-and-reverse-list/" rel="next" title="create, print, insert, delete and reverse list">
+                <i class="fa fa-chevron-left"></i> create, print, insert, delete and reverse list
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/10/09/process-filenames-with-spaces/" rel="prev" title="process filenames with spaces">
+                process filenames with spaces <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="liuxueyang" />
+          <p class="site-author-name" itemprop="name">liuxueyang</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">455</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SelectionSort"><span class="nav-number">1.</span> <span class="nav-text">SelectionSort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#InsertSort"><span class="nav-number">2.</span> <span class="nav-text">InsertSort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ShellSort"><span class="nav-number">3.</span> <span class="nav-text">ShellSort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QuickSort"><span class="nav-number">4.</span> <span class="nav-text">QuickSort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QuickSort-3partition"><span class="nav-number">5.</span> <span class="nav-text">QuickSort-3partition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MergeSort"><span class="nav-number">6.</span> <span class="nav-text">MergeSort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HeapSort"><span class="nav-number">7.</span> <span class="nav-text">HeapSort</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liuxueyang</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,340 +1,825 @@
+<!doctype html>
 
- <!DOCTYPE HTML>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
+
+
   
-    <title>黑历史</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
-    
-    <meta name="author" content="liuxueyang">
-    
 
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
     
-    <meta property="og:type" content="website">
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta property="og:type" content="website">
 <meta property="og:title" content="黑历史">
 <meta property="og:url" content="liuxueyang.github.io/page/5/index.html">
 <meta property="og:site_name" content="黑历史">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="黑历史">
 
-    
-    <link rel="alternative" href="/atom.xml" title="黑历史" type="application/atom+xml">
-    
-    
-    <link rel="icon" href="/img/favicon.ico">
-    
-    
-    <link rel="apple-touch-icon" href="/img/jacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
-    
-    <link rel="stylesheet" href="/css/style.css">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="liuxueyang.github.io/page/5/"/>
+
+
+
+
+
+  <title> 黑历史 </title>
 </head>
 
-  <body>
-    <header>
-      
-<div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="黑历史" title="黑历史"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="黑历史">黑历史</a></h1>
-				<h2 class="blog-motto"></h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					<ul>
-					 
-						<li><a href="/">Home</a></li>
-					
-						<li><a href="/archives">Archives</a></li>
-					
-						<li><a href="/about">About</a></li>
-					
-					<li>
- 					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:liuxueyang.github.io">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
-    </header>
-    <div id="container">
-      <div id="main">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/06/30/Binary-Search-Tree-Perl-and-Common-Lisp-implementation/" title="Binary Search Tree: Perl and Common Lisp implementation" itemprop="url">Binary Search Tree: Perl and Common Lisp implementation</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
-		
-  <p class="article-time">
-    <time datetime="2016-06-30T00:33:38.000Z" itemprop="datePublished"> 发表于 2016-06-30</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="Perl"><a href="#Perl" class="headerlink" title="Perl"></a>Perl</h3><figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!perl</span></div><div class="line"></div><div class="line"><span class="keyword">use</span> strict;</div><div class="line"><span class="keyword">use</span> warnings;</div><div class="line"><span class="keyword">use</span> utf8;</div><div class="line"><span class="keyword">use</span> <span class="number">5.014</span>;</div><div class="line"></div><div class="line"><span class="comment"># insert given value into the proper position. If no tree provided,</span></div><div class="line"><span class="comment"># use implicit pass by reference aspect of @_ to fill one.</span></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">insert</span> </span>&#123;</div><div class="line">    <span class="keyword">my</span>($tree, $value) = @_;</div><div class="line">    <span class="keyword">unless</span> ($tree) &#123;</div><div class="line">        $tree = &#123;&#125;;</div><div class="line">        $tree-&gt;&#123;VALUE&#125; = $value;</div><div class="line">        $tree-&gt;&#123;LEFT&#125; = <span class="keyword">undef</span>;</div><div class="line">        $tree-&gt;&#123;RIGHT&#125; = <span class="keyword">undef</span>;</div><div class="line">        $_[<span class="number">0</span>] = $tree; <span class="comment"># $_[0] is reference param</span></div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> ($tree-&gt;&#123;VALUE&#125; &gt; $value) &#123; insert($tree-&gt;&#123;LEFT&#125;, $value) &#125;</div><div class="line">    <span class="keyword">elsif</span> ($tree-&gt;&#123;VALUE&#125; &lt; $value) &#123; insert($tree-&gt;&#123;RIGHT&#125;, $value) &#125;</div><div class="line">    <span class="keyword">else</span> &#123; <span class="keyword">warn</span> <span class="string">"duplicate insert of $value\n"</span> &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">in_order</span> </span>&#123;</div><div class="line">    <span class="keyword">my</span>($tree) = @_;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">unless</span> $tree;</div><div class="line">    in_order($tree-&gt;&#123;LEFT&#125;);</div><div class="line">    <span class="keyword">print</span> $tree-&gt;&#123;VALUE&#125;, <span class="string">" "</span>;</div><div class="line">    in_order($tree-&gt;&#123;RIGHT&#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">pre_order</span> </span>&#123;</div><div class="line">    <span class="keyword">my</span>($tree) = @_;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">unless</span> $tree;</div><div class="line">    <span class="keyword">print</span> $tree-&gt;&#123;VALUE&#125;, <span class="string">" "</span>;</div><div class="line">    pre_order($tree-&gt;&#123;LEFT&#125;);</div><div class="line">    pre_order($tree-&gt;&#123;RIGHT&#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">post_order</span> </span>&#123;</div><div class="line">    <span class="keyword">my</span>($tree) = @_;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">unless</span> $tree;</div><div class="line">    post_order($tree-&gt;&#123;LEFT&#125;);</div><div class="line">    post_order($tree-&gt;&#123;RIGHT&#125;);</div><div class="line">    <span class="keyword">print</span> $tree-&gt;&#123;VALUE&#125;, <span class="string">" "</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">search</span> </span>&#123;</div><div class="line">    <span class="keyword">my</span>($tree, $value) = @_;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">unless</span> $tree;</div><div class="line">    <span class="keyword">return</span> $tree <span class="keyword">if</span> ($tree-&gt;&#123;VALUE&#125; == $value);</div><div class="line">    search ($tree-&gt;&#123; ($value &lt; $tree-&gt;&#123;VALUE&#125;) ? <span class="string">"LEFT"</span> : <span class="string">"RIGHT"</span> &#125;, $value)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">my</span>($root, $n);</div><div class="line">insert($root, <span class="keyword">int</span>(<span class="keyword">rand</span>(<span class="number">100</span>))) <span class="keyword">while</span> ($n++ &lt; <span class="number">5</span>);</div><div class="line"><span class="keyword">print</span> <span class="string">"Pre order:  "</span>; pre_order($root); <span class="keyword">print</span> <span class="string">"\n"</span>;</div><div class="line"><span class="keyword">print</span> <span class="string">"In order:   "</span>; in_order($root); <span class="keyword">print</span> <span class="string">"\n"</span>;</div><div class="line"><span class="keyword">print</span> <span class="string">"Post order: "</span>; post_order($root); <span class="keyword">print</span> <span class="string">"\n"</span>;</div><div class="line"></div><div class="line"><span class="comment"># prompt until EOF</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">print</span> <span class="string">"Search? "</span>; &lt;&gt;; <span class="keyword">print</span> <span class="string">"Search? "</span>) &#123;</div><div class="line">    <span class="keyword">chomp</span>;</div><div class="line">    <span class="keyword">my</span> $found = search($root, $_);</div><div class="line">    <span class="keyword">if</span> ($found) &#123; <span class="keyword">print</span> <span class="string">"Found $_ at $found, $found-&gt;&#123;VALUE&#125;\n"</span> &#125;</div><div class="line">    <span class="keyword">else</span> &#123; <span class="keyword">print</span> <span class="string">"No $_ in the tree.\n"</span> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Common-Lisp"><a href="#Common-Lisp" class="headerlink" title="Common Lisp"></a>Common Lisp</h3><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line">(<span class="name">defclass</span> tree-node ()</div><div class="line">  ((<span class="name">value</span> <span class="symbol">:initform</span> <span class="literal">nil</span></div><div class="line">          <span class="symbol">:initarg</span> <span class="symbol">:value</span></div><div class="line">          <span class="symbol">:accessor</span> value)</div><div class="line">   (<span class="name">left</span> <span class="symbol">:initform</span> <span class="literal">nil</span></div><div class="line">         <span class="symbol">:accessor</span> left-child)</div><div class="line">   (<span class="name">right</span> <span class="symbol">:initform</span> <span class="literal">nil</span></div><div class="line">          <span class="symbol">:accessor</span> right-child)))</div><div class="line"></div><div class="line">(<span class="name">defun</span> create-node (<span class="name">value</span>)</div><div class="line">  (<span class="name">let</span> ((<span class="name">node</span> (<span class="name">make-instance</span> 'tree-node <span class="symbol">:value</span> value)))</div><div class="line">    node))</div><div class="line"></div><div class="line">(<span class="name">defun</span> insert-node (<span class="name">tree-node</span></div><div class="line">                    value)</div><div class="line">  (<span class="name">cond</span> ((<span class="name">&gt;</span> (<span class="name">value</span> tree-node) value)</div><div class="line">         (<span class="name">if</span> (<span class="name">null</span> (<span class="name">left-child</span> tree-node))</div><div class="line">             (<span class="name">setf</span> (<span class="name">left-child</span> tree-node)</div><div class="line">                   (<span class="name">create-node</span> value))</div><div class="line">             (<span class="name">insert-node</span> (<span class="name">left-child</span> tree-node) value)))</div><div class="line">        ((<span class="name">&lt;</span> (<span class="name">value</span> tree-node) value)</div><div class="line">         (<span class="name">if</span> (<span class="name">null</span> (<span class="name">right-child</span> tree-node))</div><div class="line">             (<span class="name">setf</span> (<span class="name">right-child</span> tree-node)</div><div class="line">                   (<span class="name">create-node</span> value))</div><div class="line">             (<span class="name">insert-node</span> (<span class="name">right-child</span> tree-node) value)))</div><div class="line">        (<span class="name">t</span> (<span class="name">format</span> <span class="literal">t</span> <span class="string">"duplicate insert of ~d~%"</span> value))))</div><div class="line"></div><div class="line">(<span class="name">defun</span> in-order (<span class="name">tree-node</span>)</div><div class="line">  (<span class="name">if</span> (<span class="name">null</span> tree-node) (<span class="name">return-from</span> in-order))</div><div class="line">  (<span class="name">in-order</span> (<span class="name">left-child</span> tree-node))</div><div class="line">  (<span class="name">format</span> <span class="literal">t</span> <span class="string">"~d "</span> (<span class="name">value</span> tree-node))</div><div class="line">  (<span class="name">in-order</span> (<span class="name">right-child</span> tree-node)))</div><div class="line"></div><div class="line">(<span class="name">defun</span> pre-order (<span class="name">tree-node</span>)</div><div class="line">  (<span class="name">if</span> (<span class="name">null</span> tree-node) (<span class="name">return-from</span> pre-order))</div><div class="line">  (<span class="name">format</span> <span class="literal">t</span> <span class="string">"~d "</span> (<span class="name">value</span> tree-node))</div><div class="line">  (<span class="name">pre-order</span> (<span class="name">left-child</span> tree-node))</div><div class="line">  (<span class="name">pre-order</span> (<span class="name">right-child</span> tree-node)))</div><div class="line"></div><div class="line">(<span class="name">defun</span> post-order (<span class="name">tree-node</span>)</div><div class="line">  (<span class="name">if</span> (<span class="name">null</span> tree-node) (<span class="name">return-from</span> post-order))</div><div class="line">  (<span class="name">post-order</span> (<span class="name">left-child</span> tree-node))</div><div class="line">  (<span class="name">post-order</span> (<span class="name">right-child</span> tree-node))</div><div class="line">  (<span class="name">format</span> <span class="literal">t</span> <span class="string">"~d "</span> (<span class="name">value</span> tree-node)))</div><div class="line"></div><div class="line">(<span class="name">defun</span> search-value (<span class="name">tree-node</span></div><div class="line">                     value)</div><div class="line">  (<span class="name">if</span> (<span class="name">null</span> tree-node) (<span class="name">return-from</span> search-value <span class="literal">nil</span>))</div><div class="line">  (<span class="name">if</span> (<span class="name">equal</span> value (<span class="name">value</span> tree-node))</div><div class="line">      (<span class="name">return-from</span> search-value tree-node))</div><div class="line">  (<span class="name">search-value</span> (<span class="name">if</span> (<span class="name">&lt;</span> value (<span class="name">value</span> tree-node))</div><div class="line">                    (<span class="name">left-child</span> tree-node)</div><div class="line">                    (<span class="name">right-child</span> tree-node))</div><div class="line">                value))</div><div class="line"></div><div class="line">(<span class="name">defparameter</span> root (<span class="name">create-node</span> <span class="number">1</span>))</div><div class="line"></div><div class="line">(<span class="name">dotimes</span> (<span class="name">i</span> <span class="number">5</span>)</div><div class="line">  (<span class="name">insert-node</span> root (<span class="name">random</span> <span class="number">100</span>)))</div><div class="line"></div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"~%~%Pre-order: "</span>)</div><div class="line">(<span class="name">pre-order</span> root)</div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"~%"</span>)</div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"~&amp;In--order: "</span>)</div><div class="line">(<span class="name">in-order</span> root)</div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"~%"</span>)</div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"~&amp;Pos-order: "</span>)</div><div class="line">(<span class="name">post-order</span> root)</div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"~%"</span>)</div><div class="line"></div><div class="line"><span class="comment">;; use C-c C-d h to read the documentation.</span></div><div class="line"><span class="comment">;; use C-u RET to input EOF in the SLIME REPL</span></div><div class="line"></div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"Search? "</span>)</div><div class="line">(<span class="name">loop</span> for in = (<span class="name">read</span> <span class="literal">nil</span> <span class="literal">nil</span>)</div><div class="line">      while in</div><div class="line">      do</div><div class="line">         (<span class="name">let</span> ((<span class="name">found</span> (<span class="name">search-value</span> root in)))</div><div class="line">           (<span class="name">if</span> found</div><div class="line">               (<span class="name">format</span> <span class="literal">t</span> <span class="string">"Found ~d at ~a~%"</span></div><div class="line">                       (<span class="name">value</span> found)</div><div class="line">                       found)</div><div class="line">               (<span class="name">format</span> <span class="literal">t</span> <span class="string">"No ~d in the tree.~%"</span> in))</div><div class="line">           (<span class="name">format</span> <span class="literal">t</span> <span class="string">"Search? "</span>)))</div></pre></td></tr></table></figure>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
   
-  <span></span> <a href="/tags/Algorithm/">Algorithm</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">黑历史</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
 
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
+<nav class="site-nav">
+  
 
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/06/30/Binary-Search-Tree-Perl-and-Common-Lisp-implementation/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/06/27/Lowest-common-ancestor-in-binary-tree-perl-c-and-common-lisp-implementation/" title="Lowest common ancestor in binary tree: perl, c and common lisp implementation" itemprop="url">Lowest common ancestor in binary tree: perl, c and common lisp implementation</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
-		
-  <p class="article-time">
-    <time datetime="2016-06-27T09:32:47.000Z" itemprop="datePublished"> 发表于 2016-06-27</time>
-    
-  </p>
-</header>
-    <div class="article-content">
+  
+    <ul id="menu" class="menu">
+      
         
-        <p>Find lowest common ancestor in binary tree. We assume the values in the tree are unique and the two values are always in the tree.</p>
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/06/30/Binary-Search-Tree-Perl-and-Common-Lisp-implementation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/30/Binary-Search-Tree-Perl-and-Common-Lisp-implementation/" itemprop="url">
+                  Binary Search Tree: Perl and Common Lisp implementation
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-30T08:33:38+08:00">
+                2016-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Perl"><a href="#Perl" class="headerlink" title="Perl"></a>Perl</h3><figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!perl</span></div><div class="line"></div><div class="line"><span class="keyword">use</span> strict;</div><div class="line"><span class="keyword">use</span> warnings;</div><div class="line"><span class="keyword">use</span> utf8;</div><div class="line"><span class="keyword">use</span> <span class="number">5.014</span>;</div><div class="line"></div><div class="line"><span class="comment"># insert given value into the proper position. If no tree provided,</span></div><div class="line"><span class="comment"># use implicit pass by reference aspect of @_ to fill one.</span></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">insert</span> </span>&#123;</div><div class="line">    <span class="keyword">my</span>($tree, $value) = @_;</div><div class="line">    <span class="keyword">unless</span> ($tree) &#123;</div><div class="line">        $tree = &#123;&#125;;</div><div class="line">        $tree-&gt;&#123;VALUE&#125; = $value;</div><div class="line">        $tree-&gt;&#123;LEFT&#125; = <span class="keyword">undef</span>;</div><div class="line">        $tree-&gt;&#123;RIGHT&#125; = <span class="keyword">undef</span>;</div><div class="line">        $_[<span class="number">0</span>] = $tree; <span class="comment"># $_[0] is reference param</span></div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> ($tree-&gt;&#123;VALUE&#125; &gt; $value) &#123; insert($tree-&gt;&#123;LEFT&#125;, $value) &#125;</div><div class="line">    <span class="keyword">elsif</span> ($tree-&gt;&#123;VALUE&#125; &lt; $value) &#123; insert($tree-&gt;&#123;RIGHT&#125;, $value) &#125;</div><div class="line">    <span class="keyword">else</span> &#123; <span class="keyword">warn</span> <span class="string">"duplicate insert of $value\n"</span> &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">in_order</span> </span>&#123;</div><div class="line">    <span class="keyword">my</span>($tree) = @_;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">unless</span> $tree;</div><div class="line">    in_order($tree-&gt;&#123;LEFT&#125;);</div><div class="line">    <span class="keyword">print</span> $tree-&gt;&#123;VALUE&#125;, <span class="string">" "</span>;</div><div class="line">    in_order($tree-&gt;&#123;RIGHT&#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">pre_order</span> </span>&#123;</div><div class="line">    <span class="keyword">my</span>($tree) = @_;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">unless</span> $tree;</div><div class="line">    <span class="keyword">print</span> $tree-&gt;&#123;VALUE&#125;, <span class="string">" "</span>;</div><div class="line">    pre_order($tree-&gt;&#123;LEFT&#125;);</div><div class="line">    pre_order($tree-&gt;&#123;RIGHT&#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">post_order</span> </span>&#123;</div><div class="line">    <span class="keyword">my</span>($tree) = @_;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">unless</span> $tree;</div><div class="line">    post_order($tree-&gt;&#123;LEFT&#125;);</div><div class="line">    post_order($tree-&gt;&#123;RIGHT&#125;);</div><div class="line">    <span class="keyword">print</span> $tree-&gt;&#123;VALUE&#125;, <span class="string">" "</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">search</span> </span>&#123;</div><div class="line">    <span class="keyword">my</span>($tree, $value) = @_;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">unless</span> $tree;</div><div class="line">    <span class="keyword">return</span> $tree <span class="keyword">if</span> ($tree-&gt;&#123;VALUE&#125; == $value);</div><div class="line">    search ($tree-&gt;&#123; ($value &lt; $tree-&gt;&#123;VALUE&#125;) ? <span class="string">"LEFT"</span> : <span class="string">"RIGHT"</span> &#125;, $value)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">my</span>($root, $n);</div><div class="line">insert($root, <span class="keyword">int</span>(<span class="keyword">rand</span>(<span class="number">100</span>))) <span class="keyword">while</span> ($n++ &lt; <span class="number">5</span>);</div><div class="line"><span class="keyword">print</span> <span class="string">"Pre order:  "</span>; pre_order($root); <span class="keyword">print</span> <span class="string">"\n"</span>;</div><div class="line"><span class="keyword">print</span> <span class="string">"In order:   "</span>; in_order($root); <span class="keyword">print</span> <span class="string">"\n"</span>;</div><div class="line"><span class="keyword">print</span> <span class="string">"Post order: "</span>; post_order($root); <span class="keyword">print</span> <span class="string">"\n"</span>;</div><div class="line"></div><div class="line"><span class="comment"># prompt until EOF</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">print</span> <span class="string">"Search? "</span>; &lt;&gt;; <span class="keyword">print</span> <span class="string">"Search? "</span>) &#123;</div><div class="line">    <span class="keyword">chomp</span>;</div><div class="line">    <span class="keyword">my</span> $found = search($root, $_);</div><div class="line">    <span class="keyword">if</span> ($found) &#123; <span class="keyword">print</span> <span class="string">"Found $_ at $found, $found-&gt;&#123;VALUE&#125;\n"</span> &#125;</div><div class="line">    <span class="keyword">else</span> &#123; <span class="keyword">print</span> <span class="string">"No $_ in the tree.\n"</span> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Common-Lisp"><a href="#Common-Lisp" class="headerlink" title="Common Lisp"></a>Common Lisp</h3><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line">(<span class="name">defclass</span> tree-node ()</div><div class="line">  ((<span class="name">value</span> <span class="symbol">:initform</span> <span class="literal">nil</span></div><div class="line">          <span class="symbol">:initarg</span> <span class="symbol">:value</span></div><div class="line">          <span class="symbol">:accessor</span> value)</div><div class="line">   (<span class="name">left</span> <span class="symbol">:initform</span> <span class="literal">nil</span></div><div class="line">         <span class="symbol">:accessor</span> left-child)</div><div class="line">   (<span class="name">right</span> <span class="symbol">:initform</span> <span class="literal">nil</span></div><div class="line">          <span class="symbol">:accessor</span> right-child)))</div><div class="line"></div><div class="line">(<span class="name">defun</span> create-node (<span class="name">value</span>)</div><div class="line">  (<span class="name">let</span> ((<span class="name">node</span> (<span class="name">make-instance</span> 'tree-node <span class="symbol">:value</span> value)))</div><div class="line">    node))</div><div class="line"></div><div class="line">(<span class="name">defun</span> insert-node (<span class="name">tree-node</span></div><div class="line">                    value)</div><div class="line">  (<span class="name">cond</span> ((<span class="name">&gt;</span> (<span class="name">value</span> tree-node) value)</div><div class="line">         (<span class="name">if</span> (<span class="name">null</span> (<span class="name">left-child</span> tree-node))</div><div class="line">             (<span class="name">setf</span> (<span class="name">left-child</span> tree-node)</div><div class="line">                   (<span class="name">create-node</span> value))</div><div class="line">             (<span class="name">insert-node</span> (<span class="name">left-child</span> tree-node) value)))</div><div class="line">        ((<span class="name">&lt;</span> (<span class="name">value</span> tree-node) value)</div><div class="line">         (<span class="name">if</span> (<span class="name">null</span> (<span class="name">right-child</span> tree-node))</div><div class="line">             (<span class="name">setf</span> (<span class="name">right-child</span> tree-node)</div><div class="line">                   (<span class="name">create-node</span> value))</div><div class="line">             (<span class="name">insert-node</span> (<span class="name">right-child</span> tree-node) value)))</div><div class="line">        (<span class="name">t</span> (<span class="name">format</span> <span class="literal">t</span> <span class="string">"duplicate insert of ~d~%"</span> value))))</div><div class="line"></div><div class="line">(<span class="name">defun</span> in-order (<span class="name">tree-node</span>)</div><div class="line">  (<span class="name">if</span> (<span class="name">null</span> tree-node) (<span class="name">return-from</span> in-order))</div><div class="line">  (<span class="name">in-order</span> (<span class="name">left-child</span> tree-node))</div><div class="line">  (<span class="name">format</span> <span class="literal">t</span> <span class="string">"~d "</span> (<span class="name">value</span> tree-node))</div><div class="line">  (<span class="name">in-order</span> (<span class="name">right-child</span> tree-node)))</div><div class="line"></div><div class="line">(<span class="name">defun</span> pre-order (<span class="name">tree-node</span>)</div><div class="line">  (<span class="name">if</span> (<span class="name">null</span> tree-node) (<span class="name">return-from</span> pre-order))</div><div class="line">  (<span class="name">format</span> <span class="literal">t</span> <span class="string">"~d "</span> (<span class="name">value</span> tree-node))</div><div class="line">  (<span class="name">pre-order</span> (<span class="name">left-child</span> tree-node))</div><div class="line">  (<span class="name">pre-order</span> (<span class="name">right-child</span> tree-node)))</div><div class="line"></div><div class="line">(<span class="name">defun</span> post-order (<span class="name">tree-node</span>)</div><div class="line">  (<span class="name">if</span> (<span class="name">null</span> tree-node) (<span class="name">return-from</span> post-order))</div><div class="line">  (<span class="name">post-order</span> (<span class="name">left-child</span> tree-node))</div><div class="line">  (<span class="name">post-order</span> (<span class="name">right-child</span> tree-node))</div><div class="line">  (<span class="name">format</span> <span class="literal">t</span> <span class="string">"~d "</span> (<span class="name">value</span> tree-node)))</div><div class="line"></div><div class="line">(<span class="name">defun</span> search-value (<span class="name">tree-node</span></div><div class="line">                     value)</div><div class="line">  (<span class="name">if</span> (<span class="name">null</span> tree-node) (<span class="name">return-from</span> search-value <span class="literal">nil</span>))</div><div class="line">  (<span class="name">if</span> (<span class="name">equal</span> value (<span class="name">value</span> tree-node))</div><div class="line">      (<span class="name">return-from</span> search-value tree-node))</div><div class="line">  (<span class="name">search-value</span> (<span class="name">if</span> (<span class="name">&lt;</span> value (<span class="name">value</span> tree-node))</div><div class="line">                    (<span class="name">left-child</span> tree-node)</div><div class="line">                    (<span class="name">right-child</span> tree-node))</div><div class="line">                value))</div><div class="line"></div><div class="line">(<span class="name">defparameter</span> root (<span class="name">create-node</span> <span class="number">1</span>))</div><div class="line"></div><div class="line">(<span class="name">dotimes</span> (<span class="name">i</span> <span class="number">5</span>)</div><div class="line">  (<span class="name">insert-node</span> root (<span class="name">random</span> <span class="number">100</span>)))</div><div class="line"></div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"~%~%Pre-order: "</span>)</div><div class="line">(<span class="name">pre-order</span> root)</div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"~%"</span>)</div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"~&amp;In--order: "</span>)</div><div class="line">(<span class="name">in-order</span> root)</div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"~%"</span>)</div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"~&amp;Pos-order: "</span>)</div><div class="line">(<span class="name">post-order</span> root)</div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"~%"</span>)</div><div class="line"></div><div class="line"><span class="comment">;; use C-c C-d h to read the documentation.</span></div><div class="line"><span class="comment">;; use C-u RET to input EOF in the SLIME REPL</span></div><div class="line"></div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"Search? "</span>)</div><div class="line">(<span class="name">loop</span> for in = (<span class="name">read</span> <span class="literal">nil</span> <span class="literal">nil</span>)</div><div class="line">      while in</div><div class="line">      do</div><div class="line">         (<span class="name">let</span> ((<span class="name">found</span> (<span class="name">search-value</span> root in)))</div><div class="line">           (<span class="name">if</span> found</div><div class="line">               (<span class="name">format</span> <span class="literal">t</span> <span class="string">"Found ~d at ~a~%"</span></div><div class="line">                       (<span class="name">value</span> found)</div><div class="line">                       found)</div><div class="line">               (<span class="name">format</span> <span class="literal">t</span> <span class="string">"No ~d in the tree.~%"</span> in))</div><div class="line">           (<span class="name">format</span> <span class="literal">t</span> <span class="string">"Search? "</span>)))</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/06/27/Lowest-common-ancestor-in-binary-tree-perl-c-and-common-lisp-implementation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/27/Lowest-common-ancestor-in-binary-tree-perl-c-and-common-lisp-implementation/" itemprop="url">
+                  Lowest common ancestor in binary tree: perl, c and common lisp implementation
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-27T17:32:47+08:00">
+                2016-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Find lowest common ancestor in binary tree. We assume the values in the tree are unique and the two values are always in the tree.</p>
 <p>Time complexity O(n), Space complexity O(n)</p>
 <h3 id="C"><a href="#C" class="headerlink" title="C:"></a>C:</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="comment">// Find lowest common ancestor in binary tree. We assume the</span></div><div class="line"><span class="comment">// values in the tree are unique and the two values are always in</span></div><div class="line"><span class="comment">// the tree.</span></div><div class="line"></div><div class="line"><span class="comment">// Time complexity O(n)</span></div><div class="line"><span class="comment">// Space complexity O(n)</span></div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> Node</div><div class="line">&#123;</div><div class="line">  <span class="keyword">int</span> key;</div><div class="line">  <span class="keyword">struct</span> Node *left, *right;</div><div class="line">&#125; Node;</div><div class="line"></div><div class="line"><span class="function">Node* <span class="title">createNode</span><span class="params">(<span class="keyword">int</span> key)</span></span></div><div class="line">&#123;</div><div class="line">  Node * tmp = (Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</div><div class="line">  tmp-&gt;key = key;</div><div class="line">  tmp-&gt;left = tmp-&gt;right = <span class="literal">NULL</span>;</div><div class="line">  <span class="keyword">return</span> tmp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">Node* <span class="title">findLCA</span><span class="params">(Node* root, <span class="keyword">int</span> n1, <span class="keyword">int</span> n2)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (root == <span class="literal">NULL</span>) &#123; <span class="keyword">return</span> <span class="literal">NULL</span>; &#125;</div><div class="line">  <span class="keyword">if</span> (n1 == root-&gt;key || n2 == root-&gt;key) &#123; <span class="keyword">return</span> root; &#125;</div><div class="line">  Node* left = findLCA(root-&gt;left, n1, n2);</div><div class="line">  Node* right = findLCA(root-&gt;right, n1, n2);</div><div class="line">  <span class="keyword">if</span> (left &amp;&amp; right) &#123; <span class="keyword">return</span> root; &#125;</div><div class="line">  <span class="keyword">return</span> left ? left : right;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  Node* root = createNode(<span class="number">1</span>);</div><div class="line"></div><div class="line">  root-&gt;left = createNode(<span class="number">2</span>);</div><div class="line">  root-&gt;right = createNode(<span class="number">3</span>);</div><div class="line"></div><div class="line">  root-&gt;left-&gt;left = createNode(<span class="number">4</span>);</div><div class="line">  root-&gt;left-&gt;right = createNode(<span class="number">5</span>);</div><div class="line"></div><div class="line">  root-&gt;right-&gt;left = createNode(<span class="number">6</span>);</div><div class="line">  root-&gt;right-&gt;right = createNode(<span class="number">7</span>);</div><div class="line"></div><div class="line">  <span class="built_in">printf</span>(<span class="string">"LCA(4, 5) = %d\n"</span>, findLCA(root, <span class="number">4</span>, <span class="number">5</span>)-&gt;key);</div><div class="line">  <span class="built_in">printf</span>(<span class="string">"LCA(4, 6) = %d\n"</span>, findLCA(root, <span class="number">4</span>, <span class="number">6</span>)-&gt;key);</div><div class="line">  <span class="built_in">printf</span>(<span class="string">"LCA(3, 4) = %d\n"</span>, findLCA(root, <span class="number">3</span>, <span class="number">4</span>)-&gt;key);</div><div class="line">  <span class="built_in">printf</span>(<span class="string">"LCA(2, 4) = %d\n"</span>, findLCA(root, <span class="number">2</span>, <span class="number">4</span>)-&gt;key);</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="Perl"><a href="#Perl" class="headerlink" title="Perl:"></a>Perl:</h3><figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">#!perl</span></div><div class="line"></div><div class="line"><span class="keyword">use</span> strict;</div><div class="line"><span class="keyword">use</span> warnings;</div><div class="line"><span class="keyword">use</span> utf8;</div><div class="line"><span class="keyword">use</span> <span class="number">5.014</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">createNode</span> </span>&#123;</div><div class="line">    <span class="keyword">my</span> $node = &#123;&#125;;</div><div class="line">    $node-&gt;&#123;VALUE&#125; = $_[<span class="number">0</span>];</div><div class="line">    $node-&gt;&#123;LEFT&#125; = $node-&gt;&#123;RIGHT&#125; = <span class="keyword">undef</span>;</div><div class="line">    $node;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">findLCA</span> </span>&#123;</div><div class="line">    <span class="comment"># accept 3 arguments:</span></div><div class="line">    <span class="comment"># 1.node; 2. n1 value; 3. n2 value</span></div><div class="line">    <span class="keyword">my</span>($root, $n1, $n2) = @_;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">undef</span> <span class="keyword">unless</span> ($root);</div><div class="line">    <span class="keyword">return</span> $root <span class="keyword">if</span> ($n1 == $root-&gt;&#123;VALUE&#125; ||</div><div class="line">                     $n2 == $root-&gt;&#123;VALUE&#125;);</div><div class="line">    <span class="keyword">my</span>($left, $right) =</div><div class="line">        (findLCA($root-&gt;&#123;LEFT&#125;, $n1, $n2),</div><div class="line">         findLCA($root-&gt;&#123;RIGHT&#125;, $n1, $n2));</div><div class="line">    <span class="keyword">return</span> $root <span class="keyword">if</span> ($left &amp;&amp; $right);</div><div class="line">    $left || $right;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">my</span> ($root, $n);</div><div class="line">$root = createNode(<span class="number">1</span>);</div><div class="line"></div><div class="line">$root-&gt;&#123;LEFT&#125; = createNode(<span class="number">2</span>);</div><div class="line">$root-&gt;&#123;RIGHT&#125; = createNode(<span class="number">3</span>);</div><div class="line"></div><div class="line">$root-&gt;&#123;LEFT&#125;<span class="string">&#123;LEFT&#125;</span> = createNode(<span class="number">4</span>);</div><div class="line">$root-&gt;&#123;LEFT&#125;<span class="string">&#123;RIGHT&#125;</span> = createNode(<span class="number">5</span>);</div><div class="line"></div><div class="line">$root-&gt;&#123;RIGHT&#125;<span class="string">&#123;LEFT&#125;</span> = createNode(<span class="number">6</span>);</div><div class="line">$root-&gt;&#123;RIGHT&#125;<span class="string">&#123;RIGHT&#125;</span> = createNode(<span class="number">7</span>);</div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">"LCA(4, 5) = "</span>, findLCA($root, <span class="number">4</span>, <span class="number">5</span>)-&gt;&#123;VALUE&#125;, <span class="string">"\n"</span>;</div><div class="line"><span class="keyword">print</span> <span class="string">"LCA(4, 6) = "</span>, findLCA($root, <span class="number">4</span>, <span class="number">6</span>)-&gt;&#123;VALUE&#125;, <span class="string">"\n"</span>;</div><div class="line"><span class="keyword">print</span> <span class="string">"LCA(3, 4) = "</span>, findLCA($root, <span class="number">3</span>, <span class="number">4</span>)-&gt;&#123;VALUE&#125;, <span class="string">"\n"</span>;</div><div class="line"><span class="keyword">print</span> <span class="string">"LCA(2, 4) = "</span>, findLCA($root, <span class="number">2</span>, <span class="number">4</span>)-&gt;&#123;VALUE&#125;, <span class="string">"\n"</span>;</div><div class="line"></div></pre></td></tr></table></figure>
 <h3 id="Common-Lisp"><a href="#Common-Lisp" class="headerlink" title="Common Lisp:"></a>Common Lisp:</h3><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">(<span class="name">defclass</span> tree-node ()</div><div class="line">  ((<span class="name">value</span> <span class="symbol">:initform</span> <span class="literal">nil</span></div><div class="line">          <span class="symbol">:initarg</span> <span class="symbol">:value</span></div><div class="line">          <span class="symbol">:accessor</span> value)</div><div class="line">   (<span class="name">left</span> <span class="symbol">:initform</span> <span class="literal">nil</span></div><div class="line">         <span class="symbol">:accessor</span> left-child)</div><div class="line">   (<span class="name">right</span> <span class="symbol">:initform</span> <span class="literal">nil</span></div><div class="line">          <span class="symbol">:accessor</span> right-child)))</div><div class="line"></div><div class="line">(<span class="name">defun</span> create-node (<span class="name">value</span>)</div><div class="line">  (<span class="name">let</span> ((<span class="name">node</span> (<span class="name">make-instance</span> 'tree-node <span class="symbol">:value</span> value)))</div><div class="line">    node))</div><div class="line"></div><div class="line">(<span class="name">defun</span> find-lowest-common-ancestor (<span class="name">tree-node</span> n1 n2)</div><div class="line">  (<span class="name">if</span> (<span class="name">null</span> tree-node)</div><div class="line">      (<span class="name">return-from</span> find-lowest-common-ancestor <span class="literal">nil</span>))</div><div class="line">  (<span class="name">if</span> (<span class="name">or</span> (<span class="name">equal</span> n1 (<span class="name">value</span> tree-node))</div><div class="line">          (<span class="name">equal</span> n2 (<span class="name">value</span> tree-node)))</div><div class="line">      (<span class="name">return-from</span> find-lowest-common-ancestor tree-node))</div><div class="line">  (<span class="name">let</span> ((<span class="name">left</span> (<span class="name">find-lowest-common-ancestor</span> (<span class="name">left-child</span></div><div class="line">                                            tree-node) n1 n2))</div><div class="line">        (<span class="name">right</span> (<span class="name">find-lowest-common-ancestor</span> (<span class="name">right-child</span></div><div class="line">                                             tree-node) n1 n2)))</div><div class="line">    (<span class="name">if</span> (<span class="name">and</span> left right)</div><div class="line">        (<span class="name">return-from</span> find-lowest-common-ancestor tree-node))</div><div class="line">    (<span class="name">or</span> left right)))</div><div class="line"></div><div class="line">(<span class="name">defparameter</span> root (<span class="name">create-node</span> <span class="number">1</span>))</div><div class="line"></div><div class="line">(<span class="name">setf</span> (<span class="name">left-child</span> root) (<span class="name">create-node</span> <span class="number">2</span>))</div><div class="line">(<span class="name">setf</span> (<span class="name">right-child</span> root) (<span class="name">create-node</span> <span class="number">3</span>))</div><div class="line"></div><div class="line">(<span class="name">setf</span> (<span class="name">left-child</span> (<span class="name">left-child</span> root)) (<span class="name">create-node</span> <span class="number">4</span>))</div><div class="line">(<span class="name">setf</span> (<span class="name">right-child</span> (<span class="name">left-child</span> root)) (<span class="name">create-node</span> <span class="number">5</span>))</div><div class="line"></div><div class="line">(<span class="name">setf</span> (<span class="name">left-child</span> (<span class="name">right-child</span> root)) (<span class="name">create-node</span> <span class="number">6</span>))</div><div class="line">(<span class="name">setf</span> (<span class="name">right-child</span> (<span class="name">right-child</span> root)) (<span class="name">create-node</span> <span class="number">7</span>))</div><div class="line"></div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"LCA(4, 5) = ~d~%"</span> (<span class="name">value</span> (<span class="name">find-lowest-common-ancestor</span></div><div class="line">                                     root <span class="number">4</span> <span class="number">5</span>)))</div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"LCA(4, 6) = ~d~%"</span> (<span class="name">value</span> (<span class="name">find-lowest-common-ancestor</span></div><div class="line">                                     root <span class="number">4</span> <span class="number">6</span>)))</div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"LCA(3, 4) = ~d~%"</span> (<span class="name">value</span> (<span class="name">find-lowest-common-ancestor</span></div><div class="line">                                     root <span class="number">3</span> <span class="number">4</span>)))</div><div class="line">(<span class="name">format</span> <span class="literal">t</span> <span class="string">"LCA(2, 4) = ~d~%"</span> (<span class="name">value</span> (<span class="name">find-lowest-common-ancestor</span></div><div class="line">                                     root <span class="number">2</span> <span class="number">4</span>)))</div></pre></td></tr></table></figure>
 
-        
-        
-        <p class="article-more-link">
           
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Algorithm/">Algorithm</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/06/27/Lowest-common-ancestor-in-binary-tree-perl-c-and-common-lisp-implementation/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/06/27/Fenwick-Tree/" title="Fenwick Tree" itemprop="url">Fenwick Tree</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
-		
-  <p class="article-time">
-    <time datetime="2016-06-26T16:54:39.000Z" itemprop="datePublished"> 发表于 2016-06-27</time>
-    
-  </p>
-</header>
-    <div class="article-content">
         
-        <p>Fenwick Tree的原理是，把一个前缀和划分成多个子序列的和，子序列的个数是当前前缀和元素个数的数字二进制表示中的1的个数。</p>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/06/27/Fenwick-Tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/27/Fenwick-Tree/" itemprop="url">
+                  Fenwick Tree
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-27T00:54:39+08:00">
+                2016-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Fenwick Tree的原理是，把一个前缀和划分成多个子序列的和，子序列的个数是当前前缀和元素个数的数字二进制表示中的1的个数。</p>
 <p>Perl实现：</p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env perl -n</span></div><div class="line"><span class="comment">#===============================================================================</span></div><div class="line"><span class="comment">#         FILE: fenwick_tree.pl</span></div><div class="line"><span class="comment">#       AUTHOR: Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com</span></div><div class="line"><span class="comment"># ORGANIZATION: Hunan University</span></div><div class="line"><span class="comment">#      CREATED: 2016/06/26 23时27分06秒</span></div><div class="line"><span class="comment">#===============================================================================</span></div><div class="line"></div><div class="line"><span class="keyword">use</span> strict;</div><div class="line"><span class="keyword">use</span> warnings;</div><div class="line"><span class="keyword">use</span> utf8;</div><div class="line"><span class="keyword">use</span> <span class="number">5.014</span>;</div><div class="line"></div><div class="line"><span class="keyword">chomp</span>;</div><div class="line"><span class="keyword">my</span> @fenwick;</div><div class="line"><span class="keyword">my</span> @array = <span class="keyword">split</span>;</div><div class="line"><span class="keyword">unshift</span> @array, <span class="number">0</span>;</div><div class="line"><span class="keyword">unshift</span> @fenwick, <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">lowbit</span> </span>&#123; $_[<span class="number">0</span>] &amp; -$_[<span class="number">0</span>]; &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">build_fenwick_tree</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="number">1</span>..$#array) &#123;</div><div class="line">        <span class="keyword">for</span> <span class="keyword">my</span> $j ($_-lowbit($_)+<span class="number">1</span>..$_) &#123;</div><div class="line">            $fenwick[$_] += $array[$j]</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">modify_fenwick_tree</span> </span>&#123;</div><div class="line">    <span class="comment"># two arguments</span></div><div class="line">    <span class="comment"># 1.index: the index of the array to modify</span></div><div class="line">    <span class="comment"># 2.delta: substract result of new value to the old value of the element</span></div><div class="line">    <span class="keyword">my</span> ($index, $delta) = @_;</div><div class="line">    <span class="keyword">while</span> ($index &lt;= @fenwick) &#123;</div><div class="line">        $fenwick[$index] += $delta;</div><div class="line">        $index += lowbit($index);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">sum_fenwick_tree</span> </span>&#123;</div><div class="line">    <span class="comment"># 1 argument: index</span></div><div class="line">    <span class="keyword">my</span> ($ans, $i) = (<span class="number">0</span>, $_[<span class="number">0</span>]);</div><div class="line">    <span class="keyword">while</span> ($i &gt; <span class="number">0</span>) &#123;</div><div class="line">        $ans += $fenwick[$i];</div><div class="line">        $i -= lowbit($i);</div><div class="line">    &#125;</div><div class="line">    $ans;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">build_fenwick_tree();</div><div class="line"><span class="keyword">print</span> <span class="keyword">join</span>(<span class="string">" "</span>, @fenwick[<span class="number">1</span>..$#fenwick]), <span class="string">"\n"</span>;</div><div class="line"></div><div class="line">modify_fenwick_tree(<span class="number">3</span>, <span class="number">3</span>);</div><div class="line"><span class="keyword">print</span> <span class="keyword">join</span>(<span class="string">" "</span>, @fenwick[<span class="number">1</span>..$#fenwick]), <span class="string">"\n"</span>;</div><div class="line"></div><div class="line"><span class="keyword">print</span> sum_fenwick_tree(<span class="number">3</span>), <span class="string">"\n"</span>;</div><div class="line"></div><div class="line"><span class="comment"># input</span></div><div class="line"><span class="comment"># 1 2 3 4 5</span></div><div class="line"><span class="comment"># output</span></div><div class="line"><span class="comment"># 1 3 3 10 5</span></div><div class="line"><span class="comment"># 1 3 6 13 5</span></div><div class="line"><span class="comment"># 9</span></div><div class="line"><span class="comment">#</span></div></pre></td></tr></table></figure>
 
-        
-        
-        <p class="article-more-link">
           
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Algorithm/">Algorithm</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/06/27/Fenwick-Tree/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/06/17/推荐Rime小鹤双拼输入法/" title="推荐Rime小鹤双拼输入法" itemprop="url">推荐Rime小鹤双拼输入法</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
-		
-  <p class="article-time">
-    <time datetime="2016-06-17T00:02:11.000Z" itemprop="datePublished"> 发表于 2016-06-17</time>
-    
-  </p>
-</header>
-    <div class="article-content">
         
-        <p>之前一直没有时间配置我的OS X上的Rime输入法。所以我最近认真配置了一下。首先，推荐<br>一篇博客：<br><a href="http://www.dreamxu.com/install-config-squirrel/" target="_blank" rel="external">安装及配置 Mac 上的 Rime 输入法——鼠鬚管 (Squirrel)</a><br>这是一篇好博客。然而复制配置文件的时候，还是不能直接复制到编辑器里面，一定要注意<br>格式！因为这篇博客，我发现了小鹤双拼输入法，然后随便找了一篇关于小鹤双拼的文章：<br><a href="http://sspai.com/32809" target="_blank" rel="external">做少数派中的少数派：双拼输入快速入门</a><br>看了一下里面的键位映射图，大概理解了一下，就马上开始用了。也没怎么刻意记忆，不知<br>道哪个键就看一下那个图，和朋友聊了几句，就可以打字了，虽然很慢，但是可以接受。前<br>天晚上开始接触，昨天上午就可以愉快地打字了。到现在大概用了一天半的时间，我就可以<br>用双拼愉快地写这篇博客了。</p>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/06/17/推荐Rime小鹤双拼输入法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/17/推荐Rime小鹤双拼输入法/" itemprop="url">
+                  推荐Rime小鹤双拼输入法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-17T08:02:11+08:00">
+                2016-06-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>之前一直没有时间配置我的OS X上的Rime输入法。所以我最近认真配置了一下。首先，推荐<br>一篇博客：<br><a href="http://www.dreamxu.com/install-config-squirrel/" target="_blank" rel="external">安装及配置 Mac 上的 Rime 输入法——鼠鬚管 (Squirrel)</a><br>这是一篇好博客。然而复制配置文件的时候，还是不能直接复制到编辑器里面，一定要注意<br>格式！因为这篇博客，我发现了小鹤双拼输入法，然后随便找了一篇关于小鹤双拼的文章：<br><a href="http://sspai.com/32809" target="_blank" rel="external">做少数派中的少数派：双拼输入快速入门</a><br>看了一下里面的键位映射图，大概理解了一下，就马上开始用了。也没怎么刻意记忆，不知<br>道哪个键就看一下那个图，和朋友聊了几句，就可以打字了，虽然很慢，但是可以接受。前<br>天晚上开始接触，昨天上午就可以愉快地打字了。到现在大概用了一天半的时间，我就可以<br>用双拼愉快地写这篇博客了。</p>
 <p>愚笨如我也能够这么快地接受这个输入法，所以它的学习成本还真的是挺低的。然而打字效<br>率比原来的全拼却好很多。每个汉字拼音分成声母和韵母，每个声母和韵母只需要一次按键，<br>不得不说，很适合用汉语拼音打汉字。哈哈，用词根输入英语可能就没这么方便了？:joy:<br>:joy:</p>
 <p>另外，我也可以同步Rime的用户资料了。然后再同步到Gitlab的私人仓库里面，完美！另外，<br>那篇博客也介绍了如何配置小鹤双拼・语句流输入法，这样就可以中英混输并且还带emoji<br>了！简直Perfect流畅。</p>
 <hr>
 <p>时间好快，麦子熟了。</p>
 
-        
-        
-        <p class="article-more-link">
           
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Tools/">Tools</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/06/17/推荐Rime小鹤双拼输入法/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/06/15/Karabiner-——-自定义MacBook-Air键盘/" title="Karabiner —— 自定义MacBook Air键盘" itemprop="url">Karabiner —— 自定义MacBook Air键盘</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
-		
-  <p class="article-time">
-    <time datetime="2016-06-15T03:25:11.000Z" itemprop="datePublished"> 发表于 2016-06-15</time>
-    
-  </p>
-</header>
-    <div class="article-content">
         
-        <p>一直以来，我的MacBook Air的键盘有几个键总是莫名其妙不灵。。换了一次键盘，然而问<br>题依旧，并且，问题不好重现，仿佛它不高兴了就不灵了。。这给打字带来了极大的不爽。。<br>所以我的解决办法是外接键盘。。或者外接USB键盘，或者外接蓝牙键盘。然而，这便携性<br>就没有了。。还要经常担心我那个蓝牙键盘的支脚是不是压倒了原装键盘的某个功能键什么<br>的。。。所以就很蛋疼。。</p>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/06/15/Karabiner-——-自定义MacBook-Air键盘/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/15/Karabiner-——-自定义MacBook-Air键盘/" itemprop="url">
+                  Karabiner —— 自定义MacBook Air键盘
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-15T11:25:11+08:00">
+                2016-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一直以来，我的MacBook Air的键盘有几个键总是莫名其妙不灵。。换了一次键盘，然而问<br>题依旧，并且，问题不好重现，仿佛它不高兴了就不灵了。。这给打字带来了极大的不爽。。<br>所以我的解决办法是外接键盘。。或者外接USB键盘，或者外接蓝牙键盘。然而，这便携性<br>就没有了。。还要经常担心我那个蓝牙键盘的支脚是不是压倒了原装键盘的某个功能键什么<br>的。。。所以就很蛋疼。。</p>
 <p>所以为了解决蓝牙键盘经常压到Air的原装键盘的问题，我就在原装键盘上面垫上一本小书，<br>一定程度上解决了这个问题。。然后我就去淘宝搜有没有买专用的板子的啊。。:joy:<br>:joy: 原来我的思路也蛮开阔的。。并没有，随手在Bing搜了一下，看到了V2EX的一个帖子<br>说如何关闭MacBook Air自带的键盘，诶？这倒是一个办法。然后我就开始折腾了：</p>
 <p>下载了<a href="https://pqrs.org/osx/karabiner/index.html.en" target="_blank" rel="external">Karabiner</a>这个软件。然后就开<br>始找怎么把某个组合键映射到经常失灵的<code>U</code>键。打开Karabiner的Preferences，看了一下<br><code>Change Key</code>那个标签并没有什么头绪。然后看到<code>Misc &amp; Uninstall</code>这个标签里面有一个<br><code>Custom Setting</code>：</p>
 <p><img src="/img/karabiner_preferences.png" alt="Karabiner Preferences"></p>
@@ -356,63 +841,126 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;item&gt;</div><div class="line">  &lt;name&gt;Change &apos;9&apos; key to fn+F9&lt;/name&gt;</div><div class="line">  &lt;identifier&gt;private.make_9_work_by_F9&lt;/identifier&gt;</div><div class="line">  &lt;autogen&gt;__KeyToKey__ </div><div class="line">    KeyCode::F9, ModifierFlag::FN,</div><div class="line">    KeyCode::9</div><div class="line">  &lt;/autogen&gt;</div><div class="line">&lt;/item&gt;</div></pre></td></tr></table></figure>
 <p>因为<code>F9</code>距离<code>9</code>比较近，所以我就把<code>fn+F9</code>设置成了输入<code>9</code>，这样就方便多了 :joy: </p>
 
-        
-        
-        <p class="article-more-link">
           
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Tools/">Tools</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/06/15/Karabiner-——-自定义MacBook-Air键盘/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/06/11/Codeforces-Round-356-Div-2-C-Bear-and-Prime-100/" title="Codeforces Round #356 (Div. 2) C. Bear and Prime 100" itemprop="url">Codeforces Round #356 (Div. 2) C. Bear and Prime 100</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
-		
-  <p class="article-time">
-    <time datetime="2016-06-11T00:05:05.000Z" itemprop="datePublished"> 发表于 2016-06-11</time>
-    
-  </p>
-</header>
-    <div class="article-content">
         
-        <h1 id="C-Bear-and-Prime-100"><a href="#C-Bear-and-Prime-100" class="headerlink" title="C. Bear and Prime 100"></a><a href="http://codeforces.com/contest/680/problem/C" target="_blank" rel="external">C. Bear and Prime 100</a></h1><p>This is an interactive problem. In the output section below you will see the information about flushing the output.</p>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/06/11/Codeforces-Round-356-Div-2-C-Bear-and-Prime-100/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/11/Codeforces-Round-356-Div-2-C-Bear-and-Prime-100/" itemprop="url">
+                  Codeforces Round #356 (Div. 2) C. Bear and Prime 100
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-11T08:05:05+08:00">
+                2016-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="C-Bear-and-Prime-100"><a href="#C-Bear-and-Prime-100" class="headerlink" title="C. Bear and Prime 100"></a><a href="http://codeforces.com/contest/680/problem/C" target="_blank" rel="external">C. Bear and Prime 100</a></h1><p>This is an interactive problem. In the output section below you will see the information about flushing the output.</p>
 <p>Bear Limak thinks of some hidden number — an integer from interval [2, 100]. Your task is to say if the hidden number is prime or composite.</p>
 <p>Integer x &gt; 1 is called prime if it has exactly two distinct divisors, 1 and x. If integer x &gt; 1 is not prime, it’s called composite.</p>
 <p>You can ask up to 20 queries about divisors of the hidden number. In each query you should print an integer from interval [2, 100]. The system will answer “yes” if your integer is a divisor of the hidden number. Otherwise, the answer will be “no”.</p>
@@ -458,63 +1006,126 @@ we can iterate _q_ in prime numbers below 50.
 <p>In the first case, there are at most 8 guesses. In the second case, there are at<br>most 15 - 4 = 11 guesses. So there are at most 19 guesses in all. 19 &lt; 20, it<br>satisifies the problem.</p>
 <h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * =====================================================================================</div><div class="line"> *</div><div class="line"> *       Filename:  c.cpp</div><div class="line"> *</div><div class="line"> *    Description:  </div><div class="line"> *</div><div class="line"> *        Version:  1.1</div><div class="line"> *        Created:  06/10/2016 08:57:54 PM</div><div class="line"> *       Compiler:  g++</div><div class="line"> *</div><div class="line"> *         Author:  Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com</div><div class="line"> *</div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> _ ios_base::sync_with_stdio(0);cin.tie(0);</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i, a, n) for (int i = a; i &lt; n; ++i)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> per(i, a, n) for (int i = n-1; i &gt; a; --i)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> all(x) (x).begin(),(x).end()</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> SZ(x) ((int)(x).size())</span></div><div class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; VI;</div><div class="line"><span class="keyword">typedef</span> <span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; MI;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; PII;</div><div class="line"><span class="comment">//const ll mod=1000000007;</span></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isPrime</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">2</span>; i * i &lt;= n; ++i) &#123;</div><div class="line">    <span class="keyword">if</span> (n % i == <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isDivisible</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">  <span class="built_in">string</span> str;</div><div class="line">  <span class="built_in">printf</span> ( <span class="string">"%d\n"</span>, n );</div><div class="line">  fflush(<span class="built_in">stdout</span>);</div><div class="line">  <span class="built_in">cin</span> &gt;&gt; str;</div><div class="line">  <span class="keyword">return</span> str == <span class="string">"yes"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">int</span> a[<span class="number">50</span>];</div><div class="line">  <span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">( <span class="keyword">void</span> )</span></div><div class="line">&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span>  ONLINE_JUDGE</span></div><div class="line"><span class="comment">//  freopen("c.in", "r", stdin);</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>     <span class="comment">/* -----  ONLINE_JUDGE  ----- */</span></span></div><div class="line"></div><div class="line">  <span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line">  rep(i, <span class="number">2</span>, <span class="number">51</span>) &#123;</div><div class="line">    <span class="keyword">if</span> (isPrime(i)) &#123;</div><div class="line">      a[j] = i;</div><div class="line">      ++j;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  rep(i, <span class="number">0</span>, j) &#123;</div><div class="line">    <span class="built_in">printf</span> ( <span class="string">"%d "</span>, a[i] );</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">printf</span> ( <span class="string">"\n"</span> );</div><div class="line">  <span class="comment">// j is len</span></div><div class="line">  <span class="comment">// a. 2, 3, 5, 7 -&gt; ... </span></div><div class="line">  <span class="comment">// b. primes less than 50</span></div><div class="line"></div><div class="line">  <span class="built_in">string</span> str;</div><div class="line">  <span class="keyword">int</span> cnt = <span class="number">0</span>;</div><div class="line">  rep (i, <span class="number">0</span>, j) &#123;</div><div class="line">    <span class="keyword">if</span> ( isDivisible(a[i]) ) &#123;</div><div class="line">      ++cnt;</div><div class="line">      <span class="keyword">if</span> ( cnt &gt;= <span class="number">2</span> ) &#123;</div><div class="line">        <span class="built_in">printf</span> ( <span class="string">"composite\n"</span> );</div><div class="line">        fflush(<span class="built_in">stdout</span>);</div><div class="line">        <span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span> ( a[i] &lt;= <span class="number">7</span> &amp;&amp; isDivisible(a[i] * a[i])) &#123;</div><div class="line">        ++cnt;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span> ( cnt &gt;= <span class="number">2</span> ) &#123;</div><div class="line">        <span class="built_in">printf</span> ( <span class="string">"composite\n"</span> );</div><div class="line">        fflush(<span class="built_in">stdout</span>);</div><div class="line">        <span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">printf</span> ( <span class="string">"prime\n"</span> );</div><div class="line">  fflush(<span class="built_in">stdout</span>);</div><div class="line"></div><div class="line">  <span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;				<span class="comment">/* ----------  end of function main  ---------- */</span></div></pre></td></tr></table></figure>
 
-        
-        
-        <p class="article-more-link">
           
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Codeforces/">Codeforces</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/06/11/Codeforces-Round-356-Div-2-C-Bear-and-Prime-100/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/06/10/problem-when-configuring-vim-taglist-plugin/" title="problem when configuring vim taglist plugin" itemprop="url">problem when configuring vim taglist plugin</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
-		
-  <p class="article-time">
-    <time datetime="2016-06-10T14:44:32.000Z" itemprop="datePublished"> 发表于 2016-06-10</time>
-    
-  </p>
-</header>
-    <div class="article-content">
         
-        <p>最开始，用这个插件的时候出现了类似</p>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/06/10/problem-when-configuring-vim-taglist-plugin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/10/problem-when-configuring-vim-taglist-plugin/" itemprop="url">
+                  problem when configuring vim taglist plugin
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-10T22:44:32+08:00">
+                2016-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最开始，用这个插件的时候出现了类似</p>
 <p><code>ctags unrecognized option &#39;--format=2&#39;^@^itry</code></p>
 <p>这样的问题。</p>
 <p>然后我看了一下<code>ctags</code>的man page，发现，确实没有这个选项。这……是为啥。</p>
@@ -529,63 +1140,126 @@ we can iterate _q_ in prime numbers below 50.
 <p><img src="/img/taglist.png" alt="Gvim on openSUSE"></p>
 <p>taglist的窗口通过<code>C-a</code>快捷键打开，再次按<code>C-a</code>快捷键，taglist窗口关闭。这个插件尤其是<br>在读程序的时候比较有用。或者写程序的时候也会用到。</p>
 
-        
-        
-        <p class="article-more-link">
           
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Tools/">Tools</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/06/10/problem-when-configuring-vim-taglist-plugin/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/06/04/fish-shell-tutorial/" title="fish shell tutorial" itemprop="url">fish shell tutorial</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
-		
-  <p class="article-time">
-    <time datetime="2016-06-04T02:12:04.000Z" itemprop="datePublished"> 发表于 2016-06-04</time>
-    
-  </p>
-</header>
-    <div class="article-content">
         
-        <p>在fish里面，相邻的列表或者字符串会按照笛卡尔积来展开。比如：</p>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/06/04/fish-shell-tutorial/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/04/fish-shell-tutorial/" itemprop="url">
+                  fish shell tutorial
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-04T10:12:04+08:00">
+                2016-06-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在fish里面，相邻的列表或者字符串会按照笛卡尔积来展开。比如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; echo &#123;good,bad&#125;&quot; apples&quot;</div><div class="line">good apples bad apples</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; set -l a x y z</div><div class="line">liu@lisp /p/tmp&gt; echo $a </div><div class="line">x y z</div><div class="line">liu@lisp /p/tmp&gt; set -l b 1 2 3</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; echo $a$b</div><div class="line">x1 y1 z1 x2 y2 z2 x3 y3 z3</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; echo $a&quot;-&quot;$b</div><div class="line">x-1 y-1 z-1 x-2 y-2 z-2 x-3 y-3 z-3</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; echo &#123;x,y,z&#125;$b</div><div class="line">x1 y1 z1 x2 y2 z2 x3 y3 z3</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; echo &#123;$b&#125;word</div><div class="line">1word 2word 3word</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; echo &quot;$b&quot;word</div><div class="line">1 2 3word</div></pre></td></tr></table></figure>
 <p>上面用到了括号扩展的功能：在一个大括号里面以逗号分隔的几个字符串会被扩展成列表里<br>面的每个元素被当作一个新的变量。比如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; echo input.&#123;c,h,txt&#125; </div><div class="line">input.c input.h input.txt</div><div class="line">liu@lisp /p/tmp&gt; mkdir src </div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; touch  input.&#123;c,h,txt&#125; </div><div class="line">liu@lisp /p/tmp&gt; mv *.&#123;c,h&#125; src </div><div class="line">liu@lisp /p/tmp&gt; ls src </div><div class="line">input.c input.h</div></pre></td></tr></table></figure>
@@ -640,63 +1314,126 @@ we can iterate _q_ in prime numbers below 50.
 <h4 id="6月3日，5-21km"><a href="#6月3日，5-21km" class="headerlink" title="6月3日，5.21km"></a><a href="http://wap.thejoyrun.com/po_22498513_51240419.html" target="_blank" rel="external">6月3日，5.21km</a></h4><p>最近看周易，跑步的时候默背分宫卦象图 :joy: 我是有……多无聊。。。</p>
 <h4 id="6月4日，5-17km"><a href="#6月4日，5-17km" class="headerlink" title="6月4日，5.17km"></a><a href="http://wap.thejoyrun.com/po_22498513_51525979.html" target="_blank" rel="external">6月4日，5.17km</a></h4><p>Android版的Google拼音输入法比搜狗好用并且好看多了…… </p>
 
-        
-        
-        <p class="article-more-link">
           
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Tools/">Tools</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/06/04/fish-shell-tutorial/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/05/31/Codeforces-Round-353-Div-2-C-Money-Transfers/" title="Codeforces Round #353 (Div. 2) C. Money Transfers" itemprop="url">Codeforces Round #353 (Div. 2) C. Money Transfers</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
-		
-  <p class="article-time">
-    <time datetime="2016-05-31T05:57:13.000Z" itemprop="datePublished"> 发表于 2016-05-31</time>
-    
-  </p>
-</header>
-    <div class="article-content">
         
-        <p>There are n banks in the city where Vasya lives, they are located in a circle, such that any two banks are neighbouring if their indices differ by no more than 1. Also, bank 1 and bank n are neighbours if n &gt; 1. No bank is a neighbour of itself.</p>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/05/31/Codeforces-Round-353-Div-2-C-Money-Transfers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/31/Codeforces-Round-353-Div-2-C-Money-Transfers/" itemprop="url">
+                  Codeforces Round #353 (Div. 2) C. Money Transfers
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-31T13:57:13+08:00">
+                2016-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>There are n banks in the city where Vasya lives, they are located in a circle, such that any two banks are neighbouring if their indices differ by no more than 1. Also, bank 1 and bank n are neighbours if n &gt; 1. No bank is a neighbour of itself.</p>
 <p>Vasya has an account in each bank. Its balance may be negative, meaning Vasya owes some money to this bank.</p>
 <p>There is only one type of operations available: transfer some amount of money from any bank to account in any neighbouring bank. There are no restrictions on the size of the sum being transferred or balance requirements to perform this operation.</p>
 <p>Vasya doesn’t like to deal with large numbers, so he asks you to determine the minimum number of operations required to change the balance of each bank account to zero. It’s guaranteed, that this is possible to achieve, that is, the total balance of Vasya in all banks is equal to zero.</p>
@@ -729,63 +1466,126 @@ array appended by prefix of the original array.
 <h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> n, a[<span class="number">100000</span>+<span class="number">10</span>], segNumMax;</div><div class="line"><span class="built_in">map</span>&lt;ll,<span class="keyword">int</span>&gt; preSum;</div><div class="line">  <span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[] )</span></div><div class="line">&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span>  ONLINE_JUDGE</span></div><div class="line">freopen(<span class="string">"c.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>     <span class="comment">/* -----  ONLINE_JUDGE  ----- */</span></span></div><div class="line">  </div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n)) &#123;</div><div class="line">    preSum.clear();</div><div class="line">    segNumMax = <span class="number">0</span>;</div><div class="line">    </div><div class="line">    ll sum = <span class="number">0</span>;</div><div class="line"></div><div class="line">    rep(i, <span class="number">0</span>, n) &#123;</div><div class="line">      <span class="built_in">scanf</span>(<span class="string">"%d"</span>, a + i);</div><div class="line">      sum += a[i];</div><div class="line">      preSum[sum]++;</div><div class="line">      segNumMax = max(preSum[sum], segNumMax);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">printf</span> ( <span class="string">"%d\n"</span>, n - segNumMax );</div><div class="line">  &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;				<span class="comment">/* ----------  end of function main  ---------- */</span></div></pre></td></tr></table></figure>
 <h3 id="日常锻炼"><a href="#日常锻炼" class="headerlink" title="日常锻炼"></a><a href="http://wap.thejoyrun.com/po_22498513_50440451.html" target="_blank" rel="external">日常锻炼</a></h3><p>事实上，跑之前我根本不知道能不能跑完，然而，最终，还是跑完了……很多事情就是这样吧。<br>:joy: :joy:</p>
 
-        
-        
-        <p class="article-more-link">
           
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Codeforces/">Codeforces</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/05/31/Codeforces-Round-353-Div-2-C-Money-Transfers/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/05/30/Codeforces-Round-354-Div-2-C-Vasya-and-String/" title="Codeforces Round #354 (Div. 2) C. Vasya and String" itemprop="url">Codeforces Round #354 (Div. 2) C. Vasya and String</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="liuxueyang" target="_blank" itemprop="author">liuxueyang</a>
-		
-  <p class="article-time">
-    <time datetime="2016-05-30T15:21:39.000Z" itemprop="datePublished"> 发表于 2016-05-30</time>
-    
-  </p>
-</header>
-    <div class="article-content">
         
-        <p>High school student Vasya got a string of length n as a birthday present. This string consists of letters ‘a’ and ‘b’ only. Vasya denotes beauty of the string as the maximum length of a substring (consecutive subsequence) consisting of equal letters.</p>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/05/30/Codeforces-Round-354-Div-2-C-Vasya-and-String/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/30/Codeforces-Round-354-Div-2-C-Vasya-and-String/" itemprop="url">
+                  Codeforces Round #354 (Div. 2) C. Vasya and String
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-30T23:21:39+08:00">
+                2016-05-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>High school student Vasya got a string of length n as a birthday present. This string consists of letters ‘a’ and ‘b’ only. Vasya denotes beauty of the string as the maximum length of a substring (consecutive subsequence) consisting of equal letters.</p>
 <p>Vasya can change no more than k characters of the original string. What is the maximum beauty of the string he can achieve?</p>
 <h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The first line of the input contains two integers n and k (1 ≤ n ≤ 100 000, 0 ≤ k ≤ n) — the length of the string and the maximum number of characters to change.</p>
 <p>The second line contains the string, consisting of letters ‘a’ and ‘b’ only.</p>
@@ -796,358 +1596,300 @@ array appended by prefix of the original array.
 <h3 id="今天跑步5-19km"><a href="#今天跑步5-19km" class="headerlink" title="今天跑步5.19km"></a>今天跑步5.19km</h3><p><a href="http://wap.thejoyrun.com/po_22498513_50146660.html" target="_blank" rel="external">跑跑步也挺好的</a></p>
 <p>今天跑步换了一双鞋，跑到半路发现我的鞋磨脚，真是醉了……:smile: 最终还是跑完了，回<br>来一看脚掌侧面磨了一个泡。。。:joy: 蛮拼的……</p>
 
-        
-        
-        <p class="article-more-link">
           
-       </p>
+        
+      
     </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
 
 
-  <div class="article-tags">
+    
+  </section>
+
   
-  <span></span> <a href="/tags/Codeforces/">Codeforces</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/05/30/Codeforces-Round-354-Div-2-C-Vasya-and-String/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-  <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/4/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/45/">45</a><a class="extend next" rel="next" href="/page/6/">Next<span></span></a>
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/46/">46</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
-</div>
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
-
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
-<aside class="clearfix">
-
-  
 
 
-  
-<div class="categorieslist">
-	<p class="asidetitle">分类</p>
-		<ul>
-		
-		  
-			<li><a href="/categories/Diary/" title="Diary">Diary<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Emacs-Fcitx/" title="Emacs Fcitx">Emacs Fcitx<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Organize/" title="Organize">Organize<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/Slackware/" title="Slackware">Slackware<sup>2</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/macOS/" title="macOS">macOS<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/习惯-整理/" title="习惯 整理">习惯 整理<sup>1</sup></a></li>
-		  
-		
-		</ul>
-</div>
+          </div>
+          
 
 
-  
-<div class="tagslist">
-	<p class="asidetitle">标签</p>
-		<ul class="clearfix">
-		
-			
-				<li><a href="/tags/Hdu/" title="Hdu">Hdu<sup>66</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DP/" title="DP">DP<sup>48</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/CodeForces/" title="CodeForces">CodeForces<sup>44</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/POJ/" title="POJ">POJ<sup>43</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Graph/" title="Graph">Graph<sup>26</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Uva/" title="Uva">Uva<sup>25</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/zoj/" title="zoj">zoj<sup>21</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/masm/" title="masm">masm<sup>20</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Data-Structure/" title="Data Structure">Data Structure<sup>18</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Math/" title="Math">Math<sup>15</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/run/" title="run">run<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/spoj/" title="spoj">spoj<sup>13</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Article/" title="Article">Article<sup>11</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/tyvj/" title="tyvj">tyvj<sup>10</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Tools/" title="Tools">Tools<sup>9</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Ubuntu/" title="Ubuntu">Ubuntu<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Codeforces/" title="Codeforces">Codeforces<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/USACO/" title="USACO">USACO<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/2016/" title="2016">2016<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DFS/" title="DFS">DFS<sup>5</sup></a></li>
-			
-		
-		</ul>
-</div>
+          
 
-
-  <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
-    <ul>
+        </div>
         
-    </ul>
-</div>
-
+          
   
-
-
-  <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
-</div>
-
-  <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
-    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
-</div>
-
-
-</aside>
-</div>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<section class="info">
-		<p> Hello ,I&#39;m liuxueyang. <br/>
-			</p>
-	</section>
-	 
-	<div class="social-font" class="clearfix">
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	</div>
-			
-		
+  </div>
 
-		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
-		
-		<a href="/about" target="_blank" title="liuxueyang">liuxueyang</a>
-		
-		
-		</p>
-</div>
-</footer>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-  
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else{
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="liuxueyang" />
+          <p class="site-author-name" itemprop="name">liuxueyang</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">455</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
         
-    }
-  });
-});
-</script>
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
 
 
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
 
 
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liuxueyang</span>
+</div>
 
 
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
 
 
+        
 
+        
+      </div>
+    </footer>
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
 <script type="text/javascript">
-$(document).ready(function(){ 
-  $('.article-content').each(function(i){
-    $(this).find('img').each(function(){
-      if ($(this).parent().hasClass('fancybox')) return;
-      var alt = this.alt;
-      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
-    });
-    $(this).find('.fancybox').each(function(){
-      $(this).attr('rel', 'article' + i);
-    });
-  });
-  if($.fancybox){
-    $('.fancybox').fancybox();
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
   }
-}); 
 </script>
 
 
 
-<!-- Analytics Begin -->
 
 
 
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
 
 
 
-<!-- Analytics End -->
-
-<!-- Totop Begin -->
-
-	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
-	</div>
-	<script src="/js/totop.js"></script>
-
-<!-- Totop End -->
-
-<!-- MathJax Begin -->
-<!-- mathjax config similar to math.stackexchange -->
+  
 
 
-<!-- MathJax End -->
 
-<!-- Tiny_search Begin -->
 
-<!-- Tiny_search End -->
 
-  </body>
- </html>
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
