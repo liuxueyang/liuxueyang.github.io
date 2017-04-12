@@ -247,6 +247,182 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/07/03/POJ3320-Jessica-s-Reading-Problem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/03/POJ3320-Jessica-s-Reading-Problem/" itemprop="url">
+                  POJ3320 Jessica's Reading Problem
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-03T19:00:24+08:00">
+                2016-07-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/03/POJ3320-Jessica-s-Reading-Problem/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/07/03/POJ3320-Jessica-s-Reading-Problem/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p><a href="http://poj.org/problem?id=3320" target="_blank" rel="external">Jessica’s Reading Problem</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>方法和<a href="http://liuxueyang.github.io/2016/07/02/Poj3061-Subsequence/">Subsequence</a>一样，只是增加一个计数的步骤。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">100</span> * <span class="number">10000</span> + <span class="number">1</span>;</div><div class="line"><span class="keyword">int</span> a[MAX_N], n;</div><div class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; idea;</div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; num_idea;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</div><div class="line">  idea.clear();</div><div class="line">  num_idea.clear();</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</div><div class="line">    idea.insert(a[i]);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">int</span> all_ideas = (<span class="keyword">int</span>)idea.size();</div><div class="line">  <span class="keyword">int</span> s = <span class="number">0</span>, t = <span class="number">0</span>, cnt = <span class="number">0</span>, ans = n + <span class="number">1</span>;</div><div class="line"></div><div class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</div><div class="line">    <span class="keyword">while</span> (t &lt; n &amp;&amp; cnt &lt; all_ideas) &#123;</div><div class="line">      <span class="keyword">if</span> (num_idea[a[t]] == <span class="number">0</span>) &#123;</div><div class="line">        cnt++;</div><div class="line">      &#125;</div><div class="line">      num_idea[a[t]]++;</div><div class="line">      ++t;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (cnt &lt; all_ideas) &#123;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    ans = min(ans, t - s);</div><div class="line">    num_idea[a[s]]--;</div><div class="line">    <span class="keyword">if</span> (num_idea[a[s]] == <span class="number">0</span>) &#123;</div><div class="line">      num_idea.erase(a[s]);</div><div class="line">      --cnt; <span class="comment">// REMEMBER THIS. CAUSE WE USE IT IN NEXT LOOP</span></div><div class="line">    &#125;</div><div class="line">    ++s;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</div><div class="line"></div><div class="line">  <span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"3320.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">  <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, a + i);</div><div class="line">  &#125;</div><div class="line">  solve();</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/07/02/Poj3061-Subsequence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -292,7 +468,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -300,6 +488,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/02/Poj3061-Subsequence/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/07/02/Poj3061-Subsequence/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -307,6 +506,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -425,7 +654,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -433,6 +674,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/01/Educational-Codeforces-Round-10-D-Nested-Segments-c-perl-and-common-lisp-implementation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/07/01/Educational-Codeforces-Round-10-D-Nested-Segments-c-perl-and-common-lisp-implementation/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -440,6 +692,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -565,7 +847,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -573,6 +867,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/06/30/Binary-Search-Tree-Perl-and-Common-Lisp-implementation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/06/30/Binary-Search-Tree-Perl-and-Common-Lisp-implementation/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -580,6 +885,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -687,7 +1022,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -695,6 +1042,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/06/27/Lowest-common-ancestor-in-binary-tree-perl-c-and-common-lisp-implementation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/06/27/Lowest-common-ancestor-in-binary-tree-perl-c-and-common-lisp-implementation/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -702,6 +1060,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -812,7 +1200,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -820,6 +1220,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/06/27/Fenwick-Tree/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/06/27/Fenwick-Tree/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -827,6 +1238,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -935,7 +1376,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -943,6 +1396,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/06/17/推荐Rime小鹤双拼输入法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/06/17/推荐Rime小鹤双拼输入法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -950,6 +1414,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -1060,7 +1554,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -1068,6 +1574,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/06/15/Karabiner-——-自定义MacBook-Air键盘/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/06/15/Karabiner-——-自定义MacBook-Air键盘/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1075,6 +1592,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -1201,7 +1748,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -1209,6 +1768,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/06/11/Codeforces-Round-356-Div-2-C-Bear-and-Prime-100/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/06/11/Codeforces-Round-356-Div-2-C-Bear-and-Prime-100/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1216,6 +1786,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -1366,7 +1966,19 @@ we can iterate _q_ in prime numbers below 50.
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -1374,6 +1986,17 @@ we can iterate _q_ in prime numbers below 50.
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/06/10/problem-when-configuring-vim-taglist-plugin/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/06/10/problem-when-configuring-vim-taglist-plugin/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1381,6 +2004,36 @@ we can iterate _q_ in prime numbers below 50.
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -1412,180 +2065,6 @@ we can iterate _q_ in prime numbers below 50.
 <p>这是效果截图：</p>
 <p><img src="/img/taglist.png" alt="Gvim on openSUSE"></p>
 <p>taglist的窗口通过<code>C-a</code>快捷键打开，再次按<code>C-a</code>快捷键，taglist窗口关闭。这个插件尤其是<br>在读程序的时候比较有用。或者写程序的时候也会用到。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/06/04/fish-shell-tutorial/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/04/fish-shell-tutorial/" itemprop="url">
-                  fish shell tutorial
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-04T10:12:04+08:00">
-                2016-06-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在fish里面，相邻的列表或者字符串会按照笛卡尔积来展开。比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; echo &#123;good,bad&#125;&quot; apples&quot;</div><div class="line">good apples bad apples</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; set -l a x y z</div><div class="line">liu@lisp /p/tmp&gt; echo $a </div><div class="line">x y z</div><div class="line">liu@lisp /p/tmp&gt; set -l b 1 2 3</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; echo $a$b</div><div class="line">x1 y1 z1 x2 y2 z2 x3 y3 z3</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; echo $a&quot;-&quot;$b</div><div class="line">x-1 y-1 z-1 x-2 y-2 z-2 x-3 y-3 z-3</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; echo &#123;x,y,z&#125;$b</div><div class="line">x1 y1 z1 x2 y2 z2 x3 y3 z3</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; echo &#123;$b&#125;word</div><div class="line">1word 2word 3word</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; echo &quot;$b&quot;word</div><div class="line">1 2 3word</div></pre></td></tr></table></figure>
-<p>上面用到了括号扩展的功能：在一个大括号里面以逗号分隔的几个字符串会被扩展成列表里<br>面的每个元素被当作一个新的变量。比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; echo input.&#123;c,h,txt&#125; </div><div class="line">input.c input.h input.txt</div><div class="line">liu@lisp /p/tmp&gt; mkdir src </div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; touch  input.&#123;c,h,txt&#125; </div><div class="line">liu@lisp /p/tmp&gt; mv *.&#123;c,h&#125; src </div><div class="line">liu@lisp /p/tmp&gt; ls src </div><div class="line">input.c input.h</div></pre></td></tr></table></figure>
-<p>在其它shell里面，一般都使用```来作为命令替换，在fish里面，就不一样了。它使用的<br>是括号。比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; echo In (pwd), running (uname) </div><div class="line">In /private/tmp, running Darwin</div><div class="line">liu@lisp /p/tmp&gt; set os (uname)</div><div class="line">liu@lisp /p/tmp&gt; echo $os </div><div class="line">Darwin</div></pre></td></tr></table></figure>
-<p>其实这种方法变得更简单直接。不过，需要注意的是，这种方法不能使用在双引号里面，它<br>并不会在双引号里面自动把命令替换成命令的输出结果。弥补的做法只能是这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; touch &quot;testing_&quot;(date +%s)&quot;.txt&quot;</div><div class="line">liu@lisp /p/tmp&gt; ls te* </div><div class="line">testing_1465007369.txt</div></pre></td></tr></table></figure>
-<p>也就是说拼接一下就好了。</p>
-<p>另外，一个经常用到的功能就是，不像其它shell那样使用<code>&amp;&amp;</code>和<code>||</code>来作为逻辑与和逻辑<br>或，fish里面用的是英语单词<code>and</code>, <code>or</code>, <code>not</code>，比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; touch file1.txt </div><div class="line">liu@lisp /p/tmp&gt; cp file1.txt file1_bak.txt; and echo &quot;Backup successful&quot;; or echo &quot;Backup failed&quot; </div><div class="line">Backup successful</div><div class="line"></div><div class="line">liu@lisp /p/tmp&gt; cp file2.txt file1_bak.txt; and echo &quot;Backup successful&quot;; or echo &quot;Backup failed&quot; </div><div class="line">cp: file2.txt: No such file or directory</div><div class="line">Backup failed</div></pre></td></tr></table></figure>
-<p>然而，中间还是要加分号分割。</p>
-<p>经常用到的，条件语句这样使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; if grep fish /etc/shells</div><div class="line">                     echo Found fish</div><div class="line">                 else if grep bash /etc/shells</div><div class="line">                     echo Found bash </div><div class="line">                 else </div><div class="line">                     echo Got nothing</div><div class="line">                 end</div><div class="line">/usr/local/bin/fish</div><div class="line">Found fish</div></pre></td></tr></table></figure>
-<p>显然比其它的shell的语法自然好看多了 :joy: 即使你在终端里面直接输入这些代码，它也<br>会自动锁进。</p>
-<p>同样有简单的switch语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; switch (uname)</div><div class="line">                     case Linux</div><div class="line">                         echo Hi Linux!</div><div class="line">                     case Darwin</div><div class="line">                         echo Hi Mac OS X!</div><div class="line">                     case FreeBSD NetBSD</div><div class="line">                         echo Hi BSD</div><div class="line">                     case &apos;*&apos;</div><div class="line">                         echo Hi, stranger!</div><div class="line">                 end</div><div class="line">Hi Mac OS X!</div></pre></td></tr></table></figure>
-<p>不像其它的shell一样使用alias和用特殊的提示符语法之类的……这些事情，在fish里面用函<br>数替换，变得更简单好用。</p>
-<p>函数的参数是放在变量<code>$argv</code>里面的，而不是像别的shell那样放在奇怪的<code>$1</code>里面：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; function say_hello</div><div class="line">                     echo Hello $argv</div><div class="line">                 end</div><div class="line">liu@lisp /p/tmp&gt; say_hello </div><div class="line">Hello</div><div class="line">liu@lisp /p/tmp&gt; say_hello everyone!</div><div class="line">Hello everyone!</div></pre></td></tr></table></figure>
-<p><code>functions</code>这个关键字，可以列出所有的函数。有趣的是在这个关键字后面加一个函数的<br>名字可以看到这个函数的源代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; functions</div><div class="line">., N_, abbr, alias, cd, contains_seq, delete-or-exit, dirh, dirs,</div><div class="line">down-or-search, eval, export, fish_config, fish_default_key_bindings,</div><div class="line">fish_fallback_prompt, fish_indent, fish_mode_prompt, fish_prompt,</div><div class="line">fish_sigtrap_handler, fish_update_completions, fish_vi_cursor,</div><div class="line">fish_vi_key_bindings, fish_vi_mode, fisher, funced, funcsave, grep, help,</div><div class="line">history, hostname, imgcat, isatty, it2dl, iterm2_fish_mode_prompt,</div><div class="line">iterm2_fish_prompt, iterm2_precmd, iterm2_preexec, iterm2_prompt_end,</div><div class="line">iterm2_prompt_start, iterm2_set_user_var, iterm2_status, la, ll, ls, man,</div><div class="line">math, nextd, nextd-or-forward-word, open, popd, prevd, prevd-or-backward-word,</div><div class="line">prompt_pwd, psub, pushd, realpath, say_hello, seq, setenv, suspend, trap,</div><div class="line">type, umask, underscore_change, up-or-search, vared,</div><div class="line">liu@lisp /p/tmp&gt; functions fish_vi_mode </div><div class="line">function fish_vi_mode</div><div class="line">	echo &apos;The `fish_vi_mode` function is deprecated.&apos; &gt;&amp;2</div><div class="line">        echo &apos;Please switch to calling `fish_vi_key_bindings`.&apos; &gt;&amp;2</div><div class="line">	# Turn on vi keybindings</div><div class="line">	set -g fish_key_bindings fish_vi_key_bindings</div><div class="line">end</div></pre></td></tr></table></figure>
-<p><code>for</code>循环也很简单直接：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; for file in *.txt </div><div class="line">                     cp $file $file.bak</div><div class="line">                 end</div><div class="line">liu@lisp /p/tmp&gt; ls *.txt; ls *.bak </div><div class="line">errors.txt             file1_bak.txt          testing_1465007369.txt</div><div class="line">file1.txt              input.txt</div><div class="line">errors.txt.bak             input.txt.bak</div><div class="line">file1.txt.bak              testing_1465007369.txt.bak</div><div class="line">file1_bak.txt.bak</div></pre></td></tr></table></figure>
-<p><code>seq</code> 这个命令加一个数字<code>n</code>可以生成从1到<code>n</code>的一个列表，比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; seq 5 </div><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">liu@lisp /p/tmp&gt; for x in (seq 5)</div><div class="line">                     touch file_$x.txt</div><div class="line">                 end</div><div class="line">liu@lisp /p/tmp&gt; ls file_* </div><div class="line">file_1.txt file_2.txt file_3.txt file_4.txt file_5.txt</div></pre></td></tr></table></figure>
-<p>在别的shell里面，一般用<code>$PS1</code>这个变量来显示提示符，在fish里面，使用的是一个名字<br>叫做<code>fish_prompt</code>的函数，这个函数的输出就作为提示符，比如，你可以像下面这样定制<br>自己的提示符：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">liu@lisp /p/tmp&gt; function fish_prompt</div><div class="line">                     echo &quot;Sabastian Bach &gt;&gt; &quot;</div><div class="line">                 end</div><div class="line">Sabastian Bach &gt;&gt;</div></pre></td></tr></table></figure>
-<p>可以通过<code>set_color</code>来设置颜色，可以把<a href="http://www.wikiwand.com/en/ANSI_escape_code#/Colors" target="_blank" rel="external">ANSI<br>colors</a>或者RGB的16进制的值<br>作为参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Sabastian Bach &gt;&gt; function fish_prompt </div><div class="line">                      set_color purple</div><div class="line">                      date &quot;+%m/%d/%y&quot;</div><div class="line">                      set_color FF0</div><div class="line">                      echo (pwd) &apos;&gt; &apos;</div><div class="line">                      set_color normal</div><div class="line">                  end</div><div class="line">06/04/16</div><div class="line">/private/tmp &gt;</div></pre></td></tr></table></figure>
-<p>fish里面有一种全局变量，这个变量在fish里面通用，只要设置一次，那么即使重启，这个<br>变量依然存在。比如这样设置<code>EDITOR</code>这个变量：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> fish $ set -U EDITOR vim</div><div class="line"> fish $ echo $EDITOR                                                        </div><div class="line">vim</div></pre></td></tr></table></figure>
-<p>打开另外一个终端这个变量依然有效。</p>
-<p>另外有意思的一点是，其它shell里面，你一般会在类似于<code>~/.bashrc</code>或者<code>~/.zshrc</code>里面<br>设置<code>$PATH</code>的值，当然，在fish里面，你也可以这样做。比如你可以在<br><code>~/.config/fish/config.fish</code>这个文件里面设置。如果没有这个文件就需要创建一个。其<br>实它就相当于bash里面的<code>~/.bashrc</code>。你可以在这个文件里面定义一些函数，或者设置一<br>些变量。比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt; cat ~/.config/fish/config.fish</div><div class="line"></div><div class="line">set -x PATH $PATH /sbin/</div><div class="line"></div><div class="line">function ll</div><div class="line">    ls -lh $argv</div><div class="line">end</div></pre></td></tr></table></figure>
-<p>然而，在fish里面更高效和更常见的做法是，使用自动加载函数和上面提到的全局变量。</p>
-<p>所谓自动加载函数，就是在<code>~/.config/fish/functions/</code>目录里面以命令的名字加上后缀<br><code>.fish</code>作为文件名新建一个文件。比如你可以定义你自己的提示符：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; cat ~/.config/fish/functions/fish_prompt.fish</div><div class="line">function fish_prompt</div><div class="line">    echo (pwd) &quot;&gt; &quot;</div><div class="line">end</div></pre></td></tr></table></figure>
-<p>其实函数对应的文件可以自动创建，参见<br><a href="https://fishshell.com/docs/current/commands.html#funced" target="_blank" rel="external">funced</a>和<br><a href="https://fishshell.com/docs/current/commands.html#funcsave" target="_blank" rel="external">funcsave</a></p>
-<p>为了说明这个用法，比如我在终端直接输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Pictures $ function gopi</div><div class="line">               ssh aries@pi</div><div class="line">           end</div><div class="line">Pictures $ funcsave gopi</div></pre></td></tr></table></figure>
-<p>然后以后就可以使用<code>gopi</code>这个命令了……是不是很简单。根本不用打开一个什么文件什么的。<br>（这个命令是用来登陆我的树莓派的…… :joy: ）</p>
-<p>fish有一个插件特别好用，类似于zsh的<code>oh-my-zsh</code>。Github地址是：<a href="https://github.com/fisherman/fisherman" target="_blank" rel="external">fisherman</a></p>
-<p>安装的时候，可能会因为<code>git.io</code>被墙安装失败。其实，只要把<code>git.io/fisher</code>里面的内<br>容复制到<code>~/.config/fish/functions/fisher.fish</code>文件里面就可以了。没有这个文件就新<br>建一个。</p>
-<p>然后就可以愉快地使用了。</p>
-<p>经常会遇到设置环境变量的情况，可以用<a href="https://github.com/fisherman/paths" target="_blank" rel="external">paths</a><br>这个插件愉快地搞定。比如我给<code>$PATH</code>追加一个变量，可以这样做：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir $paths_config/PATH</div><div class="line">echo ~/bin &gt; $paths_config/PATH/HOMEBIN</div></pre></td></tr></table></figure>
-<p>然后重新启动fish才有效。这一点很重要！</p>
-<p>总的来说，仿佛fish和bash、zsh之类的差别很大，然而用过之后才知道，其实它变得更简<br>单并且，更好配置，去掉了别的shell里面那些乱七八糟奇怪的语法，符合更常用的语言的<br>语法规则，所以，我所有的*nix环境都换成了fish :joy: 棒棒哒</p>
-<hr>
-<h3 id="日常锻炼"><a href="#日常锻炼" class="headerlink" title="日常锻炼"></a>日常锻炼</h3><h4 id="6月1日，5-27km"><a href="#6月1日，5-27km" class="headerlink" title="6月1日，5.27km"></a><a href="http://wap.thejoyrun.com/po_22498513_50731646.html" target="_blank" rel="external">6月1日，5.27km</a></h4><p>坚持这件事情，与其说靠的是毅力，不如说是惯性。人的毅力靠不住，习惯却很顽固。</p>
-<h4 id="6月2日，5-26km"><a href="#6月2日，5-26km" class="headerlink" title="6月2日，5.26km"></a><a href="http://wap.thejoyrun.com/po_22498513_50977083.html" target="_blank" rel="external">6月2日，5.26km</a></h4><p>今天跑步听的是友聊FM最新一期《闲聊飞了》，聊的是小米无人机，同样，不知不觉，就跑<br>完了……</p>
-<h4 id="6月3日，5-21km"><a href="#6月3日，5-21km" class="headerlink" title="6月3日，5.21km"></a><a href="http://wap.thejoyrun.com/po_22498513_51240419.html" target="_blank" rel="external">6月3日，5.21km</a></h4><p>最近看周易，跑步的时候默背分宫卦象图 :joy: 我是有……多无聊。。。</p>
-<h4 id="6月4日，5-17km"><a href="#6月4日，5-17km" class="headerlink" title="6月4日，5.17km"></a><a href="http://wap.thejoyrun.com/po_22498513_51525979.html" target="_blank" rel="external">6月4日，5.17km</a></h4><p>Android版的Google拼音输入法比搜狗好用并且好看多了…… </p>
 
           
         
@@ -1669,7 +2148,7 @@ we can iterate _q_ in prime numbers below 50.
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">457</span>
+                <span class="site-state-item-count">458</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1841,6 +2320,14 @@ we can iterate _q_ in prime numbers below 50.
 
   
 
+    
+      <script id="dsq-count-scr" src="https://liuxueyang.disqus.com/count.js" async></script>
+    
+
+    
+
+  
+
 
 
 
@@ -1880,6 +2367,28 @@ we can iterate _q_ in prime numbers below 50.
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

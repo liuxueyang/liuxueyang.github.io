@@ -247,6 +247,182 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/04/07/speedcell's-SPFA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/04/07/speedcell's-SPFA/" itemprop="url">
+                  speedcell's SPFA
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-04-07T19:21:00+08:00">
+                2013-04-07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/07/speedcell's-SPFA/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/07/speedcell's-SPFA/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>版权永久属于speedcell，神代码，给跪了……yr酱V5……<br>这东西虽然还没有学，先收藏起来~<br>多谢yr酱……O(∩_∩)O哈哈~</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> Author : Speedcell</div><div class="line"> Update : 2013-03-24</div><div class="line">Version : soppYcell 2.1(a)</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;list&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;deque&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bitset&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;complex&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;numeric&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctype.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;locale.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(4)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __CONSTANT__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __CONSTANT__</span></div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LONG;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span>   inf = <span class="number">0x7f7f7f7f</span>;</div><div class="line"><span class="keyword">const</span> LONG  INF = <span class="number">0x7f7f7f7f7f7f7f7f</span>ll;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> go[<span class="number">8</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">0</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;&#125;;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// __CONSTANT__</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __IO__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __IO__</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">RD</span><span class="params">(<span class="keyword">int</span>    &amp; a)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a)!=EOF;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">RD</span><span class="params">(<span class="keyword">char</span>   &amp; a)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;a)!=EOF;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">RD</span><span class="params">(<span class="keyword">char</span>   * a)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">scanf</span>(<span class="string">"%s"</span>, a)!=EOF;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">RD</span><span class="params">(<span class="keyword">double</span> &amp; a)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">scanf</span>(<span class="string">"%lf"</span>,&amp;a)!=EOF;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">RD</span><span class="params">(LONG   &amp; a)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">scanf</span>(<span class="string">"%I64d"</span>,&amp;a)!=EOF;&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span></span></div><div class="line">    <span class="title">IN</span><span class="params">(T1 &amp; a)</span> &#123;<span class="keyword">return</span> RD(a);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span></span></div><div class="line">    <span class="title">IN</span><span class="params">(T1 &amp; a,T2 &amp; b)</span> &#123;<span class="keyword">return</span> RD(a)&amp;&amp;RD(b);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span></span></div><div class="line">    <span class="title">IN</span><span class="params">(T1 &amp; a,T2 &amp; b,T3 &amp; c)</span> &#123;<span class="keyword">return</span> RD(a)&amp;&amp;RD(b)&amp;&amp;RD(c);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span></span></div><div class="line">    <span class="title">IN</span><span class="params">(T1 &amp; a,T2 &amp; b,T3 &amp; c,T4 &amp; d)</span> &#123;<span class="keyword">return</span> RD(a)&amp;&amp;RD(b)&amp;&amp;RD(c)&amp;&amp;RD(d);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span></span></div><div class="line">    <span class="title">IN</span><span class="params">(T1 &amp; a,T2 &amp; b,T3 &amp; c,T4 &amp; d,T5 &amp; e)</span> &#123;<span class="keyword">return</span> RD(a)&amp;&amp;RD(b)&amp;&amp;RD(c)&amp;&amp;RD(d)&amp;&amp;RD(e);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5,<span class="keyword">class</span> T6&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span></span></div><div class="line">    <span class="title">IN</span><span class="params">(T1 &amp; a,T2 &amp; b,T3 &amp; c,T4 &amp; d,T5 &amp; e,T6 &amp; f)</span> &#123;<span class="keyword">return</span> RD(a)&amp;&amp;RD(b)&amp;&amp;RD(c)&amp;&amp;RD(d)&amp;&amp;RD(e)&amp;&amp;RD(f);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5,<span class="keyword">class</span> T6,<span class="keyword">class</span> T7&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span></span></div><div class="line">    <span class="title">IN</span><span class="params">(T1 &amp; a,T2 &amp; b,T3 &amp; c,T4 &amp; d,T5 &amp; e,T6 &amp; f,T7 &amp; g)</span> &#123;<span class="keyword">return</span> RD(a)&amp;&amp;RD(b)&amp;&amp;RD(c)&amp;&amp;RD(d)&amp;&amp;RD(e)&amp;&amp;RD(f)&amp;&amp;RD(g);&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PT</span><span class="params">(<span class="keyword">int</span>    a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%d"</span>,a);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PT</span><span class="params">(<span class="keyword">char</span>   a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%c"</span>,a);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PT</span><span class="params">(<span class="keyword">double</span> a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%f"</span>,a);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PT</span><span class="params">(LONG   a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%I64d"</span>,a);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PT</span><span class="params">(<span class="built_in">string</span> a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%s"</span>,a.begin());&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OT</span><span class="params">(T1 a)</span> &#123;PT(a);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OT</span><span class="params">(T1 a,T2 b)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OT</span><span class="params">(T1 a,T2 b,T3 c)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OT</span><span class="params">(T1 a,T2 b,T3 c,T4 d)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c),PT(<span class="string">' '</span>),PT(d);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OT</span><span class="params">(T1 a,T2 b,T3 c,T4 d,T5 e)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c),PT(<span class="string">' '</span>),PT(d),PT(<span class="string">' '</span>),PT(e);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5,<span class="keyword">class</span> T6&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OT</span><span class="params">(T1 a,T2 b,T3 c,T4 d,T5 e,T6 f)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c),PT(<span class="string">' '</span>),PT(d),PT(<span class="string">' '</span>),PT(e),PT(<span class="string">' '</span>),PT(f);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5,<span class="keyword">class</span> T6,<span class="keyword">class</span> T7&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OT</span><span class="params">(T1 a,T2 b,T3 c,T4 d,T5 e,T6 f,T7 g)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c),PT(<span class="string">' '</span>),PT(d),PT(<span class="string">' '</span>),PT(e),PT(<span class="string">' '</span>),PT(f),PT(<span class="string">' '</span>),PT(g);&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PL</span><span class="params">(<span class="keyword">int</span>    a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PL</span><span class="params">(<span class="keyword">char</span>   a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%c\n"</span>,a);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PL</span><span class="params">(<span class="keyword">double</span> a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%f\n"</span>,a);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PL</span><span class="params">(LONG   a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%I64d\n"</span>,a);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PL</span><span class="params">(<span class="built_in">string</span> a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%s\n"</span>,a.begin());&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OL</span><span class="params">(T1 a)</span> &#123;PL(a);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OL</span><span class="params">(T1 a,T2 b)</span> &#123;PT(a),PT(<span class="string">' '</span>),PL(b);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OL</span><span class="params">(T1 a,T2 b,T3 c)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PL(c);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OL</span><span class="params">(T1 a,T2 b,T3 c,T4 d)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c),PT(<span class="string">' '</span>),PL(d);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OL</span><span class="params">(T1 a,T2 b,T3 c,T4 d,T5 e)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c),PT(<span class="string">' '</span>),PT(d),PT(<span class="string">' '</span>),PL(e);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5,<span class="keyword">class</span> T6&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OL</span><span class="params">(T1 a,T2 b,T3 c,T4 d,T5 e,T6 f)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c),PT(<span class="string">' '</span>),PT(d),PT(<span class="string">' '</span>),PT(e),PT(<span class="string">' '</span>),PL(f);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5,<span class="keyword">class</span> T6,<span class="keyword">class</span> T7&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OL</span><span class="params">(T1 a,T2 b,T3 c,T4 d,T5 e,T6 f,T7 g)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c),PT(<span class="string">' '</span>),PT(d),PT(<span class="string">' '</span>),PT(e),PT(<span class="string">' '</span>),PT(f),PT(<span class="string">' '</span>),PL(g);&#125;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// __IO__</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __MACRO__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __MACRO__</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ML(times) int tcase; IN(tcase); FOR(times,1,tcase)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i,a,b) for(int i=int(a),_##i=int(b);i&lt;=_##i;i++)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> DWN(i,b,a) for(int i=int(b),_##i=int(a);_##i&lt;=i;i--)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ECH(i,u,pre,next) for(int i=int(pre[u]);i!=-1;i=int(next[i]))</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MEM(a,v) memset(a,v,sizeof(a))</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> CLR(a,v) FOR(_i##a,0,sizeof(a)/sizeof(a[0])-1) a[_i##a]=v</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LOOP(a,n)                                               \</span></div><div class="line">    FOR(_i##a,0,(n)-1)                                          \</div><div class="line">        cout&lt;&lt;a[_i##a]&lt;&lt;(_i##a!=n-1?<span class="meta-string">' '</span>:<span class="meta-string">'\n'</span>)</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LOOP2(a,n,m)                                            \</span></div><div class="line">    FOR(_i##a,0,(n)-1) FOR(_j##a,0,(m)-1)                       \</div><div class="line">        cout&lt;&lt;a[_i##a][_j##a]&lt;&lt;(_j##a!=m-1?<span class="meta-string">' '</span>:<span class="meta-string">'\n'</span>)</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LOOPG(G,n,pre,next)                                     \</span></div><div class="line">    FOR(_i##a,0,(n)-1) ECH(_j##a,_i##a,pre,next)                \</div><div class="line">        cout&lt;&lt;_i##a&lt;&lt;<span class="meta-string">" "</span>&lt;&lt;G[_j##a].v&lt;&lt;<span class="meta-string">" "</span>&lt;&lt;G[_j##a].w&lt;&lt;endl</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// __MACRO__</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __BIT__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __BIT__</span></div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="function"><span class="keyword">inline</span> T <span class="title">lb</span><span class="params">(T i)</span> </span>&#123;<span class="keyword">return</span> i&amp;-i;&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="function"><span class="keyword">inline</span> T <span class="title">lc</span><span class="params">(T i)</span> </span>&#123;<span class="keyword">return</span> i&lt;&lt;T(<span class="number">1</span>);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="function"><span class="keyword">inline</span> T <span class="title">rc</span><span class="params">(T i)</span> </span>&#123;<span class="keyword">return</span> i&lt;&lt;T(<span class="number">1</span>)|T(<span class="number">1</span>);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="function"><span class="keyword">inline</span> T <span class="title">at</span><span class="params">(T a,<span class="keyword">int</span> i)</span> </span>&#123;<span class="keyword">return</span> a&amp; (T(<span class="number">1</span>)&lt;&lt;i);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="function"><span class="keyword">inline</span> T <span class="title">nt</span><span class="params">(T a,<span class="keyword">int</span> i)</span> </span>&#123;<span class="keyword">return</span> a^ (T(<span class="number">1</span>)&lt;&lt;i);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="function"><span class="keyword">inline</span> T <span class="title">s1</span><span class="params">(T a,<span class="keyword">int</span> i)</span> </span>&#123;<span class="keyword">return</span> a| (T(<span class="number">1</span>)&lt;&lt;i);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="function"><span class="keyword">inline</span> T <span class="title">s0</span><span class="params">(T a,<span class="keyword">int</span> i)</span> </span>&#123;<span class="keyword">return</span> a&amp;~(T(<span class="number">1</span>)&lt;&lt;i);&#125;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// __BIT__</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __DOUBLE__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __DOUBLE__</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-8</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">double</span> a)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">fabs</span>(a<span class="number">-0</span>)&lt;eps?<span class="number">0</span>:((a<span class="number">-0</span>)&gt;eps?+<span class="number">1</span>:<span class="number">-1</span>);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">fabs</span>(a-b)&lt;eps?<span class="number">0</span>:((a-b)&gt;eps?+<span class="number">1</span>:<span class="number">-1</span>);&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">fmax</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span> </span>&#123;<span class="keyword">return</span> cmp(a,b)&gt;<span class="number">0</span>?a:b;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">fmin</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span> </span>&#123;<span class="keyword">return</span> cmp(a,b)&lt;<span class="number">0</span>?a:b;&#125;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// __DOUBLE__</span></span></div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXV = <span class="number">12000</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXE = <span class="number">24000</span>;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> node</div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> v,w;</div><div class="line">&#125;G[MAXE];</div><div class="line"><span class="keyword">int</span> _index,pre[MAXV],next[MAXE];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">    _index=<span class="number">0</span>;</div><div class="line">    MEM(pre,<span class="number">-1</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></div><div class="line">&#123;</div><div class="line">    G[_index].v=v;</div><div class="line">    G[_index].w=w;</div><div class="line">    next[_index]=pre[u];</div><div class="line">    pre[u]=_index++;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> HEAP</div><div class="line">&#123;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="keyword">int</span> use,val[MAXV],lab[MAXV],heap[MAXV];</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sel</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> val[heap[i]]&lt;val[heap[j]]?i:j;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></div><div class="line">    &#123;</div><div class="line">        swap(heap[i],heap[j]);</div><div class="line">        swap(lab[heap[i]],lab[heap[j]]);</div><div class="line">    &#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="keyword">int</span> <span class="keyword">operator</span> [] (<span class="keyword">int</span> i)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> val[i];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> use==<span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">    &#123;</div><div class="line">        use=<span class="number">0</span>;</div><div class="line">        MEM(val,inf);</div><div class="line">        MEM(lab,inf);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> w)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(val[u]&gt;w)</div><div class="line">        &#123;</div><div class="line">            val[u]=w;</div><div class="line">            <span class="keyword">if</span>(lab[u]==inf) heap[lab[u]=++use]=u;</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=lab[u];i/<span class="number">2</span>&gt;=<span class="number">1</span>;i=i/<span class="number">2</span>)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(sel(i,i/<span class="number">2</span>)==i/<span class="number">2</span>) <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">else</span> change(i,i/<span class="number">2</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">peek</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">    &#123;</div><div class="line">        change(<span class="number">1</span>,use);</div><div class="line">        lab[heap[use--]]=inf;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;lc(i)&lt;=use;)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(lc(i)==use)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(sel(i,lc(i))==i) <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">else</span> i=lc(i);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span></div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(sel(i,sel(lc(i),rc(i)))==i) <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">else</span> i=sel(i,sel(lc(i),rc(i)));</div><div class="line">            &#125;</div><div class="line">            change(i,i/<span class="number">2</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> heap[use+<span class="number">1</span>];</div><div class="line">    &#125;</div><div class="line">&#125;dis;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">SPFA</span><span class="params">(<span class="keyword">int</span> src,<span class="keyword">int</span> des)</span></span></div><div class="line">&#123;</div><div class="line">    dis.clear();</div><div class="line">    dis.update(src,<span class="number">0</span>);</div><div class="line"></div><div class="line">    <span class="keyword">while</span>(!dis.empty())</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> u=dis.peek();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=pre[u];i!=<span class="number">-1</span>;i=next[i])</div><div class="line">        &#123;</div><div class="line">            dis.update(G[i].v,dis[u]+G[i].w);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> dis[des];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">int</span> n,m,u,v,w;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m)</div><div class="line">    &#123;</div><div class="line">        clear();</div><div class="line">        <span class="keyword">while</span>(m--)</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v&gt;&gt;w;</div><div class="line">            add(u,v,w);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;SPFA(u,v)&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>好腻害……</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/04/07/zoj-2165-Red-and-Black-——BFS入门题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -292,7 +468,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -300,6 +488,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/07/zoj-2165-Red-and-Black-——BFS入门题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/07/zoj-2165-Red-and-Black-——BFS入门题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -307,6 +506,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -415,7 +644,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -423,6 +664,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/07/zoj-2412-Farm-Irrigation-——DFS入门题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/07/zoj-2412-Farm-Irrigation-——DFS入门题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -430,6 +682,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -538,7 +820,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -546,6 +840,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/07/2013年4月6日四校联赛总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/07/2013年4月6日四校联赛总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -553,6 +858,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -659,7 +994,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -667,6 +1014,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/07/2013年4月6日--晴/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/07/2013年4月6日--晴/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -674,6 +1032,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -780,7 +1168,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -788,6 +1188,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/07/zoj-1709-Oil-Deposits-——DFS入门题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/07/zoj-1709-Oil-Deposits-——DFS入门题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -795,6 +1206,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -903,7 +1344,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -911,6 +1364,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/06/zoj-2110-Tempter-of-the-Bone-——DFS+剪枝/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/06/zoj-2110-Tempter-of-the-Bone-——DFS+剪枝/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -918,6 +1382,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -1026,7 +1520,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -1034,6 +1540,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/06/2013年4月5日--雨，阴/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/06/2013年4月5日--雨，阴/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1041,6 +1558,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -1147,7 +1694,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -1155,6 +1714,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/05/hdu-1059-Dividing-——多重背包复习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/05/hdu-1059-Dividing-——多重背包复习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1162,6 +1732,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -1282,7 +1882,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -1290,6 +1902,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/05/2013年4月4日--雨/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/05/2013年4月4日--雨/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1297,6 +1920,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -1315,127 +1968,6 @@
         
           
             <p>　　清明时节雨纷纷，从中午开始就一直下雨……跑步自然没有跑成，这是让我惊奇的是，今天竟然没有感觉到大腿酸痛，，还好好的，，这不科学……本来是很久不运动了的，o(╯□╰)o<br>　　中午看到一本中文版《跑者世界》心里满是欣喜，高中时候就听说过这本杂志，村上君还提到过，只是一直没见过哪里卖，然后就跑到综合楼自习的时候看，，好吧……无语了，说实话，这本可能不是真正的《Runner’s world》，手上这本杂志唯一吸引我的就是他的封面了……内容明显是各种广告。。<br>　　希望明天不下雨，继续跑步！<br>　　发点儿牢骚。最近脑袋里面老是不知不觉地就冒出那些个破事儿……唉，没出息。。还是多干点儿正事儿吧，实在无聊，那就多读点儿闲书吧！这么好的日子，何必让自己那么纠结呢。<br>　　中午睡午觉的时候，又想起，明年暑假我就大四了啊，就该找工作了，就该面对各种了，可是，我准备好了么？</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/04/04/2013年4月3日--小雨，阴/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/04/04/2013年4月3日--小雨，阴/" itemprop="url">
-                  2013年4月3日  小雨，阴
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-04-04T01:46:00+08:00">
-                2013-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>　　今天第一次跑步，从下午5点开始，大约跑了半个小时。各种爽啊，又找回了从前那种感觉，只不过一开始跑的时候有点儿兴奋，跑的有点儿快了，到后来有点儿撑不住……坐等明天腿部肌肉酸痛，哈哈，不管那么多了，人生得意须尽欢不是么~<br>　　尤其是今天的天气，湘江上弥漫着水雾，恰好刚刚下过一点儿小雨，空气湿漉漉的，跑步的过程中，真的像梦境一般，周围是安静的，只注意着自己的呼吸，耳机的音乐，前进的脚步声……这种时候适合冥想，向往禅的境界。突然发现，也许自己最大的损失就是没有早些坚持跑步锻炼，在跑步的过程中，那样的状态，是什么也不能达到的，这就是人生的意义么。<br>　　有时候，自己就那么不知不觉地跑着，过了一段时间，突然发现，自己竟然跑了这么远了，竟然到了这个原来看似很遥远的地方；还有的时候，感觉还没怎么跑，然后发现自己早就已经看不到起点了，想要回去已经不是那么容易了。<br>　　刚回到公寓，天气就下起雨来了，好吧……我的运气要不要这么好啊！恰好去食堂吃饭，出来雨停了，O(∩_∩)O哈哈~<br>　　突然发现，自己一天当中，最有意义，利用最充分的时间就是出去跑步的这段时间，尤其是跑完后，似乎一切都豁然开朗了，什么都想通了。<br>　　穿着专业跑鞋跑步确实爽，还有当初买的那个飞利浦的GoGear就是为了跑步的时候用的，遗憾的是一直都没有派上真正的用场，现在用着超爽。<br>　　最近的一些事情很多次让我想起了《当我跑步时，我在想些什么》里面村上君的那句话：原来大家都是一样的啊，哈哈。其实很多事情面前，每个人都是一样的，你遇到的困难别人也遇到过，所以，加油吧！没什么大不了的不是么。</p>
 
           
         
@@ -1519,7 +2051,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">457</span>
+                <span class="site-state-item-count">458</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1691,6 +2223,14 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://liuxueyang.disqus.com/count.js" async></script>
+    
+
+    
+
+  
+
 
 
 
@@ -1730,6 +2270,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

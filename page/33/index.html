@@ -247,6 +247,182 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/04/15/hdu1202-The-calculation-of-GPA-——水题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/04/15/hdu1202-The-calculation-of-GPA-——水题/" itemprop="url">
+                  hdu1202 The calculation of GPA ——水题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-04-15T20:39:00+08:00">
+                2013-04-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/15/hdu1202-The-calculation-of-GPA-——水题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/15/hdu1202-The-calculation-of-GPA-——水题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>题目链接：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1202" target="_blank" rel="external">http://acm.hdu.edu.cn/showproblem.php?pid=1202</a><br>题目大意：先计算出学分和点数的乘积的和，然后在除以学分之和。<br>思路：<br>　　很简单。只能说这道题目比较坑……不说什么了<br>　　本来是早上起来想写道水题，练练手，结果碰见这种题目，刚才我还无聊的测试了很多次，交了N遍，发现这么个坑的问题，感觉这种题目很没有意思……</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> lson l, m, rt&lt;&lt;1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> rson m+1, r, rt&lt;&lt;1|1</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> LL;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN =  <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span>  MIN =  <span class="number">-0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-9</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> dir[<span class="number">8</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">1</span>&#125;,</div><div class="line">  &#123;<span class="number">1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"hdu1202.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">  <span class="keyword">int</span> t;</div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t))&#123;</div><div class="line">    <span class="keyword">double</span> cnt = <span class="number">0</span>, cnt1 = <span class="number">0</span>; <span class="keyword">double</span> s, p;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; t; ++i)&#123;</div><div class="line">      <span class="built_in">cin</span> &gt;&gt; s &gt;&gt; p; cnt += s;</div><div class="line">      <span class="keyword">if</span> (p&gt;=<span class="number">90</span> &amp;&amp; p &lt;= <span class="number">100</span>) cnt1 += <span class="number">4.0</span> * s;</div><div class="line">      <span class="keyword">else</span> <span class="keyword">if</span> (p&gt;=<span class="number">80</span>) cnt1 += <span class="number">3.0</span> * s;</div><div class="line">      <span class="keyword">else</span> <span class="keyword">if</span> (p&gt;=<span class="number">70</span>) cnt1 += <span class="number">2.0</span> * s;</div><div class="line">      <span class="keyword">else</span> <span class="keyword">if</span> (p&gt;=<span class="number">60</span>) cnt1 += <span class="number">1.0</span> * s;</div><div class="line">      <span class="keyword">else</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">double</span> ans = <span class="number">0.0</span>;</div><div class="line">    ans = cnt1 / cnt;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">fabs</span>(cnt1) &lt; eps) <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</div><div class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%.2f\n"</span>, ans);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>　　开始没有考虑到学分可能都为0的情况，判断fabs(ans) &lt; eps ，OLE了，因为学分可能为0，这个时候0就做分母了。<br>　　也有的人说这种题目很没意思，要考虑很多没有意义的情况，感觉比较坑……其实这也可能是考察人的思维的严谨程度的吧，我也WA了N次……开始也以为这道题目比较坑，无聊在OJ上测试了N遍之后，发现其实关键还是自己的错……不冷静，思维不严谨。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/04/15/uestc1307-windy数-——数位DP入门题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -292,7 +468,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -300,6 +488,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/15/uestc1307-windy数-——数位DP入门题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/15/uestc1307-windy数-——数位DP入门题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -307,6 +506,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -415,7 +644,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -423,6 +664,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/14/hdu3555-Bomb-——数位DP入门题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/14/hdu3555-Bomb-——数位DP入门题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -430,6 +682,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -538,7 +820,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -546,6 +840,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/13/2013年4月12日-晴/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/13/2013年4月12日-晴/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -553,6 +858,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -659,7 +994,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -667,6 +1014,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/13/zoj2913-Bus-Pass-——BFS入门题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/13/zoj2913-Bus-Pass-——BFS入门题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -674,6 +1032,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -783,7 +1171,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -791,6 +1191,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/12/一个bug，持续更新……/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/12/一个bug，持续更新……/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -798,6 +1209,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -919,7 +1360,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -927,6 +1380,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/10/2013年4月9日-阴转小雨/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/10/2013年4月9日-阴转小雨/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -934,6 +1398,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -1040,7 +1534,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -1048,6 +1554,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/09/2013年4月8日-晴/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/09/2013年4月8日-晴/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1055,6 +1572,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -1161,7 +1708,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -1169,6 +1728,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/08/zoj-1649-Rescue-——BFS入门题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/08/zoj-1649-Rescue-——BFS入门题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1176,6 +1746,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -1284,7 +1884,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
             
           </span>
 
@@ -1292,6 +1904,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/04/08/2013年4月7日-晴/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/04/08/2013年4月7日-晴/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1299,6 +1922,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -1319,129 +1972,6 @@
             <p>　　昨天补概率论作业，没时间写，补上~<br>　　今天天气很好，但是下午最后一节有课，所以打算晚上9点钟去跑步。<br>　　不得不说，晚上的湘江边很美，尤其是天气很好的晚上，春天，也许是最适合跑步的季节，不冷不热，微风习习，一路上还看见不少跑步的男男女女，有的是为了锻炼身体，有的是为了减肥，有的单纯是因为爱好。<br>　　今天跑步状态不错，很稳，时间，速度都控制得很准，正好半小时。然后在湘江边做了一下拉伸，稍微休息了一下，欣赏了一下美景，就心满意足地回来了。<br>　　其实，晚上去跑步也别有一种感觉。以后，下午最后一节有课就晚上去跑，否则就下午。<br>　　附上一段代码：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> lson l, m, rt&lt;&lt;1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> rson m+1, r, rt&lt;&lt;1|1</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> LL;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN =  <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span>  MIN =  <span class="number">-0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-9</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> dir[<span class="number">8</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">1</span>&#125;,</div><div class="line">  &#123;<span class="number">1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">".in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">  <span class="keyword">int</span> day = 当前寿命;</div><div class="line">  <span class="keyword">while</span> (<span class="number">1</span>)&#123;</div><div class="line">    <span class="keyword">if</span> (!极端天气 &amp;&amp; !世界末日 &amp;&amp; !挂了)&#123;</div><div class="line">      <span class="keyword">if</span> ((time &gt;= <span class="number">16</span>:<span class="number">00</span> &amp;&amp; time &lt;= <span class="number">18</span>:<span class="number">00</span>) || (time &gt;= <span class="number">21</span>:<span class="number">00</span> &amp;&amp; time &lt;= <span class="number">22</span>:<span class="number">00</span>))&#123;</div><div class="line">        run;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    day++;</div><div class="line">    <span class="keyword">if</span> (day == 寿命) <span class="keyword">break</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>特意在OJ上交了……过不了……o(╯□╰)o</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/04/07/speedcell's-SPFA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/04/07/speedcell's-SPFA/" itemprop="url">
-                  speedcell's SPFA
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-04-07T19:21:00+08:00">
-                2013-04-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>版权永久属于speedcell，神代码，给跪了……yr酱V5……<br>这东西虽然还没有学，先收藏起来~<br>多谢yr酱……O(∩_∩)O哈哈~</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> Author : Speedcell</div><div class="line"> Update : 2013-03-24</div><div class="line">Version : soppYcell 2.1(a)</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;list&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;deque&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bitset&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;complex&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;numeric&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctype.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;locale.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(4)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __CONSTANT__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __CONSTANT__</span></div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LONG;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span>   inf = <span class="number">0x7f7f7f7f</span>;</div><div class="line"><span class="keyword">const</span> LONG  INF = <span class="number">0x7f7f7f7f7f7f7f7f</span>ll;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> go[<span class="number">8</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">0</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;&#125;;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// __CONSTANT__</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __IO__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __IO__</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">RD</span><span class="params">(<span class="keyword">int</span>    &amp; a)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a)!=EOF;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">RD</span><span class="params">(<span class="keyword">char</span>   &amp; a)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;a)!=EOF;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">RD</span><span class="params">(<span class="keyword">char</span>   * a)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">scanf</span>(<span class="string">"%s"</span>, a)!=EOF;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">RD</span><span class="params">(<span class="keyword">double</span> &amp; a)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">scanf</span>(<span class="string">"%lf"</span>,&amp;a)!=EOF;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">RD</span><span class="params">(LONG   &amp; a)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">scanf</span>(<span class="string">"%I64d"</span>,&amp;a)!=EOF;&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span></span></div><div class="line">    <span class="title">IN</span><span class="params">(T1 &amp; a)</span> &#123;<span class="keyword">return</span> RD(a);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span></span></div><div class="line">    <span class="title">IN</span><span class="params">(T1 &amp; a,T2 &amp; b)</span> &#123;<span class="keyword">return</span> RD(a)&amp;&amp;RD(b);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span></span></div><div class="line">    <span class="title">IN</span><span class="params">(T1 &amp; a,T2 &amp; b,T3 &amp; c)</span> &#123;<span class="keyword">return</span> RD(a)&amp;&amp;RD(b)&amp;&amp;RD(c);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span></span></div><div class="line">    <span class="title">IN</span><span class="params">(T1 &amp; a,T2 &amp; b,T3 &amp; c,T4 &amp; d)</span> &#123;<span class="keyword">return</span> RD(a)&amp;&amp;RD(b)&amp;&amp;RD(c)&amp;&amp;RD(d);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span></span></div><div class="line">    <span class="title">IN</span><span class="params">(T1 &amp; a,T2 &amp; b,T3 &amp; c,T4 &amp; d,T5 &amp; e)</span> &#123;<span class="keyword">return</span> RD(a)&amp;&amp;RD(b)&amp;&amp;RD(c)&amp;&amp;RD(d)&amp;&amp;RD(e);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5,<span class="keyword">class</span> T6&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span></span></div><div class="line">    <span class="title">IN</span><span class="params">(T1 &amp; a,T2 &amp; b,T3 &amp; c,T4 &amp; d,T5 &amp; e,T6 &amp; f)</span> &#123;<span class="keyword">return</span> RD(a)&amp;&amp;RD(b)&amp;&amp;RD(c)&amp;&amp;RD(d)&amp;&amp;RD(e)&amp;&amp;RD(f);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5,<span class="keyword">class</span> T6,<span class="keyword">class</span> T7&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span></span></div><div class="line">    <span class="title">IN</span><span class="params">(T1 &amp; a,T2 &amp; b,T3 &amp; c,T4 &amp; d,T5 &amp; e,T6 &amp; f,T7 &amp; g)</span> &#123;<span class="keyword">return</span> RD(a)&amp;&amp;RD(b)&amp;&amp;RD(c)&amp;&amp;RD(d)&amp;&amp;RD(e)&amp;&amp;RD(f)&amp;&amp;RD(g);&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PT</span><span class="params">(<span class="keyword">int</span>    a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%d"</span>,a);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PT</span><span class="params">(<span class="keyword">char</span>   a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%c"</span>,a);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PT</span><span class="params">(<span class="keyword">double</span> a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%f"</span>,a);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PT</span><span class="params">(LONG   a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%I64d"</span>,a);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PT</span><span class="params">(<span class="built_in">string</span> a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%s"</span>,a.begin());&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OT</span><span class="params">(T1 a)</span> &#123;PT(a);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OT</span><span class="params">(T1 a,T2 b)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OT</span><span class="params">(T1 a,T2 b,T3 c)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OT</span><span class="params">(T1 a,T2 b,T3 c,T4 d)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c),PT(<span class="string">' '</span>),PT(d);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OT</span><span class="params">(T1 a,T2 b,T3 c,T4 d,T5 e)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c),PT(<span class="string">' '</span>),PT(d),PT(<span class="string">' '</span>),PT(e);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5,<span class="keyword">class</span> T6&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OT</span><span class="params">(T1 a,T2 b,T3 c,T4 d,T5 e,T6 f)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c),PT(<span class="string">' '</span>),PT(d),PT(<span class="string">' '</span>),PT(e),PT(<span class="string">' '</span>),PT(f);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5,<span class="keyword">class</span> T6,<span class="keyword">class</span> T7&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OT</span><span class="params">(T1 a,T2 b,T3 c,T4 d,T5 e,T6 f,T7 g)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c),PT(<span class="string">' '</span>),PT(d),PT(<span class="string">' '</span>),PT(e),PT(<span class="string">' '</span>),PT(f),PT(<span class="string">' '</span>),PT(g);&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PL</span><span class="params">(<span class="keyword">int</span>    a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PL</span><span class="params">(<span class="keyword">char</span>   a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%c\n"</span>,a);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PL</span><span class="params">(<span class="keyword">double</span> a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%f\n"</span>,a);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PL</span><span class="params">(LONG   a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%I64d\n"</span>,a);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">PL</span><span class="params">(<span class="built_in">string</span> a)</span> </span>&#123;<span class="built_in">printf</span>(<span class="string">"%s\n"</span>,a.begin());&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OL</span><span class="params">(T1 a)</span> &#123;PL(a);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OL</span><span class="params">(T1 a,T2 b)</span> &#123;PT(a),PT(<span class="string">' '</span>),PL(b);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OL</span><span class="params">(T1 a,T2 b,T3 c)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PL(c);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OL</span><span class="params">(T1 a,T2 b,T3 c,T4 d)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c),PT(<span class="string">' '</span>),PL(d);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OL</span><span class="params">(T1 a,T2 b,T3 c,T4 d,T5 e)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c),PT(<span class="string">' '</span>),PT(d),PT(<span class="string">' '</span>),PL(e);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5,<span class="keyword">class</span> T6&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OL</span><span class="params">(T1 a,T2 b,T3 c,T4 d,T5 e,T6 f)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c),PT(<span class="string">' '</span>),PT(d),PT(<span class="string">' '</span>),PT(e),PT(<span class="string">' '</span>),PL(f);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3,<span class="keyword">class</span> T4,<span class="keyword">class</span> T5,<span class="keyword">class</span> T6,<span class="keyword">class</span> T7&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span></span></div><div class="line">    <span class="title">OL</span><span class="params">(T1 a,T2 b,T3 c,T4 d,T5 e,T6 f,T7 g)</span> &#123;PT(a),PT(<span class="string">' '</span>),PT(b),PT(<span class="string">' '</span>),PT(c),PT(<span class="string">' '</span>),PT(d),PT(<span class="string">' '</span>),PT(e),PT(<span class="string">' '</span>),PT(f),PT(<span class="string">' '</span>),PL(g);&#125;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// __IO__</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __MACRO__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __MACRO__</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ML(times) int tcase; IN(tcase); FOR(times,1,tcase)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i,a,b) for(int i=int(a),_##i=int(b);i&lt;=_##i;i++)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> DWN(i,b,a) for(int i=int(b),_##i=int(a);_##i&lt;=i;i--)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ECH(i,u,pre,next) for(int i=int(pre[u]);i!=-1;i=int(next[i]))</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MEM(a,v) memset(a,v,sizeof(a))</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> CLR(a,v) FOR(_i##a,0,sizeof(a)/sizeof(a[0])-1) a[_i##a]=v</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LOOP(a,n)                                               \</span></div><div class="line">    FOR(_i##a,0,(n)-1)                                          \</div><div class="line">        cout&lt;&lt;a[_i##a]&lt;&lt;(_i##a!=n-1?<span class="meta-string">' '</span>:<span class="meta-string">'\n'</span>)</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LOOP2(a,n,m)                                            \</span></div><div class="line">    FOR(_i##a,0,(n)-1) FOR(_j##a,0,(m)-1)                       \</div><div class="line">        cout&lt;&lt;a[_i##a][_j##a]&lt;&lt;(_j##a!=m-1?<span class="meta-string">' '</span>:<span class="meta-string">'\n'</span>)</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LOOPG(G,n,pre,next)                                     \</span></div><div class="line">    FOR(_i##a,0,(n)-1) ECH(_j##a,_i##a,pre,next)                \</div><div class="line">        cout&lt;&lt;_i##a&lt;&lt;<span class="meta-string">" "</span>&lt;&lt;G[_j##a].v&lt;&lt;<span class="meta-string">" "</span>&lt;&lt;G[_j##a].w&lt;&lt;endl</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// __MACRO__</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __BIT__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __BIT__</span></div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="function"><span class="keyword">inline</span> T <span class="title">lb</span><span class="params">(T i)</span> </span>&#123;<span class="keyword">return</span> i&amp;-i;&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="function"><span class="keyword">inline</span> T <span class="title">lc</span><span class="params">(T i)</span> </span>&#123;<span class="keyword">return</span> i&lt;&lt;T(<span class="number">1</span>);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="function"><span class="keyword">inline</span> T <span class="title">rc</span><span class="params">(T i)</span> </span>&#123;<span class="keyword">return</span> i&lt;&lt;T(<span class="number">1</span>)|T(<span class="number">1</span>);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="function"><span class="keyword">inline</span> T <span class="title">at</span><span class="params">(T a,<span class="keyword">int</span> i)</span> </span>&#123;<span class="keyword">return</span> a&amp; (T(<span class="number">1</span>)&lt;&lt;i);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="function"><span class="keyword">inline</span> T <span class="title">nt</span><span class="params">(T a,<span class="keyword">int</span> i)</span> </span>&#123;<span class="keyword">return</span> a^ (T(<span class="number">1</span>)&lt;&lt;i);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="function"><span class="keyword">inline</span> T <span class="title">s1</span><span class="params">(T a,<span class="keyword">int</span> i)</span> </span>&#123;<span class="keyword">return</span> a| (T(<span class="number">1</span>)&lt;&lt;i);&#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="function"><span class="keyword">inline</span> T <span class="title">s0</span><span class="params">(T a,<span class="keyword">int</span> i)</span> </span>&#123;<span class="keyword">return</span> a&amp;~(T(<span class="number">1</span>)&lt;&lt;i);&#125;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// __BIT__</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __DOUBLE__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __DOUBLE__</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-8</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">double</span> a)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">fabs</span>(a<span class="number">-0</span>)&lt;eps?<span class="number">0</span>:((a<span class="number">-0</span>)&gt;eps?+<span class="number">1</span>:<span class="number">-1</span>);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">fabs</span>(a-b)&lt;eps?<span class="number">0</span>:((a-b)&gt;eps?+<span class="number">1</span>:<span class="number">-1</span>);&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">fmax</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span> </span>&#123;<span class="keyword">return</span> cmp(a,b)&gt;<span class="number">0</span>?a:b;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">fmin</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span> </span>&#123;<span class="keyword">return</span> cmp(a,b)&lt;<span class="number">0</span>?a:b;&#125;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// __DOUBLE__</span></span></div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXV = <span class="number">12000</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXE = <span class="number">24000</span>;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> node</div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> v,w;</div><div class="line">&#125;G[MAXE];</div><div class="line"><span class="keyword">int</span> _index,pre[MAXV],next[MAXE];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">    _index=<span class="number">0</span>;</div><div class="line">    MEM(pre,<span class="number">-1</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></div><div class="line">&#123;</div><div class="line">    G[_index].v=v;</div><div class="line">    G[_index].w=w;</div><div class="line">    next[_index]=pre[u];</div><div class="line">    pre[u]=_index++;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> HEAP</div><div class="line">&#123;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="keyword">int</span> use,val[MAXV],lab[MAXV],heap[MAXV];</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sel</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> val[heap[i]]&lt;val[heap[j]]?i:j;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></div><div class="line">    &#123;</div><div class="line">        swap(heap[i],heap[j]);</div><div class="line">        swap(lab[heap[i]],lab[heap[j]]);</div><div class="line">    &#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="keyword">int</span> <span class="keyword">operator</span> [] (<span class="keyword">int</span> i)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> val[i];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> use==<span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">    &#123;</div><div class="line">        use=<span class="number">0</span>;</div><div class="line">        MEM(val,inf);</div><div class="line">        MEM(lab,inf);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> w)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(val[u]&gt;w)</div><div class="line">        &#123;</div><div class="line">            val[u]=w;</div><div class="line">            <span class="keyword">if</span>(lab[u]==inf) heap[lab[u]=++use]=u;</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=lab[u];i/<span class="number">2</span>&gt;=<span class="number">1</span>;i=i/<span class="number">2</span>)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(sel(i,i/<span class="number">2</span>)==i/<span class="number">2</span>) <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">else</span> change(i,i/<span class="number">2</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">peek</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">    &#123;</div><div class="line">        change(<span class="number">1</span>,use);</div><div class="line">        lab[heap[use--]]=inf;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;lc(i)&lt;=use;)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(lc(i)==use)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(sel(i,lc(i))==i) <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">else</span> i=lc(i);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span></div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(sel(i,sel(lc(i),rc(i)))==i) <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">else</span> i=sel(i,sel(lc(i),rc(i)));</div><div class="line">            &#125;</div><div class="line">            change(i,i/<span class="number">2</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> heap[use+<span class="number">1</span>];</div><div class="line">    &#125;</div><div class="line">&#125;dis;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">SPFA</span><span class="params">(<span class="keyword">int</span> src,<span class="keyword">int</span> des)</span></span></div><div class="line">&#123;</div><div class="line">    dis.clear();</div><div class="line">    dis.update(src,<span class="number">0</span>);</div><div class="line"></div><div class="line">    <span class="keyword">while</span>(!dis.empty())</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> u=dis.peek();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=pre[u];i!=<span class="number">-1</span>;i=next[i])</div><div class="line">        &#123;</div><div class="line">            dis.update(G[i].v,dis[u]+G[i].w);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> dis[des];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">int</span> n,m,u,v,w;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m)</div><div class="line">    &#123;</div><div class="line">        clear();</div><div class="line">        <span class="keyword">while</span>(m--)</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v&gt;&gt;w;</div><div class="line">            add(u,v,w);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;SPFA(u,v)&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>好腻害……</p>
 
           
         
@@ -1525,7 +2055,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">457</span>
+                <span class="site-state-item-count">458</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1697,6 +2227,14 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://liuxueyang.disqus.com/count.js" async></script>
+    
+
+    
+
+  
+
 
 
 
@@ -1736,6 +2274,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
