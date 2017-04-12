@@ -247,6 +247,539 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2017/04/12/Haskell-笔记7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/12/Haskell-笔记7/" itemprop="url">
+                  Haskell 笔记7
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-12T11:16:43+08:00">
+                2017-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这是一些阅读<a href="http://learnyouahaskell.com" target="_blank" rel="external">Learn You a Haskell for Great Good!</a>的时候的笔记，之前用Latex写的，放在Dropbox里面，现在想把它们整理一下，放在博客里。这是<a href="http://learnyouahaskell.com/modules" target="_blank" rel="external">第七章 Modules</a>的笔记。</p>
+<h2 id="Loading-modules"><a href="#Loading-modules" class="headerlink" title="Loading modules"></a>Loading modules</h2><p>之前用TeXmacs虽然挺方便，但还是感觉有点不舒服。所以还是换回来吧。</p>
+<p>在默认的Prelude模块里面，已经默认引入了一些Data.List中的函数。另外，引入Data.List模块的时候不需要使用带限定符的方法，因为Prelude里面的函数除了默认引入的Data.List的部分函数以外，不会和Data.List里面的其它函数命名冲突。然而，如果再引用其它模块的时候就不一定了。一般情况下只需要用一般的引入模块的方法就够了：import Data.List</p>
+<h2 id="Data-List"><a href="#Data-List" class="headerlink" title="Data.List"></a>Data.List</h2><p>group这个函数，它接收一个列表，把列表中相邻并且相等的元素合成一个子列表，对于相等但是不相邻的元素，它会分别合成独立的子列表，也就是说，它并不会排序。比如：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; group [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>]</div><div class="line">[[<span class="number">1</span>],[<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],[<span class="number">3</span>],[<span class="number">4</span>],[<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],[<span class="number">5</span>],[<span class="number">6</span>]]</div></pre></td></tr></table></figure>
+<p>如果想要一个列表中的某个元素的个数，可以这样做：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; map (\ xs@(x : xs') -&gt; (x, length xs)) $ group . sort $ [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>]</div><div class="line">[(<span class="number">1</span>,<span class="number">1</span>),(<span class="number">2</span>,<span class="number">6</span>),(<span class="number">3</span>,<span class="number">1</span>),(<span class="number">4</span>,<span class="number">1</span>),(<span class="number">5</span>,<span class="number">1</span>),(<span class="number">6</span>,<span class="number">1</span>)]</div></pre></td></tr></table></figure>
+<p>这里我用到了function composition(.)、function application($)、lambda表达式、lambda表达式中的模式匹配、用@符号来捕获整个模式（注意它的用法，用@符号来把整个模式和部分模式分隔开）。</p>
+<p>init函数的意思是得到列表的前<code>n - 1</code>个元素，inits的意思是依次得到列表的前<code>0, 1, 2 ... n</code>个元素组成一个嵌套列表。</p>
+<p>tail函数的意思是去掉列表的前<code>1</code>个元素，tails的意思是依次去掉列表的前<code>0, 1, 2 ... n</code>个元素组成的一个嵌套列表。</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">λ&gt; init [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</div><div class="line">[<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">λ&gt; tail [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</div><div class="line">[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</div><div class="line">λ&gt; inits [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</div><div class="line">[[],[<span class="number">3</span>],[<span class="number">3</span>,<span class="number">4</span>],[<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],[<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]]</div><div class="line">λ&gt; tails [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</div><div class="line">[[<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">5</span>,<span class="number">6</span>],[<span class="number">6</span>],[]]</div></pre></td></tr></table></figure>
+<p>好像这两个比较容易弄混。可以这样记：tails就代表一个列表的尾部，从最大的尾巴（整个列表）到最小的尾巴（空列表）组成的一个列表。<br>而inits就代表头部，从最小的头部（空列表）到最大的头部（整个列表）组成的一个列表。可以这样用：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="title">search</span> :: (<span class="type">Eq</span> a) =&gt; [a] -&gt; [a] -&gt; <span class="type">Bool</span></div><div class="line"><span class="title">search</span> smallList bigList = foldl (\ accu xs -&gt;</div><div class="line">                                    <span class="keyword">if</span> take (length smallList) xs == smallList</div><div class="line">                                    <span class="keyword">then</span> <span class="type">True</span></div><div class="line">                                    <span class="keyword">else</span> accu) <span class="type">False</span></div><div class="line">                           $ tails bigList</div></pre></td></tr></table></figure>
+<p>这个函数用来在一个嵌套列表里面找一个子列表：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">λ&gt; search [<span class="number">3.</span><span class="number">.5</span>] [<span class="number">1.</span><span class="number">.7</span>]</div><div class="line"><span class="type">True</span></div><div class="line">λ&gt; search [<span class="number">3</span>, <span class="number">5</span>] [<span class="number">1.</span><span class="number">.7</span>]</div><div class="line"><span class="type">False</span></div></pre></td></tr></table></figure>
+<p>最常见的应用就是在一个字符串里面找一个字符串吧，因为一个字符串也是一个列表。其实这个函数已经有库函数来实现同样的功能：isInfixOf，它接收两个列表，如果第一个列表是第二个列表的子列表那么返回真：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">λ&gt; isInfixOf [<span class="number">3</span>, <span class="number">5</span>] [<span class="number">1.</span><span class="number">.7</span>]</div><div class="line"><span class="type">False</span></div><div class="line">λ&gt; isInfixOf [<span class="number">3.</span><span class="number">.5</span>] [<span class="number">1.</span><span class="number">.7</span>]</div><div class="line"><span class="type">True</span></div></pre></td></tr></table></figure>
+<p>类似的函数有isPrefixOf，它检查一个列表是不是另外一个列表的前缀。isSuffixOf，它检查一个列表是不是另外一个列表的后缀。</p>
+<p>elem函数检查一个元素是不是存在于另外一个列表中。notElem相反。</p>
+<p>partition这个函数接收一个predicate和一个列表，返回一个tuple，第一个元素是满足predicate的元素的列表，第二个元素是不满足predicate的元素的列表：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; partition (&gt; <span class="number">3</span>) [<span class="number">1.</span><span class="number">.7</span>]</div><div class="line">([<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>],[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</div></pre></td></tr></table></figure>
+<p>这个函数和span函数是有区别的，span函数会在predicate第一次不被满足的地方把列表分割成两个列表，但是partition会遍历整个列表，把满足predicate和不满足predicate的元素分别放到一个列表里面。</p>
+<p>find函数接收一个predicate和一个列表，如果列表中有一个元素满足predicate，那么立即返回用Maybe包裹起来的这个值。这个Maybe啊，其实相当于SML里面的option。它可以是<code>Nothing</code>，也可以是<code>Just n</code>。一个Maybe的类型由它所代表的类型决定，比如<code>Just 6</code>的类型就是Maybe Int。</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">λ&gt; find (&gt; <span class="number">9</span>) [<span class="number">1.</span><span class="number">.7</span>]</div><div class="line"><span class="type">Nothing</span></div><div class="line">λ&gt; find (&gt; <span class="number">5</span>) [<span class="number">1.</span><span class="number">.7</span>]</div><div class="line"><span class="type">Just</span> <span class="number">6</span></div><div class="line">λ&gt; :t (find (&gt; <span class="number">9</span>) [<span class="number">1.</span><span class="number">.7</span>])</div><div class="line">(find (&gt; <span class="number">9</span>) [<span class="number">1.</span><span class="number">.7</span>]) :: (<span class="type">Enum</span> a, <span class="type">Num</span> a, <span class="type">Ord</span> a) =&gt; <span class="type">Maybe</span> a</div></pre></td></tr></table></figure>
+<p>由于head函数对于空列表会抛出异常，所以这个时候find函数就是一个比较好的选择，如果有满足predicate的那么就返回一个<code>Just x</code>，如果没有那么返回一个Nothing。对于Maybe类型，后面会学到。</p>
+<p>elemIndex函数和elem同样的功能，但是它会返回一个Maybe，如果要找的元素存在，那么返回<code>Just i</code>，如果不存在那么返回<code>Nothing</code>。</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">λ&gt; elemIndex <span class="number">3</span> [<span class="number">1.</span><span class="number">.7</span>]</div><div class="line"><span class="type">Just</span> <span class="number">2</span></div><div class="line">λ&gt; elemIndex <span class="number">10</span> [<span class="number">1.</span><span class="number">.7</span>]</div><div class="line"><span class="type">Nothing</span></div></pre></td></tr></table></figure>
+<p>elemIndices这个函数接收一个元素和一个列表，返回一个列表，列表中的元素代表要找的元素在列表中的所有的下标。它会遍历整个列表并返回所有出现的位置。因为它返回的是一个列表，所以不需要使用Maybe，因为可以使用空列表来代表不存在，它代替了<code>Nothing</code>的功能。</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">λ&gt; ' ' `elemIndices` <span class="string">"Music Flavor by"</span></div><div class="line">[<span class="number">5</span>,<span class="number">12</span>]</div><div class="line">λ&gt; '<span class="type">K'</span> `elemIndices` <span class="string">"Music Flavor by"</span></div><div class="line">[]</div></pre></td></tr></table></figure>
+<p>findIndex和elemIndex函数类似，但是它接收一个predicate和一个列表，返回第一个使得predicate为真的下标的Maybe。findIndices和elemIndices类似，但是它接收一个predicate和一个列表，返回一个使得predicate为真的下标的列表，或者空列表。</p>
+<p>和zip、zipWith函数类似，也有zip{3..7}，zipWith{3..7}函数。比如zip4函数接收四个列表，把它们对应位置的元素打包成一个tuple。zipWith4函数接收一个函数和一个列表，把每个列表对应的元素作为函数的参数然后作为结果列表的一个元素。比如：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">λ&gt; zip4 [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>] [<span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>] [<span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>]</div><div class="line">[(<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">12</span>),(<span class="number">2</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">13</span>),(<span class="number">3</span>,<span class="number">6</span>,<span class="number">11</span>,<span class="number">14</span>)]</div><div class="line">λ&gt; zipWith4 (\ x y z m -&gt; x + y + z + m) [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>] [<span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>] [<span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>]</div><div class="line">[<span class="number">26</span>,<span class="number">30</span>,<span class="number">34</span>]</div></pre></td></tr></table></figure>
+<p>注意：如果参数列表中的各个列表长度不一样的话，那么结果列表的长度和参数列表中的最短的一致。</p>
+<p>lines函数接收一个字符串，根据字符串的换行符把字符串分割成一个一个字符串放到一个子列表里面：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; lines <span class="string">"Hello\nTOUCH\nSummer"</span></div><div class="line">[<span class="string">"Hello"</span>,<span class="string">"TOUCH"</span>,<span class="string">"Summer"</span>]</div></pre></td></tr></table></figure>
+<p>unlines函数则相反，它接收一个字符串列表，把各个字符串用换行符连接成一个大字符串。需要注意的是，结果字符串后面会有一个换行符。不管原来列表的最后一个元素结尾是不是有换行符：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">λ&gt; unlines [<span class="string">"hello"</span>, <span class="string">"TOUCH"</span>, <span class="string">"Summer"</span>]</div><div class="line"><span class="string">"hello\nTOUCH\nSummer\n"</span></div><div class="line">λ&gt; unlines [<span class="string">"hello"</span>, <span class="string">"TOUCH"</span>, <span class="string">"Summer\n"</span>]</div><div class="line"><span class="string">"hello\nTOUCH\nSummer\n\n"</span></div></pre></td></tr></table></figure>
+<p>words函数把一个字符串按照空格和换行符分割成多个单词，连续的空格被当作一个空格，然后把这些单词放在结果列表里面。unwords函数接收一个单词列表，把他们用空格连接起来成为一个字符串。注意，结果字符串的结尾没有追加换行符。</p>
+<p>nub函数接收一个列表，返回一个所有元素都唯一的一个列表。也就是它把参数中的重复元素都去掉。</p>
+<p>delete函数接收一个元素与一个和这个元素相同类型的列表，它会删除列表中参数元素第一次出现的位置：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; delete <span class="number">3</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>]</div><div class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">3</span>]</div></pre></td></tr></table></figure>
+<p><code>\\</code> 函数接收两个列表，相当于集合的差，它会从第一个列表中移除所有在第二个列表中出现在元素：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; [<span class="number">1.</span><span class="number">.7</span>] \\ [<span class="number">3.</span><span class="number">.5</span>]</div><div class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">7</span>]</div></pre></td></tr></table></figure>
+<p>union接收两个列表，它类似于集合的并操作。遍历第二个列表，如果第二个列表中的某个元素不存在于第一个列表中，那么追加到结果列表，否则抛弃。</p>
+<p>intersect接收两个列表，它类似于集合的交操作。</p>
+<p>insert函数的行为类似于C++里面的lower_bound函数，它接收一个参数和一个列表，并且把参数插入到列表中。它会找到第一个不小于参数的位置插入。</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">λ&gt; insert <span class="number">4</span> [<span class="number">3</span>, <span class="number">5</span>, <span class="number">1</span>]</div><div class="line">[<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>]</div><div class="line">λ&gt; insert <span class="number">4</span> [<span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">1</span>]</div><div class="line">[<span class="number">3</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>]</div><div class="line">λ&gt; insert <span class="number">4</span> [<span class="number">3</span>, <span class="number">1</span>]</div><div class="line">[<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>]</div></pre></td></tr></table></figure>
+<p>在第二个例子里，4插入到了原来的列表中的3和4之间。如果列表中所有元素都小于参数，那么把参数插入到列表末尾。</p>
+<p>看下面这几个函数的类型：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">λ&gt; :t length</div><div class="line"><span class="title">length</span> :: <span class="type">Foldable</span> t =&gt; t a -&gt; <span class="type">Int</span></div><div class="line">λ&gt; :t take</div><div class="line"><span class="title">take</span> :: <span class="type">Int</span> -&gt; [a] -&gt; [a]</div><div class="line">λ&gt; :t drop</div><div class="line"><span class="title">drop</span> :: <span class="type">Int</span> -&gt; [a] -&gt; [a]</div><div class="line">λ&gt; :t splitAt</div><div class="line"><span class="title">splitAt</span> :: <span class="type">Int</span> -&gt; [a] -&gt; ([a], [a])</div><div class="line">λ&gt; :t (!!)</div><div class="line">(!!) :: [a] -&gt; <span class="type">Int</span> -&gt; a</div><div class="line">λ&gt; :t replicate</div><div class="line"><span class="title">replicate</span> :: <span class="type">Int</span> -&gt; a -&gt; [a]</div></pre></td></tr></table></figure>
+<p>我们发现这些函数里面都含有Int，其实这些函数本可以更一般，把Int替换成属于Num的成员类型变量。由于历史原因，修改这些函数可能会让现有的很多程序出问题。所以在Data.List里面实现了这些函数的替代品：genericLength，genericTake，genericDrop，genericSplitAt，genericIndex，genericReplicate。这些函数中把Int替换成了Num，所以更具一般性，也更好用。</p>
+<p>nub， delete， union， intersect，group这些函数都有其它版本，分别是：nubBy，deleteBy，unionBy，intersectBy，groupBy，不同之处在于，原来的函数使用(==)函数来测试相等性，By版本的函数可以接收一个函数用来测试相等性。比如把一个列表中的正数和负数分别分组：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; groupBy (\ x y -&gt; (x &gt; <span class="number">0</span>) == (y &gt; <span class="number">0</span>))  [<span class="number">-1</span>, <span class="number">-2</span>, <span class="number">-3</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]</div><div class="line">[[<span class="number">-1</span>,<span class="number">-2</span>,<span class="number">-3</span>,<span class="number">0</span>],[<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]]</div></pre></td></tr></table></figure>
+<p>也可以使用Data.Function模块中的on函数，on函数的定义类似于这样：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">on'</span> :: (b -&gt; b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; a -&gt; c</div><div class="line"><span class="title">on'</span> f g = \ x y -&gt; f (g x) (g y)</div></pre></td></tr></table></figure>
+<p>所以上面的程序也可以写成：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; groupBy ((==) `on` (&gt; <span class="number">0</span>)) [<span class="number">-1</span>, <span class="number">-2</span>, <span class="number">-3</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]</div><div class="line">[[<span class="number">-1</span>,<span class="number">-2</span>,<span class="number">-3</span>,<span class="number">0</span>],[<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]]</div></pre></td></tr></table></figure>
+<p>sort，insert，maximum，minimum这几个函数也有对应的By版本：sortBy，insertBy，maximumBy，minimumBy。他们都接收一个函数和一个列表，函数参数接收两个元素作为参数，返回值是一个Ordering实例。比如：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; sortBy (compare `on` length) [[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">1</span>], [<span class="number">2</span>, <span class="number">3</span>]]</div><div class="line">[[<span class="number">1</span>],[<span class="number">2</span>,<span class="number">3</span>],[<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]]</div></pre></td></tr></table></figure>
+<p>所以有两类By系列的函数：</p>
+<ol>
+<li>接收一个函数来测试相等性，一般用(==) <code>on</code> something</li>
+<li>接收一个函数来测试顺序，一般用compare <code>on</code> something</li>
+</ol>
+<h2 id="Data-Char"><a href="#Data-Char" class="headerlink" title="Data.Char"></a>Data.Char</h2><p>这个模块里面的函数是针对字符的。</p>
+<ul>
+<li>isControl 检查一个字符是不是控制字符。</li>
+<li>isSpace 检查一个字符是不是空白符：包括空格、制表符、换行符等。</li>
+<li>isLower 检查一个字符是否是小写字母。</li>
+<li>isUpper 检查一个符是否是大写字母。</li>
+<li>isAlpha 检查一个字符是否是字母。</li>
+<li>isAlphaNum 检查一个字符是否是字母或者数字。</li>
+<li>isPrint 检查一个字符是否是可打印的。比如控制符是不可打印的。</li>
+<li>isDigit 检查一个字符是否是数字。</li>
+<li>isOctDigit 检查一个字符是否是八进制数字。</li>
+<li>isHexDigit 检查一个数字是否是十六进制数字。</li>
+<li>isLetter 检查一个字符是否是字母。和isAlpha函数一样。</li>
+<li>isMark 检查一个字符是否是Unicode标识字符。它们用来组成一些类似于á之类的字符吧好像。法语里面有，西语里面也有。</li>
+<li>isNumber 检查一个字符是不是numeric，不知道它和isDigit有什么区别。</li>
+<li>isPunctuation 检查一个字符是否是标点符号。</li>
+<li>isSymbol 检查一个字符是否是数学或者货币符号。</li>
+<li>isSeparator 检查一个字符是否是Unicode空格或者分隔符。</li>
+<li>isAscii 检查一个字符是否是Unicode字符集的前128个字符。</li>
+<li>isLatin1 检查一个字符是否是Unicode字符集的前256个字符。</li>
+<li>isAsciiUpper 检查一个字符是否是ASCII并且大写。</li>
+<li>isAsciiLower 检查一个字符是否是ASCII并且小写。</li>
+</ul>
+<p>比如检查一个字符串是否只包含数字和字母，可以用all函数：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">λ&gt; all isAlphaNum <span class="string">"abel457"</span></div><div class="line"><span class="type">True</span></div><div class="line">λ&gt; all isAlphaNum <span class="string">"abel-457"</span></div><div class="line"><span class="type">False</span></div></pre></td></tr></table></figure>
+<p>Kewl这个单词啊，和cool的意思差不多吧。</p>
+<p>实现words函数：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="title">words'</span> :: <span class="type">String</span> -&gt; [<span class="type">String</span>]</div><div class="line"><span class="title">words'</span> xs = filter (not . any isSpace) $</div><div class="line">  groupBy ((==) `on` isSpace) xs</div><div class="line">λ&gt; words' <span class="string">"Hey gus its me"</span></div><div class="line">[<span class="string">"Hey"</span>,<span class="string">"gus"</span>,<span class="string">"its"</span>,<span class="string">"me"</span>]</div><div class="line">λ&gt; words' <span class="string">"Hey gus its   me"</span></div><div class="line">[<span class="string">"Hey"</span>,<span class="string">"gus"</span>,<span class="string">"its"</span>,<span class="string">"me"</span>]</div></pre></td></tr></table></figure>
+<p>这个函数在filter的predicate里面用到了复合函数，有点意思。</p>
+<p>Ordering类型的值为LT，EQ，GT。它们是enumeration的。他们描述了两个值比较的所有的结果。同样地，GeneralCategory类型也是enumeration，它描述了任意一个字符所在的类别，一共有31种类别。比如：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">λ&gt; generalCategory 'a'</div><div class="line"><span class="type">LowercaseLetter</span></div><div class="line">λ&gt; generalCategory ' '</div><div class="line"><span class="type">Space</span></div><div class="line">λ&gt; generalCategory '\n'</div><div class="line"><span class="type">Control</span></div></pre></td></tr></table></figure>
+<p>GeneralCategory类型是Eq的成员，所以是可以比较的：generalCategory c == Space</p>
+<ul>
+<li>toUpper 把一个字符转化成大写。</li>
+<li>toLower 把一个字符转化成小写。</li>
+<li>toTitle 把一个字符转化成title-case，一般情况下就是大写。</li>
+<li>digitToInt 把一个字符转化成数字，字符必须在’0’..’9’，’a’..’f’，’A’..’F’的范围内。</li>
+<li>intToDigit 和digitToInt相反，把一个数字转化成字符，数字范围必须在0..15的范围内，转化成的字符是小写的。</li>
+<li>ord 得到一个字符的ASCII码。</li>
+<li>chr 从ASCII得到对应的字符。</li>
+</ul>
+<p>把一个字符串转化成另外一个字符串：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="title">encode</span> :: <span class="type">Int</span> -&gt; <span class="type">String</span> -&gt; <span class="type">String</span></div><div class="line"><span class="title">encode</span> shift xs =</div><div class="line">  <span class="keyword">let</span> nums = map ord xs</div><div class="line">      nums_ = map (+ shift) nums</div><div class="line">  <span class="keyword">in</span></div><div class="line">    map chr nums_</div></pre></td></tr></table></figure>
+<p>也可以用复合函数的方法：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">encode'</span> :: <span class="type">Int</span> -&gt; <span class="type">String</span> -&gt; <span class="type">String</span></div><div class="line"><span class="title">encode'</span> shift = map (chr . (+ shift) . ord)</div></pre></td></tr></table></figure>
+<p>把字符串还原：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">decode</span> :: <span class="type">Int</span> -&gt; <span class="type">String</span> -&gt; <span class="type">String</span></div><div class="line"><span class="title">decode</span> shift = encode (negate shift)</div></pre></td></tr></table></figure>
+<h2 id="Data-Map"><a href="#Data-Map" class="headerlink" title="Data.Map"></a>Data.Map</h2><p>一般使用一个pair列表来表示：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="title">phoneBook</span> = [(<span class="string">"abel"</span>, <span class="string">"123"</span>)</div><div class="line">            ,(<span class="string">"shin-chan"</span>, <span class="string">"789"</span>)</div><div class="line">            ,(<span class="string">"Zh"</span>, <span class="string">"456"</span>)]</div></pre></td></tr></table></figure>
+<p>在一个map里面根据key找到对应的value：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">findKey</span> :: (<span class="type">Eq</span> a) =&gt; a -&gt; [(a, b)] -&gt; b</div><div class="line"><span class="title">findKey</span> x = snd . head . filter (\ (k, v) -&gt; k == x)</div></pre></td></tr></table></figure>
+<p>这个函数当key在map里面不存在的时候会异常。因为把[]传递给了head函数。可以用Maybe来代替：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="title">findKey'</span> :: (<span class="type">Eq</span> a) =&gt; a -&gt; [(a, b)] -&gt; <span class="type">Maybe</span> b</div><div class="line"><span class="title">findKey'</span> k [] = <span class="type">Nothing</span></div><div class="line"><span class="title">findKey'</span> k ((kk, vv) : xs) = <span class="keyword">if</span> kk == k <span class="keyword">then</span> <span class="type">Just</span> vv</div><div class="line">                      <span class="keyword">else</span> findKey' k xs</div></pre></td></tr></table></figure>
+<p>很标准的模式匹配的写法。也可以用fold来实现：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="title">findKey's</span> :: (<span class="type">Eq</span> a) =&gt; a -&gt; [(a, b)] -&gt; <span class="type">Maybe</span> b</div><div class="line"><span class="title">findKey's</span> k = foldl (\ accu (kk, vv) -&gt;</div><div class="line">                        <span class="keyword">if</span> kk == k <span class="keyword">then</span> <span class="type">Just</span> vv</div><div class="line">                        <span class="keyword">else</span> accu) <span class="type">Nothing</span></div></pre></td></tr></table></figure>
+<p>这里使用的是左折叠，也可以使用右折叠。</p>
+<p>在Data.Map里面，map使用树来表示的，而不是用列表。因此速度会快很多。Data.Map导出的函数可能会和Prelude模块里面的函数冲突，因此需要用带有限定符的方式来导入：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="keyword">qualified</span> Data.Map <span class="keyword">as</span> Map</div></pre></td></tr></table></figure>
+<ul>
+<li>fromList 这个函数接收一个关联列表，返回一个map。如果关联列表中有重复的key，那么会忽略。这个函数的类型是：</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; :t <span class="type">Map</span>.fromList</div><div class="line"><span class="type">Map</span>.fromList :: <span class="type">Ord</span> k =&gt; [(k, a)] -&gt; <span class="type">Map</span>.<span class="type">Map</span> k a</div></pre></td></tr></table></figure>
+<p>要注意的是，map里面的key必须是Ord的实例，map根据Ord来决定key在树中的位置。另外这个函数的返回值是Data.Map k a，其中key和value的类型也包括在里面。</p>
+<ul>
+<li>empty 没有参数，返回一个空的map。</li>
+<li>insert 接收一个key，一个value，一个map，把key-value插入到map中并返回。可以用这个函数来实现fromList：</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="title">fromList'</span> :: (<span class="type">Ord</span> k) =&gt; [(k, a)] -&gt; <span class="type">Map</span>.<span class="type">Map</span> k a</div><div class="line"><span class="title">fromList'</span> = foldl (\ accu (k, v) -&gt;</div><div class="line">                     <span class="type">Map</span>.insert k v accu) <span class="type">Map</span>.empty</div></pre></td></tr></table></figure>
+<p>这里用的是左折叠，如果用右折叠也是可以的。</p>
+<ul>
+<li>null 检查一个map是否为空。</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">λ&gt; <span class="type">Map</span>.empty</div><div class="line"><span class="title">fromList</span> []</div><div class="line">λ&gt; <span class="type">Map</span>.null <span class="type">Map</span>.empty</div><div class="line"><span class="type">True</span></div></pre></td></tr></table></figure>
+<ul>
+<li>size 返回map的大小，也就是key-value对的个数</li>
+<li>singleton 接收一个key和一个value，返回一个只含有这个key-value对的map：</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">λ&gt; <span class="type">Map</span>.singleton <span class="string">"Hel"</span> <span class="number">101</span></div><div class="line"><span class="title">fromList</span> [(<span class="string">"Hel"</span>,<span class="number">101</span>)]</div><div class="line">λ&gt; <span class="type">Map</span>.insert <span class="string">"Hola"</span> <span class="number">102</span> $ <span class="type">Map</span>.singleton <span class="string">"Hel"</span> <span class="number">101</span></div><div class="line"><span class="title">fromList</span> [(<span class="string">"Hel"</span>,<span class="number">101</span>),(<span class="string">"Hola"</span>,<span class="number">102</span>)]</div></pre></td></tr></table></figure>
+<ul>
+<li>lookup 接收一个键和一个map，返回一个Maybe。如果键存在，那么返回Just value，否则返回Nothing：</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">λ&gt; <span class="type">Map</span>.lookup <span class="string">"Hel"</span> $ <span class="type">Map</span>.insert <span class="string">"Hola"</span> <span class="number">102</span> $ <span class="type">Map</span>.singleton <span class="string">"Hel"</span> <span class="number">101</span></div><div class="line"><span class="type">Just</span> <span class="number">101</span></div><div class="line">λ&gt; <span class="type">Map</span>.lookup <span class="string">"Hello"</span> $ <span class="type">Map</span>.insert <span class="string">"Hola"</span> <span class="number">102</span> $ <span class="type">Map</span>.singleton <span class="string">"Hel"</span> <span class="number">101</span></div><div class="line"><span class="type">Nothing</span></div></pre></td></tr></table></figure>
+<p>注意，$是右结合的。</p>
+<ul>
+<li>member 和lookup类似，只不过它只返回一个Bool，表示提供的键在map中是否存在。</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">λ&gt; <span class="type">Map</span>.member <span class="string">"Hello"</span> $ <span class="type">Map</span>.insert <span class="string">"Hola"</span> <span class="number">102</span> $ <span class="type">Map</span>.singleton <span class="string">"Hel"</span> <span class="number">101</span></div><div class="line"><span class="type">False</span></div><div class="line">λ&gt; <span class="type">Map</span>.member <span class="string">"Hel"</span> $ <span class="type">Map</span>.insert <span class="string">"Hola"</span> <span class="number">102</span> $ <span class="type">Map</span>.singleton <span class="string">"Hel"</span> <span class="number">101</span></div><div class="line"><span class="type">True</span></div></pre></td></tr></table></figure>
+<ul>
+<li>map 功能和Data.List.map类似，接收一个函数和一个map作为参数，把map里面的每个value传递给函数，其返回值作为新的value。</li>
+<li>filter 功能和Data.List.filter类似，接收一个predicate函数和一个map作为参数，返回一个新的map。这个map里面的所有的value都使得predicate函数返回真。</li>
+<li>toList 和fromList相反，接收一个map，然后返回一个list：</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; <span class="type">Map</span>.toList . <span class="type">Map</span>.filter isUpper $ <span class="type">Map</span>.fromList [(<span class="number">1</span>, '<span class="type">A'</span>), (<span class="number">3</span>, 'b'), (<span class="number">5</span>, '<span class="type">C'</span>)]</div><div class="line">[(<span class="number">1</span>,'<span class="type">A'</span>),(<span class="number">5</span>,'<span class="type">C'</span>)]</div></pre></td></tr></table></figure>
+<p>复合函数和function application($)真是好用。</p>
+<ul>
+<li>keys 和Perl一样，返回一个map的键的列表。</li>
+<li>elems 它竟然不叫做values。。elems是什么鬼。。它返回map的值的列表：</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">λ&gt; <span class="type">Map</span>.keys . <span class="type">Map</span>.filter isUpper $ <span class="type">Map</span>.fromList [(<span class="number">1</span>, '<span class="type">A'</span>), (<span class="number">3</span>, 'b'), (<span class="number">5</span>, '<span class="type">C'</span>)]</div><div class="line">[<span class="number">1</span>,<span class="number">5</span>]</div><div class="line">λ&gt; <span class="type">Map</span>.elems . <span class="type">Map</span>.filter isUpper $ <span class="type">Map</span>.fromList [(<span class="number">1</span>, '<span class="type">A'</span>), (<span class="number">3</span>, 'b'), (<span class="number">5</span>, '<span class="type">C'</span>)]</div><div class="line"><span class="string">"AC"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>fromListWith 它和fromList的不同点是：对于list中的相同的key，它会用一个函数来处理对应的value，而不是忽略。注意，它的第一个参数是一个函数，它只处理value的值，所以这个函数的参数是两个value：</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; <span class="type">Map</span>.fromListWith (\ x y -&gt; x ++ <span class="string">", "</span> ++ y) [(<span class="string">"abel-abel"</span>, <span class="string">"123"</span>), (<span class="string">"bern"</span>, <span class="string">"456"</span>), (<span class="string">"abel-abel"</span>, <span class="string">"789"</span>), (<span class="string">"repl"</span>, <span class="string">"101"</span>)]</div><div class="line"><span class="title">fromList</span> [(<span class="string">"abel-abel"</span>,<span class="string">"789, 123"</span>),(<span class="string">"bern"</span>,<span class="string">"456"</span>),(<span class="string">"repl"</span>,<span class="string">"101"</span>)]</div></pre></td></tr></table></figure>
+<p>我们也可以先把关链表里面的value全部变成list，然后把(++)传递给fromListWith函数：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; <span class="type">Map</span>.fromListWith (++) $ map (\ (x, y) -&gt; (x, [y])) [(<span class="string">"abel-abel"</span>, <span class="string">"123"</span>), (<span class="string">"bern"</span>, <span class="string">"456"</span>), (<span class="string">"abel-abel"</span>, <span class="string">"789"</span>), (<span class="string">"repl"</span>, <span class="string">"101"</span>)]</div><div class="line"><span class="title">fromList</span> [(<span class="string">"abel-abel"</span>,[<span class="string">"789"</span>,<span class="string">"123"</span>]),(<span class="string">"bern"</span>,[<span class="string">"456"</span>]),(<span class="string">"repl"</span>,[<span class="string">"101"</span>])]</div></pre></td></tr></table></figure>
+<p>另外一种使用场景是：比如在列表里面一个key有多个value，我们想选择其中最大的value作为map中的value，所以：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; <span class="type">Map</span>.fromListWith max [(<span class="string">"1"</span>, <span class="number">2</span>), (<span class="string">"1"</span>, <span class="number">3</span>), (<span class="string">"2"</span>, <span class="number">10</span>)]</div><div class="line"><span class="title">fromList</span> [(<span class="string">"1"</span>,<span class="number">3</span>),(<span class="string">"2"</span>,<span class="number">10</span>)]</div></pre></td></tr></table></figure>
+<p>或者把所有相同key对应的value加起来：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; <span class="type">Map</span>.fromListWith (+) [(<span class="string">"1"</span>, <span class="number">2</span>), (<span class="string">"1"</span>, <span class="number">3</span>), (<span class="string">"2"</span>, <span class="number">10</span>)]</div><div class="line"><span class="title">fromList</span> [(<span class="string">"1"</span>,<span class="number">5</span>),(<span class="string">"2"</span>,<span class="number">10</span>)]</div></pre></td></tr></table></figure>
+<ul>
+<li>insertWith 和insert类似，它接收一个额外的函数，当要插入的key在map中已经存在的时候，用这个函数来更新map中对应的value的值：</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; <span class="type">Map</span>.insertWith (+) <span class="number">3</span> <span class="number">10</span> $ <span class="type">Map</span>.fromList [(<span class="number">1</span>, <span class="number">2</span>), (<span class="number">2</span>, <span class="number">3</span>), (<span class="number">3</span>, <span class="number">4</span>)]</div><div class="line"><span class="title">fromList</span> [(<span class="number">1</span>,<span class="number">2</span>),(<span class="number">2</span>,<span class="number">3</span>),(<span class="number">3</span>,<span class="number">14</span>)]</div></pre></td></tr></table></figure>
+<h2 id="Data-Set"><a href="#Data-Set" class="headerlink" title="Data.Set"></a>Data.Set</h2><ul>
+<li>fromList 接收一个列表，返回一个set：</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">λ&gt; <span class="keyword">let</span> s1 = <span class="type">Set</span>.fromList <span class="string">"Hello, I am abel. Buenas nochas!"</span></div><div class="line">λ&gt; <span class="keyword">let</span> s2 = <span class="type">Set</span>.fromList <span class="string">"Mucho gusto! Soy Slackware!"</span></div><div class="line">λ&gt; s1</div><div class="line"><span class="title">fromList</span> <span class="string">" !,.BHIabcehlmnosu"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>intersection 返回两个set的交集：</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; <span class="type">Set</span>.intersection s1 s2</div><div class="line"><span class="title">fromList</span> <span class="string">" !acehlosu"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>difference 返回第一个set和第二个set的差集：</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; <span class="type">Set</span>.difference s1 s2</div><div class="line"><span class="title">fromList</span> <span class="string">",.BHIbmn"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>union 返回两个set的并集：</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">λ&gt; <span class="type">Set</span>.union s1 s2</div><div class="line"><span class="title">fromList</span> <span class="string">" !,.BHIMSabceghklmnorstuwy"</span></div></pre></td></tr></table></figure>
+<p><code>null, size, member, empty, singleton, insert, delete</code> 这些函数和Map里面的类似。</p>
+<h2 id="Making-our-own-modules"><a href="#Making-our-own-modules" class="headerlink" title="Making our own modules"></a>Making our own modules</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2017/04/12/Haskell-笔记1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/12/Haskell-笔记1/" itemprop="url">
+                  Haskell 笔记1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-12T10:35:34+08:00">
+                2017-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这是一些阅读<a href="http://learnyouahaskell.com" target="_blank" rel="external">Learn You a Haskell for Great Good!</a>的时候的笔记，之前用Latex写的，放在Dropbox里面，现在想把它们整理一下，放在博客里。这是<a href="http://learnyouahaskell.com/starting-out" target="_blank" rel="external">第二章 Starting Out</a>的笔记。</p>
+<h3 id="Baby’s-first-functions"><a href="#Baby’s-first-functions" class="headerlink" title="Baby’s first functions"></a>Baby’s first functions</h3><p>2017/03/15 10:32:18</p>
+<p>function call的优先级最高。</p>
+<p>定义函数这样：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">doubleMe</span> x = x * <span class="number">2</span></div></pre></td></tr></table></figure>
+<p>和SML基本一样。</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">doubleUs</span> x y = doubleMe x + doubleMe y</div><div class="line"><span class="title">doubleUs1</span>(x, y) = doubleMe x + doubleMe y</div></pre></td></tr></table></figure>
+<p>这两个的区别？</p>
+<p>第一个是curried function，第二个函数接收一个参数，这个参数是一个含有两个元素的tuple，也叫做pair。</p>
+<p>函数调用格式：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">doubleUs</span> <span class="number">3</span> <span class="number">4</span></div><div class="line"><span class="title">doubleUs1</span>(<span class="number">3</span>, <span class="number">4</span>)</div></pre></td></tr></table></figure>
+<p><code>if else</code>格式：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">if</span> x &gt; <span class="number">50</span> <span class="keyword">then</span> x <span class="keyword">else</span> x * <span class="number">3</span></div></pre></td></tr></table></figure>
+<p>和SML基本一样。同样，else部分不能省略。因为这是一个「表达式」，表达式必须有一个值，所以，不管条件是否满足，一定要有一部分被求值，并且当作这个表达式的值。并且，这两部分的表达式的返回值的类型必须一样。</p>
+<p>不能在ghci里面像在文件里面那样定义函数。有几种解决方法：<a href="http://stackoverflow.com/questions/2846050/how-to-define-a-function-in-ghci-across-multiple-lines#19798581" target="_blank" rel="external">defun function in ghci</a></p>
+<p><code>&#39;</code>符号在函数和变量名字里面是合法的。比如<code>doubleMe&#39;</code>是一个合法的函数名字</p>
+<p>函数名字不能以大写字母开头。没有参数的函数名字其实就是一个「绑定」，不可修改，类似于常量吧？</p>
+<h3 id="An-intro-to-lists"><a href="#An-intro-to-lists" class="headerlink" title="An intro to lists"></a>An intro to lists</h3><p>string也是一种list</p>
+<p>一个单词：「homogenous」，同质的。list是一种「同质」的数据结构，也就是说，列表可以只含有很多个int，也可以只含有很多个string，但是不能同时含有int和string。这一点也和SML基本一样。</p>
+<p>在程序里面写<code>a = 1</code>和在ghci里面<code>let a = 1</code>等价。</p>
+<p>string其实一种语法糖：<code>&quot;he&quot;</code>等价于<code>[&#39;h&#39;, &#39;e&#39;]</code></p>
+<p>合并列表运算符：<code>++</code></p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="title">let</span> xs = [<span class="number">1</span>, <span class="number">2</span>]</div><div class="line"><span class="title">let</span> ys = [<span class="number">3</span>, <span class="number">4</span>]</div><div class="line"><span class="title">xs</span> ++ ys</div></pre></td></tr></table></figure>
+<p>结果是一个新建的列表，注意：内部实现会把左边的列表遍历一遍。所以：类似于这样的操作<code>[1, 2, 3] ++ [4]</code>的效率可能非常低。</p>
+<p><code>:</code>运算符类似于lisp中的<code>cons</code>，<code>3 : [1, 3]</code>类似于<code>(cons 3 &#39;(1 3))</code></p>
+<p>所以：[1, 2, 3]就等价于：<code>1 : 2 : 3 : []</code>，类似于：<code>(cons 1 (cons 2 (cons 3 null)))</code></p>
+<p>取得下标为１的元素：<code>[1, 2, 3] !! 1</code>，下标从０开始计数</p>
+<p>列表里面的子列表（和子列表的子列表等）所含元素必须一致。</p>
+<p>如果列表中的元素可以比较大小，那么列表也可以比较大小。按照字典序比较。（这里的字典序并不是我以前认为的字符串的字典序。。。比如：[10000] &gt; [99]是True）</p>
+<p>取得列表头元素：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">head</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div></pre></td></tr></table></figure>
+<p>类似于lisp中的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(car &apos;(1 2 3))</div></pre></td></tr></table></figure>
+<p>同样地，</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">tail</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] == [<span class="number">2</span>, <span class="number">3</span>]</div></pre></td></tr></table></figure>
+<p>类似于：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(cdr '(<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>))</div></pre></td></tr></table></figure>
+<p>取得最后一个元素：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">last</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] == <span class="number">3</span></div></pre></td></tr></table></figure>
+<p>取得除最后一个元素之外的元素：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">init</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] == [<span class="number">1</span>, <span class="number">2</span>]</div></pre></td></tr></table></figure>
+<p>从空列表中取头元素会抛异常：（lisp里面的car并不会）</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">head</span> []</div></pre></td></tr></table></figure>
+<p>取得列表长度：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">length</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div></pre></td></tr></table></figure>
+<p>类似于lisp中：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(length '(<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>))</div></pre></td></tr></table></figure>
+<p>检查一个列表是否为空：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">null</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line"><span class="title">null</span> []</div></pre></td></tr></table></figure>
+<p>类似于lisp中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(null &apos;(1 2 3))</div><div class="line">(null nil) (null &apos;())</div></pre></td></tr></table></figure>
+<p>把一个列表倒序：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">reverse</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div></pre></td></tr></table></figure>
+<p>从一个列表中取得开头的k个元素，返回取得的元素列表：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">take</span> k [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div></pre></td></tr></table></figure>
+<p>当<code>k == 0</code>时，返回<code>[]</code><br>当<code>k &gt; length xs</code>时，返回<code>xs</code></p>
+<p>去掉列表开头的k个元素，返回剩余元素的列表：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="title">drop</span> <span class="number">2</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>] == [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"><span class="title">drop</span> <span class="number">0</span> [<span class="number">1</span>, <span class="number">2</span>] == [<span class="number">1</span>, <span class="number">2</span>]</div><div class="line"><span class="title">drop</span> <span class="number">10000</span> [<span class="number">1</span>, <span class="number">2</span>] == []</div></pre></td></tr></table></figure>
+<p>取得最大、最小元素：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">maximum</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] == <span class="number">3</span></div><div class="line"><span class="title">minimum</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] == <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>求列表所有元素的和、积：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">sum</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] = <span class="number">6</span></div><div class="line"><span class="title">product</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>] = <span class="number">24</span></div></pre></td></tr></table></figure>
+<p>判断一个元素是否在列表里面：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">4</span> `elem` [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>] == <span class="type">True</span></div><div class="line"><span class="title">elem</span> <span class="number">4</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>] == <span class="type">True</span></div></pre></td></tr></table></figure>
+<h3 id="Texas-ranges"><a href="#Texas-ranges" class="headerlink" title="Texas ranges"></a>Texas ranges</h3><p><code>ranges:[1..20]</code>和<code>[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]</code>等价</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">['a'..'z'] == <span class="string">"abcdefghijklmnopqrstuvwxyz"</span></div><div class="line">[<span class="number">2</span>, <span class="number">4.</span><span class="number">.20</span>] == [<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>,<span class="number">12</span>,<span class="number">14</span>,<span class="number">16</span>,<span class="number">18</span>,<span class="number">20</span>]</div><div class="line">[<span class="number">3</span>, <span class="number">6.</span><span class="number">.20</span>] == [<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">12</span>,<span class="number">15</span>,<span class="number">18</span>]</div></pre></td></tr></table></figure>
+<p>注意：<code>[20..1]</code>并不合法，必须这样写：<code>[20, 19..1]</code></p>
+<p>当浮点数字出现的时候，<code>[0.3, 0.6..1]</code>得到：<code>[0.3,0.6,0.8999999999999999]</code>，因为浮点数不精确。</p>
+<p>如果去掉上限，会构造出一个无限列表：<code>[13, 26..]</code>，这里haskell会「懒惰求值」，仅仅当列表中的元素被用到的时候才会生成。可以这样用：<code>take 24 [13, 26..]</code>、<code>take 3 [10..]</code></p>
+<p>生成循环列表：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">cycle</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div></pre></td></tr></table></figure>
+<p>比如：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">take</span> <span class="number">10</span> (cycle [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]) == [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>]</div></pre></td></tr></table></figure>
+<p>生成某个元素的无限列表：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">repeat</span> <span class="number">5</span></div></pre></td></tr></table></figure>
+<p>比如：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">take</span> <span class="number">10</span> (repeat <span class="number">5</span>) == [<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>]</div></pre></td></tr></table></figure>
+<h3 id="I’m-a-list-comprehension"><a href="#I’m-a-list-comprehension" class="headerlink" title="I’m a list comprehension"></a>I’m a list comprehension</h3><p>列表解析：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[x * <span class="number">2</span> | x &lt;- [<span class="number">1.</span><span class="number">.5</span>]] == [<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>]</div><div class="line">[x * <span class="number">3</span> | x &lt;- [<span class="number">1.</span><span class="number">.5</span>], x * <span class="number">3</span> &gt; <span class="number">10</span>] == [<span class="number">12</span>, <span class="number">15</span>]</div></pre></td></tr></table></figure>
+<p>可以在binding后面追加几个predicate，用逗号分割。比如：一个函数，接受一个整数列表，把所有小于１０的奇数替换成”BOOM!”，所有大于等于１０的奇数替换成”BANG!”，所有的偶数舍弃：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">boomBangs</span> xs = [<span class="keyword">if</span> x &lt; <span class="number">10</span> <span class="keyword">then</span> <span class="string">"BOOM!"</span> <span class="keyword">else</span> <span class="string">"BANG!"</span> | x &lt;- xs, odd x]</div></pre></td></tr></table></figure>
+<p>当binding有多个的时候，效果相当于其它语言里面的嵌套的<br>for循环：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[x * y | x &lt;- [<span class="number">2</span>, <span class="number">5</span>, <span class="number">10</span>], y &lt;- [<span class="number">8</span>, <span class="number">10</span>, <span class="number">11</span>]] ==</div><div class="line">[<span class="number">16</span>,<span class="number">20</span>,<span class="number">22</span>,<span class="number">40</span>,<span class="number">50</span>,<span class="number">55</span>,<span class="number">80</span>,<span class="number">100</span>,<span class="number">110</span>]</div></pre></td></tr></table></figure>
+<p>利用列表解析重新定义length函数：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">length'</span> xs = sum [<span class="number">1</span> | _ &lt;- xs]</div></pre></td></tr></table></figure>
+<p>这里<code>_</code>起到一个占位符的作用。</p>
+<h3 id="Tuples"><a href="#Tuples" class="headerlink" title="Tuples"></a>Tuples</h3><p>果然有tuple这个类型。它和list的区别是：一个tuple的类型和它包含的元素的个数和元素类型都有关系，比如包含一个int元素的tuple和包含两个int元素的tuple类型不一样。</p>
+<p>一个list的类型仅仅和它包含的元素有关系，一个int list可以包含任意多个元素，它们的类型都属于int list。</p>
+<p>另外，tuple不是homogenous的，也就是，一个tuple里面可以包含int，同时也可以包含string等等。</p>
+<p>比如[(1, 2), (3, 4), (5, 6)]是合法的，然而[(1, 2), (3, 4, 5), (5, 6)]是非法的，因为包含三个元素的tuple和包含两个元素的tuple类型不一样，同时list是homogenous的。</p>
+<p>所以，不存在这样一个函数：它接受一个任意的tuple，然后追加一个元素到tuple里。必须这样：针对不同长度的tuple添加不同的函数。</p>
+<p>长度为２的tuple也叫做pair，tuple的长度不能小于２。相同类型（长度相同，元素类型相同）的tuple可以相互比较。不同长度的list可以相互比较。</p>
+<p>取得一个pair的第一、二个元素：（注意是pair，并不是tuple）</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">fst</span> (<span class="number">8</span>, <span class="number">11</span>) == <span class="number">8</span></div><div class="line"><span class="title">snd</span> (<span class="number">1</span>, <span class="number">2</span>) == <span class="number">2</span></div></pre></td></tr></table></figure>
+<p>zip函数，接受两个列表作为参数，把对应位置的两个元素组成一个pair，返回一个pair list</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">zip</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>] == [(<span class="number">1</span>,<span class="number">4</span>),(<span class="number">2</span>,<span class="number">5</span>),(<span class="number">3</span>,<span class="number">6</span>)]</div></pre></td></tr></table></figure>
+<p>如果这两个列表长度不同，那么最后的结果列表和较短的列表长度一致。因为懒惰求值，zip的一个参数可以是无限列表。</p>
+<p>例子：求三边长小于10并且周长为24的所有的三角形。</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">triangles</span> = [(a, b, c) | c &lt;- [<span class="number">1.</span><span class="number">.10</span>], b &lt;- [<span class="number">1.</span>.c], a &lt;- [<span class="number">1.</span>.b],</div><div class="line">             a + b + c == <span class="number">24</span>, a ^ <span class="number">2</span> + b ^ <span class="number">2</span> == c ^ <span class="number">2</span>]</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2017/04/10/重新整理博客/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1268,270 +1801,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2017/02/14/对折腾编辑器配置的想法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/14/对折腾编辑器配置的想法/" itemprop="url">
-                  对折腾编辑器配置的想法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-14T17:42:28+08:00">
-                2017-02-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>我是先接触的Vim，用了很长一段时间，去年才开始使用Emacs。两种编辑器我觉得都挺不错，有的时候使用Emacs，有的时候使用Vim。当然，我也喜欢使用各种IDE。对于我来说，使用Vim和Emacs最大的乐趣就是可以定制各种各样奇怪的东西，虽然只是找别人开发分享的插件，但还是充满了乐趣。有的时候发现了某个非常厉害的插件会特别特别兴奋，这种情况遇到过两次：一次是<a href="https://github.com/abo-abo" target="_blank" rel="external">abo-abo</a>这个俄罗斯人开发的Emacs插件，一次是<a href="https://github.com/junegunn/vim-plug" target="_blank" rel="external">junegunn</a>这个韩国人开发的Vim插件。</p>
-<p>有机会也学着写写怎么写插件吧。配置编辑器其实挺花时间并且会上瘾，看来也没有什么意义，因为使用再好的编辑器，也没法阻止你写出丑陋的程序，也没法提高工作和学习效率。所以听过一句话，大意大概是这样：如果世界上的程序员能够把折腾编辑器的一般精力花在「更有价值」的事情上面的话，工作效率也许会提升不止一倍。</p>
-<p>我配置过很多次Vim和Emacs，也因为这样或者那样的原因推翻过很多次。也使用过一些类似于Spacemacs的这种称为「世界级配置」的Emacs。然而我还是喜欢自己从头开始配置，因为别人的需求和我个人的需求不可能完全一致，使用别人的非常全面的配置反而会给我引来更多没法预料的问题，太臃肿的配置也让可移植性变差，比如版本问题，比如想要引入一个插件的时候，和原来的配置的冲突问题等等。</p>
-<p>慢慢的我还是比较喜欢非常轻量级的、能够恰好满足我的个人需求的配置。我可以根据需要来手动加载当前需要的配置和插件，而不是当启动的时候一次性一次性全部加载进来。还有，如果不是特别需要，就不要加入新的插件，尽量保持配置文件的清晰和简洁，能够轻易移植。所以我打算慢慢地开始重新配置我的编辑器，要遵守的原则是：尽量保持简洁、轻量。不要强行解决「次要」问题，不适合使用编辑器做的事情就不要强行来实现。</p>
-<p>其实，Emacs本身的初始配置对于一些场景来说，就已经够用了。</p>
-<p>另外，这两种编辑器，如果非要做一个比较的话，我更喜欢Emacs，但是类似于临时修改个系统配置文件之类的事情，使用Vim快速解决。对于日常工作：写程序、记笔记等，我全部在Emacs里面做。</p>
-<blockquote>
-<p>唉……如果老是依赖某种东西的话，毕竟不算是真正的勇气。——风间彻</p>
-</blockquote>
-<hr>
-<h3 id="2016-02-17-01-16-57AM-更新"><a href="#2016-02-17-01-16-57AM-更新" class="headerlink" title="2016/02/17 01:16:57AM 更新"></a>2016/02/17 01:16:57AM 更新</h3><p>昨晚又折腾了很久的Emacs，该完成的任务又没有完成。其实仔细想想，折腾编辑器确实耽误了我非常非常多的时间，带来的回报却很少。所以决定不再自己折腾和配置编辑器了。刚才又适用了一下 Spacemacs，其实感觉还不错。至于到底是不是完全适合自己，倒不是最重要的，重要的是能用，能够比较方便地实现日常的编辑工作，如果有些小的瑕疵或者违反我个人的习惯的话，那就慢慢适应吧。我不得不承认，我自己再怎么配置也不可能有 Spacemacs 的配置全面可靠。所以我决定以后就用 Spacemacs 了。花很多时间折腾编辑器甚至舍本逐末对目前的我来说是一件非常不明智的事情。</p>
-<p>如果要使用 Spacemacs 的话唯一需要做的事情就是，找时间认真看一下它的文档：<a href="spacemacs">http://spacemacs.org/doc/DOCUMENTATION.html</a>。遇到问题最先应该找的就是官方文档，可能你遇到的问题官方文档里面没有特别拿一节或者一章来说明，但是很可能在其它某个小结里面做了说明，这个时候就体现出浏览一遍文档的重要性了。</p>
-<p>目前，我在 Spacemacs 里面只做了很少的配置：</p>
-<ol>
-<li>加了<code>lispy</code>插件</li>
-<li>更换了插件源</li>
-<li>如果状态栏里面的Unicode符号显示乱码的话，把<code>dotspacemacs-mode-line-unicode-symbols</code>这个变量设置成<code>nil</code></li>
-</ol>
-<p>另外特别需要注意的是：<strong>不要强行解决不重要的问题。</strong>有些问题其实并没有那么重要，花很多时间去解决无关紧要的问题就是浪费时间。要做到这一点还是需要有自制力，克服所谓的「洁癖」或者「强迫症」。</p>
-<h3 id="2017-02-17-Fri-09-59-更新"><a href="#2017-02-17-Fri-09-59-更新" class="headerlink" title="[2017-02-17 Fri 09:59] 更新"></a>[2017-02-17 Fri 09:59] 更新</h3><p>在使用 Spacemacs 的过程中，还是应该保持一个<code>.org</code>文件，来专门记录遇到的快捷键，以便以后需要的时候能够方便查阅。这么多快捷键肯定是一下记不住的。今天一整天都在使用 Spacemacs，说实话，体验非常好。对我来说简直完美：有一些美化，能够实现我需要的功能。虽然可能有些解决方案不如<code>abo-abo</code>的插件体验那么好，或者好像也没有加入 multicursors 的功能，但还是让我满意的。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2017/02/14/开始使用Raspbian/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/14/开始使用Raspbian/" itemprop="url">
-                  开始使用Raspbian
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-14T15:30:46+08:00">
-                2017-02-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这两天折腾了一下树莓派，因为我的树莓派里面的Arch Linux不能启动了。开机的时候，ACT LED并没有闪烁，查了一下wiki才知道这表示pi没有读取SD卡。试了很多次，开始以为接触问题，擦了擦卡然后开机的时候用力按着，还是不行。在IRC里问了一下，后来猜测可能是/boot分区出问题了，或者firmware在系统更新的时候出问题了，或者是pi的硬件的问题，或者是SD卡的问题。</p>
-<p>之前的手机里还有一个SD卡，只有2GB。然后备份数据之后，刷了Raspbian Lite，插入树莓派顺利进入系统了。能正常用。所以只能是SD卡里的系统问题了。</p>
-<p>花了点时间把树莓派里面的数据备份了一下，然后刷了Raspbian jessie，稍微配置了一下。意外地好用。我还是挺满意这个系统的。如果只是在树莓派里写写程序的话，用起来还是挺舒服的。本机用VNC连接到树莓派的桌面，然后就可以像另外一台配置比较低的电脑一样使用了。以前我以为VNC什么的速度可能很慢，画面也不清晰，这两天一直在用，发现其实体验非常好。可以根据主机屏幕的大小来设置树莓派的分辨率，我记得好像是设置一下<code>/boot/config.txt</code>文件里面的<code>framebuffer_width</code>和<code>framebuffer_height</code>这两个变量就好了。然后在VNC的设置里面再设置成同样的分辨率。完美。</p>
-<p>在树莓派里写程序的时候，好像除了一些非常轻量级的IDE能用之外，别的只能用Emacs或者Vim了。JetBrains家的IDE估计是没法用。:P</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1581,7 +1850,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">455</span>
+                <span class="site-state-item-count">457</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1594,7 +1863,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

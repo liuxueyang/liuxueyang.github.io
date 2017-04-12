@@ -247,6 +247,263 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2012/11/06/uva-573-The-Snail/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2012/11/06/uva-573-The-Snail/" itemprop="url">
+                  uva 573 The Snail
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-11-06T23:54:00+08:00">
+                2012-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p> The Snail </p>
+<p>A snail is at the bottom of a 6-foot well and wants to climb to the top. The snail can climb 3 feet while the sun is up, but slides down 1 foot at night while sleeping. The snail has a fatigue factor of 10%, which means that on each successive day the snail climbs 10%  3 = 0.3 feet less than it did the previous day. (The distance lost to fatigue is always 10% of the first day’s climbing distance.) On what day does the snail leave the well, i.e., what is the first day during which the snail’s height exceeds 6 feet? (A day consists of a period of sunlight followed by a period of darkness.) As you can see from the following table, the snail leaves the well during the third day.</p>
+<p>Day     Initial Height     Distance Climbed     Height After Climbing     Height After Sliding<br>1     0’     3’     3’     2’<br>2     2’     2.7’     4.7’     3.7’<br>3     3.7’     2.4’     6.1’     -</p>
+<p>Your job is to solve this problem in general. Depending on the parameters of the problem, the snail will eventually either leave the well or slide back to the bottom of the well. (In other words, the snail’s height will exceed the height of the well or become negative.) You must find out which happens first and on what day.</p>
+<p>Input </p>
+<p>The input file contains one or more test cases, each on a line by itself. Each line contains four integers H, U, D, and F, separated by a single space. If H = 0 it signals the end of the input; otherwise, all four numbers will be between 1 and 100, inclusive. H is the height of the well in feet,U is the distance in feet that the snail can climb during the day, D is the distance in feet that the snail slides down during the night, and F is the fatigue factor expressed as a percentage. The snail never climbs a negative distance. If the fatigue factor drops the snail’s climbing distance below zero, the snail does not climb at all that day. Regardless of how far the snail climbed, it always slides D feet at night.</p>
+<p>Output </p>
+<p>For each test case, output a line indicating whether the snail succeeded (left the well) or failed (slid back to the bottom) and on what day. Format the output exactly as shown in the example.</p>
+<p>Sample Input </p>
+<p>6 3 1 10 10 2 1 50 50 5 3 14 50 6 4 1 50 6 3 1 1 1 1 1 0 0 0 0</p>
+<p>Sample Output </p>
+<p>success on day 3 failure on day 4 failure on day 7 failure on day 68 success on day 20 failure on day 2</p>
+<p>Miguel A. Revilla<br>1998-03-10</p>
+<p>这道题目，有一点，要注意边界，不等号取到等号还是取不到等号。</p>
+<p>另外，犯了一个很低级的错误，把变量的类型用错了，有小数的时候要用double型，我开始想都没想就用了int，结果怎么也不对，这种错误也会有。。。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">double</span> h, u, d, f; <span class="keyword">int</span> i;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">    freopen(<span class="string">"at"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; h &gt;&gt; u &gt;&gt; d &gt;&gt; f)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (!h)    <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">double</span> sum = <span class="number">0</span>;<span class="keyword">int</span> flag = <span class="number">0</span>;</div><div class="line">        i = <span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span> (<span class="number">1</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">double</span> clim = u - (i - <span class="number">1</span>) * f / <span class="number">100</span> * u;</div><div class="line">            <span class="keyword">if</span> (clim &lt;= <span class="number">0</span>)    clim = <span class="number">0</span>;</div><div class="line">            sum = sum + clim;    </div><div class="line">            <span class="keyword">if</span> (sum &gt; h)    &#123;flag = <span class="number">1</span>; <span class="keyword">break</span>;&#125;</div><div class="line">            sum -= d;     </div><div class="line">            <span class="keyword">if</span> (sum &lt; <span class="number">0</span>)     &#123;flag = <span class="number">0</span>; <span class="keyword">break</span>;&#125;</div><div class="line">            i++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (flag)    <span class="built_in">cout</span> &lt;&lt; <span class="string">"success on day "</span> &lt;&lt; i &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">if</span> (!flag)    <span class="built_in">cout</span> &lt;&lt; <span class="string">"failure on day "</span> &lt;&lt; i &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2012/11/06/lost/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2012/11/06/lost/" itemprop="url">
+                  lost
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-11-06T14:27:00+08:00">
+                2012-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>从今年暑假7月15日开始学ACM到现在已经快4个月了，水平还是那么的水。。。照这样下去，明年的这个时候该是什么样子，，唉。。<br>从开始到现在走了不少弯路，明显把太多时间花在了做水题上，也没有做多少总结，根本没有去认真学一下正经的算法，其实算法才是最重要的，把算法学好需要很长的时间积累，不是短期内就可以搞定的。以后少做水题，多学算法，针对学习的算法多练习，平均每天做3题比较合适，还有，多总结，经常用的算法多写几遍，熟练，代码要精简。<br>好好加油吧，再坚持一阵子，虽然不知道以后会变成怎样。<br>看书要有针对性地看。做ACM，关键是态度，人家做IOI的，不也是高中生吗，人家照样比大学生强。至于队友，LLH明年大四肯定就不做了，这让我颇有压力，希望在大二这一年剩下的时间里面好好做，争取能取得一点成绩，这样也算少留下一点遗憾吧。明年我还要不要继续做下去，再说。也许会，也许不会。<br>让时间决定。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2012/11/06/转载--ACM训练计划/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -917,7 +1174,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">455</span>
+                <span class="site-state-item-count">457</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -930,7 +1187,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

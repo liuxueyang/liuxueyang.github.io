@@ -247,6 +247,263 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2012/11/29/zoj-2110-Tempter-of-the-Bone/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2012/11/29/zoj-2110-Tempter-of-the-Bone/" itemprop="url">
+                  zoj 2110 Tempter of the Bone
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-11-29T14:10:00+08:00">
+                2012-11-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>The doggie found a bone in an ancient maze, which fascinated him a lot. However, when he picked it up, the maze began to shake, and the doggie could feel the ground sinking. He realized that the bone was a trap, and he tried desperately to get out of this maze.</p>
+<p>  The maze was a rectangle with sizes N by M. There was a door in the maze. At<br>  the beginning, the door was closed and it would open at the T-th second for<br>  a short period of time (less than 1 second). Therefore the doggie had to arrive<br>  at the door on exactly the T-th second. In every second, he could move one block<br>  to one of the upper, lower, left and right neighboring blocks. Once he entered<br>  a block, the ground of this block would start to sink and disappear in the next<br>  second. He could not stay at one block for more than one second, nor could he<br>  move into a visited block. Can the poor doggie survive? Please help him.</p>
+<p>  Input</p>
+<p>  The input consists of multiple test cases. The first line of each test case<br>  contains three integers N, M, and T (1 &lt; N, M &lt; 7; 0 &lt; T &lt; 50),<br>  which denote the sizes of the maze and the time at which the door will open,<br>  respectively. The next N lines give the maze layout, with each line containing<br>  M characters. A character is one of the following:</p>
+<p>  ‘X’: a block of wall, which the doggie cannot enter;<br>  ‘S’: the start point of the doggie;<br>  ‘D’: the Door; or<br>  ‘.’: an empty block.</p>
+<p>  The input is terminated with three 0’s. This test case is not to be processed.</p>
+<p>  Output</p>
+<p>  For each test case, print in one line “YES” if the doggie can survive,<br>  or “NO” otherwise.</p>
+<p>  Sample Input</p>
+<p>  4 4 5<br>  S.X.<br>  ..X.<br>  ..XD<br>  ….<br>  3 4 5<br>  S.X.<br>  ..X.<br>  …D<br>  0 0 0</p>
+<p>  Sample Output</p>
+<p>  NO<br>  YES</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">char</span> <span class="built_in">map</span>[<span class="number">8</span>][<span class="number">8</span>];</div><div class="line"><span class="keyword">bool</span> escape;</div><div class="line"><span class="keyword">int</span> di, dj, m, n, t;</div><div class="line"><span class="keyword">int</span> dir[<span class="number">4</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span>, <span class="number">-1</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">0</span>&#125;&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> si, <span class="keyword">int</span> sj, <span class="keyword">int</span> cnt)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i, temp;</div><div class="line">    <span class="keyword">if</span> (si &gt; n || sj &gt; m || si &lt;= <span class="number">0</span> || sj &lt;= <span class="number">0</span>) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">if</span> (si == di &amp;&amp; sj == dj &amp;&amp; cnt == t)&#123;escape = <span class="number">1</span>; <span class="keyword">return</span>;&#125;</div><div class="line">    temp = (t-cnt) - (<span class="built_in">fabs</span>(si-di) + <span class="built_in">fabs</span>(sj-dj));</div><div class="line">    <span class="keyword">if</span> (temp&lt;<span class="number">0</span> || temp%<span class="number">2</span>) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">4</span>; ++i)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="built_in">map</span>[si+dir[i][<span class="number">0</span>]][sj+dir[i][<span class="number">1</span>]] != <span class="string">'X'</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">map</span>[si+dir[i][<span class="number">0</span>]][sj+dir[i][<span class="number">1</span>]] = <span class="string">'X'</span>;</div><div class="line">            dfs(si+dir[i][<span class="number">0</span>], sj+dir[i][<span class="number">1</span>], cnt+<span class="number">1</span>);</div><div class="line">            <span class="keyword">if</span> (escape) <span class="keyword">return</span>;</div><div class="line">            <span class="built_in">map</span>[si+dir[i][<span class="number">0</span>]][sj+dir[i][<span class="number">1</span>]] = <span class="string">'.'</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i, j, si, sj;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">    freopen(<span class="string">"in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">    <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;n, &amp;m, &amp;t))</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (!n &amp;&amp; !m &amp;&amp; !t) <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">int</span> wall = <span class="number">0</span>;</div><div class="line">        getchar();</div><div class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; n + <span class="number">1</span>; ++i)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt; m + <span class="number">1</span>; ++j)</div><div class="line">            &#123;</div><div class="line">                <span class="built_in">scanf</span>(<span class="string">"%c"</span>, &amp;<span class="built_in">map</span>[i][j]);</div><div class="line">                <span class="keyword">if</span> (<span class="built_in">map</span>[i][j] == <span class="string">'S'</span>) si=i,sj=j;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">map</span>[i][j] == <span class="string">'D'</span>) di=i,dj=j;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">map</span>[i][j]==<span class="string">'X'</span>) wall++;</div><div class="line">            &#125;</div><div class="line">            getchar();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (n*m - wall &lt;= t)&#123;<span class="built_in">printf</span>(<span class="string">"NO\n"</span>); <span class="keyword">continue</span>;&#125;</div><div class="line">        escape = <span class="number">0</span>;</div><div class="line">        <span class="built_in">map</span>[si][sj] = <span class="string">'X'</span>;</div><div class="line">        dfs(si, sj, <span class="number">0</span>);</div><div class="line">        <span class="keyword">if</span> (escape) <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</div><div class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>入门做的第一道搜索题，注意两个地方的剪枝。其实上面的代码是抄的书上的，还好，看懂了，以后自己写。<br>还得谢谢xrl，dfs,bfs刚开始看各种不懂，，后来xrl跟我说了这本书，又给我讲了一下，我才知道代码怎么写。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2012/11/27/Erlang_3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2012/11/27/Erlang_3/" itemprop="url">
+                  Erlang_3
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-11-27T15:45:00+08:00">
+                2012-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>计算阶乘两种写法：</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">-module</span><span class="params">(continue)</span>.</div><div class="line"><span class="keyword">-export</span><span class="params">([factor/<span class="number">1</span>])</span>.</div><div class="line"><span class="function"><span class="title">factor</span><span class="params">(<span class="number">0</span>)</span> -&gt;</span> <span class="number">1</span>;</div><div class="line"><span class="function"><span class="title">factor</span><span class="params">(N)</span> -&gt;</span></div><div class="line">    N * factor(N - <span class="number">1</span>).</div><div class="line"><span class="comment">%factor(N) when N &gt; 0 -&gt;</span></div><div class="line"><span class="comment">%    N * factor(N - 1);</span></div><div class="line"><span class="comment">%factor(0) -&gt; 1.</span></div></pre></td></tr></table></figure>
+<p>这里注意，第一种写法，如果输入的值是负数，那么函数进入死循环，内存溢出，第二种写法输入负数，函数会不执行。<br>内置函数：<br>hd/1 返回列表第一个元素<br>tl/1 返回删除第一个元素后的其余部分<br>length/1 返回列表的长度<br>tuple_size/1 返回元组的数目<br>element/2 返回元组的第n个元素 setlement(2, Tuple).<br>setelement/3 替换元组的第一个元素，并返回新的元组 setelement(3, Tuple, Three).<br>erlang:appedn_element/2 向元组添加一个元素作为最后的元素 erlang:append_element(Tuple, 6).</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2012/11/27/Erlang_2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1260,257 +1517,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2012/11/09/uva-537---Artificial-Intelligence?/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2012/11/09/uva-537---Artificial-Intelligence?/" itemprop="url">
-                  uva 537 - Artificial Intelligence?
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-11-09T23:42:00+08:00">
-                2012-11-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Physics teachers in high school often think that problems given as text are more demanding than pure computations. After all, the pupils have to read and understand the problem first!<br>So they don’t state a problem like <code>U=10V, I=5A, P=?&quot; but rather like</code>You have an electrical circuit that contains a battery with a voltage of U=10V and a light-bulb. There’s an electrical current of I=5A through the bulb. Which power is generated in the bulb?”.<br>However, half of the pupils just don’t pay attention to the text anyway. They just extract from the text what is given: U=10V, I=5A. Then they think: ``Which formulae do I know? Ah yes, P=U<em>I. Therefore P=10V</em>5A=500W. Finished.”<br>OK, this doesn’t always work, so these pupils are usually not the top scorers in physics tests. But at least this simple algorithm is usually good enough to pass the class. (Sad but true.)<br>Today we will check if a computer can pass a high school physics test. We will concentrate on the P-U-I type problems first. That means, problems in which two of power, voltage and current are given and the third is wanted.</p>
-<p>Your job is to write a program that reads such a text problem and solves it according to the simple algorithm given above.</p>
-<p>The first line of the input file will contain the number of test cases.<br>Each test case will consist of one line containing exactly two data fields and some additional arbitrary words. A data field will be of the formI=xA, U=xV or P=xW, where x is a real number.<br>Directly before the unit (A, V or W) one of the prefixes m (milli), k (kilo) and M (Mega) may also occur. To summarize it: Data fields adhere to the following grammar:</p>
-<p>Additional assertions:</p>
-<p>For each test case, print three lines:</p>
-<p>其实你看到下面的代码后不要害怕，有30多行是重复的……<br>想法是 先找到等号，判断一下等号前面的字符，接着输入等号后面的浮点数，在得到数字后面的单位的前缀，就是 m k M 。<br>然后再找下一个等号，进行上述操作，对于后面的字符，用 gets() 放进一个大的数组里面就可以了，没什么作用。<br>WA了一次，原因是在最后一个case后面没有输出空行，题目要求是在每一个case后面输出空行，并不是在case之间输出空行，哎，又是错在了这里，以后要注意。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">char</span> s[<span class="number">1000</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> t, i;</div><div class="line">    <span class="keyword">double</span> I, U, P;</div><div class="line"></div><div class="line">    <span class="built_in">cin</span> &gt;&gt; t;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; t + <span class="number">1</span>; i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">char</span> c, ch, cc;</div><div class="line">        I = U = P = <span class="number">0</span>;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"Problem #"</span>&lt;&lt;i&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        getchar();</div><div class="line">        <span class="keyword">while</span> ((c = getchar()))</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> (c == <span class="string">'='</span>)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span> (ch==<span class="string">'I'</span>)</div><div class="line">                &#123;</div><div class="line">                    <span class="built_in">cin</span> &gt;&gt; I;</div><div class="line">                    cc = getchar();</div><div class="line">                    <span class="keyword">if</span> (cc==<span class="string">'m'</span>) I*=<span class="number">0.001</span>;</div><div class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (cc==<span class="string">'k'</span>) I*=<span class="number">1000</span>;</div><div class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (cc==<span class="string">'M'</span>) I*=<span class="number">1000000</span>;</div><div class="line">                    <span class="keyword">else</span> ;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (ch==<span class="string">'U'</span>)</div><div class="line">                &#123;</div><div class="line">                    <span class="built_in">cin</span> &gt;&gt; U;</div><div class="line">                    cc = getchar();</div><div class="line">                    <span class="keyword">if</span> (cc==<span class="string">'m'</span>) U*=<span class="number">0.001</span>;</div><div class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (cc==<span class="string">'k'</span>) U*=<span class="number">1000</span>;</div><div class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (cc==<span class="string">'M'</span>) U*=<span class="number">1000000</span>;</div><div class="line">                    <span class="keyword">else</span> ;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (ch==<span class="string">'P'</span>)</div><div class="line">                &#123;</div><div class="line">                    <span class="built_in">cin</span> &gt;&gt; P;</div><div class="line">                    cc = getchar();</div><div class="line">                    <span class="keyword">if</span> (cc==<span class="string">'m'</span>) P*=<span class="number">0.001</span>;</div><div class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (cc==<span class="string">'k'</span>) P*=<span class="number">1000</span>;</div><div class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (cc==<span class="string">'M'</span>) P*=<span class="number">1000000</span>;</div><div class="line">                    <span class="keyword">else</span> ;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            ch = c;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">while</span> ((c = getchar()))</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> (c == <span class="string">'='</span>)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span> (ch==<span class="string">'I'</span>)</div><div class="line">                &#123;</div><div class="line">                    <span class="built_in">cin</span> &gt;&gt; I;</div><div class="line">                    cc = getchar();</div><div class="line">                    <span class="keyword">if</span> (cc==<span class="string">'m'</span>) I*=<span class="number">0.001</span>;</div><div class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (cc==<span class="string">'k'</span>) I*=<span class="number">1000</span>;</div><div class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (cc==<span class="string">'M'</span>) I*=<span class="number">1000000</span>;</div><div class="line">                    <span class="keyword">else</span> ;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (ch==<span class="string">'U'</span>)</div><div class="line">                &#123;</div><div class="line">                    <span class="built_in">cin</span> &gt;&gt; U;</div><div class="line">                    cc = getchar();</div><div class="line">                    <span class="keyword">if</span> (cc==<span class="string">'m'</span>) U*=<span class="number">0.001</span>;</div><div class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (cc==<span class="string">'k'</span>) U*=<span class="number">1000</span>;</div><div class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (cc==<span class="string">'M'</span>) U*=<span class="number">1000000</span>;</div><div class="line">                    <span class="keyword">else</span> ;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (ch==<span class="string">'P'</span>)</div><div class="line">                &#123;</div><div class="line">                    <span class="built_in">cin</span> &gt;&gt; P;</div><div class="line">                    cc = getchar();</div><div class="line">                    <span class="keyword">if</span> (cc==<span class="string">'m'</span>) P*=<span class="number">0.001</span>;</div><div class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (cc==<span class="string">'k'</span>) P*=<span class="number">1000</span>;</div><div class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (cc==<span class="string">'M'</span>) P*=<span class="number">1000000</span>;</div><div class="line">                    <span class="keyword">else</span> ;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">            ch = c;</div><div class="line">        &#125;</div><div class="line">        gets(s);</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; setprecision(<span class="number">2</span>)&lt;&lt; fixed;</div><div class="line">        <span class="keyword">if</span> (P!=<span class="number">0</span>&amp;&amp;U!=<span class="number">0</span>)    <span class="built_in">cout</span>&lt;&lt;<span class="string">"I="</span>&lt;&lt;P/U&lt;&lt;<span class="string">'A'</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (P!=<span class="number">0</span>&amp;&amp;I!=<span class="number">0</span>)    <span class="built_in">cout</span>&lt;&lt;<span class="string">"U="</span>&lt;&lt;P/I&lt;&lt;<span class="string">'V'</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (I!=<span class="number">0</span>&amp;&amp;U!=<span class="number">0</span>)    <span class="built_in">cout</span>&lt;&lt;<span class="string">"P="</span>&lt;&lt;I*U&lt;&lt;<span class="string">'W'</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2012/11/09/vim-配置-转载/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2012/11/09/vim-配置-转载/" itemprop="url">
-                  vim 配置 转载
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-11-09T08:23:00+08:00">
-                2012-11-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一个比较偷懒的方法是执行一下命令：<br>cd /etc/vim<br>sudo vi vimrc<br>然后把里面的注释去掉就可以了,但是里面的配置不太全。<br>原文链接  <a href="http://www.oschina.net/code/snippet_103341_9644" target="_blank" rel="external">http://www.oschina.net/code/snippet_103341_9644</a><br>linux 平台：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">" -----------------   Author: Ruchee</div><div class="line">" -----------------    Email: my@ruchee.com</div><div class="line">" -----------------  WebSite: http://www.ruchee.com</div><div class="line">" -----------------     Date: 2012-05-01</div><div class="line"></div><div class="line"></div><div class="line">" Ctrl + H                   --光标移当前行行首</div><div class="line">" Ctrl + J                   --光标移下一行行首</div><div class="line">" Ctrl + K                   --光标移上一行行尾</div><div class="line">" Ctrl + L                   --光标移当前行行尾</div><div class="line">" Ctrl + C                   --编译 [支持C/C++、Java、Haskell]</div><div class="line">" Ctrl + R                   --运行 [支持C/C++、Java、Haskell、Lua、Perl、Python、Ruby]</div><div class="line">" Ctrl + ]                   --转到函数定义</div><div class="line">" Ctrl + T                   --返回调用函数</div><div class="line">" Ctrl + E                   --一步加载语法模板和作者、时间信息</div><div class="line"></div><div class="line">" &lt;C-P&gt;                      --单词补全</div><div class="line">" &lt;C-X&gt;&lt;C-L&gt;                 --整行补全</div><div class="line">" Tab键                      --插入模式下的全功能语法结构补全 [snipMate插件]</div><div class="line">" Shift + Insert             --向Vim中粘贴从别处复制的内容</div><div class="line"></div><div class="line">" u [小写]                   --单步复原 [非插入模式]</div><div class="line">" U [大写]                   --整行复原 [非插入模式]</div><div class="line"></div><div class="line">" jj                         --保存文件并留在插入模式 [插入模式]</div><div class="line">" kk                         --返回Normal模式 [插入模式]</div><div class="line">" nt                         --打开NERDTree [非插入模式]</div><div class="line">" tl                         --打开TagList [非插入模式]</div><div class="line"></div><div class="line">" za                         --打开或关闭当前折叠</div><div class="line">" zM                         --关闭所有折叠</div><div class="line">" zR                         --打开所有折叠</div><div class="line"></div><div class="line">" :set syntax=cpp            --手动选择语法高亮 [或 :set filetype=cpp]</div><div class="line"></div><div class="line">" :%!xxd                     --转储二进制文件，以十六进制形式显示</div><div class="line">" :%!xxd -r                  --还原二进制文件</div><div class="line"></div><div class="line"></div><div class="line">" ---------- 主要插件详细用法说明 ---------------------</div><div class="line"></div><div class="line">" :Tlist                     --呼出变量和函数列表 [TagList插件]</div><div class="line">" :LoadTemplate              --呼出语法模板 [Load_Template插件]</div><div class="line">" :AuthorInfoDetect          --添加作者、时间等信息 [NERD_commenter &amp;&amp; authorinfo插件]</div><div class="line"></div><div class="line">" ---------- a.vim [自动切换C/C++同名头文件] ----------</div><div class="line">"</div><div class="line">" :A                         --切换同名头文件并独占整个屏幕</div><div class="line">" :AS                        --切换同名头文件并垂直分屏，头文件在上</div><div class="line">" :AV                        --切换同名头文件并水平分割，头文件在左</div><div class="line"></div><div class="line">" ---------- NERDTree [智能文件浏览器] ----------------</div><div class="line">"</div><div class="line">" :NERDTree                  --启动NERDTree插件</div><div class="line">" o [小写]                   --切换当前文件或目录的打开、关闭状态</div><div class="line">" u                          --打开上层目录</div><div class="line">" p [小写]                   --返回上层目录</div><div class="line">" P [大写]                   --返回根目录</div><div class="line">" K                          --转到当前目录第一个节点</div><div class="line">" J                          --转到当前目录最后的节点</div><div class="line">" m                          --显示文件系统菜单 [增、删、移]</div><div class="line">" ?                          --弹出帮助菜单</div><div class="line">" q                          --退出该插件</div><div class="line"></div><div class="line"></div><div class="line">" 将所有以.html结尾的文档以Django Template语法进行渲染</div><div class="line">" 本配置语句必须放在所有配置的最前面</div><div class="line">au BufNewFile,BufRead *.html setf htmldjango</div><div class="line"></div><div class="line">colorscheme elflord          " 着色模式</div><div class="line">set guifont=Monaco:h10       " 字体 &amp;&amp; 字号</div><div class="line">set tabstop=4                " 设置tab键的宽度</div><div class="line">set shiftwidth=4             " 换行时行间交错使用4个空格</div><div class="line">set autoindent               " 自动对齐</div><div class="line">set backspace=2              " 设置退格键可用</div><div class="line">set cindent shiftwidth=4     " 自动缩进4空格</div><div class="line">set smartindent              " 智能自动缩进</div><div class="line">set ai!                      " 设置自动缩进</div><div class="line">set nu!                      " 显示行号</div><div class="line">"set showmatch               " 显示括号配对情况</div><div class="line">set mouse=a                  " 启用鼠标</div><div class="line">set ruler                    " 右下角显示光标位置的状态行</div><div class="line">set incsearch                " 开启实时搜索功能</div><div class="line">set hlsearch                 " 开启高亮显示结果</div><div class="line">set nowrapscan               " 搜索到文件两端时不重新搜索</div><div class="line">set nocompatible             " 关闭兼容模式</div><div class="line">set vb t_vb=                 " 关闭提示音</div><div class="line">"set cursorline              " 突出显示当前行</div><div class="line">set hidden                   " 允许在有未保存的修改时切换缓冲区</div><div class="line">set list                     " 显示Tab符，使用一高亮竖线代替</div><div class="line">set listchars=tab:\|\ ,</div><div class="line"></div><div class="line">syntax enable                " 打开语法高亮</div><div class="line">syntax on                    " 开启文件类型侦测</div><div class="line">filetype indent on           " 针对不同的文件类型采用不同的缩进格式</div><div class="line">filetype plugin on           " 针对不同的文件类型加载对应的插件</div><div class="line">filetype plugin indent on    " 启用自动补全</div><div class="line"></div><div class="line">set writebackup              " 设置无备份文件</div><div class="line">set nobackup</div><div class="line">set autochdir                " 设定文件浏览器目录为当前目录</div><div class="line">"set nowrap                  " 设置不自动换行</div><div class="line">set foldmethod=syntax        " 选择代码折叠类型</div><div class="line">set foldlevel=100            " 禁止自动折叠</div><div class="line"></div><div class="line">set laststatus=2             " 开启状态栏信息</div><div class="line">set cmdheight=2              " 命令行的高度，默认为1，这里设为2</div><div class="line"></div><div class="line">" 每行超过80个的字符用下划线标示</div><div class="line">au BufRead,BufNewFile *.s,*.asm,*.h,*.c,*.cpp,*.cc,*.java,*.cs,*.erl,*.hs,*.sh,*.lua,*.pl,*.pm,*.php,*.py,*.rb,*.erb,*.vim,*.js,*.css,*.xml,*.html,*.xhtml 2match Underlined /.\%81v/</div><div class="line"></div><div class="line"></div><div class="line">" 设置编码</div><div class="line">set fenc=utf-8</div><div class="line">set encoding=utf-8</div><div class="line">set fileencodings=utf-8,gbk,cp936,latin-1</div><div class="line"></div><div class="line"></div><div class="line">" For Haskell</div><div class="line">:let hs_highlight_delimiters=1            " 高亮定界符</div><div class="line">:let hs_highlight_boolean=1               " 把True和False识别为关键字</div><div class="line">:let hs_highlight_types=1                 " 把基本类型的名字识别为关键字</div><div class="line">:let hs_highlight_more_types=1            " 把更多常用类型识别为关键字</div><div class="line">:let hs_highlight_debug=1                 " 高亮调试函数的名字</div><div class="line">:let hs_allow_hash_operator=1             " 阻止把#高亮为错误</div><div class="line"></div><div class="line"></div><div class="line">" ======= 引号 &amp;&amp; 括号自动匹配 ======= "</div><div class="line"></div><div class="line">:inoremap ( ()&lt;ESC&gt;i</div><div class="line"></div><div class="line">:inoremap ) &lt;c-r&gt;=ClosePair(')')&lt;CR&gt;</div><div class="line"></div><div class="line">:inoremap &#123; &#123;&#125;&lt;ESC&gt;i</div><div class="line"></div><div class="line">:inoremap &#125; &lt;c-r&gt;=ClosePair('&#125;')&lt;CR&gt;</div><div class="line"></div><div class="line">:inoremap [ []&lt;ESC&gt;i</div><div class="line"></div><div class="line">:inoremap ] &lt;c-r&gt;=ClosePair(']')&lt;CR&gt;</div><div class="line"></div><div class="line">":inoremap &lt; &lt;&gt;&lt;ESC&gt;i</div><div class="line"></div><div class="line">":inoremap &gt; &lt;c-r&gt;=ClosePair('&gt;')&lt;CR&gt;</div><div class="line"></div><div class="line">:inoremap " ""&lt;ESC&gt;i</div><div class="line"></div><div class="line">:inoremap ' ''&lt;ESC&gt;i</div><div class="line"></div><div class="line">:inoremap ` ``&lt;ESC&gt;i</div><div class="line"></div><div class="line">function ClosePair(char)</div><div class="line">    if getline('.')[col('.') - 1] == a:char</div><div class="line">        return "\&lt;Right&gt;"</div><div class="line">    else</div><div class="line">        return a:char</div><div class="line">    endif</div><div class="line">endf</div><div class="line"></div><div class="line"></div><div class="line">" MiniBufExplorer     多个文件切换 可使用鼠标双击相应文件名进行切换</div><div class="line">let g:miniBufExplMapWindowNavVim=1</div><div class="line">let g:miniBufExplMapWindowNavArrows=1</div><div class="line">let g:miniBufExplMapCTabSwitchBufs=1</div><div class="line">let g:miniBufExplModSelTarget=1</div><div class="line"></div><div class="line">" :Tlist              调用TagList</div><div class="line">let Tlist_Show_One_File=1                    " 只显示当前文件的tags</div><div class="line">let Tlist_Exit_OnlyWindow=1                  " 如果Taglist窗口是最后一个窗口则退出Vim</div><div class="line">let Tlist_Use_Right_Window=1                 " 在右侧窗口中显示</div><div class="line">let Tlist_File_Fold_Auto_Close=1             " 自动折叠</div><div class="line"></div><div class="line">" TxtBrowser          高亮TXT文本文件</div><div class="line">au BufRead,BufNewFile *.txt setlocal ft=txt</div><div class="line"></div><div class="line">" :LoadTemplate       根据文件后缀自动加载模板</div><div class="line">let g:template_path='/home/ruchee/.vim/template/'</div><div class="line"></div><div class="line">" :AuthorInfoDetect   自动添加作者、时间等信息，本质是NERD_commenter &amp;&amp; authorinfo的结合</div><div class="line">let g:vimrc_author='Ruchee'</div><div class="line">let g:vimrc_email='my@ruchee.com'</div><div class="line">let g:vimrc_homepage='http://www.ruchee.com'</div><div class="line"></div><div class="line">" Ctrl + H            将光标移到当前行的行首</div><div class="line">imap &lt;c-h&gt; &lt;ESC&gt;I</div><div class="line"></div><div class="line">" Ctrl + J            将光标移到下一行的行首</div><div class="line">imap &lt;c-j&gt; &lt;ESC&gt;jI</div><div class="line"></div><div class="line">" Ctrl + K            将光标移到上一行的末尾</div><div class="line">imap &lt;c-k&gt; &lt;ESC&gt;kA</div><div class="line"></div><div class="line">" Ctrl + L            将光标移到当前行的行尾</div><div class="line">imap &lt;c-l&gt; &lt;ESC&gt;A</div><div class="line"></div><div class="line">" Ctrl + E            一步加载语法模板和作者、时间信息</div><div class="line">map &lt;c-e&gt; &lt;ESC&gt;:LoadTemplate&lt;CR&gt;&lt;ESC&gt;:AuthorInfoDetect&lt;CR&gt;&lt;ESC&gt;Gi</div><div class="line">imap &lt;c-e&gt; &lt;ESC&gt;:LoadTemplate&lt;CR&gt;&lt;ESC&gt;:AuthorInfoDetect&lt;CR&gt;&lt;ESC&gt;Gi</div><div class="line">vmap &lt;c-e&gt; &lt;ESC&gt;:LoadTemplate&lt;CR&gt;&lt;ESC&gt;:AuthorInfoDetect&lt;CR&gt;&lt;ESC&gt;Gi</div><div class="line"></div><div class="line">" jj                  保存文件并留在插入模式 [插入模式]</div><div class="line">imap jj &lt;ESC&gt;:w&lt;CR&gt;li</div><div class="line"></div><div class="line">" kk                  返回Normal模式 [插入模式]</div><div class="line">imap kk &lt;ESC&gt;l</div><div class="line"></div><div class="line">" nt                  打开NERDTree [非插入模式]</div><div class="line">map nt :NERDTree&lt;CR&gt;</div><div class="line"></div><div class="line">" tl                  打开Taglist [非插入模式]</div><div class="line">map tl :Tlist&lt;CR&gt;&lt;c-l&gt;</div><div class="line"></div><div class="line"></div><div class="line">" ======= 编译 &amp;&amp; 运行 ======= "</div><div class="line"></div><div class="line">" 编译源文件</div><div class="line">func! CompileCode()</div><div class="line">        exec "w"</div><div class="line">        if &amp;filetype == "c"</div><div class="line">            exec "!gcc -Wall -std=c99 %&lt;.c -o %&lt;"</div><div class="line">        elseif &amp;filetype == "cpp"</div><div class="line">            exec "!g++ -Wall -std=c++98 %&lt;.cpp -o %&lt;"</div><div class="line">        elseif &amp;filetype == "java"</div><div class="line">            exec "!javac %&lt;.java"</div><div class="line">        elseif &amp;filetype == "haskell"</div><div class="line">            exec "!ghc --make %&lt;.hs -o %&lt;"</div><div class="line">        elseif &amp;filetype == "lua"</div><div class="line">            exec "!lua %&lt;.lua"</div><div class="line">        elseif &amp;filetype == "perl"</div><div class="line">            exec "!perl %&lt;.pl"</div><div class="line">        elseif &amp;filetype == "python"</div><div class="line">            exec "!python %&lt;.py"</div><div class="line">        elseif &amp;filetype == "ruby"</div><div class="line">            exec "!ruby %&lt;.rb"</div><div class="line">        endif</div><div class="line">endfunc</div><div class="line"></div><div class="line">" 运行可执行文件</div><div class="line">func! RunCode()</div><div class="line">        exec "w"</div><div class="line">        if &amp;filetype == "c" || &amp;filetype == "cpp" || &amp;filetype == "haskell"</div><div class="line">            exec "! ./%&lt;"</div><div class="line">        elseif &amp;filetype == "java"</div><div class="line">            exec "!java %&lt;"</div><div class="line">        elseif &amp;filetype == "lua"</div><div class="line">            exec "!lua %&lt;.lua"</div><div class="line">        elseif &amp;filetype == "perl"</div><div class="line">            exec "!perl %&lt;.pl"</div><div class="line">        elseif &amp;filetype == "python"</div><div class="line">            exec "!python %&lt;.py"</div><div class="line">        elseif &amp;filetype == "ruby"</div><div class="line">            exec "!ruby %&lt;.rb"</div><div class="line">        endif</div><div class="line">endfunc</div><div class="line">"下面的语句可以很方便地实现编译和运行</div><div class="line">" Ctrl + C 一键保存、编译</div><div class="line">map &lt;c-c&gt; :call CompileCode()&lt;CR&gt;</div><div class="line">imap &lt;c-c&gt; &lt;ESC&gt;:call CompileCode()&lt;CR&gt;</div><div class="line">vmap &lt;c-c&gt; &lt;ESC&gt;:call CompileCode()&lt;CR&gt;</div><div class="line"></div><div class="line">" Ctrl + R 一键保存、运行</div><div class="line">map &lt;c-r&gt; :call RunCode()&lt;CR&gt;</div><div class="line">imap &lt;c-r&gt; &lt;ESC&gt;:call RunCode()&lt;CR&gt;</div><div class="line">vmap &lt;c-r&gt; &lt;ESC&gt;:call RunCode()&lt;CR&gt;</div></pre></td></tr></table></figure>
-<p>windows平台：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">" -----------------   Author: Ruchee</div><div class="line">" -----------------    Email: my@ruchee.com</div><div class="line">" -----------------  WebSite: http://www.ruchee.com</div><div class="line">" -----------------     Date: 2012-05-01</div><div class="line"></div><div class="line"></div><div class="line">" Ctrl + H                   --光标移当前行行首</div><div class="line">" Ctrl + J                   --光标移下一行行首</div><div class="line">" Ctrl + K                   --光标移上一行行尾</div><div class="line">" Ctrl + L                   --光标移当前行行尾</div><div class="line">" Ctrl + C                   --编译 [支持C/C++、Java、Haskll]</div><div class="line">" Ctrl + R                   --运行 [支持C/C++、Java、Haskell、Lua、Perl、Python、Ruby]</div><div class="line">" Ctrl + ]                   --转到函数定义</div><div class="line">" Ctrl + T                   --返回调用函数</div><div class="line">" Ctrl + E                   --一步加载语法模板和作者、时间信息</div><div class="line"></div><div class="line">" &lt;C-P&gt;                      --单词补全</div><div class="line">" &lt;C-X&gt;&lt;C-L&gt;                 --整行补全</div><div class="line">" Tab键                      --插入模式下的全功能语法结构补全 [snipMate插件]</div><div class="line">" Shift + Insert             --向Vim中粘贴从别处复制的内容</div><div class="line"></div><div class="line">" u [小写]                   --单步复原 [非插入模式]</div><div class="line">" U [大写]                   --整行复原 [非插入模式]</div><div class="line"></div><div class="line">" jj                         --保存文件并留在插入模式 [插入模式]</div><div class="line">" kk                         --返回Normal模式 [插入模式]</div><div class="line">" nt                         --打开NERDTree [非插入模式]</div><div class="line">" tl                         --打开TagList [非插入模式]</div><div class="line"></div><div class="line">" za                         --打开或关闭当前折叠</div><div class="line">" zM                         --关闭所有折叠</div><div class="line">" zR                         --打开所有折叠</div><div class="line"></div><div class="line">" :set syntax=cpp            --手动选择语法高亮 [或 :set filetype=cpp]</div><div class="line"></div><div class="line">" :%!xxd                     --转储二进制文件，以十六进制形式显示</div><div class="line">" :%!xxd -r                  --还原二进制文件</div><div class="line"></div><div class="line"></div><div class="line">" ---------- 主要插件详细用法说明 ---------------------</div><div class="line"></div><div class="line">" :Tlist                     --呼出变量和函数列表 [TagList插件]</div><div class="line">" :LoadTemplate              --呼出语法模板 [Load_Template插件]</div><div class="line">" :AuthorInfoDetect          --添加作者、时间等信息 [NERD_commenter &amp;&amp; authorinfo插件]</div><div class="line"></div><div class="line">" ---------- a.vim [自动切换C/C++同名头文件] ----------</div><div class="line">"</div><div class="line">" :A                         --切换同名头文件并独占整个屏幕</div><div class="line">" :AS                        --切换同名头文件并垂直分屏，头文件在上</div><div class="line">" :AV                        --切换同名头文件并水平分割，头文件在左</div><div class="line"></div><div class="line">" ---------- mark.vim [追踪高亮指定关键字] ------------</div><div class="line">"</div><div class="line">" \m                         --normal模式下，在想要高亮的单词上面敲击\m即可高亮或取消高亮该单词</div><div class="line">" :Mark                      --取消所有高亮</div><div class="line">" :Mark abc                  --指定高亮单词 abc 或取消高亮 abc</div><div class="line"></div><div class="line">" ---------- NERDTree [智能文件浏览器] ----------------</div><div class="line">"</div><div class="line">" :NERDTree                  --启动NERDTree插件</div><div class="line">" o [小写]                   --切换当前文件或目录的打开、关闭状态</div><div class="line">" u                          --打开上层目录</div><div class="line">" p [小写]                   --返回上层目录</div><div class="line">" P [大写]                   --返回根目录</div><div class="line">" K                          --转到当前目录第一个节点</div><div class="line">" J                          --转到当前目录最后的节点</div><div class="line">" m                          --显示文件系统菜单 [增、删、移]</div><div class="line">" ?                          --弹出帮助菜单</div><div class="line">" q                          --退出该插件</div><div class="line"></div><div class="line"></div><div class="line">" 将所有以.html结尾的文档以Django Template语法进行渲染</div><div class="line">" 本配置语句必须放在所有配置的最前面</div><div class="line">au BufNewFile,BufRead *.html setf htmldjango</div><div class="line"></div><div class="line">colorscheme blackboard       " 着色模式：蓝色背景</div><div class="line">set guifont=Monaco:h10       " 字体 &amp;&amp; 字号</div><div class="line">set tabstop=4                " 设置tab键的宽度</div><div class="line">set shiftwidth=4             " 换行时行间交错使用4个空格</div><div class="line">set autoindent               " 自动对齐</div><div class="line">set backspace=2              " 设置退格键可用</div><div class="line">set cindent shiftwidth=4     " 自动缩进4空格</div><div class="line">set smartindent              " 智能自动缩进</div><div class="line">set ai!                      " 设置自动缩进</div><div class="line">set nu!                      " 显示行号</div><div class="line">"set showmatch               " 显示括号配对情况</div><div class="line">set mouse=a                  " 启用鼠标</div><div class="line">set ruler                    " 右下角显示光标位置的状态行</div><div class="line">set incsearch                " 开启实时搜索功能</div><div class="line">set hlsearch                 " 开启高亮显示结果</div><div class="line">set nowrapscan               " 搜索到文件两端时不重新搜索</div><div class="line">set nocompatible             " 关闭兼容模式</div><div class="line">set vb t_vb=                 " 关闭提示音</div><div class="line">"set cursorline              " 突出显示当前行</div><div class="line">set hidden                   " 允许在有未保存的修改时切换缓冲区</div><div class="line">set list                     " 显示Tab符，使用一高亮竖线代替</div><div class="line">set listchars=tab:\|\ ,</div><div class="line"></div><div class="line">syntax enable                " 打开语法高亮</div><div class="line">syntax on                    " 开启文件类型侦测</div><div class="line">filetype indent on           " 针对不同的文件类型采用不同的缩进格式</div><div class="line">filetype plugin on           " 针对不同的文件类型加载对应的插件</div><div class="line">filetype plugin indent on    " 启用自动补全</div><div class="line"></div><div class="line"></div><div class="line">if has("gui_running")</div><div class="line">    au GUIEnter * simalt ~x  " 窗口启动时自动最大化</div><div class="line">    "winpos 20 20            " 指定窗口出现的位置，坐标原点在屏幕左上角</div><div class="line">    "set lines=20 columns=90 " 指定窗口大小，lines为高度，columns为宽度</div><div class="line">    "set guioptions-=m       " 隐藏菜单栏</div><div class="line">    "set guioptions-=T       " 隐藏工具栏</div><div class="line">    "set guioptions-=L       " 隐藏左侧滚动条</div><div class="line">    "set guioptions-=r       " 隐藏右侧滚动条</div><div class="line">    "set guioptions-=b       " 隐藏底部滚动条</div><div class="line">    "set showtabline=0       " 隐藏Tab栏</div><div class="line">endif</div><div class="line"></div><div class="line">set writebackup              " 设置无备份文件</div><div class="line">set nobackup</div><div class="line">set autochdir                " 设定文件浏览器目录为当前目录</div><div class="line">"set nowrap                  " 设置不自动换行</div><div class="line">set foldmethod=syntax        " 选择代码折叠类型</div><div class="line">set foldlevel=100            " 禁止自动折叠</div><div class="line"></div><div class="line">set laststatus=2             " 开启状态栏信息</div><div class="line">set cmdheight=2              " 命令行的高度，默认为1，这里设为2</div><div class="line"></div><div class="line">" 每行超过80个的字符用下划线标示</div><div class="line">au BufRead,BufNewFile *.s,*.asm,*.h,*.c,*.cpp,*.cc,*.java,*.cs,*.erl,*.hs,*.sh,*.lua,*.pl,*.pm,*.php,*.py,*.rb,*.erb,*.vim,*.js,*.css,*.xml,*.html,*.xhtml 2match Underlined /.\%81v/</div><div class="line"></div><div class="line"></div><div class="line">" 设置编码</div><div class="line">set fenc=utf-8</div><div class="line">set encoding=utf-8</div><div class="line">set fileencodings=utf-8,gbk,cp936,latin-1</div><div class="line">" 解决菜单乱码</div><div class="line">source $VIMRUNTIME/delmenu.vim</div><div class="line">source $VIMRUNTIME/menu.vim</div><div class="line">" 解决consle输出乱码</div><div class="line">language messages zh_CN.utf-8</div><div class="line"></div><div class="line"></div><div class="line">" For Haskell</div><div class="line">:let hs_highlight_delimiters=1            " 高亮定界符</div><div class="line">:let hs_highlight_boolean=1               " 把True和False识别为关键字</div><div class="line">:let hs_highlight_types=1                 " 把基本类型的名字识别为关键字</div><div class="line">:let hs_highlight_more_types=1            " 把更多常用类型识别为关键字</div><div class="line">:let hs_highlight_debug=1                 " 高亮调试函数的名字</div><div class="line">:let hs_allow_hash_operator=1             " 阻止把#高亮为错误</div><div class="line"></div><div class="line"></div><div class="line">" ======= 引号 &amp;&amp; 括号自动匹配 ======= "</div><div class="line"></div><div class="line">:inoremap ( ()&lt;ESC&gt;i</div><div class="line"></div><div class="line">:inoremap ) &lt;c-r&gt;=ClosePair(')')&lt;CR&gt;</div><div class="line"></div><div class="line">:inoremap &#123; &#123;&#125;&lt;ESC&gt;i</div><div class="line"></div><div class="line">:inoremap &#125; &lt;c-r&gt;=ClosePair('&#125;')&lt;CR&gt;</div><div class="line"></div><div class="line">:inoremap [ []&lt;ESC&gt;i</div><div class="line"></div><div class="line">:inoremap ] &lt;c-r&gt;=ClosePair(']')&lt;CR&gt;</div><div class="line"></div><div class="line">":inoremap &lt; &lt;&gt;&lt;ESC&gt;i</div><div class="line"></div><div class="line">":inoremap &gt; &lt;c-r&gt;=ClosePair('&gt;')&lt;CR&gt;</div><div class="line"></div><div class="line">:inoremap " ""&lt;ESC&gt;i</div><div class="line"></div><div class="line">:inoremap ' ''&lt;ESC&gt;i</div><div class="line"></div><div class="line">:inoremap ` ``&lt;ESC&gt;i</div><div class="line"></div><div class="line">function ClosePair(char)</div><div class="line">    if getline('.')[col('.') - 1] == a:char</div><div class="line">        return "\&lt;Right&gt;"</div><div class="line">    else</div><div class="line">        return a:char</div><div class="line">    endif</div><div class="line">endf</div><div class="line"></div><div class="line"></div><div class="line">" MiniBufExplorer     多个文件切换 可使用鼠标双击相应文件名进行切换</div><div class="line">let g:miniBufExplMapWindowNavVim=1</div><div class="line">let g:miniBufExplMapWindowNavArrows=1</div><div class="line">let g:miniBufExplMapCTabSwitchBufs=1</div><div class="line">let g:miniBufExplModSelTarget=1</div><div class="line"></div><div class="line">" :Tlist              调用TagList</div><div class="line">let Tlist_Show_One_File=1                    " 只显示当前文件的tags</div><div class="line">let Tlist_Exit_OnlyWindow=1                  " 如果Taglist窗口是最后一个窗口则退出Vim</div><div class="line">let Tlist_Use_Right_Window=1                 " 在右侧窗口中显示</div><div class="line">let Tlist_File_Fold_Auto_Close=1             " 自动折叠</div><div class="line"></div><div class="line">" TxtBrowser          高亮TXT文本文件</div><div class="line">au BufRead,BufNewFile *.txt setlocal ft=txt</div><div class="line"></div><div class="line">" :LoadTemplate       根据文件后缀自动加载模板</div><div class="line">let g:template_path='D:/Apps/Gvim/vimfiles/template/'</div><div class="line"></div><div class="line">" :AuthorInfoDetect   自动添加作者、时间等信息，本质是NERD_commenter &amp;&amp; authorinfo的结合</div><div class="line">let g:vimrc_author='Ruchee'</div><div class="line">let g:vimrc_email='my@ruchee.com'</div><div class="line">let g:vimrc_homepage='http://www.ruchee.com'</div><div class="line"></div><div class="line">" Ctrl + H            将光标移到当前行的行首</div><div class="line">imap &lt;c-h&gt; &lt;ESC&gt;I</div><div class="line"></div><div class="line">" Ctrl + J            将光标移到下一行的行首</div><div class="line">imap &lt;c-j&gt; &lt;ESC&gt;jI</div><div class="line"></div><div class="line">" Ctrl + K            将光标移到上一行的末尾</div><div class="line">imap &lt;c-k&gt; &lt;ESC&gt;kA</div><div class="line"></div><div class="line">" Ctrl + L            将光标移到当前行的行尾</div><div class="line">imap &lt;c-l&gt; &lt;ESC&gt;A</div><div class="line"></div><div class="line">" Ctrl + E            一步加载语法模板和作者、时间信息</div><div class="line">map &lt;c-e&gt; &lt;ESC&gt;:LoadTemplate&lt;CR&gt;&lt;ESC&gt;:AuthorInfoDetect&lt;CR&gt;&lt;ESC&gt;Gi</div><div class="line">imap &lt;c-e&gt; &lt;ESC&gt;:LoadTemplate&lt;CR&gt;&lt;ESC&gt;:AuthorInfoDetect&lt;CR&gt;&lt;ESC&gt;Gi</div><div class="line">vmap &lt;c-e&gt; &lt;ESC&gt;:LoadTemplate&lt;CR&gt;&lt;ESC&gt;:AuthorInfoDetect&lt;CR&gt;&lt;ESC&gt;Gi</div><div class="line"></div><div class="line">" jj                  保存文件并留在插入模式 [插入模式]</div><div class="line">imap jj &lt;ESC&gt;:w&lt;CR&gt;li</div><div class="line"></div><div class="line">" kk                  返回Normal模式 [插入模式]</div><div class="line">imap kk &lt;ESC&gt;l</div><div class="line"></div><div class="line">" nt                  打开NERDTree [非插入模式]</div><div class="line">map nt :NERDTree&lt;CR&gt;</div><div class="line"></div><div class="line">" tl                  打开Taglist [非插入模式]</div><div class="line">map tl :Tlist&lt;CR&gt;&lt;c-l&gt;</div><div class="line"></div><div class="line"></div><div class="line">" ======= 编译 &amp;&amp; 运行 ======= "</div><div class="line"></div><div class="line">" 编译源文件</div><div class="line">func! CompileCode()</div><div class="line">        exec "w"</div><div class="line">        if &amp;filetype == "c"</div><div class="line">            exec "!gcc -Wall -std=c99 %&lt;.c -o %&lt;"</div><div class="line">        elseif &amp;filetype == "cpp"</div><div class="line">            exec "!g++ -Wall -std=c++98 %&lt;.cpp -o %&lt;"</div><div class="line">        elseif &amp;filetype == "java"</div><div class="line">            exec "!javac %&lt;.java"</div><div class="line">        elseif &amp;filetype == "haskell"</div><div class="line">            exec "!ghc --make %&lt;.hs -o %&lt;"</div><div class="line">        elseif &amp;filetype == "lua"</div><div class="line">            exec "!lua %&lt;.lua"</div><div class="line">        elseif &amp;filetype == "perl"</div><div class="line">            exec "!perl %&lt;.pl"</div><div class="line">        elseif &amp;filetype == "python"</div><div class="line">            exec "!python %&lt;.py"</div><div class="line">        elseif &amp;filetype == "ruby"</div><div class="line">            exec "!ruby %&lt;.rb"</div><div class="line">        endif</div><div class="line">endfunc</div><div class="line"></div><div class="line">" 运行可执行文件</div><div class="line">func! RunCode()</div><div class="line">        exec "w"</div><div class="line">        if &amp;filetype == "c" || &amp;filetype == "cpp" || &amp;filetype == "haskell"</div><div class="line">            exec "! %&lt;.exe"</div><div class="line">        elseif &amp;filetype == "java"</div><div class="line">            exec "!java %&lt;"</div><div class="line">        elseif &amp;filetype == "lua"</div><div class="line">            exec "!lua %&lt;.lua"</div><div class="line">        elseif &amp;filetype == "perl"</div><div class="line">            exec "!perl %&lt;.pl"</div><div class="line">        elseif &amp;filetype == "python"</div><div class="line">            exec "!python %&lt;.py"</div><div class="line">        elseif &amp;filetype == "ruby"</div><div class="line">            exec "!ruby %&lt;.rb"</div><div class="line">        endif</div><div class="line">endfunc</div><div class="line"></div><div class="line">" Ctrl + C 一键保存、编译</div><div class="line">map &lt;c-c&gt; :call CompileCode()&lt;CR&gt;</div><div class="line">imap &lt;c-c&gt; &lt;ESC&gt;:call CompileCode()&lt;CR&gt;</div><div class="line">vmap &lt;c-c&gt; &lt;ESC&gt;:call CompileCode()&lt;CR&gt;</div><div class="line"></div><div class="line">" Ctrl + R 一键保存、运行</div><div class="line">map &lt;c-r&gt; :call RunCode()&lt;CR&gt;</div><div class="line">imap &lt;c-r&gt; &lt;ESC&gt;:call RunCode()&lt;CR&gt;</div><div class="line">vmap &lt;c-r&gt; &lt;ESC&gt;:call RunCode()&lt;CR&gt;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1560,7 +1566,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">455</span>
+                <span class="site-state-item-count">457</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1573,7 +1579,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

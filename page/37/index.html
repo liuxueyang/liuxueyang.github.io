@@ -247,6 +247,282 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/03/15/hdu-1065-I-Think-I-Need-a-Houseboat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/03/15/hdu-1065-I-Think-I-Need-a-Houseboat/" itemprop="url">
+                  hdu 1065 I Think I Need a Houseboat
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-15T19:24:00+08:00">
+                2013-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>I Think I Need a Houseboat</p>
+<p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)<br>Total Submission(s): 5929    Accepted Submission(s): 1761</p>
+<p>Problem Description</p>
+<p>Fred Mapper is considering purchasing some land in Louisiana to build his house on. In the process of investigating the land, he learned that the state of Louisiana is actually shrinking by 50 square miles each year, due to erosion caused by the Mississippi River. Since Fred is hoping to live in this house the rest of his life, he needs to know if his land is going to be lost to erosion. </p>
+<p>After doing more research, Fred has learned that the land that is being lost forms a semicircle. This semicircle is part of a circle centered at (0,0), with the line that bisects the circle being the X axis. Locations below the X axis are in the water. The semicircle has an area of 0 at the beginning of year 1. (Semicircle illustrated in the Figure.) </p>
+<p>Input<br>The first line of input will be a positive integer indicating how many data sets will be included (N). </p>
+<p>Each of the next N lines will contain the X and Y Cartesian coordinates of the land Fred is considering. These will be floating point numbers measured in miles. The Y coordinate will be non-negative. (0,0) will not be given.</p>
+<p>Output<br>For each data set, a single line of output should appear. This line should take the form of: </p>
+<p>“Property N: This property will begin eroding in year Z.” </p>
+<p>Where N is the data set (counting from 1), and Z is the first year (start from 1) this property will be within the semicircle AT THE END OF YEAR Z. Z must be an integer. </p>
+<p>After the last data set, this should print out “END OF OUTPUT.” </p>
+<p>Notes: </p>
+<ol>
+<li><p>No property will appear exactly on the semicircle boundary: it will either be inside or outside. </p>
+</li>
+<li><p>This problem will be judged automatically. Your answer must match exactly, including the capitalization, punctuation, and white-space. This includes the periods at the ends of the lines. </p>
+</li>
+<li><p>All locations are given in miles.</p>
+</li>
+</ol>
+<p>Sample Input<br>2 1.0 1.0 25.0 0.0</p>
+<p>Sample Output<br>Property 1: This property will begin eroding in year 1. Property 2: This property will begin eroding in year 20. END OF OUTPUT.</p>
+<p>人家说只有当PI等于3.1415926的时候才可以过……开始不相信，后来信了，原来这么恶心？用acos(-1)就过不了……次嗷……<br>另外，自己也确实挺弱的，开始竟然想那么笨的办法，超时了一次……唉，虽然是水题，但是还是要有想法才可以啊！看来水题还得做啊……</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> PI 3.1415926</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"1065.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">  <span class="keyword">int</span> n; <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">  <span class="keyword">double</span> j;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n + <span class="number">1</span>; ++i)&#123;</div><div class="line">    <span class="keyword">double</span> x, y, ss = <span class="number">0</span>; <span class="keyword">int</span> s = <span class="number">0</span>;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>, &amp;x, &amp;y);</div><div class="line">   <span class="keyword">double</span> s1 = PI * (x*x+y*y)/<span class="number">2.0</span>;</div><div class="line">   <span class="keyword">int</span> year = <span class="built_in">ceil</span>(s1/<span class="number">50</span>);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"Property %d: This property will begin eroding in year %d.\n"</span>,i,year);</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">printf</span>(<span class="string">"END OF OUTPUT.\n"</span>);</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>水题还是要刷的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/03/15/hdu-1214-圆桌会议/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/03/15/hdu-1214-圆桌会议/" itemprop="url">
+                  hdu 1214 圆桌会议
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-15T19:22:00+08:00">
+                2013-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>圆桌会议</p>
+<p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)<br>Total Submission(s): 2179    Accepted Submission(s): 1490</p>
+<p>Problem Description<br>HDU ACM集训队的队员在暑假集训时经常要讨论自己在做题中遇到的问题.每当面临自己解决不了的问题时,他们就会围坐在一张圆形的桌子旁进行交流,经过大家的讨论后一般没有解决不了的问题,这也只有HDU ACM集训队特有的圆桌会议,有一天你也可以进来体会一下哦:),在一天在讨论的时候,Eddy想出了一个极为古怪的想法,如果他们在每一分钟内,一对相邻的两个ACM队员交换一下位子,那么要多少时间才能得到与原始状态相反的座位顺序呢?(即对于每个队员，原先在他左面的队员后来在他右面，原先在他右面的队员在他左面),这当然难不倒其他的聪明的其他队友们,马上就把这个古怪的问题给解决了,你知道是怎么解决的吗?</p>
+<p>Input<br>对于给定数目N(1&lt;=N&lt;=32767)，表示有N个人,求要多少时间才能得到与原始状态相反的座位顺序(reverse)即对于每个人，原先在他左面的人后来在他右面，原先在他右面的人在他左面。</p>
+<p>Output<br>对每个数据输出一行，表示需要的时间(以分钟为单位)</p>
+<p>Sample Input<br>4 5 6</p>
+<p>Sample Output<br>2 4 6</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">  <span class="keyword">int</span> n;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"1214.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n))&#123;</div><div class="line">    <span class="keyword">int</span> a, b;  a = n / <span class="number">2</span>; b = n - a;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, a*(a<span class="number">-1</span>)/<span class="number">2</span>+b*(b<span class="number">-1</span>)/<span class="number">2</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这道题目意思很好明白，就是每次只能两个人交换位置，求最少交换多少次，才能够产生顺序相反的排列。</p>
+<p>可以先考虑直线的情况，如果有ｎ个元素，利用冒泡的思想，最少要ｎ×（ｎ-1）/ 2 次交换才可以达到目的。</p>
+<p>圆的情况：先把圆分成两段，比如ａ，ｎ-ａ。总次数为：ａ×（ａ-1）/ 2+（ｎ-ａ）×（ｎ-ａ-1）/ 2 ，化简为：ａ×ａ-ａ×ｎ+（ｎ×ｎ-ｎ）/ 2 发现，当ａ= ｎ/ 2 的时候，次数最少，因此，就知道怎么分了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/03/15/hdu-1056-HangOver/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1281,266 +1557,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/03/12/hdu-1212-Big-Number/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/03/12/hdu-1212-Big-Number/" itemprop="url">
-                  hdu 1212 Big Number
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-12T22:01:00+08:00">
-                2013-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Big Number</p>
-<p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)<br>Total Submission(s): 3386    Accepted Submission(s): 2305</p>
-<p>Problem Description<br>As we know, Big Number is always troublesome. But it’s really important in our ACM. And today, your task is to write a program to calculate A mod B.</p>
-<p>To make the problem easier, I promise that B will be smaller than 100000.</p>
-<p>Is it too hard? No, I work it out in 10 minutes, and my program contains less than 25 lines.</p>
-<p>Input<br>The input contains several test cases. Each test case consists of two positive integers A and B. The length of A will not exceed 1000, and B will be smaller than 100000. Process to the end of file.</p>
-<p>Output<br>For each test case, you have to ouput the result of A mod B.</p>
-<p>Sample Input<br>2 3 12 7 152455856554521 3250</p>
-<p>Sample Output<br>2 5 1521</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">char</span> a[<span class="number">1000</span>+<span class="number">10</span>]; <span class="keyword">int</span> b;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"1212.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%s%d"</span>, a, &amp;b))&#123;</div><div class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(a); <span class="keyword">int</span> x = a[len<span class="number">-1</span>]-<span class="string">'0'</span>, po = <span class="number">1</span>;</div><div class="line">    x = x % b; <span class="keyword">int</span> y;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = len - <span class="number">2</span>; i &gt;= <span class="number">0</span>; --i)&#123;</div><div class="line">      y = a[i] - <span class="string">'0'</span>; po = (po * <span class="number">10</span>) % b;</div><div class="line">      x = (x + y*po) % b;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, x);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>看了讨论版学会的，不过还是有一点儿小问题，学一下数论吧……</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/03/12/hdu-1164-Eddy's-research-I/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/03/12/hdu-1164-Eddy's-research-I/" itemprop="url">
-                  hdu 1164 Eddy's research I
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-12T21:21:00+08:00">
-                2013-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Eddy’s research I</p>
-<p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/32768 K (Java/Others)<br>Total Submission(s): 4452    Accepted Submission(s): 2680</p>
-<p>Problem Description<br>Eddy’s interest is very extensive, recently he is interested in prime number. Eddy discover the all number owned can be divided into the multiply of prime number, but he can’t write program, so Eddy has to ask intelligent you to help him, he asks you to write a program which can do the number to divided into the multiply of prime number factor .</p>
-<p>Input<br>The input will contain a number 1 &lt; x&lt;= 65535 per line representing the number of elements of the set.</p>
-<p>Output<br>You have to print a line in the output for each entry with the answer to the previous question.</p>
-<p>Sample Input<br>11 9412</p>
-<p>Sample Output<br>11 2<em>2</em>13*181</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">65535</span>;</div><div class="line"><span class="keyword">int</span> prime[maxn];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"1164.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">  <span class="built_in">memset</span>(prime, <span class="number">0</span>, <span class="keyword">sizeof</span>(prime));</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i * i &lt;= maxn; ++i)</div><div class="line">    <span class="keyword">if</span> (prime[i] == <span class="number">0</span>)</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = i*<span class="number">2</span>; j &lt;= maxn; j+=i)</div><div class="line">        prime[j] = <span class="number">1</span>;</div><div class="line">  <span class="keyword">int</span> n; </div><div class="line"><span class="comment">//  for (int i = 2; i &lt; 100; ++i) if (!prime[i]) printf("%d ", i);</span></div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n))&#123;</div><div class="line">    <span class="keyword">bool</span> flag = <span class="literal">true</span>;</div><div class="line">      <span class="keyword">while</span>(n != <span class="number">1</span>)&#123;</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= maxn; ++i)&#123;</div><div class="line">        <span class="keyword">while</span> (!prime[i] &amp;&amp; !(n%i))&#123;</div><div class="line">          n = n / i; </div><div class="line">          <span class="keyword">if</span> (flag) <span class="built_in">printf</span>(<span class="string">"%d"</span>, i);</div><div class="line">          <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"*%d"</span>, i);</div><div class="line">          flag = <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">break</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">      <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>开始打素数表的时候打错了……</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1590,7 +1606,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">455</span>
+                <span class="site-state-item-count">457</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1603,7 +1619,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

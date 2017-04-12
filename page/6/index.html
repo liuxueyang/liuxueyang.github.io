@@ -247,6 +247,288 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/05/31/Codeforces-Round-353-Div-2-C-Money-Transfers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/31/Codeforces-Round-353-Div-2-C-Money-Transfers/" itemprop="url">
+                  Codeforces Round #353 (Div. 2) C. Money Transfers
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-31T13:57:13+08:00">
+                2016-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>There are n banks in the city where Vasya lives, they are located in a circle, such that any two banks are neighbouring if their indices differ by no more than 1. Also, bank 1 and bank n are neighbours if n &gt; 1. No bank is a neighbour of itself.</p>
+<p>Vasya has an account in each bank. Its balance may be negative, meaning Vasya owes some money to this bank.</p>
+<p>There is only one type of operations available: transfer some amount of money from any bank to account in any neighbouring bank. There are no restrictions on the size of the sum being transferred or balance requirements to perform this operation.</p>
+<p>Vasya doesn’t like to deal with large numbers, so he asks you to determine the minimum number of operations required to change the balance of each bank account to zero. It’s guaranteed, that this is possible to achieve, that is, the total balance of Vasya in all banks is equal to zero.</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The first line of the input contains a single integer n (1 ≤ n ≤ 100 000) — the number of banks.</p>
+<p>The second line contains n integers ai ( - 109 ≤ ai ≤ 109), the i-th of them is equal to the initial balance of the account in the i-th bank. It’s guaranteed that the sum of all ai is equal to 0.</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>Print the minimum number of operations required to change balance in each bank<br>to zero.</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Let the array be: a[n], n is the lengh of the array.</p>
+<p>cut the original circle array into linear segments in the following rule:</p>
+<pre><code>each segment can contain only a single element `0`, or its first and last
+elements are non-zero number. Note a segment can contain suffix of original
+array appended by prefix of the original array.
+</code></pre><p>For example:</p>
+<p>Original array is: <code>0 1 0 0 0 -1 0</code>, there are two ways to cut it:</p>
+<ol>
+<li><code>0</code>, <code>1 0 0 0 -1</code>, <code>0</code></li>
+<li><code>0</code>, <code>0</code>, <code>0</code>, <code>-1 0 0 1</code></li>
+</ol>
+<p>Now, we cut the original array into small <em>liner</em> segments, let their<br>length be len0, len1, len2, …, lenk. We assume there are k segments.<br>to make all elements in each segments to be 0, we must take leni - 1<br>operations. for i from 0 to k, ∑(leni -1) = n - k, the total number of<br>operations is n - k, where k is the number of segments. To make n - k<br>minimum, we can find the biggest k. In other words, we must find the<br>biggest number of segments which satisfy above requirements.</p>
+<p>let sum(i, j) represents the sum of elements a[i..j], if i &gt; j, it<br>represents the sum of elements a[i..n-1, 0..j]</p>
+<p>let pre_sum(i) represents the sum of elements a[0..i].</p>
+<p>Now, we prove there is a one-to-one map from the number of the same<br>pre_sum(i) to the number of segments whose sum is zero.</p>
+<p>let the the number of the same pre_sum(i) be N.</p>
+<p>if N == 2:</p>
+<p>then if pre_sum(i) == pre_sum(j) → sum(i+1, j-1) == 0, so there are two<br>segments whose sum is zero: a[i+1..j-1] and a[j..n-1, 0..i]</p>
+<p>if N == 3:</p>
+<p>if pre_sum(i) == pre_sum(j) == pre_sum(k) and i &lt; j &lt; k, then:<br>sum(i+1, j-1) == sum(j+1, k-1) == 0. Besides, because sum(0,n-1) == 0,<br>so sum(k+1, n-1) + sum(0, i) == 0. So there are three segments whose<br>sum is zero: a[i+1..j-1], a[j+1..k-1], a[k+1..n-1, 0..i].</p>
+<p>We can prove it the say way if N ⩾ 3.</p>
+<p>So, we prove there is one-to-one map from the number of the same pre_sum(i)<br>to the number of segments whose sum is zero. In order to find the biggest<br>number of segments, we can find the biggest number of the same pre_sum(i).</p>
+<p>Problem solved. :joy: :joy:</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> n, a[<span class="number">100000</span>+<span class="number">10</span>], segNumMax;</div><div class="line"><span class="built_in">map</span>&lt;ll,<span class="keyword">int</span>&gt; preSum;</div><div class="line">  <span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[] )</span></div><div class="line">&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span>  ONLINE_JUDGE</span></div><div class="line">freopen(<span class="string">"c.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>     <span class="comment">/* -----  ONLINE_JUDGE  ----- */</span></span></div><div class="line">  </div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n)) &#123;</div><div class="line">    preSum.clear();</div><div class="line">    segNumMax = <span class="number">0</span>;</div><div class="line">    </div><div class="line">    ll sum = <span class="number">0</span>;</div><div class="line"></div><div class="line">    rep(i, <span class="number">0</span>, n) &#123;</div><div class="line">      <span class="built_in">scanf</span>(<span class="string">"%d"</span>, a + i);</div><div class="line">      sum += a[i];</div><div class="line">      preSum[sum]++;</div><div class="line">      segNumMax = max(preSum[sum], segNumMax);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">printf</span> ( <span class="string">"%d\n"</span>, n - segNumMax );</div><div class="line">  &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;				<span class="comment">/* ----------  end of function main  ---------- */</span></div></pre></td></tr></table></figure>
+<h3 id="日常锻炼"><a href="#日常锻炼" class="headerlink" title="日常锻炼"></a><a href="http://wap.thejoyrun.com/po_22498513_50440451.html" target="_blank" rel="external">日常锻炼</a></h3><p>事实上，跑之前我根本不知道能不能跑完，然而，最终，还是跑完了……很多事情就是这样吧。<br>:joy: :joy:</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/05/30/Codeforces-Round-354-Div-2-C-Vasya-and-String/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/30/Codeforces-Round-354-Div-2-C-Vasya-and-String/" itemprop="url">
+                  Codeforces Round #354 (Div. 2) C. Vasya and String
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-30T23:21:39+08:00">
+                2016-05-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>High school student Vasya got a string of length n as a birthday present. This string consists of letters ‘a’ and ‘b’ only. Vasya denotes beauty of the string as the maximum length of a substring (consecutive subsequence) consisting of equal letters.</p>
+<p>Vasya can change no more than k characters of the original string. What is the maximum beauty of the string he can achieve?</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The first line of the input contains two integers n and k (1 ≤ n ≤ 100 000, 0 ≤ k ≤ n) — the length of the string and the maximum number of characters to change.</p>
+<p>The second line contains the string, consisting of letters ‘a’ and ‘b’ only.</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>Print the only integer — the maximum beauty of the string Vasya can achieve by changing no more than k characters.</p>
+<p>题意很好理解，做法只是很暴力地扫描两遍，第一次只考虑把字母改变成<code>a</code>，第二次是<code>b</code>，<br>取最大值。在每一次扫描的时候，保持左端点不变，尽可能增加右端点，取出最大值，然后<br>递增左端点，然后再尽可能地增加右端点。如果右端点到达字符串的最右端，这一趟就结束<br>了。</p>
+<p>程序嘛，反正过了，也没再修改……:joy: :joy: 回头有时间再改改吧。。。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> str[<span class="number">100000</span>+<span class="number">10</span>];</div><div class="line"><span class="keyword">int</span> n, k;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">solve</span> <span class="params">(<span class="keyword">char</span> ch)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i, j, max_len = <span class="number">0</span>, k1 = k, tmp_len = <span class="number">0</span>;</div><div class="line">    i = j = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</div><div class="line">      <span class="keyword">while</span> (<span class="number">1</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (j &gt;= n) <span class="keyword">break</span>;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (str[j] != ch) &#123;</div><div class="line">          <span class="keyword">if</span> (k1 &gt; <span class="number">0</span>) k1--;</div><div class="line">          <span class="keyword">else</span> <span class="keyword">break</span>;</div><div class="line">        &#125; </div><div class="line"></div><div class="line">        tmp_len++;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (tmp_len &gt; max_len) &#123;</div><div class="line">          max_len = tmp_len;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        ++j;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="keyword">if</span> (str[i] != ch) &#123;</div><div class="line">        k1++;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      ++i;</div><div class="line">      tmp_len--;</div><div class="line"></div><div class="line">      <span class="keyword">if</span> (j &gt;= n) <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> max_len;</div><div class="line">&#125;</div><div class="line">  <span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[] )</span></div><div class="line">&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span>  ONLINE_JUDGE</span></div><div class="line">freopen(<span class="string">"b.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>     <span class="comment">/* -----  ONLINE_JUDGE  ----- */</span></span></div><div class="line">  </div><div class="line"></div><div class="line">  <span class="keyword">while</span> ( ~<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;k) ) &#123;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, str);</div><div class="line">    <span class="keyword">int</span> res1 = solve(<span class="string">'a'</span>);</div><div class="line">    <span class="keyword">int</span> res2 = solve(<span class="string">'b'</span>);</div><div class="line">    <span class="keyword">if</span> (res1 &gt; res2) &#123;</div><div class="line">      <span class="built_in">printf</span> ( <span class="string">"%d\n"</span>, res1 );</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="built_in">printf</span> ( <span class="string">"%d\n"</span>, res2 );</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;				<span class="comment">/* ----------  end of function main  ---------- */</span></div></pre></td></tr></table></figure>
+<h3 id="今天跑步5-19km"><a href="#今天跑步5-19km" class="headerlink" title="今天跑步5.19km"></a>今天跑步5.19km</h3><p><a href="http://wap.thejoyrun.com/po_22498513_50146660.html" target="_blank" rel="external">跑跑步也挺好的</a></p>
+<p>今天跑步换了一双鞋，跑到半路发现我的鞋磨脚，真是醉了……:smile: 最终还是跑完了，回<br>来一看脚掌侧面磨了一个泡。。。:joy: 蛮拼的……</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/05/29/2016年5月29日/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1290,261 +1572,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2015/04/16/Ruby-implementation-of-2048-game/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/04/16/Ruby-implementation-of-2048-game/" itemprop="url">
-                  Ruby implementation of 2048 game
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-16T15:36:09+08:00">
-                2015-04-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Ruby Implementation of 2048 game</p>
-<ul>
-<li>Played in terminal.</li>
-<li>Control with arrow keys or vim-keybindings.</li>
-</ul>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/ruby </span></div><div class="line"></div><div class="line"><span class="keyword">require</span> <span class="string">"io/console"</span></div><div class="line"></div><div class="line">mar = Array.new(<span class="number">16</span>, <span class="number">0</span>) <span class="comment"># sheet value array</span></div><div class="line">$score = <span class="number">0</span></div><div class="line">$target = <span class="number">2048</span></div><div class="line">$pieces = <span class="number">0</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">operate</span><span class="params">(mar, ran, gap)</span></span></div><div class="line">  mark = <span class="literal">false</span></div><div class="line">  ran.each &#123; <span class="params">|index|</span> </div><div class="line">    ar = index.step(index + <span class="number">3</span> * gap, gap).collect &#123; <span class="params">|ind|</span> ind&#125;</div><div class="line">    tm_ar = ar.collect&#123;<span class="params">|ie|</span> mar[ie]&#125;</div><div class="line">    pre_tm_ar = tm_ar.clone</div><div class="line">    tm_ar.delete_if&#123;<span class="params">|item|</span> item == <span class="number">0</span>&#125;</div><div class="line">    (<span class="number">0</span>..(tm_ar.size-<span class="number">1</span>)).each &#123;<span class="params">|ie|</span></div><div class="line">      <span class="keyword">if</span> tm_ar[ie] == tm_ar[ie+<span class="number">1</span>]</div><div class="line">        tm_ar[ie] *= <span class="number">2</span></div><div class="line">        $score += tm_ar[ie]</div><div class="line">        tm_ar[ie+<span class="number">1</span>] = <span class="number">0</span></div><div class="line">      <span class="keyword">end</span> </div><div class="line">    &#125;</div><div class="line">    tm_ar.delete_if&#123;<span class="params">|item|</span> item == <span class="number">0</span>&#125;</div><div class="line">    (<span class="number">4</span>-tm_ar.size).times &#123;</div><div class="line">      tm_ar &lt;&lt; <span class="number">0</span></div><div class="line">    &#125;</div><div class="line">    tm_ar.size.times &#123;<span class="params">|item|</span></div><div class="line">      mar[ar[item]] = tm_ar[item]</div><div class="line">    &#125;</div><div class="line">    mark = <span class="literal">true</span> <span class="keyword">if</span> tm_ar != pre_tm_ar</div><div class="line">  &#125;</div><div class="line">  mark</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">myloop</span><span class="params">(mar, a_pos, gap)</span></span> </div><div class="line">  a_pos.each&#123;<span class="params">|item|</span></div><div class="line">    <span class="number">3</span>.times &#123;<span class="params">|i|</span></div><div class="line">      <span class="keyword">if</span> mar[item+i*gap] == mar[item+i*gap+gap]</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">      <span class="keyword">end</span> </div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="literal">false</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">judge_lose_full</span><span class="params">(mar)</span></span> </div><div class="line">  ro = [<span class="number">0</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">12</span>]</div><div class="line">  col = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">  !myloop(mar, ro, <span class="number">1</span>) &amp;&amp; !myloop(mar, col, <span class="number">4</span>)</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">lose?</span><span class="params">(mar)</span></span> </div><div class="line">  cnt = mar.count(<span class="number">0</span>)</div><div class="line">  <span class="keyword">return</span> cnt == <span class="number">0</span> ? judge_lose_full(mar) : <span class="literal">false</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">win?</span><span class="params">(mar)</span></span> </div><div class="line">  max_value = mar.sort[-<span class="number">1</span>]</div><div class="line">  <span class="keyword">return</span> max_value == <span class="number">2048</span> ? <span class="literal">true</span> : <span class="literal">false</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">genera_num</span><span class="params">(mar)</span></span> </div><div class="line">  r_pos = Random.new <span class="comment"># get pos random seed</span></div><div class="line">  ran = [<span class="number">2</span>, <span class="number">4</span>] <span class="comment"># generate random new value</span></div><div class="line">  pos = r_pos.rand(<span class="number">16</span>)</div><div class="line">  <span class="keyword">while</span> mar[pos] != <span class="number">0</span> </div><div class="line">    r_pos = Random.new</div><div class="line">    pos = r_pos.rand(<span class="number">16</span>)</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  r_val = Random.new </div><div class="line">  val = r_val.rand(<span class="number">2</span>)</div><div class="line">  mar[pos] = ran[val]</div><div class="line"></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">move?</span><span class="params">(mar, ba_r)</span></span> </div><div class="line">  val = ba_r.collect&#123;<span class="params">|i|</span> mar[i]&#125;</div><div class="line">  val.count(<span class="number">0</span>) &gt; <span class="number">0</span> ? <span class="literal">true</span> : <span class="literal">false</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(mar, direc)</span></span></div><div class="line">  mark = <span class="literal">false</span>;</div><div class="line">  <span class="keyword">case</span> </div><div class="line">  <span class="keyword">when</span> direc == <span class="string">"j"</span> <span class="params">||</span> direc == <span class="string">"\e[B"</span></div><div class="line">    mark = (operate(mar, Array(<span class="number">12</span>..<span class="number">15</span>), -<span class="number">4</span>) <span class="params">||</span> move?(mar, Array(<span class="number">12</span>..<span class="number">15</span>))) <span class="comment">#j</span></div><div class="line">  <span class="keyword">when</span> direc == <span class="string">"k"</span> <span class="params">||</span> direc == <span class="string">"\e[A"</span></div><div class="line">    mark = (operate(mar, Array(<span class="number">0</span>..<span class="number">3</span>), <span class="number">4</span>) <span class="params">||</span> move?(mar, Array(<span class="number">0</span>..<span class="number">3</span>))) <span class="comment">#k</span></div><div class="line">  <span class="keyword">when</span> direc == <span class="string">"h"</span> <span class="params">||</span> direc == <span class="string">"\e[D"</span></div><div class="line">    mark = (operate(mar, [<span class="number">0</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">12</span>], <span class="number">1</span>) <span class="params">||</span> move?(mar, [<span class="number">0</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">12</span>])) <span class="comment">#h</span></div><div class="line">  <span class="keyword">when</span> direc == <span class="string">"l"</span> <span class="params">||</span> direc == <span class="string">"\e[C"</span></div><div class="line">    mark = (operate(mar, [<span class="number">3</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>], -<span class="number">1</span>) <span class="params">||</span> move?(mar, [<span class="number">3</span>, <span class="number">7</span> ,<span class="number">11</span>, <span class="number">15</span>])) <span class="comment">#l</span></div><div class="line">  <span class="keyword">end</span></div><div class="line">  <span class="keyword">if</span> mark </div><div class="line">    genera_num(mar)</div><div class="line">    $pieces += <span class="number">1</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment"># print sheet</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sheet</span><span class="params">(mar)</span></span> </div><div class="line">  printf(<span class="string">"%s\n"</span>, <span class="string">"I am a vimer. So you can use vim-keybindings -.-"</span>)</div><div class="line">  printf(<span class="string">"%s\n"</span>, <span class="string">"You can also use direction keys..."</span>)</div><div class="line">  puts <span class="string">"Besides, press 'q' or 'ESC' to quit."</span></div><div class="line">  printf(<span class="string">"\n\n    target = %-4d pieces = %-4d score = %-4d\n"</span>, $target, $pieces, $score)</div><div class="line">  printf(<span class="string">"\n%s%s\n"</span>, <span class="string">" "</span> * <span class="number">5</span>, <span class="string">"~"</span> * <span class="number">35</span>)</div><div class="line">  printf(<span class="string">"%s%s\n\n"</span>, <span class="string">" "</span> * <span class="number">5</span>, <span class="string">"~"</span> * <span class="number">35</span>)</div><div class="line"></div><div class="line"></div><div class="line">  printf(<span class="string">"%s%s%s\n%s"</span>, <span class="string">" "</span> * <span class="number">8</span> + <span class="string">"/"</span>, (<span class="string">"-"</span> * <span class="number">6</span> + <span class="string">"+"</span>) * <span class="number">3</span>,</div><div class="line">        <span class="string">"-"</span> * <span class="number">6</span> + <span class="string">"\\"</span>, <span class="string">" "</span> * <span class="number">8</span>)</div><div class="line">  <span class="number">16</span>.times &#123; <span class="params">|i|</span></div><div class="line">    <span class="keyword">if</span> mar[i] != <span class="number">0</span></div><div class="line">      printf(<span class="string">"|%5d "</span>, mar[i])</div><div class="line">    <span class="keyword">else</span> </div><div class="line">      printf(<span class="string">"|%5s "</span>, <span class="string">" "</span>)</div><div class="line">    <span class="keyword">end</span> </div><div class="line">    <span class="keyword">if</span> (i+<span class="number">1</span>) % <span class="number">4</span> == <span class="number">0</span> </div><div class="line">      printf(<span class="string">"|\n"</span>) </div><div class="line">      <span class="keyword">if</span> (i+<span class="number">1</span>) != <span class="number">16</span></div><div class="line">        printf(<span class="string">"%s%s%s\n%s"</span>, <span class="string">" "</span> * <span class="number">8</span> + <span class="string">"|"</span>, (<span class="string">"-"</span> * <span class="number">6</span> + <span class="string">"+"</span>) * <span class="number">3</span>,</div><div class="line">              <span class="string">"-"</span> * <span class="number">6</span> + <span class="string">"|"</span>, <span class="string">" "</span> * <span class="number">8</span>)</div><div class="line">      <span class="keyword">else</span> </div><div class="line">        printf(<span class="string">"%s%s%s\n%s"</span>, <span class="string">" "</span> * <span class="number">8</span> + <span class="string">"\\"</span>, (<span class="string">"-"</span> * <span class="number">6</span> + <span class="string">"+"</span>) * <span class="number">3</span>,</div><div class="line">              <span class="string">"-"</span> * <span class="number">6</span> + <span class="string">"/"</span>, <span class="string">" "</span> * <span class="number">8</span>)</div><div class="line">      <span class="keyword">end</span> </div><div class="line">    <span class="keyword">end</span> </div><div class="line">  &#125;</div><div class="line">  printf(<span class="string">"\n%s%s\n"</span>, <span class="string">" "</span> * <span class="number">5</span>, <span class="string">"~"</span> * <span class="number">35</span>)</div><div class="line">  printf(<span class="string">"%s%s\n\n"</span>, <span class="string">" "</span> * <span class="number">5</span>, <span class="string">"~"</span> * <span class="number">35</span>)</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_char</span> </span></div><div class="line">  STDIN.echo = <span class="literal">false</span> </div><div class="line">  STDIN.raw!</div><div class="line"></div><div class="line">  input = STDIN.getc.chr </div><div class="line">  <span class="keyword">if</span> input == <span class="string">"\e"</span> </div><div class="line">    input &lt;&lt; STDIN.read_nonblock(<span class="number">3</span>) <span class="keyword">rescue</span> <span class="literal">nil</span></div><div class="line">    input &lt;&lt; STDIN.read_nonblock(<span class="number">2</span>) <span class="keyword">rescue</span> <span class="literal">nil</span></div><div class="line">  <span class="keyword">end</span> </div><div class="line"><span class="keyword">ensure</span> </div><div class="line">  STDIN.echo = <span class="literal">true</span></div><div class="line">  STDIN.cooked!</div><div class="line">  <span class="keyword">return</span> input</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"></div><div class="line">genera_num(mar)</div><div class="line">$pieces += <span class="number">1</span></div><div class="line">system <span class="string">"clear"</span></div><div class="line"><span class="keyword">while</span> <span class="literal">true</span></div><div class="line">  sheet(mar)</div><div class="line">  direc = read_char</div><div class="line">  <span class="keyword">if</span> direc == <span class="string">"q"</span> <span class="params">||</span> direc == <span class="string">"\e"</span> <span class="params">||</span> direc == <span class="string">"\u0003"</span></div><div class="line">    <span class="keyword">break</span> </div><div class="line">  <span class="keyword">end</span></div><div class="line">  add(mar, direc)</div><div class="line"></div><div class="line">  system <span class="string">"clear"</span></div><div class="line">  sheet(mar)</div><div class="line"></div><div class="line">  <span class="keyword">if</span> win?(mar) </div><div class="line">    puts <span class="string">"Congratulations! You Win!"</span></div><div class="line">    <span class="keyword">break</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="keyword">if</span> lose?(mar) </div><div class="line">    puts <span class="string">"Sorry, You are a loser..."</span></div><div class="line">    <span class="keyword">break</span></div><div class="line">  <span class="keyword">end</span></div><div class="line">  system <span class="string">"clear"</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<p>This is what you will see:</p>
-<p><img src="http://wstaw.org/m/2017/04/11/2048.png" alt="screen"></p>
-<p>Source code on <a href="https://github.com/liuxueyang/Ruby_version_2048" target="_blank" rel="external">Github</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2015/04/15/rename-files-in-ruby/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/04/15/rename-files-in-ruby/" itemprop="url">
-                  rename files in ruby
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-15T15:34:11+08:00">
-                2015-04-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>我有下面的文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/home/aries/Music/LuoJi/罗辑思维第三季第7期：统一是怎样炼成的_鸿新网www.hhxin.com整理.mp3</div><div class="line">/home/aries/Music/LuoJi/罗辑思维第三季第4期：谁绑架了团结_鸿新网www.hhxin.com整理.mp3</div><div class="line">/home/aries/Music/LuoJi/罗辑思维第三季第2期：大清帝国的生死时速_鸿新网www.hhxin.com整理.mp3</div><div class="line">/home/aries/Music/LuoJi/罗辑思维第三季第6期：人类灭绝的一种可能_鸿新网www.hhxin.com整理.mp3</div><div class="line">/home/aries/Music/LuoJi/罗辑思维第三季第3期：坏国王的遗产_鸿新网www.hhxin.com整理.mp3</div><div class="line">/home/aries/Music/LuoJi/罗辑思维第三季第5期：秦始皇在隐瞒什么_鸿新网www.hhxin.com整理.mp3</div><div class="line">/home/aries/Music/LuoJi/罗辑思维第三季第1期：大门口的野蛮人_鸿新网www.hhxin.com整理.mp3</div></pre></td></tr></table></figure>
-<p>我想要重命名这些文件，使文件名更明了，更方便在我的MP3上查看，所以，我写了如下简单的ruby脚本：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/ruby </span></div><div class="line"></div><div class="line"><span class="keyword">require</span> <span class="string">"fileutils"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">ren</span><span class="params">(path)</span></span> </div><div class="line">  Dir.glob(<span class="string">"<span class="subst">#&#123;path&#125;</span>/*.mp3"</span>).each <span class="keyword">do</span> <span class="params">|name|</span> </div><div class="line">    process_file(name)</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_file</span><span class="params">(name)</span></span> </div><div class="line">  filename = File.basename(name)</div><div class="line">  filename =~ <span class="regexp">/(.*)(\d.*)_.*(\.mp3)/</span></div><div class="line">  FileUtils.mv(name, File.join(File.dirname(name), $2 + $3))</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">ren(<span class="string">"/home/aries/Music/LuoJi"</span>)</div></pre></td></tr></table></figure>
-<p>下面是重命名之后的结果：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/home/aries/Music/LuoJi/<span class="number">3</span>期：坏国王的遗产.mp3</div><div class="line">/home/aries/Music/LuoJi/<span class="number">4</span>期：谁绑架了团结.mp3</div><div class="line">/home/aries/Music/LuoJi/<span class="number">1</span>期：大门口的野蛮人.mp3</div><div class="line">/home/aries/Music/LuoJi/<span class="number">2</span>期：大清帝国的生死时速.mp3</div><div class="line">/home/aries/Music/LuoJi/<span class="number">7</span>期：统一是怎样炼成的.mp3</div><div class="line">/home/aries/Music/LuoJi/<span class="number">5</span>期：秦始皇在隐瞒什么.mp3</div><div class="line">/home/aries/Music/LuoJi/<span class="number">6</span>期：人类灭绝的一种可能.mp3</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1594,7 +1621,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">455</span>
+                <span class="site-state-item-count">457</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1607,7 +1634,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

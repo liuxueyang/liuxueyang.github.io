@@ -247,6 +247,279 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/07/02/Poj3061-Subsequence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/02/Poj3061-Subsequence/" itemprop="url">
+                  Poj3061 Subsequence
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-02T16:58:15+08:00">
+                2016-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p><a href="http://poj.org/problem?id=3061" target="_blank" rel="external">Subsequence</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>方法一：O(nlogn)</p>
+<pre><code>1. 计算前序和
+2. 定起点，二分找不小于S的最小的连续区间和
+</code></pre><p>方法二：O(n)</p>
+<pre><code>1. 定起点，线性找不小于S的最小的连续区间和，得到一个终点
+2. 把起点向右移动一个单位，把终点在原来的基础上递增，线性找不小于S的最小的连
+   续区间和。如此反复。
+</code></pre><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>方法一：</p>
+<h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> N, S;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a, presum;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="built_in">cin</span> &gt;&gt; N &gt;&gt; S;</div><div class="line">  presum.clear();</div><div class="line">  a.clear();</div><div class="line"></div><div class="line">  a.reserve(N);</div><div class="line">  presum.reserve(N + <span class="number">1</span>);</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i) &#123;</div><div class="line">    <span class="keyword">int</span> tmp;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; tmp;</div><div class="line">    a.push_back(tmp);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// presum[i] means sum of [0, i) elements</span></div><div class="line">  <span class="comment">// j &gt; i, presum[j] - presum[i] means sum of [i, j) elements</span></div><div class="line">  presum.push_back(<span class="number">0</span>);</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i) &#123;</div><div class="line">    presum.push_back(presum[i] + a[i]);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (presum[N] &lt; S) &#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="number">0</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">int</span> ans = N;</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; presum[N] - presum[i] &gt;= S; ++i) &#123;</div><div class="line">    <span class="keyword">int</span> len = distance(presum.begin() + i,</div><div class="line">                       lower_bound(presum.begin() + i,</div><div class="line">                                   <span class="comment">// here can ALSO be presum + N + 1</span></div><div class="line">                                   presum.end(), presum[i] + S));</div><div class="line">    ans = min(ans, len);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"3061.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"></div><div class="line">  <span class="keyword">int</span> n;</div><div class="line"></div><div class="line">  <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line"></div><div class="line">  <span class="keyword">while</span> (n--) &#123;</div><div class="line">    solve();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>方法二：</p>
+<h4 id="C-1"><a href="#C-1" class="headerlink" title="C"></a>C</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">int</span> N, S;</div><div class="line"><span class="keyword">int</span> a[<span class="number">100</span> * <span class="number">1000</span> + <span class="number">10</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;N, &amp;S);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i) &#123;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, a + i);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>, sum = <span class="number">0</span>, ans = N + <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span> (<span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">while</span> (sum &lt; S &amp;&amp; j &lt; N) &#123;</div><div class="line">      sum += a[j];</div><div class="line">      ++j;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (sum &lt; S) &#123;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    ans = (ans &lt; j - i) ? ans : j - i;</div><div class="line">    sum -= a[i];</div><div class="line">    ++i;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (ans == N + <span class="number">1</span>) &#123;</div><div class="line">    ans = <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</div><div class="line"></div><div class="line">  <span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> n;</div><div class="line">  <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">  <span class="keyword">while</span> (n--) &#123;</div><div class="line">    solve();</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Common-Lisp"><a href="#Common-Lisp" class="headerlink" title="Common Lisp"></a>Common Lisp</h4><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">(<span class="name">defvar</span> *N*)</div><div class="line">(<span class="name">defvar</span> *S*)</div><div class="line">(<span class="name">defvar</span> *a*)</div><div class="line">(<span class="name">defvar</span> n)</div><div class="line"></div><div class="line">(<span class="name">defun</span> print-array ()</div><div class="line">  (<span class="name">loop</span> for i from <span class="number">0</span> to (<span class="number">1</span>- (<span class="name">length</span> *a*)) do</div><div class="line">    (<span class="name">format</span> <span class="literal">t</span> <span class="string">"~d "</span> (<span class="name">elt</span> *a* i)))</div><div class="line">  (<span class="name">format</span> <span class="literal">t</span> <span class="string">"~%"</span>))</div><div class="line"></div><div class="line">(<span class="name">defun</span> solve ()</div><div class="line">  (<span class="name">let</span> ((<span class="name">sum</span> <span class="number">0</span>)</div><div class="line">        (<span class="name">i</span> <span class="number">0</span>)</div><div class="line">        (<span class="name">j</span> <span class="number">0</span>)</div><div class="line">        (<span class="name">ans</span> (<span class="name">+</span> <span class="number">1</span> *N*)))</div><div class="line">    (<span class="name">block</span> while</div><div class="line">      (<span class="name">loop</span></div><div class="line">        (<span class="name">do</span> ()</div><div class="line">            ((<span class="name">or</span> (<span class="name">&gt;=</span> sum *S*)</div><div class="line">                 (<span class="name">&gt;=</span> j *N*)))</div><div class="line">          (<span class="name">incf</span> sum (<span class="name">aref</span> *a* j))</div><div class="line">          (<span class="name">incf</span> j))</div><div class="line">        (<span class="name">if</span> (<span class="name">&lt;</span> sum *S*)</div><div class="line">            (<span class="name">return-from</span> while))</div><div class="line">        (<span class="name">setf</span> ans (<span class="name">min</span> ans (<span class="name">-</span> j i)))</div><div class="line">        (<span class="name">decf</span> sum (<span class="name">aref</span> *a* i))</div><div class="line">        (<span class="name">incf</span> i)))</div><div class="line">    (<span class="name">if</span> (<span class="name">equal</span> ans (<span class="number">1</span>+ n))</div><div class="line">        (<span class="name">setf</span> ans <span class="number">0</span>))</div><div class="line">    (<span class="name">format</span> <span class="literal">t</span> <span class="string">"~d~%"</span> ans)))</div><div class="line"></div><div class="line">(<span class="name">with-open-file</span> (<span class="name">*standard-input*</span></div><div class="line">                 <span class="string">"3061.txt"</span></div><div class="line">                 <span class="symbol">:if-does-not-exist</span> <span class="literal">nil</span>)</div><div class="line">  (<span class="name">setf</span> n (<span class="name">read</span>))</div><div class="line">  (<span class="name">dotimes</span> (<span class="name">i</span> n)</div><div class="line">    (<span class="name">setf</span> *N* (<span class="name">read</span>))</div><div class="line">    (<span class="name">setf</span> *S* (<span class="name">read</span>))</div><div class="line">    (<span class="name">setf</span> *a* (<span class="name">make-array</span> *N*</div><div class="line">                                  <span class="symbol">:element-type</span> 'integer</div><div class="line">                                  <span class="symbol">:fill-pointer</span> <span class="number">0</span></div><div class="line">                                  <span class="symbol">:adjustable</span> <span class="literal">t</span>))</div><div class="line">    (<span class="name">dotimes</span> (<span class="name">j</span> *N*)</div><div class="line">      (<span class="name">vector-push-extend</span> (<span class="name">read</span>) *a*))</div><div class="line">    (<span class="name">solve</span>)))</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/07/01/Educational-Codeforces-Round-10-D-Nested-Segments-c-perl-and-common-lisp-implementation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/01/Educational-Codeforces-Round-10-D-Nested-Segments-c-perl-and-common-lisp-implementation/" itemprop="url">
+                  Educational Codeforces Round 10. D. Nested Segments: c++, perl and common lisp implementation, Segment Tree
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-01T07:53:06+08:00">
+                2016-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://codeforces.com/contest/652/problem/D" target="_blank" rel="external">Problem Link</a></p>
+<p>Fenwick Tree，它的本质就是把一个序列的和划分成一个个子序列的和。比如一个序列的长<br>度是10，那么10的二进制是1010，也就是2^1 + 2^3，所以结果就是树里面2和8两个节点的<br>和。在树里面，节点（n）表示数列里从1到n的元素的和，那么：</p>
+<ul>
+<li>(1) = (1)</li>
+<li>(2) = (2)</li>
+<li>(3) = (1) + (2)</li>
+<li>(4) = (4)</li>
+<li>(5) = (1) + (4)</li>
+<li>(6) = (2) + (4)</li>
+</ul>
+<ol>
+<li>按照右端点排序，然后把它离散化；</li>
+<li>按照左端点倒序排列，从大到小循环，计算右端点在Fenwick Tree里面的presum（也就<br>是之前插入的比当前右端点小的数量），这个presum就是当前的segment包含的segment<br>的个数；</li>
+<li>把当前右端点插入Fewnwick Tree；</li>
+</ol>
+<p>题目要求计算每个端点包含的segment的数量，因为后面要用到排序和离散化，所以可以在<br>结构体或者类中增加一个域表示它原来在数组中的初始位置。每计算一个presum就可以根据<br>这个域放到结果数组里面的对应位置。</p>
+<h3 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> segment &#123;</div><div class="line">  <span class="keyword">int</span> x, y, position;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2e5</span> + <span class="number">1</span>;</div><div class="line"><span class="keyword">int</span> n, fenwick[N];</div><div class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans[N];</div><div class="line"></div><div class="line">segment S[N];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmpx_r</span><span class="params">(segment a, segment b)</span> </span>&#123; <span class="keyword">return</span> a.x &gt; b.x; &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmpy</span><span class="params">(segment a, segment b)</span> </span>&#123; <span class="keyword">return</span> a.y &lt; b.y; &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">return</span> x &amp; -x; &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">presum</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</div><div class="line">  <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span>;</div><div class="line"></div><div class="line">  <span class="keyword">while</span> (index &gt; <span class="number">0</span>) &#123;</div><div class="line">    ans += fenwick[index];</div><div class="line">    index -= lowbit(index);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> ans;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">updateFenwick</span><span class="params">(<span class="keyword">int</span> index, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">  <span class="keyword">while</span> (index &lt;= n) &#123;</div><div class="line">    fenwick[index]++;</div><div class="line">    index += lowbit(index);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">  freopen(<span class="string">"in.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"></div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n)) &#123;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line"></div><div class="line">    <span class="built_in">memset</span>(fenwick, <span class="number">0</span>, <span class="keyword">sizeof</span>(fenwick));</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">      <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;S[i].x, &amp;S[i].y);</div><div class="line">      S[i].position = i;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// compress y</span></div><div class="line">    sort(S + <span class="number">1</span>, S + n + <span class="number">1</span>, cmpy);</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">      S[i].y = i;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// sort by x reversely</span></div><div class="line">    sort(S + <span class="number">1</span>, S + n + <span class="number">1</span>, cmpx_r);</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">      ans[S[i].position] = presum(S[i].y);</div><div class="line">      updateFenwick(S[i].y, n);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">      <span class="built_in">cout</span> &lt;&lt; ans[i] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Perl"><a href="#Perl" class="headerlink" title="Perl"></a>Perl</h3><p>因为IO的问题，这道题用Perl会在第15或者16个test case里面会超时，我看上面用python<br>的也都超时了……</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">use</span> strict;</div><div class="line"><span class="keyword">use</span> <span class="number">5.014</span>;</div><div class="line"><span class="keyword">use</span> utf8;</div><div class="line"></div><div class="line"><span class="keyword">my</span> $n;</div><div class="line"><span class="keyword">chomp</span>($n = &lt;&gt;);</div><div class="line"><span class="keyword">my</span> @s;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="number">0</span>..$n-<span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">my</span> $segment;</div><div class="line">    <span class="keyword">chomp</span>($segment = &lt;&gt;);</div><div class="line">    <span class="keyword">my</span> ($l, $r) = <span class="keyword">split</span>(<span class="string">' '</span>, $segment);</div><div class="line">    <span class="keyword">push</span> @s, &#123;</div><div class="line">        <span class="string">left =&gt;</span> $l,</div><div class="line">        <span class="string">right =&gt;</span> $r,</div><div class="line">        <span class="string">position =&gt;</span> $_,</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># compress right</span></div><div class="line">@s = <span class="keyword">sort</span> &#123; $a-&gt;&#123;right&#125; &lt;=&gt; $b-&gt;&#123;right&#125; &#125; @s;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="number">0</span>..$#s) &#123;</div><div class="line">    $s[$_]-&gt;&#123;right&#125; = $_ + <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># sort by left</span></div><div class="line">@s = <span class="keyword">sort</span> &#123; $b-&gt;&#123;left&#125; &lt;=&gt; $a-&gt;&#123;left&#125; &#125; @s;</div><div class="line"></div><div class="line"><span class="keyword">my</span> @ans;</div><div class="line"><span class="keyword">my</span> @fenwick = ();</div><div class="line"></div><div class="line"><span class="keyword">for</span>(@s) &#123;</div><div class="line">    $ans[$_-&gt;&#123;position&#125;] = presum($_-&gt;&#123;right&#125;);</div><div class="line">    updateFenwick($_-&gt;&#123;right&#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(@ans) &#123; <span class="keyword">say</span> $_ &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">presum</span> </span>&#123;</div><div class="line">    <span class="keyword">my</span> $index = <span class="keyword">shift</span>;</div><div class="line">    <span class="keyword">my</span> $ans = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> ($index &gt; <span class="number">0</span>) &#123;</div><div class="line">        $ans += $fenwick[$index];</div><div class="line">        $index -= lowbit($index);</div><div class="line">    &#125;</div><div class="line">    $ans;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">updateFenwick</span> </span>&#123;</div><div class="line">    <span class="keyword">my</span> $index = <span class="keyword">shift</span>;</div><div class="line">    <span class="keyword">while</span> ($index &lt;= $n) &#123;</div><div class="line">        $fenwick[$index]++;</div><div class="line">        $index += lowbit($index);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">sub</span> <span class="title">lowbit</span> </span>&#123; $_[<span class="number">0</span>] &amp; -$_[<span class="number">0</span>] &#125;</div></pre></td></tr></table></figure>
+<h3 id="Common-Lisp"><a href="#Common-Lisp" class="headerlink" title="Common Lisp"></a>Common Lisp</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">;; Finished at 2016/07/07 7:51:23 AM</div><div class="line"></div><div class="line">(defvar *n*)</div><div class="line">(defparameter *maxn* 20)</div><div class="line"></div><div class="line">(defclass node ()</div><div class="line">  ((left :accessor left</div><div class="line">         :initarg :left)</div><div class="line">   (right :accessor right</div><div class="line">          :initarg :right)</div><div class="line">   (ori-position :accessor ori-position</div><div class="line">                 :initarg :ori-position)))</div><div class="line"></div><div class="line">(defparameter *s* (make-array *maxn*</div><div class="line">                              :element-type &apos;node</div><div class="line">                              :fill-pointer 0</div><div class="line">                              :adjustable t))</div><div class="line">(defparameter *fenwick* (make-array *maxn*</div><div class="line">                                    :element-type &apos;integer</div><div class="line">                                    :fill-pointer 0</div><div class="line">                                    :adjustable t))</div><div class="line">(defparameter *ans* (make-array *maxn*</div><div class="line">                                    :element-type &apos;integer</div><div class="line">                                    :fill-pointer 0</div><div class="line">                                    :adjustable t))</div><div class="line"></div><div class="line">(defun print-array ()</div><div class="line">  (loop for i from 0 to (1- *n*) do</div><div class="line">           (format t &quot;i = ~d, ~d ~d~%&quot;</div><div class="line">                   i</div><div class="line">                   (left (aref *s* i))</div><div class="line">                   (right (aref *s* i)))))</div><div class="line"></div><div class="line">(defun lowbit (x)</div><div class="line">  (boole boole-and x (- x)))</div><div class="line"></div><div class="line">(defun presum (index)</div><div class="line">  (let ((ans 0))</div><div class="line">    (do ((i index</div><div class="line">            (- i (lowbit i))))</div><div class="line">        ((&lt;= i 0) ans)</div><div class="line">      (incf ans (elt *fenwick* (1- i))))))</div><div class="line"></div><div class="line">(defun update-fenwick (index)</div><div class="line">  (do ((i index (+ i (lowbit i))))</div><div class="line">      ((&gt; i *n*))</div><div class="line">    (incf (elt *fenwick* (1- i)))))</div><div class="line"></div><div class="line">(with-open-file</div><div class="line">    (*standard-input*</div><div class="line">     &quot;in.txt&quot;</div><div class="line">     :if-does-not-exist nil)</div><div class="line">  (setq *n* (read))</div><div class="line">  (loop for i from 0 to (1- *n*) do</div><div class="line">    (vector-push-extend</div><div class="line">     (make-instance &apos;node</div><div class="line">                    :left (read)</div><div class="line">                    :right (read)</div><div class="line">                    :ori-position i)</div><div class="line">     *s*)</div><div class="line">    (vector-push-extend 0 *fenwick*)</div><div class="line">    (vector-push-extend 0 *ans*)))</div><div class="line"></div><div class="line">(sort *s* #&apos;&lt; :key #&apos;right)</div><div class="line"></div><div class="line">;; compress right</div><div class="line">(loop for i from 0 to (1- *n*) do</div><div class="line">  (setf (right (elt *s* i))</div><div class="line">        (1+ i)))</div><div class="line"></div><div class="line">;; sort by left reverse</div><div class="line">(sort *s* #&apos;&gt; :key #&apos;left)</div><div class="line">(loop for i from 0 to (1- *n*) do</div><div class="line">  (setf (elt *ans* (ori-position (elt *s* i)))</div><div class="line">        (presum (right (elt *s* i))))</div><div class="line">  (update-fenwick (right (elt *s* i))))</div><div class="line"></div><div class="line">(defun print-ans ()</div><div class="line">  (loop for i from 0 to (1- *n*) do</div><div class="line">    (format t &quot;~d~%&quot; (elt *ans* i))))</div><div class="line"></div><div class="line">(print-ans)</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/06/30/Binary-Search-Tree-Perl-and-Common-Lisp-implementation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1347,288 +1620,6 @@ we can iterate _q_ in prime numbers below 50.
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/05/31/Codeforces-Round-353-Div-2-C-Money-Transfers/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/31/Codeforces-Round-353-Div-2-C-Money-Transfers/" itemprop="url">
-                  Codeforces Round #353 (Div. 2) C. Money Transfers
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-31T13:57:13+08:00">
-                2016-05-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>There are n banks in the city where Vasya lives, they are located in a circle, such that any two banks are neighbouring if their indices differ by no more than 1. Also, bank 1 and bank n are neighbours if n &gt; 1. No bank is a neighbour of itself.</p>
-<p>Vasya has an account in each bank. Its balance may be negative, meaning Vasya owes some money to this bank.</p>
-<p>There is only one type of operations available: transfer some amount of money from any bank to account in any neighbouring bank. There are no restrictions on the size of the sum being transferred or balance requirements to perform this operation.</p>
-<p>Vasya doesn’t like to deal with large numbers, so he asks you to determine the minimum number of operations required to change the balance of each bank account to zero. It’s guaranteed, that this is possible to achieve, that is, the total balance of Vasya in all banks is equal to zero.</p>
-<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The first line of the input contains a single integer n (1 ≤ n ≤ 100 000) — the number of banks.</p>
-<p>The second line contains n integers ai ( - 109 ≤ ai ≤ 109), the i-th of them is equal to the initial balance of the account in the i-th bank. It’s guaranteed that the sum of all ai is equal to 0.</p>
-<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>Print the minimum number of operations required to change balance in each bank<br>to zero.</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Let the array be: a[n], n is the lengh of the array.</p>
-<p>cut the original circle array into linear segments in the following rule:</p>
-<pre><code>each segment can contain only a single element `0`, or its first and last
-elements are non-zero number. Note a segment can contain suffix of original
-array appended by prefix of the original array.
-</code></pre><p>For example:</p>
-<p>Original array is: <code>0 1 0 0 0 -1 0</code>, there are two ways to cut it:</p>
-<ol>
-<li><code>0</code>, <code>1 0 0 0 -1</code>, <code>0</code></li>
-<li><code>0</code>, <code>0</code>, <code>0</code>, <code>-1 0 0 1</code></li>
-</ol>
-<p>Now, we cut the original array into small <em>liner</em> segments, let their<br>length be len0, len1, len2, …, lenk. We assume there are k segments.<br>to make all elements in each segments to be 0, we must take leni - 1<br>operations. for i from 0 to k, ∑(leni -1) = n - k, the total number of<br>operations is n - k, where k is the number of segments. To make n - k<br>minimum, we can find the biggest k. In other words, we must find the<br>biggest number of segments which satisfy above requirements.</p>
-<p>let sum(i, j) represents the sum of elements a[i..j], if i &gt; j, it<br>represents the sum of elements a[i..n-1, 0..j]</p>
-<p>let pre_sum(i) represents the sum of elements a[0..i].</p>
-<p>Now, we prove there is a one-to-one map from the number of the same<br>pre_sum(i) to the number of segments whose sum is zero.</p>
-<p>let the the number of the same pre_sum(i) be N.</p>
-<p>if N == 2:</p>
-<p>then if pre_sum(i) == pre_sum(j) → sum(i+1, j-1) == 0, so there are two<br>segments whose sum is zero: a[i+1..j-1] and a[j..n-1, 0..i]</p>
-<p>if N == 3:</p>
-<p>if pre_sum(i) == pre_sum(j) == pre_sum(k) and i &lt; j &lt; k, then:<br>sum(i+1, j-1) == sum(j+1, k-1) == 0. Besides, because sum(0,n-1) == 0,<br>so sum(k+1, n-1) + sum(0, i) == 0. So there are three segments whose<br>sum is zero: a[i+1..j-1], a[j+1..k-1], a[k+1..n-1, 0..i].</p>
-<p>We can prove it the say way if N ⩾ 3.</p>
-<p>So, we prove there is one-to-one map from the number of the same pre_sum(i)<br>to the number of segments whose sum is zero. In order to find the biggest<br>number of segments, we can find the biggest number of the same pre_sum(i).</p>
-<p>Problem solved. :joy: :joy:</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> n, a[<span class="number">100000</span>+<span class="number">10</span>], segNumMax;</div><div class="line"><span class="built_in">map</span>&lt;ll,<span class="keyword">int</span>&gt; preSum;</div><div class="line">  <span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[] )</span></div><div class="line">&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span>  ONLINE_JUDGE</span></div><div class="line">freopen(<span class="string">"c.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>     <span class="comment">/* -----  ONLINE_JUDGE  ----- */</span></span></div><div class="line">  </div><div class="line">  <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n)) &#123;</div><div class="line">    preSum.clear();</div><div class="line">    segNumMax = <span class="number">0</span>;</div><div class="line">    </div><div class="line">    ll sum = <span class="number">0</span>;</div><div class="line"></div><div class="line">    rep(i, <span class="number">0</span>, n) &#123;</div><div class="line">      <span class="built_in">scanf</span>(<span class="string">"%d"</span>, a + i);</div><div class="line">      sum += a[i];</div><div class="line">      preSum[sum]++;</div><div class="line">      segNumMax = max(preSum[sum], segNumMax);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">printf</span> ( <span class="string">"%d\n"</span>, n - segNumMax );</div><div class="line">  &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;				<span class="comment">/* ----------  end of function main  ---------- */</span></div></pre></td></tr></table></figure>
-<h3 id="日常锻炼"><a href="#日常锻炼" class="headerlink" title="日常锻炼"></a><a href="http://wap.thejoyrun.com/po_22498513_50440451.html" target="_blank" rel="external">日常锻炼</a></h3><p>事实上，跑之前我根本不知道能不能跑完，然而，最终，还是跑完了……很多事情就是这样吧。<br>:joy: :joy:</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2016/05/30/Codeforces-Round-354-Div-2-C-Vasya-and-String/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/30/Codeforces-Round-354-Div-2-C-Vasya-and-String/" itemprop="url">
-                  Codeforces Round #354 (Div. 2) C. Vasya and String
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-30T23:21:39+08:00">
-                2016-05-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>High school student Vasya got a string of length n as a birthday present. This string consists of letters ‘a’ and ‘b’ only. Vasya denotes beauty of the string as the maximum length of a substring (consecutive subsequence) consisting of equal letters.</p>
-<p>Vasya can change no more than k characters of the original string. What is the maximum beauty of the string he can achieve?</p>
-<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The first line of the input contains two integers n and k (1 ≤ n ≤ 100 000, 0 ≤ k ≤ n) — the length of the string and the maximum number of characters to change.</p>
-<p>The second line contains the string, consisting of letters ‘a’ and ‘b’ only.</p>
-<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>Print the only integer — the maximum beauty of the string Vasya can achieve by changing no more than k characters.</p>
-<p>题意很好理解，做法只是很暴力地扫描两遍，第一次只考虑把字母改变成<code>a</code>，第二次是<code>b</code>，<br>取最大值。在每一次扫描的时候，保持左端点不变，尽可能增加右端点，取出最大值，然后<br>递增左端点，然后再尽可能地增加右端点。如果右端点到达字符串的最右端，这一趟就结束<br>了。</p>
-<p>程序嘛，反正过了，也没再修改……:joy: :joy: 回头有时间再改改吧。。。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> str[<span class="number">100000</span>+<span class="number">10</span>];</div><div class="line"><span class="keyword">int</span> n, k;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">solve</span> <span class="params">(<span class="keyword">char</span> ch)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i, j, max_len = <span class="number">0</span>, k1 = k, tmp_len = <span class="number">0</span>;</div><div class="line">    i = j = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</div><div class="line">      <span class="keyword">while</span> (<span class="number">1</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (j &gt;= n) <span class="keyword">break</span>;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (str[j] != ch) &#123;</div><div class="line">          <span class="keyword">if</span> (k1 &gt; <span class="number">0</span>) k1--;</div><div class="line">          <span class="keyword">else</span> <span class="keyword">break</span>;</div><div class="line">        &#125; </div><div class="line"></div><div class="line">        tmp_len++;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (tmp_len &gt; max_len) &#123;</div><div class="line">          max_len = tmp_len;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        ++j;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="keyword">if</span> (str[i] != ch) &#123;</div><div class="line">        k1++;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      ++i;</div><div class="line">      tmp_len--;</div><div class="line"></div><div class="line">      <span class="keyword">if</span> (j &gt;= n) <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> max_len;</div><div class="line">&#125;</div><div class="line">  <span class="function"><span class="keyword">int</span></span></div><div class="line"><span class="title">main</span> <span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[] )</span></div><div class="line">&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span>  ONLINE_JUDGE</span></div><div class="line">freopen(<span class="string">"b.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>     <span class="comment">/* -----  ONLINE_JUDGE  ----- */</span></span></div><div class="line">  </div><div class="line"></div><div class="line">  <span class="keyword">while</span> ( ~<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;k) ) &#123;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, str);</div><div class="line">    <span class="keyword">int</span> res1 = solve(<span class="string">'a'</span>);</div><div class="line">    <span class="keyword">int</span> res2 = solve(<span class="string">'b'</span>);</div><div class="line">    <span class="keyword">if</span> (res1 &gt; res2) &#123;</div><div class="line">      <span class="built_in">printf</span> ( <span class="string">"%d\n"</span>, res1 );</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="built_in">printf</span> ( <span class="string">"%d\n"</span>, res2 );</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;				<span class="comment">/* ----------  end of function main  ---------- */</span></div></pre></td></tr></table></figure>
-<h3 id="今天跑步5-19km"><a href="#今天跑步5-19km" class="headerlink" title="今天跑步5.19km"></a>今天跑步5.19km</h3><p><a href="http://wap.thejoyrun.com/po_22498513_50146660.html" target="_blank" rel="external">跑跑步也挺好的</a></p>
-<p>今天跑步换了一双鞋，跑到半路发现我的鞋磨脚，真是醉了……:smile: 最终还是跑完了，回<br>来一看脚掌侧面磨了一个泡。。。:joy: 蛮拼的……</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1678,7 +1669,7 @@ array appended by prefix of the original array.
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">455</span>
+                <span class="site-state-item-count">457</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1691,7 +1682,7 @@ array appended by prefix of the original array.
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

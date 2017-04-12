@@ -247,6 +247,258 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/10/04/将内存ffff-0-ffff-b中的数据拷贝到0-200-0-20b中/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/10/04/将内存ffff-0-ffff-b中的数据拷贝到0-200-0-20b中/" itemprop="url">
+                  将内存ffff:0~ffff:b中的数据拷贝到0:200~0:20b中
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-10-04T14:12:00+08:00">
+                2013-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我是按照字，也就是2个字节拷贝的。</p>
+<p>这样就可以让循环减半==</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">assume cs:sad</div><div class="line">sad segment</div><div class="line">start:</div><div class="line">    mov ax, 0ffffh</div><div class="line">    mov ds, ax</div><div class="line">    mov bx, 0h</div><div class="line">    mov ax, 20h</div><div class="line">    mov es, ax</div><div class="line">    mov cx, 7h</div><div class="line">s:</div><div class="line">    mov ax, ds:[bx]</div><div class="line">    mov es:[bx], ax</div><div class="line">    add bx, 2</div><div class="line">    loop s</div><div class="line"> </div><div class="line">    mov ax, 4c00h</div><div class="line">    int 21h</div><div class="line">sad ends</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>刚听到句歌词：</p>
+<p>最初的天堂，最终的荒唐。</p>
+<p>好熟悉，以前猫姐QQ空间的一句话。哈哈，2年多了，都变了多少啊。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/10/04/计算ffff-0-ffff-b数据的和，结果存在dx中/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/10/04/计算ffff-0-ffff-b数据的和，结果存在dx中/" itemprop="url">
+                  计算ffff:0~ffff:b数据的和，结果存在dx中
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-10-04T12:28:00+08:00">
+                2013-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">assume cs:sad</div><div class="line">sad segment</div><div class="line">start:</div><div class="line">    mov ax, 0ffffh</div><div class="line">    mov ds, ax</div><div class="line">    mov dx, 0</div><div class="line">    ; add ds:0bh~ds:1h</div><div class="line">    mov cx, 0bh</div><div class="line">s:</div><div class="line">    mov ah, 0</div><div class="line">    mov bx, cx</div><div class="line">    mov al, ds:[bx]</div><div class="line">    add dx, ax</div><div class="line">    loop s</div><div class="line"></div><div class="line">    ; add ds:0h</div><div class="line">    mov bh, 0</div><div class="line">    mov bl, ds:[0]</div><div class="line">    add dx, bx</div><div class="line"></div><div class="line">    mov ax, 4c00h</div><div class="line">    int 21h</div><div class="line">sad ends</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>自己写的==</p>
+<p>下面是看了书上的之后，写的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">assume cs:sad</div><div class="line">sad segment</div><div class="line">start:</div><div class="line">    mov ax, 0ffffh</div><div class="line">    mov ds, ax</div><div class="line">    mov dx, 0</div><div class="line">    mov bx, 0</div><div class="line">    ; c = b + 1</div><div class="line">    mov cx, 0ch</div><div class="line">s:</div><div class="line">    mov ah, 0</div><div class="line">    mov al, [bx]</div><div class="line">    inc bx</div><div class="line">    add dx, ax</div><div class="line">    loop s</div><div class="line"></div><div class="line">    mov ax, 4c00h</div><div class="line">    int 21h</div><div class="line"></div><div class="line">sad ends</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>主要是加上了inc bx的用法==</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/10/04/debug不过的程序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1267,259 +1519,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/09/24/大三就这么欢乐地开始了/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/09/24/大三就这么欢乐地开始了/" itemprop="url">
-                  大三就这么欢乐地开始了
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-09-24T13:16:00+08:00">
-                2013-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>　　前天晚上，补考成绩出来。数字逻辑补考挂了。果然。胸中即使有千万只cnm在奔腾也于事无补了。那天晚上在教务系统上看了成绩知道没过之后，跟舍友骂了几句无比kd的老师，发了几句牢骚，然后当做没事儿似的，继续去做家教了……</p>
-<p>　　昨天，问了一起补考的两个同学，果然，也都没过。大家异口同声的骂了一句**就是个xx，然后早上去院楼找负责选课的老师选上重修的课。答案是，老师不在，下午再来。天空还下着小雨。下午，又跑了一趟，结果发现，别的班的数字逻辑只有3个学分，我们原来的有4个，这样一来，核心课程就少了一个学分，所以，我必须还要再选一门，所以我只能再选一门专业任选课，3个学分的数值分析，为什么我们的数字逻辑是4个学分呢？因为我们的课程旁边写着H，我一直以为代表英语教学，结果老师说，那个代表High，高级，所以呢，院里给你们配的都是最好的老师，嗯，我们点了点头，带着某种微笑。当时就在想，为什么我们班里没有一个人认为这货好？其实还算幸运，有个班的数字逻辑课和我原来的课不冲突，可以选，否则我就只能大四上学期再修这个了……想想都觉得可怕。所以说，我就多了两门课。这样的话，加一块也就24个学分。差一个学分满。</p>
-<p>　　所以说，课表一下子就充实了。大三就这么欢乐地开始了。</p>
-<p>　　跟同学说，这学期真他妈的充实=_=</p>
-<p>　　昨天晚上还有个软件设计基础实验课。要求是学习MFC，然后自己写个小软件。属于老师一点也不教，自己看然后交实验报告的那种课。以前很讨厌MFC这些东西，现在觉得其实貌似也不错，不如认真学一下这货，闲着也是闲着，学着 写个项目神马的。从现在开始，好好学一下MFC吧。又想起一句话，当你排斥一个东西的时候，你就失去了向它学习的机会。</p>
-<p>　　最近读三国演义，发现白话文很有意思，读得津津有味啊，哈哈。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/09/19/中秋/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/09/19/中秋/" itemprop="url">
-                  中秋
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-09-19T00:35:00+08:00">
-                2013-09-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>开始写这篇随笔的时候，中秋刚刚来临1分钟。</p>
-<p>　　前几天看到开复的了癌症，当时就在感慨，生命多么脆弱而宝贵啊，不管别的东西怎么样，不过是身外之物，身体和健康才是最重要的啊。记得开复诊断结果出来后，自己在微博上发了一句话：原来，在癌症面前，人人平等。是啊，在命运面前，所有人都是平等的，一样渺小与无助。然后过了几天又忘了这事儿了。刚才无意翻报纸，又看到一条新闻，开复在台湾接受化疗，全身有20多处肿瘤，得病原因据称是作息不规律长期熬夜，以及压力过大导致。只是感觉，每个人都是凡人，要做出非凡的成就，一定需要付出很多，只是那些都不为人所知罢了，付出的代价甚至都无法估量，比如生命和健康。</p>
-<p>　　一句话，珍惜生命吧。</p>
-<p>　　最近生活比较凌乱。陷入了极度的空虚和无聊，所以就想到了去做家教。上周日，上了一下午课，一个感觉，累。昨天，嗯，是昨天，过了12点了，下午又找了另一份家教，晚上就去了，又看到了高中的数学，现在感觉，这些题目好亲切啊，很久不这么认真做题目了啊，也许，当初高中那么单纯的生活，才是最幸福的吧，虽然每天沉浸在那些上面，但是那段时间真的是一个人全身心投入学习的一段时期。可惜，再也不会有了。现在，完全不一样了呢。从来没有静下心来坐上两个钟头去认真做题。</p>
-<p>　　做家教，是下下策吧，花这些时间，虽然一个小时可以得到45元或者50元，但是那又怎么样呢，这些时间，本该去做自己真正想做的事情啊，尤其是在大学的这段时间，可惜，现在，或者最近，什么也不想做，学习，没什么动力。目前先这样吧。对了，还有，挣够了钱，换个手机~^_^差不多两周就足够了~哈哈</p>
-<p>　　最近，调整状态。</p>
-<p>嗨，中村。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1569,7 +1568,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">455</span>
+                <span class="site-state-item-count">457</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1582,7 +1581,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

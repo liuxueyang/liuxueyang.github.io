@@ -247,6 +247,304 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2014/05/09/some-simple-recursive-lisp-programs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/05/09/some-simple-recursive-lisp-programs/" itemprop="url">
+                  some simple recursive lisp programs
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-05-09T01:28:13+08:00">
+                2014-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>Write a procedure count-list to count the number of elements in a list</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(defun count-list (numbers)</div><div class="line">       (if (null numbers) 0</div><div class="line">         (+ 1 (count-list (rest numbers)))))</div><div class="line">(print (count-list &apos;(1 2 3)))</div><div class="line"></div><div class="line">result: 3</div></pre></td></tr></table></figure>
+<ul>
+<li>Write a procedure reverse-list to reverse each word in a list of words</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(defun reverse-list (numbers)</div><div class="line">       (if (null numbers) nil</div><div class="line">         (cons (reverse (first numbers)) (reverse-list (rest numbers)))))</div><div class="line">(reverse-list &apos;(&quot;dog&quot; &quot;pan&quot; &quot;tar&quot; &quot;tip&quot; &quot;net&quot;))</div></pre></td></tr></table></figure>
+<p>result: <code>(&quot;god&quot; &quot;nap&quot; &quot;rat&quot; &quot;pit&quot; &quot;ten&quot;)</code></p>
+<ul>
+<li>Write a procedure evenp-list to process a list of numbers, replacing each number by t if it’s even, and nil if it’s odd</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(defun evenp-list (numbers)</div><div class="line">       (if (null numbers) nil</div><div class="line">         (cons (if (evenp (first numbers)) t nil)</div><div class="line">               (evenp-list (rest numbers)))))</div><div class="line"></div><div class="line">(evenp-list &apos;(1 2 3 4 5 6 7 8))</div></pre></td></tr></table></figure>
+<p>result:</p>
+<p><code>(nil t nil t nil t nil t)</code></p>
+<ul>
+<li>Write a procedure max-list to return the maximum element of a list.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(defun max-list (numbers)</div><div class="line">       (if (null numbers) 0</div><div class="line">         (if (&gt; (first numbers) (max-list (rest numbers)))</div><div class="line">           (first numbers)</div><div class="line">           (max-list (rest numbers)))))</div><div class="line"></div><div class="line">(max-list &apos;(11 13 17 19 2 3 5 7))</div></pre></td></tr></table></figure>
+<p>should return 19. </p>
+<p>These three small programs are all recursive. It is interesting to code in lisp. ;)</p>
+<p>The fourth program is incorrect. There is bug: I assume that all numbers in the list are positive.</p>
+<p>The following program is better:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(defun max-list (numbers)</div><div class="line">       (if (null (rest numbers)) (first numbers)</div><div class="line">         (if (&gt; (first numbers) (max-list (rest numbers)))</div><div class="line">           (first numbers)</div><div class="line">           (max-list (rest numbers)))))</div></pre></td></tr></table></figure>
+<p>btw, max is a build-in procedure. so:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(defun max-list (numbers)</div><div class="line">       (if (null (rest numbers)) (first numbers)</div><div class="line">         (max (first numbers) (max-list (rest numbers))</div><div class="line">           )))</div></pre></td></tr></table></figure>
+<p>It becomes simpler. ;)</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2014/04/29/April-Fools-Day-Contest-2014/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/04/29/April-Fools-Day-Contest-2014/" itemprop="url">
+                  April Fools Day Contest 2014
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-29T09:56:46+08:00">
+                2014-04-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>April Fools Day Contest 2014</p>
+<p>Ａ、Ｃ、Ｈ三道题目</p>
+<hr>
+<p>A. The Great Game</p>
+<p>这题没看懂。。看了官方题解真是恍然大悟啊，原来是石头剪刀布啊！！！</p>
+<p>8&lt; 代表剪刀啊</p>
+<p>() 代表石头啊</p>
+<p>[] 代表布啊</p>
+<p>真是逆天啊，这么一说还真觉得有点像。。。。尤其是那个剪刀。</p>
+<p>给那个出题人的想象力跪了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line"> /*</div><div class="line">  * =====================================================================================</div><div class="line">  *       Filename : TheGreatGame.cpp</div><div class="line">  *    Description : So Funny</div><div class="line">  *    Version     : 0.1</div><div class="line">  *        Created : 04/29/14 07:58</div><div class="line">  *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com</div><div class="line">  *         Motto  : How about today?</div><div class="line">  * =====================================================================================</div><div class="line"> */</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">/* </div><div class="line"> * ===  FUNCTION  ======================================================================</div><div class="line"> *         Name:  judge</div><div class="line"> *  Description:  who win?</div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line">    int</div><div class="line">judge ( char a, char b )</div><div class="line">&#123;</div><div class="line">    if ( a==&apos;[&apos; ) &#123;</div><div class="line">        if ( b==&apos;[&apos; ) &#123;</div><div class="line">            return 0;</div><div class="line">        &#125;</div><div class="line">        else if ( b==&apos;(&apos; ) &#123;</div><div class="line">            return 1;</div><div class="line">        &#125;</div><div class="line">        else &#123;</div><div class="line">            return -1;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    if ( a==&apos;(&apos; ) &#123;</div><div class="line">        if ( b==&apos;[&apos; ) &#123;</div><div class="line">            return -1;</div><div class="line">        &#125;</div><div class="line">        else if ( b==&apos;(&apos; ) &#123;</div><div class="line">            return 0;</div><div class="line">        &#125;</div><div class="line">        else &#123;</div><div class="line">            return 1;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    if ( a==&apos;8&apos; ) &#123;</div><div class="line">        if ( b==&apos;[&apos; ) &#123;</div><div class="line">            return 1;</div><div class="line">        &#125;</div><div class="line">        else if ( b==&apos;(&apos; ) &#123;</div><div class="line">            return -1;</div><div class="line">        &#125;</div><div class="line">        else &#123;</div><div class="line">            return 0;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">&#125;        /* -----  end of function judge  ----- */</div><div class="line"></div><div class="line">/* </div><div class="line"> * ===  FUNCTION  ======================================================================</div><div class="line"> *         Name: main</div><div class="line"> * =====================================================================================</div><div class="line"> */</div><div class="line"></div><div class="line">    int</div><div class="line">main ( int argc, char *argv[] )</div><div class="line">&#123;</div><div class="line">    char a[21], b[21];</div><div class="line">    scanf ( &quot;%s%s&quot;, a, b );</div><div class="line">    int len = strlen(a), wina = 0, winb = 0;</div><div class="line">    for ( int i = 0; i &lt; len; i+=2 ) &#123;</div><div class="line">        int tmp = judge(a[i], b[i]);</div><div class="line">        if ( tmp &gt; 0 ) &#123;</div><div class="line">            ++wina;</div><div class="line">        &#125;</div><div class="line">        else if ( tmp &lt; 0 ) &#123;</div><div class="line">            ++winb;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    if ( wina &gt; winb ) &#123;</div><div class="line">        printf ( &quot;TEAM 1 WINS\n&quot; );</div><div class="line">    &#125;</div><div class="line">    else if ( wina &lt; winb ) &#123;</div><div class="line">        printf ( &quot;TEAM 2 WINS\n&quot; );</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">        printf ( &quot;TIE\n&quot; );</div><div class="line">    &#125;</div><div class="line"></div><div class="line">        return EXIT_SUCCESS;</div><div class="line">&#125;                /* ----------  end of function main  ---------- */</div></pre></td></tr></table></figure>
+<p>看了一下别人的python代码，挺简洁。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#!/bin/python</div><div class="line">team1 = input().replace(&apos;[&apos;, &apos;7&apos;).replace(&apos;(&apos;, &apos;6&apos;)</div><div class="line">team2 = input().replace(&apos;[&apos;, &apos;7&apos;).replace(&apos;(&apos;, &apos;6&apos;)</div><div class="line">s = 0</div><div class="line">for i in range(0, len(team1), 2):</div><div class="line">    if team1[i] &gt; team2[i]:</div><div class="line">        s += 1</div><div class="line">    elif team1[i] &lt; team2[i]:</div><div class="line">        s -= 1</div><div class="line">    if team1[i] == &apos;8&apos; and team2[i] == &apos;6&apos;:</div><div class="line">        s -= 2</div><div class="line">    if team1[i] == &apos;6&apos; and team2[i] == &apos;8&apos;:</div><div class="line">        s += 2</div><div class="line">if s &gt; 0:</div><div class="line">    print(&quot;TEAM 1 WINS&quot;)</div><div class="line">elif s &lt; 0:</div><div class="line">    print(&quot;TEAM 2 WINS&quot;)</div><div class="line">else:</div><div class="line">    print(&quot;TIE&quot;)</div></pre></td></tr></table></figure>
+<p>这个思路眼前一亮，把对应的字符赋值，比较，然后再修正。</p>
+<p>C. Magnum Opus</p>
+<p>同样的，开始我也没看懂，没错，是拉丁语。。。</p>
+<p>官方题解说Google翻译一下这封信，可以发现这是一封很优美又充满讽刺的信。。</p>
+<p>好吧，翻译之后也没看懂。需要注意前面的大写的罗马数字，然后猜想大概和配方的量有关系。</p>
+<p>五种配方的量依次是：1 1 2 7 4</p>
+<p>所以只需要让五种原料分别除以上面的五个数字，然后找到最小值，输出。</p>
+<p>这得需要多丰富的想象力啊！！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#!/bin/python</div><div class="line"></div><div class="line">a, b, c, d, e = list(map(int, input().split(&apos; &apos;)))</div><div class="line">result = (int)(min(a/1, b/1, c/2, d/7, e/4))</div><div class="line">print(result)</div></pre></td></tr></table></figure>
+<p>恩，用python写比较简单。 </p>
+<p>H. A + B Strikes Back</p>
+<p>这道题嘛。绝。</p>
+<p>官方题解说，提交的前五次系统是不会测试直接给ＷＡ！！！</p>
+<p>我看到这句话就笑了啊！！！这也太有创意了吧，哈哈哈哈</p>
+<pre><code>#!/bin/python
+a, b = list(map(int, input().split(&apos; &apos;)))
+print(a+b)
+</code></pre><p>不愧是April Fool’s Day，题目真有意思。。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2014/04/10/指针的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1317,280 +1615,6 @@ DP[ i ] = max{DP[ j ] + 1 | j &lt; i &amp;&amp; a[ j ] &lt; a[ i ]}
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2014/02/02/2014新年/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/02/02/2014新年/" itemprop="url">
-                  2014新年
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-02-02T14:51:52+08:00">
-                2014-02-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>那个，过年了。今天是正月初三。现在在我姥姥家。</p>
-<p>外面二姨她们在斗地主，很欢乐。</p>
-<p>无聊，找到台电脑，上网呗。</p>
-<p>没什么可看的，想起下学期有门课叫做编译原理。</p>
-<p>不妨google一下编译原理吧。然后就顺着找到了这个人的wiki里面的这篇文章：<a href="http://www.annhe.net/article-2445.html" target="_blank" rel="external">http://www.annhe.net/article-2445.html</a>.</p>
-<p>正好是湖大的，校友，比我大一届，10级的。去的新浪，羡慕啊。</p>
-<p>那个，等到今年9月份，就该我了。。</p>
-<p>可我怎么觉得我还差早呢？</p>
-<p>在家比较混乱的样子，最多看看短码之美那本书娱乐一下，感觉挺有意思的样子，但还是看的很慢啊囧╭(╯^╰)╮</p>
-<p>上学期没有挂，真是rp爆发加运气好啊，首先要感谢的是德克士，给我提供了那么暖和的复习环境……=_=</p>
-<p>话说德克士里放的歌开始听着像噪音，到后来听着越来越好听了有没？到后期甚至拿air查到某首歌的名字然后回去自己听，恩恩，有学习的气氛。。</p>
-<p>放假前说好的寒假要好好学习准备找工作面试的，说好了的……</p>
-<p>结果到家三天后开始练车，累还来不及呢。腊月28后就开始被使唤了。接着就过年了，然后就到现在了。</p>
-<p>也没出去玩过。</p>
-<p>最多前两天下午出去跑步一小时。。中间还带走的=_=</p>
-<p>新年愿望就是那种永远不会实现的东西，但我还是想说：</p>
-<pre><code>大三下学期不挂科
-校招能表现好一点，找个好工作，最好在北京的那种，离家近 %&gt;_&lt;%
-上半年好好学习，想学神马学神马，关键是认真，细心，不浮躁
-练长跑，每周保持一定的运动量，明年毕业之前跑一场全马
-</code></pre><p>(ˇˍˇ） </p>
-<p>就这样了囧</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2014/01/22/均分01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/01/22/均分01/" itemprop="url">
-                  均分01
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-01-22T10:16:10+08:00">
-                2014-01-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>真是无语，刚才写了一遍，添加博客标签的时候，浏览器自动刷新了一下，</p>
-<p>然后tm写的东西就没有了！！还得重写。。 </p>
-<p>开始没懂，学弟给讲的==</p>
-<p>感觉很厉害的样子。</p>
-<pre><code>可以切分一次。
-不管什么串，一定可以切分两次完成。
-</code></pre><p>证明：</p>
-<p>　　把这个串的首尾相连，设连接点是A，串的中点是B，设直线AB是L，L的左右的0的个数不相等，不妨设左边大于右边。顺时针旋转直线L，每旋转一次左右两边0的个数只可能发生两种变化：不变，+1，-1 。</p>
-<p>　　等旋转一周的时候，直线回到原来的位置，此时左边小于右边。由于0的个数的变化是连续的，所以一定有一个时刻，左边等于右边。</p>
-<p>　　证毕。感觉很厉害的样子。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">howmany</span><span class="params">(<span class="keyword">char</span> *s)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i, len = <span class="built_in">strlen</span>(s) / <span class="number">2</span>;</div><div class="line">    <span class="keyword">int</span> t = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; ++i)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (s[i] == <span class="string">'0'</span>)</div><div class="line">        &#123;</div><div class="line">            t++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (s[i+len] == <span class="string">'0'</span>)</div><div class="line">        &#123;</div><div class="line">            t--;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (!t)</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, howmany(<span class="string">"00001111"</span>));</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>囧</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1640,7 +1664,7 @@ DP[ i ] = max{DP[ j ] + 1 | j &lt; i &amp;&amp; a[ j ] &lt; a[ i ]}
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">455</span>
+                <span class="site-state-item-count">457</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1653,7 +1677,7 @@ DP[ i ] = max{DP[ j ] + 1 | j &lt; i &amp;&amp; a[ j ] &lt; a[ i ]}
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
