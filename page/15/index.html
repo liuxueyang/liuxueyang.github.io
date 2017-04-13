@@ -247,6 +247,200 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/09/04/codeforces-340C-Tourist-Problem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/09/04/codeforces-340C-Tourist-Problem/" itemprop="url">
+                  codeforces 340C Tourist Problem
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-09-04T00:51:00+08:00">
+                2013-09-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/09/04/codeforces-340C-Tourist-Problem/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/09/04/codeforces-340C-Tourist-Problem/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  539
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>link:<a href="http://codeforces.com/problemset/problem/340/C" target="_blank" rel="external">http://codeforces.com/problemset/problem/340/C</a></p>
+<p>开始一点也没思路，赛后看别人写的代码那么短，可是不知道怎么推出来的啊！</p>
+<p>后来明白了。</p>
+<p>首先考虑第一个数字，就是和0想减的内个。那么剩下的n-1个数字有(n-1)!个排列方式。所以呢，在n!个式子里面，第一个位置的和就是：a1 <em> (n-1)! + a2 </em> (n-1)! + …… + an * (n-1)!；</p>
+<p>然后考虑其它位置：对于ai , aj . 并且相邻。那么剩下 n - 2 个数字，这些数字有 (n-2)!个排列方式，然后把相邻的 ai aj 插入，有 n-1 种插入方式，所以呢，一共有 (n-1) <em> (n-2)! = (n-1)! 个方式，其它位置的和就是：(n-1)! </em> fabs(ai - aj) 【i != j, 1 &lt;= i, j &lt;= n】</p>
+<p>关键是第二个式子怎么求呢？好像很难得样子。可以找规律啊。比如，a1, a2 , a3, a4.</p>
+<p>因为有绝对值，我可以先排序，先算正的，在 *2就行了。假设a1 &gt; a2 &gt; a3 &gt; a4</p>
+<p>设：</p>
+<p>以a2结尾的ai - aj 的和是S2.</p>
+<p>以a3……和是S3</p>
+<p>。a4…………S4</p>
+<p>那么：</p>
+<p>S2 = a1 - a2</p>
+<p>S3 = a1 - a3 + a2 - a3 = (a1 - a2 + a2 - a3) + a2 - a3 = S2 + 2 *（a2 - a3）</p>
+<p>S4 = a1 - a4 + a2 - a4 + a3 - a4 = (a1 - a3 + a3 - a4) + (a2 - a3 + a3 - a4) + (a3 - a4) = S3 + 3 * (a3 - a4)</p>
+<p>我们要求的就是S2 + S3 + S4。</p>
+<p>没发现Si 可以递推么~</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> *       Filename:  tourist.cpp</div><div class="line"> *        Created:  09/01/2013 09:14:49 AM</div><div class="line"> *         Author:  liuxueyang (lxy), zypz457@sina.com</div><div class="line"> *   Organization:  Hunnan University</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;deque&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;list&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;functional&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;numeric&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cassert&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iterator&gt;</span></span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1e9</span>+<span class="number">7</span>;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line"><span class="keyword">int</span> a[<span class="number">100009</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">( <span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[] )</span></span></div><div class="line">&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">    freopen(<span class="string">"in.txt"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n)) &#123;</div><div class="line">        LL katusya = <span class="number">0</span>, tatusya = <span class="number">0</span>, safe = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; <span class="built_in">scanf</span>(<span class="string">"%d"</span>,a+i), katusya+=a[i], ++i);</div><div class="line">        sort(a, a + n);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i)  &#123;</div><div class="line">            safe += (LL)i * (a[i]-a[i<span class="number">-1</span>]);</div><div class="line">            tatusya += safe;</div><div class="line">        &#125;</div><div class="line">        tatusya *= <span class="number">2</span>;</div><div class="line">        tatusya += katusya;</div><div class="line">        LL touch = __gcd(tatusya, (LL)n);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%lld %lld\n"</span>, tatusya/touch, n/touch);</div><div class="line">    &#125;</div><div class="line">        <span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;                <span class="comment">/* ----------  end of function main  ---------- */</span></div></pre></td></tr></table></figure>
+<p>比赛没做出来，但是觉得这道题目很好！</p>
+<p>用动态规划的思想，很巧妙啊。</p>
+<p>嗨，中村。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/09/04/cf340D-Bubble-Sort-Graph/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1994,185 +2188,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2013/08/20/hdu4690-EBCDIC-——水题，考耐心/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/08/20/hdu4690-EBCDIC-——水题，考耐心/" itemprop="url">
-                  hdu4690 EBCDIC ——水题，考耐心
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-08-20T20:17:00+08:00">
-                2013-08-20
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
-                2017-04-11
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/08/20/hdu4690-EBCDIC-——水题，考耐心/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2013/08/20/hdu4690-EBCDIC-——水题，考耐心/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  571
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>link:<a href="http://acm.hdu.edu.cn/showproblem.php?pid=4690" target="_blank" rel="external">http://acm.hdu.edu.cn/showproblem.php?pid=4690</a></p>
-<p>考的是耐心何细心啊，用map把两个表格映射一下就行~</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;deque&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;list&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;functional&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;numeric&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cassert&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iterator&gt;</span></span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> dir[<span class="number">8</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">-1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">1</span>&#125;&#125;;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="built_in">string</span> A[<span class="number">16</span>][<span class="number">16</span>] = &#123;</div><div class="line">    <span class="string">"NUL"</span>,<span class="string">"SOH"</span>,<span class="string">"STX"</span>,<span class="string">"ETX"</span>,<span class="string">""</span>,<span class="string">"HT"</span>,<span class="string">""</span>,<span class="string">"DEL"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">"VT"</span>,<span class="string">"FF"</span>,<span class="string">"CR"</span>,<span class="string">"SO"</span>,<span class="string">"SI"</span>,</div><div class="line">    <span class="string">"DLE"</span>,<span class="string">"DC1"</span>,<span class="string">"DC2"</span>,<span class="string">"DC3"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">"BS"</span>,<span class="string">""</span>,<span class="string">"CAN"</span>,<span class="string">"EM"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">"IFS"</span>,<span class="string">"IGS"</span>,<span class="string">"IRS"</span>,<span class="string">"IUS ITB"</span>,</div><div class="line">    <span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">"LF"</span>,<span class="string">"ETB"</span>,<span class="string">"ESC"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">"ENQ"</span>,<span class="string">"ACK"</span>,<span class="string">"BEL"</span>,</div><div class="line">    <span class="string">""</span>,<span class="string">""</span>,<span class="string">"SYN"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">"EOT"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">"DC4"</span>,<span class="string">"NAK"</span>,<span class="string">""</span>,<span class="string">"SUB"</span>,</div><div class="line">    <span class="string">"SP"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">"."</span>,<span class="string">"&lt;"</span>,<span class="string">"("</span>,<span class="string">"+"</span>,<span class="string">"|"</span>,</div><div class="line">    <span class="string">"&amp;"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">"!"</span>,<span class="string">"$"</span>,<span class="string">"*"</span>,<span class="string">")"</span>,<span class="string">";"</span>,<span class="string">""</span>,</div><div class="line">    <span class="string">"-"</span>,<span class="string">"/"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">","</span>,<span class="string">"%"</span>,<span class="string">"_"</span>,<span class="string">"&gt;"</span>,<span class="string">"?"</span>,</div><div class="line">    <span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">"`"</span>,<span class="string">":"</span>,<span class="string">"#"</span>,<span class="string">"@"</span>,<span class="string">"'"</span>,<span class="string">"="</span>,<span class="string">"\""</span>,</div><div class="line">    <span class="string">""</span>,<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>,<span class="string">"e"</span>,<span class="string">"f"</span>,<span class="string">"g"</span>,<span class="string">"h"</span>,<span class="string">"i"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,</div><div class="line">    <span class="string">""</span>,<span class="string">"j"</span>,<span class="string">"k"</span>,<span class="string">"l"</span>,<span class="string">"m"</span>,<span class="string">"n"</span>,<span class="string">"o"</span>,<span class="string">"p"</span>,<span class="string">"q"</span>,<span class="string">"r"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,</div><div class="line">    <span class="string">""</span>,<span class="string">"~"</span>,<span class="string">"s"</span>,<span class="string">"t"</span>,<span class="string">"u"</span>,<span class="string">"v"</span>,<span class="string">"w"</span>,<span class="string">"x"</span>,<span class="string">"y"</span>,<span class="string">"z"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,</div><div class="line">    <span class="string">"^"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">"["</span>,<span class="string">"]"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,</div><div class="line">    <span class="string">"&#123;"</span>,<span class="string">"A"</span>,<span class="string">"B"</span>,<span class="string">"C"</span>,<span class="string">"D"</span>,<span class="string">"E"</span>,<span class="string">"F"</span>,<span class="string">"G"</span>,<span class="string">"H"</span>,<span class="string">"I"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,</div><div class="line">    <span class="string">"&#125;"</span>,<span class="string">"J"</span>,<span class="string">"K"</span>,<span class="string">"L"</span>,<span class="string">"M"</span>,<span class="string">"N"</span>,<span class="string">"O"</span>,<span class="string">"P"</span>,<span class="string">"Q"</span>,<span class="string">"R"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,</div><div class="line">    <span class="string">"\\"</span>,<span class="string">""</span>,<span class="string">"S"</span>,<span class="string">"T"</span>,<span class="string">"U"</span>,<span class="string">"V"</span>,<span class="string">"W"</span>,<span class="string">"X"</span>,<span class="string">"Y"</span>,<span class="string">"Z"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,</div><div class="line">    <span class="string">"0"</span>,<span class="string">"1"</span>,<span class="string">"2"</span>,<span class="string">"3"</span>,<span class="string">"4"</span>,<span class="string">"5"</span>,<span class="string">"6"</span>,<span class="string">"7"</span>,<span class="string">"8"</span>,<span class="string">"9"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span></div><div class="line">&#125;;</div><div class="line"><span class="built_in">string</span> B[<span class="number">8</span>][<span class="number">16</span>] = &#123;</div><div class="line"><span class="string">"NUL"</span>,    <span class="string">"SOH"</span>,    <span class="string">"STX"</span>,    <span class="string">"ETX"</span>,    <span class="string">"EOT"</span>,    <span class="string">"ENQ"</span>,    <span class="string">"ACK"</span>,    <span class="string">"BEL"</span>,    <span class="string">"BS"</span>,    <span class="string">"HT"</span>,    <span class="string">"LF"</span>,    <span class="string">"VT"</span>,    <span class="string">"FF"</span>,    <span class="string">"CR"</span>,    <span class="string">"SO"</span>,    <span class="string">"SI"</span>,</div><div class="line"><span class="string">"DLE"</span>,    <span class="string">"DC1"</span>,    <span class="string">"DC2"</span>,    <span class="string">"DC3"</span>,    <span class="string">"DC4"</span>,    <span class="string">"NAK"</span>,    <span class="string">"SYN"</span>,    <span class="string">"ETB"</span>,    <span class="string">"CAN"</span>,    <span class="string">"EM"</span>,    <span class="string">"SUB"</span>,    <span class="string">"ESC"</span>,    <span class="string">"IFS"</span>,    <span class="string">"IGS"</span>,    <span class="string">"IRS"</span>,    <span class="string">"IUS ITB"</span>,</div><div class="line"><span class="string">"SP"</span>,    <span class="string">"!"</span>,    <span class="string">"\""</span>,    <span class="string">"#"</span>,    <span class="string">"$"</span>,    <span class="string">"%"</span>,    <span class="string">"&amp;"</span>,    <span class="string">"'"</span>,    <span class="string">"("</span>,    <span class="string">")"</span>,    <span class="string">"*"</span>,    <span class="string">"+"</span>,    <span class="string">","</span>,    <span class="string">"-"</span>,    <span class="string">"."</span>,    <span class="string">"/"</span>,</div><div class="line"><span class="string">"0"</span>,    <span class="string">"1"</span>,    <span class="string">"2"</span>,    <span class="string">"3"</span>,    <span class="string">"4"</span>,    <span class="string">"5"</span>,    <span class="string">"6"</span>,    <span class="string">"7"</span>,    <span class="string">"8"</span>,    <span class="string">"9"</span>,    <span class="string">":"</span>,    <span class="string">";"</span>,    <span class="string">"&lt;"</span>,    <span class="string">"="</span>,    <span class="string">"&gt;"</span>,    <span class="string">"?"</span>,</div><div class="line"><span class="string">"@"</span>,    <span class="string">"A"</span>,    <span class="string">"B"</span>,    <span class="string">"C"</span>,    <span class="string">"D"</span>,    <span class="string">"E"</span>,    <span class="string">"F"</span>,    <span class="string">"G"</span>,    <span class="string">"H"</span>,    <span class="string">"I"</span>,    <span class="string">"J"</span>,    <span class="string">"K"</span>,    <span class="string">"L"</span>,    <span class="string">"M"</span>,    <span class="string">"N"</span>,    <span class="string">"O"</span>,</div><div class="line"><span class="string">"P"</span>,    <span class="string">"Q"</span>,    <span class="string">"R"</span>,    <span class="string">"S"</span>,    <span class="string">"T"</span>,    <span class="string">"U"</span>,    <span class="string">"V"</span>,    <span class="string">"W"</span>,    <span class="string">"X"</span>,    <span class="string">"Y"</span>,    <span class="string">"Z"</span>,    <span class="string">"["</span>, <span class="string">"\\"</span>,<span class="string">"]"</span>,<span class="string">"^"</span>,<span class="string">"_"</span>,</div><div class="line"><span class="string">"`"</span>,    <span class="string">"a"</span>,    <span class="string">"b"</span>,    <span class="string">"c"</span>,    <span class="string">"d"</span>,    <span class="string">"e"</span>,    <span class="string">"f"</span>,    <span class="string">"g"</span>,    <span class="string">"h"</span>,    <span class="string">"i"</span>,    <span class="string">"j"</span>,    <span class="string">"k"</span>,    <span class="string">"l"</span>,    <span class="string">"m"</span>,    <span class="string">"n"</span>,    <span class="string">"o"</span>,</div><div class="line"><span class="string">"p"</span>,    <span class="string">"q"</span>,    <span class="string">"r"</span>,    <span class="string">"s"</span>,    <span class="string">"t"</span>,    <span class="string">"u"</span>,    <span class="string">"v"</span>,    <span class="string">"w"</span>,    <span class="string">"x"</span>,    <span class="string">"y"</span>,    <span class="string">"z"</span>,    <span class="string">"&#123;"</span>,    <span class="string">"|"</span>,    <span class="string">"&#125;"</span>,    <span class="string">"~"</span>,    <span class="string">"DEL"</span></div><div class="line">&#125;;</div><div class="line"><span class="built_in">map</span>&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;, pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; &gt; coll;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">    freopen(<span class="string">"in.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span> );</div><div class="line">    <span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// ONLINE_JUDGE</span></span></div><div class="line">    <span class="built_in">string</span> sad;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;sad; coll.clear();</div><div class="line">    <span class="built_in">string</span> tmp; pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; so, to;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">16</span>; ++i)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">16</span>; ++j)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> (A[i][j]!=<span class="string">""</span>)</div><div class="line">            &#123;</div><div class="line">                so.first=i, so.second=j;</div><div class="line">                <span class="keyword">bool</span> mrk = <span class="literal">false</span>;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; <span class="number">8</span>; ++k)</div><div class="line">                &#123;</div><div class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> h = <span class="number">0</span>; h &lt; <span class="number">16</span>; ++h)</div><div class="line">                    &#123;</div><div class="line">                        <span class="keyword">if</span> (A[i][j]==B[k][h])</div><div class="line">                        &#123;</div><div class="line">                            mrk = <span class="literal">true</span>;</div><div class="line">                            to.first=k,to.second=h;</div><div class="line">                            coll[so] = to; <span class="keyword">break</span>;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">if</span> (mrk) <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sad.size(); i+=<span class="number">2</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> X, Y; tmp.clear();</div><div class="line">        <span class="keyword">if</span> (sad[i]&gt;=<span class="string">'A'</span>&amp;&amp;sad[i]&lt;=<span class="string">'F'</span>) X = sad[i]- <span class="string">'A'</span>+<span class="number">10</span>;</div><div class="line">        <span class="keyword">else</span> X = sad[i] - <span class="string">'0'</span>;</div><div class="line">        <span class="keyword">if</span> (sad[i+<span class="number">1</span>]&gt;=<span class="string">'A'</span>&amp;&amp;sad[i+<span class="number">1</span>]&lt;=<span class="string">'F'</span>) Y = sad[i+<span class="number">1</span>]- <span class="string">'A'</span>+<span class="number">10</span>;</div><div class="line">        <span class="keyword">else</span> Y = sad[i+<span class="number">1</span>] - <span class="string">'0'</span>;</div><div class="line">        pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; hehe, TM;</div><div class="line">        hehe.first = X, hehe.second = Y;</div><div class="line">        TM = coll[hehe];</div><div class="line">        <span class="keyword">int</span> j = TM.first, k = TM.second;</div><div class="line">        <span class="keyword">char</span> XX, YY;</div><div class="line">        XX = j+ <span class="string">'0'</span>;</div><div class="line">        <span class="keyword">if</span> (k &gt;= <span class="number">10</span>) YY = k - <span class="number">10</span> + <span class="string">'A'</span>;</div><div class="line">        <span class="keyword">else</span> YY = k + <span class="string">'0'</span>;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%c%c"</span>, XX, YY);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>写那两个数组没有vim的帮助手是不是得残了……</p>
-<p>还有一个就是，当你发现程序某一小段怎么都不对的时候，也许重新写一下就OK了，调试了很久……</p>
-<p>走吧，小胖！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2222,7 +2237,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">458</span>
+                <span class="site-state-item-count">459</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -247,6 +247,213 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2014/05/27/chapter-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuxueyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/drawing.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑历史">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/05/27/chapter-5/" itemprop="url">
+                  Chapter 5
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-05-27T23:51:33+08:00">
+                2014-05-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
+                2017-04-11
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/05/27/chapter-5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2014/05/27/chapter-5/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  434
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##Optional Parameters</p>
+<p>we can use optional arguments in a function, such as:</p>
+<figure class="highlight plain"><figcaption><span>lisp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(defun foo (a b &amp;optional c d)</div><div class="line"> (list a b c d))</div></pre></td></tr></table></figure>
+<p>This will result:</p>
+<figure class="highlight plain"><figcaption><span>lisp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(foo 1 2)				-&gt; (1 2 NIL NIL)</div><div class="line">(foo 1 2 3)			-&gt; (1 2 3 NIL)</div><div class="line">(foo 1 2 3 4)		-&gt; (1 2 3 4)</div></pre></td></tr></table></figure>
+<p>Besides, we can set default value for a argument:</p>
+<figure class="highlight plain"><figcaption><span>lisp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(defun foo (a &amp;optional (b 10)) </div><div class="line"> (list a b))</div></pre></td></tr></table></figure>
+<p>This will result:</p>
+<figure class="highlight plain"><figcaption><span>lisp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(foo 1 2) 				-&gt; (1 2)</div><div class="line">(foo 1)					-&gt; (1 10)</div></pre></td></tr></table></figure>
+<p>In this example, argument b is set to 10 by default.</p>
+<p>We can also know whether a value is set by default or by explicitly.</p>
+<figure class="highlight plain"><figcaption><span>lisp </span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(defun foo (a b &amp;optional (c 3 c-supplied-p))</div><div class="line"> (list a b c c-supplied-p))</div></pre></td></tr></table></figure>
+<p>For example:</p>
+<figure class="highlight plain"><figcaption><span>lisp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(foo 1 2)			-&gt; (1 2 3 NIL)</div><div class="line">(foo 1 2 3)		-&gt; (1 2 3 T)</div><div class="line">(foo 1 2 4)		-&gt; (1 2 4 T)</div></pre></td></tr></table></figure>
+<p>Besides, we can use the value of argument which appears earlier in the argument list:</p>
+<figure class="highlight plain"><figcaption><span>lisp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(defun foo (a &amp;optional (b a))</div><div class="line">	(+ a b))</div></pre></td></tr></table></figure>
+<p>##Keyword Parameters</p>
+<figure class="highlight plain"><figcaption><span>lisp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(defun foo (&amp;key a b c) </div><div class="line">	(list a b c))</div></pre></td></tr></table></figure>
+<p>function can be invoked as follows:</p>
+<figure class="highlight plain"><figcaption><span>lisp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(foo)						-&gt; (NIL NIL NIL)</div><div class="line">(foo :a 1) 			-&gt; (1 NIL NIL)</div><div class="line">(foo :b 1)				-&gt; (NIL 1 NIL)</div><div class="line">(foo :a 1 :c 3)		-&gt; (1 NIL 3)</div></pre></td></tr></table></figure>
+<p>Keyword parameters can provide a default value form and the name of a supplied-p value. e.g.:</p>
+<figure class="highlight plain"><figcaption><span>lisp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(defun foo (&amp;key (a 0) (b 0 b-supplied-p) (c (+ a b)))</div><div class="line">	(list a b c b-supplied-p))</div></pre></td></tr></table></figure>
+<p>If you want the keyword the caller uses to specify the parameter to be different from the name of the actual parameter. e.g:</p>
+<figure class="highlight plain"><figcaption><span>lisp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(defun foo (&amp;key ((:apple a)) ((:box b) 0) ((:charlie c) 0 c-supplied-p))</div><div class="line">	(list a b c c-supplied-p))</div></pre></td></tr></table></figure>
+<p>##Mixing Different Parameter Types</p>
+<p>Combing &amp;optional and &amp;key parameters yields surprising results. e.g:</p>
+<figure class="highlight plain"><figcaption><span>lisp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(defun foo (x &amp;optional y &amp;key z)</div><div class="line">	(list x y z))</div></pre></td></tr></table></figure>
+<p>It works like this:</p>
+<figure class="highlight plain"><figcaption><span>lisp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(foo 1 2 :z 3) 			-&gt; (1 2 3)</div><div class="line">(foo 1)						-&gt; (1 nil nil)</div><div class="line">(foo 1 :z 3)				-&gt; ERROR</div></pre></td></tr></table></figure>
+<p>In the last case, the keyword :z is taken as a value to fill the optional y parameter and leaving only the argument 3 to be processed. So it leads to ERROR.</p>
+<p>However, we can combine &amp;rest and &amp;key parameters. e.g:</p>
+<figure class="highlight plain"><figcaption><span>lisp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(defun foo (&amp;rest rest &amp;key a b c)</div><div class="line">	(list rest a b c))</div></pre></td></tr></table></figure>
+<p>you get this result:</p>
+<figure class="highlight plain"><figcaption><span>lisp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(foo :a 1 :b 2 :c 3) 			-&gt; ((:A 1 :B 2 :C 3) 1 2 3)</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2014/05/26/my-new-post/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1961,188 +2168,6 @@ DP[ i ] = max{DP[ j ] + 1 | j &lt; i &amp;&amp; a[ j ] &lt; a[ i ]}
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="liuxueyang.github.io/2014/02/04/poj1298-The-Hardest-Problem-Ever-简单题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuxueyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/drawing.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黑历史">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/02/04/poj1298-The-Hardest-Problem-Ever-简单题/" itemprop="url">
-                  poj1298 The Hardest Problem Ever 简单题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-02-04T12:47:00+08:00">
-                2014-02-04
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-11T23:16:27+08:00">
-                2017-04-11
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/02/04/poj1298-The-Hardest-Problem-Ever-简单题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/02/04/poj1298-The-Hardest-Problem-Ever-简单题/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  97
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>链接：<a href="http://poj.org/problem?id=1298&amp;lang=default&amp;change=true" target="_blank" rel="external">http://poj.org/problem?id=1298&amp;lang=default&amp;change=true</a></p>
-<p>简单的入门题目也有这么强悍的技巧啊！！</p>
-<p>书上面的代码：</p>
-<p>很厉害有没有=_=</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">n;main(k)&#123;<span class="keyword">for</span>(;read(<span class="number">0</span>,&amp;n,<span class="number">1</span>);k-=n&lt;<span class="number">11</span>)k%<span class="number">3</span>||<span class="built_in">putchar</span>(n%<span class="number">91</span>&lt;<span class="number">65</span>?n:n%<span class="number">70</span>%<span class="number">44</span>+<span class="number">65</span>);&#125;</div></pre></td></tr></table></figure>
-<p>72字节。</p>
-<p><img src="http://wstaw.org/m/2017/04/10/041246241272088_1.png" alt="rank"></p>
-<p>用到了read这个函数</p>
-<p>对于不需要处理的字符串，没有作处理，简化了很多。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2192,7 +2217,7 @@ DP[ i ] = max{DP[ j ] + 1 | j &lt; i &amp;&amp; a[ j ] &lt; a[ i ]}
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">458</span>
+                <span class="site-state-item-count">459</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
