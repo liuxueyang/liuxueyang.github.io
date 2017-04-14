@@ -94,7 +94,7 @@
 <meta property="og:url" content="liuxueyang.github.io/2017/04/13/Haskell-笔记9/index.html">
 <meta property="og:site_name" content="黑历史">
 <meta property="og:description" content="这是第九章的笔记 Hello, world!Files and streamsgetContents：从标准输入读数据，返回IO Action，一直到文件末尾。 12345678910-- print lines whose length is less than 10main = do  lines &amp;lt;- getContents  putStr . shortLines $ linessh">
-<meta property="og:updated_time" content="2017-04-14T05:06:17.000Z">
+<meta property="og:updated_time" content="2017-04-14T07:55:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Haskell 笔记9">
 <meta name="twitter:description" content="这是第九章的笔记 Hello, world!Files and streamsgetContents：从标准输入读数据，返回IO Action，一直到文件末尾。 12345678910-- print lines whose length is less than 10main = do  lines &amp;lt;- getContents  putStr . shortLines $ linessh">
@@ -302,7 +302,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-14T13:06:17+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-14T15:55:12+08:00">
                 2017-04-14
               </time>
             
@@ -340,7 +340,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  2,760
+                  2,734
                 </span>
               
 
@@ -356,7 +356,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  13
+                  12
                 </span>
               
             </div>
@@ -482,8 +482,8 @@
 <p>它接收一个<code>Word8</code>的列表，然后返回一个字符串，这个列表是Lazy的，只不过每次读取的块是64KB。</p>
 <p><code>Word8</code>类型是一个只有8位的整数。</p>
 <p><code>unpack</code>函数和<code>pack</code>相反，接收一个bytestring，返回一个byte的列表。</p>
-<p><code>fromChunks</code>接收一个非懒惰的bytestring，返回一个lazy的bytestring。<code>toChunks</code>接收一个懒惰的bytestring，返回一个</p>
-<h2 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h2><p>TODO</p>
+<p><em>TODO</em></p>
+<h2 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h2><p><em>TODO</em></p>
 
       
     </div>
