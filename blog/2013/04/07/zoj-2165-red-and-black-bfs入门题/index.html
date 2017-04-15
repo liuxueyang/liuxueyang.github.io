@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>zoj 2165 Red and Black ——BFS入门题 &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">zoj 2165 Red and Black ——BFS入门题</h1>
+    <span class="post-date">Apr 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-2165-red-and-black-bfs%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+    </span>
+    <p>题目链接：<a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1165">http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1165</a>
+题意：
+　　给一个字符矩阵，“.”代表黑色格子，“#”代表红色格子，有一个起点“@”，它属于黑色格子，一个人从起点出发，只能走黑色格子，并且只能上下左右走，不能对角线走，问这个人能走到的黑色格子有多少个。输出个数。输入W，H，代表有W列，H行，然后输入一个字符矩阵，输出能走到的最多的黑色格子的个数，包括起点。
+思路：
+　　这个题目很简单，和zoj 2110 类似，但是这道题目比那道简单多了，不用剪枝，不用恢复现场，直接深搜就可以。首先找到起点，然后从起点出发，判断这个点是不是被访问过，如果被访问过，就return；否则判断这个格子是不是黑色格子或者是起点，如果是，就cnt++，然后标记这个格子已经被访问过，如果不是，return; 如果没有return，就在这个点的四个方向继续深搜。思路很清晰。1A。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+
+int w, h, cnt = 0;
+char s[22][22]; bool flag[22][22];
+int dir[4][2] = {{0,1},{1,0},{-1,0},{0,-1}};
+void dfs(int i, int j){
+  if (i &lt;= 0 || j &lt;= 0 || i &gt; h || j &gt; w) return;
+  if (flag[i][j]) return;
+  if (s[i][j] == '.' || s[i][j] == '@'){
+    cnt++; flag[i][j] = true;
+  } else return;
+  for (int k = 0; k &lt; 4; ++k){
+    dfs(i + dir[k][0], j + dir[k][1]);
+  } 
+  return;
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;zoj2165.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (~scanf(&quot;%d%d&quot;, &amp;w, &amp;h) &amp;&amp; (w+h)){
+    getchar(); cnt = 0;
+    for (int i = 1; i &lt;= h; ++i){
+      for (int j = 1; j &lt;= w; ++j){
+        scanf(&quot;%c&quot;, &amp;s[i][j]);
+      } getchar();
+    }
+    memset(flag, false, sizeof(flag));
+    for(int i = 1; i &lt;= h; ++i){
+      for (int j = 1; j &lt;= w; ++j){
+        if (s[i][j] == '@'){
+          dfs(i, j); break;
+        }
+      }
+    }
+    printf(&quot;%d\n&quot;,cnt);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>感觉做这种DFS入门题的时候，只要理清思路，然后敲代码的时候认真一点儿，就没有问题了。</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>hdu 1164 Eddy&#39;s research I &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">hdu 1164 Eddy&#39;s research I</h1>
+    <span class="post-date">Mar 12, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/12/hdu-1164-eddys-research-i/#disqus_thread">Comments</a>
+    </span>
+    <p>Eddy&rsquo;s research I</p>
+
+<p>Time Limit: <sup>2000</sup>&frasl;<sub>1000</sub> MS (Java/Others)    Memory Limit: <sup>65536</sup>&frasl;<sub>32768</sub> K (Java/Others)
+Total Submission(s): 4452    Accepted Submission(s): 2680</p>
+
+<p>Problem Description
+Eddy&rsquo;s interest is very extensive, recently he is interested in prime number. Eddy discover the all number owned can be divided into the multiply of prime number, but he can&rsquo;t write program, so Eddy has to ask intelligent you to help him, he asks you to write a program which can do the number to divided into the multiply of prime number factor .</p>
+
+<p>Input
+The input will contain a number 1 &lt; x&lt;= 65535 per line representing the number of elements of the set.</p>
+
+<p>Output
+You have to print a line in the output for each entry with the answer to the previous question.</p>
+
+<p>Sample Input
+11 9412</p>
+
+<p>Sample Output
+11 2*2*13*181</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+using namespace std;
+const int maxn = 65535;
+int prime[maxn];
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;1164.in&quot;, &quot;r&quot;, stdin);
+#endif
+  memset(prime, 0, sizeof(prime));
+  for (int i = 2; i * i &lt;= maxn; ++i)
+    if (prime[i] == 0)
+      for (int j = i*2; j &lt;= maxn; j+=i)
+        prime[j] = 1;
+  int n; 
+//  for (int i = 2; i &lt; 100; ++i) if (!prime[i]) printf(&quot;%d &quot;, i);
+  while (~scanf(&quot;%d&quot;, &amp;n)){
+    bool flag = true;
+      while(n != 1){
+      for (int i = 2; i &lt;= maxn; ++i){
+        while (!prime[i] &amp;&amp; !(n%i)){
+          n = n / i; 
+          if (flag) printf(&quot;%d&quot;, i);
+          else printf(&quot;*%d&quot;, i);
+          flag = false;
+        }
+        if (n == 1) break;
+      }
+    }
+      printf(&quot;\n&quot;);
+  }
+
+  return 0;
+}
+</code></pre>
+
+<p>开始打素数表的时候打错了……</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

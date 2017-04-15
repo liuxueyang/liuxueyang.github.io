@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>poj 1659 Frogs&#39; Neighborhood &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">poj 1659 Frogs&#39; Neighborhood</h1>
+    <span class="post-date">Mar 13, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/13/poj-1659-frogs-neighborhood/#disqus_thread">Comments</a>
+    </span>
+    <p>Frogs&rsquo; Neighborhood
+Time Limit: 5000MS      Memory Limit: 10000K
+Total Submissions: 5599         Accepted: 2419      Special Judge</p>
+
+<p>Description</p>
+
+<p>未名湖附近共有N个大小湖泊L1, L2, &hellip;, Ln(其中包括未名湖)，每个湖泊Li里住着一只青蛙Fi(1 ≤ i ≤ N)。如果湖泊Li和Lj之间有水路相连，则青蛙Fi和Fj互称为邻居。现在已知每只青蛙的邻居数目x1, x2, &hellip;, xn，请你给出每两个湖泊之间的相连关系。</p>
+
+<p>Input</p>
+
+<p>第一行是测试数据的组数T(0 ≤ T ≤ 20)。每组数据包括两行，第一行是整数N(2 &lt; N &lt; 10)，第二行是N个整数，x1, x2,&hellip;, xn(0 ≤ xi ≤ N)。</p>
+
+<p>Output</p>
+
+<p>对输入的每组测试数据，如果不存在可能的相连关系，输出&rdquo;NO&rdquo;。否则输出&rdquo;YES&rdquo;，并用N×N的矩阵表示湖泊间的相邻关系，即如果湖泊i与湖泊j之间有水路相连，则第i行的第j个数字为1，否则为0。每两个数字之间输出一个空格。如果存在多种可能，只需给出一种符合条件的情形。相邻两组测试数据之间输出一个空行。</p>
+
+<p>Sample Input</p>
+
+<p>3
+7
+4 3 1 5 4 2 1
+6
+4 3 1 4 2 0
+6
+2 3 1 1 2 1</p>
+
+<p>Sample Output</p>
+
+<p>YES
+0 1 0 1 1 0 1
+1 0 0 1 1 0 0
+0 0 0 1 0 0 0
+1 1 1 0 1 1 0
+1 1 0 1 0 1 0
+0 0 0 1 1 0 0
+1 0 0 0 0 0 0</p>
+
+<p>NO</p>
+
+<p>YES
+0 1 0 0 1 0
+1 0 0 1 1 0
+0 0 0 0 0 1
+0 1 0 0 0 0
+1 1 0 0 0 0
+0 0 1 0 0 0</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+using namespace std;
+struct node
+{
+  int id, deg;
+}no[15];
+int cmp(const void *a, const void *b){
+  return (*(node*)a).deg &lt; (*(node*)b).deg ? 1 : -1;
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;poj1659.in&quot;, &quot;r&quot;, stdin);
+#endif
+  int t; scanf(&quot;%d&quot;, &amp;t);
+  int edge[15][15];
+  for (int i = 0; i &lt; t; ++i){
+    int n; scanf(&quot;%d&quot;, &amp;n);
+    for (int j = 0; j &lt; n; ++j) {scanf(&quot;%d&quot;, &amp;no[j].deg); no[j].id = j;}
+    memset(edge, 0, sizeof(edge));
+    bool flag = true;
+    for (int k = 0; k &lt; n &amp;&amp; flag; ++k){
+      qsort(no+k, n-k, sizeof(node), cmp);
+      int r = no[k].id, c;
+      if (no[k].deg &gt; n-k-1) flag = false;
+      int temp = no[k].deg, s = 1;
+      while (temp-- &amp;&amp; flag) {
+        no[k+s].deg--; c = no[k+s].id;
+        if (no[k+s].deg &lt; 0) flag = false;
+        else edge[r][c]=edge[c][r]=1;
+        s++;
+      }
+    }
+    if (!flag) printf(&quot;NO\n&quot;);
+    else{
+      printf(&quot;YES\n&quot;);
+      for (int k = 0; k &lt; n; ++k){
+        for (int j = 0; j &lt; n; ++j){ 
+          if (j) printf(&quot; &quot;); 
+          printf(&quot;%d&quot;, edge[k][j]);
+        }
+        printf(&quot;\n&quot;);
+      }
+    }
+    if (i != t-1) printf(&quot;\n&quot;);
+  }
+  return 0;
+}
+</code></pre>
+
+<p>图论，已知点的度数，判断几个点是否可图。</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

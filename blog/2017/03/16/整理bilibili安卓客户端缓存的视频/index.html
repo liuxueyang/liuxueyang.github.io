@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>整理Bilibili安卓客户端缓存的视频 &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">整理Bilibili安卓客户端缓存的视频</h1>
+    <span class="post-date">Mar 16, 2017 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/03/16/%E6%95%B4%E7%90%86bilibili%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%BC%93%E5%AD%98%E7%9A%84%E8%A7%86%E9%A2%91/#disqus_thread">Comments</a>
+    </span>
+    <p>昨天晚上无意中看到了B站竟然有TOUCH。。完全没想到。所以我决定这次要把这部动画片全部下载下来，B站的视频质量看起来还不错。所以最简单的方法就是用安卓客户端缓存，然后在电脑上处理了。</p>
+
+<p>其实之前我做过这件事情。当初是为了整理「暖暖日记」这部番，因为它每集仅仅有5分钟左右。每个视频只有一个文件，所以只需要找到所有视频然后读json文件找到视频名称，重命名就好了。</p>
+
+<p>不过这次好像有点不同：每集一般有25分钟，缓存的是高清的。奇怪的是：即使是同一集，最开始我缓存的时候某一集是仅仅有一个mp4文件，然后我又实验了一次，发现它就变成了多个flv文件。。真是迷。。</p>
+
+<p>处理也不难，如果是单个mp4文件直接重命名就好了。如果是多个flv文件，那么就需要先合并，然后再命名。</p>
+
+<p>然后看了一下之前写的Perl程序，竟然，看不太懂了。。。T_T，然而还好，最后还是搞定了：</p>
+
+<pre><code class="language-perl">#!/usr/bin/perl
+
+# Date  : 2017/03/16 19:14:35
+# Finish: 2017/03/16 22:04:07
+
+# NOTE: There MUST NOT be any non-ascii character in the path!!!!!!!!!!
+
+use strict;
+use warnings;
+use 5.014;
+use Cwd;
+use JSON qw();
+use open ':std', ':encoding(UTF-8)';
+use File::Copy;
+
+my $cur_dir = '/home/repl/Videos/Bilibili/Fanju/TOUCH/s_2425';
+opendir(DIR, $cur_dir) or dir $!;
+
+while (my $file = readdir(DIR)) {
+    next if ($file =~ /^\./);
+    
+    # get index_title
+    my $json_file = $cur_dir . &quot;/$file&quot; . '/entry.json';
+
+    my $json_text = do {
+	open(my $json_fh, &quot;&lt;:encoding(UTF-8)&quot;, $json_file)
+	    or die(&quot;Can not open $json_file\&quot;$!\n\&quot;&quot;);
+	local $/;
+	&lt;$json_fh&gt;
+    };
+
+    my $json = JSON-&gt;new;
+    my $data = $json-&gt;decode($json_text);
+    my $index = $data-&gt;{'ep'}{'index_title'};
+
+    # directories like 58116
+    my $subdir = &quot;$cur_dir/$file&quot;;
+    opendir(SUBDIR, $subdir) or dir $!;
+
+    while (my $subfile = readdir(SUBDIR)) {
+	next if ($subfile =~ /^\./);
+	if (-d &quot;$subdir/$subfile&quot;) {
+	    if ($subfile =~ /hdmp4/) {
+		# only rename
+		opendir(DSTDIR, &quot;$subdir/$subfile&quot;);
+		while (my $dstfile = readdir(DSTDIR)) {
+		    next if ($dstfile =~ /^\./);
+		    if ($dstfile =~ /mp4$/) {
+			$index =~ s/ /_/g;
+			rename(&quot;$subdir/$subfile/$dstfile&quot;, &quot;$index.mp4&quot;) or die
+			    &quot;failed to copy file&quot; . $index;
+		    }
+		}
+		closedir(DSTDIR);
+	    }
+	    if ($subfile =~ /flv/) {
+		# concat flv files
+		opendir(DSTDIR, &quot;$subdir/$subfile&quot;);
+		my @flv = ();
+		while (my $dstfile = readdir(DSTDIR)) {
+		    next if ($dstfile =~ /^\./);
+		    if ($dstfile =~ /flv$/) {
+			push @flv, $dstfile;
+		    }
+		}
+		@flv = sort { $a cmp $b } @flv;
+		@flv = map { &quot;file './$_'&quot; } @flv;
+		my $mylist = &quot;$subdir/$subfile/mylist.txt&quot;;
+		open (my $fh, &quot;&gt;&quot;, $mylist)
+		    or dir $!;
+		for (@flv) { print $fh &quot;$_\n&quot;; }
+		close($fh);
+		say &quot;$subdir/$subfile&quot;;
+		# output file is: output.flv. Chinese filename will crash. T_T
+		system(&quot;cd $subdir/$subfile &amp;&amp; ffmpeg -f concat -safe 0 -i mylist.txt -c copy output.flv&quot;);
+		# rename the filename of the output.flv to Chinese filename.
+		$index =~ s/ /_/g;
+		rename(&quot;$subdir/$subfile/output.flv&quot;, &quot;$index.flv&quot;) or die
+		    &quot;failed to copy file&quot; . $index;
+		closedir(DSTDIR);
+	    }
+	}
+    }
+    close(SUBDIR);
+}
+
+closedir(DIR);
+exit 0;
+</code></pre>
+
+<p>遇到几个陷阱：ffmpeg命令的输出文件不能是中文文件名，这个调试很久。然后文件路径最好不要有中文，否则出现一些奇怪的问题，不知道怎么解决，都改成英文名就好了。</p>
+
+<p>哦，还有一件事情：以前试过很多种从Android传数据到Linux的方法，最后还是发现，<code>adb pull</code>最好用，速度最快。比如：</p>
+
+<pre><code class="language-bash">adb pull /storage/emulated/0/Android/data/tv.danmaku.bili/download/s_2425
+</code></pre>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

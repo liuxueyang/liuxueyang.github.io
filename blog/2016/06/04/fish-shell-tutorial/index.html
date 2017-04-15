@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>fish shell tutorial &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">fish shell tutorial</h1>
+    <span class="post-date">Jun 4, 2016 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/06/04/fish-shell-tutorial/#disqus_thread">Comments</a>
+    </span>
+    
+
+<p>在fish里面，相邻的列表或者字符串会按照笛卡尔积来展开。比如：</p>
+
+<pre><code class="language-fish">liu@lisp /p/tmp&gt; echo {good,bad}&quot; apples&quot;
+good apples bad apples
+
+liu@lisp /p/tmp&gt; set -l a x y z
+liu@lisp /p/tmp&gt; echo $a 
+x y z
+liu@lisp /p/tmp&gt; set -l b 1 2 3
+
+liu@lisp /p/tmp&gt; echo $a$b
+x1 y1 z1 x2 y2 z2 x3 y3 z3
+
+liu@lisp /p/tmp&gt; echo $a&quot;-&quot;$b
+x-1 y-1 z-1 x-2 y-2 z-2 x-3 y-3 z-3
+
+liu@lisp /p/tmp&gt; echo {x,y,z}$b
+x1 y1 z1 x2 y2 z2 x3 y3 z3
+
+liu@lisp /p/tmp&gt; echo {$b}word
+1word 2word 3word
+
+liu@lisp /p/tmp&gt; echo &quot;$b&quot;word
+1 2 3word
+</code></pre>
+
+<p>上面用到了括号扩展的功能：在一个大括号里面以逗号分隔的几个字符串会被扩展成列表里
+面的每个元素被当作一个新的变量。比如：</p>
+
+<pre><code class="language-fish">liu@lisp /p/tmp&gt; echo input.{c,h,txt} 
+input.c input.h input.txt
+liu@lisp /p/tmp&gt; mkdir src 
+
+liu@lisp /p/tmp&gt; touch  input.{c,h,txt} 
+liu@lisp /p/tmp&gt; mv *.{c,h} src 
+liu@lisp /p/tmp&gt; ls src 
+input.c input.h
+</code></pre>
+
+<p>在其它shell里面，一般都使用<code>\</code>`来作为命令替换，在fish里面，就不一样了。它使用的
+是括号。比如：</p>
+
+<pre><code class="language-fish">liu@lisp /p/tmp&gt; echo In (pwd), running (uname) 
+In /private/tmp, running Darwin
+liu@lisp /p/tmp&gt; set os (uname)
+liu@lisp /p/tmp&gt; echo $os 
+Darwin
+</code></pre>
+
+<p>其实这种方法变得更简单直接。不过，需要注意的是，这种方法不能使用在双引号里面，它
+并不会在双引号里面自动把命令替换成命令的输出结果。弥补的做法只能是这样：</p>
+
+<pre><code class="language-fish">liu@lisp /p/tmp&gt; touch &quot;testing_&quot;(date +%s)&quot;.txt&quot;
+liu@lisp /p/tmp&gt; ls te* 
+testing_1465007369.txt
+</code></pre>
+
+<p>也就是说拼接一下就好了。</p>
+
+<p>另外，一个经常用到的功能就是，不像其它shell那样使用<code>&amp;&amp;</code>和<code>||</code>来作为逻辑与和逻辑
+或，fish里面用的是英语单词<code>and</code>, <code>or</code>, <code>not</code>，比如：</p>
+
+<pre><code class="language-fish">liu@lisp /p/tmp&gt; touch file1.txt 
+liu@lisp /p/tmp&gt; cp file1.txt file1_bak.txt; and echo &quot;Backup successful&quot;; or echo &quot;Backup failed&quot; 
+Backup successful
+
+liu@lisp /p/tmp&gt; cp file2.txt file1_bak.txt; and echo &quot;Backup successful&quot;; or echo &quot;Backup failed&quot; 
+cp: file2.txt: No such file or directory
+Backup failed
+</code></pre>
+
+<p>然而，中间还是要加分号分割。</p>
+
+<p>经常用到的，条件语句这样使用：</p>
+
+<pre><code class="language-fish">liu@lisp /p/tmp&gt; if grep fish /etc/shells
+                     echo Found fish
+                 else if grep bash /etc/shells
+                     echo Found bash 
+                 else 
+                     echo Got nothing
+                 end
+/usr/local/bin/fish
+Found fish
+</code></pre>
+
+<p>显然比其它的shell的语法自然好看多了 :joy: 即使你在终端里面直接输入这些代码，它也
+会自动锁进。</p>
+
+<p>同样有简单的switch语句：</p>
+
+<pre><code class="language-fish">liu@lisp /p/tmp&gt; switch (uname)
+                     case Linux
+                         echo Hi Linux!
+                     case Darwin
+                         echo Hi Mac OS X!
+                     case FreeBSD NetBSD
+                         echo Hi BSD
+                     case '*'
+                         echo Hi, stranger!
+                 end
+Hi Mac OS X!
+</code></pre>
+
+<p>不像其它的shell一样使用alias和用特殊的提示符语法之类的……这些事情，在fish里面用函
+数替换，变得更简单好用。</p>
+
+<p>函数的参数是放在变量<code>$argv</code>里面的，而不是像别的shell那样放在奇怪的<code>$1</code>里面：</p>
+
+<pre><code class="language-fish">liu@lisp /p/tmp&gt; function say_hello
+                     echo Hello $argv
+                 end
+liu@lisp /p/tmp&gt; say_hello 
+Hello
+liu@lisp /p/tmp&gt; say_hello everyone!
+Hello everyone!
+</code></pre>
+
+<p><code>functions</code>这个关键字，可以列出所有的函数。有趣的是在这个关键字后面加一个函数的
+名字可以看到这个函数的源代码：</p>
+
+<pre><code class="language-fish">liu@lisp /p/tmp&gt; functions
+., N_, abbr, alias, cd, contains_seq, delete-or-exit, dirh, dirs,
+down-or-search, eval, export, fish_config, fish_default_key_bindings,
+fish_fallback_prompt, fish_indent, fish_mode_prompt, fish_prompt,
+fish_sigtrap_handler, fish_update_completions, fish_vi_cursor,
+fish_vi_key_bindings, fish_vi_mode, fisher, funced, funcsave, grep, help,
+history, hostname, imgcat, isatty, it2dl, iterm2_fish_mode_prompt,
+iterm2_fish_prompt, iterm2_precmd, iterm2_preexec, iterm2_prompt_end,
+iterm2_prompt_start, iterm2_set_user_var, iterm2_status, la, ll, ls, man,
+math, nextd, nextd-or-forward-word, open, popd, prevd, prevd-or-backward-word,
+prompt_pwd, psub, pushd, realpath, say_hello, seq, setenv, suspend, trap,
+type, umask, underscore_change, up-or-search, vared,
+liu@lisp /p/tmp&gt; functions fish_vi_mode 
+function fish_vi_mode
+	echo 'The `fish_vi_mode` function is deprecated.' &gt;&amp;2
+        echo 'Please switch to calling `fish_vi_key_bindings`.' &gt;&amp;2
+	# Turn on vi keybindings
+	set -g fish_key_bindings fish_vi_key_bindings
+end
+</code></pre>
+
+<p><code>for</code>循环也很简单直接：</p>
+
+<pre><code class="language-fish">liu@lisp /p/tmp&gt; for file in *.txt 
+                     cp $file $file.bak
+                 end
+liu@lisp /p/tmp&gt; ls *.txt; ls *.bak 
+errors.txt             file1_bak.txt          testing_1465007369.txt
+file1.txt              input.txt
+errors.txt.bak             input.txt.bak
+file1.txt.bak              testing_1465007369.txt.bak
+file1_bak.txt.bak
+</code></pre>
+
+<p><code>seq</code> 这个命令加一个数字<code>n</code>可以生成从1到<code>n</code>的一个列表，比如：</p>
+
+<pre><code class="language-fish">liu@lisp /p/tmp&gt; seq 5 
+1
+2
+3
+4
+5
+liu@lisp /p/tmp&gt; for x in (seq 5)
+                     touch file_$x.txt
+                 end
+liu@lisp /p/tmp&gt; ls file_* 
+file_1.txt file_2.txt file_3.txt file_4.txt file_5.txt
+</code></pre>
+
+<p>在别的shell里面，一般用<code>$PS1</code>这个变量来显示提示符，在fish里面，使用的是一个名字
+叫做<code>fish_prompt</code>的函数，这个函数的输出就作为提示符，比如，你可以像下面这样定制
+自己的提示符：</p>
+
+<pre><code class="language-fish">liu@lisp /p/tmp&gt; function fish_prompt
+                     echo &quot;Sabastian Bach &gt;&gt; &quot;
+                 end
+Sabastian Bach &gt;&gt;
+</code></pre>
+
+<p>可以通过<code>set_color</code>来设置颜色，可以把<a href="http://www.wikiwand.com/en/ANSI_escape_code#/Colors">ANSI
+colors</a>或者RGB的16进制的值
+作为参数：</p>
+
+<pre><code class="language-fish">Sabastian Bach &gt;&gt; function fish_prompt 
+                      set_color purple
+                      date &quot;+%m/%d/%y&quot;
+                      set_color FF0
+                      echo (pwd) '&gt; '
+                      set_color normal
+                  end
+06/04/16
+/private/tmp &gt; 
+</code></pre>
+
+<p>fish里面有一种全局变量，这个变量在fish里面通用，只要设置一次，那么即使重启，这个
+变量依然存在。比如这样设置<code>EDITOR</code>这个变量：</p>
+
+<pre><code class="language-fish"> fish $ set -U EDITOR vim
+ fish $ echo $EDITOR                                                        
+vim
+</code></pre>
+
+<p>打开另外一个终端这个变量依然有效。</p>
+
+<p>另外有意思的一点是，其它shell里面，你一般会在类似于<code>~/.bashrc</code>或者<code>~/.zshrc</code>里面
+设置<code>$PATH</code>的值，当然，在fish里面，你也可以这样做。比如你可以在
+<code>~/.config/fish/config.fish</code>这个文件里面设置。如果没有这个文件就需要创建一个。其
+实它就相当于bash里面的<code>~/.bashrc</code>。你可以在这个文件里面定义一些函数，或者设置一
+些变量。比如：</p>
+
+<pre><code class="language-fish">&gt; cat ~/.config/fish/config.fish
+
+set -x PATH $PATH /sbin/
+
+function ll
+    ls -lh $argv
+end
+</code></pre>
+
+<p>然而，在fish里面更高效和更常见的做法是，使用自动加载函数和上面提到的全局变量。</p>
+
+<p>所谓自动加载函数，就是在<code>~/.config/fish/functions/</code>目录里面以命令的名字加上后缀
+<code>.fish</code>作为文件名新建一个文件。比如你可以定义你自己的提示符：</p>
+
+<pre><code class="language-fish">&gt; cat ~/.config/fish/functions/fish_prompt.fish
+function fish_prompt
+    echo (pwd) &quot;&gt; &quot;
+end
+</code></pre>
+
+<p>其实函数对应的文件可以自动创建，参见
+<a href="https://fishshell.com/docs/current/commands.html#funced">funced</a>和
+<a href="https://fishshell.com/docs/current/commands.html#funcsave">funcsave</a></p>
+
+<p>为了说明这个用法，比如我在终端直接输入：</p>
+
+<pre><code class="language-fish"> Pictures $ function gopi
+                ssh aries@pi
+            end
+ Pictures $ funcsave gopi
+</code></pre>
+
+<p>然后以后就可以使用<code>gopi</code>这个命令了……是不是很简单。根本不用打开一个什么文件什么的。
+（这个命令是用来登陆我的树莓派的…… :joy: ）</p>
+
+<p>fish有一个插件特别好用，类似于zsh的<code>oh-my-zsh</code>。Github地址是：<a href="https://github.com/fisherman/fisherman">fisherman</a></p>
+
+<p>安装的时候，可能会因为<code>git.io</code>被墙安装失败。其实，只要把<code>git.io/fisher</code>里面的内
+容复制到<code>~/.config/fish/functions/fisher.fish</code>文件里面就可以了。没有这个文件就新
+建一个。</p>
+
+<p>然后就可以愉快地使用了。</p>
+
+<p>经常会遇到设置环境变量的情况，可以用<a href="https://github.com/fisherman/paths">paths</a>
+这个插件愉快地搞定。比如我给<code>$PATH</code>追加一个变量，可以这样做：</p>
+
+<pre><code class="language-fish">mkdir $paths_config/PATH
+echo ~/bin &gt; $paths_config/PATH/HOMEBIN
+</code></pre>
+
+<p>然后重新启动fish才有效。这一点很重要！</p>
+
+<p>总的来说，仿佛fish和bash、zsh之类的差别很大，然而用过之后才知道，其实它变得更简
+单并且，更好配置，去掉了别的shell里面那些乱七八糟奇怪的语法，符合更常用的语言的
+语法规则，所以，我所有的*nix环境都换成了fish :joy: 棒棒哒</p>
+
+<hr />
+
+<h3 id="日常锻炼">日常锻炼</h3>
+
+<h4 id="6月1日-5-27km-http-wap-thejoyrun-com-po-22498513-50731646-html"><a href="http://wap.thejoyrun.com/po_22498513_50731646.html">6月1日，5.27km</a></h4>
+
+<p>坚持这件事情，与其说靠的是毅力，不如说是惯性。人的毅力靠不住，习惯却很顽固。</p>
+
+<h4 id="6月2日-5-26km-http-wap-thejoyrun-com-po-22498513-50977083-html"><a href="http://wap.thejoyrun.com/po_22498513_50977083.html">6月2日，5.26km</a></h4>
+
+<p>今天跑步听的是友聊FM最新一期《闲聊飞了》，聊的是小米无人机，同样，不知不觉，就跑
+完了……</p>
+
+<h4 id="6月3日-5-21km-http-wap-thejoyrun-com-po-22498513-51240419-html"><a href="http://wap.thejoyrun.com/po_22498513_51240419.html">6月3日，5.21km</a></h4>
+
+<p>最近看周易，跑步的时候默背分宫卦象图 :joy: 我是有……多无聊。。。</p>
+
+<h4 id="6月4日-5-17km-http-wap-thejoyrun-com-po-22498513-51525979-html"><a href="http://wap.thejoyrun.com/po_22498513_51525979.html">6月4日，5.17km</a></h4>
+
+<p>Android版的Google拼音输入法比搜狗好用并且好看多了……</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

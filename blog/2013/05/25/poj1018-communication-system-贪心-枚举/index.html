@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>poj1018 Communication System ——贪心&#43;枚举 &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">poj1018 Communication System ——贪心&#43;枚举</h1>
+    <span class="post-date">May 25, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/25/poj1018-communication-system-%E8%B4%AA%E5%BF%83-%E6%9E%9A%E4%B8%BE/#disqus_thread">Comments</a>
+    </span>
+    <p>题目链接：<a href="http://poj.org/problem?id=1018">http://poj.org/problem?id=1018</a>
+题目大意：
+　　有n种设备，每种设备有mi个选择，每种设备选择一个，每个设备都有一个带宽值和价钱，要求每种设备选择一个，最终选择的n个设备里面，带宽B是这n个设备里面所有带宽的最小值吗，价钱P为这n个设备价钱的和，求B/P的最大值。
+题目思路：
+　　这题开始没读懂题意，后来搜的题意之后才明白。然后没有思路……看了人家的思路，貌似懂了……然后就开始写，写跪了……开始的方法是，求出所有这n种设备里面每种设备的带宽的最小值，依次枚举这些最小值就可以了。总是WA……
+　　昨天纠结一晚上，今天早上又想了一下，发现原来的想法是有问题的，应该一直枚举到所有n中设备里面每种带宽的最大值的最小值。第一：保证这n种设备每一种都可以选上。第二：虽然枚举的B值比原来大了，所得到的的价钱不小于我原来的做法所得到的的价钱，但是，重点来了：B也增大了啊！有木有！所以，这就是我当初没有想到的！
+ 
+ </p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+#define MAXN 0x7fffffff
+#define MINN -MAXN
+const int MAX = 100+10;
+typedef struct node {
+  int p, b, cnt;
+  bool operator &lt; (const node &amp; other ) const {
+    if (p != other.p) return p &lt; other.p;
+    else return b &lt; other.b;
+  }
+}node;
+typedef struct sys {
+  node de[MAX];
+  int Min, Max, cnt;
+  bool operator &lt; (const sys &amp;other) const {
+    return Min &lt; other.Min;
+  }
+}sys;
+sys ban[MAX];
+void solve() {
+  int n; scanf(&quot;%d&quot;, &amp;n);
+  int i, j, tMin, tMax, sump, k;
+  double ans;
+  for (i = 0; i &lt; n; ++i) {
+    scanf(&quot;%d&quot;, &amp;ban[i].cnt);
+    tMin = MAXN; tMax = MINN;
+    for (j = 0; j &lt; ban[i].cnt; ++j) {
+      scanf(&quot;%d%d&quot;, &amp;ban[i].de[j].b, &amp;ban[i].de[j].p);
+      if (tMin &gt; ban[i].de[j].b) tMin = ban[i].de[j].b;
+      if (tMax &lt; ban[i].de[j].b) tMax = ban[i].de[j].b;
+    }
+    ban[i].Min = tMin; ban[i].Max = tMax;
+    sort(ban[i].de, ban[i].de + ban[i].cnt);
+  }
+  sort(ban, ban+n);
+  int start, end; start = ban[0].Min; end = MAXN;
+  for (i = 0; i &lt; n; ++i) {
+    if (end &gt; ban[i].Max) end = ban[i].Max;
+  }
+  ans = MINN;
+  for (i = start; i &lt;= end; ++i) {
+    sump = 0;
+    for (j = 0; j &lt; n; ++j) {
+      k = 0;
+      while (ban[j].de[k].b &lt; i) ++k;
+      sump += ban[j].de[k].p;
+    }
+    double re = (double)i/(double)sump;
+    if (re &gt; ans) ans = re;
+  }
+  /*
+  for (i = 0; i &lt; n; ++i) {
+    sump = 0;
+    int tmp = ban[i].Min; 
+    bool mrk = true;
+    for (k = 0; k &lt; n; ++k) {
+      if (ban[k].Max &lt; tmp) {mrk = false; break;}
+      j = 0;
+      while (ban[k].de[j].b &lt; tmp) j++;
+      sump += ban[k].de[j].p;
+    }
+    if (!mrk) continue;
+    double re = (double)tmp/(double)sump;
+    //cout &lt;&lt; &quot;tmp = &quot; &lt;&lt; tmp &lt;&lt; endl;
+    //cout &lt;&lt; &quot;sump = &quot; &lt;&lt; sump &lt;&lt; endl;
+    if (re &gt; ans) ans = re;
+  }
+  */
+  printf(&quot;%.3f\n&quot;, ans);
+}
+void init() {
+  //freopen(&quot;1018.in&quot;, &quot;r&quot;, stdin);
+  int t; scanf(&quot;%d&quot;, &amp;t);
+  while (t--) {
+    solve();
+  }
+}
+int main(void) {
+  init();
+  return 0;
+}
+
+</code></pre>
+
+<p> 
+调试的时候的注释就不删了……都是血淋淋的教训
+好吧，我的做法是有多繁琐……人家的代码都超短o(╯□╰)o
+ </p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

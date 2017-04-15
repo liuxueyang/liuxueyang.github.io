@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>编写子程序，显示字符串 &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">编写子程序，显示字符串</h1>
+    <span class="post-date">Oct 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/08/%E7%BC%96%E5%86%99%E5%AD%90%E7%A8%8B%E5%BA%8F%E6%98%BE%E7%A4%BA%E5%AD%97%E7%AC%A6%E4%B8%B2/#disqus_thread">Comments</a>
+    </span>
+    <p>在屏幕的8行3列，用绿色显示data段中的字符串。</p>
+
+<pre><code>assume cs:code, ds:data
+
+data segment
+    db 'Welcome to masm!', 0
+data ends
+
+code segment
+start:
+    mov dh, 8
+    mov dl, 3
+    mov cl, 2
+    mov ax, data
+    mov ds, ax
+    mov si, 0
+    call show_str
+
+    mov ax, 4c00h
+    int 21h
+
+show_str:
+    push dx
+    push cx
+
+    ;row
+    dec dh
+    mov al, 0a0h
+    mul dh
+    push ax
+
+    ;col
+    dec dl
+    mov al, 2h
+    mul dl
+
+    pop bx
+    add ax, bx
+    mov di, 0b800h
+    mov es, di
+    mov bp, ax
+    mov bl, cl
+
+change:
+    mov cl, [si]
+    mov ch, 0
+    jcxz ok
+    mov di, si
+    add di, di
+    mov al, ds:[si]
+    mov byte ptr es:[bp+di], al
+    mov byte ptr es:[bp+di+1], bl
+    inc si  
+    jmp short change
+ok:
+    pop cx
+    pop dx
+    ret
+
+code ends
+
+end start
+</code></pre>
+
+<p>开始遇到了很奇怪的bug，最终还是不知道为什么，所以换了一种方式解决问题了。</p>
+
+<p>那个bug是：内存地址一样的位置，数据竟然不一样：
+这两行地址不一样吗？为什么呢？
+为什么数据不同呢？
+后来又遇到了一个bug，就是si的增长方式和在es和ds中是不一样的，所以要用寄存器 di 临时作为es段中的偏移量。</p>
+
+<p>虽然搞了很久，但最终还是搞出来了=_=</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

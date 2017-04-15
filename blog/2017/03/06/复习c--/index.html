@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>复习C&#43;&#43; &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">复习C&#43;&#43;</h1>
+    <span class="post-date">Mar 6, 2017 &middot; 8 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/03/06/%E5%A4%8D%E4%B9%A0c--/#disqus_thread">Comments</a>
+    </span>
+    
+
+<p>今天复习了一下C++。很久很久不碰这门语言，早上看到一段代码竟然感觉十分陌生。<code>this</code>，<code>const pointer</code>，引用之类的，有点忘了。其实也不是忘，就是感觉很陌生。比如<code>this</code>别的语言里面也有，只是不是指针，比较容易混淆。所以就大概查了一下<code>C++ Primer</code>，然后做了几道题目。放在这里。</p>
+
+<h3 id="题目一">题目一</h3>
+
+<p>给CMyString类写一个方法，使它能够支持赋值<code>=</code>操作。CMyString类已经给出。</p>
+
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+
+// implement a operator `=` on class CMyString
+
+using namespace std;
+
+class CMyString {
+public:
+  CMyString(char * pData = NULL);
+  CMyString(const CMyString &amp; str);
+  CMyString &amp; operator =(const CMyString &amp;);
+  void print();
+  ~CMyString(void);
+
+private:
+  char * m_pData;
+};
+
+CMyString &amp; CMyString::operator =(const CMyString &amp; str)
+{
+  // if (this == &amp;str) return *this;
+  // delete [] m_pData;
+  // m_pData = NULL;
+  // m_pData = new char[strlen(str.m_pData) + 1];
+  // strcpy(m_pData, str.m_pData);
+  // return *this;
+
+  if (this != &amp;str) {
+    CMyString strTemp(str);
+
+    char * pTemp = strTemp.m_pData; // I wrote str.m_pData before. Stupid!
+    strTemp.m_pData = m_pData;
+    m_pData = pTemp;
+  }
+  return *this;
+}
+
+CMyString::CMyString(char * pData)
+{
+  m_pData = NULL;
+  m_pData = new char[strlen(pData) + 1];
+  strcpy(m_pData, pData);
+}
+
+CMyString::CMyString(const CMyString &amp; str)
+{
+  cout &lt;&lt; &quot;copying &quot; &lt;&lt; str.m_pData &lt;&lt; &quot;\n&quot;;
+  m_pData = NULL;
+  m_pData = new char[strlen(str.m_pData) + 1];
+  strcpy(m_pData, str.m_pData);
+  cout &lt;&lt; &quot;end of copying: &quot; &lt;&lt; m_pData &lt;&lt; &quot;\n&quot;;
+  if (m_pData != str.m_pData) cout &lt;&lt; &quot;not equal&quot; &lt;&lt; &quot;\n&quot;;
+}
+
+CMyString::~CMyString()
+{
+  cout &lt;&lt; &quot;delete: &quot; &lt;&lt; m_pData &lt;&lt; &quot;\n&quot;;
+  delete [] m_pData;
+}
+
+void CMyString::print()
+{
+  cout &lt;&lt; m_pData &lt;&lt; &quot;\n&quot;;
+}
+
+int main(int argc, char *argv[])
+{
+  CMyString str((char*)&quot;Rabbit&quot;), str4((char*)&quot;Hola!&quot;), str1((char*)&quot;Slackware&quot;);
+  str4 = str;
+
+  str.print();
+  str4.print();
+
+  str = str4 = str1;
+  str1.print();
+
+  cout &lt;&lt; &quot;end of program&quot; &lt;&lt; &quot;\n&quot;;
+
+  return 0;
+}
+</code></pre>
+
+<h3 id="题目二">题目二</h3>
+
+<p>给一个二维数组，这个二维数组从左到右、从上到下依次按照从小到大的顺序排列。给一个数字，在这个数组里面找这个数字，如果找到，返回true。否则返回false</p>
+
+<h4 id="解法">解法</h4>
+
+<p>当然你可以把整个二维数组扫描一遍。然而有更好的方法：起点从右上角或者左下角开始，如果num比当前位置的数字小，说明num不在这一列，<code>j--</code>，这样就可以找到num所在的列。如果num比当前数字大，说明num不在这一行，<code>i++</code>，这样就可以确定num所在的行。</p>
+
+<pre><code>// 2017/03/06 16:22:14
+
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+// find a number in a sorted two-dimension array.
+// the array is from left to right, top to bottom sorted.
+bool findNumber(int *a, int row, int col, int num)
+{
+  if (NULL == a) return false;
+
+  int j = col - 1, i = 0;
+  if (col &gt; 0 &amp;&amp; row &gt; 0) {
+    // find the max column
+    while (j &gt;= 0 &amp;&amp; a[i * col + j] &gt; num) {
+      j--;
+    }
+    if (j &lt; 0) {
+      return false;
+    }
+
+    // find the max row
+    while (i &lt; row &amp;&amp; a[i * col + j] &lt; num) {
+      i++;
+    }
+    if (i == row) {
+      return false;
+    }
+
+    return a[i * col + j] == num;
+  }
+
+  return false;
+}
+
+int main(int argc, char *argv[])
+{
+  int a[4][4] = {
+    {1, 2, 8, 9},
+    {2, 4, 9, 12},
+    {4, 7, 10, 13},
+    {6, 8, 11, 15}
+  };
+
+  cout &lt;&lt; findNumber(&amp;a[0][0], 4, 4, 7) &lt;&lt; &quot;\n&quot;; // found
+  cout &lt;&lt; findNumber(&amp;a[0][0], 4, 4, 1) &lt;&lt; &quot;\n&quot;; // found
+  cout &lt;&lt; findNumber(&amp;a[0][0], 4, 4, 15) &lt;&lt; &quot;\n&quot;; // found
+
+  cout &lt;&lt; findNumber(&amp;a[0][0], 4, 4, 3) &lt;&lt; &quot;\n&quot;; // no
+  cout &lt;&lt; findNumber(&amp;a[0][0], 4, 4, 16) &lt;&lt; &quot;\n&quot;;
+  cout &lt;&lt; findNumber(&amp;a[0][0], 4, 4, -1) &lt;&lt; &quot;\n&quot;;
+
+  cout &lt;&lt; findNumber(NULL, 4, 4, 7) &lt;&lt; &quot;\n&quot;; // no
+
+  return 0;
+}
+</code></pre>
+
+<h3 id="题目三">题目三</h3>
+
+<p>给定一个字符串，把字符串里面的所有空格替换成<code>%20</code>。题目要求对字符串进行本地修改，保证字符串指向的连续内存有足够的空间。</p>
+
+<h4 id="解法-1">解法</h4>
+
+<p>当然可以从前往后找空格，找到一个就把后面内容向后移动，然后把空格替换成<code>%20</code>。然而有更好的方法。从后往前替换。首先扫描一遍字符串，找到有<code>cnt</code>个空格。说明替换后的字符串长度是<code>len + cnt * 2</code>。所以从后往前一个一个替换就好了。需要注意的一个细节是：倒数第一个空格之后的内容需要向后移动<code>cnt * 2</code>个单位长度，倒数第二个空格之后的内容需要往后移动<code>(cnt - 1) * 2</code>个单位长度。</p>
+
+<pre><code>// 2017/03/06 16:23:21
+
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+// replace all of the white spaces in a string to `%20`
+// O(n)
+void replaceSpace(char str[], int length)
+{
+  // IMPORTANT!!!
+  if (NULL == str || length &lt;= 0) {
+    return;
+  }
+
+  // count the number of white spaces
+  int cnt = 0;
+  int strLen = 0;
+  for (int i = 0; str[i] != '\0'; i++) {
+    if (str[i] == ' ') {
+      cnt++;
+    }
+    strLen++;
+  }
+
+  if (length &lt;= strLen + cnt * 2) {
+    return;
+  }
+
+  // replace from the tail of the string
+  int pos = strLen;
+  while (cnt &gt; 0 &amp;&amp; pos &gt;= 0) {
+    while (pos &gt;= 0 &amp;&amp; ' ' != str[pos]) {
+      str[pos + cnt * 2] = str[pos];
+      pos--;
+    }
+    if (pos &gt;= 0 &amp;&amp; ' ' == str[pos]) {
+      str[pos + (cnt - 1) * 2] = '%';
+      str[pos + (cnt - 1) * 2 + 1] = '2';
+      str[pos + (cnt - 1) * 2 + 2] = '0';
+    }
+    cnt--;
+    pos--;
+  }
+}
+
+int main(int argc, char *argv[])
+{
+  char str[100] = &quot;we are happy.&quot;; // simple case
+  replaceSpace(str, 100);
+  cout &lt;&lt; str &lt;&lt; &quot;\n&quot;;
+
+  char str1[100] = &quot;we are happy. &quot;; // one tail space
+  replaceSpace(str1, 100);
+  cout &lt;&lt; str1 &lt;&lt; &quot;\n&quot;;
+
+  char str2[100] = &quot; we are happy. &quot;; // head and tail space
+  replaceSpace(str2, 100);
+  cout &lt;&lt; str2 &lt;&lt; &quot;\n&quot;;
+
+  char str3[100] = &quot;  we are happy. &quot;; // two head spaces
+  replaceSpace(str3, 100);
+  cout &lt;&lt; str3 &lt;&lt; &quot;\n&quot;;
+
+  char str4[100] = &quot;we are happy.  &quot;; // two tail spaces
+  replaceSpace(str4, 100);
+  cout &lt;&lt; str4 &lt;&lt; &quot;\n&quot;;
+
+  char str5[100] = &quot;wearehappy.&quot;; // no space
+  replaceSpace(str5, 100);
+  cout &lt;&lt; str5 &lt;&lt; &quot;\n&quot;;
+
+  char str6[100] = &quot;   &quot;; // only some spaces
+  replaceSpace(str6, 100);
+  cout &lt;&lt; str6 &lt;&lt; &quot;\n&quot;;
+
+  char str7[100] = &quot; &quot;; // only one space
+  replaceSpace(str7, 100);
+  cout &lt;&lt; str7 &lt;&lt; &quot;\n&quot;;
+
+  char str8[100] = &quot;&quot;; // empty string
+  replaceSpace(str8, 100);
+  cout &lt;&lt; str8 &lt;&lt; &quot;\n&quot;;
+
+  char *str9 = NULL; // NULL pointer
+  replaceSpace(str9, 100);
+  cout &lt;&lt; str9 &lt;&lt; &quot;\n&quot;;
+
+  return 0;
+}
+</code></pre>
+
+<h3 id="题目四">题目四</h3>
+
+<p>给一个单向链表，要求倒序打印出链表的内容。</p>
+
+<h4 id="解法-2">解法</h4>
+
+<p>比较简单。可以递归打印，也可以把每个节点的值放到栈里面。最好打印栈里面的内容。需要注意的是，第二个方法比较好。原因是递归容易造成Stackoverflow，当链表非常长的时候。</p>
+
+<pre><code class="language-cpp">// 2017/03/06 19:31:00
+
+#include &lt;bits/stdc++.h&gt;
+
+// print all of the nodes in the list in reverse order
+
+using namespace std;
+
+struct ListNode
+{
+  int m_nKey;
+  ListNode *m_pNext;
+};
+
+// add a node to the tail
+void AddToTail(ListNode **pHead, int value)
+{
+  ListNode *pNew = new ListNode();
+  pNew-&gt;m_nKey = value;
+  pNew-&gt;m_pNext = NULL;
+
+  if (NULL == *pHead) {
+    *pHead = pNew;
+  }
+  else {
+    ListNode *next = *pHead;
+    while (NULL != next-&gt;m_pNext) {
+      next = next-&gt;m_pNext;
+    }
+    next-&gt;m_pNext = pNew;
+  }
+}
+
+// print list nodes in reverse order
+// NOTE: very long list will cause stack overflow!
+void PrintReverse(ListNode *pHead)
+{
+  if (NULL == pHead) return;
+
+  // print cdr, then print the current node
+  if (NULL != pHead-&gt;m_pNext) {
+    PrintReverse(pHead-&gt;m_pNext);
+  }
+  cout &lt;&lt; pHead-&gt;m_nKey &lt;&lt; &quot; &quot;;
+}
+
+void PrintReverse_Iterate(ListNode *pHead)
+{
+  if (NULL == pHead) return;
+  stack&lt;int&gt; values;
+  while (NULL != pHead) {
+    values.push(pHead-&gt;m_nKey);
+    pHead = pHead-&gt;m_pNext;
+  }
+
+  while (!values.empty()) {
+    cout &lt;&lt; values.top() &lt;&lt; &quot; &quot;;
+    values.pop();
+  }
+  cout &lt;&lt; &quot;\n&quot;;
+}
+
+int main(int argc, char *argv[])
+{
+  ListNode *head = NULL;
+  AddToTail(&amp;head, 3);
+  AddToTail(&amp;head, 1);
+  AddToTail(&amp;head, 10);
+  AddToTail(&amp;head, 9);
+  AddToTail(&amp;head, -1);
+
+  PrintReverse(head);
+  cout &lt;&lt; &quot;\n&quot;;
+
+  PrintReverse_Iterate(head);
+
+  ListNode *head1 = NULL;
+  AddToTail(&amp;head1, 10000);
+  PrintReverse_Iterate(head1);
+  PrintReverse(head1);
+  cout &lt;&lt; &quot;\n&quot;;
+
+  PrintReverse_Iterate(NULL);
+  PrintReverse(NULL);
+
+  return 0;
+}
+
+</code></pre>
+
+<h3 id="题目五">题目五</h3>
+
+<p>给定一个二叉树的前序遍历序列和中序遍历序列，构造出这个二叉树。</p>
+
+<h4 id="解法-3">解法</h4>
+
+<p>这题早就见过，不过还是第一次写。其实也挺简单，就是首先在<code>preorder</code>里面找到根，然后在<code>inorder</code>序列里找到这个根的位置。那么在<code>inorder</code>里的根之前的都是左子树，右边的都是右子树。这样我们就有了左右子树的<code>inorder</code>序列。我们也在<code>inorder</code>里面得到了左子树的长度，那么在<code>preorder</code>里面根后面截取相同的长度，就是左子树的<code>preorder</code>序列，剩下的就是右子树的<code>preorder</code>序列。这样，我们就根据当前树的<code>preorder</code>序列和<code>inorder</code>序列得到了左右子树的<code>preorder</code>和<code>inorder</code>序列。所以这是一个递归的做法。</p>
+
+<p>另外，实现的时候，不要傻傻的复制<code>preorder</code>和<code>inorder</code>这两个数组（我一开始就这么想的T_T）。可以用指针，传对应位置的指针当作子数组就可以了。</p>
+
+<pre><code class="language-cpp">// 2016/03/06 20:10:41
+
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+
+struct BinaryTreeNode
+{
+  int m_nValue;
+  BinaryTreeNode *m_pLeft;
+  BinaryTreeNode *m_pRight;
+};
+
+
+BinaryTreeNode * ConstructCore(int * startPreorder, int * endPreorder,
+                               int * startInorder, int * endInorder)
+{
+  if (startPreorder &gt; endPreorder ||
+      startInorder &gt; endInorder) {
+    return NULL;
+  }
+
+  int rootValue = startPreorder[0];
+  int leftNodesLen = 0;
+  int *current = startInorder;
+
+  BinaryTreeNode * root = new BinaryTreeNode();
+  root-&gt;m_nValue = rootValue;
+  root-&gt;m_pLeft = root-&gt;m_pRight = NULL;
+
+  // only one element in the array
+  if (startPreorder == endPreorder) {
+    if (startInorder == endInorder &amp;&amp;
+        *startPreorder == *startInorder) {
+      return root;
+    }
+    else {
+      throw exception();
+    }
+  }
+
+  while(current != endInorder &amp;&amp; *current != rootValue) {
+    current++;
+    leftNodesLen++;
+  }
+
+  // didn't find root value in the inorder array
+  if (current == endInorder &amp;&amp;
+      *current != rootValue) {
+    throw exception();
+  }
+
+  // left child
+  root-&gt;m_pLeft = ConstructCore(startPreorder + 1, startPreorder + leftNodesLen,
+                                startInorder, startInorder + leftNodesLen - 1);
+
+  // right child
+  root-&gt;m_pRight = ConstructCore(startPreorder + leftNodesLen + 1, endPreorder,
+                                 startInorder + leftNodesLen + 1, endInorder);
+
+  return root;
+}
+
+
+// construct a binary tree using preorder and inorder
+BinaryTreeNode * Construct(int * preorder, int * inorder, int len)
+{
+  if (NULL == preorder || NULL == inorder || 0 &gt;= len) return NULL;
+
+  return ConstructCore(preorder, preorder + len - 1,
+                       inorder, inorder + len - 1);
+}
+
+
+void PreorderPrintTree(BinaryTreeNode * root)
+{
+  if (NULL == root) {
+    return;
+  }
+  cout &lt;&lt; root-&gt;m_nValue &lt;&lt; &quot; &quot;;
+  PreorderPrintTree(root-&gt;m_pLeft);
+  PreorderPrintTree(root-&gt;m_pRight);
+}
+
+
+int main(int argc, char *argv[])
+{
+  int preorder[8] = { 1, 2, 4, 7, 3, 5, 6, 8 };
+  int inorder[8] = { 4, 7, 2, 1, 5, 3, 8, 6 };
+
+  int T = 0;
+
+  cout &lt;&lt; &quot;Case &quot; &lt;&lt; T++ &lt;&lt; &quot;\n&quot;;
+  BinaryTreeNode *root = Construct(preorder, inorder, 8);
+  PreorderPrintTree(root);
+  cout &lt;&lt; &quot;\n&quot;;
+
+  cout &lt;&lt; &quot;Case &quot; &lt;&lt; T++ &lt;&lt; &quot;\n&quot;;
+  int preorder1[7] = {1, 2, 4, 5, 3, 6, 7}; // complete binary tree
+  int inorder1[7] = {4, 2, 5, 1, 6, 3, 7};
+  BinaryTreeNode *root1 = Construct(preorder1, inorder1, 7);
+  PreorderPrintTree(root1);
+  cout &lt;&lt; &quot;\n&quot;;
+
+  cout &lt;&lt; &quot;Case &quot; &lt;&lt; T++ &lt;&lt; &quot;\n&quot;;
+  int preorder2[5] = {1, 2, 4, 5, 3}; // incomplete binary tree
+  int inorder2[5] = {4, 2, 5, 1, 3};
+  BinaryTreeNode *root2 = Construct(preorder2, inorder2, 5);
+  PreorderPrintTree(root2);
+  cout &lt;&lt; &quot;\n&quot;;
+
+  // only have left children
+  cout &lt;&lt; &quot;Case &quot; &lt;&lt; T++ &lt;&lt; &quot;\n&quot;;
+  int preorder3[3] = {1, 2, 4};
+  int inorder3[3] = {4, 2, 1};
+  BinaryTreeNode *root3 = Construct(preorder3, inorder3, 3);
+  PreorderPrintTree(root3);
+  cout &lt;&lt; &quot;\n&quot;;
+
+  // only have right children
+  cout &lt;&lt; &quot;Case &quot; &lt;&lt; T++ &lt;&lt; &quot;\n&quot;;
+  int preorder4[3] = {1, 3, 7};
+  int inorder4[3] = {1, 3, 7};
+  BinaryTreeNode *root4 = Construct(preorder4, inorder4, 3);
+  PreorderPrintTree(root4);
+  cout &lt;&lt; &quot;\n&quot;;
+
+  // only root node
+  cout &lt;&lt; &quot;Case &quot; &lt;&lt; T++ &lt;&lt; &quot;\n&quot;;
+  int preorder5[1] = {1};
+  int inorder5[1] = {1};
+  BinaryTreeNode *root5 = Construct(preorder5, inorder5, 1);
+  PreorderPrintTree(root5);
+  cout &lt;&lt; &quot;\n&quot;;
+
+  // empty tree
+  cout &lt;&lt; &quot;Case &quot; &lt;&lt; T++ &lt;&lt; &quot;\n&quot;;
+  int preorder6[0] = {};
+  int inorder6[0] = {};
+  BinaryTreeNode *root6 = Construct(preorder6, inorder6, 0);
+  PreorderPrintTree(root6);
+  cout &lt;&lt; &quot;\n&quot;;
+
+  // invalid input
+  cout &lt;&lt; &quot;Case &quot; &lt;&lt; T++ &lt;&lt; &quot;\n&quot;;
+  int preorder7[3] = {1, 2, 3};
+  int inorder7[3] = {2, 1, 4};
+  BinaryTreeNode *root7 = Construct(preorder7, inorder7, 3);
+  PreorderPrintTree(root7);
+  cout &lt;&lt; &quot;\n&quot;;
+
+  return 0;
+}
+</code></pre>
+
+<hr />
+
+<p>做了几道题目，大概又熟悉一些了吧。指针操作什么的。捡起来也挺容易。不过，有时间还是要研究一下C++的高级语法。</p>
+
+<p>不太懂，同样的语法为什么短程序块就有代码高亮，长一点的就没有。不管了。就这样吧。</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

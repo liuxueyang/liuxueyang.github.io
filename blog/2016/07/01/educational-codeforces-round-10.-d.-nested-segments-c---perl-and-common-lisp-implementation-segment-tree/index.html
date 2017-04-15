@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Educational Codeforces Round 10. D. Nested Segments: c&#43;&#43;, perl and common lisp implementation, Segment Tree &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Educational Codeforces Round 10. D. Nested Segments: c&#43;&#43;, perl and common lisp implementation, Segment Tree</h1>
+    <span class="post-date">Jul 1, 2016 &middot; 4 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/07/01/educational-codeforces-round-10.-d.-nested-segments-c---perl-and-common-lisp-implementation-segment-tree/#disqus_thread">Comments</a>
+    </span>
+    
+
+<p><a href="http://codeforces.com/contest/652/problem/D">Problem Link</a></p>
+
+<p>Fenwick Tree，它的本质就是把一个序列的和划分成一个个子序列的和。比如一个序列的长
+度是10，那么10的二进制是1010，也就是2^1 + 2^3，所以结果就是树里面2和8两个节点的
+和。在树里面，节点（n）表示数列里从1到n的元素的和，那么：</p>
+
+<ul>
+<li>(1) = (1)</li>
+<li>(2) = (2)</li>
+<li>(3) = (1) + (2)</li>
+<li>(4) = (4)</li>
+<li>(5) = (1) + (4)</li>
+<li>(6) = (2) + (4)</li>
+</ul>
+
+<ol>
+<li>按照右端点排序，然后把它离散化；</li>
+<li>按照左端点倒序排列，从大到小循环，计算右端点在Fenwick Tree里面的presum（也就
+是之前插入的比当前右端点小的数量），这个presum就是当前的segment包含的segment
+的个数；</li>
+<li>把当前右端点插入Fewnwick Tree；</li>
+</ol>
+
+<p>题目要求计算每个端点包含的segment的数量，因为后面要用到排序和离散化，所以可以在
+结构体或者类中增加一个域表示它原来在数组中的初始位置。每计算一个presum就可以根据
+这个域放到结果数组里面的对应位置。</p>
+
+<h3 id="c">C++</h3>
+
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+struct segment {
+  int x, y, position;
+};
+
+const int N = 2e5 + 1;
+int n, fenwick[N];
+long long ans[N];
+
+segment S[N];
+
+int cmpx_r(segment a, segment b) { return a.x &gt; b.x; }
+
+int cmpy(segment a, segment b) { return a.y &lt; b.y; }
+
+int lowbit(int x) { return x &amp; -x; }
+
+long long presum(int index) {
+  long long ans = 0;
+
+  while (index &gt; 0) {
+    ans += fenwick[index];
+    index -= lowbit(index);
+  }
+
+  return ans;
+}
+
+void updateFenwick(int index, int n) {
+  while (index &lt;= n) {
+    fenwick[index]++;
+    index += lowbit(index);
+  }
+}
+
+int main(void) {
+
+#ifndef ONLINE_JUDGE
+  freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+#endif
+
+  while (~scanf(&quot;%d&quot;, &amp;n)) {
+    int i;
+
+    memset(fenwick, 0, sizeof(fenwick));
+
+    for (i = 1; i &lt;= n; ++i) {
+      scanf(&quot;%d%d&quot;, &amp;S[i].x, &amp;S[i].y);
+      S[i].position = i;
+    }
+
+    // compress y
+    sort(S + 1, S + n + 1, cmpy);
+
+    for (i = 1; i &lt;= n; ++i) {
+      S[i].y = i;
+    }
+
+    // sort by x reversely
+    sort(S + 1, S + n + 1, cmpx_r);
+
+    for (i = 1; i &lt;= n; ++i) {
+      ans[S[i].position] = presum(S[i].y);
+      updateFenwick(S[i].y, n);
+    }
+
+    for (i = 1; i &lt;= n; ++i) {
+      cout &lt;&lt; ans[i] &lt;&lt; endl;
+    }
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<h3 id="perl">Perl</h3>
+
+<p>因为IO的问题，这道题用Perl会在第15或者16个test case里面会超时，我看上面用python
+的也都超时了……</p>
+
+<pre><code class="language-perl">use strict;
+use 5.014;
+use utf8;
+
+my $n;
+chomp($n = &lt;&gt;);
+my @s;
+
+for(0..$n-1) {
+    my $segment;
+    chomp($segment = &lt;&gt;);
+    my ($l, $r) = split(' ', $segment);
+    push @s, {
+        left =&gt; $l,
+        right =&gt; $r,
+        position =&gt; $_,
+    };
+}
+
+# compress right
+@s = sort { $a-&gt;{right} &lt;=&gt; $b-&gt;{right} } @s;
+
+for(0..$#s) {
+    $s[$_]-&gt;{right} = $_ + 1;
+}
+
+# sort by left
+@s = sort { $b-&gt;{left} &lt;=&gt; $a-&gt;{left} } @s;
+
+my @ans;
+my @fenwick = ();
+
+for(@s) {
+    $ans[$_-&gt;{position}] = presum($_-&gt;{right});
+    updateFenwick($_-&gt;{right});
+}
+
+for(@ans) { say $_ }
+
+sub presum {
+    my $index = shift;
+    my $ans = 0;
+    while ($index &gt; 0) {
+        $ans += $fenwick[$index];
+        $index -= lowbit($index);
+    }
+    $ans;
+}
+
+sub updateFenwick {
+    my $index = shift;
+    while ($index &lt;= $n) {
+        $fenwick[$index]++;
+        $index += lowbit($index);
+    }
+}
+
+sub lowbit { $_[0] &amp; -$_[0] }
+
+</code></pre>
+
+<h3 id="common-lisp">Common Lisp</h3>
+
+<pre><code>;; Finished at 2016/07/07 7:51:23 AM
+
+(defvar *n*)
+(defparameter *maxn* 20)
+
+(defclass node ()
+  ((left :accessor left
+         :initarg :left)
+   (right :accessor right
+          :initarg :right)
+   (ori-position :accessor ori-position
+                 :initarg :ori-position)))
+
+(defparameter *s* (make-array *maxn*
+                              :element-type 'node
+                              :fill-pointer 0
+                              :adjustable t))
+(defparameter *fenwick* (make-array *maxn*
+                                    :element-type 'integer
+                                    :fill-pointer 0
+                                    :adjustable t))
+(defparameter *ans* (make-array *maxn*
+                                    :element-type 'integer
+                                    :fill-pointer 0
+                                    :adjustable t))
+
+(defun print-array ()
+  (loop for i from 0 to (1- *n*) do
+           (format t &quot;i = ~d, ~d ~d~%&quot;
+                   i
+                   (left (aref *s* i))
+                   (right (aref *s* i)))))
+
+(defun lowbit (x)
+  (boole boole-and x (- x)))
+
+(defun presum (index)
+  (let ((ans 0))
+    (do ((i index
+            (- i (lowbit i))))
+        ((&lt;= i 0) ans)
+      (incf ans (elt *fenwick* (1- i))))))
+
+(defun update-fenwick (index)
+  (do ((i index (+ i (lowbit i))))
+      ((&gt; i *n*))
+    (incf (elt *fenwick* (1- i)))))
+
+(with-open-file
+    (*standard-input*
+     &quot;in.txt&quot;
+     :if-does-not-exist nil)
+  (setq *n* (read))
+  (loop for i from 0 to (1- *n*) do
+    (vector-push-extend
+     (make-instance 'node
+                    :left (read)
+                    :right (read)
+                    :ori-position i)
+     *s*)
+    (vector-push-extend 0 *fenwick*)
+    (vector-push-extend 0 *ans*)))
+
+(sort *s* #'&lt; :key #'right)
+
+;; compress right
+(loop for i from 0 to (1- *n*) do
+  (setf (right (elt *s* i))
+        (1+ i)))
+
+;; sort by left reverse
+(sort *s* #'&gt; :key #'left)
+(loop for i from 0 to (1- *n*) do
+  (setf (elt *ans* (ori-position (elt *s* i)))
+        (presum (right (elt *s* i))))
+  (update-fenwick (right (elt *s* i))))
+
+(defun print-ans ()
+  (loop for i from 0 to (1- *n*) do
+    (format t &quot;~d~%&quot; (elt *ans* i))))
+
+(print-ans)
+
+</code></pre>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

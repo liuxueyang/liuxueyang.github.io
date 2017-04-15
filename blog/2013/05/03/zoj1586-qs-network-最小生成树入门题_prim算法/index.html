@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>zoj1586 QS Network ——最小生成树入门题_Prim算法 &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">zoj1586 QS Network ——最小生成树入门题_Prim算法</h1>
+    <span class="post-date">May 3, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/03/zoj1586-qs-network-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98_prim%E7%AE%97%E6%B3%95/#disqus_thread">Comments</a>
+    </span>
+    <p>题目链接：<a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=586">http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=586</a>
+题目大意：
+　　题目意思比较难懂。看书上的翻译竟然没有看懂，还是打开OJ，看英文的原题。看了两遍的样子，终于差不多懂了。
+　　QS是一种生物，要完成通信，需要设备，每个QS需要的设备的价格不同，并且，这种设备只能在两个QS之间用一次，也就是说，如果一个QS需要和3个QS通信的话，它就必须得买3个设备，同时，对方三个也必须买对应的适合自己的设备。同时，每两个QS之间是有距离的，要完成通信还需要网线，给出每两个QS之间的网线的价值。求一棵生成树，使得所需要的费用最少。数据范围：所有数据都在1000以内。
+题目思路：
+　　根据这种设备的特性，每个设备只能和另外一个QS通信，所以呢，建图的时候，每条边的权值就是网线的费用，加上这条边的两个端点的QS所需设备的费用的和。这样，就转化成了常规的最小生成树的问题。因为只需要求出最小费用，所以，可以不必记录prim过程中要选的边的顶点编号，也就是说，可以省略nearvex数组，用lowcost数组就可以实现。如果lowcost[i]的值是-1，则代表已经选择了这个点，否则，lowcost[i]依然表示集合T1内的顶点 i 距离集合T内个顶点权值最小的边的权值。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+const int MAX = 1000+10;
+int edge[MAX][MAX], lowcost[MAX];
+int t, n, pri[MAX];
+void prim(int u0) 
+{
+  int sum = 0, i, j, v;
+  for (i = 1; i &lt;= n; ++i) lowcost[i] = edge[u0][i];
+  lowcost[u0] = -1;
+  for (i = 1; i &lt; n; ++i) {
+    int min = MAXN; v = -1;
+    for (j = 1; j &lt;= n; ++j) {
+      if (min &gt; lowcost[j] &amp;&amp; lowcost[j] != -1) {
+        v = j; min = lowcost[j];
+      }
+    }
+    if (v != -1) {
+      sum += lowcost[v]; lowcost[v] = -1;
+      for (j = 1; j &lt;= n; ++j) {
+        if (edge[v][j] &lt; lowcost[j] &amp;&amp; lowcost[j] != -1) {
+          lowcost[j] = edge[v][j];
+        }
+      }
+    }
+  }
+  printf(&quot;%d\n&quot;, sum);
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;zoj1568.in&quot;, &quot;r&quot;, stdin);
+#endif
+  scanf(&quot;%d&quot;, &amp;t);
+  int i, j, k;
+  while (t--) {
+    memset(edge, 0, sizeof(edge));
+    scanf(&quot;%d&quot;, &amp;n);
+    for (i = 1; i &lt;= n; ++i) scanf(&quot;%d&quot;, &amp;pri[i]);
+    for (i = 1; i &lt;= n; ++i) {
+      for (j = 1; j &lt;= n; ++j) {
+        scanf(&quot;%d&quot;, &amp;edge[i][j]);
+        edge[i][j] += (pri[i] + pri[j]);
+      }
+    }
+    prim(1);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>写这道题目的时候，遇到一个比较坑的问题，导致输出怎么也不出结果。。。后来才发现，读文件那句话里的文件名写错了……好吧……我去……</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

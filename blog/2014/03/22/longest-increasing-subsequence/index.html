@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Longest Increasing Subsequence &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Longest Increasing Subsequence</h1>
+    <span class="post-date">Mar 22, 2014 &middot; 5 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/03/22/longest-increasing-subsequence/#disqus_thread">Comments</a>
+    </span>
+    <p>很久不写算法了== 写个东西练练手</p>
+
+<p>最长上升子序列</p>
+
+<p>输入n，然后是数组a[ ]的n个元素</p>
+
+<p>输出最长上升子序列的长度</p>
+
+<p>一、最简单的方法复杂度O(n * n)</p>
+
+<pre><code>DP[ i ] 是以a[ i ] 为结尾的最长上升子序列的长度。
+DP[ i ] = max{DP[ j ] + 1 | j &lt; i &amp;&amp; a[ j ] &lt; a[ i ]}
+</code></pre>
+
+<p>代码：</p>
+
+<pre><code class="language-cpp"> /*
+  * =====================================================================================
+ *       Filename : LongestIncrSub1.cpp
+ *    Description : O(n^2)
+ *    Version     : a better Algorithm of O(n^2)
+ *        Created : 03/22/14 22:03
+ *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com
+ *         Motto  : How about today?
+ * =====================================================================================
+ */
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;climits&gt;
+#include &lt;cstdlib&gt;
+
+const int MAXN = 1001;
+int dp[MAXN], a[MAXN];
+int n, i, j;
+
+    int
+main ( int argc, char *argv[] )
+{
+    
+#ifndef  ONLINE_JUDGE
+    freopen(&quot;LongestIncrSub.txt&quot;, &quot;r&quot;, stdin);
+#endif     /* -----  not ONLINE_JUDGE  ----- */
+
+    while ( ~scanf(&quot;%d&quot;, &amp;n) ) {
+        
+        for ( i = 0; i &lt; n; ++i ) {
+            scanf ( &quot;%d&quot;, &amp;a[i] );
+            dp[i] = INT_MAX;
+        }
+        for ( i = 0; i &lt; n; ++i ) {
+            for ( j = 0; j &lt; n; ++j ) {
+                if ( j == 0 || dp[j-1] &lt; a[i] ) {
+                    if ( dp[j] &gt; a[i] ) {
+                        dp[j] = a[i];
+                    }
+                }
+            }
+        }
+        int result = 1;
+        for ( j = n - 1; j &gt;= 0; --j ) {
+            if ( dp[j] != INT_MAX ) {
+                result = j + 1;
+                break;
+            }
+        }
+        printf ( &quot;%d\n&quot;, result );
+    }
+        return EXIT_SUCCESS;
+}                /* ----------  end of function main  ---------- */
+</code></pre>
+
+<p>二、因为长度相同的几个不同的子序列中，最末位数字最小的在之后比较有优势，所以用DP针对这个最小的末尾元素求解。</p>
+
+<p>DP[ i ] 表示长度为 i + 1的上升子序列中末尾元素的最小值</p>
+
+<p>从前往后扫描数组a[ ]，对于每一个元素a[ i ]，只需要在DP[ ] 数组中找到应该插入的位置。</p>
+
+<p>if j == 0 || a[ i ] &gt; DP[ j-1 ]</p>
+
+<p>　　DP[ j ] = min{ DP[ j ], a[ i ]}</p>
+
+<p>由于对于每个a[ i ] 都要扫描一遍DP[ ] 数组，所以复杂度还是O(n * n)</p>
+
+<p>代码：</p>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *       Filename : LongestIncrSub1.cpp
+ *    Description : O(n^2)
+ *    Version     : a better Algorithm of O(n^2)
+ *        Created : 03/22/14 22:03
+ *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com
+ *         Motto  : How about today?
+ * =====================================================================================
+ */
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;climits&gt;
+#include &lt;cstdlib&gt;
+
+const int MAXN = 1001;
+int dp[MAXN], a[MAXN];
+int n, i, j;
+
+    int
+main ( int argc, char *argv[] )
+{
+    
+#ifndef  ONLINE_JUDGE
+    freopen(&quot;LongestIncrSub.txt&quot;, &quot;r&quot;, stdin);
+#endif     /* -----  not ONLINE_JUDGE  ----- */
+
+    while ( ~scanf(&quot;%d&quot;, &amp;n) ) {
+        
+        for ( i = 0; i &lt; n; ++i ) {
+            scanf ( &quot;%d&quot;, &amp;a[i] );
+            dp[i] = INT_MAX;
+        }
+        for ( i = 0; i &lt; n; ++i ) {
+            for ( j = 0; j &lt; n; ++j ) {
+                if ( j == 0 || dp[j-1] &lt; a[i] ) {
+                    if ( dp[j] &gt; a[i] ) {
+                        dp[j] = a[i];
+                    }
+                }
+            }
+        }
+        int result = 1;
+        for ( j = n - 1; j &gt;= 0; --j ) {
+            if ( dp[j] != INT_MAX ) {
+                result = j + 1;
+                break;
+            }
+        }
+        printf ( &quot;%d\n&quot;, result );
+    }
+        return EXIT_SUCCESS;
+}                /* ----------  end of function main  ---------- */
+</code></pre>
+
+<p>三、对于上一个算法，在DP[ ]数组中找a[ i ]元素的插入位置的时候，采用的是线性查找，由于DP[ ]这个数组是有序的，所以可以采用二分，这要复杂度就降到了O(nlogn)，可以用STL函数lower_bound用来找第一个大于等于a[ i ]的位置。</p>
+
+<p>代码：</p>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *       Filename : LongestIncrSub2.cpp
+ *    Description : A better solution
+ *    Version     : algorithm of O(nlogn)
+ *        Created : 03/22/14 22:37
+ *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com
+ *         Motto  : How about today?
+ * =====================================================================================
+ */
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;climits&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+const int MAXN = 1001;
+int a[MAXN], dp[MAXN];
+int i, n, result;
+
+    int
+main ( int argc, char *argv[] )
+{
+    
+#ifndef  ONLINE_JUDGE
+    freopen(&quot;LongestIncrSub.txt&quot;, &quot;r&quot;, stdin);
+#endif     /* -----  not ONLINE_JUDGE  ----- */
+    while ( ~scanf(&quot;%d&quot;, &amp;n) ) {
+        fill(dp, dp + n, INT_MAX);
+        for ( i = 0; i &lt; n; ++i ) {
+            scanf ( &quot;%d&quot;, &amp;a[i] );
+        }
+        for ( i = 0; i &lt; n; ++i ) {
+            *lower_bound(dp, dp + n, a[i]) = a[i];
+        }
+        result = lower_bound(dp, dp + n, INT_MAX) - dp;
+        printf ( &quot;%d\n&quot;, result );
+    }
+
+        return EXIT_SUCCESS;
+}                /* ----------  end of function main  ---------- */
+</code></pre>
+
+<p>Source Code on <a href="https://github.com/liuxueyang/learnalgorithm/tree/master/DP">GitHub</a></p>
+
+<p>四、如何打印出最长上升子序列呢？</p>
+
+<p>用一个position数组，position[ i ] 表示位置 i 的数字在上升子序列中的位置。也就是，插入dp数组中的位置。</p>
+
+<p>比如</p>
+
+<p><img src="http://wstaw.org/m/2017/04/10/301311028597840.png" alt="Sample 1" /></p>
+
+<p><img src="http://wstaw.org/m/2017/04/10/301311150946704.png" alt="Sample 2" /></p>
+
+<p>然后在position数组中从后往前找到第一次出现的3对应的a[ i ] = 8，然后接着找第一次出现的2对应的a[ i ] = 3，然后接着找第一次出现的1对应的a[ i ] = 2，最后接着</p>
+
+<p>找第一次出现的0对应的a[ i ] = -7</p>
+
+<p>所以，-7, 2, 3, 8就是最长上升子序列的一个解。这个解是在序列中最后出现的。</p>
+
+<p>代码：</p>
+
+<pre><code class="language-cpp"> /*
+ * =====================================================================================
+ *       Filename : LongestIncrSub2.cpp
+ *    Description : A better solution
+ *    Version     : algorithm of O(nlogn)
+ *        Created : 03/22/14 22:37
+ *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com
+ *         Motto  : How about today?
+ * =====================================================================================
+ */
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;climits&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+const int MAXN = 1001;
+int a[MAXN], dp[MAXN], position[MAXN], sub[MAXN];
+int i, n, result;
+
+    int
+main ( int argc, char *argv[] )
+{
+    
+#ifndef  ONLINE_JUDGE
+//    freopen(&quot;LongestIncrSub.txt&quot;, &quot;r&quot;, stdin);
+#endif     /* -----  not ONLINE_JUDGE  ----- */
+    while ( ~scanf(&quot;%d&quot;, &amp;n) ) {
+        fill(dp, dp + n, INT_MAX);
+        for ( i = 0; i &lt; n; ++i ) {
+            scanf ( &quot;%d&quot;, &amp;a[i] );
+        }
+        int *tmp;
+        for ( i = 0; i &lt; n; ++i ) {
+            tmp = lower_bound(dp, dp + n, a[i]);
+            position[i] = tmp - dp;
+            *tmp = a[i];
+        }
+        result = lower_bound(dp, dp + n, INT_MAX) - dp;
+        printf ( &quot;%d\n&quot;, result );
+        int t = result - 1;
+        for ( i = n - 1; i &gt;= 0; --i ) {
+            if ( t == position[i] ) {
+                sub[t] = a[i];
+                --t;
+            }
+        }
+        for ( i = 0; i &lt; result; ++i ) {
+            if ( i ) {
+                printf ( &quot; &quot; );
+            }
+            printf ( &quot;%d&quot;, sub[i] );
+        }
+        printf ( &quot;\n&quot; );
+    }
+
+        return EXIT_SUCCESS;
+}                /* ----------  end of function main  ---------- */
+</code></pre>
+
+<p>所有的代码在github里面</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

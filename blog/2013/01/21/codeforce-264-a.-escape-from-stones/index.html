@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>CodeForce 264 A. Escape from Stones &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">CodeForce 264 A. Escape from Stones</h1>
+    <span class="post-date">Jan 21, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/01/21/codeforce-264-a.-escape-from-stones/#disqus_thread">Comments</a>
+    </span>
+    <p>A. Escape from Stones
+time limit per test
+2 seconds
+memory limit per test
+256 megabytes
+input
+standard input
+output
+standard output</p>
+
+<p>Squirrel Liss lived in a forest peacefully, but unexpected trouble happens. Stones fall from a mountain. Initially Squirrel Liss occupies an interval [0, 1]. Next, n stones will fall and Liss will escape from the stones. The stones are numbered from 1 to n in order.</p>
+
+<p>The stones always fall to the center of Liss&rsquo;s interval. When Liss occupies the interval [k - d, k + d] and a stone falls to k, she will escape to the left or to the right. If she escapes to the left, her new interval will be [k - d, k]. If she escapes to the right, her new interval will be [k, k + d].</p>
+
+<p>You are given a string s of length n. If the i-th character of s is &ldquo;l&rdquo; or &ldquo;r&rdquo;, when the i-th stone falls Liss will escape to the left or to the right, respectively. Find the sequence of stones&rsquo; numbers from left to right after all the n stones falls.
+Input</p>
+
+<p>The input consists of only one line. The only line contains the string s (1 ≤ |s| ≤ 106). Each character in s will be either &ldquo;l&rdquo; or &ldquo;r&rdquo;.
+Output</p>
+
+<p>Output n lines — on the i-th line you should print the i-th stone&rsquo;s number from the left.
+Sample test(s)
+input</p>
+
+<p>llrlr</p>
+
+<p>output</p>
+
+<p>3
+5
+4
+2
+1
+题目链接<a href="http://codeforces.com/contest/264/problem/A">http://codeforces.com/contest/264/problem/A</a></p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+
+char s[1000000+10];
+
+int main(void)
+{
+    //freopen(&quot;cf264.in&quot;, &quot;r&quot;, stdin);
+    scanf(&quot;%s&quot;, s+1);
+    int len = strlen(s+1);
+    int a[len];
+    int left = 1, right = len; 
+    for (int i = 1; i &lt;= len; ++i)
+    {
+        if (s[i] == 'l')
+            a[right--] = i;
+        else a[left++] = i; 
+    }
+    for (int i = 1; i &lt;= len; ++i)
+        printf(&quot;%d\n&quot;, a[i]);
+
+    return 0;
+}
+</code></pre>
+
+<p>这道题目不能用暴力做，因为精度不够！看看人家的代码，短小精悍，这题目首先要想明白，抓住问题的关键！</p>
+
+<p>对了，这里有一个小的trick，输入字符串的时候用的scanf(&ldquo;%s&rdquo;, s + 1);这样，以后用的时候就可以通过s[k]访问第k个字符了。但是，以后计算字符串长度的时候得用strlen(s+1)……</p>
+
+<p>下面是暴力的代码，直接用数学做……不能过</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cmath&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+char str[1000000+10];
+long double b[1000000+10];
+struct stone
+{
+    long double data;
+    int index;
+}c[1000000+10];
+
+int cmp(const void *a, const void *b)
+{
+    return (*(stone*)a).data &gt;  (*(stone*)b).data ? 1 : -1;
+}
+
+int main(void)
+{
+//    freopen(&quot;cf264.in&quot;, &quot;r&quot;, stdin);
+    scanf(&quot;%s&quot;, str);
+    b[0] = 0.0;
+    b[1] = 0.5;
+    for (int i = 0; str[i] != '\0'; ++i)
+    {
+        if (str[i] == 'l')
+            b[i+2] = b[i+1] - (fabs(b[i+1]-b[i]) * 0.5);
+        else b[i+2] = b[i+1] + (fabs(b[i+1]-b[i]) * 0.5);
+    }
+    int len = strlen(str);
+    for (int i = 1; i &lt; len + 1; ++i)
+    {
+        c[i-1].index = i;
+        c[i-1].data = b[i];
+    }
+    qsort(c, len, sizeof(c[0]), cmp);
+    for (int i = 0; i &lt; len; ++i)
+    {
+        printf(&quot;%d\n&quot;, c[i].index);
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>其中用到了结构体排序。</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Candy Store &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Candy Store</h1>
+    <span class="post-date">Sep 18, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/09/18/candy-store/#disqus_thread">Comments</a>
+    </span>
+    <p>Candy Store
+Time Limit: 30000ms, Special Time Limit:75000ms, Memory Limit:65536KB
+Total submit users: 6, Accepted users: 6
+Problem 12624 : No special judgement
+Problem description
+You are walking with a friend, when you pass a candy store. You make a comment about how unhealthy their wares are. Your friend issues an interesting challenge: who can be the unhealthiest? Both of you will go into the store with the same amount of money. Whoever buys candy with the most total calories wins!</p>
+
+<p>Since you&rsquo;re a smart computer scientist, and since you have access to the candy store&rsquo;s inventory, you decide not to take any chances. You will write a program to determine the most calories you can buy. The inventory tells you the price and calories of every item. It also tells you that there is so much in stock that you can buy as much of any kind of candy as you want. You can only buy whole pieces of candy.</p>
+
+<p>Input
+There will be multiple test cases in the input. Each test case will begin with a line with an integer n (1 ≤ n ≤ 5,000), and an amount of money m ($0.01 ≤ m ≤ $100.00), separated by a single space, where n is the number of different types of candy for sale, and m is the amount of money you have to spend. The monetary amount m will be expressed in dollars with exactly two decimal places, and with no leading zeros unless the amount is less than one dollar. There will be no dollar sign. Each of the next nlines will have an integer c (1 ≤ c ≤ 5,000) and an amount of money p ($0.01 ≤ p ≤ $100.00), separated by a single space, where c is the number of calories in a single piece of candy, and p is the price of a single piece of candy, in dollars and in the same format as m. The input will end with a line containing &lsquo;0 0.00&rsquo;.</p>
+
+<p>Output
+For each test case, output a single integer, indicating the maximum amount of calories you can buy with up to m dollars. Output no spaces, and do not separate answers with blank lines.</p>
+
+<p>Sample Input</p>
+
+<p>2 8.00
+700 7.00
+199 2.00
+3 8.00
+700 7.00
+299 3.00
+499 5.00
+0 0.00</p>
+
+<p>Sample Output</p>
+
+<p>796
+798</p>
+
+<p>Problem Source</p>
+
+<p>ACM ICPC Southeast USA Regional Programming Contest 2012</p>
+
+<p>完全背包。注意浮点数转化成整数时的精度！用floor转化一下~</p>
+
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int w[5009], C[5009];
+long long f[10009];
+double c[5009];
+double eps = 1e-9;
+int main(void)
+{
+//  freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+  int n;
+  double m;
+  while (~scanf(&quot;%d%lf&quot;, &amp;n, &amp;m)) {
+      if (n+m&lt;eps) break;
+    for (int i = 0; i &lt; n; ++i) scanf(&quot;%d%lf&quot;, w+i, c+i), C[i]=(floor)(c[i]*100);
+    memset(f, 0, sizeof(f));
+    int S = (floor)(m * 100);
+    for (int i = 0; i&lt; n; ++i)
+      for (int v = C[i]; v &lt;= S; ++v)
+        if (f[v] &lt; f[v-C[i] ] + w[i]) f[v] = f[v-C[i] ] + w[i];
+    printf(&quot;%lld\n&quot;, f[S]);
+  }
+  return 0;
+}
+</code></pre>
+
+<p>嗨，中村。</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>对折腾编辑器配置的想法 &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">对折腾编辑器配置的想法</h1>
+    <span class="post-date">Feb 14, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/02/14/%E5%AF%B9%E6%8A%98%E8%85%BE%E7%BC%96%E8%BE%91%E5%99%A8%E9%85%8D%E7%BD%AE%E7%9A%84%E6%83%B3%E6%B3%95/#disqus_thread">Comments</a>
+    </span>
+    
+
+<p>我是先接触的Vim，用了很长一段时间，去年才开始使用Emacs。两种编辑器我觉得都挺不错，有的时候使用Emacs，有的时候使用Vim。当然，我也喜欢使用各种IDE。对于我来说，使用Vim和Emacs最大的乐趣就是可以定制各种各样奇怪的东西，虽然只是找别人开发分享的插件，但还是充满了乐趣。有的时候发现了某个非常厉害的插件会特别特别兴奋，这种情况遇到过两次：一次是<a href="https://github.com/abo-abo">abo-abo</a>这个俄罗斯人开发的Emacs插件，一次是<a href="https://github.com/junegunn/vim-plug">junegunn</a>这个韩国人开发的Vim插件。</p>
+
+<p>有机会也学着写写怎么写插件吧。配置编辑器其实挺花时间并且会上瘾，看来也没有什么意义，因为使用再好的编辑器，也没法阻止你写出丑陋的程序，也没法提高工作和学习效率。所以听过一句话，大意大概是这样：如果世界上的程序员能够把折腾编辑器的一般精力花在「更有价值」的事情上面的话，工作效率也许会提升不止一倍。</p>
+
+<p>我配置过很多次Vim和Emacs，也因为这样或者那样的原因推翻过很多次。也使用过一些类似于Spacemacs的这种称为「世界级配置」的Emacs。然而我还是喜欢自己从头开始配置，因为别人的需求和我个人的需求不可能完全一致，使用别人的非常全面的配置反而会给我引来更多没法预料的问题，太臃肿的配置也让可移植性变差，比如版本问题，比如想要引入一个插件的时候，和原来的配置的冲突问题等等。</p>
+
+<p>慢慢的我还是比较喜欢非常轻量级的、能够恰好满足我的个人需求的配置。我可以根据需要来手动加载当前需要的配置和插件，而不是当启动的时候一次性一次性全部加载进来。还有，如果不是特别需要，就不要加入新的插件，尽量保持配置文件的清晰和简洁，能够轻易移植。所以我打算慢慢地开始重新配置我的编辑器，要遵守的原则是：尽量保持简洁、轻量。不要强行解决「次要」问题，不适合使用编辑器做的事情就不要强行来实现。</p>
+
+<p>其实，Emacs本身的初始配置对于一些场景来说，就已经够用了。</p>
+
+<p>另外，这两种编辑器，如果非要做一个比较的话，我更喜欢Emacs，但是类似于临时修改个系统配置文件之类的事情，使用Vim快速解决。对于日常工作：写程序、记笔记等，我全部在Emacs里面做。</p>
+
+<blockquote>
+<p>唉……如果老是依赖某种东西的话，毕竟不算是真正的勇气。——风间彻</p>
+</blockquote>
+
+<hr />
+
+<h3 id="2016-02-17-01-16-57am-更新">2016/02/17 01:16:57AM 更新</h3>
+
+<p>昨晚又折腾了很久的Emacs，该完成的任务又没有完成。其实仔细想想，折腾编辑器确实耽误了我非常非常多的时间，带来的回报却很少。所以决定不再自己折腾和配置编辑器了。刚才又适用了一下 Spacemacs，其实感觉还不错。至于到底是不是完全适合自己，倒不是最重要的，重要的是能用，能够比较方便地实现日常的编辑工作，如果有些小的瑕疵或者违反我个人的习惯的话，那就慢慢适应吧。我不得不承认，我自己再怎么配置也不可能有 Spacemacs 的配置全面可靠。所以我决定以后就用 Spacemacs 了。花很多时间折腾编辑器甚至舍本逐末对目前的我来说是一件非常不明智的事情。</p>
+
+<p>如果要使用 Spacemacs 的话唯一需要做的事情就是，找时间认真看一下它的文档：<a href="spacemacs">http://spacemacs.org/doc/DOCUMENTATION.html</a>。遇到问题最先应该找的就是官方文档，可能你遇到的问题官方文档里面没有特别拿一节或者一章来说明，但是很可能在其它某个小结里面做了说明，这个时候就体现出浏览一遍文档的重要性了。</p>
+
+<p>目前，我在 Spacemacs 里面只做了很少的配置：</p>
+
+<ol>
+<li>加了<code>lispy</code>插件</li>
+<li>更换了插件源</li>
+<li>如果状态栏里面的Unicode符号显示乱码的话，把<code>dotspacemacs-mode-line-unicode-symbols</code>这个变量设置成<code>nil</code></li>
+</ol>
+
+<p>另外特别需要注意的是：<strong>不要强行解决不重要的问题。</strong>有些问题其实并没有那么重要，花很多时间去解决无关紧要的问题就是浪费时间。要做到这一点还是需要有自制力，克服所谓的「洁癖」或者「强迫症」。</p>
+
+<h3 id="2017-02-17-fri-09-59-更新">[2017-02-17 Fri 09:59] 更新</h3>
+
+<p>在使用 Spacemacs 的过程中，还是应该保持一个<code>.org</code>文件，来专门记录遇到的快捷键，以便以后需要的时候能够方便查阅。这么多快捷键肯定是一下记不住的。今天一整天都在使用 Spacemacs，说实话，体验非常好。对我来说简直完美：有一些美化，能够实现我需要的功能。虽然可能有些解决方案不如<code>abo-abo</code>的插件体验那么好，或者好像也没有加入 multicursors 的功能，但还是让我满意的。</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

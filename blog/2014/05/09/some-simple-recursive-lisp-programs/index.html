@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>some simple recursive lisp programs &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">some simple recursive lisp programs</h1>
+    <span class="post-date">May 9, 2014 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/05/09/some-simple-recursive-lisp-programs/#disqus_thread">Comments</a>
+    </span>
+    <ul>
+<li>Write a procedure count-list to count the number of elements in a list</li>
+</ul>
+
+<pre><code>(defun count-list (numbers)
+       (if (null numbers) 0
+         (+ 1 (count-list (rest numbers)))))
+(print (count-list '(1 2 3)))
+
+result: 3
+</code></pre>
+
+<ul>
+<li>Write a procedure reverse-list to reverse each word in a list of words</li>
+</ul>
+
+<pre><code>(defun reverse-list (numbers)
+       (if (null numbers) nil
+         (cons (reverse (first numbers)) (reverse-list (rest numbers)))))
+(reverse-list '(&quot;dog&quot; &quot;pan&quot; &quot;tar&quot; &quot;tip&quot; &quot;net&quot;))
+</code></pre>
+
+<p>result: <code>(&quot;god&quot; &quot;nap&quot; &quot;rat&quot; &quot;pit&quot; &quot;ten&quot;)</code></p>
+
+<ul>
+<li>Write a procedure evenp-list to process a list of numbers, replacing each number by t if it&rsquo;s even, and nil if it&rsquo;s odd</li>
+</ul>
+
+<pre><code>(defun evenp-list (numbers)
+       (if (null numbers) nil
+         (cons (if (evenp (first numbers)) t nil)
+               (evenp-list (rest numbers)))))
+
+(evenp-list '(1 2 3 4 5 6 7 8))
+</code></pre>
+
+<p>result:</p>
+
+<p><code>(nil t nil t nil t nil t)</code></p>
+
+<ul>
+<li>Write a procedure max-list to return the maximum element of a list.</li>
+</ul>
+
+<pre><code>(defun max-list (numbers)
+       (if (null numbers) 0
+         (if (&gt; (first numbers) (max-list (rest numbers)))
+           (first numbers)
+           (max-list (rest numbers)))))
+
+(max-list '(11 13 17 19 2 3 5 7))
+</code></pre>
+
+<p>should return 19.</p>
+
+<p>These three small programs are all recursive. It is interesting to code in lisp. ;)</p>
+
+<p>The fourth program is incorrect. There is bug: I assume that all numbers in the list are positive.</p>
+
+<p>The following program is better:</p>
+
+<pre><code>(defun max-list (numbers)
+       (if (null (rest numbers)) (first numbers)
+         (if (&gt; (first numbers) (max-list (rest numbers)))
+           (first numbers)
+           (max-list (rest numbers)))))
+</code></pre>
+
+<p>btw, max is a build-in procedure. so:</p>
+
+<pre><code>(defun max-list (numbers)
+       (if (null (rest numbers)) (first numbers)
+         (max (first numbers) (max-list (rest numbers))
+           )))
+</code></pre>
+
+<p>It becomes simpler. ;)</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

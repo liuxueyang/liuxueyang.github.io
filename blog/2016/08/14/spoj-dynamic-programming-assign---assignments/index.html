@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Spoj, dynamic-programming: ASSIGN - Assignments &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Spoj, dynamic-programming: ASSIGN - Assignments</h1>
+    <span class="post-date">Aug 14, 2016 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/08/14/spoj-dynamic-programming-assign---assignments/#disqus_thread">Comments</a>
+    </span>
+    <p><a href="http://www.spoj.com/problems/ASSIGN/">题目意思：</a></p>
+
+<pre><code>有n个学生和n个任务，每个学生有喜欢的任务，输入一个矩阵，第i行第j列表示第i个
+学生喜欢第j个任务。把任务分配给所有学生，使得每个学生得到的任务都是他喜欢的。
+输出有多少种分配方法。n的最大值是20。
+</code></pre>
+
+<p>用一个数字的一个位表示这个任务是否已经被分配，如果任务全部被分配，那么这个数字就
+是<code>(1&lt;&lt;n)-1</code>。可以想到这样的递归方法：<code>solve(i,mask)</code> 表示对i..n这些人分配任务的
+方法的数目，mask代表此时对1..i-1这些人已经分配了任务，也就是说mask的二进制表示里
+面有i-1个1。对当前的人，如果他喜欢第j个任务，并且mask的第j位是0，那么就可以把这
+个任务分配给他，继续考虑下一个人。</p>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *
+ *       Filename:  main1.cpp
+ *
+ *    Description:  http://www.spoj.com/problems/ASSIGN/
+ *
+ *        Version:  2.0
+ *        Created:  08/13/2016 14:13:42
+ *       Compiler:  g++
+ *
+ *         Author:  Sabastian (liuxueyang.github.io), read3valprintloop@gmail.com
+ *
+ * =====================================================================================
+ */
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+#define _ ios_base::sync_with_stdio(0);cin.tie(0);
+#define rep(i, a, n) for (int i = a; i &lt; n; ++i)
+#define per(i, a, n) for (int i = n-1; i &gt;= a; --i)
+#define pb push_back
+#define mp make_pair
+#define all(x) (x).begin(),(x).end()
+#define fi first
+#define se second
+#define SZ(x) ((int)(x).size())
+typedef vector&lt;int&gt; VI;
+typedef map&lt;int,int&gt; MI;
+typedef long long ll;
+typedef pair&lt;int,int&gt; PII;
+const ll MOD=1000000007;
+const int N=((1&lt;&lt;20)+10);
+ll a[25][N];
+int b[25][25];
+ll result;
+int n;
+ 
+ll solve(int stu, ll mask){
+  if(a[stu][mask])return a[stu][mask];
+  if(stu&gt;=n+1)return a[stu][mask]=1;
+  ll result=0;rep(j,0,n){
+    if( b[stu-1][j]==1 &amp;&amp; !((1&lt;&lt;j)&amp;mask) )
+      result+=solve(stu+1,mask|(1&lt;&lt;j));
+  }
+  return a[stu][mask]=result;
+}
+ 
+int main ( void )
+{
+#ifndef  ONLINE_JUDGE
+  freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);
+#endif     /* -----  ONLINE_JUDGE  ----- */
+ 
+  int T;cin&gt;&gt;T;while(T--){
+    memset(a,0,sizeof(a)); cin&gt;&gt;n;rep(i,0,n)rep(j,0,n)cin&gt;&gt;b[i][j];
+    cout&lt;&lt;solve(1,0)&lt;&lt;endl;
+  }
+ 
+  return EXIT_SUCCESS;
+}				/* ----------  end of function main  ---------- */
+</code></pre>
+
+<p>然而，这会TLE。</p>
+
+<p>这个做法递归到最后，递归结束的时候，其实是在<code>solve(stu,mask)</code>里面的<code>stu==n+1</code>的
+时候。所以我们可以从下到上计算。<code>dp[(1&lt;&lt;n)-1]=1;</code>这是初始的条件。我们把<code>mask</code>从
+<code>(1&lt;&lt;n)-2</code>开始循环，一直到0，那么可以发现计算<code>dp[i]</code>的时候<code>dp[i..]</code>已经计算过了。
+另外，可以根据<code>i</code>里面的<code>1</code>的个数来判断当前是哪一个学生。</p>
+
+<p>复杂度是O(n*2^n)</p>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *
+ *       Filename:  main1.cpp
+ *
+ *    Description:  http://www.spoj.com/problems/ASSIGN/
+ *
+ *        Version:  2.0
+ *        Created:  2016年08月14日 13时32分54秒
+ *       Compiler:  g++
+ *
+ *         Author:  Sabastian (liuxueyang.github.io), read3valprintloop@gmail.com
+ *
+ * =====================================================================================
+ */
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+#define _ ios_base::sync_with_stdio(0);cin.tie(0);
+#define rep(i, a, n) for (int i = a; i &lt; n; ++i)
+#define per(i, a, n) for (int i = n-1; i &gt;= a; --i)
+#define pb push_back
+#define mp make_pair
+#define all(x) (x).begin(),(x).end()
+#define fi first
+#define se second
+#define SZ(x) ((int)(x).size())
+typedef vector&lt;int&gt; VI;
+typedef map&lt;int,int&gt; MI;
+typedef long long ll;
+typedef pair&lt;int,int&gt; PII;
+const ll MOD=1000000007;
+const ll N=1&lt;&lt;20;
+int b[25][N];
+ll a[N];
+int n;
+int cnt1(ll n){int cnt=0;while(n){if(n&amp;1) ++cnt;n/=2;}return cnt;}
+
+int main ( void )
+{
+#ifndef  ONLINE_JUDGE
+  freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);
+#endif     /* -----  ONLINE_JUDGE  ----- */
+
+    int T;cin&gt;&gt;T;while(T--) {
+        cin&gt;&gt;n; rep(i,1,n+1) rep(j,1,n+1) cin&gt;&gt;b[i][j];
+        memset(a,0,sizeof(a));
+        a[(1&lt;&lt;n)-1]=1;
+        per(mask,0,(1&lt;&lt;n)-1){int row=cnt1(mask);row++;
+            rep(j,1,n+1) if(b[row][j]&amp;&amp;(0==(mask&amp;(1&lt;&lt;(j-1))))) a[mask]+=a[mask|(1&lt;&lt;(j-1))];
+        }
+        cout&lt;&lt;a[0]&lt;&lt;endl;
+    }
+
+  return EXIT_SUCCESS;
+}				/* ----------  end of function main  ---------- */
+</code></pre>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

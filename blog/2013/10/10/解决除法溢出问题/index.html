@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>解决除法溢出问题 &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">解决除法溢出问题</h1>
+    <span class="post-date">Oct 10, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/10/%E8%A7%A3%E5%86%B3%E9%99%A4%E6%B3%95%E6%BA%A2%E5%87%BA%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a>
+    </span>
+    <p>被除数是dword型，除数是dword型，结果是dword型。</p>
+
+<p>参数：</p>
+
+<p>　　ax=dword型数据的低16位</p>
+
+<p>　　dx=dword型数据的高16位</p>
+
+<p>　　cx=除数</p>
+
+<p>返回：</p>
+
+<p>　　dx=结果的高16位，ax=结果的低16位</p>
+
+<p>　　cx=除数</p>
+
+<pre><code>assume cs:code, ss:stack
+
+stack segment
+    dw 10h dup(0)
+stack ends
+
+code segment
+start:
+    mov ax, 4240h
+    mov dx, 0fh
+    mov cx, 0ah
+    call divdw
+
+divdw:
+    ; H=int(X/65536) L=rem(X/65536)
+    push ax
+    ; H / n
+    mov ax, dx
+    mov dx, 0
+    div cx
+    mov si, ax
+    ; (rem(H/n) * 65536 + L) / n
+    pop ax
+    div cx
+    ;remain cx gotten
+    mov cx, dx
+    mov dx, si
+    ret
+
+    mov ax, 4c00h
+    int 21h
+code ends
+
+end start
+</code></pre>
+
+<p>这个程序写了差不多两天==</p>
+
+<p>我只想说，当初我想复杂了，没有把问题i想清楚，没有分析清楚，搞的我各种分析溢出……写了差不多100行，彻底晕了=_=</p>
+
+<p>后来才想明白。注意，*65536直接左移16位，也就是一个16位寄存器。</p>
+
+<p>哎，今天心情糟糕透了……o(╯□╰)o</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

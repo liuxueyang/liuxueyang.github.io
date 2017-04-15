@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>uestc1824 Judgment Day ——比赛残留题 &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">uestc1824 Judgment Day ——比赛残留题</h1>
+    <span class="post-date">Apr 20, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/20/uestc1824-judgment-day-%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/#disqus_thread">Comments</a>
+    </span>
+    <p>题目链接：<a href="http://www.acm.uestc.edu.cn/problem.php?pid=1824">http://www.acm.uestc.edu.cn/problem.php?pid=1824</a>
+题目大意：
+　　给一个大的字符串，给一个数字n，然后给出n个小的字符串，在大的字符串里面每个字母只能选一次，问最多可以组成多少个小的字符串。小的字符串最多有10个，每个小字符串和大字符串长度最多10000。
+题目思路：
+　　因为最多有10个小的字符串，从10个里面选，最多有1024种选法。因为字符串只包含26个小写字母，可以统计每个小字符串里面的每个小写字母的个数，这样，复杂度大约在10×26×1024,是10^5的范围，可以枚举。
+　　比如对于n个字符串，最多有1&lt;&lt;n种，用 x 从1枚举到1&lt;&lt;n - 1，然后用 j 从 0 枚举到n-1，用 1 &lt;&lt; j 和 x 相与，如果为1,则 j +1 表示第 j + 1 个人被选上了，判断它是不是能被选上，如果能被选上，那么 cnt++，再和max相比较，最后得到max。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+const int L = 100000+10;
+char s[L], a[15][L];
+int t, nn, cnt[29], ca[15][29], cc[29];
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;j.in&quot;, &quot;r&quot;, stdin);
+#endif
+  int n, i, j, k, len; scanf(&quot;%d&quot;, &amp;t);
+  for (i = 1; i &lt;= t; ++i){
+    memset(cnt, 0, sizeof(cnt));
+    scanf(&quot;%s&quot;, s); len = strlen(s);
+    for (k = 0; k &lt; len; ++k){
+      cnt[s[k]-'a']++;
+    }
+    scanf(&quot;%d&quot;, &amp;nn);
+    memset(ca, 0, sizeof(ca));
+    for (j = 1; j &lt;= nn; ++j){
+      scanf(&quot;%s&quot;, a[j]); len = strlen(a[j]);
+      for (k = 0; k &lt; len; ++k){
+        ca[j][a[j][k]-'a']++;
+      }
+    }
+    int max = 0, count = 0;
+    for (int x = 1; x &lt;= (1&lt;&lt;nn)-1; ++x){
+      for (int s = 0; s &lt;= 25; ++s) cc[s] = cnt[s];
+      count = 0;
+      for (int j = 0; j &lt;= nn-1; ++j){
+        int pos = (1&lt;&lt;j)&amp;x;
+        if (pos){
+          int kk;
+          for (kk = 0; kk &lt;= 25; ++kk){
+            if (ca[j+1][kk]){
+              if (ca[j+1][kk] &lt;= cc[kk]) {
+                cc[kk] -= ca[j+1][kk];
+              }
+              else break;
+            }
+          }
+          if (kk == 26) count++;
+        }
+      }
+      if (count &gt; max) max = count;
+    }
+    printf(&quot;Case #%d: %d\n&quot;, i, max);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>　　写的过程中还是花了不少时间，有一些小细节，虽然明白，但是还是用错了，属于一些低级错误。还是代码能力不够吧。
+　　这是昨天比赛的一道题目，开始读错题目了，以为KMP，后来才发现不是，然后终于弄懂题目意思了，可是没注意到10这个条件，不知道用枚举，唉……
+　　以后读题至少要读清楚！</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

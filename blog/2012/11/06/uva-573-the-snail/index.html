@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>uva 573 The Snail &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">uva 573 The Snail</h1>
+    <span class="post-date">Nov 6, 2012 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/06/uva-573-the-snail/#disqus_thread">Comments</a>
+    </span>
+    <p>The Snail</p>
+
+<p>A snail is at the bottom of a 6-foot well and wants to climb to the top. The snail can climb 3 feet while the sun is up, but slides down 1 foot at night while sleeping. The snail has a fatigue factor of 10%, which means that on each successive day the snail climbs 10%  3 = 0.3 feet less than it did the previous day. (The distance lost to fatigue is always 10% of the first day&rsquo;s climbing distance.) On what day does the snail leave the well, i.e., what is the first day during which the snail&rsquo;s height exceeds 6 feet? (A day consists of a period of sunlight followed by a period of darkness.) As you can see from the following table, the snail leaves the well during the third day.</p>
+
+<p>Day     Initial Height  Distance Climbed    Height After Climbing   Height After Sliding
+1   0&rsquo;  3&rsquo;  3&rsquo;  2&rsquo;
+2   2&rsquo;  2.7&rsquo;    4.7&rsquo;    3.7&rsquo;
+3   3.7&rsquo;    2.4&rsquo;    6.1&rsquo;    -</p>
+
+<p>Your job is to solve this problem in general. Depending on the parameters of the problem, the snail will eventually either leave the well or slide back to the bottom of the well. (In other words, the snail&rsquo;s height will exceed the height of the well or become negative.) You must find out which happens first and on what day.</p>
+
+<p>Input</p>
+
+<p>The input file contains one or more test cases, each on a line by itself. Each line contains four integers H, U, D, and F, separated by a single space. If H = 0 it signals the end of the input; otherwise, all four numbers will be between 1 and 100, inclusive. H is the height of the well in feet,U is the distance in feet that the snail can climb during the day, D is the distance in feet that the snail slides down during the night, and F is the fatigue factor expressed as a percentage. The snail never climbs a negative distance. If the fatigue factor drops the snail&rsquo;s climbing distance below zero, the snail does not climb at all that day. Regardless of how far the snail climbed, it always slides D feet at night.</p>
+
+<p>Output</p>
+
+<p>For each test case, output a line indicating whether the snail succeeded (left the well) or failed (slid back to the bottom) and on what day. Format the output exactly as shown in the example.</p>
+
+<p>Sample Input</p>
+
+<p>6 3 1 10 10 2 1 50 50 5 3 14 50 6 4 1 50 6 3 1 1 1 1 1 0 0 0 0</p>
+
+<p>Sample Output</p>
+
+<p>success on day 3 failure on day 4 failure on day 7 failure on day 68 success on day 20 failure on day 2</p>
+
+<p>Miguel A. Revilla
+1998-03-10</p>
+
+<p>这道题目，有一点，要注意边界，不等号取到等号还是取不到等号。</p>
+
+<p>另外，犯了一个很低级的错误，把变量的类型用错了，有小数的时候要用double型，我开始想都没想就用了int，结果怎么也不对，这种错误也会有。。。</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+
+using namespace std;
+
+int main(void)
+{
+    double h, u, d, f; int i;
+
+#ifndef ONLINE_JUDGE
+    freopen(&quot;at&quot;, &quot;r&quot;, stdin);
+#endif
+    while (cin &gt;&gt; h &gt;&gt; u &gt;&gt; d &gt;&gt; f)
+    {
+        if (!h)    break;
+        double sum = 0;int flag = 0;
+        i = 1;
+        while (1)
+        {
+            double clim = u - (i - 1) * f / 100 * u;
+            if (clim &lt;= 0)    clim = 0;
+            sum = sum + clim;    
+            if (sum &gt; h)    {flag = 1; break;}
+            sum -= d;     
+            if (sum &lt; 0)     {flag = 0; break;}
+            i++;
+        }
+        if (flag)    cout &lt;&lt; &quot;success on day &quot; &lt;&lt; i &lt;&lt; endl;
+        if (!flag)    cout &lt;&lt; &quot;failure on day &quot; &lt;&lt; i &lt;&lt; endl;
+    }
+
+    return 0;
+}
+</code></pre>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

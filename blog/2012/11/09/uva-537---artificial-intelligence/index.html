@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>uva 537 - Artificial Intelligence? &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">uva 537 - Artificial Intelligence?</h1>
+    <span class="post-date">Nov 9, 2012 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-537---artificial-intelligence/#disqus_thread">Comments</a>
+    </span>
+    <p>Physics teachers in high school often think that problems given as text are more demanding than pure computations. After all, the pupils have to read and understand the problem first!
+So they don&rsquo;t state a problem like <code>U=10V, I=5A, P=?&quot; but rather like</code>You have an electrical circuit that contains a battery with a voltage of U=10V and a light-bulb. There&rsquo;s an electrical current of I=5A through the bulb. Which power is generated in the bulb?&ldquo;.
+However, half of the pupils just don&rsquo;t pay attention to the text anyway. They just extract from the text what is given: U=10V, I=5A. Then they think: ``Which formulae do I know? Ah yes, P=U*I. Therefore P=10V*5A=500W. Finished.&rdquo;
+OK, this doesn&rsquo;t always work, so these pupils are usually not the top scorers in physics tests. But at least this simple algorithm is usually good enough to pass the class. (Sad but true.)
+Today we will check if a computer can pass a high school physics test. We will concentrate on the P-U-I type problems first. That means, problems in which two of power, voltage and current are given and the third is wanted.
+ 
+Your job is to write a program that reads such a text problem and solves it according to the simple algorithm given above.
+ </p>
+
+<p>The first line of the input file will contain the number of test cases.
+Each test case will consist of one line containing exactly two data fields and some additional arbitrary words. A data field will be of the formI=xA, U=xV or P=xW, where x is a real number.
+Directly before the unit (A, V or W) one of the prefixes m (milli), k (kilo) and M (Mega) may also occur. To summarize it: Data fields adhere to the following grammar:
+ 
+Additional assertions:
+ 
+ 
+For each test case, print three lines:
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+其实你看到下面的代码后不要害怕，有30多行是重复的……
+想法是 先找到等号，判断一下等号前面的字符，接着输入等号后面的浮点数，在得到数字后面的单位的前缀，就是 m k M 。
+然后再找下一个等号，进行上述操作，对于后面的字符，用 gets() 放进一个大的数组里面就可以了，没什么作用。
+WA了一次，原因是在最后一个case后面没有输出空行，题目要求是在每一个case后面输出空行，并不是在case之间输出空行，哎，又是错在了这里，以后要注意。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+char s[1000];
+
+int main(void)
+{
+    int t, i;
+    double I, U, P;
+
+    cin &gt;&gt; t;
+    for (i = 1; i &lt; t + 1; i++)
+    {
+        char c, ch, cc;
+        I = U = P = 0;
+        cout&lt;&lt;&quot;Problem #&quot;&lt;&lt;i&lt;&lt;endl;
+        getchar();
+        while ((c = getchar()))
+        {
+            if (c == '=')
+            {
+                if (ch=='I')
+                {
+                    cin &gt;&gt; I;
+                    cc = getchar();
+                    if (cc=='m') I*=0.001;
+                    else if (cc=='k') I*=1000;
+                    else if (cc=='M') I*=1000000;
+                    else ;
+                }
+                else if (ch=='U')
+                {
+                    cin &gt;&gt; U;
+                    cc = getchar();
+                    if (cc=='m') U*=0.001;
+                    else if (cc=='k') U*=1000;
+                    else if (cc=='M') U*=1000000;
+                    else ;
+                }
+                else if (ch=='P')
+                {
+                    cin &gt;&gt; P;
+                    cc = getchar();
+                    if (cc=='m') P*=0.001;
+                    else if (cc=='k') P*=1000;
+                    else if (cc=='M') P*=1000000;
+                    else ;
+                }
+                break;
+            }
+            ch = c;
+        }
+        while ((c = getchar()))
+        {
+            if (c == '=')
+            {
+                if (ch=='I')
+                {
+                    cin &gt;&gt; I;
+                    cc = getchar();
+                    if (cc=='m') I*=0.001;
+                    else if (cc=='k') I*=1000;
+                    else if (cc=='M') I*=1000000;
+                    else ;
+                }
+                else if (ch=='U')
+                {
+                    cin &gt;&gt; U;
+                    cc = getchar();
+                    if (cc=='m') U*=0.001;
+                    else if (cc=='k') U*=1000;
+                    else if (cc=='M') U*=1000000;
+                    else ;
+                }
+                else if (ch=='P')
+                {
+                    cin &gt;&gt; P;
+                    cc = getchar();
+                    if (cc=='m') P*=0.001;
+                    else if (cc=='k') P*=1000;
+                    else if (cc=='M') P*=1000000;
+                    else ;
+                }
+                break;
+            }
+            ch = c;
+        }
+        gets(s);
+        cout &lt;&lt; setprecision(2)&lt;&lt; fixed;
+        if (P!=0&amp;&amp;U!=0)    cout&lt;&lt;&quot;I=&quot;&lt;&lt;P/U&lt;&lt;'A'&lt;&lt;endl;
+        else if (P!=0&amp;&amp;I!=0)    cout&lt;&lt;&quot;U=&quot;&lt;&lt;P/I&lt;&lt;'V'&lt;&lt;endl;
+        else if (I!=0&amp;&amp;U!=0)    cout&lt;&lt;&quot;P=&quot;&lt;&lt;I*U&lt;&lt;'W'&lt;&lt;endl;
+        cout &lt;&lt; endl;
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+<p> 
+ </p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

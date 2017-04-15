@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>simple linux assembly program &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">simple linux assembly program</h1>
+    <span class="post-date">Jul 20, 2014 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/07/20/simple-linux-assembly-program/#disqus_thread">Comments</a>
+    </span>
+    <p>There are three simple linux assembly program I wrote today.</p>
+
+<p>##eatcall</p>
+
+<pre><code class="language-asm">; This is a &quot;Hello-world&quot; program
+; makefile is:
+; 
+;eatsyscall: eatsyscall.o
+;	ld -o eatsyscall eatsyscall.o
+;eatsyscall.o: eatsyscall.asm
+;	nasm -f elf -g -F stabs eatsyscall.asm
+
+SECTION .data
+	EatMsg: db &quot;Eat at Liu's&quot;, 10
+	EatLen: equ $-EatMsg
+
+SECTION .bss
+
+SECTION .text
+	global _start
+_start:
+	nop
+	mov eax, 4 ; system write
+	mov ebx, 1 ; standard ouput
+	mov ecx, EatMsg
+	mov edx, EatLen
+	int 80h
+
+	mov eax, 1
+	mov ebx, 0
+	int 80h
+
+; The Following is the result:
+
+;~/Hack/SedAwk/asm/eatsyscall-&gt;./eatsyscall 
+;Eat at Liu's
+
+</code></pre>
+
+<p>##Lower2Upper</p>
+
+<pre><code class="language-asm">; This program turns lowercase character to uppercase
+; character, read one character from file each time
+; makefile is:
+;
+;Lower2Upper: Lower2Upper.o
+;	ld -o Lower2Upper Lower2Upper.o
+;Lower2Upper.o: Lower2Upper.asm
+;	nasm -f elf -g -F stabs Lower2Upper.asm
+
+SECTION .bss
+	Buff resb 1
+
+SECTION .data
+
+SECTION .text
+	global _start
+_start:
+	nop
+Read:
+	mov eax, 3 ; system read
+	mov ebx, 0 ; standard input
+	mov ecx, Buff
+	mov edx, 1
+	int 80h
+	cmp eax, 0
+	je Exit ; EOF, file exhausted
+
+	; do char transfer
+	cmp byte [Buff], 61h ; less than character 'a'
+	jb Write
+
+	cmp byte [Buff], 7ah ; greater than character 'z'
+	ja Write
+
+	; the current character is a lowercase character
+	; we can transfer it to uppercase 
+	sub byte [Buff], 20h
+
+Write:
+	mov eax, 4 ; system Write
+	mov ebx, 1 ; standard output
+	mov ecx, Buff
+	mov edx, 1
+	int 80h 
+	jmp Read ; read next character
+
+Exit:
+	mov eax, 1
+	mov ebx, 0
+	int 80h
+
+; The Following is the result:
+
+;~/Hack/SedAwk/asm/Lower2Upper-&gt;cat in.txt
+;Hello, I am liuxueyang.
+;Are you sad?
+;~/Hack/SedAwk/asm/Lower2Upper-&gt;./Lower2Upper &lt; in.txt &gt; out.txt
+;~/Hack/SedAwk/asm/Lower2Upper-&gt;cat out.txt
+;HELLO, I AM LIUXUEYANG.
+;ARE YOU SAD?
+
+</code></pre>
+
+<p>##Lower2Upper_pro</p>
+
+<pre><code class="language-asm">; This program does the same thing as Lower2Upper.asm
+; The only progress is that it reads a buffer of characters
+; each time.
+; makefile is: 
+;
+;Lower2Upper_pro: Lower2Upper_pro.o
+;	ld -o Lower2Upper_pro Lower2Upper_pro.o
+;Lower2Upper_pro.o: Lower2Upper_pro.asm
+;	nasm -f elf -g -F stabs Lower2Upper_pro.asm
+
+SECTION .bss
+	BUFFLEN: equ 1024 ; in fact the colon here can be omitted ;-)
+	Buff: resb BUFFLEN
+
+SECTION .data
+
+SECTION .text
+	global _start
+_start:
+	nop
+read:
+	mov eax, 3 ; system read
+	mov ebx, 0 ; standard input
+	mov ecx, Buff    
+	mov edx, BUFFLEN 
+	int 80h
+	mov esi, eax 
+	cmp eax, 0
+	je Exit
+
+	mov ecx, esi 
+	mov ebp, Buff ; Buff addr 
+	dec ebp ; on pos before Buff, in order to use ecx properly
+
+Scan:
+	; transfer chars 
+	cmp byte [ebp+ecx], 61h
+	jb Next
+
+	cmp byte [ebp+ecx], 7ah
+	ja Next 
+
+	; the current characters is a lowercase character 
+	sub byte [ebp+ecx], 20h
+
+Next:
+	dec ecx 
+	jnz Scan ; process former character  in Buff 
+
+	; Buff exhausted, it is time to write the Buffer to output 
+Write:
+	mov eax, 4
+	mov ebx, 1
+	mov ecx, Buff 
+	mov edx, esi 
+	int 80h 
+
+	jmp read ; get next Buff
+
+Exit:
+	mov eax, 1
+	mov ebx, 0
+	int 80h
+
+; The Following is the running result:
+
+;~/Hack/SedAwk/asm/Lower2Upper_pro-&gt;cat in.txt
+;Hello, I am liuxueyang.
+;Are you sad?
+;~/Hack/SedAwk/asm/Lower2Upper_pro-&gt;./Lower2Upper_pro &lt; in.txt &gt; out.txt
+;~/Hack/SedAwk/asm/Lower2Upper_pro-&gt;cat out.txt
+;HELLO, I AM LIUXUEYANG.
+;ARE YOU SAD?
+
+</code></pre>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

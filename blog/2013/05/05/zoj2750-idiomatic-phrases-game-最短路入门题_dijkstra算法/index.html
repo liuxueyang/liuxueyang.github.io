@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>zoj2750 Idiomatic Phrases Game ——最短路入门题_Dijkstra算法 &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">zoj2750 Idiomatic Phrases Game ——最短路入门题_Dijkstra算法</h1>
+    <span class="post-date">May 5, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/05/zoj2750-idiomatic-phrases-game-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%85%A5%E9%97%A8%E9%A2%98_dijkstra%E7%AE%97%E6%B3%95/#disqus_thread">Comments</a>
+    </span>
+    <p>题目链接：<a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1750">http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1750</a>
+题目大意：
+　　成语接龙游戏。给定n个单词，每个单词前面先给一个权值，表示由这个单词找到下一个单词所需要花费的时间。问从第一个单词至少要花多少时间才能找到最后一个单词。如果不能找到，输出-1
+题目思路：
+　　如果一个单词的最后一个字和另一个成语的第一个字一样的话。那么就可以连一个有向边。就是求一个最短路。注意：题目中说成语至少三个字，别想当然地以为成语就是4个字的……开始没注意到，后来才改的。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f; 
+const int  MINN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+const int MAX = 1000+10;
+int dist[MAX], S[MAX], n, wei[MAX], edge[MAX][MAX];
+char start[MAX][10], end[MAX][10], ch[50];
+void Dijkstra(int u0) {
+  int i, j;
+  for (i = 1; i &lt;= n; ++i) {
+    S[i] = 0; dist[i] = edge[u0][i];
+  }
+  S[u0] = 1; dist[u0] = 0;
+  int u;
+  for (i = 1; i &lt; n; ++i) {
+    int Min = MAXN; u = 1;
+    for (j = 1; j &lt;= n; ++j) {
+      if (S[j] == 0 &amp;&amp; dist[j] &lt; Min) {
+        Min = dist[j]; u = j;
+      }
+    }
+    S[u] = 1;
+    for (j = 1; j &lt;= n; ++j) {
+      if (S[j] == 0 &amp;&amp; edge[u][j] != MAXN) {
+        int tmp = edge[u][j] + dist[u];
+        if (tmp &lt; dist[j]) dist[j] = tmp;
+      }
+    }
+  }
+  if (dist[n] == MAXN) printf(&quot;-1\n&quot;);
+  else printf(&quot;%d\n&quot;, dist[n]);
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;zoj2750.in&quot;, &quot;r&quot;, stdin);
+#endif
+  int i, j, k;
+  while (~scanf(&quot;%d&quot;, &amp;n) &amp;&amp; n) {
+    for (i = 1; i &lt;= n; ++i) {
+      scanf(&quot;%d%s&quot;, &amp;wei[i], ch);
+      for (j = 0; j &lt; 4; ++j) start[i][j] = ch[j];
+      int len = strlen(ch);
+      for (j = 0, k = len-4; k &lt; len; ++k, ++j) end[i][j] = ch[k];
+      start[i][4] = '\0'; end[i][4] = '\0';
+    }
+    for (i = 1; i &lt;= n; ++i) {
+      for (j = 1; j &lt;= n; ++j) {
+        if (i != j &amp;&amp; strcmp(end[i], start[j]) == 0) {
+          edge[i][j] = wei[i];
+        } else edge[i][j] = MAXN;
+      }
+    }
+    Dijkstra(1);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>　　这题……呵呵。不想说别的，我去年买了个表！
+　　WA了很久关键是测试数据还都对，也怪自己，没有出一些比较有水平的数据。检测不出错误来。我不会告诉你原来错误出在，35行把dist[j]写成了edge[u][j]。真不知道自己写代码的时候，到底有没有过脑子！
+　　本来思路很清晰，好不容易会做了，结果这么悲剧，唉，淡定。
+　　还有就是，程序出错了，不能急，自己从头屡屡思路，看有没有出现代码错误，还有边界条件神马的。
+　　这题关键在预处理，开始觉得比较麻烦，其实写出来就感觉一点儿也不麻烦，再说，麻烦的题目才能锻炼代码能力。
+　　整天就是切题切题，切你妹啊！！到考试了傻B了，，还有，，知道为什么自己做题效率这么低么？就是因为做题的时候不认真，不细心，浪费很多时间。
+　　其实今天这个错误，也反映出一个问题，就是，没有真正理解算法，只是按照记忆写的，敲错也不奇怪了。。如果你真正理解了这个算法的思想，就可以按照自己的思路去写，有自己的思考，就不会出现这个错误，即使出现敲错了的情况，也可以再查错的时候很快发现。
+　　查错是一种超级重要的能力。
+　　代码的准确度同样也是。
+　　好吧，算法真的学得不如别人，人家都可以很快就过，我却纠结这么久。没什么可说的。敲得少，练得少，代码弱。
+　　还有就是，以后出现这种当时怎么也查不出错的情况的时候，可以先放一下，等过了半天再重新看，重新思考，也许就可以很快发现错误了，因为很可能当时你已经没有耐心去查错了，很可能陷入了一种思维的误区和思维定式。可以先看别的，做下一道题目，这样也许就可以节约很多时间。
+　　做题能够1A，真是一件不容易的事情。</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

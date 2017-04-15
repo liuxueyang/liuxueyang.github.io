@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>some sort algorithms &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">some sort algorithms</h1>
+    <span class="post-date">Oct 9, 2014 &middot; 9 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/10/09/some-sort-algorithms/#disqus_thread">Comments</a>
+    </span>
+    
+
+<p>In order to know whether a sort algorithm is stable, we need to know how it works.</p>
+
+<h2 id="selectionsort">SelectionSort</h2>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *       Filename : SelectionSort.cpp
+ *    Description : SelectionSort
+ *    Version     : 0.1
+ *        Created : 10/04/14 14:54
+ *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com
+ *         Motto  : Suicide is Painless
+ * =====================================================================================
+ */
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+	int
+main ( int argc, char *argv[] )
+{
+	// 1, 2, 3, 4, 5, 6, 7, 8
+	const int N = 8;
+	int a[8] = { 7, 6, 3, 2, 1, 4, 5, 8 };
+	cout &lt;&lt; &quot;original array:&quot; &lt;&lt; endl;
+	for ( int i = 0; i &lt; 8; ++i ) {
+		cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; 
+	}
+	cout &lt;&lt; endl;
+
+	int min_index;
+	for ( int i = 0; i &lt; N; ++i ) {
+		min_index = i;
+		for ( int j = i + 1; j &lt; N; ++j ) {
+			if ( a[j] &lt; a[min_index] ) {
+				min_index = j;
+			}
+		}
+		swap(a[i], a[min_index]);
+	}
+	//output
+	cout &lt;&lt; &quot;\n\nsorted array:&quot; &lt;&lt; endl;
+	for ( int i = 0; i &lt; 8; ++i ) {
+		cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; 
+	}
+	cout &lt;&lt; endl;
+
+		return EXIT_SUCCESS;
+}				/* ----------  end of function main  ---------- */
+
+
+/*
+ * Is it stable? No.
+ * for example: 
+ * 5 4 4 3 2 1
+ *
+ * first loop, we get:
+ * 1 4 4 3 2 5
+ *
+ * second loop, we get:
+ * 1 2 4 3 4 5
+ *
+ * In the second loop, the first 4 is placed after the second 4
+ * so select sort is not stable!
+ *
+ * Got it!
+ */
+</code></pre>
+
+<h2 id="insertsort">InsertSort</h2>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *       Filename : InsertSort.cpp
+ *    Description : InsertSort
+ *    Version     : 0.1
+ *        Created : 10/04/14 14:54
+ *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com
+ *         Motto  : Suicide is Painless
+ * =====================================================================================
+ */
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+	int
+main ( int argc, char *argv[] )
+{
+	// 1, 2, 3, 4, 5, 6, 7, 8
+	const int N = 8;
+	int a[8] = { 7, 6, 3, 2, 1, 4, 5, 8 };
+
+	//print initial array
+	cout &lt;&lt; &quot;original array:&quot; &lt;&lt; endl;
+	for ( int i = 0; i &lt; 8; ++i ) {
+		cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; 
+	}
+	cout &lt;&lt; endl;
+
+	for ( int i = 1; i &lt; N; ++i ) {
+		for ( int j = i; j &gt; 0; --j ) {
+			if ( a[j] &lt; a[j-1] ) {
+				swap(a[j], a[j-1]);
+			}
+			else {
+				break;
+			}
+		}
+	}
+
+	//output
+	cout &lt;&lt; &quot;\n\nsorted array:&quot; &lt;&lt; endl;
+	for ( int i = 0; i &lt; 8; ++i ) {
+		cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; 
+	}
+	cout &lt;&lt; endl;
+
+		return EXIT_SUCCESS;
+}				/* ----------  end of function main  ---------- */
+
+
+/*
+ * Obviously, it is stable. ;-)
+ * Because we never exchange two element with the same value.
+ */
+</code></pre>
+
+<h2 id="shellsort">ShellSort</h2>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *       Filename : ShellSort.cpp
+ *    Description : ShellSort
+ *    Version     : 0.1
+ *        Created : 10/04/14 14:54
+ *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com
+ *         Motto  : Suicide is Painless
+ * =====================================================================================
+ */
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+	int
+main ( int argc, char *argv[] )
+{
+	// 1, 2, 3, 4, 5, 6, 7, 8
+	const int N = 8;
+	int a[8] = { 7, 6, 3, 2, 1, 4, 5, 8 };
+
+	//print initial array
+	cout &lt;&lt; &quot;original array:&quot; &lt;&lt; endl;
+	for ( int i = 0; i &lt; 8; ++i ) {
+		cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; 
+	}
+	cout &lt;&lt; endl;
+
+	int h = 1;
+
+	while ( h &lt; N / 3 ) {
+		h = h * 3 + 1;
+	}
+	while ( h &gt;= 1 ) {
+		for ( int i = h; i &lt; N; ++i ) {
+			for ( int j = i; j &gt;= h; j -= h ) {
+				if ( a[j] &lt; a[j-h] ) {
+					swap(a[j], a[j-h]);
+				}
+				else {
+					break;
+				}
+			}
+		}
+		h /= 3;
+	}
+
+	//output
+	cout &lt;&lt; &quot;\n\nsorted array:&quot; &lt;&lt; endl;
+	for ( int i = 0; i &lt; 8; ++i ) {
+		cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; 
+	}
+	cout &lt;&lt; endl;
+
+		return EXIT_SUCCESS;
+}				/* ----------  end of function main  ---------- */
+
+/*
+ * Obviously, it is unstable. ;-)
+ */
+</code></pre>
+
+<h2 id="quicksort">QuickSort</h2>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *       Filename : QuickSort.cpp
+ *    Description : QuickSort
+ *    Version     : 0.1
+ *        Created : 10/04/14 14:54
+ *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com
+ *         Motto  : Suicide is Painless
+ * =====================================================================================
+ */
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+/*  Name:  QuickSort
+ *  Description:  quick sort function
+ */
+	void
+QuickSort ( int low, int high, int a[] )
+{
+	if (low &gt;= high) return;
+	int i = low, j = high, tmp = a[low];
+	while ( true ) {
+		while ( a[j] &gt;= tmp &amp;&amp; j &gt; i) --j;
+		while ( a[i] &lt;= tmp &amp;&amp; i &lt; j ) ++i;
+		if (i == j) break;
+		swap(a[i], a[j]);
+	}
+	swap(a[i], a[low]);
+	QuickSort(low, i - 1, a);
+	QuickSort(i + 1, high, a);
+	return ;
+}		/* -----  end of function QuickSort  ----- */
+	int
+main ( int argc, char *argv[] )
+{
+	// 1, 2, 3, 4, 5, 6, 7, 8
+	const int N = 8;
+	int a[8] = { 7, 6, 3, 2, 1, 4, 5, 8 };
+
+	//print initial array
+	cout &lt;&lt; &quot;original array:&quot; &lt;&lt; endl;
+	for ( int i = 0; i &lt; N; ++i ) {
+		cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; 
+	}
+	cout &lt;&lt; endl;
+
+	QuickSort(0, N - 1, a);
+
+	//output
+	cout &lt;&lt; &quot;\n\nsorted array:&quot; &lt;&lt; endl;
+	for ( int i = 0; i &lt; N; ++i ) {
+		cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; 
+	}
+	cout &lt;&lt; endl;
+
+		return EXIT_SUCCESS;
+}				/* ----------  end of function main  ---------- */
+
+/*
+ * Obviously, it is unstable. ;-)
+ */
+</code></pre>
+
+<h2 id="quicksort-3partition">QuickSort-3partition</h2>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *       Filename : QuickSort-3partition.cpp
+ *    Description : QuickSort3Partition
+ *    Version     : 0.1
+ *        Created : 10/04/14 14:54
+ *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com
+ *         Motto  : Suicide is Painless
+ * =====================================================================================
+ */
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+/*  Name:  QuickSort
+ *  Description:  quick sort function
+ */
+	void
+QuickSort ( int low, int high, int a[] )
+{
+	/*
+	 * a[low, lt - 1] &lt; tmp
+	 * a[lt, i - 1] == tmp
+	 * a[i, gt] unknown
+	 * a[gt + 1, high] &gt; tmp
+	 */
+	if (low &gt;= high) return;
+  int i = low, lt = low, gt = high, tmp = a[low];
+	while ( i &lt;= gt ) {
+		if (a[i] == tmp) ++i;
+		else if (a[i] &lt; tmp) {
+			swap(a[lt], a[i]);
+			++lt;
+		}
+		else {
+			swap(a[gt], a[i]);
+			--gt;
+		}
+	}
+	QuickSort(low, lt - 1, a);
+	QuickSort(gt + 1, high, a);
+
+	return ;
+}		/* -----  end of function QuickSort  ----- */
+	int
+main ( int argc, char *argv[] )
+{
+	// 1, 2, 3, 4, 5, 6, 7, 8
+//	const int N = 8;
+//	int a[8] = { 7, 6, 3, 2, 1, 4, 5, 8 };
+	const int N = 10;
+	int a[10] = { 6, 1, 2, 7, 9, 3, 4, 5, 10, 8 };
+
+	//print initial array
+	cout &lt;&lt; &quot;original array:&quot; &lt;&lt; endl;
+	for ( int i = 0; i &lt; N; ++i ) {
+		cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; 
+	}
+	cout &lt;&lt; endl;
+
+	QuickSort(0, N - 1, a);
+
+	//output
+	cout &lt;&lt; &quot;\n\nsorted array:&quot; &lt;&lt; endl;
+	for ( int i = 0; i &lt; N; ++i ) {
+		cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; 
+	}
+	cout &lt;&lt; endl;
+
+		return EXIT_SUCCESS;
+}				/* ----------  end of function main  ---------- */
+
+/*
+ * Obviously, it is not stable. ;-)
+ * notice the case a[i] &lt; tmp 
+ */
+</code></pre>
+
+<h2 id="mergesort">MergeSort</h2>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *       Filename : MergeSort.cpp
+ *    Description : MergeSort
+ *    Version     : 0.1
+ *        Created : 10/04/14 14:54
+ *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com
+ *         Motto  : Suicide is Painless
+ * =====================================================================================
+ */
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+const int N = 8;
+
+/*  Name:  MergeSort
+ *  Description:  MergeSort function
+ */
+	void
+MergeSort ( int low, int high, int a[] )
+{
+	if ( low &gt;= high ) return;
+	int mid = low + ((high - low) &gt;&gt; 1);
+	MergeSort(low, mid, a);
+	MergeSort(mid + 1, high, a);
+
+	// Merge 
+	int a_new[N], i, j, k;
+	for ( i = low; i &lt;= high; ++i ) {
+		a_new[i] = a[i];
+	}
+	i = low; 
+	j = mid + 1;
+	for ( k = low; k &lt;= high; ++k ) {
+		if ( i &gt; mid ) {
+			a[k] = a_new[j++];
+		}
+		else if ( j &gt; high ) {
+			a[k] = a_new[i++];
+		}
+		else if (a_new[j] &lt; a_new[i]) {
+			a[k] = a_new[j++];
+		}
+		else {
+			a[k] = a_new[i++];
+		}
+	}
+	return ;
+}		/* -----  end of function MergeSort  ----- */
+	int
+main ( int argc, char *argv[] )
+{
+	// 1, 2, 3, 4, 5, 6, 7, 8
+	int a[N] = { 7, 6, 3, 2, 1, 4, 5, 8 };
+
+	//print initial array
+	cout &lt;&lt; &quot;original array:&quot; &lt;&lt; endl;
+	for ( int i = 0; i &lt; N; ++i ) {
+		cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; 
+	}
+	cout &lt;&lt; endl;
+
+	MergeSort(0, N - 1, a);
+
+	//output
+	cout &lt;&lt; &quot;\n\nsorted array:&quot; &lt;&lt; endl;
+	for ( int i = 0; i &lt; N; ++i ) {
+		cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; 
+	}
+	cout &lt;&lt; endl;
+
+		return EXIT_SUCCESS;
+}				/* ----------  end of function main  ---------- */
+
+/*
+ * Obviously, it is stable. ;-)
+ */
+</code></pre>
+
+<h2 id="heapsort">HeapSort</h2>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *       Filename : HeapSort.cpp
+ *    Description : HeapSort
+ *    Version     : 0.1
+ *        Created : 10/04/14 14:54
+ *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com
+ *         Motto  : Suicide is Painless
+ * =====================================================================================
+ */
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+int N = 8;
+
+/*  Name:  sink
+ *  Description:  sink one value down the heap
+ */
+	void
+sink ( int i, int a[] )
+{
+	while ( i * 2 &lt;= N ) {
+		int goal = 2 * i;
+		if ( 2 * i + 1 &lt;= N &amp;&amp; a[2*i+1] &gt; a[2*i] ) { /* I have written a[2*i+1] &gt; a[i] !!! fuck*/
+			goal = 2 * i + 1;
+		}
+		if ( a[i] &lt; a[goal] ) {
+			swap(a[i], a[goal]);
+		}
+		else break;
+		i = goal;
+	}
+	return ;
+}		/* -----  end of function sink  ----- */
+
+/*  NAME:  HEAPSORT
+ *  DESCRIPTION:  HEAP SORT FUNCTION
+ */
+	void
+HeapSort ( int a[] )
+{
+	for ( int i = N &gt;&gt; 1; i &gt;= 1; --i ) {
+		sink(i, a);
+	}
+	for ( int i = 1; i &lt; 8; ++i ) {
+		swap(a[1], a[N]);
+		--N;
+		sink(1, a);
+	}
+	return ;
+}		/* -----  end of function HeapSort  ----- */
+	int
+main ( int argc, char *argv[] )
+{
+	// 1, 2, 3, 4, 5, 6, 7, 8
+	int a[9] = { 0, 7, 6, 3, 2, 1, 4, 5, 8 };
+
+	//print initial array
+	cout &lt;&lt; &quot;original array:&quot; &lt;&lt; endl;
+	for ( int i = 1; i &lt;= N; ++i ) {
+		cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; 
+	}
+	cout &lt;&lt; endl;
+
+	HeapSort(a);
+
+	//output
+	cout &lt;&lt; &quot;\n\nsorted array:&quot; &lt;&lt; endl;
+	for ( int i = 1; i &lt;= 8; ++i ) {
+		cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; 
+	}
+	cout &lt;&lt; endl;
+
+		return EXIT_SUCCESS;
+}				/* ----------  end of function main  ---------- */
+
+/*
+ * Obviously, it is unstable. ;-)
+ */
+</code></pre>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

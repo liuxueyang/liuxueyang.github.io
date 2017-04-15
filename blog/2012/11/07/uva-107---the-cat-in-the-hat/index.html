@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>uva 107 - The Cat in the Hat &middot; 黑历史</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>黑历史</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">uva 107 - The Cat in the Hat</h1>
+    <span class="post-date">Nov 7, 2012 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-107---the-cat-in-the-hat/#disqus_thread">Comments</a>
+    </span>
+    <p>(An homage to Theodore Seuss Geisel)
+The Cat in the Hat is a nasty creature,But the striped hat he is wearing has a rather nifty feature.
+With one flick of his wrist he pops his top off.
+Do you know what&rsquo;s inside that Cat&rsquo;s hat?A bunch of small cats, each with its own striped hat.
+Each little cat does the same as line three,All except the littlest ones, who just say ``Why me?&rdquo;
+Because the littlest cats have to clean all the grime,And they&rsquo;re tired of doing it time after time!
+ 
+A clever cat walks into a messy room which he needs to clean. Instead of doing the work alone, it decides to have its helper cats do the work. It keeps its (smaller) helper cats inside its hat. Each helper cat also has helper cats in its own hat, and so on. Eventually, the cats reach a smallest size. These smallest cats have no additional cats in their hats. These unfortunate smallest cats have to do the cleaning.
+The number of cats inside each (non-smallest) cat&rsquo;s hat is a constant, N. The height of these cats-in-a-hat is  times the height of the cat whose hat they are in.</p>
+
+<p>All heights are positive integers.
+Given the height of the initial cat and the number of worker cats (of height one), find the number of cats that are not doing any work (cats of height greater than one) and also determine the sum of all the cats&rsquo; heights (the height of a stack of all cats standing one on top of another).
+ 
+The input consists of a sequence of cat-in-hat specifications. Each specification is a single line consisting of two positive integers, separated by white space. The first integer is the height of the initial cat, and the second integer is the number of worker cats.
+A pair of 0&rsquo;s on a line indicates the end of input.
+ 
+For each input line (cat-in-hat specification), print the number of cats that are not working, followed by a space, followed by the height of the stack of cats. There should be one output line for each input line other than the ``0 0&rdquo; that terminates input.
+ 
+ 
+ 
+ 
+31 671 335923 30275911
+这道题开始没读懂，后来似乎懂了，但怎么也做不出来，看了别人的代码才知道开始只有一只猫，我原来以为开始的数量不确定。。。认真读题啊。
+后来也很无语，卡了一天，没什么算法，就是一个等比公式，没想到出现了各种bug。。。后来用了一个 ceil 函数很神奇地过了。没想到 log10() 这个函数相除的时候要用 ceil 。
+下面是做法：
+设开始的猫的高度是 h , N 是每个帽子里面猫的数量，设一个中间变量s。
+猫的高度　　h　　h / (N + 1) 　　h / (N + 1)2　　………… 　　h / (N + 1)s
+猫的数量　　1 　　N　　　　　　N * N 　　　　…………　　　Ns
+h = (N + 1)s
+输入 h 和 x , 则 x = Ns 。和上个式子联立消去中间变量s，得到 log10(h) * log10(N) = x * log10(N + 1)
+剩下的就是等比数列公式了，注意当 N = 1 的时候要讨论。
+最后得到：
+N == 1 时
+notwork = log2(h)   这里要注意，写代码的时候要用换底公式，并且可能因为精度的问题，要用 ceil 函数。
+sumheight = 2 * h - 1;
+N ！= 1 时
+notwork = (x - 1) / (N - 1)  
+sumheight = h * (N + 1) - x * N
+还有，修改代码的时候出现了各种问题，甚至连公式都打错了，浪费了大量的时间，所以出现错误的时候要淡定，不能慌，认真改，不能犯低级错误。
+今天因为这道题，，卡了很久，，浪费了很多时间啊。。。都是教训.</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cmath&gt;
+double iabs(double a) {return a &gt; 0 ? a : -a;}
+using namespace std;
+
+int main(void)
+{
+    int h, x;
+
+#ifndef ONLINE_JUDGE
+    freopen(&quot;at&quot;, &quot;r&quot;, stdin);
+    freopen(&quot;on&quot;, &quot;w&quot;, stdout);
+#endif
+    while (cin &gt;&gt; h &gt;&gt; x)
+    {
+        if (!h &amp;&amp; !x)    break;
+        int N; 
+        int notwork, sumheight;
+        if (x == 1)    
+        {
+            notwork = (ceil)(log(h) / log(2));    
+            sumheight = 2 * h - 1;
+        }
+        else
+        {
+            for (N = 1; N &lt; h; N++)    
+            {
+                if (iabs(log(h)*log(N) - log(x)*log(N + 1)) &lt; 1e-8)
+                     break;
+            }
+            notwork = (x - 1) / (N - 1);
+            sumheight = (N + 1) * h - x * N;
+        }
+        cout &lt;&lt; notwork &lt;&lt; ' ' &lt;&lt; sumheight &lt;&lt; endl;
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+
