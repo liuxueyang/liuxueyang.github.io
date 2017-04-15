@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+	<meta name="generator" content="Hugo 0.20.1" />
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>黑历史 &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  <link href="http://liuxueyang.github.io/index.xml" rel="alternate" type="application/rss+xml" title="黑历史 &middot; liuxueyang" />
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="posts">
+    
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/15/hdu2098-%E4%B8%8D%E8%A6%8162-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/">hdu2098 不要62 ——数位DP入门题</a>
+      </h1>
+      <span class="post-date">Apr 15, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/15/hdu2098-%E4%B8%8D%E8%A6%8162-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=2089 题目大意： 含有4或者62的数字是不吉利数字，给一个区间，[m, n]，求这个区间内的除了不吉利数字以外的数字的数目。 思路： 由于数据范围只有1~1000000，可以暴力，水题，但是为了练习一下数位DP，没有把它当水题做…… 看的是这个人的代码：http://blog.csdn.net/acm_cxlove/article/details/7819907# 和hdu3555那道题目相似，但是多了一个条件，多了一个不含有4的条件，讨论一下。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; LL dp[8][3]; int a[8], b[8]; bool flag; int solve(int k){ int len = 0; LL temp = k; while (k){ a[++len] = k % 10; k /= 10; } LL ans = 0; int last = 0; flag = false; a[len+1] = 0; for (int i = len; i &gt;= 1; --i){ ans += dp[i-1][2] * a[i]; if (flag){ans += dp[i-1][0] * a[i];} //高位位填4，低位的不管 if (!
+      <a href="http://liuxueyang.github.io/blog/2013/04/15/hdu2098-%E4%B8%8D%E8%A6%8162-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/15/hdu1202-the-calculation-of-gpa-%E6%B0%B4%E9%A2%98/">hdu1202 The calculation of GPA ——水题</a>
+      </h1>
+      <span class="post-date">Apr 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/15/hdu1202-the-calculation-of-gpa-%E6%B0%B4%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=1202 题目大意：先计算出学分和点数的乘积的和，然后在除以学分之和。 思路： 很简单。只能说这道题目比较坑……不说什么了 本来是早上起来想写道水题，练练手，结果碰见这种题目，刚才我还无聊的测试了很多次，交了N遍，发现这么个坑的问题，感觉这种题目很没有意思……
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;hdu1202.in&quot;, &quot;r&quot;, stdin); #endif int t; while (~scanf(&quot;%d&quot;, &amp;t)){ double cnt = 0, cnt1 = 0; double s, p; for (int i = 0; i &lt; t; ++i){ cin &gt;&gt; s &gt;&gt; p; cnt += s; if (p&gt;=90 &amp;&amp; p &lt;= 100) cnt1 += 4.
+      <a href="http://liuxueyang.github.io/blog/2013/04/15/hdu1202-the-calculation-of-gpa-%E6%B0%B4%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/15/uestc1307-windy%E6%95%B0-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/">uestc1307 windy数 ——数位DP入门题</a>
+      </h1>
+      <span class="post-date">Apr 15, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/15/uestc1307-windy%E6%95%B0-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.uestc.edu.cn/problem.php?pid=1307  题目大意： 不含前导零且相邻两个数字之差至少为2的正整数被称为windy数。windy想知道，在A和B之间，包括A和B，总共有多少个windy数？ 思路： 具体解释代码中有。看的这个人的代码：http://blog.csdn.net/acm_cxlove/article/details/7819907# 然后自己又分析了一下，终于明白了。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int dp[15][10], a[15]; // 这个函数求的是区间（0，n）内的个数 LL solve(int n){ int len = 0; LL ans = 0; while (n){ a[++len] = n % 10; n /= 10; }int i, j; a[len+1] = 0; // 长度为1~len-1 for (i = 1; i &lt;= len-1; ++i) for (j = 1; j &lt;= 9; ++j) // 注意j从1开始，因为最高位不能是0！ ans += dp[i][j]; // debug了好久！！！ // 长度为len，但是最高位是a[len] - 1 for (i = 1; i &lt;= a[len] - 1; ++i) ans += dp[len][i]; // 长度为len，但是最高位是a[len] for (i = len - 1; i &gt;= 1; --i){ for (j = 0; j &lt; a[i]; ++j) if (abs(a[i+1] - j) &gt;= 2) ans += dp[i][j]; if (abs(a[i] - a[i+1]) &lt; 2) break; } return ans; } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;uestcoj1307.
+      <a href="http://liuxueyang.github.io/blog/2013/04/15/uestc1307-windy%E6%95%B0-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/14/hdu3555-bomb-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/">hdu3555 Bomb ——数位DP入门题</a>
+      </h1>
+      <span class="post-date">Apr 14, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/14/hdu3555-bomb-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=3555 题目大意： 给一个数字n,范围在1~2^63-1，求1~n之间含有49的数字有多少个。 思路： 经典的数位DP，学习了一下，看的别人的代码：http://www.cnblogs.com/luyi0619/archive/2011/04/29/2033117.html 状态转移： dp[i][0]代表长度为 i 并且不含有49的数字的个数； dp[i][1]代表长度为 i 并且不含有49，但是最高位是9的数字的个数； dp[i][2]代表长度为 i 并且含有49的数字的个数。 数组 a[i] 从低位到高位存储 n 的每一位数字。 则：dp[i][0] = dp[i-1][0] * a[i] - dp[i-1][1]; 表示长度为 i 的不含有49的数字的个数等于长度为 i - 1 的不含有49的数字的个数*当前的数字，因为这个位置可以填0~a[i] - 1，然后再减去长度为 i - 1 的最高位是9的数字的个数，因为如果长度为 i - 1 的最高位是9的话，那么高一位就不能填4了，否则就组成了49。 dp[i][1] = dp[i-1][0]; 表示长度为 i 的并且不含有49同时最高位是9的数字的个数等于，长度为 i - 1 的不含有49的数字的个数，因为只要在它的高一位加上一个9就可以了。 dp[i][2] = dp[i-1][2] * a[i] + dp[i-1][1]; 表示长度为 i 的含有49的数字的个数等于，长度为 i - 1 的数字的个数*当前的数字，再加上长度为 i - 1 的并且不含有49同时最高位是9的数字的个数，因为这个时候，只要在高一位加上一个4就可以了，这样在最高的两位就组成了一个49。 做法是从数字的高位向低位扫描，对于第 i 位， 其实这个题目还有一个地方不懂，就是为什么要在输入 n 后，要把 n 加1。想了一下特例，比如输入49，按照上面的做法，在第3步，并不会把符合条件的数字加上，因为4不是严格大于4，最后的执行结果就是0，但是如果加上1之后，n就变成了50，这样第3步恰好可以执行，结果就是正确的了。但是对于一般的情况，还是不知道为什么要把n加1……o(╯□╰)o 这题还是卡了很久，照着别人的代码敲的，死活过不了，然后又找了一份代码：http://blog.
+      <a href="http://liuxueyang.github.io/blog/2013/04/14/hdu3555-bomb-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/13/2013%E5%B9%B44%E6%9C%8812%E6%97%A5-%E6%99%B4/">2013年4月12日 晴</a>
+      </h1>
+      <span class="post-date">Apr 13, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/13/2013%E5%B9%B44%E6%9C%8812%E6%97%A5-%E6%99%B4/#disqus_thread">Comments</a>
+      </span>
+      
+      休息了两天，今天本来想好好跑一下，结果还没有出公寓就岔气了……后来全程都不爽，一直岔气，想起一句话：比赛中的错误往往是在起跑后的两分钟内犯下的，甚至是在第一分钟内。后来跑得还算好吧，但是没有了节奏感，明天希望状态好一点儿~
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/13/zoj2913-bus-pass-bfs%E5%85%A5%E9%97%A8%E9%A2%98/">zoj2913 Bus Pass ——BFS入门题</a>
+      </h1>
+      <span class="post-date">Apr 13, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/13/zoj2913-bus-pass-bfs%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1912 题目大意： 有很多个地区，有几条公交线经过一些地区，求出一个地区，满足，使这个地区到这些公交线上的所有公交站的距离中的最大值，最小。（这里的距离指的是两点之间的边数） 思路： 对于这些公交站中的每一个点，BFS，求出出当前点外，其他所有点到这个点的最小距离，然后对于公交站上的其他点，也进行同样地操作，不断更新所有点到公交站上的当前点的最小距离的较大值，然后遍历所有点，求出距离最小的一个点。用res1数组存储。res数组的作用是对于公交线上的每个点，BFS其他点的时候，临时存放其他点到这个公交站的最小距离，然后在与res1数组进行比较，用来更新res1数组。 注意： visited数组，标记这个是不是被访问过，并且标记的顺序要想清楚！把这个点入队的时候就要标记它被访问了，而不是它出队的时候再标记！这是因为，如果两天点同时和一个点相邻，如果等点出队的时候在标记的话，就会产生这个点被访问两次的情况，这个问题让我纠结了一个星期……我去……
+比如这种情况，Ｃ和Ａ，Ｂ同时相邻，假如：先访问Ａ，ｒｅｓ［Ｂ］　＝　ｒｅｓ［Ｃ］　＝　２，把Ａ标记，然后出队；再访问Ｂ，ｒｅｓ［Ｃ］　＝　３，Ｃ的值显然是不对的，所以，当把Ｂ，Ｃ两个点入队的时候，就把他们标记为已经访问，就可以了…… 做这个题目感触挺大的，首先，写代码要全神贯注，不能有一点儿疏忽，否则很容易犯那种超级难找出来的隐蔽的错误，一定要考虑明白再写；然后就是数组的下标什么的，养成好习惯，到底什么时候该从０开始，什么时候该从１开始，我觉得从１开始比较保险，因为有的时候会用到编号，比如这道题目，点的标号从１开始；最后就是思考这种题目应该如何存储题目给的信息，这个东西是看的书上的思想； 自己写代码比看着人家的代码写感觉和收获是完全不一样的。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 10000+10; int edge[MAX][11], res[MAX], res1[MAX], ve, pa, mz[MAX]; bool visited[MAX]; queue&lt;int&gt; qt; void bfs(int id){ res[id] = 1; qt.
+      <a href="http://liuxueyang.github.io/blog/2013/04/13/zoj2913-bus-pass-bfs%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/12/%E4%B8%80%E4%B8%AAbug%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/">一个bug，持续更新……</a>
+      </h1>
+      <span class="post-date">Apr 12, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/12/%E4%B8%80%E4%B8%AAbug%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/#disqus_thread">Comments</a>
+      </span>
+      
+       scanf(&ldquo;%d%d&rdquo;, &amp;n, &amp;mz[n]); 这样的写法是不对的…… 全局变量不要和局部变量命名成相同的名字，尤其是循环变量不要设置成全局的，很危险。 数组要初始化，尤其是多case的时候 写代码的时候要全神贯注，千万不要因为一时的疏忽，出现一个最难发现的最弱智的bug…… 还有，memset(a, 1, sizeof(a));貌似有错……慎用。注：这货只能用4个字节都相同的整数！比如，0x7f7f7f7f 或者 0x3f3f3f3f 有一点最受不了的就是：为什么最近输入老是忘了写取地址符？果然是敲代码敲得少了么…… 输入格式，要用%lld还是%I64d，也可以用cin,cout如果输入量比较少的话。 D = 3；1 &lt;&lt; D - 1 的结果是什么？注意优先级！有位运算的需要加上括号！ ==不要写成=，以前以为自己肯定不会犯这种错误，谁知道……唉 初始化技术变量，尤其是多case的时候 当多个case运行不对的时候，尝试一下只输入一个case，因为可能是多case的过程中，变量没有初始化 尤其是开数组的时候，千万不能把大小写错了，或者，当出现运行都出现系统错误的时候，可能是数组越界了，看一下开数组的时候是不是开小了，或者是数字打错了。 代码错了，自己想办法出数据测试，其实是一种十分重要的能力。 写线段树的时候，计算中点的时候，int M = L + (R-L)&gt;&gt;1；这么写是不对的。。至于为什么，我也不知道。。反正因为这货卡了好久== 直接这么写就行：int M = L+(R-L)/2；  
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/10/2013%E5%B9%B44%E6%9C%889%E6%97%A5-%E9%98%B4%E8%BD%AC%E5%B0%8F%E9%9B%A8/">2013年4月9日 阴转小雨</a>
+      </h1>
+      <span class="post-date">Apr 10, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/10/2013%E5%B9%B44%E6%9C%889%E6%97%A5-%E9%98%B4%E8%BD%AC%E5%B0%8F%E9%9B%A8/#disqus_thread">Comments</a>
+      </span>
+      
+      下午下雨，晚上去跑步，半路上下小雨点，开始犹豫要不要继续往前跑，最后到一半路程的时候就往回走了，结果又不下雨了，长沙的鬼天气，跑着一点儿也不爽，状态很不好，可能是该休息一两天了，后期的时候干脆就当散步了，走回来了…… 不过雨后的湘江边确实空气也挺好，一边走边思考问题，也是一种不错的享受～
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/09/2013%E5%B9%B44%E6%9C%888%E6%97%A5-%E6%99%B4/">2013年4月8日 晴</a>
+      </h1>
+      <span class="post-date">Apr 9, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/09/2013%E5%B9%B44%E6%9C%888%E6%97%A5-%E6%99%B4/#disqus_thread">Comments</a>
+      </span>
+      
+      今天跑步很悲剧，遇到极点了，中途各种不想跑，各种累，但还是坚持下来了，嗯，跑步嘛，总会有这种时候，尤其是今天下午也比较热，这种时候，最重要的就是两个字：坚持。不管怎么样，千万不能停下来，如果一停下来，基本就跑步不起来了…… 加油~
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/08/zoj-1649-rescue-bfs%E5%85%A5%E9%97%A8%E9%A2%98/">zoj 1649 Rescue ——BFS入门题</a>
+      </h1>
+      <span class="post-date">Apr 8, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/08/zoj-1649-rescue-bfs%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=649 题意： 给一个字符矩阵，‘#’代表墙壁，&rsquo;.&lsquo;代表空格，‘x’代表有警察的空格，&rsquo;r&rsquo;和&rsquo;a&rsquo;分别代表一屌丝，并且&rsquo;r&rsquo;要到&rsquo;a&rsquo;那里去串门儿，r走一个空格花费单位时间1，走一个有警察的空格需要先干掉警察，话费单位时间1，然后再走过去，也就是共花费时间2，请问屌丝r到屌丝a那里去最少花费的时间。 思路： 首先要搞明白一个问题：就是路径最短的路不一定花费时间最少。这是可以理解的，比如，一条很短但是有很多警察，另一条路很长，但是没有警察，很有可能是第二条路花费时间少。用深搜？貌似不太合适，因为你一条路径访问过一个点后，另一条路径很可能也会访问这个点，并且时间较少。关键是深搜找到的接不一定是最优的。所以，考虑用广搜解。这道题最朴素的广搜显然不行，也就是说，仅仅求步数最少的不可行，需要加上访问时间这个附加条件。 用一个结构体数组存储每个点的信息，包括坐标，到达这个点所需要的最短时间，从起点开始搜，先访问起点，然后把起点出队，如果从一个点A到达下一个点B的当前所需时间比这个点现在标记的时间少，则把这个点入队，然后判断点A的另一个方向上的下一个点。这样，总有一天队列会为空，这是因为，某个点不可能被访问无数次，也就是说，某个点不可能无数次入队，因为到达某个点所需要的时间一定是有个最小值的，所以BFS一定可以结束，并且最后找到的点‘a’的信息一定是最优解。输出就可以了，如果无解，因为初始化到达所有点所需时间都是MAXN，所以，如果点‘a’的时间信息如果等于MAXN，那么说明无解。 第一次做深搜，这道题开始不知道怎么做，看了书上的思路，坚持没看代码，自己又想了想，就试着开始写，好神奇，竟然1A了！！！
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MINN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; typedef struct point{ int a, b, t; }point; point p[220][220], st, en; char s[220][220]; int n, m, T, si, sj, di, dj; queue&lt;point&gt; qt; void bfs(){ qt.
+      <a href="http://liuxueyang.github.io/blog/2013/04/08/zoj-1649-rescue-bfs%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    
+    
+    <ul class="pagination">
+        
+        <li>
+            <a href="/" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
+        </li>
+        
+        <li
+        >
+        <a href="/page/32/" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+        </li>
+        
+        <li
+        ><a href="/">1</a></li>
+        
+        <li
+        ><a href="/page/2/">2</a></li>
+        
+        <li
+        ><a href="/page/3/">3</a></li>
+        
+        <li
+        ><a href="/page/4/">4</a></li>
+        
+        <li
+        ><a href="/page/5/">5</a></li>
+        
+        <li
+        ><a href="/page/6/">6</a></li>
+        
+        <li
+        ><a href="/page/7/">7</a></li>
+        
+        <li
+        ><a href="/page/8/">8</a></li>
+        
+        <li
+        ><a href="/page/9/">9</a></li>
+        
+        <li
+        ><a href="/page/10/">10</a></li>
+        
+        <li
+        ><a href="/page/11/">11</a></li>
+        
+        <li
+        ><a href="/page/12/">12</a></li>
+        
+        <li
+        ><a href="/page/13/">13</a></li>
+        
+        <li
+        ><a href="/page/14/">14</a></li>
+        
+        <li
+        ><a href="/page/15/">15</a></li>
+        
+        <li
+        ><a href="/page/16/">16</a></li>
+        
+        <li
+        ><a href="/page/17/">17</a></li>
+        
+        <li
+        ><a href="/page/18/">18</a></li>
+        
+        <li
+        ><a href="/page/19/">19</a></li>
+        
+        <li
+        ><a href="/page/20/">20</a></li>
+        
+        <li
+        ><a href="/page/21/">21</a></li>
+        
+        <li
+        ><a href="/page/22/">22</a></li>
+        
+        <li
+        ><a href="/page/23/">23</a></li>
+        
+        <li
+        ><a href="/page/24/">24</a></li>
+        
+        <li
+        ><a href="/page/25/">25</a></li>
+        
+        <li
+        ><a href="/page/26/">26</a></li>
+        
+        <li
+        ><a href="/page/27/">27</a></li>
+        
+        <li
+        ><a href="/page/28/">28</a></li>
+        
+        <li
+        ><a href="/page/29/">29</a></li>
+        
+        <li
+        ><a href="/page/30/">30</a></li>
+        
+        <li
+        ><a href="/page/31/">31</a></li>
+        
+        <li
+        ><a href="/page/32/">32</a></li>
+        
+        <li
+        class="active"><a href="/page/33/">33</a></li>
+        
+        <li
+        ><a href="/page/34/">34</a></li>
+        
+        <li
+        ><a href="/page/35/">35</a></li>
+        
+        <li
+        ><a href="/page/36/">36</a></li>
+        
+        <li
+        ><a href="/page/37/">37</a></li>
+        
+        <li
+        ><a href="/page/38/">38</a></li>
+        
+        <li
+        ><a href="/page/39/">39</a></li>
+        
+        <li
+        ><a href="/page/40/">40</a></li>
+        
+        <li
+        ><a href="/page/41/">41</a></li>
+        
+        <li
+        ><a href="/page/42/">42</a></li>
+        
+        <li
+        ><a href="/page/43/">43</a></li>
+        
+        <li
+        ><a href="/page/44/">44</a></li>
+        
+        <li
+        ><a href="/page/45/">45</a></li>
+        
+        <li
+        ><a href="/page/46/">46</a></li>
+        
+        <li
+        >
+        <a href="/page/34/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+        </li>
+        
+        <li>
+            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        </li>
+        
+    </ul>
+    
+  </div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

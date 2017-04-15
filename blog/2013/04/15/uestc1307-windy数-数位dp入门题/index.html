@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>uestc1307 windy数 ——数位DP入门题 &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">uestc1307 windy数 ——数位DP入门题</h1>
+    <span class="post-date">Apr 15, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/15/uestc1307-windy%E6%95%B0-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+    </span>
+    <p>题目链接：<a href="http://acm.uestc.edu.cn/problem.php?pid=1307 ">http://acm.uestc.edu.cn/problem.php?pid=1307 </a>
+题目大意：
+　　　　不含前导零且相邻两个数字之差至少为2的正整数被称为windy数。windy想知道，在A和B之间，包括A和B，总共有多少个windy数？
+思路：
+　　具体解释代码中有。看的这个人的代码：<a href="http://blog.csdn.net/acm_cxlove/article/details/7819907# 然后自己又分析了一下，终于明白了。">http://blog.csdn.net/acm_cxlove/article/details/7819907# 然后自己又分析了一下，终于明白了。</a></p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+int dp[15][10], a[15];
+// 这个函数求的是区间（0，n）内的个数
+LL solve(int n){
+  int len = 0; LL ans = 0;
+  while (n){
+    a[++len] = n % 10; n /= 10;
+  }int i, j; a[len+1] = 0;
+  // 长度为1~len-1
+  for (i = 1; i &lt;= len-1; ++i)
+    for (j = 1; j &lt;= 9; ++j) // 注意j从1开始，因为最高位不能是0！
+      ans += dp[i][j];        //  debug了好久！！！
+  // 长度为len，但是最高位是a[len] - 1
+  for (i = 1; i &lt;= a[len] - 1; ++i)
+    ans += dp[len][i];
+  // 长度为len，但是最高位是a[len]
+  for (i = len - 1; i &gt;= 1; --i){
+    for (j = 0; j &lt; a[i]; ++j)
+      if (abs(a[i+1] - j) &gt;= 2)
+        ans += dp[i][j];
+    if (abs(a[i] - a[i+1]) &lt; 2)
+      break;
+  }
+  return ans;
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;uestcoj1307.in&quot;, &quot;r&quot;, stdin);
+#endif
+  memset(dp, 0, sizeof(dp));
+  int i, j, k;
+  for (i = 0; i &lt;= 9; ++i)
+    dp[1][i] = 1;
+  for (i = 2; i &lt;= 10; ++i)
+    for (j = 0; j &lt;= 9; ++j)
+      for (k = 0; k &lt;= 9; ++k)
+        if (fabs(j - k) &gt;= 2)
+          dp[i][j] += dp[i-1][k];
+  int a, b;
+  while (~scanf(&quot;%d%d&quot;, &amp;a, &amp;b)){
+    cout &lt;&lt; solve(b+1) - solve(a) &lt;&lt; endl;
+  }
+  return 0;
+}
+
+</code></pre>
+
+<p>　　比较坑的是电子科大的ＯＪ上不支持#ifndef ONLINE_JUDGE 所以RE了好久……</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

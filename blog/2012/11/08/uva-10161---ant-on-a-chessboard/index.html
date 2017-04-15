@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>uva 10161 - Ant on a Chessboard &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">uva 10161 - Ant on a Chessboard</h1>
+    <span class="post-date">Nov 8, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-10161---ant-on-a-chessboard/#disqus_thread">Comments</a>
+    </span>
+    <p>One day, an ant called Alice came to an M*M chessboard. She wanted to go around all the grids. So she began to walk along the chessboard according to this way: (you can assume that her speed is one grid per second)
+  At the first second, Alice was standing at (1,1). Firstly she went up for a grid, then a grid to the right, a grid downward. After that, she went a grid to the right, then two grids upward, and then two grids to the left…in a word, the path was like a snake.
+  For example, her first 25 seconds went like this:
+  ( the numbers in the grids stands for the time when she went into the grids)
+ 
+5
+4
+3
+2
+1
+ 
+1          2          3           4           5
+At the 8th second , she was at (2,3), and at 20th second, she was at (5,4).
+Your task is to decide where she was at a given time.
+(you can assume that M is large enough)
+ 
+ 
+  Input file will contain several lines, and each line contains a number N(1&lt;=N&lt;=2*10^9), which stands for the time. The file will be ended with a line that contains a number 0.
+ 
+ 
+  For each input situation you should print a line with two numbers (x, y), the column and the row number, there must be only a space between them.
+ 
+ 
+8
+20
+25
+0
+ 
+ 
+2 3
+5 4
+1 5
+这道题目开始没看懂，以为挺复杂，其实看懂了之后，发现也挺简单，没什么好总结的，那个表格给出的是时间，其实和题目中蚂蚁每走一步走多长没有什么关系，简化一下就是按照那个规律填表，给出一个数字，求这个数字的位置，注意是坐标，而不是第几行第几列，我就犯了这个错误，不过只要行列互换一下就可以了。
+用 sqrt(n) 求出这个数字在第几个周期，在根据奇偶处理就可以了。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstdio&gt;
+
+using namespace std;
+
+int main(void)
+{
+    int n;
+    while (cin &gt;&gt; n)
+    {
+        if(!n)    break;
+        int k = floor(sqrt(n));
+        if (k * k == n)    { if(k&amp;1)cout&lt;&lt;&quot;1 &quot;&lt;&lt;k&lt;&lt;endl;else cout&lt;&lt;k&lt;&lt;&quot; 1&quot;&lt;&lt;endl; }
+        else
+        {
+            int t = n - k * k;
+            if (k&amp;1)
+            {
+                if (t &lt;= k + 1)    cout&lt;&lt;n-k*k&lt;&lt;' '&lt;&lt;k+1&lt;&lt;endl;
+                else    cout&lt;&lt;' '&lt;&lt;k+1&lt;&lt;k+1-((n-k*k)%(k+1))&lt;&lt;endl;
+            }
+            else
+            {
+                if (t&lt;=k+1)    cout&lt;&lt;k+1&lt;&lt;' '&lt;&lt;n-k*k&lt;&lt;endl;
+                else    cout&lt;&lt;k+1-((n-k*k)%(k+1))&lt;&lt;' '&lt;&lt;k+1&lt;&lt;endl;
+            }
+        }
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

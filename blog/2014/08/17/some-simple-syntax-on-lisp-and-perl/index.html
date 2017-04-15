@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Some simple syntax on lisp and perl &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Some simple syntax on lisp and perl</h1>
+    <span class="post-date">Aug 17, 2014 &middot; 9 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/08/17/some-simple-syntax-on-lisp-and-perl/#disqus_thread">Comments</a>
+    </span>
+    <p>I am learning perl and common lisp these days.</p>
+
+<p>I think perl&rsquo;s syntax is beautiful and simple and I am getting used to it. I like it very much. I learn it just to do some text tasks.</p>
+
+<p>Besides, I once thought lisp&rsquo;s braces are so confusing. I even like those now. It is interesting to write in lisp.</p>
+
+<p>Here, I place some meaningless codes here to help me remember the syntax in future. ;-)</p>
+
+<p>#<em>Learning Perl</em></p>
+
+<p>##chapter 2</p>
+
+<pre><code>#!/usr/bin/env perl 
+#===============================================================================
+#
+#         FILE: ch_2.pl
+#
+#        USAGE: ./ch_2.pl  
+#
+#  DESCRIPTION: no
+#
+#      OPTIONS: ---
+# REQUIREMENTS: ---
+#         BUGS: ---
+#        NOTES: ---
+#       AUTHOR: YOUR NAME (), 
+# ORGANIZATION: 
+#      VERSION: 1.0
+#      CREATED: 08/15/2014 10:27:44 PM
+#     REVISION: ---
+#===============================================================================
+
+#use strict;
+use warnings;
+use utf8;
+use 5.010;
+
+say &quot;Hello world!&quot;;
+say &quot;This is a program for Chapter Two&quot;;
+$count = 0;
+while ($count &lt; 10) {
+	$count += 2;
+	print &quot;count is now $count\n&quot;;
+}
+$n1 = 1.25;
+$n1_1 = 1.;
+$n2 = -1.2e-23;
+say &quot;n1 = $n1&quot;;
+say &quot;n2 = $n2&quot;;
+say &quot;n1_1 = $n1_1&quot;;
+$n3 = 61_298_040_283_768;
+$n4 = 0xff;
+$n5 = 0377;
+$n6 = 0b11111111;
+say &quot;n3 = $n3&quot;;
+say &quot;n4 = $n4&quot;;
+say &quot;n5 = $n5&quot;;
+say &quot;n6 = $n6&quot;;
+
+print &quot;Hello and &quot; . &quot;world\n&quot;;
+print &quot;fred &quot; x 3 . &quot;\n&quot;;
+print 5 x 4.8 . &quot;\n&quot;;
+
+print &quot;The answer is &quot;, 6 * 7, &quot;.\n&quot;;
+
+$meal = &quot;bronto saurus steak&quot;;
+$barney = &quot;fred ate a $meal&quot;;
+print $barney . &quot;\n&quot;;
+
+print 'The barney is $barney' . &quot;\n&quot;;
+
+$que = ord('?');
+print &quot;que is $que\n&quot;;
+$Que = chr($que);
+print &quot;que is $Que\n&quot;;
+
+$name = &quot;wred&quot;;
+if ($name gt 'fred')
+{
+	print &quot;'$name' comes afger 'fred' in sorted order.\n&quot;;
+}
+
+if (! '0')
+{
+	print &quot;'0' is false!\n&quot;;
+}
+
+$still_true = !! 'Fred';
+$still_false = !! '0';
+
+print &quot;still_true is $still_true\n&quot;;
+print &quot;still_false is $still_false\n&quot;;
+
+$mul_line = &quot;This is multiple
+line\n&quot;;
+print &quot;multiple line is the Following:$mul_line&quot;;
+
+#$line = &lt;STDIN&gt;;
+$line = &quot;Hi\n&quot;;
+if ($line eq &quot;\n&quot;)
+{
+	print &quot;Thas was just a blank line.\n&quot;;
+}
+else
+{
+	print &quot;That line of input was: $line&quot;;
+}
+
+#$text = &lt;STDIN&gt;;
+#chomp($text = &lt;STDIN&gt;);
+#print &quot;text = $text\n&quot;;
+
+$n = 1;
+$sum = undef;
+while ($n &lt; 10)
+{
+	$sum += $n;
+	$n += 2;
+}
+print &quot;The total was $sum.\n&quot;;
+
+$un_define = undef;
+print &quot;un_define is &lt;$un_define&gt;\n&quot;;
+
+$madonna = &lt;STDIN&gt;;
+if (defined($madonna)) 
+{
+	print &quot;The input was $madonna&quot;;
+}
+else
+{
+	print &quot;No input available!\n&quot;;
+}
+
+print &quot;This is the last line.\n&quot;;
+
+</code></pre>
+
+<p>##chapter 3</p>
+
+<pre><code>#!/usr/bin/env perl 
+#===============================================================================
+#
+#         FILE: ch_3.pl
+#
+#        USAGE: ./ch_3.pl  
+#
+#  DESCRIPTION: just for test some perl's grammer
+#
+#      OPTIONS: ---
+# REQUIREMENTS: ---
+#         BUGS: ---
+#        NOTES: ---
+#       AUTHOR: YOUR NAME (), 
+# ORGANIZATION: 
+#      VERSION: 1.0
+#      CREATED: 08/16/2014 04:52:51 PM
+#     REVISION: ---
+#===============================================================================
+
+#use strict;
+use warnings;
+use utf8;
+use 5.010;
+
+$fred[0] = &quot;yabba&quot;;
+$fred[1] = &quot;dabba&quot;;
+$fred[2] = &quot;doo&quot;;
+say $fred[0];
+say $fred[1];
+say $fred[2];
+$fred[2] .= &quot;diddley&quot;;
+say $fred[2];
+$fred[5] = &quot;Fifth&quot;;
+$i = 0;
+while ($i &lt;= 5)
+{
+	if (defined($fred[$i])) 
+	{
+		say &quot;$i == &gt; &quot;, $fred[$i];
+	}
+	else {
+		say &quot;does not exist!&quot;;
+	}
+	$i += 1;
+}
+say &quot;There are $#fred elements in fred array.&quot;;
+
+@lst = (2..5);
+say @lst;
+@lst = 2..5;
+say @lst;
+@lst = qw(fred barney bety wilma dino);
+#say @lst;
+
+($fred, $barney, $dino) = qw / flintstone, rubble, undef /;
+say &quot;fred = &quot;, $fred;
+say &quot;barney = &quot;, $barney;
+say &quot;dino = &quot;, $dino;
+($fred, $barney) = ($barney, $fred);
+say &quot;fred = &quot;, $fred;
+say &quot;barney = &quot;, $barney;
+if (defined($dino))
+{
+	say &quot;dino is defined&quot;;
+}
+($fred, $dino) = (&quot;FRED&quot;, undef);
+if (defined($dino))
+{
+	say &quot;dino is defined&quot;;
+}
+else 
+{
+	say &quot;dino is not defined&quot;;
+}
+($rocks[0], $rocks[1], $rocks[2], $rocks[3]) = 
+qw / talc
+	mica
+	feldspar
+	quartz
+	/;
+@giant = 1..5;
+@stuff = (@giant, undef, @giant);
+$dino = &quot;granite&quot;;
+@tiny = ();
+@quarry = (@rocks, &quot;crushed rock&quot;, @tiny, $dino);
+
+@copy = @quarry;
+
+@array = 5..9;
+say &quot;@array&quot;;
+$fred = pop @array;
+say &quot;@array&quot;;
+push @array, 11;
+say &quot;@array&quot;;
+push @array, @giant;
+say &quot;@array&quot;;
+$m = shift @array;
+say &quot;m = &quot;, $m;
+$m = shift @array;
+say &quot;m = &quot;, $m;
+unshift @array, kk;
+say &quot;@array&quot;;
+@removed = splice @array, 2, 0, $m;
+say &quot;removed = @removed&quot;;
+say &quot;array = @array&quot;;
+$y = &quot;2*4&quot;;
+$y = &quot;2&quot;;
+$y -= 1;
+say &quot;y = $y&quot;;
+$array=&quot;kiss&quot;;
+print &quot;this is ${array}[0]\n&quot;;
+say &quot;This is $array[0]&quot;;
+
+say &quot;rocks = @rocks&quot;;
+$rock = &quot;This is origin rock...&quot;;
+foreach $rock (@rocks) {
+	$rock = &quot;\t$rock&quot;;
+	$rock .= &quot;\n&quot;;
+}
+say &quot;the Rocks are:\n&quot;, @rocks;
+say &quot;Now, Rock is $rock&quot;;
+$_ = &quot;Yabba dabba doo\n&quot;;
+print;
+foreach (1..5)
+{
+	print &quot;I can count to $_!\n&quot;;
+}
+print;
+say &quot;rocks == &gt;\n@rocks&quot;;
+@rocks = reverse @rocks;
+say &quot;rocks == &gt;\n @rocks&quot;;
+
+@rocks = qw /
+	bedrock
+	slate
+	rubble
+	granite
+	/;
+@sort_rocks = sort @rocks;
+say &quot;rocks = @rocks&quot;;
+say &quot;sort_rocks = @sort_rocks&quot;;
+while (($index, $value) = each @rocks)
+{
+	say &quot;$index: $value&quot;;
+}
+@people = qw / fred barney betty /;
+@people_sorted = sort @people;
+$number = 42 + @people;
+say &quot;people is: @people&quot;;
+say &quot;people_sorted is: @people_sorted&quot;;
+say &quot;number = $number&quot;;
+
+$backwards = reverse qw / a b c d /;
+say &quot;backwards is: $backwards&quot;;
+
+@fred = 6 * 7;
+@barney = ( &quot;hello&quot; , ' ' , &quot;world&quot; );
+say &quot;fred = @fred&quot;;
+say &quot;barney = @barney&quot;;
+say &quot;This is the last line of the program.&quot;;
+
+@rocks = qw / aa bb cc dd /;
+say &quot;rocks = @rocks&quot;;
+say &quot;How many rocks do you have?&quot;;
+print &quot;I have &quot;, scalar @rocks, &quot; rocks!\n&quot;;
+
+chomp(@lines = &lt;STDIN&gt;);
+#@lines = &lt;STDIN&gt;;
+print &quot;lines is:\n@lines&quot;;
+
+
+</code></pre>
+
+<p>##chapter 4</p>
+
+<pre><code>#!/usr/bin/env perl 
+#===============================================================================
+#
+#         FILE: ch_4.pl
+#
+#        USAGE: ./ch_4.pl  
+#
+#  DESCRIPTION: no
+#
+#      OPTIONS: ---
+# REQUIREMENTS: ---
+#         BUGS: ---
+#        NOTES: ---
+#       AUTHOR: YOUR NAME (), 
+# ORGANIZATION: 
+#      VERSION: 1.0
+#      CREATED: 08/16/2014 11:09:22 PM
+#     REVISION: ---
+#===============================================================================
+
+#use strict;
+use warnings;
+use utf8;
+use 5.010;
+
+sub marine
+{
+	$n += 1;
+	print &quot;Hello, sailor number $n\n&quot;;
+}
+
+&amp;marine();
+&amp;marine();
+&amp;marine();
+&amp;marine();
+
+$fred = 3;
+$barney = 4;
+$wilma = &amp;sum_of_fred_and_barney;
+print &quot;\$wilma is $wilma.\n&quot;;
+
+$betty = &amp;sum_of_fred_and_barney * 3;
+print &quot;\$wilma is $betty.\n&quot;;
+
+sub sum_of_fred_and_barney
+{
+	print &quot;Hey, you called the sum_of_fred_and_barney subroutine!\n&quot;;
+	$fred + $barney;
+}
+
+sub max
+{
+#	my ($m, $n);
+#	($m, $n) = @_;
+#	my ($m, $n) = @_;
+#	if ($m &gt; $n) {
+#		$m;
+#	}
+#	else {
+#		$n;
+#	}
+	my ($max_so_far) = shift @_;
+	foreach (@_)
+	{
+		if ($_ &gt; $max_so_far) {
+			$max_so_far = $_;
+		}
+	}
+	$max_so_far;
+#	if ($_[0] &gt; $_[1]) {
+#		$_[0];
+#	} else {
+#		$_[1];
+#	}
+}
+$n = &amp;max(10, 15, 3, 5, 100, 101);
+print &quot;n = $n\n&quot;;
+
+foreach (1..5)
+{
+	my ($square) = $_ * $_;
+	print &quot;$_ squared is $square.\n&quot;;
+}
+
+my @names = qw / fred barney betty dino wilma pebbles
+		bamm-bamm/;
+my $result = &amp;which_element_is(&quot;dino&quot;, @names);
+sub which_element_is
+{
+	my ($what, @array) = @_;
+	foreach (0..$#array) {
+		if ($what eq $array[$_]) {
+			return $_;
+		}
+	}
+	-1;
+}
+print &quot;index is: $result.\n&quot;;
+
+sub chomp 
+{
+	print &quot;Muuch, muuch!\n&quot;;
+}
+
+&amp;chomp;
+
+sub gene_list
+{
+	my ($a, $b) = @_;
+	if ($a &lt; $b) {
+		$a..$b;
+	} else {
+		reverse $b..$a;
+	}
+}
+
+my @re = &amp;gene_list(10, 6);
+say &quot;@re&quot;;
+my @se = &amp;gene_list(6, 10);
+say &quot;@se&quot;;
+
+sub marine 
+{
+	state $n = 0;
+	$n += 1;
+	say &quot;Hello, sailor number $n!&quot;;
+}
+
+&amp;marine;
+&amp;marine;
+&amp;marine;
+
+sub running_sum 
+{
+	state $sum = 0;
+	state @numbers ;
+	foreach my $number (@_)
+	{
+		push @numbers, $number;
+		$sum += $number;
+	}
+	say &quot;The sum of (@numbers) is $sum&quot;;
+}
+
+running_sum(5, 6);
+running_sum(1..3);
+running_sum(4);
+
+</code></pre>
+
+<p>#<em>ANSI Common Lisp</em></p>
+
+<pre><code>(let ((x 1) (y 2))
+ (+ x y))
+
+(defun ask-number ()
+ (format t &quot;Please enter a number.&quot;)
+ (let ((val (read)))
+	(if (numberp val)
+	 val
+	 (ask-number))))
+
+(defparameter *glob* 99)
+
+(defconstant limit (+ *glob* 1))
+
+(setf *glob* 98) 
+
+(let ((n 10))
+ (setf n 2)
+ n)
+
+(setf x (list 'a 'b 'c))
+
+(setf (car x) 'n)
+
+(setf a 'b 
+ 			c 'd
+			e 'f)
+
+(setf lst '(c a r a t))
+
+(remove 'a lst)
+
+(setf x (remove 'a x))
+
+(defun show-squares (start end)
+ (do ((i start (+ i 1)))
+	((&gt; i end) 'done)
+	(format t &quot;~A ~A ~%&quot; i (* i i))))
+
+(defun show-squares-1 (i end)
+ (if (&gt; i end)
+	'done
+	(progn
+	 (format t &quot;~A ~A ~%&quot; i (* i i))
+	 (show-squares-1 (+ i 1) end))))
+
+(defun our-length (lst)
+ (let ((len 0))
+	(dolist (obj lst)
+	 (setf len (+ len 1)))
+	len))
+
+(defun our-length-1 (lst)
+ (if (null lst)
+	0
+	(+ 1 (our-length-1 (cdr lst)))))
+
+(defun our-listp (x)
+ (or (null x) (consp x)))
+
+(defun our-atom (x)
+ (not (consp x)))
+
+(setf x '(a b c)
+ 			y (copy-list x))
+
+(defun n-elt (n elt)
+ (if (&gt; n 1)
+	(list n elt)
+	elt))
+
+(defun compr (current num rst)
+ (if (null rst)
+	(list (n-elt num current))
+ (if (eql current (car rst))
+	(compr current (+ 1 num) (cdr rst))
+	(cons (n-elt num current) (compr (car rst) 1 (cdr rst))))))
+
+(defun his-compr (elt n lst)
+ (if (null lst)
+	(list (n-elts elt n))
+	(let ((next (car lst)))
+	 (if (eql next elt)
+		(his-compr elt (+ 1 n) (cdr lst))
+		(cons (n-elts elt n)
+		 (his-compr next 1 (cdr lst)))))))
+
+(defun compress (lst)
+ (if (null lst)
+	nil
+	(compr (car lst) 1 (cdr lst))))
+
+(defun his-compress (x)
+ (if (consp x)
+	(his-compr (car x) 1 (cdr x))
+	x))
+
+
+(defun n-elts (elt n)
+ (if (&gt; n 1)
+	(list n elt)
+	elt))
+
+(setf lst '(1 1 1 0 1 0 0 0 0 1 2 2 3))
+
+(defun list-of (num cur)
+ (if (zerop num)
+	nil
+	(cons cur (list-of (- num 1) cur))))
+
+(defun uncompress (lst)
+ (if (null lst)
+	nil
+	(let ((current (car lst)))
+	 (if (listp current)
+		(append (list-of (car current) (second current))
+		 (uncompress (cdr lst)))
+		(cons current (uncompress (cdr lst)))))))
+
+(defun his-uncompress (lst)
+ (if (null lst)
+	nil
+	(let ((elt (car lst))
+				(rest (his-uncompress (cdr lst))))
+	 (if (consp elt)
+		(append (apply #'list-of elt) rest)
+		(cons elt rest)))))
+
+(setf lst-c '((3 1) 0 1 (4 0) 1 (2 2) 3))
+
+
+</code></pre>
+
+<p>BTW, it feels great to write lisp in vim. I CAN NOT STAND EMACS AT LAST!</p>
+
+<p>One more thing, I remove those articles whose title are /run-[0-9]/ (RE;-) and backup them on my computer. Maybe I should write more blogs about techniques instead of complaining or those about myself.</p>
+
+<p>Good night.
+18/08/2014 00:22 AM</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

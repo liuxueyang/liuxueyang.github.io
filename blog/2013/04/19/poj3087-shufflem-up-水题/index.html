@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>poj3087 Shuffle&#39;m Up ——水题 &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">poj3087 Shuffle&#39;m Up ——水题</h1>
+    <span class="post-date">Apr 19, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/19/poj3087-shufflem-up-%E6%B0%B4%E9%A2%98/#disqus_thread">Comments</a>
+    </span>
+    <p>题目链接：<a href="http://poj.org/problem?id=3087">http://poj.org/problem?id=3087</a>
+题目大意：
+　　给定长度都为Ｃ两个字符串，Ｓ１，Ｓ2，和一个要求的结果字符串ＳＳ。先把Ｓ２的最下面一张牌放在最下面，然后Ｓ１，Ｓ２交错的叠放，得到Ｓ，再把Ｓ最下面的Ｃ个字符赋值给Ｓ１，把剩下的赋值给Ｓ２，再次重复上面的过程。最后求出要得到ＳＳ，需要几步这样的过程。
+题目思路：
+　　开始以为是用ＳＴＬ的栈，后来才发现根本用不到，直接用字符串模拟就可以了。为了学习一下ＳＴＬ，用的是ｓｔｒｉｎｇ类。只要比较当前得到的字符串和要得到的字符串是不是相等就可以了。如果永远也得不到要得到的字符串，那么就一定存在Ｓ１和Ｓ２和原来的Ｓ１和Ｓ２都对应相等，其实这道题目的难点就在这里。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;set&gt;
+#include &lt;map&gt;
+#include &lt;vector&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;3087.in&quot;, &quot;r&quot;, stdin);
+#endif
+  int n, i, c, j; scanf(&quot;%d&quot;, &amp;n);
+  string s1, s2, s, S1, S2, S;
+  for (i = 1; i &lt;= n; ++i){
+    printf(&quot;%d &quot;, i);
+    cin &gt;&gt; c &gt;&gt; s1 &gt;&gt; s2 &gt;&gt; S; int cnt = 0;
+    S1 = s1; S2 = s2;
+    string::iterator it; bool flag = false;
+    s = &quot;&quot;;
+    while (1){
+      for (j = 0; j &lt; c; ++j){
+        s += s2[j]; s+= s1[j];
+      } s1 = s2 = &quot;&quot;; cnt++;
+      if (!s.compare(S)) {flag = true; printf(&quot;%d\n&quot;, cnt);break;}
+      for (j = 0; j &lt; c; ++j){
+        s1+=s[j]; 
+      }
+      for (j = c; j &lt; s.length(); ++j){ s2+= s[j];}
+      s = &quot;&quot;;
+      if (!s1.compare(S1) &amp;&amp; !s2.compare(S2)) break;
+    }
+    if (!flag) printf(&quot;-1\n&quot;);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>看了人家的代码，<a href="http://blog.sina.com.cn/s/blog_6a0e04380100olz1.html，用到了ｓｅｔ，正好这道题目不难，正好学习一下ｓｅｔ类，所以也照着学了一下。">http://blog.sina.com.cn/s/blog_6a0e04380100olz1.html，用到了ｓｅｔ，正好这道题目不难，正好学习一下ｓｅｔ类，所以也照着学了一下。</a>
+但是有一个地方的思路有一点儿差别，就是，它判别是不是永远也得不到ＳＳ的时候用的是Ｓ是不是出现过，其实本质上和我的是一样的。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;set&gt;
+#include &lt;map&gt;
+#include &lt;vector&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;3087.in&quot;, &quot;r&quot;, stdin);
+#endif
+  int n, i, j, index, cnt, c; scanf(&quot;%d&quot;, &amp;n);
+  string s1, s2, s3, s;
+  set&lt;string&gt; myset;
+  for (i = 1; i &lt;= n; ++i){
+    printf(&quot;%d &quot;, i); cin &gt;&gt; c &gt;&gt; s1 &gt;&gt; s2 &gt;&gt; s3;
+    s = s3; myset.clear(); cnt = index = 0;
+    while (1){
+      index = 0;
+      for (j = 0; j &lt; c; ++j){
+        s[index++] = s2[j]; s[index++] = s1[j];
+      } cnt++;
+      if (s == s3){ printf(&quot;%d\n&quot;, cnt);break;}
+      if (myset.count(s) == 1){printf(&quot;-1\n&quot;); break;}
+      else{
+        s1.assign(s, 0, c); s2.assign(s, c, c);
+        myset.insert(s);
+      }
+    }
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>写代码的过程中还是出现了一些低级的错误，看来代码的准确度还是不行啊～</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

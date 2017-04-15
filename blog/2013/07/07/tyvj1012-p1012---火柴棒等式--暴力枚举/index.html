@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>tyvj1012 P1012 - 火柴棒等式  ——暴力枚举 &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">tyvj1012 P1012 - 火柴棒等式  ——暴力枚举</h1>
+    <span class="post-date">Jul 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/07/tyvj1012-p1012---%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F--%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/#disqus_thread">Comments</a>
+    </span>
+    <p>题目链接：<a href="https://www.tyvj.cn/Problem_Show.aspx?id=1012">https://www.tyvj.cn/Problem_Show.aspx?id=1012</a>
+可以发现：最大的数字绝对不超过999，只要枚举出0～999所有数字需要的火柴数，然后再枚举C和A，得到B＝C-A，看看三个数字的火柴数目是否等于n就可以了。</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+int a[10] = {6,2,5,5,4,5,6,3,7,6},b[1000],n,cnt;
+int main(void) {
+    freopen(&quot;in1.txt&quot;,&quot;r&quot;,stdin); cnt=0;
+    scanf(&quot;%d&quot;,&amp;n),n-=4;for(int i=0;i&lt;10;++i)b[i]=a[i];
+    for(int i=10;i&lt;=999;++i) b[i]=b[i/10]+b[i%10];
+    for(int i=0;i&lt;=999;++i)if(b[i]&lt;n) for(int j=0;j&lt;=i;++j)if(b[i]+b[j]+b[i-j]==n)cnt++; printf(&quot;%d\n&quot;,cnt);
+    return 0;
+}
+
+</code></pre>
+
+<p>还有一个比较快的思路，因为n最大是24，所以可以用上面的程序，把这24个数字都算出来，就是一个大小为24个数组，直接输出就可以。
+写给自己看的。。=_=</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

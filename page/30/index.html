@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+	<meta name="generator" content="Hugo 0.20.1" />
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>黑历史 &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  <link href="http://liuxueyang.github.io/index.xml" rel="alternate" type="application/rss+xml" title="黑历史 &middot; liuxueyang" />
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="posts">
+    
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/05/01/zoj1203-swordfish-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/">zoj1203 Swordfish ——最小生成树入门题_Kruscal算法</a>
+      </h1>
+      <span class="post-date">May 1, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/01/zoj1203-swordfish-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=203 题目大意： 给定N个点的坐标，求经过这N个点的路线长度总和的最小值。 题目思路： 求出任意两点之间的距离，然后就是最小生成树。 写的过程中还是遇到了三个问题，有一个局部变量没有初始化；没有把边按照权值排序；另外就是没有看输出，每两个case之间有一个空行。这里有一个十分常见的问题，就是最后一个case后面没有空行。否则会PE。 #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; typedef struct Edge { int u, v; double w; bool operator &lt; (const Edge &amp;other) const { return w &lt; other.
+      <a href="http://liuxueyang.github.io/blog/2013/05/01/zoj1203-swordfish-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/05/01/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F_kruscal%E7%AE%97%E6%B3%95/">最小生成树示例程序_Kruscal算法</a>
+      </h1>
+      <span class="post-date">May 1, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/01/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F_kruscal%E7%AE%97%E6%B3%95/#disqus_thread">Comments</a>
+      </span>
+      
+      输入：顶点个数n和边数m，然后输入m行，每行输入格式：u v w 分别表示两个顶点和这个边的权值，顶点序号从1开始 输出：一次选择的各条边和最终的最小生成树的权值
+#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;algorithm&gt; using namespace std; #define MAXN 1000 #define MAXM 1000 int parent[MAXN], n, m; typedef struct Edge { int u, v, w; bool operator &lt; (const Edge &amp;other) const { return w &lt; other.w; } }Edge; Edge edge[MAXM]; void init() { for (int i = 1; i &lt;= n; ++i) parent[i] = -1; } int Find(int x) { int s = x, tmp; while (parent[s] &gt;= 0) s = parent[s]; while (s !
+      <a href="http://liuxueyang.github.io/blog/2013/05/01/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F_kruscal%E7%AE%97%E6%B3%95/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/05/01/poj1094zoj1060-sorting-it-all-out-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E5%85%A5%E9%97%A8%E9%A2%98/">poj1094&amp;&amp;zoj1060 Sorting It All Out ——拓扑排序入门题</a>
+      </h1>
+      <span class="post-date">May 1, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/01/poj1094zoj1060-sorting-it-all-out-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://poj.org/problem?id=1094 http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=60 题目大意： 输入两个整数，n, m 分别表示以下的字母在字母表前 n 个字母范围内，有 m 行，每行描述一个大小关系，只有小于号。如果从开始到某一个关系式可以确定最终的序列，就输出确定的序列。如果得到矛盾，就输出到此经历的几个关系式。如果最终都没有确定，就输出序列不能确定的信息。 题目思路： 边读入，边建图，每读入一条表达式，就拓扑排序判断是不是可以确定最后的序列了。如果可以得到最后包含全部n个字母的序列，后面的表达式只需要输入，但是不需要处理了。如果过程中到达一个表达式的时候，找到了一个环，就说明肯定不能确定最后的序列了。也不需要处理后面的表达式了。如果一直都没有确定，就一直处理。 这题大体上的思路是这样，但是还是有一些细节没有处理好。最严重的就是：如何在中间的过程中去判断环。不能单纯地比较弹栈的顶点个数和 n 的大小，因为可能读入的顶点个数还没有到达 ｎ的时候，就已经出现环了，这样，以后的输入就不用处理了。如何处理呢？我的方法就是，当前剩下的点当中，是不是还存在度数大于０的点，用ｂｕｇ标记，因为这个ｂｕｇ调试了好久。。如果存在的话，就说明返回－１，表示存在环。为什么会出现这个ｂｕｇ呢？因为这个涉及到到第几条表达式出现矛盾的问题。 主要还是思维不严谨，虽然后来测试数据过了，但还是不知道哪里错了，后来自己出了几组数据才发现那个ｂｕｇ。这题做了好久，有的人一下就过了，可是我却卡了两天……教训就是：遇到ｂｕｇ了不能慌，分析一下是不是自己当初的想法错了，还是哪个细节没有处理好。即使有一个细节处理不好，程序最后都会崩溃。还有就是，可能自己的处理方法不好，导致最后的ｂｕｇ超多，代码也超级繁琐……一开始就应该想清楚，有没有更好的处理办法，尤其是一些细节问题。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; bool edge[27][27]; int n, m, rela; string s, out; map&lt;int,bool&gt; mymap; int Count[27], mystack[27], Count1[27]; int topsort(int ki) { out.
+      <a href="http://liuxueyang.github.io/blog/2013/05/01/poj1094zoj1060-sorting-it-all-out-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/30/poj2585zoj2193-window-pains-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E5%85%A5%E9%97%A8%E9%A2%98/">poj2585&amp;&amp;zoj2193 Window Pains ——拓扑排序入门题</a>
+      </h1>
+      <span class="post-date">Apr 30, 2013 &middot; 4 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/30/poj2585zoj2193-window-pains-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://poj.org/problem?id=2585 http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=2193 题目大意： 有9个窗口，每个窗口占4个格子，并且每个窗口的位置是固定的。如果重叠的话，在前面的窗口会覆盖另一种窗口，这9个窗口在4*4的矩阵里面，给出一种矩阵的格局。问这中格局是不是合法的。 题目思路： 还是看的书上的。刚开始一点也没有思路。方法就是：16个格子，每个格子可能会存在哪几种窗口，这是可以枚举出来的。针对输入的矩阵，那么可以判断，每一个格子会覆盖哪几种窗口，如果这种窗口在16个格子里面出现过，那么就可以判断当前这个格子一定覆盖了它，那么就可以用一条有向边连接当前窗口和被覆盖的窗口。这样，就可以得到一个图。在16个格子里面没有出现过的窗口我们可以不考虑。得到有向图后，发现，如果存在一个有向环，那么就一定是不合理的，因为这表明，一种窗口A覆盖了另一种窗口B，同时B又覆盖了A，这是不可能的。所以这个矩阵就是不合法的。反之，如果不存在有向环，就是合法的。这样，就转化为用拓扑排序判断环的问题了。先建图，再判断环。 写了两遍，其中出现各种BUG…… 第一遍：
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; string cover[4][4]; int a[10][10];bool g[10][10];int id[10]; map&lt;int, bool&gt;mymap; int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;poj2585.
+      <a href="http://liuxueyang.github.io/blog/2013/04/30/poj2585zoj2193-window-pains-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/29/hoj12614-dictionary-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E6%89%BE%E7%8E%AF%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/">hoj12614 Dictionary ——拓扑排序找环&amp;&amp;比赛残留题</a>
+      </h1>
+      <span class="post-date">Apr 29, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/29/hoj12614-dictionary-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E6%89%BE%E7%8E%AF%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.hnu.cn/online/?action=problem&amp;type=show&amp;id=12614&amp;courseid=247 题目大意： 有一种字典。把字典中的符号映射到英文字母。输入一个n，然后是n行映射后的单词，判断这n个单词是不是符合字典序，所谓字典序就是前面的单词可以是后面的单词的前缀，并且这n个单词符合字符串排序后的顺序，这是针对原来的字母的，而不是映射之后的字母。 题目思路： 需要考虑映射之后的字母的相对顺序，来考虑是不是在原来的字母表中是不是符合字典序。 这道题目开始没看懂，最关键的第一段描述没有注意到，结果样例都看不懂。纠结了好久。但是涉及到前缀，觉得应该是字典树。 后来终于注意到第一段了，终于理解题目意思了。悲剧的是，还是纠结在字典树上面，老是在这方面想。没有思路。知道考虑相对顺序，但是不知道怎么映射……过程中llh其实提到了一下两个字母的相对顺序可以用边表示，可是，我没有继续往下想！后来听人家说，可以建图，然后找环。唉，原来就是llh那样想的。 回来之后，认真想了一下。方法是：预处理的过程中判断是不是出现这种情况：后面的单词是前面的单词的前缀，这是不符合条件的。同时在预处理的过程中建图，用临界表，如果一个字母A在另一个字母B的后面，就把B插入到A的出边表里面。然后就是在这个图里面找环，如果出现环了，就是不符合条件的。找环的方法就是刚刚做过的拓扑排序的方法。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int n; char a[509][17]; struct ArcNode { int to; struct ArcNode *next; }; ArcNode *List[50]; int Count[50]; bool topsort() { int i = 0, j, k, top = -1; ArcNode *temp; bool flag = false; for (i = 0; i &lt; 26; ++i) { if (Count[i] == 0) { Count[i] = top; top = i; } } for (i = 0; i &lt; 26; ++i) { if (top == -1) { flag = true; break; } j = top; top = Count[top]; temp = List[j]; while (temp) { k = temp-&gt;to; Count[k]--; if (Count[k] == 0) { Count[k] = top; top = k; } temp = temp-&gt;next; } } if (flag) return false; else return true; } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;hnu247.
+      <a href="http://liuxueyang.github.io/blog/2013/04/29/hoj12614-dictionary-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E6%89%BE%E7%8E%AF%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/28/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/">拓扑排序示例程序</a>
+      </h1>
+      <span class="post-date">Apr 28, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/28/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/#disqus_thread">Comments</a>
+      </span>
+      
+      输入：顶点个数n，边数m，然后是m行，表示每条边的起点和终点u, v 表示从顶点u到顶点v的一条有向边。输入0 0 表示结束。 输出：如果不存在有向环，则输出一个拓扑有序序列；否则，输出“Netword has a cycle!” #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int n, m, Count[100], i, j, top, out[100]; struct ArcNode{ int to; struct ArcNode *next; }; ArcNode *List[100]; void topsort() { ArcNode *temp; top = -1; int k, len = 0; bool flag = true; for (i = 0; i &lt; n; ++i) { if (Count[i] == 0) { Count[i] = top; top = i; } } for (i = 0; i &lt; n; ++i) { k = top; if (k == -1) { flag = false; break; } top = Count[k]; temp = List[k]; out[len++] = k + 1; while (temp !
+      <a href="http://liuxueyang.github.io/blog/2013/04/28/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/27/%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/">邻接表示例程序</a>
+      </h1>
+      <span class="post-date">Apr 27, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/27/%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/#disqus_thread">Comments</a>
+      </span>
+      
+      输入：n，m代表顶点数目和边数。然后m行，代表每个边的起点和终点。0 0 表示结束。 输出：第一行为n个正整数，表示每个点的出度；第二行为n个正整数，表示每个点的入度。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 100; struct ArcNode{ // 边节点 int adjvex; ArcNode *nextarc; }; struct VNode{ // 顶点 int data; ArcNode *head1; // 出边表表头指针 ArcNode *head2; // 入边表表头指针 }; struct LGraph{ // 临界表结构体 VNode vertexs[MAX]; // 顶点数组 int vexnum, arcnum; }; LGraph lg; void CreateLG() { int i = 0; ArcNode *pi; int v1, v2; //scanf(&quot;%d%d&quot;, &amp;lg.
+      <a href="http://liuxueyang.github.io/blog/2013/04/27/%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/26/2013%E5%B9%B44%E6%9C%8826%E6%97%A5-%E6%99%B4/">2013年4月26日 晴</a>
+      </h1>
+      <span class="post-date">Apr 26, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/26/2013%E5%B9%B44%E6%9C%8826%E6%97%A5-%E6%99%B4/#disqus_thread">Comments</a>
+      </span>
+      
+      25日 晚上去图书馆还书，没去跑步。开始读TAOCP，^_^ 26日 都起跑了才发现脚貌似有点儿受伤，大脚趾有些疼的感觉。乖乖回来了o(╯□╰)o 看来得休息几天了。 今天晚上自习的时候开始考虑要不要考研，以前的想法都是坚决不考研的，但是现在，唉……我也不知道该怎么办，总之，不想这些了，现在还是好好学习数学，英语，还有专业课，到时候想考就拼一下。目前最重要的是认真做比赛，还要努力把数学英语搞好，这货哪里都用得到。把自己的基础打好，各种技术都要自己去学，不管以后是去考研还是去找工作，都有好处，具体怎么样，以后的事情以后再说，现在想这些都没用。 纯粹胡思乱想…… 人生貌似有些迷茫了又。。迟早要面对，所谓选择和机会，都是留给认真准备的人的。什么都不会，感觉无路可走…… 看到一句话：当你倒了一杯热水，准备去喝的时候，发现水已经凉了，那么恭喜你，你已经进入状态了。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/25/2013%E5%B9%B44%E6%9C%8824%E6%97%A5-%E9%98%B4%E8%BD%AC%E6%99%B4/">2013年4月24日 阴转晴</a>
+      </h1>
+      <span class="post-date">Apr 25, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/25/2013%E5%B9%B44%E6%9C%8824%E6%97%A5-%E9%98%B4%E8%BD%AC%E6%99%B4/#disqus_thread">Comments</a>
+      </span>
+      
+      晚上有一些冷，开始起跑的时候状态就不好，中途产生了厌跑的心理，这种事情是最可怕的，尤其是这种情况，体力跟不上，还有一些负面情绪，最后在中途停下来了，悲剧了……其实跑步的时候，最大的敌人就是自己，如何战胜自己。后来就是跑跑停停，最后还是勉强跑完了。。 唉，我承认自己的意志力可能永远没有人家强，比如高中同学shiwei，从心底里佩服这种人，能够一上午一动不动地趴桌子上做题。现在还能想起那么专注的情景，似乎外界早已经和自己无关，这种状态我貌似很少有，自从上大学以来。。真的。 不是玩手机，就是看书的时候，看一会儿就看不下去了……唉，心太浮躁了。 也许是电脑用太多了，干什么都想追求速度，电脑卡一点儿就受不了，学什么东西都想一下就学会，从来没有沉下心来认真思考过，没有全神贯注地学习过，最后也是欲速不达。 最近几天睡觉都比较早，除了今天为了补英语作业。。都没有什么时间写代码。在机房的时间也荒废了很多，不是上网了，就是干别的了，反正是时间就这么一点一点地流逝了。时间不等人。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/24/hdu2795-billboard-%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98/">hdu2795 Billboard ——线段树入门题</a>
+      </h1>
+      <span class="post-date">Apr 24, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/24/hdu2795-billboard-%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=2795 题目大意： 高度为h,长度为w的板子，贴n个海报，每个海报的高度都为1，长度由n个整数给出。贴海报的原则是，从高到低，优先选高的，从左到右，优先选右边的位置。起初每个海报在板子上所在的行数。 题目思路： 建立一棵叶子节点有h个的线段树，每个节点代表这个区间内的最大值，最开始，叶子节点都是w。然后每插入一个值就插入到叶子节点，输出叶子节点的值，然后更新父节点。 这道题目的难点是，要想到建立线段树，把模型抽象出来。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 200000+10; int a[MAX&lt;&lt;2], n, h, w, b[MAX]; void pushup(int rt) { a[rt] = max(a[rt&lt;&lt;1], a[rt&lt;&lt;1|1]); } void build(int l, int r, int rt) { if (l == r) { a[rt] = w; return; } int m = (l + r) &gt;&gt; 1; build(lson); build(rson); pushup(rt); } void update(int p, int k, int l, int r, int rt) { if (l == r) { a[rt] -= k; return; } int m = (l + r) &gt;&gt; 1; if (p &lt;= m) update(p, k, lson); else update(p, k, rson); pushup(rt); } int query(int k, int l, int r, int rt) { if (l == r) { return l; } int m = (l + r) &gt;&gt; 1, ret = 0; /* if (a[rt&lt;&lt;1] &gt;= k) ret = query(k, lson); else ret = query(k, rson); */ if (a[rt] &gt;= k) { if (a[rt&lt;&lt;1] &gt;= k) ret = query(k, lson); else ret = query(k, rson); } else return 0; return ret; } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;hdu2795.
+      <a href="http://liuxueyang.github.io/blog/2013/04/24/hdu2795-billboard-%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    
+    
+    <ul class="pagination">
+        
+        <li>
+            <a href="/" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
+        </li>
+        
+        <li
+        >
+        <a href="/page/29/" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+        </li>
+        
+        <li
+        ><a href="/">1</a></li>
+        
+        <li
+        ><a href="/page/2/">2</a></li>
+        
+        <li
+        ><a href="/page/3/">3</a></li>
+        
+        <li
+        ><a href="/page/4/">4</a></li>
+        
+        <li
+        ><a href="/page/5/">5</a></li>
+        
+        <li
+        ><a href="/page/6/">6</a></li>
+        
+        <li
+        ><a href="/page/7/">7</a></li>
+        
+        <li
+        ><a href="/page/8/">8</a></li>
+        
+        <li
+        ><a href="/page/9/">9</a></li>
+        
+        <li
+        ><a href="/page/10/">10</a></li>
+        
+        <li
+        ><a href="/page/11/">11</a></li>
+        
+        <li
+        ><a href="/page/12/">12</a></li>
+        
+        <li
+        ><a href="/page/13/">13</a></li>
+        
+        <li
+        ><a href="/page/14/">14</a></li>
+        
+        <li
+        ><a href="/page/15/">15</a></li>
+        
+        <li
+        ><a href="/page/16/">16</a></li>
+        
+        <li
+        ><a href="/page/17/">17</a></li>
+        
+        <li
+        ><a href="/page/18/">18</a></li>
+        
+        <li
+        ><a href="/page/19/">19</a></li>
+        
+        <li
+        ><a href="/page/20/">20</a></li>
+        
+        <li
+        ><a href="/page/21/">21</a></li>
+        
+        <li
+        ><a href="/page/22/">22</a></li>
+        
+        <li
+        ><a href="/page/23/">23</a></li>
+        
+        <li
+        ><a href="/page/24/">24</a></li>
+        
+        <li
+        ><a href="/page/25/">25</a></li>
+        
+        <li
+        ><a href="/page/26/">26</a></li>
+        
+        <li
+        ><a href="/page/27/">27</a></li>
+        
+        <li
+        ><a href="/page/28/">28</a></li>
+        
+        <li
+        ><a href="/page/29/">29</a></li>
+        
+        <li
+        class="active"><a href="/page/30/">30</a></li>
+        
+        <li
+        ><a href="/page/31/">31</a></li>
+        
+        <li
+        ><a href="/page/32/">32</a></li>
+        
+        <li
+        ><a href="/page/33/">33</a></li>
+        
+        <li
+        ><a href="/page/34/">34</a></li>
+        
+        <li
+        ><a href="/page/35/">35</a></li>
+        
+        <li
+        ><a href="/page/36/">36</a></li>
+        
+        <li
+        ><a href="/page/37/">37</a></li>
+        
+        <li
+        ><a href="/page/38/">38</a></li>
+        
+        <li
+        ><a href="/page/39/">39</a></li>
+        
+        <li
+        ><a href="/page/40/">40</a></li>
+        
+        <li
+        ><a href="/page/41/">41</a></li>
+        
+        <li
+        ><a href="/page/42/">42</a></li>
+        
+        <li
+        ><a href="/page/43/">43</a></li>
+        
+        <li
+        ><a href="/page/44/">44</a></li>
+        
+        <li
+        ><a href="/page/45/">45</a></li>
+        
+        <li
+        ><a href="/page/46/">46</a></li>
+        
+        <li
+        >
+        <a href="/page/31/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+        </li>
+        
+        <li>
+            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        </li>
+        
+    </ul>
+    
+  </div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

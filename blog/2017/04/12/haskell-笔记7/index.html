@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Haskell 笔记7 &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Haskell 笔记7</h1>
+    <span class="post-date">Apr 12, 2017 &middot; 6 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/04/12/haskell-%E7%AC%94%E8%AE%B07/#disqus_thread">Comments</a>
+    </span>
+    
+
+<p>这是一些阅读<a href="http://learnyouahaskell.com">Learn You a Haskell for Great Good!</a>的时候的笔记，之前用Latex写的，放在Dropbox里面，现在想把它们整理一下，放在博客里。这是<a href="http://learnyouahaskell.com/modules">第七章 Modules</a>的笔记。</p>
+
+<h2 id="loading-modules">Loading modules</h2>
+
+<p>之前用TeXmacs虽然挺方便，但还是感觉有点不舒服。所以还是换回来吧。</p>
+
+<p>在默认的Prelude模块里面，已经默认引入了一些Data.List中的函数。另外，引入Data.List模块的时候不需要使用带限定符的方法，因为Prelude里面的函数除了默认引入的Data.List的部分函数以外，不会和Data.List里面的其它函数命名冲突。然而，如果再引用其它模块的时候就不一定了。一般情况下只需要用一般的引入模块的方法就够了：import Data.List</p>
+
+<h2 id="data-list">Data.List</h2>
+
+<p>group这个函数，它接收一个列表，把列表中相邻并且相等的元素合成一个子列表，对于相等但是不相邻的元素，它会分别合成独立的子列表，也就是说，它并不会排序。比如：</p>
+
+<pre><code class="language-haskell">	λ&gt; group [1, 2, 2, 2, 3, 4, 2, 2, 2, 5, 6]
+	[[1],[2,2,2],[3],[4],[2,2,2],[5],[6]]
+</code></pre>
+
+<p>如果想要一个列表中的某个元素的个数，可以这样做：</p>
+
+<pre><code class="language-haskell">	λ&gt; map (\ xs@(x : xs') -&gt; (x, length xs)) $ group . sort $ [1, 2, 2, 2, 3, 4, 2, 2, 2, 5, 6]
+	[(1,1),(2,6),(3,1),(4,1),(5,1),(6,1)]
+</code></pre>
+
+<p>这里我用到了function composition(.)、function application($)、lambda表达式、lambda表达式中的模式匹配、用@符号来捕获整个模式（注意它的用法，用@符号来把整个模式和部分模式分隔开）。</p>
+
+<p>init函数的意思是得到列表的前<code>n - 1</code>个元素，inits的意思是依次得到列表的前<code>0, 1, 2 ... n</code>个元素组成一个嵌套列表。</p>
+
+<p>tail函数的意思是去掉列表的前<code>1</code>个元素，tails的意思是依次去掉列表的前<code>0, 1, 2 ... n</code>个元素组成的一个嵌套列表。</p>
+
+<pre><code class="language-haskell">	λ&gt; init [3, 4, 5, 6]
+	[3,4,5]
+	λ&gt; tail [3, 4, 5, 6]
+	[4,5,6]
+	λ&gt; inits [3, 4, 5, 6]
+	[[],[3],[3,4],[3,4,5],[3,4,5,6]]
+	λ&gt; tails [3, 4, 5, 6]
+	[[3,4,5,6],[4,5,6],[5,6],[6],[]]
+</code></pre>
+
+<p>好像这两个比较容易弄混。可以这样记：tails就代表一个列表的尾部，从最大的尾巴（整个列表）到最小的尾巴（空列表）组成的一个列表。
+而inits就代表头部，从最小的头部（空列表）到最大的头部（整个列表）组成的一个列表。可以这样用：</p>
+
+<pre><code class="language-haskell">search :: (Eq a) =&gt; [a] -&gt; [a] -&gt; Bool
+search smallList bigList = foldl (\ accu xs -&gt;
+                                    if take (length smallList) xs == smallList
+                                    then True
+                                    else accu) False
+                           $ tails bigList
+</code></pre>
+
+<p>这个函数用来在一个嵌套列表里面找一个子列表：</p>
+
+<pre><code class="language-haskell">	λ&gt; search [3..5] [1..7]
+	True
+	λ&gt; search [3, 5] [1..7]
+	False
+</code></pre>
+
+<p>最常见的应用就是在一个字符串里面找一个字符串吧，因为一个字符串也是一个列表。其实这个函数已经有库函数来实现同样的功能：isInfixOf，它接收两个列表，如果第一个列表是第二个列表的子列表那么返回真：</p>
+
+<pre><code class="language-haskell">    λ&gt; isInfixOf [3, 5] [1..7]
+    False
+    λ&gt; isInfixOf [3..5] [1..7]
+    True
+</code></pre>
+
+<p>类似的函数有isPrefixOf，它检查一个列表是不是另外一个列表的前缀。isSuffixOf，它检查一个列表是不是另外一个列表的后缀。</p>
+
+<p>elem函数检查一个元素是不是存在于另外一个列表中。notElem相反。</p>
+
+<p>partition这个函数接收一个predicate和一个列表，返回一个tuple，第一个元素是满足predicate的元素的列表，第二个元素是不满足predicate的元素的列表：</p>
+
+<pre><code class="language-haskell">	λ&gt; partition (&gt; 3) [1..7]
+	([4,5,6,7],[1,2,3])
+</code></pre>
+
+<p>这个函数和span函数是有区别的，span函数会在predicate第一次不被满足的地方把列表分割成两个列表，但是partition会遍历整个列表，把满足predicate和不满足predicate的元素分别放到一个列表里面。</p>
+
+<p>find函数接收一个predicate和一个列表，如果列表中有一个元素满足predicate，那么立即返回用Maybe包裹起来的这个值。这个Maybe啊，其实相当于SML里面的option。它可以是<code>Nothing</code>，也可以是<code>Just n</code>。一个Maybe的类型由它所代表的类型决定，比如<code>Just 6</code>的类型就是Maybe Int。</p>
+
+<pre><code class="language-haskell">	λ&gt; find (&gt; 9) [1..7]
+	Nothing
+	λ&gt; find (&gt; 5) [1..7]
+	Just 6
+	λ&gt; :t (find (&gt; 9) [1..7])
+	(find (&gt; 9) [1..7]) :: (Enum a, Num a, Ord a) =&gt; Maybe a
+</code></pre>
+
+<p>由于head函数对于空列表会抛出异常，所以这个时候find函数就是一个比较好的选择，如果有满足predicate的那么就返回一个<code>Just x</code>，如果没有那么返回一个Nothing。对于Maybe类型，后面会学到。</p>
+
+<p>elemIndex函数和elem同样的功能，但是它会返回一个Maybe，如果要找的元素存在，那么返回<code>Just i</code>，如果不存在那么返回<code>Nothing</code>。</p>
+
+<pre><code class="language-haskell">	λ&gt; elemIndex 3 [1..7]
+	Just 2
+	λ&gt; elemIndex 10 [1..7]
+	Nothing
+</code></pre>
+
+<p>elemIndices这个函数接收一个元素和一个列表，返回一个列表，列表中的元素代表要找的元素在列表中的所有的下标。它会遍历整个列表并返回所有出现的位置。因为它返回的是一个列表，所以不需要使用Maybe，因为可以使用空列表来代表不存在，它代替了<code>Nothing</code>的功能。</p>
+
+<pre><code class="language-haskell">	λ&gt; ' ' `elemIndices` &quot;Music Flavor by&quot;
+	[5,12]
+	λ&gt; 'K' `elemIndices` &quot;Music Flavor by&quot;
+	[]
+</code></pre>
+
+<p>findIndex和elemIndex函数类似，但是它接收一个predicate和一个列表，返回第一个使得predicate为真的下标的Maybe。findIndices和elemIndices类似，但是它接收一个predicate和一个列表，返回一个使得predicate为真的下标的列表，或者空列表。</p>
+
+<p>和zip、zipWith函数类似，也有zip{3..7}，zipWith{3..7}函数。比如zip4函数接收四个列表，把它们对应位置的元素打包成一个tuple。zipWith4函数接收一个函数和一个列表，把每个列表对应的元素作为函数的参数然后作为结果列表的一个元素。比如：</p>
+
+<pre><code class="language-haskell">	λ&gt; zip4 [1, 2, 3] [4, 5, 6, 7] [9, 10, 11] [12, 13, 14, 15]
+	[(1,4,9,12),(2,5,10,13),(3,6,11,14)]
+	λ&gt; zipWith4 (\ x y z m -&gt; x + y + z + m) [1, 2, 3] [4, 5, 6, 7] [9, 10, 11] [12, 13, 14, 15]
+	[26,30,34]
+</code></pre>
+
+<p>注意：如果参数列表中的各个列表长度不一样的话，那么结果列表的长度和参数列表中的最短的一致。</p>
+
+<p>lines函数接收一个字符串，根据字符串的换行符把字符串分割成一个一个字符串放到一个子列表里面：</p>
+
+<pre><code class="language-haskell">	λ&gt; lines &quot;Hello\nTOUCH\nSummer&quot;
+	[&quot;Hello&quot;,&quot;TOUCH&quot;,&quot;Summer&quot;]
+</code></pre>
+
+<p>unlines函数则相反，它接收一个字符串列表，把各个字符串用换行符连接成一个大字符串。需要注意的是，结果字符串后面会有一个换行符。不管原来列表的最后一个元素结尾是不是有换行符：</p>
+
+<pre><code class="language-haskell">	λ&gt; unlines [&quot;hello&quot;, &quot;TOUCH&quot;, &quot;Summer&quot;]
+	&quot;hello\nTOUCH\nSummer\n&quot;
+	λ&gt; unlines [&quot;hello&quot;, &quot;TOUCH&quot;, &quot;Summer\n&quot;]
+	&quot;hello\nTOUCH\nSummer\n\n&quot;
+</code></pre>
+
+<p>words函数把一个字符串按照空格和换行符分割成多个单词，连续的空格被当作一个空格，然后把这些单词放在结果列表里面。unwords函数接收一个单词列表，把他们用空格连接起来成为一个字符串。注意，结果字符串的结尾没有追加换行符。</p>
+
+<p>nub函数接收一个列表，返回一个所有元素都唯一的一个列表。也就是它把参数中的重复元素都去掉。</p>
+
+<p>delete函数接收一个元素与一个和这个元素相同类型的列表，它会删除列表中参数元素第一次出现的位置：</p>
+
+<pre><code class="language-haskell">	λ&gt; delete 3 [1, 2, 3, 4, 5, 3]
+	[1,2,4,5,3]
+</code></pre>
+
+<p><code>\\</code> 函数接收两个列表，相当于集合的差，它会从第一个列表中移除所有在第二个列表中出现在元素：</p>
+
+<pre><code class="language-haskell">	λ&gt; [1..7] \\ [3..5]
+	[1,2,6,7]
+</code></pre>
+
+<p>union接收两个列表，它类似于集合的并操作。遍历第二个列表，如果第二个列表中的某个元素不存在于第一个列表中，那么追加到结果列表，否则抛弃。</p>
+
+<p>intersect接收两个列表，它类似于集合的交操作。</p>
+
+<p>insert函数的行为类似于C++里面的lower_bound函数，它接收一个参数和一个列表，并且把参数插入到列表中。它会找到第一个不小于参数的位置插入。</p>
+
+<pre><code class="language-haskell">	λ&gt; insert 4 [3, 5, 1]
+	[3,4,5,1]
+	λ&gt; insert 4 [3, 4, 4, 5, 1]
+	[3,4,4,4,5,1]
+	λ&gt; insert 4 [3, 1]
+	[3,1,4]
+</code></pre>
+
+<p>在第二个例子里，4插入到了原来的列表中的3和4之间。如果列表中所有元素都小于参数，那么把参数插入到列表末尾。</p>
+
+<p>看下面这几个函数的类型：</p>
+
+<pre><code class="language-haskell">	λ&gt; :t length
+	length :: Foldable t =&gt; t a -&gt; Int
+	λ&gt; :t take
+	take :: Int -&gt; [a] -&gt; [a]
+	λ&gt; :t drop
+	drop :: Int -&gt; [a] -&gt; [a]
+	λ&gt; :t splitAt
+	splitAt :: Int -&gt; [a] -&gt; ([a], [a])
+	λ&gt; :t (!!)
+	(!!) :: [a] -&gt; Int -&gt; a
+	λ&gt; :t replicate
+	replicate :: Int -&gt; a -&gt; [a]
+</code></pre>
+
+<p>我们发现这些函数里面都含有Int，其实这些函数本可以更一般，把Int替换成属于Num的成员类型变量。由于历史原因，修改这些函数可能会让现有的很多程序出问题。所以在Data.List里面实现了这些函数的替代品：genericLength，genericTake，genericDrop，genericSplitAt，genericIndex，genericReplicate。这些函数中把Int替换成了Num，所以更具一般性，也更好用。</p>
+
+<p>nub， delete， union， intersect，group这些函数都有其它版本，分别是：nubBy，deleteBy，unionBy，intersectBy，groupBy，不同之处在于，原来的函数使用(==)函数来测试相等性，By版本的函数可以接收一个函数用来测试相等性。比如把一个列表中的正数和负数分别分组：</p>
+
+<pre><code class="language-haskell">	λ&gt; groupBy (\ x y -&gt; (x &gt; 0) == (y &gt; 0))  [-1, -2, -3, 0, 3, 2, 1]
+	[[-1,-2,-3,0],[3,2,1]]
+</code></pre>
+
+<p>也可以使用Data.Function模块中的on函数，on函数的定义类似于这样：</p>
+
+<pre><code class="language-haskell">	on' :: (b -&gt; b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; a -&gt; c
+	on' f g = \ x y -&gt; f (g x) (g y)
+</code></pre>
+
+<p>所以上面的程序也可以写成：</p>
+
+<pre><code class="language-haskell">	λ&gt; groupBy ((==) `on` (&gt; 0)) [-1, -2, -3, 0, 3, 2, 1]
+	[[-1,-2,-3,0],[3,2,1]]
+</code></pre>
+
+<p>sort，insert，maximum，minimum这几个函数也有对应的By版本：sortBy，insertBy，maximumBy，minimumBy。他们都接收一个函数和一个列表，函数参数接收两个元素作为参数，返回值是一个Ordering实例。比如：</p>
+
+<pre><code class="language-haskell">	λ&gt; sortBy (compare `on` length) [[3, 4, 5], [1], [2, 3]]
+	[[1],[2,3],[3,4,5]]
+</code></pre>
+
+<p>所以有两类By系列的函数：</p>
+
+<ol>
+<li>接收一个函数来测试相等性，一般用(==) <code>on</code> something</li>
+<li>接收一个函数来测试顺序，一般用compare <code>on</code> something</li>
+</ol>
+
+<h2 id="data-char">Data.Char</h2>
+
+<p>这个模块里面的函数是针对字符的。</p>
+
+<ul>
+<li>isControl 检查一个字符是不是控制字符。</li>
+<li>isSpace 检查一个字符是不是空白符：包括空格、制表符、换行符等。</li>
+<li>isLower 检查一个字符是否是小写字母。</li>
+<li>isUpper 检查一个符是否是大写字母。</li>
+<li>isAlpha 检查一个字符是否是字母。</li>
+<li>isAlphaNum 检查一个字符是否是字母或者数字。</li>
+<li>isPrint 检查一个字符是否是可打印的。比如控制符是不可打印的。</li>
+<li>isDigit 检查一个字符是否是数字。</li>
+<li>isOctDigit 检查一个字符是否是八进制数字。</li>
+<li>isHexDigit 检查一个数字是否是十六进制数字。</li>
+<li>isLetter 检查一个字符是否是字母。和isAlpha函数一样。</li>
+<li>isMark 检查一个字符是否是Unicode标识字符。它们用来组成一些类似于á之类的字符吧好像。法语里面有，西语里面也有。</li>
+<li>isNumber 检查一个字符是不是numeric，不知道它和isDigit有什么区别。</li>
+<li>isPunctuation 检查一个字符是否是标点符号。</li>
+<li>isSymbol 检查一个字符是否是数学或者货币符号。</li>
+<li>isSeparator 检查一个字符是否是Unicode空格或者分隔符。</li>
+<li>isAscii 检查一个字符是否是Unicode字符集的前128个字符。</li>
+<li>isLatin1 检查一个字符是否是Unicode字符集的前256个字符。</li>
+<li>isAsciiUpper 检查一个字符是否是ASCII并且大写。</li>
+<li>isAsciiLower 检查一个字符是否是ASCII并且小写。</li>
+</ul>
+
+<p>比如检查一个字符串是否只包含数字和字母，可以用all函数：</p>
+
+<pre><code class="language-haskell">	λ&gt; all isAlphaNum &quot;abel457&quot;
+	True
+	λ&gt; all isAlphaNum &quot;abel-457&quot;
+	False
+</code></pre>
+
+<p>Kewl这个单词啊，和cool的意思差不多吧。</p>
+
+<p>实现words函数：</p>
+
+<pre><code class="language-haskell">	words' :: String -&gt; [String]
+	words' xs = filter (not . any isSpace) $
+	  groupBy ((==) `on` isSpace) xs
+	λ&gt; words' &quot;Hey gus its me&quot;
+	[&quot;Hey&quot;,&quot;gus&quot;,&quot;its&quot;,&quot;me&quot;]
+	λ&gt; words' &quot;Hey gus its   me&quot;
+	[&quot;Hey&quot;,&quot;gus&quot;,&quot;its&quot;,&quot;me&quot;]
+</code></pre>
+
+<p>这个函数在filter的predicate里面用到了复合函数，有点意思。</p>
+
+<p>Ordering类型的值为LT，EQ，GT。它们是enumeration的。他们描述了两个值比较的所有的结果。同样地，GeneralCategory类型也是enumeration，它描述了任意一个字符所在的类别，一共有31种类别。比如：</p>
+
+<pre><code class="language-haskell">	λ&gt; generalCategory 'a'
+	LowercaseLetter
+	λ&gt; generalCategory ' '
+	Space
+	λ&gt; generalCategory '\n'
+	Control
+</code></pre>
+
+<p>GeneralCategory类型是Eq的成员，所以是可以比较的：generalCategory c == Space</p>
+
+<ul>
+<li>toUpper 把一个字符转化成大写。</li>
+<li>toLower 把一个字符转化成小写。</li>
+<li>toTitle 把一个字符转化成title-case，一般情况下就是大写。</li>
+<li>digitToInt 把一个字符转化成数字，字符必须在&rsquo;0&rsquo;..&lsquo;9&rsquo;，&rsquo;a&rsquo;..&lsquo;f&rsquo;，&rsquo;A&rsquo;..&lsquo;F&rsquo;的范围内。</li>
+<li>intToDigit 和digitToInt相反，把一个数字转化成字符，数字范围必须在0..15的范围内，转化成的字符是小写的。</li>
+<li>ord 得到一个字符的ASCII码。</li>
+<li>chr 从ASCII得到对应的字符。</li>
+</ul>
+
+<p>把一个字符串转化成另外一个字符串：</p>
+
+<pre><code class="language-haskell">	encode :: Int -&gt; String -&gt; String
+	encode shift xs =
+	  let nums = map ord xs
+	      nums_ = map (+ shift) nums
+	  in
+	    map chr nums_
+</code></pre>
+
+<p>也可以用复合函数的方法：</p>
+
+<pre><code class="language-haskell">	encode' :: Int -&gt; String -&gt; String
+	encode' shift = map (chr . (+ shift) . ord)
+</code></pre>
+
+<p>把字符串还原：</p>
+
+<pre><code class="language-haskell">	decode :: Int -&gt; String -&gt; String
+	decode shift = encode (negate shift)
+</code></pre>
+
+<h2 id="data-map">Data.Map</h2>
+
+<p>一般使用一个pair列表来表示：</p>
+
+<pre><code class="language-haskell">	phoneBook = [(&quot;abel&quot;, &quot;123&quot;)
+	            ,(&quot;shin-chan&quot;, &quot;789&quot;)
+	            ,(&quot;Zh&quot;, &quot;456&quot;)]
+</code></pre>
+
+<p>在一个map里面根据key找到对应的value：</p>
+
+<pre><code class="language-haskell">	findKey :: (Eq a) =&gt; a -&gt; [(a, b)] -&gt; b
+	findKey x = snd . head . filter (\ (k, v) -&gt; k == x)
+</code></pre>
+
+<p>这个函数当key在map里面不存在的时候会异常。因为把[]传递给了head函数。可以用Maybe来代替：</p>
+
+<pre><code class="language-haskell">	findKey' :: (Eq a) =&gt; a -&gt; [(a, b)] -&gt; Maybe b
+	findKey' k [] = Nothing
+	findKey' k ((kk, vv) : xs) = if kk == k then Just vv
+	                      else findKey' k xs
+</code></pre>
+
+<p>很标准的模式匹配的写法。也可以用fold来实现：</p>
+
+<pre><code class="language-haskell">	findKey's :: (Eq a) =&gt; a -&gt; [(a, b)] -&gt; Maybe b
+	findKey's k = foldl (\ accu (kk, vv) -&gt;
+	                        if kk == k then Just vv
+	                        else accu) Nothing
+</code></pre>
+
+<p>这里使用的是左折叠，也可以使用右折叠。</p>
+
+<p>在Data.Map里面，map使用树来表示的，而不是用列表。因此速度会快很多。Data.Map导出的函数可能会和Prelude模块里面的函数冲突，因此需要用带有限定符的方式来导入：</p>
+
+<pre><code class="language-haskell">	import qualified Data.Map as Map
+</code></pre>
+
+<ul>
+<li>fromList 这个函数接收一个关联列表，返回一个map。如果关联列表中有重复的key，那么会忽略。这个函数的类型是：</li>
+</ul>
+
+<pre><code class="language-haskell">	λ&gt; :t Map.fromList
+	Map.fromList :: Ord k =&gt; [(k, a)] -&gt; Map.Map k a
+</code></pre>
+
+<p>要注意的是，map里面的key必须是Ord的实例，map根据Ord来决定key在树中的位置。另外这个函数的返回值是Data.Map k a，其中key和value的类型也包括在里面。</p>
+
+<ul>
+<li>empty 没有参数，返回一个空的map。</li>
+<li>insert 接收一个key，一个value，一个map，把key-value插入到map中并返回。可以用这个函数来实现fromList：</li>
+</ul>
+
+<pre><code class="language-haskell">	fromList' :: (Ord k) =&gt; [(k, a)] -&gt; Map.Map k a
+	fromList' = foldl (\ accu (k, v) -&gt;
+	                     Map.insert k v accu) Map.empty
+</code></pre>
+
+<p>这里用的是左折叠，如果用右折叠也是可以的。</p>
+
+<ul>
+<li>null 检查一个map是否为空。</li>
+</ul>
+
+<pre><code class="language-haskell">	λ&gt; Map.empty
+	fromList []
+	λ&gt; Map.null Map.empty
+	True
+</code></pre>
+
+<ul>
+<li>size 返回map的大小，也就是key-value对的个数</li>
+<li>singleton 接收一个key和一个value，返回一个只含有这个key-value对的map：</li>
+</ul>
+
+<pre><code class="language-haskell">	λ&gt; Map.singleton &quot;Hel&quot; 101
+	fromList [(&quot;Hel&quot;,101)]
+	λ&gt; Map.insert &quot;Hola&quot; 102 $ Map.singleton &quot;Hel&quot; 101
+	fromList [(&quot;Hel&quot;,101),(&quot;Hola&quot;,102)]
+</code></pre>
+
+<ul>
+<li>lookup 接收一个键和一个map，返回一个Maybe。如果键存在，那么返回Just value，否则返回Nothing：</li>
+</ul>
+
+<pre><code class="language-haskell">	λ&gt; Map.lookup &quot;Hel&quot; $ Map.insert &quot;Hola&quot; 102 $ Map.singleton &quot;Hel&quot; 101
+	Just 101
+	λ&gt; Map.lookup &quot;Hello&quot; $ Map.insert &quot;Hola&quot; 102 $ Map.singleton &quot;Hel&quot; 101
+	Nothing
+</code></pre>
+
+<p>注意，$是右结合的。</p>
+
+<ul>
+<li>member 和lookup类似，只不过它只返回一个Bool，表示提供的键在map中是否存在。</li>
+</ul>
+
+<pre><code class="language-haskell">	λ&gt; Map.member &quot;Hello&quot; $ Map.insert &quot;Hola&quot; 102 $ Map.singleton &quot;Hel&quot; 101
+	False
+	λ&gt; Map.member &quot;Hel&quot; $ Map.insert &quot;Hola&quot; 102 $ Map.singleton &quot;Hel&quot; 101
+	True
+</code></pre>
+
+<ul>
+<li>map 功能和Data.List.map类似，接收一个函数和一个map作为参数，把map里面的每个value传递给函数，其返回值作为新的value。</li>
+<li>filter 功能和Data.List.filter类似，接收一个predicate函数和一个map作为参数，返回一个新的map。这个map里面的所有的value都使得predicate函数返回真。</li>
+<li>toList 和fromList相反，接收一个map，然后返回一个list：</li>
+</ul>
+
+<pre><code class="language-haskell">	λ&gt; Map.toList . Map.filter isUpper $ Map.fromList [(1, 'A'), (3, 'b'), (5, 'C')]
+	[(1,'A'),(5,'C')]
+</code></pre>
+
+<p>复合函数和function application($)真是好用。</p>
+
+<ul>
+<li>keys 和Perl一样，返回一个map的键的列表。</li>
+<li>elems 它竟然不叫做values。。elems是什么鬼。。它返回map的值的列表：</li>
+</ul>
+
+<pre><code class="language-haskell">	λ&gt; Map.keys . Map.filter isUpper $ Map.fromList [(1, 'A'), (3, 'b'), (5, 'C')]
+	[1,5]
+	λ&gt; Map.elems . Map.filter isUpper $ Map.fromList [(1, 'A'), (3, 'b'), (5, 'C')]
+	&quot;AC&quot;
+</code></pre>
+
+<ul>
+<li>fromListWith 它和fromList的不同点是：对于list中的相同的key，它会用一个函数来处理对应的value，而不是忽略。注意，它的第一个参数是一个函数，它只处理value的值，所以这个函数的参数是两个value：</li>
+</ul>
+
+<pre><code class="language-haskell">	λ&gt; Map.fromListWith (\ x y -&gt; x ++ &quot;, &quot; ++ y) [(&quot;abel-abel&quot;, &quot;123&quot;), (&quot;bern&quot;, &quot;456&quot;), (&quot;abel-abel&quot;, &quot;789&quot;), (&quot;repl&quot;, &quot;101&quot;)]
+	fromList [(&quot;abel-abel&quot;,&quot;789, 123&quot;),(&quot;bern&quot;,&quot;456&quot;),(&quot;repl&quot;,&quot;101&quot;)]
+</code></pre>
+
+<p>我们也可以先把关链表里面的value全部变成list，然后把(++)传递给fromListWith函数：</p>
+
+<pre><code class="language-haskell">	λ&gt; Map.fromListWith (++) $ map (\ (x, y) -&gt; (x, [y])) [(&quot;abel-abel&quot;, &quot;123&quot;), (&quot;bern&quot;, &quot;456&quot;), (&quot;abel-abel&quot;, &quot;789&quot;), (&quot;repl&quot;, &quot;101&quot;)]
+	fromList [(&quot;abel-abel&quot;,[&quot;789&quot;,&quot;123&quot;]),(&quot;bern&quot;,[&quot;456&quot;]),(&quot;repl&quot;,[&quot;101&quot;])]
+</code></pre>
+
+<p>另外一种使用场景是：比如在列表里面一个key有多个value，我们想选择其中最大的value作为map中的value，所以：</p>
+
+<pre><code class="language-haskell">	λ&gt; Map.fromListWith max [(&quot;1&quot;, 2), (&quot;1&quot;, 3), (&quot;2&quot;, 10)]
+	fromList [(&quot;1&quot;,3),(&quot;2&quot;,10)]
+</code></pre>
+
+<p>或者把所有相同key对应的value加起来：</p>
+
+<pre><code class="language-haskell">	λ&gt; Map.fromListWith (+) [(&quot;1&quot;, 2), (&quot;1&quot;, 3), (&quot;2&quot;, 10)]
+	fromList [(&quot;1&quot;,5),(&quot;2&quot;,10)]
+</code></pre>
+
+<ul>
+<li>insertWith 和insert类似，它接收一个额外的函数，当要插入的key在map中已经存在的时候，用这个函数来更新map中对应的value的值：</li>
+</ul>
+
+<pre><code class="language-haskell">	λ&gt; Map.insertWith (+) 3 10 $ Map.fromList [(1, 2), (2, 3), (3, 4)]
+	fromList [(1,2),(2,3),(3,14)]
+</code></pre>
+
+<h2 id="data-set">Data.Set</h2>
+
+<ul>
+<li>fromList 接收一个列表，返回一个set：</li>
+</ul>
+
+<pre><code class="language-haskell">	λ&gt; let s1 = Set.fromList &quot;Hello, I am abel. Buenas nochas!&quot;
+	λ&gt; let s2 = Set.fromList &quot;Mucho gusto! Soy Slackware!&quot;
+	λ&gt; s1
+	fromList &quot; !,.BHIabcehlmnosu&quot;
+</code></pre>
+
+<ul>
+<li>intersection 返回两个set的交集：</li>
+</ul>
+
+<pre><code class="language-haskell">	λ&gt; Set.intersection s1 s2
+	fromList &quot; !acehlosu&quot;
+</code></pre>
+
+<ul>
+<li>difference 返回第一个set和第二个set的差集：</li>
+</ul>
+
+<pre><code class="language-haskell">	λ&gt; Set.difference s1 s2
+	fromList &quot;,.BHIbmn&quot;
+</code></pre>
+
+<ul>
+<li>union 返回两个set的并集：</li>
+</ul>
+
+<pre><code class="language-haskell">	λ&gt; Set.union s1 s2
+	fromList &quot; !,.BHIMSabceghklmnorstuwy&quot;
+</code></pre>
+
+<p><code>null, size, member, empty, singleton, insert, delete</code> 这些函数和Map里面的类似。</p>
+
+<h2 id="making-our-own-modules">Making our own modules</h2>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

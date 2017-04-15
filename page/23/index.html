@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+	<meta name="generator" content="Hugo 0.20.1" />
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>黑历史 &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  <link href="http://liuxueyang.github.io/index.xml" rel="alternate" type="application/rss+xml" title="黑历史 &middot; liuxueyang" />
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="posts">
+    
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/04/uva-11020---efficient-solutions-%E5%B9%B3%E8%A1%A1bst/">uva 11020 - Efficient Solutions ——平衡BST</a>
+      </h1>
+      <span class="post-date">Jul 4, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/04/uva-11020---efficient-solutions-%E5%B9%B3%E8%A1%A1bst/#disqus_thread">Comments</a>
+      </span>
+      
+      链接：http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1961 训练指南page228
+#include &lt;cstdio&gt; #include &lt;set&gt; using namespace std; struct Point { int a, b; bool operator &lt; (const Point &amp; other) const { return (a &lt; other.a) || (a == other.a &amp;&amp; b &lt; other.b); } }; multiset&lt;Point&gt; S; multiset&lt;Point&gt;::iterator it; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;11020.in&quot;, &quot;r&quot;, stdin); #endif // ONLINE_JUDGE int T; scanf(&quot;%d&quot;, &amp;T); for (int i = 1; i &lt;= T; ++i) { printf(&quot;Case #%d:\n&quot;, i); int n, a, b; scanf(&quot;%d&quot;, &amp;n); S.
+      <a href="http://liuxueyang.github.io/blog/2013/07/04/uva-11020---efficient-solutions-%E5%B9%B3%E8%A1%A1bst/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/03/codeforces-round-#190-div.-2--b.-ciel-and-flowers/">Codeforces Round #190 (Div. 2)  B. Ciel and Flowers</a>
+      </h1>
+      <span class="post-date">Jul 3, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/03/codeforces-round-#190-div.-2--b.-ciel-and-flowers/#disqus_thread">Comments</a>
+      </span>
+      
+      链接：http://codeforces.com/contest/322/problem/B 这题做错了。没考虑周全。
+#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;iostream&gt; #include &lt;algorithm&gt; using namespace std; int main(void) { int r, g, b; while (~scanf(&quot;%d%d%d&quot;, &amp;r, &amp;g, &amp;b)) { int x = r % 3, y = g % 3, z = b % 3, Max = max(x, max(y, z)), cnt =r/3+g/3+b/3; if (Max == 1) { if (x == y &amp;&amp; y == z &amp;&amp; x == 1) cnt++; } if (Max == 2) { if (x + y + z == 4) { if (x*y*z) cnt++; else if (!
+      <a href="http://liuxueyang.github.io/blog/2013/07/03/codeforces-round-#190-div.-2--b.-ciel-and-flowers/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/03/hdu3308--%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/">hdu3308  线段树——区间合并</a>
+      </h1>
+      <span class="post-date">Jul 3, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/03/hdu3308--%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/#disqus_thread">Comments</a>
+      </span>
+      
+      更新一个点； 求某个区间的最长连续上升序列； 链接：http://acm.hdu.edu.cn/showproblem.php?pid=3308
+#include &lt;cstdio&gt; #include &lt;algorithm&gt; using namespace std; #define maxn 100009 #define mid int m=(l+r)&gt;&gt;1 int num[maxn], lsum[maxn&lt;&lt;2], rsum[maxn&lt;&lt;2], msum[maxn&lt;&lt;2], n, m, p, v, a, b; void pushup(int o, int l, int r) { mid; if (num[m] &lt; num[m+1]) { lsum[o] = (lsum[o&lt;&lt;1] == m+1-l) ? (m+1-l+lsum[o&lt;&lt;1|1]) : lsum[o&lt;&lt;1]; rsum[o] = (rsum[o&lt;&lt;1|1] == r-m) ? (r-m+rsum[o&lt;&lt;1]) : rsum[o&lt;&lt;1|1]; msum[o] = max(max(msum[o&lt;&lt;1], msum[o&lt;&lt;1|1]), lsum[o&lt;&lt;1|1] + rsum[o&lt;&lt;1]); } else lsum[o] = lsum[o&lt;&lt;1], rsum[o] = rsum[o&lt;&lt;1|1], msum[o] = max(msum[o&lt;&lt;1], msum[o&lt;&lt;1|1]); } void build(int o, int l, int r) { if (l == r) {lsum[o]= rsum[o] = msum[o] = 1; return;} mid; build(o&lt;&lt;1, l, m), build(o&lt;&lt;1|1, m+1, r), pushup(o, l, r); } void update(int o, int l, int r) { if (l == r) {num[p] = v; return;} mid; if (p &lt;= m) update(o&lt;&lt;1, l, m); else update(o&lt;&lt;1|1, m+1, r); pushup(o, l, r); } int query(int o, int l, int r) { if (a &lt;= l &amp;&amp; b &gt;= r) return msum[o]; mid; int ret = 0; if (a &lt;= m) ret = max(ret, query(o&lt;&lt;1, l, m)); if (b &gt; m) ret = max(ret, query(o&lt;&lt;1|1, m+1, r)); if (num[m] &lt; num[m+1]) ret = max(ret, min(m-a+1, rsum[o&lt;&lt;1])+min(b-m, lsum[o&lt;&lt;1|1])); return ret; } int main(void) { int t, n, m; char ch[5]; scanf(&quot;%d&quot;, &amp;t); while (t--) { scanf(&quot;%d%d&quot;, &amp;n, &amp;m); for (int i = 1; i &lt;= n; scanf(&quot;%d&quot;, num+i++)); build(1, 1, n); while (m--) { scanf(&quot;%s%d%d&quot;, ch, &amp;a, &amp;b); a++, b++; if (ch[0] == 'Q') printf(&quot;%d\n&quot;, query(1, 1, n)); else p = a, v = b-1, update(1, 1, n); } } return 0; }  。。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/03/%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%8C%BA%E9%97%B4%E6%9B%B4%E6%96%B0/">线段树，区间更新</a>
+      </h1>
+      <span class="post-date">Jul 3, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/03/%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%8C%BA%E9%97%B4%E6%9B%B4%E6%96%B0/#disqus_thread">Comments</a>
+      </span>
+      
+      把一个区间内的值全部修改为一个确定值； 计算某个区间内的最大值，最小值，和。
+#include &lt;cstdio&gt; #include &lt;algorithm&gt; #include &lt;cstdlib&gt; using namespace std; #define INF 0x7f7f7f7f #define Max 600000 long long a[Max], setv[Max], minv[Max], maxv[Max], sumv[Max], _max, _min, _sum, v; int y1,y2; bool flagv[Max]; inline void maintain(int o, int L, int R) { if (flagv[o]) minv[o] = maxv[o] = setv[o], sumv[o] = (R-L+1)*setv[o]; else if (R &gt; L) minv[o] = min(minv[o*2], minv[o*2+1]), maxv[o] = max(maxv[o*2], maxv[o*2+1]), sumv[o] = sumv[o*2] + sumv[o*2+1]; } void build(int o, int L, int R) { if (L == R) scanf(&quot;%lld&quot;, a+o), minv[o] = maxv[o] = sumv[o] = setv[o] = a[o]; else {int M = L + (R-L)/2; build(o&lt;&lt;1, L, M), build(o*2+1, M+1, R), maintain(o, L, R);} flagv[o] = false; } inline void pushdown(int o) { if (flagv[o]) setv[o&lt;&lt;1] = setv[o&lt;&lt;1|1] = setv[o], flagv[o&lt;&lt;1] = flagv[o&lt;&lt;1|1] = true, flagv[o] = false; } void update(int o, int L, int R) { if (y1 &lt;= L &amp;&amp; y2 &gt;= R) setv[o] = v, flagv[o] = true; else { int M = L + (R-L)/2; pushdown(o); if (y1 &lt;= M) update(o&lt;&lt;1, L, M); else maintain(o&lt;&lt;1, L, M); if (y2 &gt; M) update(o&lt;&lt;1|1, M+1, R); else maintain(o&lt;&lt;1|1, M+1, R); } maintain(o, L, R); } void query(int o, int L, int R) { if (flagv[o]) _sum += setv[o]*(min(y2, R) - max(y1, L) + 1), _min = min(_min, setv[o]), _max = max(_max, setv[o]); else if (y1 &lt;= L &amp;&amp; y2 &gt;= R) _sum += sumv[o], _min = min(_min, minv[o]), _max = max(_max, maxv[o]); else {int M = L + (R-L)/2; if (y1 &lt;= M) query(o&lt;&lt;1, L, M); if (y2 &gt; M) query(o&lt;&lt;1|1, M+1, R);} } int main(void) { freopen(&quot;input.
+      <a href="http://liuxueyang.github.io/blog/2013/07/03/%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%8C%BA%E9%97%B4%E6%9B%B4%E6%96%B0/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/06/27/vim-%E8%A2%AB%E5%A2%99/">vim 被墙</a>
+      </h1>
+      <span class="post-date">Jun 27, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/06/27/vim-%E8%A2%AB%E5%A2%99/#disqus_thread">Comments</a>
+      </span>
+      
+      我只能说，呵呵。还好这货可以进。 http://vim.wendal.net/ 
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/06/27/ubuntu12.04-%E4%BF%AE%E5%A4%8Dgrub2/">ubuntu12.04 修复Grub2</a>
+      </h1>
+      <span class="post-date">Jun 27, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/06/27/ubuntu12.04-%E4%BF%AE%E5%A4%8Dgrub2/#disqus_thread">Comments</a>
+      </span>
+      
+      电脑双系统，但是把win7重装了之后，会发现grub坏了，只能进入win7。 遇到过好几次，虽然每次都成功解决问题了，但是都花费了不少时间。 所以，总结一下，基本是从网上找到的方法，有的行不通，有的可以。就我的尝试，总结了一下对我的电脑来说，比较有效的方法。 首先说明：我的boot分区没有单独分区！ 第一步： 用光盘进入Ubuntu LiveCD，打开终端，
+sudo fdisk -l  找到 id 是83的那行，可惜我的有两个：/dev/sda3 和 /dev/sda8 。一般的应该有一行的……囧，可能是装系统的时候没搞好o(╯□╰)o 后来尝试发现，用 /dev/sda3 才是正确的。记住这个号码，考虑到一般性，这里记为/dev/sdaX 第二步：sudo -i 获得root权限 mkdir /media/tempdir   挂载：
+mount /dev/sdaX /media/tempdir grub-install --root-directory=/media/tempdir /dev/sda   第三步：重启，可能会进入到 grub rescue 界面。 输入set，查看相应的设置。然后修改：
+set prefix=(hd0,msdos3)/boot/grub set root=hd0,msdos3 insmod normal normal   然后就发现进入原来的grub启动界面了。进入Ubunt系统 第四步：打开终端， 重启，收工。
+sudo update-grub sudo grub-install /dev/sda   注：参考网站 http://forum.ubuntu.org.cn/viewtopic.php?f=139&amp;t=348503 http://hi.baidu.com/radio585/item/87462cf98bc70f1ae3e3bdab http://www.linuxidc.com/Linux/2012-06/61983p2.htm http://forum.ubuntu.org.cn/viewtopic.php?t=297514 为了以后方便，我这些网页里的内容做成文件的格式留在这里，省的以后再搞。。=_= http://s.yunio.com/Ee6n8z  为了上传方便，这货是.rar格式的。可以先把文件在win下解压，拷到U盘里面，然后用LiveCD进入Ubuntu再看，文件时图片和.pdf，Ubuntu兼容。 上面那个链接貌似失效了……囧。追加一个百度网盘：http://pan.baidu.com/share/link?shareid=1185935304&amp;uk=322048121
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/06/15/%E7%82%B9%E5%A4%B41010-%E5%8F%AA%E5%8C%85%E5%90%AB%E5%9B%A0%E5%AD%902-3-5%E7%9A%84%E6%95%B0/">点头1010 只包含因子2 3 5的数</a>
+      </h1>
+      <span class="post-date">Jun 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/06/15/%E7%82%B9%E5%A4%B41010-%E5%8F%AA%E5%8C%85%E5%90%AB%E5%9B%A0%E5%AD%902-3-5%E7%9A%84%E6%95%B0/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1010 题目思路： 想想怎么打表吧，还有，只需要存下满足要求的数字，要求的数字可以表示为：(2^x*3^y*5^z)，然后可以发现：2^60&gt;10^18，所以，枚举的上限是60*60*60，大约是216000，实际上，只有1万多。枚举的方法就是以前做过的题目了：http://poj.org/problem?id=1338 然后就是二分查找，边界比较纠结。
+#include &lt;cstdio&gt; #include &lt;cstring&gt; #include &lt;cstdlib&gt; #define LL long long #define MAXN 216000+10 #define min(a,b) ((a)&lt;(b)?(a):(b)) LL a[MAXN]; int main(void) { int i, j, k, p; i = j = k = 0; a[0] = 1; for (p = 1; p &lt;= 12690; ++p) { a[p] = min(a[i]*2, min(a[j]*3, a[k]*5)); if (a[p] == a[i] * 2) ++i; if (a[p] == a[j] * 3) ++j; if (a[p] == a[k] * 5) ++k; } int T; scanf(&quot;%d&quot;,&amp;T); while (T--) { LL n; scanf(&quot;%I64d&quot;, &amp;n); int low = 1, high = 12690, mid, last; LL goal; goal = n; while (low &lt; high) { mid = low + (high - low) / 2; if (a[mid] &lt; goal) low = mid + 1; else if (a[mid] &gt; goal) high = mid - 1; else {last = mid; break;} } if (high == low) { last = high; } else if (low &gt; high) last = low; if (goal == 1) last = 1; if (a[last] &lt; goal) last++; printf(&quot;%I64d\n&quot;, a[last]); } return 0; }  输入输出原来要用%I64d，这个WA了两次……A了之后竟然是第一名，呵呵，可能大家都没有手写二分，都用的STL吧。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/06/08/%E5%87%86%E5%A4%87%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95-%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%9B%B4%E4%BA%86/">准备期末考试 博客不更了</a>
+      </h1>
+      <span class="post-date">Jun 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/06/08/%E5%87%86%E5%A4%87%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95-%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%9B%B4%E4%BA%86/#disqus_thread">Comments</a>
+      </span>
+      
+      今天高考结束了……大家都考得挺好的吧，祝福他们。 高考结束后，马上又将会有这么一群孩子，迫不及待的扔下书包，去聚餐，通宵上网，旅行，KTV，闲逛，狂欢……认为自己终于解放了……殊不知，你们离开的，就是天堂。 认真准备期末考试，虽然还是有的时候忍不住会写代码，囧。昨天CF做得真的挫了。这就是一周不写程序的后果，呵呵。坚决不写程序了，准备考试！实在无聊看看python，haskell什么的……
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-b.-sereja-and-array/">Codeforces Round #187 (Div. 2) B. Sereja and Array</a>
+      </h1>
+      <span class="post-date">Jun 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-b.-sereja-and-array/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://codeforces.com/contest/315/problem/B 开始以为线段树，汗……原来是道水题
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cmath&gt; #include &lt;cstring&gt; #include &lt;vector&gt; #include &lt;stack&gt; #include &lt;map&gt; #include &lt;queue&gt; using namespace std; typedef struct Po { int d, a; }Po; Po p[100000+10]; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;187b.in&quot;, &quot;r&quot;, stdin); #endif int n, m; scanf(&quot;%d%d&quot;, &amp;n, &amp;m); for (int i = 1; i &lt;= n; ++i) { scanf(&quot;%d&quot;, &amp;p[i].a); p[i].d = 0; } int D = 0, t, s; for (int i = 0; i &lt; m; ++i) { scanf(&quot;%d&quot;, &amp;t); if (t == 1) { int st, en; scanf(&quot;%d%d&quot;, &amp;st, &amp;en); p[st].
+      <a href="http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-b.-sereja-and-array/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-a.-sereja-and-bottles/">Codeforces Round #187 (Div. 2) A. Sereja and Bottles</a>
+      </h1>
+      <span class="post-date">Jun 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-a.-sereja-and-bottles/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://codeforces.com/contest/315/problem/A 这到题目比赛的时候过了，赛后WA了……虽然很简单，但是还是没想太清楚
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; using namespace std; #define MAX 103 int a[MAX], b[MAX]; int main(void) { int n; #ifndef ONLINE_JUDGE freopen(&quot;187a.in&quot;, &quot;r&quot;, stdin); #endif while (~scanf(&quot;%d&quot;, &amp;n)) { for (int i = 0; i &lt; n; ++i) scanf(&quot;%d%d&quot;, a+i, b+i); int cnt = 0; for (int i = 0; i &lt; n; ++i) { bool flag = false; for (int j = 0; j &lt; n; ++j) { if (i!
+      <a href="http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-a.-sereja-and-bottles/">Read On &rarr;</a>
+      
+    </div>
+    
+    
+    
+    <ul class="pagination">
+        
+        <li>
+            <a href="/" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
+        </li>
+        
+        <li
+        >
+        <a href="/page/22/" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+        </li>
+        
+        <li
+        ><a href="/">1</a></li>
+        
+        <li
+        ><a href="/page/2/">2</a></li>
+        
+        <li
+        ><a href="/page/3/">3</a></li>
+        
+        <li
+        ><a href="/page/4/">4</a></li>
+        
+        <li
+        ><a href="/page/5/">5</a></li>
+        
+        <li
+        ><a href="/page/6/">6</a></li>
+        
+        <li
+        ><a href="/page/7/">7</a></li>
+        
+        <li
+        ><a href="/page/8/">8</a></li>
+        
+        <li
+        ><a href="/page/9/">9</a></li>
+        
+        <li
+        ><a href="/page/10/">10</a></li>
+        
+        <li
+        ><a href="/page/11/">11</a></li>
+        
+        <li
+        ><a href="/page/12/">12</a></li>
+        
+        <li
+        ><a href="/page/13/">13</a></li>
+        
+        <li
+        ><a href="/page/14/">14</a></li>
+        
+        <li
+        ><a href="/page/15/">15</a></li>
+        
+        <li
+        ><a href="/page/16/">16</a></li>
+        
+        <li
+        ><a href="/page/17/">17</a></li>
+        
+        <li
+        ><a href="/page/18/">18</a></li>
+        
+        <li
+        ><a href="/page/19/">19</a></li>
+        
+        <li
+        ><a href="/page/20/">20</a></li>
+        
+        <li
+        ><a href="/page/21/">21</a></li>
+        
+        <li
+        ><a href="/page/22/">22</a></li>
+        
+        <li
+        class="active"><a href="/page/23/">23</a></li>
+        
+        <li
+        ><a href="/page/24/">24</a></li>
+        
+        <li
+        ><a href="/page/25/">25</a></li>
+        
+        <li
+        ><a href="/page/26/">26</a></li>
+        
+        <li
+        ><a href="/page/27/">27</a></li>
+        
+        <li
+        ><a href="/page/28/">28</a></li>
+        
+        <li
+        ><a href="/page/29/">29</a></li>
+        
+        <li
+        ><a href="/page/30/">30</a></li>
+        
+        <li
+        ><a href="/page/31/">31</a></li>
+        
+        <li
+        ><a href="/page/32/">32</a></li>
+        
+        <li
+        ><a href="/page/33/">33</a></li>
+        
+        <li
+        ><a href="/page/34/">34</a></li>
+        
+        <li
+        ><a href="/page/35/">35</a></li>
+        
+        <li
+        ><a href="/page/36/">36</a></li>
+        
+        <li
+        ><a href="/page/37/">37</a></li>
+        
+        <li
+        ><a href="/page/38/">38</a></li>
+        
+        <li
+        ><a href="/page/39/">39</a></li>
+        
+        <li
+        ><a href="/page/40/">40</a></li>
+        
+        <li
+        ><a href="/page/41/">41</a></li>
+        
+        <li
+        ><a href="/page/42/">42</a></li>
+        
+        <li
+        ><a href="/page/43/">43</a></li>
+        
+        <li
+        ><a href="/page/44/">44</a></li>
+        
+        <li
+        ><a href="/page/45/">45</a></li>
+        
+        <li
+        ><a href="/page/46/">46</a></li>
+        
+        <li
+        >
+        <a href="/page/24/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+        </li>
+        
+        <li>
+            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        </li>
+        
+    </ul>
+    
+  </div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

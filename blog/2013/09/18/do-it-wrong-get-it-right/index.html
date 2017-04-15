@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Do It Wrong, Get It Right &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Do It Wrong, Get It Right</h1>
+    <span class="post-date">Sep 18, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/09/18/do-it-wrong-get-it-right/#disqus_thread">Comments</a>
+    </span>
+    <p>Do It Wrong, Get It Right
+Time Limit: 5000ms, Special Time Limit:12500ms, Memory Limit:65536KB
+Total submit users: 7, Accepted users: 6
+Problem 12627 : No special judgement
+Problem description
+In elementary school, students learn to subtract fractions by first getting a common denominator and then subtracting the numerators. However, sometimes a student will work the problem incorrectly and still arrive at the correct answer. For example, for the problem
+5      9
+4     12</p>
+
+<p>one can subtract the numbers in the numerator and then subtract the numbers in the denominator, simplify and get the answer. i.e.</p>
+
+<p>For a given fraction b/n, your task is to find all of the values a and m, where a ≥ 0 and m &gt; 0, for which</p>
+
+<p>Input
+There will be several test cases in the input. Each test case will consist of a single line with two integers, b and n (1 ≤ b,n ≤ 106) separated by a single space. The input will end with a line with two 0s.</p>
+
+<p>Output
+For each case, output all of the requested fractions on a single line, sorted from smallest to largest. For equivalent fractions, print the one with the smaller numerator first. Output each fraction in the form “a/m” with no spaces immediately before or after the “/”. Output a single space between fractions. Output no extra spaces, and do not separate answers with blank lines.</p>
+
+<p>Sample Input</p>
+
+<p>9 12
+12 14
+4 12
+0 0</p>
+
+<p>Sample Output</p>
+
+<p>0/24 <sup>5</sup>&frasl;<sub>20</sub> <sup>8</sup>&frasl;<sub>16</sub> <sup>8</sup>&frasl;<sub>8</sub> <sup>5</sup>&frasl;<sub>4</sub>
+0/28 <sup>9</sup>&frasl;<sub>21</sub> <sup>9</sup>&frasl;<sub>7</sub>
+0/24 <sup>3</sup>&frasl;<sub>18</sub> <sup>3</sup>&frasl;<sub>6</sub></p>
+
+<p>Problem Source
+ACM ICPC Southeast USA Regional Programming Contest 2012</p>
+
+<p>可以枚举m或者a，如果枚举a，计算m涉及到开方操作，所以比较慢，会超时；所以只能枚举m，从2*n枚举到1就可以了。</p>
+
+<p>long long输入输出要用%I64d！一直用的是%lld，纠结了好久啊！！！！</p>
+
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cmath&gt;
+#include &lt;cstdlib&gt;
+#define LL long long
+int main(void)
+{
+  LL b, n;
+  freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+    while (~scanf(&quot;%I64d%I64d&quot;, &amp;b, &amp;n))
+//    while (~scanf(&quot;%lld%lld&quot;, &amp;b, &amp;n))
+    {
+        if (b+n==0) break;
+        printf(&quot;0/%lld&quot;, 2*n);
+        for(LL m=2*n - 1;m&gt;0;m--) {
+            if(m!=n&amp;&amp;(m*b*(2*n-m))%(n*n)==0)
+              printf(&quot; %I64d/%I64d&quot;,(m*b*(2*n-m))/(n*n),m);
+        }
+        printf(&quot;\n&quot;);
+    }
+  return 0;
+}
+</code></pre>
+
+<p>嗨，中村。</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+	<meta name="generator" content="Hugo 0.20.1" />
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>黑历史 &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  <link href="http://liuxueyang.github.io/index.xml" rel="alternate" type="application/rss+xml" title="黑历史 &middot; liuxueyang" />
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="posts">
+    
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/18/sgu551-preparing-problem/">sgu551 Preparing Problem</a>
+      </h1>
+      <span class="post-date">Jul 18, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/18/sgu551-preparing-problem/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.sgu.ru/problem.php?contest=0&amp;problem=551 呵呵，题目读的没错，可惜理解错了．．＝＝
+#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; #define LL long long using namespace std; int n, t1, t2; int gcd(int a, int b) { return b == 0 ? a : (gcd(b, a%b)); } int exg(int a, int b) { return a/gcd(a,b)*b; } int main(void) { //freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); while (~scanf(&quot;%d%d%d&quot;, &amp;n, &amp;t1, &amp;t2)) { int k = exg(t1, t2), s = k/t1 + k/t2, One = n/s, r = n%s, base = One*k, Min = 0, cnt = 0, i, j; if (t1&gt;t2) swap(t1,t2); //printf(&quot;s = %d r = %d\n&quot;, s, r); if (r) for (i = 1, j = 1; i+j &lt;= s;) { if (cnt &gt;= r) break; if (i * t1 &lt; j * t2) Min=i*t1, i++, cnt++; else if(i*t1 &gt; j*t2) Min=j*t2, j++, cnt++; else Min=j*t2, j++, i++, cnt+=2; if (cnt &gt;= r) break; } if ( (i-1)*t1!
+      <a href="http://liuxueyang.github.io/blog/2013/07/18/sgu551-preparing-problem/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/18/uestc1888-birthday-party-%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%E4%B9%98%E6%B3%95%E5%8E%9F%E7%90%86/">uestc1888 Birthday Party 　　　组合数学，乘法原理</a>
+      </h1>
+      <span class="post-date">Jul 18, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/18/uestc1888-birthday-party-%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%E4%B9%98%E6%B3%95%E5%8E%9F%E7%90%86/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.hust.edu.cn/vjudge/contest/view.action?cid=25539#problem/G 题目意思： 有n个人，每个人有一个礼物，每个人能拿自己礼物，n个人随机送礼物，给一个数字k,求出可以找到k个人，满足：这ｋ个人里面，第一个人把礼物给第二个人，第二个人把礼物给第三个人，以此类推，第ｋ个人把礼物给第１个人．求满足这个条件的概率． 组合数学： 满足条件的一组ｋ个人称为一个ｋ环，注意：可能有多个ｋ环！先考虑至少形成一个ｋ环的情况：A(n,k) * (n-1)^(n-k) / (k * (n-1)^(n)) == A(n, k) / (k * (n-1)^k) ；然后在考虑至少形成m个环的情况． 设至少形成m个环的概率是：f(m) = A(n, km)/(k^mm!(n-1)^(km)) 所以只需要递推m = 1 &hellip;. m = n/k 然后可以发现：f(m)/f(m-1) = A(n, km) / (A(n, k(m-1))*k*m(n-1)^k)，因此可以根据计算出的f(1)求出f(2), f(3)．．．． 根据容斥：ans = f(1) - f(2) + f(3) - f(4) + &hellip;. ORZ lyl的代码：
+#include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;set&gt; #include &lt;stack&gt; #include &lt;map&gt; #include &lt;list&gt; using namespace std; #define INF 0x3f3f3f3f const double eps=1e-9; int main ( int argc, char *argv[] ) { double ans, t; int i, k, n, tot, j; #ifndef ONLINE_JUDGE freopen(&quot;in.
+      <a href="http://liuxueyang.github.io/blog/2013/07/18/uestc1888-birthday-party-%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%E4%B9%98%E6%B3%95%E5%8E%9F%E7%90%86/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/14/usaco-milking-cows/">usaco Milking Cows</a>
+      </h1>
+      <span class="post-date">Jul 14, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/14/usaco-milking-cows/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://cerberus.delos.com:791/usacoprob2?a=bv3dg9ejwKm&amp;S=milk2 这题目不是线段树，直接模拟
+/* ID: zypz4571 LANG: C++ TASK: milk2 */ #include &lt;algorithm&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; using namespace std; struct Node { int s, t; }a[5002]; bool cmp(const Node &amp;a, const Node &amp;b) { return a.s &lt; b.s; } int main(void) { freopen(&quot;milk2.in&quot;, &quot;r&quot;, stdin); freopen(&quot;milk2.out&quot;, &quot;w&quot;, stdout); int n; scanf(&quot;%d&quot;,&amp;n); for (int i = 0; i &lt; n; scanf(&quot;%d%d&quot;,&amp;a[i].s, &amp;a[i].t),++i); sort(a,a+n,cmp); int Maxmilk=a[0].t-a[0].s, Maxidle=0, now = a[0].t, milk=Maxmilk, idle=0; for (int i = 1; i &lt; n; ++i) { if (now &gt;= a[i].
+      <a href="http://liuxueyang.github.io/blog/2013/07/14/usaco-milking-cows/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/14/usaco-section1.1-broken-necklace/">usaco Section1.1 Broken Necklace</a>
+      </h1>
+      <span class="post-date">Jul 14, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/14/usaco-section1.1-broken-necklace/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://cerberus.delos.com:790/usacoprob2?a=75WI6aQtaO2&amp;S=beads 1Y这道题目没什么，就是情况多一点，麻烦一点=_=
+/* ID: zypz4571 LANG: C++ TASK: beads */ #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;set&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #define INF 0x3f3f3f3f #define mid int m=(l+r)/2 using namespace std; int main ( int argc, char *argv[] ) { freopen(&quot;beads.in&quot;, &quot;r&quot;, stdin); freopen(&quot;beads.out&quot;, &quot;w&quot;, stdout); char a[360]; int n; bool b[360]; memset(b, false, sizeof(b)); scanf(&quot;%d&quot;, &amp;n);scanf(&quot;%s&quot;,a); int cnt = 0, i, j, k, Max = 0; for ( i= 0; i&lt; n; ++i ) { cnt = 0; memset(b, false, sizeof(b)); j = i; if (a[j] == 'w') while (a[j] == 'w' &amp;&amp; !
+      <a href="http://liuxueyang.github.io/blog/2013/07/14/usaco-section1.1-broken-necklace/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/13/vimrc%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6_version1.0_-pathogen-taglist-wordcomplete%E6%8F%92%E4%BB%B6%E8%AF%B4%E6%98%8E/">vimrc配置文件_version1.0_&#43;pathogen, taglist, wordcomplete插件说明</a>
+      </h1>
+      <span class="post-date">Jul 13, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/13/vimrc%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6_version1.0_-pathogen-taglist-wordcomplete%E6%8F%92%E4%BB%B6%E8%AF%B4%E6%98%8E/#disqus_thread">Comments</a>
+      </span>
+      
+      为了表示对Ruchee的感谢，首先这是Ruchee的个人网站：http://www.ruchee.com/index.html，他的以前很多的代码都放到Git里面了，里面有链接。 看了整整一天，刚开始学习vim的时候就是用的Ruchee的vimrc脚本，现在终于可以自己写一点了，又认真看了一下Ruchee原来的脚本，虽然还有一些不太懂，但还是赶脚好腻害的样子。 然后自己又加了一点自己东西：——适用于mac, linux平台
+&quot;Copyright 2013 Xueyang Liu, all rights reserved. &quot;www.cnblogs.com/liuxueyang/ &quot;Hunan University &quot; ********************SET******************** color lucius &quot;color desert set nocompatible set guifont=Monaco:h16 set lines=30 columns=94 set nu numberwidth=5 set cindent set ai set tabstop=2 set shiftwidth=2 set mouse=a set autochdir se hlsearch incsearch se ruler set laststatus=2 set cmdheight=2 syntax on syntax enable filetype plugin indent on filetype indent on filetype plugin on &quot;filetype on &quot;set bg=dark &quot; ********************MAP******************** let mapleader=&quot;,&quot; noremap &lt;space&gt; ve nnoremap &lt;leader&gt;ev :vsplit $MYVIMRC&lt;cr&gt; nnoremap &lt;leader&gt;sv :source $MYVIMRC&lt;cr&gt; nnoremap wt :WMToggle&lt;cr&gt; nnoremap &lt;c-t&gt; :NERDTree&lt;cr&gt; nnoremap &lt;c-a&gt; :Tlist&lt;cr&gt; &quot;在某个单词上加上引号，括号 nnoremap &lt;leader&gt;&quot; viw&lt;esc&gt;a&quot;&lt;esc&gt;hbi&quot;&lt;esc&gt;lel nnoremap &lt;leader&gt;' viw&lt;esc&gt;a'&lt;esc&gt;hbi'&lt;esc&gt;lel nnoremap &lt;leader&gt;&lt; viw&lt;esc&gt;a&gt;&lt;esc&gt;'&lt;i&lt;&lt;esc&gt;lw &quot;~~~~~~~~~~~~~~~大风歌~~~~~~~~~~~~~~~ vnoremap \ U inoremap &lt;c-d&gt; &lt;esc&gt;ddi inoremap &lt;c-u&gt; &lt;esc&gt;veU inoremap jk &lt;esc&gt; inoremap &lt;esc&gt; &lt;nop&gt; &quot;括号,引号自动补全 inoremap ( ()&lt;esc&gt;i inoremap ) &lt;c-r&gt;=ClosePair(')')&lt;cr&gt; inoremap { {}&lt;esc&gt;i inoremap } &lt;c-r&gt;=ClosePair('}')&lt;cr&gt; inoremap [ []&lt;esc&gt;i inoremap ] &lt;c-r&gt;=ClosePair(']')&lt;cr&gt; inoremap &quot; &quot;&quot;&lt;esc&gt;i inoremap ' ''&lt;esc&gt;i onoremap p i( onoremap b /return&lt;cr&gt; &quot; ********************OTHER******************** iabbrev @@ www.
+      <a href="http://liuxueyang.github.io/blog/2013/07/13/vimrc%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6_version1.0_-pathogen-taglist-wordcomplete%E6%8F%92%E4%BB%B6%E8%AF%B4%E6%98%8E/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/11/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/">高斯消元</a>
+      </h1>
+      <span class="post-date">Jul 11, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/11/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/#disqus_thread">Comments</a>
+      </span>
+      
+      输入线性方程组的维数，然后随即生成一定有解的线性方程组的增广矩阵，求出解，然后输出时间和方程组的解，以及和标准解的误差（其实就是和标准解的方差）。 #include &lt;cstdio&gt; #include &lt;algorithm&gt; #include &lt;cstdlib&gt; #include &lt;iostream&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;ctime&gt; using namespace std; const double eps=1e-9; const int MAX=20000; double ans[MAX]; int n; double **inputdata; double *result; /* 输出标准解 */ void printresult() { for(int i=0;i&lt;n;i++) printf(&quot;%.4lf &quot;,result[i]); printf(&quot;\n&quot;); } /* 打印出生成的的增广矩阵 */ void printb() { for(int i=0;i&lt;n;i++) printf(&quot;%.4lf &quot;,inputdata[i][n]); printf(&quot;\n&quot;); } /* 随机生成增广矩阵 */ void pro_inputdata() { int i,j,k; double res=0; printf(&quot;please input the number of the element:\n&quot;); scanf(&quot;%d&quot;,&amp;n); srand(time(0)); result=(double*)malloc(n*sizeof(double)); inputdata=(double**)malloc(n*sizeof(double)); for(i=0;i&lt;n;i++) result[i]=(double)(rand()%10000)/1000.
+      <a href="http://liuxueyang.github.io/blog/2013/07/11/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/08/tyvj1022---%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2-%E8%BF%9B%E5%88%B6%E4%B8%BA%E8%B4%9F%E6%95%B0/">tyvj1022 - 进制转换 ——进制为负数</a>
+      </h1>
+      <span class="post-date">Jul 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/08/tyvj1022---%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2-%E8%BF%9B%E5%88%B6%E4%B8%BA%E8%B4%9F%E6%95%B0/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1022
+#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cmath&gt; long long int n, k, r; int a[100]; int main(void) { scanf(&quot;%lld&quot;,&amp;n); int j=0; if(!n){printf(&quot;0\n&quot;);return 0;} while(n) {k=n/(-2); r=n-(-2)*k; if(r==-1) n=k+1,r=1; else n=k; a[j++]=r; } for(int k=j-1;k&gt;=0;--k)printf(&quot;%d&quot;,a[k]);printf(&quot;\n&quot;); return 0; }  =_=
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/08/tyvj1023---%E5%A5%B6%E7%89%9B%E7%9A%84%E9%94%BB%E7%82%BC-dp/">tyvj1023 - 奶牛的锻炼 ——DP</a>
+      </h1>
+      <span class="post-date">Jul 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/08/tyvj1023---%E5%A5%B6%E7%89%9B%E7%9A%84%E9%94%BB%E7%82%BC-dp/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1023
+#include &lt;cstdio&gt; #include &lt;algorithm&gt; #include &lt;cstdlib&gt; using namespace std; int a[2002],f[2002][502]; int main(void) { //freopen(&quot;in1.txt&quot;,&quot;r&quot;,stdin); int n, m; scanf(&quot;%d%d&quot;,&amp;n,&amp;m); for(int i=1;i&lt;=n;scanf(&quot;%d&quot;,a+i++)); f[0][0]=0,f[1][1]=a[1]; for(int i=1;i&lt;=n;++i) for(int j=0;j&lt;=m;++j) { if(!j) for(int k=1;k&lt;=i;++k) f[i][0]=max(max(f[i-1][0],f[i-k][k]),f[i][0]); else f[i][j]=f[i-1][j-1]+a[i]; //printf(&quot;%d &quot;,f[i][j]); } printf(&quot;\n%d\n&quot;,f[n][0]); return 0; }  =_=
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/07/tyvj1018---%E9%98%B6%E4%B9%98%E7%BB%9F%E8%AE%A1-%E6%9A%B4%E5%8A%9B/">tyvj1018 - 阶乘统计 ——暴力</a>
+      </h1>
+      <span class="post-date">Jul 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/07/tyvj1018---%E9%98%B6%E4%B9%98%E7%BB%9F%E8%AE%A1-%E6%9A%B4%E5%8A%9B/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1018 范围只有20，在long long Int范围内。
+#include &lt;cstdio&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; using namespace std; int main(void) { freopen(&quot;in1.txt&quot;, &quot;r&quot;, stdin); int n, k, h, a[10]; long long int s=1; scanf(&quot;%d%d&quot;,&amp;n,&amp;k); h=k; for(int i=1;i&lt;=n;++i)s*=i; while (s%10==0) s/=10; while (k--) if(s) a[k]=s%10,s/=10; else break; for (int i=k+1;i&lt;=h-1;++i)printf(&quot;%d&quot;,a[i]);printf(&quot;\n&quot;); return 0; }  =_=
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/07/tyvj1017---%E5%86%97%E4%BD%99%E5%85%B3%E7%B3%BB-%E5%B9%B6%E6%9F%A5%E9%9B%86/">tyvj1017 - 冗余关系 ——并查集</a>
+      </h1>
+      <span class="post-date">Jul 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/07/tyvj1017---%E5%86%97%E4%BD%99%E5%85%B3%E7%B3%BB-%E5%B9%B6%E6%9F%A5%E9%9B%86/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1017 并查集
+#include &lt;cstdio&gt; #include &lt;cstdlib&gt; using namespace std; int parent[1001],n,m; void init() {for(int i=1;i&lt;=m;++i)parent[i]=-1; } int Find(int x) {int s; for(s=x;parent[s]&gt;=0;s=parent[s]);while (s!=x) {int tmp=parent[x];parent[x]=s;x=tmp; }return s; } void Union(int R1,int R2) { int r1=Find(R1),r2=Find(R2),tmp=parent[r1]+parent[r2]; if (parent[r1]&lt;parent[r2]) parent[r2]=r1,parent[r1]=tmp; else parent[r1]=r2,parent[r2]=tmp; } int main(void) { freopen(&quot;in1.txt&quot;,&quot;r&quot;,stdin); int cnt=0;scanf(&quot;%d%d&quot;,&amp;n,&amp;m); init(); while (n--) { int a,b; scanf(&quot;%d%d&quot;,&amp;a,&amp;b); if(Find(a)==Find(b)) cnt++; else Union(a,b); } printf(&quot;%d\n&quot;,cnt); return 0; }  =_=
+      
+      
+    </div>
+    
+    
+    
+    <ul class="pagination">
+        
+        <li>
+            <a href="/" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
+        </li>
+        
+        <li
+        >
+        <a href="/page/20/" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+        </li>
+        
+        <li
+        ><a href="/">1</a></li>
+        
+        <li
+        ><a href="/page/2/">2</a></li>
+        
+        <li
+        ><a href="/page/3/">3</a></li>
+        
+        <li
+        ><a href="/page/4/">4</a></li>
+        
+        <li
+        ><a href="/page/5/">5</a></li>
+        
+        <li
+        ><a href="/page/6/">6</a></li>
+        
+        <li
+        ><a href="/page/7/">7</a></li>
+        
+        <li
+        ><a href="/page/8/">8</a></li>
+        
+        <li
+        ><a href="/page/9/">9</a></li>
+        
+        <li
+        ><a href="/page/10/">10</a></li>
+        
+        <li
+        ><a href="/page/11/">11</a></li>
+        
+        <li
+        ><a href="/page/12/">12</a></li>
+        
+        <li
+        ><a href="/page/13/">13</a></li>
+        
+        <li
+        ><a href="/page/14/">14</a></li>
+        
+        <li
+        ><a href="/page/15/">15</a></li>
+        
+        <li
+        ><a href="/page/16/">16</a></li>
+        
+        <li
+        ><a href="/page/17/">17</a></li>
+        
+        <li
+        ><a href="/page/18/">18</a></li>
+        
+        <li
+        ><a href="/page/19/">19</a></li>
+        
+        <li
+        ><a href="/page/20/">20</a></li>
+        
+        <li
+        class="active"><a href="/page/21/">21</a></li>
+        
+        <li
+        ><a href="/page/22/">22</a></li>
+        
+        <li
+        ><a href="/page/23/">23</a></li>
+        
+        <li
+        ><a href="/page/24/">24</a></li>
+        
+        <li
+        ><a href="/page/25/">25</a></li>
+        
+        <li
+        ><a href="/page/26/">26</a></li>
+        
+        <li
+        ><a href="/page/27/">27</a></li>
+        
+        <li
+        ><a href="/page/28/">28</a></li>
+        
+        <li
+        ><a href="/page/29/">29</a></li>
+        
+        <li
+        ><a href="/page/30/">30</a></li>
+        
+        <li
+        ><a href="/page/31/">31</a></li>
+        
+        <li
+        ><a href="/page/32/">32</a></li>
+        
+        <li
+        ><a href="/page/33/">33</a></li>
+        
+        <li
+        ><a href="/page/34/">34</a></li>
+        
+        <li
+        ><a href="/page/35/">35</a></li>
+        
+        <li
+        ><a href="/page/36/">36</a></li>
+        
+        <li
+        ><a href="/page/37/">37</a></li>
+        
+        <li
+        ><a href="/page/38/">38</a></li>
+        
+        <li
+        ><a href="/page/39/">39</a></li>
+        
+        <li
+        ><a href="/page/40/">40</a></li>
+        
+        <li
+        ><a href="/page/41/">41</a></li>
+        
+        <li
+        ><a href="/page/42/">42</a></li>
+        
+        <li
+        ><a href="/page/43/">43</a></li>
+        
+        <li
+        ><a href="/page/44/">44</a></li>
+        
+        <li
+        ><a href="/page/45/">45</a></li>
+        
+        <li
+        ><a href="/page/46/">46</a></li>
+        
+        <li
+        >
+        <a href="/page/22/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+        </li>
+        
+        <li>
+            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        </li>
+        
+    </ul>
+    
+  </div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

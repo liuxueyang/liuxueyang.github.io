@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+	<meta name="generator" content="Hugo 0.20.1" />
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>黑历史 &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  <link href="http://liuxueyang.github.io/index.xml" rel="alternate" type="application/rss+xml" title="黑历史 &middot; liuxueyang" />
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="posts">
+    
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/24/2013%E5%B9%B44%E6%9C%8823%E6%97%A5-%E9%9B%A8/">2013年4月23日 雨</a>
+      </h1>
+      <span class="post-date">Apr 24, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/24/2013%E5%B9%B44%E6%9C%8823%E6%97%A5-%E9%9B%A8/#disqus_thread">Comments</a>
+      </span>
+      
+      22日 雨 晚上下雨，没跑成…… 23日 阴转雨 晚上跑步出门的时候，有一些小雨点，但是貌似好几天没跑了，所以，还是起跑了。状态还差不多，天气也挺凉快，到终点的时候，悲剧了，开始下雨了。。还有2500+m的路程。。唉，浑身上下都是汗水和雨水。最终还是回来了，可怜我的P3……进水了还没挂o(╯□╰)o晚上回去赶紧洗澡，换衣服……
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/23/hdu1394-minimum-inversion-number-%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98/">hdu1394 Minimum Inversion Number ——线段树入门题</a>
+      </h1>
+      <span class="post-date">Apr 23, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/23/hdu1394-minimum-inversion-number-%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=1394 题目大意： 给一个数字由0~n-1这n个数字组成的数列，不断地把第一个数字移动到最后，一共得到n个数列。求这n个数列中，逆序数最小是多少。 题目思路： 首先，建一棵线段树，每个节点表示这个区间内已经插入的数字的个数，开始初始化为0.然后没读入一个数字，把这个数字插入得到线段树的叶子节点，然后向上更新父节点。这样，在建树的过程中，就可以统计出每个逆序数，也就是说，可以再插入每个数字的时候，查找已经插入的数字当中，比这个数字大的数字有多少个，直到最后就可以求出这个数列的逆序数。 然后，利用数列的性质。因为每次都是把第一个数字移动到最后，比如这个数字是a，那么显然，比这个数字小的有a个，比这个数字大的有n-1-a个；因为这个数字在最前面，所以当前这个数字的逆序数是a，把这个数字移动到最后之后，这个数字的逆序数是n-1-a，逆序数增加量：n-1-a-a。这样就可以由原来的数列的逆序数求出所有数列的逆序数。好神奇~
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 5000+10; int a[MAX&lt;&lt;2], n, b[MAX]; void pushup(int rt) { a[rt] = a[rt&lt;&lt;1] + a[rt&lt;&lt;1|1]; } void build(int l, int r, int rt) { if (l == r) { a[rt] = 0; return; } int m = (l + r) &gt;&gt; 1; build(lson); build(rson); pushup(rt); } void update(int p, int l, int r, int rt) { if (l == r) { a[rt]++; return; } int m = (l + r) &gt;&gt; 1; if (p &lt;= m) update(p, lson); else update(p, rson); pushup(rt); } int query(int L, int R, int l, int r, int rt) { if (L &lt;= l &amp;&amp; R &gt;= r) { return a[rt]; } int m = (l + r) &gt;&gt; 1, ret = 0; if (L &lt;= m) ret += query(L, R, lson); if (R &gt; m) ret += query(L, R, rson); return ret; } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;hdu1394.
+      <a href="http://liuxueyang.github.io/blog/2013/04/23/hdu1394-minimum-inversion-number-%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/23/hdu1754-i-hate-it--hdu1166-%E6%95%8C%E5%85%B5%E5%B8%83%E9%98%B5-%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%A4%8D%E4%B9%A0/">hdu1754 I Hate It &amp;&amp; hdu1166 敌兵布阵 ——线段树复习</a>
+      </h1>
+      <span class="post-date">Apr 23, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/23/hdu1754-i-hate-it--hdu1166-%E6%95%8C%E5%85%B5%E5%B8%83%E9%98%B5-%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%A4%8D%E4%B9%A0/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接： http://acm.hdu.edu.cn/showproblem.php?pid=1754　 http://acm.hdu.edu.cn/showproblem.php?pid=1166 都是最基础的线段树，考的知识点就是点更新，区间求和，区间求最大值。再次学线段树，感觉理解加深了一些。 但是写的时候还是会出现各种奇葩的错误。唉。 hdu1754
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 200000+10; int gra[MAX&lt;&lt;2], m , n; void pushup(int rt) { gra[rt] = max(gra[rt&lt;&lt;1], gra[rt&lt;&lt;1|1]); } void build(int l, int r, int rt) { if (l == r) { scanf(&quot;%d&quot;, &amp;gra[rt]); return; } int m = (l + r) &gt;&gt; 1; build(lson); build(rson); pushup(rt); } void update(int p, int k, int l, int r, int rt) { if (l == r) { gra[rt] = k; return; } int m = (l + r) &gt;&gt; 1; if (p &lt;= m) update(p, k, lson); else update(p, k, rson); pushup(rt); } int query(int L, int R, int l, int r, int rt) { if (L &lt;= l &amp;&amp; R &gt;= r) { return gra[rt]; } int m = (l + r) &gt;&gt; 1, ret = 0; if (L &lt;= m) ret = max(ret, query(L, R, lson)); if (R &gt; m) ret = max(ret, query(L, R, rson)); return ret; } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;hdu1754.
+      <a href="http://liuxueyang.github.io/blog/2013/04/23/hdu1754-i-hate-it--hdu1166-%E6%95%8C%E5%85%B5%E5%B8%83%E9%98%B5-%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%A4%8D%E4%B9%A0/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/22/poj2478-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/">poj2478 ——欧拉函数入门题</a>
+      </h1>
+      <span class="post-date">Apr 22, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/22/poj2478-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://poj.org/problem?id=2478 题目大意： 给你一个数列f(N)，这个数列是由一系列不能约分的分数 a / b (0 &lt; a &lt; b &lt;= n 且 (a,b) = 1)按照递增的顺序排列而成的。输入一个N，求这个数列中元素的个数。 题目思路： 因为题目只需要求出元素的个数，所以，把分母相同的放在一起，然后就发现规律了，其实就是求从2到 n 的欧拉函数的和。范围只有10^6，可以打表预处理。思路很清晰。因为要反复用欧拉函数，所以比较快的方法是用递推的方法求。 for (i = 1; i &lt;= maxn; ++i) f[i] = i; for (i = 2; i &lt;= maxn; i+=2) f[i] /= 2; for (i = 3; i &lt;= maxn; i+=2){ if (f[i] == i){ for (j = i; j &lt;= maxn; j+=i){ f[j] = f[j] / i * (i - 1); } } }  　这个方法和筛法求素数比较类似，貌似就是那个思想。模拟一下什么就懂了。这里也用到了欧拉函数的性质：φ(n) = n * (1 - 1/p1) * (1 - 1/p2) * …… * (1 - 1/pk)。
+      <a href="http://liuxueyang.github.io/blog/2013/04/22/poj2478-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/22/poj2407-relatives-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/">poj2407 Relatives ——欧拉函数入门题</a>
+      </h1>
+      <span class="post-date">Apr 22, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/22/poj2407-relatives-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://poj.org/problem?id=2407 题目大意： 这个题目就是欧拉函数的定义，求一个数字的欧拉函数。 题目思路： 用公式：φ(n) = n * (1-1/p1) * (1-1/p2) * …… * (1-1/pk)。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;poj2407.
+      <a href="http://liuxueyang.github.io/blog/2013/04/22/poj2407-relatives-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/21/poj2480-longges-problem-%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/">poj2480 Longge&#39;s problem ——积性函数入门题</a>
+      </h1>
+      <span class="post-date">Apr 21, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/21/poj2480-longges-problem-%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://poj.org/problem?id=2480 题目大意： 给定一个数字N，求∑gcd(i, N) 1&lt;=i &lt;=N 的值。 题目思路： x是一个数字，m与n互素，则gcd(x,m*n) = gcd(x, m) * gcd(x, n) 令g(y) = gcd(x, y) 那么g(y)是一个积性函数。令f(N) = ∑gcd(i, N) 满足gcd(x, n) = 1 的个数是欧拉函数φ(n)，那么可以知道，满足gcd(x, n) = p 的个数可以这么求：x 和 n 同时除以 p ，那么gcd(x/p, n/p) = 1 ，那么个数就是φ(n/p)。 分解N = p1^a1 * p2^a2 * …… *pn^an ，则f(N) = f(p1^a1 * p2^a2 * …… *pn^an) = f(p1^a1) * f(p2^a2) * …… * f(pn^an)； 可以枚举pi^ai的因数，对于f(pi^ai) = 1 * φ(pi^ai) + pi * φ(pi^(ai-1)) + pi^2 * φ(pi^(ai-2)) + …… + pi^(ai-1) * φ(pi) + pi^ai * φ(1)； 根据φ(pi^ai) = pi^ai - pi^(ai-1)，那么可以化简上面的式子：f(pi^ai) = ai * pi^ai + ai * pi^(ai-1) + pi^ai = pi^ai * (ai + ai/pi + 1)； 所以，f(N) = N * (a1 + a1/p1 + 1) * (a2 + a2/p2 + 1) * …… * (an + an/pn + 1)。 这题当然不是自己想出来的，但是学习了一下积性函数，看的神牛的解题代码：http://hi.
+      <a href="http://liuxueyang.github.io/blog/2013/04/21/poj2480-longges-problem-%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/21/2013%E5%B9%B44%E6%9C%8821%E6%97%A5-%E9%98%B4/">2013年4月21日 阴</a>
+      </h1>
+      <span class="post-date">Apr 21, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/21/2013%E5%B9%B44%E6%9C%8821%E6%97%A5-%E9%98%B4/#disqus_thread">Comments</a>
+      </span>
+      
+      19日 晚上挑战赛，输了，回宿舍很晚了，没去跑步。 20日 今天状态不是很好，中途P3还没电了……虽然跑得很慢，但还是跑完全程了~ 21日 晚上校队讨论，回去10点多了，没去跑步。今天上午上西班牙语选修课，很有意思~中南赛没能去，唉。以后挑战赛坚决不能输！
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/20/uestc1824-judgment-day-%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/">uestc1824 Judgment Day ——比赛残留题</a>
+      </h1>
+      <span class="post-date">Apr 20, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/20/uestc1824-judgment-day-%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://www.acm.uestc.edu.cn/problem.php?pid=1824 题目大意： 给一个大的字符串，给一个数字n，然后给出n个小的字符串，在大的字符串里面每个字母只能选一次，问最多可以组成多少个小的字符串。小的字符串最多有10个，每个小字符串和大字符串长度最多10000。 题目思路： 因为最多有10个小的字符串，从10个里面选，最多有1024种选法。因为字符串只包含26个小写字母，可以统计每个小字符串里面的每个小写字母的个数，这样，复杂度大约在10×26×1024,是10^5的范围，可以枚举。 比如对于n个字符串，最多有1&lt;&lt;n种，用 x 从1枚举到1&lt;&lt;n - 1，然后用 j 从 0 枚举到n-1，用 1 &lt;&lt; j 和 x 相与，如果为1,则 j +1 表示第 j + 1 个人被选上了，判断它是不是能被选上，如果能被选上，那么 cnt++，再和max相比较，最后得到max。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int L = 100000+10; char s[L], a[15][L]; int t, nn, cnt[29], ca[15][29], cc[29]; int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;j.
+      <a href="http://liuxueyang.github.io/blog/2013/04/20/uestc1824-judgment-day-%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/20/2013%E5%B9%B44%E6%9C%8819%E6%97%A5-%E5%9B%9B%E6%A0%A1%E8%81%94%E8%B5%9B%E6%8C%91%E6%88%98%E8%B5%9B%E6%80%BB%E7%BB%93/">2013年4月19日 四校联赛挑战赛总结</a>
+      </h1>
+      <span class="post-date">Apr 20, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/20/2013%E5%B9%B44%E6%9C%8819%E6%97%A5-%E5%9B%9B%E6%A0%A1%E8%81%94%E8%B5%9B%E6%8C%91%E6%88%98%E8%B5%9B%E6%80%BB%E7%BB%93/#disqus_thread">Comments</a>
+      </span>
+      
+      卡在了水题上。后面的题目就不用说了，根本就没看。平时学习的东西根本就没有用上，简单题这一关就过不了。 唯一需要注意的就是，一道题目，有了想法，自己先把能考虑到的情况都考虑周全，不要指望和队友讨论再讨论一下，有的时候队友在思考自己的想法，没有时间，所以自己一定要考虑周全，再敲代码，千万不要有一个想法就敲，快写完的时候发现错了……就悲剧了。还有就是，读题，这次我就读错了一道题目，把队友坑了，虽然后来队友发现了，但我们三个还是都没有想法，比较坑的是，这题可以枚举，因为是10个人，范围很小。我们三个都没有注意到这一点。llh本来当时还问了一下范围，我看题的时候看到了10人，后来忘了，，就说题目没有给……我去……以后一定不能出现这种情况！ 然后就是代码能力，千万不能把代码敲错，比如赛后敲一道题目，思路很清晰，但是敲的时候就错了，调试很久，后来才发现，原来是自己命名的变量用错了，还有一些地方写错了……浪费很多时间，照这个情况，就算这道题目比赛的时候知道怎么做，也不一定能敲出来，虽然就是枚举。 比赛的时候过得第二道题目，我的想法是错的，llh有另一个想法，敲完后不知道哪里错了，虽然给我讲了，但是还是不太理解，最后还是因为一个小细节没处理好。不是想法的问题。当初我能够仔细按照那个想法做一下就好了，以后队友讲想法的时候认真理解。 总的来说，还是水题都过不了。第一：没有想法。第二，代码能力。第三，好好学STL，有的时候，切水题用STL很方便。至于没有想法这个问题，只有多练习，多思考，一般的水题都不会太难，考察的关键是思路和代码能力。 zsl神牛昨天跟我说，每次比赛都要好好总结，比赛后没过的题目都要过了，只要校队有人过的，都必须过，没人过的，也要过几道，如果校队的人都比不过，到了现场赛就不用说了！唉，确实是这样。谢谢sl学长。 这次挑战赛又输了，四校联赛又不能去了，我们队从来没有赢过Babel。唉，太窝囊了…… 从现在起，坚决不能再输给他们了！ 5月份就去南京邀请赛了，我不知道为什么我们从来没有赢过Babel却可以去南京，但是，既然让我们队去了，就别想别的，不要让大家失望，认真珍惜这次出去的机会！
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/19/poj2001-shortest-prefixes-%E5%AD%97%E5%85%B8%E6%A0%91%E5%A4%8D%E4%B9%A0/">poj2001 Shortest Prefixes ——字典树复习</a>
+      </h1>
+      <span class="post-date">Apr 19, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/19/poj2001-shortest-prefixes-%E5%AD%97%E5%85%B8%E6%A0%91%E5%A4%8D%E4%B9%A0/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://poj.org/problem?id=2001 这道题目以前写过，复习一下字典树，再写一遍……
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;set&gt; #include &lt;map&gt; #include &lt;vector&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; char a[1000+10][30], base = 'a'; const int lo = 26; typedef struct trie{ int num; bool terminal; struct trie *son[lo]; }trie; trie *newtrie(){ trie *pnt = new trie; pnt-&gt;num = 1; pnt-&gt;terminal = false; for (int i = 0; i &lt; lo; ++i) pnt-&gt;son[i] = NULL; return pnt; } void insert(char str[], trie *pnt, int len){ trie *tem = pnt; for (int i= 0; i &lt; len; ++i){ if (tem-&gt;son[str[i]-base] !
+      <a href="http://liuxueyang.github.io/blog/2013/04/19/poj2001-shortest-prefixes-%E5%AD%97%E5%85%B8%E6%A0%91%E5%A4%8D%E4%B9%A0/">Read On &rarr;</a>
+      
+    </div>
+    
+    
+    
+    <ul class="pagination">
+        
+        <li>
+            <a href="/" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
+        </li>
+        
+        <li
+        >
+        <a href="/page/30/" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+        </li>
+        
+        <li
+        ><a href="/">1</a></li>
+        
+        <li
+        ><a href="/page/2/">2</a></li>
+        
+        <li
+        ><a href="/page/3/">3</a></li>
+        
+        <li
+        ><a href="/page/4/">4</a></li>
+        
+        <li
+        ><a href="/page/5/">5</a></li>
+        
+        <li
+        ><a href="/page/6/">6</a></li>
+        
+        <li
+        ><a href="/page/7/">7</a></li>
+        
+        <li
+        ><a href="/page/8/">8</a></li>
+        
+        <li
+        ><a href="/page/9/">9</a></li>
+        
+        <li
+        ><a href="/page/10/">10</a></li>
+        
+        <li
+        ><a href="/page/11/">11</a></li>
+        
+        <li
+        ><a href="/page/12/">12</a></li>
+        
+        <li
+        ><a href="/page/13/">13</a></li>
+        
+        <li
+        ><a href="/page/14/">14</a></li>
+        
+        <li
+        ><a href="/page/15/">15</a></li>
+        
+        <li
+        ><a href="/page/16/">16</a></li>
+        
+        <li
+        ><a href="/page/17/">17</a></li>
+        
+        <li
+        ><a href="/page/18/">18</a></li>
+        
+        <li
+        ><a href="/page/19/">19</a></li>
+        
+        <li
+        ><a href="/page/20/">20</a></li>
+        
+        <li
+        ><a href="/page/21/">21</a></li>
+        
+        <li
+        ><a href="/page/22/">22</a></li>
+        
+        <li
+        ><a href="/page/23/">23</a></li>
+        
+        <li
+        ><a href="/page/24/">24</a></li>
+        
+        <li
+        ><a href="/page/25/">25</a></li>
+        
+        <li
+        ><a href="/page/26/">26</a></li>
+        
+        <li
+        ><a href="/page/27/">27</a></li>
+        
+        <li
+        ><a href="/page/28/">28</a></li>
+        
+        <li
+        ><a href="/page/29/">29</a></li>
+        
+        <li
+        ><a href="/page/30/">30</a></li>
+        
+        <li
+        class="active"><a href="/page/31/">31</a></li>
+        
+        <li
+        ><a href="/page/32/">32</a></li>
+        
+        <li
+        ><a href="/page/33/">33</a></li>
+        
+        <li
+        ><a href="/page/34/">34</a></li>
+        
+        <li
+        ><a href="/page/35/">35</a></li>
+        
+        <li
+        ><a href="/page/36/">36</a></li>
+        
+        <li
+        ><a href="/page/37/">37</a></li>
+        
+        <li
+        ><a href="/page/38/">38</a></li>
+        
+        <li
+        ><a href="/page/39/">39</a></li>
+        
+        <li
+        ><a href="/page/40/">40</a></li>
+        
+        <li
+        ><a href="/page/41/">41</a></li>
+        
+        <li
+        ><a href="/page/42/">42</a></li>
+        
+        <li
+        ><a href="/page/43/">43</a></li>
+        
+        <li
+        ><a href="/page/44/">44</a></li>
+        
+        <li
+        ><a href="/page/45/">45</a></li>
+        
+        <li
+        ><a href="/page/46/">46</a></li>
+        
+        <li
+        >
+        <a href="/page/32/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+        </li>
+        
+        <li>
+            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        </li>
+        
+    </ul>
+    
+  </div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

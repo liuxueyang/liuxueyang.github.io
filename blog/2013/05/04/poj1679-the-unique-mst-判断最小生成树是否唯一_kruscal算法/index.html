@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>poj1679 The Unique MST ——判断最小生成树是否唯一_kruscal算法 &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">poj1679 The Unique MST ——判断最小生成树是否唯一_kruscal算法</h1>
+    <span class="post-date">May 4, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/04/poj1679-the-unique-mst-%E5%88%A4%E6%96%AD%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E6%98%AF%E5%90%A6%E5%94%AF%E4%B8%80_kruscal%E7%AE%97%E6%B3%95/#disqus_thread">Comments</a>
+    </span>
+    <p>题目链接：<a href="http://poj.org/problem?id=1679">http://poj.org/problem?id=1679</a>
+题目大意：
+　　判断一个连通的无向图的最小生成树是不是唯一的，如果唯一，输出最小生成树的权值，否者输出“Not Unique!”
+题目思路：
+　　这题目看的书上的，其实，最开始我的想法是，在求最小生成树的过程中，如果扩展到某一个点的时候，有多种选择，也就是说，有多个权值相同的边可以选择，那么就break掉，说明最小生成树不唯一。其实这是有问题的，因为，很可能在这权值相同的边当中，只能选择其中一条，如果选择其它的就得不到最小生成树，这就是一个反例。所以原来的做法是错误的。
+　　书上的做法是，首先，预处理，看每个边是不是有别的边的权值和它一样的，有的话就标记一下，用结构体里面的equal表示，然后用kruscal算法求一遍最小生成树，并且把这棵最小生成树里面的边都标记一下，用结构体里面的used表示，然后，对于那种有其他边和它权值相同的那种边，同时这条边在第一次求的最小生成树里面，我们就把它删除，做法就是用结构体里面的del标记，然后再次求一遍最小生成树，不用del被标记的边，这样如果求出来的最小生成树的权值和原来的一样，说明最小生成树不唯一，break;
+　　然后就OK了，唉，其实这是很自然的一个想法~</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+const int MAX = 100+10;
+typedef struct Edge {
+  int u, v, w, equal, used, del;
+  bool operator &lt; (const Edge &amp;other) const {
+    return w &lt; other.w;
+    //别把排序搞反了！！呵呵
+  }
+}Edge;
+Edge edge[6000];
+int parent[MAX], n,m;
+bool first;
+void init() {
+  for (int i = 1; i &lt;= n; ++i) parent[i]= -1;
+}
+int Find(int x) {
+  int s;
+  for (s = x; parent[s] &gt;= 0; s = parent[s]) ;
+  while ( s != x) {
+    int tmp = parent[x]; parent[x]= s; x = tmp;
+  }
+  return s;
+}
+void Union(int R1, int R2) {
+  int r1 = Find(R1), r2 = Find(R2), tmp = parent[r1] + parent[r2];
+  if (parent[r1] &gt; parent[r2]) {
+    parent[r1] = r2; parent[r2] = tmp;
+  } else {
+    parent[r2] = r1; parent[r1] = tmp;
+  }
+}
+int kruscal() {
+  int sum = 0, num = 0;
+  int u, v, i, j; 
+  init();
+  for (i = 1; i&lt;=m; ++i) {
+    if (edge[i].del == 1) continue;
+    u = edge[i].u; v = edge[i].v;
+    if (Find(u) != Find(v)) {
+      sum += edge[i].w; Union(u, v); num++;
+      if (first == true) edge[i].used = 1;
+    }
+    if (num &gt;= n - 1) break;
+  }
+  return sum;
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;poj1679.in&quot;, &quot;r&quot;, stdin);
+#endif
+  int u, v, w, i, j, k, t;
+  scanf(&quot;%d&quot;, &amp;t); 
+  while (t--) {
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    edge[0].w=0;
+    for (j = 1; j &lt;= m; ++j) {
+      scanf(&quot;%d%d%d&quot;, &amp;u, &amp;v, &amp;w);
+      edge[j].u = u; edge[j].v = v; edge[j].w = w;
+      edge[j].equal = edge[j].del = edge[j].used = 0;
+    }
+    for (j = 1; j &lt;= m; ++j) {
+      for (k = j+1; k &lt;= m; ++k) {
+        if (edge[k].w == edge[j].w) edge[j].equal=edge[k].equal= 1;
+      }
+    }
+    sort(edge + 1, edge + m + 1);
+    first = true; 
+    int weight1 = kruscal(), weight2;
+    first = false;
+    for (j = 1; j &lt;= m; ++j) {
+      if (edge[j].used &amp;&amp; edge[j].equal) {
+        edge[j].del = 1; weight2 = kruscal();
+        if (weight2 == weight1) {
+          printf(&quot;Not Unique!\n&quot;); break;
+        }
+        edge[j].del = 0;
+      }
+    }
+    if (j &gt; m) printf(&quot;%d\n&quot;, weight1);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>　　写的过程中，出现了一个错误，导致开始运行怎么也不对，就是结构体里面的运算符重载小于号写反了……因为要从小到大排序，所以都写成小于号。</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

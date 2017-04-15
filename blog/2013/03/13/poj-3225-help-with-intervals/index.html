@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>poj 3225 Help with Intervals &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">poj 3225 Help with Intervals</h1>
+    <span class="post-date">Mar 13, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/13/poj-3225-help-with-intervals/#disqus_thread">Comments</a>
+    </span>
+    <p>Description
+Input
+Output
+Sample Input
+Sample Output
+ </p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+using namespace std;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+const int maxn = 65535*2+10;
+int cover[maxn&lt;&lt;2],xorm[maxn&lt;&lt;2];
+bool hash[maxn+10];
+void fxor(int rt){
+  if (cover[rt] != -1) cover[rt] ^= 1;
+  else xorm[rt] ^= 1;
+}
+void PushDown(int rt){
+  if (cover[rt] != -1){
+    cover[rt&lt;&lt;1] = cover[rt&lt;&lt;1|1] = cover[rt];
+    xorm[rt&lt;&lt;1] = xorm[rt&lt;&lt;1|1] = 0; cover[rt] = -1; // there has been a BUG.
+  }
+  if (xorm[rt]){
+    fxor(rt&lt;&lt;1); fxor(rt&lt;&lt;1|1); xorm[rt] = 0;
+  }
+}
+void update(char op, int L, int R, int l, int r, int rt){
+  if (L &lt;= l &amp;&amp; R &gt;= r){
+    if (op == 'U') {cover[rt] = 1; xorm[rt] = 0;}
+    else if (op == 'D') {cover[rt] = 0; xorm[rt] = 0;}
+    else if (op == 'C' || op == 'S') {
+      if (cover[rt] != -1) cover[rt] ^= 1;
+      else xorm[rt] ^= 1;
+    }
+    return;
+  }
+  PushDown(rt); int m = (l + r) &gt;&gt; 1;
+  if (L &lt;= m) update(op, L, R, lson);
+  else if (op == 'I' || op == 'C'){cover[rt&lt;&lt;1] = xorm[rt&lt;&lt;1] = 0;}
+  if (R &gt; m) update(op, L, R, rson);
+  else if (op == 'I' || op == 'C'){cover[rt&lt;&lt;1|1] = xorm[rt&lt;&lt;1|1] = 0;}
+}
+void query(int l, int r, int rt){
+  if (cover[rt] == 1)
+  {
+    for (int i = l; i &lt;= r; ++i){
+      hash[i] = true;
+    }
+    return; // there had been a BUG.
+  }
+  else if (cover[rt] == 0) return;
+  if (l == r) return;
+  PushDown(rt); int m = (l + r) &gt;&gt; 1;
+  query(lson); query(rson);
+}
+int main(void){
+  char op, l, r; int a, b;
+  cover[1] = xorm[1] = 0;
+#ifndef ONLINE_JUDGE
+  freopen(&quot;poj3225.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (~scanf(&quot;%c %c%d,%d%c\n&quot;, &amp;op, &amp;l, &amp;a, &amp;b, &amp;r)){
+    a &lt;&lt;= 1; b &lt;&lt;= 1; if (l == '(') a++; if (r == ')') b--;
+    if (a &gt; b) { // there has been a BUG.
+      if (op == 'I' || op == 'C') cover[1] = xorm[1] = 0;
+    }
+    else update(op, a, b, 0, maxn, 1);
+  }
+  query(0, maxn, 1); bool mrk = false; int start = -1, end;
+  for (int i = 0; i &lt;= maxn; ++i){
+    if (hash[i]){
+      if (start == -1) start = i;
+      end = i;
+    }
+    else {
+      if (start != -1){
+        if (mrk) printf(&quot; &quot;);
+        mrk = true;
+        printf(&quot;%c%d,%d%c&quot;, start&amp;1?'(':'[', start&gt;&gt;1, (end+1)&gt;&gt;1,end&amp;1?')':']');
+        start = -1;
+      }
+    }
+  }
+  if (!mrk) printf(&quot;empty set&quot;);
+  printf(&quot;\n&quot;);
+  return 0;
+}
+
+</code></pre>
+
+<p>线段树，成段更新</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

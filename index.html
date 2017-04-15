@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+	<meta name="generator" content="Hugo 0.20.1" />
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>黑历史 &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  <link href="http://liuxueyang.github.io/index.xml" rel="alternate" type="application/rss+xml" title="黑历史 &middot; liuxueyang" />
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="posts">
+    
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/04/13/haskell-%E7%AC%94%E8%AE%B09/">Haskell 笔记9</a>
+      </h1>
+      <span class="post-date">Apr 13, 2017 &middot; 7 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/04/13/haskell-%E7%AC%94%E8%AE%B09/#disqus_thread">Comments</a>
+      </span>
+      
+      这是第九章的笔记
+Hello, world! Files and streams getContents：从标准输入读数据，返回IO Action，一直到文件末尾。
+-- print lines whose length is less than 10 main = do lines &lt;- getContents putStr . shortLines $ lines shortLines :: String -&gt; String shortLines = unlines . filter ((&lt; 10) . length) . lines -- Function composition简直好用  interact：接收一个类型为String -&gt; String的函数作为参数，返回一个IO Action，这个IO Action接收一个输入，用之前的String -&gt; String函数处理之后，然后返回一个IO Action，这个IO Action执行的时候会输出处理之后的字符串。
+main = interact shortLines shortLines = unlines . filter ((&lt;5) . length) .
+      <a href="http://liuxueyang.github.io/blog/2017/04/13/haskell-%E7%AC%94%E8%AE%B09/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/04/12/%E5%87%A0%E7%A7%8D%E4%B8%AA%E4%BA%BA%E6%96%87%E6%A1%A3%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88/">几种个人文档同步方案</a>
+      </h1>
+      <span class="post-date">Apr 12, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/04/12/%E5%87%A0%E7%A7%8D%E4%B8%AA%E4%BA%BA%E6%96%87%E6%A1%A3%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88/#disqus_thread">Comments</a>
+      </span>
+      
+      因为前几天（4月7日晚上）我的笔记本硬盘突然坏了，不能读盘了，造成了一些损失，之前做得Coursera上的三部分PL课的作业什么的都没有了，当初也没有多想就没有放到网盘里面同步，万万没想到硬盘会出问题。另外损失了大概两天的工作量，因为两天之前同步过一次Dropbox，因为需要频繁修改一些文件，Dropbox也就会频繁同步，我的电脑比较老了，一直开着Dropbox比较占内存和CPU，所以只是偶尔打开Dropbox。这也算是一个教训吧，所以在这里纪录一下。
+最简单的就是用网盘了，比如Dropbox之类的。Slackware里面我用Dropbox和OneDrive。另外一种方法就是Gitlab或者Bitbucket的私有仓储，如果可以公开的话，可以直接放到Github的公开仓库，缺点就是需要频繁git add，git push什么的，这个时候Emacs的插件magit就很有用了。
+以后尤其是手写的文档，一定要注意经常同步。不管是移动硬盘还是笔记本硬盘都不如网盘靠谱，至于数据的安全性嘛，都是一些笔记啊，程序啊之类的，好像也没有什么特别需要保护的。当然也可以把文件加密再上传到网盘。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/04/12/haskell-%E7%AC%94%E8%AE%B07/">Haskell 笔记7</a>
+      </h1>
+      <span class="post-date">Apr 12, 2017 &middot; 6 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/04/12/haskell-%E7%AC%94%E8%AE%B07/#disqus_thread">Comments</a>
+      </span>
+      
+      这是一些阅读Learn You a Haskell for Great Good!的时候的笔记，之前用Latex写的，放在Dropbox里面，现在想把它们整理一下，放在博客里。这是第七章 Modules的笔记。
+Loading modules 之前用TeXmacs虽然挺方便，但还是感觉有点不舒服。所以还是换回来吧。
+在默认的Prelude模块里面，已经默认引入了一些Data.List中的函数。另外，引入Data.List模块的时候不需要使用带限定符的方法，因为Prelude里面的函数除了默认引入的Data.List的部分函数以外，不会和Data.List里面的其它函数命名冲突。然而，如果再引用其它模块的时候就不一定了。一般情况下只需要用一般的引入模块的方法就够了：import Data.List
+Data.List group这个函数，它接收一个列表，把列表中相邻并且相等的元素合成一个子列表，对于相等但是不相邻的元素，它会分别合成独立的子列表，也就是说，它并不会排序。比如：
+λ&gt; group [1, 2, 2, 2, 3, 4, 2, 2, 2, 5, 6] [[1],[2,2,2],[3],[4],[2,2,2],[5],[6]]  如果想要一个列表中的某个元素的个数，可以这样做：
+λ&gt; map (\ xs@(x : xs') -&gt; (x, length xs)) $ group . sort $ [1, 2, 2, 2, 3, 4, 2, 2, 2, 5, 6] [(1,1),(2,6),(3,1),(4,1),(5,1),(6,1)]  这里我用到了function composition(.)、function application($)、lambda表达式、lambda表达式中的模式匹配、用@符号来捕获整个模式（注意它的用法，用@符号来把整个模式和部分模式分隔开）。
+init函数的意思是得到列表的前n - 1个元素，inits的意思是依次得到列表的前0, 1, 2 ... n个元素组成一个嵌套列表。
+      <a href="http://liuxueyang.github.io/blog/2017/04/12/haskell-%E7%AC%94%E8%AE%B07/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/04/12/haskell-%E7%AC%94%E8%AE%B01/">Haskell 笔记1</a>
+      </h1>
+      <span class="post-date">Apr 12, 2017 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/04/12/haskell-%E7%AC%94%E8%AE%B01/#disqus_thread">Comments</a>
+      </span>
+      
+      这是一些阅读Learn You a Haskell for Great Good!的时候的笔记，之前用Latex写的，放在Dropbox里面，现在想把它们整理一下，放在博客里。这是第二章 Starting Out的笔记。
+Baby&rsquo;s first functions 2017/03/15 10:32:18
+function call的优先级最高。
+定义函数这样：
+doubleMe x = x * 2  和SML基本一样。
+doubleUs x y = doubleMe x + doubleMe y doubleUs1(x, y) = doubleMe x + doubleMe y  这两个的区别？
+第一个是curried function，第二个函数接收一个参数，这个参数是一个含有两个元素的tuple，也叫做pair。
+函数调用格式：
+doubleUs 3 4 doubleUs1(3, 4)  if else格式：
+if x &gt; 50 then x else x * 3  和SML基本一样。同样，else部分不能省略。因为这是一个「表达式」，表达式必须有一个值，所以，不管条件是否满足，一定要有一部分被求值，并且当作这个表达式的值。并且，这两部分的表达式的返回值的类型必须一样。
+不能在ghci里面像在文件里面那样定义函数。有几种解决方法：defun function in ghci
+      <a href="http://liuxueyang.github.io/blog/2017/04/12/haskell-%E7%AC%94%E8%AE%B01/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/04/10/%E9%87%8D%E6%96%B0%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">重新整理博客</a>
+      </h1>
+      <span class="post-date">Apr 10, 2017 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/04/10/%E9%87%8D%E6%96%B0%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/#disqus_thread">Comments</a>
+      </span>
+      
+      这么长时间过去了，好像很久不管这个博客了，差不多10个月过去了。是时候 把这些零散的东西整理一下了。争取把之前在别的地方写的东西都整理到这里 来。这样以后查看会方便很多吧！
+主要是2014年的「博客园」上面的东西。找了一下现有的工具hexo-migrator-cnblogs发现早已经不维护了，现在也不能用了。所以写了一个简单的脚本来爬取我的博客：
+# 2017/04/11 00:45:15 AM # Author: liuxueyang from bs4 import BeautifulSoup import requests import re import os.path url = 'http://www.cnblogs.com/liuxueyang/default.html?page=' page_nums = range(1, 11) cnt = 0 already_urls = [] if os.path.exists('already.txt'): with open('already.txt', 'r') as already_f: already_urls = already_urls + already_f.readlines() for page_num in page_nums: url1 = url + str(page_num) r = requests.get(url1) soup = BeautifulSoup(r.content, 'html5lib') titles = soup.find_all('a', class_='posttitle') for title in titles: print '==' * 20, '\n\n' cnt += 1 blog_url = title.
+      <a href="http://liuxueyang.github.io/blog/2017/04/10/%E9%87%8D%E6%96%B0%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/03/16/%E6%95%B4%E7%90%86bilibili%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%BC%93%E5%AD%98%E7%9A%84%E8%A7%86%E9%A2%91/">整理Bilibili安卓客户端缓存的视频</a>
+      </h1>
+      <span class="post-date">Mar 16, 2017 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/03/16/%E6%95%B4%E7%90%86bilibili%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%BC%93%E5%AD%98%E7%9A%84%E8%A7%86%E9%A2%91/#disqus_thread">Comments</a>
+      </span>
+      
+      昨天晚上无意中看到了B站竟然有TOUCH。。完全没想到。所以我决定这次要把这部动画片全部下载下来，B站的视频质量看起来还不错。所以最简单的方法就是用安卓客户端缓存，然后在电脑上处理了。
+其实之前我做过这件事情。当初是为了整理「暖暖日记」这部番，因为它每集仅仅有5分钟左右。每个视频只有一个文件，所以只需要找到所有视频然后读json文件找到视频名称，重命名就好了。
+不过这次好像有点不同：每集一般有25分钟，缓存的是高清的。奇怪的是：即使是同一集，最开始我缓存的时候某一集是仅仅有一个mp4文件，然后我又实验了一次，发现它就变成了多个flv文件。。真是迷。。
+处理也不难，如果是单个mp4文件直接重命名就好了。如果是多个flv文件，那么就需要先合并，然后再命名。
+然后看了一下之前写的Perl程序，竟然，看不太懂了。。。T_T，然而还好，最后还是搞定了：
+#!/usr/bin/perl # Date : 2017/03/16 19:14:35 # Finish: 2017/03/16 22:04:07 # NOTE: There MUST NOT be any non-ascii character in the path!!!!!!!!!! use strict; use warnings; use 5.014; use Cwd; use JSON qw(); use open ':std', ':encoding(UTF-8)'; use File::Copy; my $cur_dir = '/home/repl/Videos/Bilibili/Fanju/TOUCH/s_2425'; opendir(DIR, $cur_dir) or dir $!; while (my $file = readdir(DIR)) { next if ($file =~ /^\./); # get index_title my $json_file = $cur_dir .
+      <a href="http://liuxueyang.github.io/blog/2017/03/16/%E6%95%B4%E7%90%86bilibili%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%BC%93%E5%AD%98%E7%9A%84%E8%A7%86%E9%A2%91/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/03/06/%E5%A4%8D%E4%B9%A0c--/">复习C&#43;&#43;</a>
+      </h1>
+      <span class="post-date">Mar 6, 2017 &middot; 8 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/03/06/%E5%A4%8D%E4%B9%A0c--/#disqus_thread">Comments</a>
+      </span>
+      
+      今天复习了一下C++。很久很久不碰这门语言，早上看到一段代码竟然感觉十分陌生。this，const pointer，引用之类的，有点忘了。其实也不是忘，就是感觉很陌生。比如this别的语言里面也有，只是不是指针，比较容易混淆。所以就大概查了一下C++ Primer，然后做了几道题目。放在这里。
+题目一 给CMyString类写一个方法，使它能够支持赋值=操作。CMyString类已经给出。
+#include &lt;bits/stdc++.h&gt; // implement a operator `=` on class CMyString using namespace std; class CMyString { public: CMyString(char * pData = NULL); CMyString(const CMyString &amp; str); CMyString &amp; operator =(const CMyString &amp;); void print(); ~CMyString(void); private: char * m_pData; }; CMyString &amp; CMyString::operator =(const CMyString &amp; str) { // if (this == &amp;str) return *this; // delete [] m_pData; // m_pData = NULL; // m_pData = new char[strlen(str.
+      <a href="http://liuxueyang.github.io/blog/2017/03/06/%E5%A4%8D%E4%B9%A0c--/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/03/06/const-member-function-in-cpp/">const member function in cpp</a>
+      </h1>
+      <span class="post-date">Mar 6, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/03/06/const-member-function-in-cpp/#disqus_thread">Comments</a>
+      </span>
+      
+      默认情况下，this是一个const pointer to the nonconst version of the class type。比如有一个类A，那么在类里面，this的类型是A * const。因为不能把一个const对象的地址赋值给一个指向nonconst对象的指针，因此不能把this绑定到一个const对象上。这就导致，不能在const对象上调用一个nonconst member function。
+解决方法就是，把this声明为const。可是this是隐性的变量，所以C++的解决方法就是在参数列表后面指定const。这样的函数就是const member function。它的语义是：this是一个const pointer to a const object of the class type。这样，const对象和nonconst对象都可以调用这个函数。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/03/06/const-pointer-and-pointer-to-const-in-cpp/">const pointer and pointer to const in Cpp</a>
+      </h1>
+      <span class="post-date">Mar 6, 2017 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/03/06/const-pointer-and-pointer-to-const-in-cpp/#disqus_thread">Comments</a>
+      </span>
+      
+      中文翻译好像有常量指针和指针常量这两种说法。然而翻译过来让我更加费解。还是英文更加直白。
+pointer to const const int b = 30; const int * bptr = &amp;b;  bptr是一个指针，它指向的是一个类型为const int的对象。可以对bptr本身的内容（保存的地址）进行修改，但是不能对它指向的对象进行修改：
+const int c = 31; bptr = &amp;c;  这样，bptr就指向了另外一个const对象。
+有个例外：可以让pointer to const指向一个nonconst对象。
+int d = 32; bptr = &amp;d;  需要注意的是，即使d变量是nonconst，仍然不能通过bptr这个指针对b进行修改：
+// *bptr = 33; // error!  总之，
+ 我可以指向const对象，也可以指向nonconst对象，你也可以修改我。但是，你不能修改我指向的*对象*。 &mdash; pointer to const
+ const pointer int a = 3; int * const aptr = &amp;a;  aptr是一个常量，同时是一个指针。不能对aptr里面保存的地址进行修改。但是可以对aptr所指向的对象进行修改：
+      <a href="http://liuxueyang.github.io/blog/2017/03/06/const-pointer-and-pointer-to-const-in-cpp/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/03/06/learn-c--/">Learn C&#43;&#43;</a>
+      </h1>
+      <span class="post-date">Mar 6, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/03/06/learn-c--/#disqus_thread">Comments</a>
+      </span>
+      
+      我已经很久没有碰过C++这门语言了。重新看到C++程序的时候竟然有些陌生，很多语法都模糊了。所以我打算复习一下。
+      
+      
+    </div>
+    
+    
+    
+    <ul class="pagination">
+        
+        <li>
+            <a href="/" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
+        </li>
+        
+        <li
+        class="disabled">
+        <a href="" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+        </li>
+        
+        <li
+        class="active"><a href="/">1</a></li>
+        
+        <li
+        ><a href="/page/2/">2</a></li>
+        
+        <li
+        ><a href="/page/3/">3</a></li>
+        
+        <li
+        ><a href="/page/4/">4</a></li>
+        
+        <li
+        ><a href="/page/5/">5</a></li>
+        
+        <li
+        ><a href="/page/6/">6</a></li>
+        
+        <li
+        ><a href="/page/7/">7</a></li>
+        
+        <li
+        ><a href="/page/8/">8</a></li>
+        
+        <li
+        ><a href="/page/9/">9</a></li>
+        
+        <li
+        ><a href="/page/10/">10</a></li>
+        
+        <li
+        ><a href="/page/11/">11</a></li>
+        
+        <li
+        ><a href="/page/12/">12</a></li>
+        
+        <li
+        ><a href="/page/13/">13</a></li>
+        
+        <li
+        ><a href="/page/14/">14</a></li>
+        
+        <li
+        ><a href="/page/15/">15</a></li>
+        
+        <li
+        ><a href="/page/16/">16</a></li>
+        
+        <li
+        ><a href="/page/17/">17</a></li>
+        
+        <li
+        ><a href="/page/18/">18</a></li>
+        
+        <li
+        ><a href="/page/19/">19</a></li>
+        
+        <li
+        ><a href="/page/20/">20</a></li>
+        
+        <li
+        ><a href="/page/21/">21</a></li>
+        
+        <li
+        ><a href="/page/22/">22</a></li>
+        
+        <li
+        ><a href="/page/23/">23</a></li>
+        
+        <li
+        ><a href="/page/24/">24</a></li>
+        
+        <li
+        ><a href="/page/25/">25</a></li>
+        
+        <li
+        ><a href="/page/26/">26</a></li>
+        
+        <li
+        ><a href="/page/27/">27</a></li>
+        
+        <li
+        ><a href="/page/28/">28</a></li>
+        
+        <li
+        ><a href="/page/29/">29</a></li>
+        
+        <li
+        ><a href="/page/30/">30</a></li>
+        
+        <li
+        ><a href="/page/31/">31</a></li>
+        
+        <li
+        ><a href="/page/32/">32</a></li>
+        
+        <li
+        ><a href="/page/33/">33</a></li>
+        
+        <li
+        ><a href="/page/34/">34</a></li>
+        
+        <li
+        ><a href="/page/35/">35</a></li>
+        
+        <li
+        ><a href="/page/36/">36</a></li>
+        
+        <li
+        ><a href="/page/37/">37</a></li>
+        
+        <li
+        ><a href="/page/38/">38</a></li>
+        
+        <li
+        ><a href="/page/39/">39</a></li>
+        
+        <li
+        ><a href="/page/40/">40</a></li>
+        
+        <li
+        ><a href="/page/41/">41</a></li>
+        
+        <li
+        ><a href="/page/42/">42</a></li>
+        
+        <li
+        ><a href="/page/43/">43</a></li>
+        
+        <li
+        ><a href="/page/44/">44</a></li>
+        
+        <li
+        ><a href="/page/45/">45</a></li>
+        
+        <li
+        ><a href="/page/46/">46</a></li>
+        
+        <li
+        >
+        <a href="/page/2/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+        </li>
+        
+        <li>
+            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        </li>
+        
+    </ul>
+    
+  </div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

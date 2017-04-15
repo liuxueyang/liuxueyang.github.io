@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+	<meta name="generator" content="Hugo 0.20.1" />
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>黑历史 &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  <link href="http://liuxueyang.github.io/index.xml" rel="alternate" type="application/rss+xml" title="黑历史 &middot; liuxueyang" />
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="posts">
+    
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/20/ubuntu-12.04-%E5%AE%89%E8%A3%85%E4%B9%8B%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/">ubuntu 12.04 安装之后的配置问题</a>
+      </h1>
+      <span class="post-date">Nov 20, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/20/ubuntu-12.04-%E5%AE%89%E8%A3%85%E4%B9%8B%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+       首先换软件源。 如果安装vim的时候出现问题，比如： Reading package lists&hellip; DoneBuilding dependency tree Reading state information&hellip; DonePackage vim is not available, but is referred to by another package.This may mean that the package is missing, has been obsoleted, oris only available from another source E: Package &lsquo;vim&rsquo; has no installation candidate 执行 sudo apt-get update 就可以了 如果刚刚安装上系统，没有中文输入法，也没有输入法的切换面板，执行： killall ibus-daemon ibus-daemon -d 然后就出现了输入法切换面板，点击，找到 preferences 选项，在 inputmethod 里面添加中文输入法就可以了。 设置允许root 登录 ： vi /etc/lightdm/lightdm.conf. 在这个文件末尾加上下面两行代码 greeter-show-manual-login=trueallow-guest=false 保存退出。然后 sudo passwd root 设置root登录密码就可以了。  
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/12/ubuntu12.04-inodeclient-%E8%BF%9E%E6%A0%A1%E5%9B%AD%E7%BD%91/">ubuntu12.04 iNodeClient 连校园网</a>
+      </h1>
+      <span class="post-date">Nov 12, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/12/ubuntu12.04-inodeclient-%E8%BF%9E%E6%A0%A1%E5%9B%AD%E7%BD%91/#disqus_thread">Comments</a>
+      </span>
+      
+      百度文库里面有一个文档，叫做”ubuntu_12.04_安装_iNodeClient_教程“，按照那个做，安装上之后然后发现能通过身份验证，但是连不上网，继续执行下面的操作。 sudo chmod -R 777 /home/suruibin/iNodeClient（后面这个路径改成你自己的安装目录）
+进入目录 cd iNodeClient 安装：sudo ./install.sh
+sudo ln -s /usr/lib/i386-linux-gnu/libtiff.so.4 /usr/lib/i386-linux-gnu/libtiff.so.3
+sudo apt-get install libjpeg62
+从网上找到libtiff.so.4这个文件，执行 sudo cp libtiff.so.4 /usr/lib
+到此iNodeClient安装好了，输入用户名，密码什么的就可以了。
+2012-11-12 22:45:04
+这个方法以前一直可以，但是最近貌似不行了……囧，后来找各种方法，http://hi.baidu.com/shen1000shen/item/c935a9383b615542033edcf9 这位神牛总结的很好，佩服！终于连上网了，Ubuntu爽到爆～
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-537---artificial-intelligence/">uva 537 - Artificial Intelligence?</a>
+      </h1>
+      <span class="post-date">Nov 9, 2012 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-537---artificial-intelligence/#disqus_thread">Comments</a>
+      </span>
+      
+      Physics teachers in high school often think that problems given as text are more demanding than pure computations. After all, the pupils have to read and understand the problem first! So they don&rsquo;t state a problem like U=10V, I=5A, P=?&quot; but rather likeYou have an electrical circuit that contains a battery with a voltage of U=10V and a light-bulb. There&rsquo;s an electrical current of I=5A through the bulb. Which power is generated in the bulb?
+      <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-537---artificial-intelligence/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/09/vim-%E9%85%8D%E7%BD%AE-%E8%BD%AC%E8%BD%BD/">vim 配置 转载</a>
+      </h1>
+      <span class="post-date">Nov 9, 2012 &middot; 8 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/09/vim-%E9%85%8D%E7%BD%AE-%E8%BD%AC%E8%BD%BD/#disqus_thread">Comments</a>
+      </span>
+      
+      一个比较偷懒的方法是执行一下命令： cd /etc/vim sudo vi vimrc 然后把里面的注释去掉就可以了,但是里面的配置不太全。 原文链接 http://www.oschina.net/code/snippet_103341_9644 linux 平台：
+&quot; ----------------- Author: Ruchee &quot; ----------------- Email: my@ruchee.com &quot; ----------------- WebSite: http://www.ruchee.com &quot; ----------------- Date: 2012-05-01 &quot; Ctrl + H --光标移当前行行首 &quot; Ctrl + J --光标移下一行行首 &quot; Ctrl + K --光标移上一行行尾 &quot; Ctrl + L --光标移当前行行尾 &quot; Ctrl + C --编译 [支持C/C++、Java、Haskell] &quot; Ctrl + R --运行 [支持C/C++、Java、Haskell、Lua、Perl、Python、Ruby] &quot; Ctrl + ] --转到函数定义 &quot; Ctrl + T --返回调用函数 &quot; Ctrl + E --一步加载语法模板和作者、时间信息 &quot; &lt;C-P&gt; --单词补全 &quot; &lt;C-X&gt;&lt;C-L&gt; --整行补全 &quot; Tab键 --插入模式下的全功能语法结构补全 [snipMate插件] &quot; Shift + Insert --向Vim中粘贴从别处复制的内容 &quot; u [小写] --单步复原 [非插入模式] &quot; U [大写] --整行复原 [非插入模式] &quot; jj --保存文件并留在插入模式 [插入模式] &quot; kk --返回Normal模式 [插入模式] &quot; nt --打开NERDTree [非插入模式] &quot; tl --打开TagList [非插入模式] &quot; za --打开或关闭当前折叠 &quot; zM --关闭所有折叠 &quot; zR --打开所有折叠 &quot; :set syntax=cpp --手动选择语法高亮 [或 :set filetype=cpp] &quot; :%!
+      <a href="http://liuxueyang.github.io/blog/2012/11/09/vim-%E9%85%8D%E7%BD%AE-%E8%BD%AC%E8%BD%BD/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-10010---wheres-waldorf/">uva 10010 - Where&#39;s Waldorf?</a>
+      </h1>
+      <span class="post-date">Nov 9, 2012 &middot; 4 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-10010---wheres-waldorf/#disqus_thread">Comments</a>
+      </span>
+      
+      Given a m by n grid of letters, ( ), and a list of words, find the location in the grid at which the word can be found. A word matches a straight, uninterrupted line of letters in the grid. A word can match the letters in the grid regardless of case (i.e. upper and lower case letters are to be treated as the same). The matching can be done in any of the eight directions either horizontally, vertically or diagonally through the grid.
+      <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-10010---wheres-waldorf/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-253---cube-painting/">uva 253 - Cube painting</a>
+      </h1>
+      <span class="post-date">Nov 8, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-253---cube-painting/#disqus_thread">Comments</a>
+      </span>
+      
+      We have a machine for painting cubes. It is supplied with three different colors: blue, red and green. Each face of the cube gets one of these colors. The cube&rsquo;s faces are numbered as in Figure 1.  Figure 1. Since a cube has 6 faces, our machine can paint a face-numbered cube in different ways. When ignoring the face-numbers, the number of different paintings is much less, because a cube can be rotated.
+      <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-253---cube-painting/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-10161---ant-on-a-chessboard/">uva 10161 - Ant on a Chessboard</a>
+      </h1>
+      <span class="post-date">Nov 8, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-10161---ant-on-a-chessboard/#disqus_thread">Comments</a>
+      </span>
+      
+      One day, an ant called Alice came to an M*M chessboard. She wanted to go around all the grids. So she began to walk along the chessboard according to this way: (you can assume that her speed is one grid per second) At the first second, Alice was standing at (1,1). Firstly she went up for a grid, then a grid to the right, a grid downward. After that, she went a grid to the right, then two grids upward, and then two grids to the left…in a word, the path was like a snake.
+      <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-10161---ant-on-a-chessboard/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-113---power-of-cryptography/">uva 113 - Power of Cryptography</a>
+      </h1>
+      <span class="post-date">Nov 8, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-113---power-of-cryptography/#disqus_thread">Comments</a>
+      </span>
+      
+      Current work in cryptography involves (among other things) large prime numbers and computing powers of numbers modulo functions of these primes. Work in this area has resulted in the practical use of results from number theory and other branches of mathematics once considered to be of only theoretical interest. This problem involves the efficient computation of integer roots of numbers. Given an integer and an integer you are to write a program that determines , the positive root of p.
+      <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-113---power-of-cryptography/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-621---secret-research/">uva 621 - Secret Research</a>
+      </h1>
+      <span class="post-date">Nov 7, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-621---secret-research/#disqus_thread">Comments</a>
+      </span>
+      
+      At a certain laboratory results of secret research are thoroughly encrypted. A result of a single experiment is stored as an information of its completion: positive result', negative result&rsquo;, experiment failed' or experiment not completed&rsquo;
+ The encrypted result constitutes a string of digits S, which may take one of the following forms:
+ (A sample result S35 means that if we add digits 35 from the right hand side to a digit sequence then we shall get the digit sequence corresponding to a failed experiment) You are to write a program which decrypts given sequences of digits.
+      <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-621---secret-research/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-107---the-cat-in-the-hat/">uva 107 - The Cat in the Hat</a>
+      </h1>
+      <span class="post-date">Nov 7, 2012 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-107---the-cat-in-the-hat/#disqus_thread">Comments</a>
+      </span>
+      
+      (An homage to Theodore Seuss Geisel) The Cat in the Hat is a nasty creature,But the striped hat he is wearing has a rather nifty feature. With one flick of his wrist he pops his top off. Do you know what&rsquo;s inside that Cat&rsquo;s hat?A bunch of small cats, each with its own striped hat. Each little cat does the same as line three,All except the littlest ones, who just say ``Why me?
+      <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-107---the-cat-in-the-hat/">Read On &rarr;</a>
+      
+    </div>
+    
+    
+    
+    <ul class="pagination">
+        
+        <li>
+            <a href="/" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
+        </li>
+        
+        <li
+        >
+        <a href="/page/44/" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+        </li>
+        
+        <li
+        ><a href="/">1</a></li>
+        
+        <li
+        ><a href="/page/2/">2</a></li>
+        
+        <li
+        ><a href="/page/3/">3</a></li>
+        
+        <li
+        ><a href="/page/4/">4</a></li>
+        
+        <li
+        ><a href="/page/5/">5</a></li>
+        
+        <li
+        ><a href="/page/6/">6</a></li>
+        
+        <li
+        ><a href="/page/7/">7</a></li>
+        
+        <li
+        ><a href="/page/8/">8</a></li>
+        
+        <li
+        ><a href="/page/9/">9</a></li>
+        
+        <li
+        ><a href="/page/10/">10</a></li>
+        
+        <li
+        ><a href="/page/11/">11</a></li>
+        
+        <li
+        ><a href="/page/12/">12</a></li>
+        
+        <li
+        ><a href="/page/13/">13</a></li>
+        
+        <li
+        ><a href="/page/14/">14</a></li>
+        
+        <li
+        ><a href="/page/15/">15</a></li>
+        
+        <li
+        ><a href="/page/16/">16</a></li>
+        
+        <li
+        ><a href="/page/17/">17</a></li>
+        
+        <li
+        ><a href="/page/18/">18</a></li>
+        
+        <li
+        ><a href="/page/19/">19</a></li>
+        
+        <li
+        ><a href="/page/20/">20</a></li>
+        
+        <li
+        ><a href="/page/21/">21</a></li>
+        
+        <li
+        ><a href="/page/22/">22</a></li>
+        
+        <li
+        ><a href="/page/23/">23</a></li>
+        
+        <li
+        ><a href="/page/24/">24</a></li>
+        
+        <li
+        ><a href="/page/25/">25</a></li>
+        
+        <li
+        ><a href="/page/26/">26</a></li>
+        
+        <li
+        ><a href="/page/27/">27</a></li>
+        
+        <li
+        ><a href="/page/28/">28</a></li>
+        
+        <li
+        ><a href="/page/29/">29</a></li>
+        
+        <li
+        ><a href="/page/30/">30</a></li>
+        
+        <li
+        ><a href="/page/31/">31</a></li>
+        
+        <li
+        ><a href="/page/32/">32</a></li>
+        
+        <li
+        ><a href="/page/33/">33</a></li>
+        
+        <li
+        ><a href="/page/34/">34</a></li>
+        
+        <li
+        ><a href="/page/35/">35</a></li>
+        
+        <li
+        ><a href="/page/36/">36</a></li>
+        
+        <li
+        ><a href="/page/37/">37</a></li>
+        
+        <li
+        ><a href="/page/38/">38</a></li>
+        
+        <li
+        ><a href="/page/39/">39</a></li>
+        
+        <li
+        ><a href="/page/40/">40</a></li>
+        
+        <li
+        ><a href="/page/41/">41</a></li>
+        
+        <li
+        ><a href="/page/42/">42</a></li>
+        
+        <li
+        ><a href="/page/43/">43</a></li>
+        
+        <li
+        ><a href="/page/44/">44</a></li>
+        
+        <li
+        class="active"><a href="/page/45/">45</a></li>
+        
+        <li
+        ><a href="/page/46/">46</a></li>
+        
+        <li
+        >
+        <a href="/page/46/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+        </li>
+        
+        <li>
+            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        </li>
+        
+    </ul>
+    
+  </div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

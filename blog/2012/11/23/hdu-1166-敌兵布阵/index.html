@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>hdu 1166 敌兵布阵 &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">hdu 1166 敌兵布阵</h1>
+    <span class="post-date">Nov 23, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu-1166-%E6%95%8C%E5%85%B5%E5%B8%83%E9%98%B5/#disqus_thread">Comments</a>
+    </span>
+    <p>敌兵布阵</p>
+
+<p>Time Limit: <sup>2000</sup>&frasl;<sub>1000</sub> MS (Java/Others)    Memory Limit: <sup>65536</sup>&frasl;<sub>32768</sub> K (Java/Others)
+Total Submission(s): 22041    Accepted Submission(s): 9654</p>
+
+<p>Problem Description
+C国的死对头A国这段时间正在进行军事演习，所以C国间谍头子Derek和他手下Tidy又开始忙乎了。A国在海岸线沿直线布置了N个工兵营地,Derek和Tidy的任务就是要监视这些工兵营地的活动情况。由于采取了某种先进的监测手段，所以每个工兵营地的人数C国都掌握的一清二楚,每个工兵营地的人数都有可能发生变动，可能增加或减少若干人手,但这些都逃不过C国的监视。
+中央情报局要研究敌人究竟演习什么战术,所以Tidy要随时向Derek汇报某一段连续的工兵营地一共有多少人,例如Derek问:“Tidy,马上汇报第3个营地到第10个营地共有多少人!”Tidy就要马上开始计算这一段的总人数并汇报。但敌兵营地的人数经常变动，而Derek每次询问的段都不一样，所以Tidy不得不每次都一个一个营地的去数，很快就精疲力尽了，Derek对Tidy的计算速度越来越不满:&ldquo;你个死肥仔，算得这么慢，我炒你鱿鱼!”Tidy想：“你自己来算算看，这可真是一项累人的工作!我恨不得你炒我鱿鱼呢!”无奈之下，Tidy只好打电话向计算机专家Windbreaker求救,Windbreaker说：“死肥仔，叫你平时做多点acm题和看多点算法书，现在尝到苦果了吧!”Tidy说：&rdquo;我知错了。。。&rdquo;但Windbreaker已经挂掉电话了。Tidy很苦恼，这么算他真的会崩溃的，聪明的读者，你能写个程序帮他完成这项工作吗？不过如果你的程序效率不够高的话，Tidy还是会受到Derek的责骂的.</p>
+
+<p>Input
+第一行一个整数T，表示有T组数据。
+每组数据第一行一个正整数N（N&lt;=50000）,表示敌人有N个工兵营地，接下来有N个正整数,第i个正整数ai代表第i个工兵营地里开始时有ai个人（1&lt;=ai&lt;=50）。
+接下来每行有一条命令，命令有4种形式：
+(1) Add i j,i和j为正整数,表示第i个营地增加j个人（j不超过30）
+(2)Sub i j ,i和j为正整数,表示第i个营地减少j个人（j不超过30）;
+(3)Query i j ,i和j为正整数,i&lt;=j，表示询问第i到第j个营地的总人数;
+(4)End 表示结束，这条命令在每组数据最后出现;
+每组数据最多有40000条命令</p>
+
+<p>Output
+对第i组数据,首先输出“Case i:”和回车,
+对于每个Query询问，输出一个整数并回车,表示询问的段中的总人数,这个数保持在int以内。</p>
+
+<p>Sample Input
+1 10
+1 2 3 4 5 6 7 8 9 10
+Query 1 3
+Add 3 6
+Query 2 7
+Sub 10 2
+Add 6 3
+Query 3 10
+End</p>
+
+<p>Sample Output
+Case 1: 6 33 59</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+#define max 50000&lt;&lt;2
+int sum[max];
+void pushup(int rt)
+{
+    sum[rt] = sum[rt&lt;&lt;1]+sum[rt&lt;&lt;1|1];
+}
+void build(int l, int r, int rt)
+{
+    if (l==r) {scanf(&quot;%d&quot;,&amp;sum[rt]);return;}
+    int m = l+((r-l)&gt;&gt;1);
+    build(l,m,rt&lt;&lt;1);
+    build(m+1,r,rt&lt;&lt;1|1);
+    pushup(rt);
+}
+int query(int L, int R, int l, int r, int rt)
+{
+    if (L&lt;=l&amp;&amp;R&gt;=r)return sum[rt];
+    int m = l+((r-l)&gt;&gt;1);
+    int ret = 0;
+    if (L&lt;=m) ret+=query(L,R,l,m,rt&lt;&lt;1);
+    if (R&gt;m) ret+=query(L,R,m+1,r,rt&lt;&lt;1|1);
+    return ret;
+}
+void update(int p, int add, int l, int r, int rt)
+{
+    if (l==r) {sum[rt]+=add; return;}
+    int m = l+((r-l)&gt;&gt;1);
+    if (p&lt;=m) update(p,add,l,m,rt&lt;&lt;1);
+    else update(p,add,m+1,r,rt&lt;&lt;1|1);
+    pushup(rt);
+}
+int main(void)
+{
+#ifndef ONLINE_JUDGE
+    freopen(&quot;in.cpp&quot;,&quot;r&quot;,stdin);
+#endif
+    int t;scanf(&quot;%d&quot;,&amp;t);
+    for (int i=1;i&lt;t+1;i++)
+    {
+        int n;scanf(&quot;%d&quot;,&amp;n);build(1,n,1);
+        char a[20]; printf(&quot;Case %d:\n&quot;,i);
+        while (scanf(&quot;%s&quot;,a))
+        {
+            if ('E'==a[0]) break;
+            int start,end; scanf(&quot;%d%d&quot;,&amp;start,&amp;end);
+            if ('Q'==a[0]) printf(&quot;%d\n&quot;,query(start,end,1,n,1));
+            else if('A'==a[0]) update(start,end,1,n,1);
+            else update(start,-end,1,n,1);
+        }
+    }
+    return 0;
+}
+</code></pre>
+
+<p>这种题目不要用cin cout</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

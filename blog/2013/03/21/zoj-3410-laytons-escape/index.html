@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>zoj 3410 Layton&#39;s Escape &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">zoj 3410 Layton&#39;s Escape</h1>
+    <span class="post-date">Mar 21, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/21/zoj-3410-laytons-escape/#disqus_thread">Comments</a>
+    </span>
+    <p>Professor Layton is a renowned archaeologist from London&rsquo;s Gressenheller University. He and his apprentice Luke has solved various mysteries in different places.
+ 
+ 
+Unfortunately, Layton and Luke are trapped in a pyramid now. To escape from this dangerous place, they need to pass N traps. For each trap, they can use Ti minutes to remove it. If they pass an unremoved trap, they will lose 1 HP. They have K HP at the beginning of the escape and they will die at 0 HP.
+Of course, they don&rsquo;t want trigger any traps, but there is a monster chasing them. If they haven&rsquo;t pass the ith trap in Di minutes, the monster will catch and eat them. The time they start to escape is 0, and the time cost on running will be ignored. Please help Layton to escape from the pyramid with the minimal HP cost.
+There are multiple test cases (no more than 20).
+For each test case, the first line contains two integers N and K (1 &lt;= N &lt;= 25000, 1 &lt;= K &lt;= 5000), then followed by N lines, the ith line contains two integers Ti and Di (0 &lt;= Ti &lt;= 10^9, 0 &lt;= Di &lt;= 10^9).
+For each test case, if they can escape from the pyramid, output the minimal HP cost, otherwise output -1.</p>
+
+<pre><code class="language-cpp">
+struct seg{
+  int a, b;
+  friend bool operator &lt; (seg x, seg y){
+    return x.a &lt; y.a;
+  }
+}x[25000+10];
+int cmp(const void *x, const void *y){
+  return (*(seg*)x).b - (*(seg*)y).b;
+}
+
+</code></pre>
+
+<p>这个就是按照结构体中的变量 b 从小到大排序。然后呢，就是建一个优先队列，为什么用优先队列捏？原因很简单，因为想法就是当遇到一个不能通过的关卡是，我要损失一滴血，跳过其中的一关，那到底跳过哪一关捏？当然是跳过花费自己的时间最长的那一关啊，所以优先队列的作用就是把通过每一关需要花费的时间从大到小排序，这样跳过每一关的时候，只需要pop一个元素就可以了，实际上，当初自己就是这个地方没有想透彻，以为跳过其中一关后可能影响已经通过的其他的关卡的通过与否，事实上，这是不影响的，只要跳过已经通过的当中花费时间最长的那一关，就一定可以通过除了这一关之外的已经通过的所有关卡，包括正在通过的这一关。这样就OK了，另外，还有一个细节，就是当血的数量为0的时候，失败，输出-1，所以，当决定跳过一关的时候，要判断血的数量是不是大于1，而不是大于0！这个边界条件要搞清楚。
+结构体中的friend友元函数，目的是构造优先队列的时候，按照变量 a 的值从大到小排序，方便以后出队。
+学习了一下优先队列，这题WA了一次……
+原来是水题啊，唉。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;queue&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+struct seg{
+  int a, b;
+  friend bool operator &lt; (seg x, seg y){
+    return x.a &lt; y.a;
+  }
+}x[25000+10];
+int cmp(const void *x, const void *y){
+  return (*(seg*)x).b - (*(seg*)y).b;
+}
+int main(void){
+  int n, k;
+#ifndef ONLINE_JUDGE
+  freopen(&quot;zoj3410.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (~scanf(&quot;%d%d&quot;, &amp;n, &amp;k)){
+    int sum = 0, temp = k; bool flag = true;
+    priority_queue&lt;seg&gt; p;
+    for (int i = 0; i &lt; n; ++i){
+      scanf(&quot;%d%d&quot;, &amp;x[i].a, &amp;x[i].b);
+    }
+    qsort(x, n, sizeof(x[0]), cmp);
+    for (int i = 0; i &lt; n; ++i){
+      if (!flag) break;
+      sum += x[i].a; p.push(x[i]);
+      if (sum &lt;= x[i].b){
+      }
+      else {
+        if (p.size() != 0 &amp;&amp; k &gt; 1){
+          sum -= p.top().a; p.pop(); k--;
+        }
+        else{
+          flag = false;
+        }
+      }
+    }
+    if (flag) printf(&quot;%d\n&quot;, temp - k);
+    else printf(&quot;-1\n&quot;);
+  }
+  return 0;
+}
+
+</code></pre>
+
+<p>没看别人的解题报告……自己做的，有成就感，O(∩_∩)O哈哈~
+学习优先队列的测试程序：</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;queue&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+struct seg{
+  int a, b;
+  friend bool operator &lt; (seg x, seg y){
+    return x.a &gt; y.a;
+  }
+}ti[30];
+int main(void){
+  freopen(&quot;priority.in&quot;, &quot;r&quot;, stdin);
+  priority_queue&lt;seg&gt; q;
+  queue&lt;seg&gt; p;
+  for (int i = 0; i &lt; 3; ++i)
+  {
+    scanf(&quot;%d%d&quot;, &amp;ti[i].a, &amp;ti[i].b);
+    q.push(ti[i]); p.push(ti[i]);
+  }
+  for (int i = 0; i &lt; 3; ++i) 
+  {printf(&quot;%d %d &quot;, q.top().a, q.top().b); q.pop();printf(&quot;\n&quot;);}
+  printf(&quot;\n&quot;);
+  for (int i = 0; i &lt; 3;++i) 
+  {printf(&quot;%d %d &quot;, p.front().a, p.front().b); p.pop(); printf(&quot;\n&quot;);}
+  printf(&quot;\n&quot;);
+  return 0;
+}
+
+</code></pre>
+
+<p>priority.in文件：</p>
+
+<pre><code class="language-cpp">
+40 60
+80 90
+60 120
+
+</code></pre>
+
+<p>输出：</p>
+
+<pre><code class="language-cpp">
+40 60
+60 120
+80 90
+
+40 60
+80 90
+60 120
+
+Hit any key to close this window...
+
+</code></pre>
+
+<p>^_^</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

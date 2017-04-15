@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>一个有意思的汇编程序 ——其实就是一个根据位移进行转移的应用=_= &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">一个有意思的汇编程序 ——其实就是一个根据位移进行转移的应用=_=</h1>
+    <span class="post-date">Oct 6, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/06/%E4%B8%80%E4%B8%AA%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F-%E5%85%B6%E5%AE%9E%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AA%E6%A0%B9%E6%8D%AE%E4%BD%8D%E7%A7%BB%E8%BF%9B%E8%A1%8C%E8%BD%AC%E7%A7%BB%E7%9A%84%E5%BA%94%E7%94%A8_/#disqus_thread">Comments</a>
+    </span>
+    <p>分析一下这个程序=_=</p>
+
+<pre><code>assume cs:code
+
+code segment
+    mov ax, 4c00h
+    int 21h
+start:
+    mov ax, 0
+s:    
+    nop
+    nop
+
+    mov di, offset s
+    mov si, offset s2
+    mov ax, cs:[si]
+    mov cs:[di], ax
+s0:
+    jmp short s
+
+s1:
+    mov ax, 0
+    int 21h
+    mov ax, 0
+
+s2:
+    jmp short s1
+    nop
+code ends
+
+end start
+</code></pre>
+
+<p>开始，一眼看去，这个程序应该会陷入死循环吧。。</p>
+
+<p>其实，认真分析之后就会发现。这个程序竟然可以正常地运行并且退出！</p>
+
+<p>首先，一定要注意jmp指令的内部运行方法！</p>
+
+<p>首先呢，为了方便，我们先记录下每个标号的偏移地址和机器码。方便以后分析。</p>
+
+<pre><code>S:  CS:8H
+
+CS:9H
+
+S0: CS:16H  EBF0 JMP 8
+
+S1:  CS:18H B80000
+
+S2:  CS:20H EBF6 JMP 18
+</code></pre>
+
+<p>之后，S处的数据发生改变：</p>
+
+<pre><code>S: CS:8H EBF6
+
+S0: CS:16H  EBF0 JMP 8
+
+S1:  CS:18H B80000
+
+S2:  CS:20H EBF6 JMP 18
+</code></pre>
+
+<p>然后，在标号S0处，代码回到S处，这里，S处已经有代码了。所以会执行机器码EBF6，这是什么意思呢？这实际上是一个jump语句，只是不是jump short s1了，因为拷贝的是机器码，而机器码记录的是位移，也就是说，还记得吗？jmp是根据位移进行转移的，F6是-10的补码形式，所以会让IP-10个字节，注意，执行这条语句的时候，IP=IP+2-10=0.这里，为什么要+2呢？因为根据位移进行转移的时候，IP是指向jmp后面的指令的，而jmp指令的大小是2个字节，所以要+2,，使得IP指向下一条指令。所以，程序又欢乐地回到开始了，正好执行mov ax, 4c00h   int 21h ，然后就结束了！</p>
+
+<p>有没有很有趣~~</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

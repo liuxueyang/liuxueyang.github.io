@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>zoj 3407 Doraemon&#39;s Cake Machine &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">zoj 3407 Doraemon&#39;s Cake Machine</h1>
+    <span class="post-date">Mar 19, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/19/zoj-3407-doraemons-cake-machine/#disqus_thread">Comments</a>
+    </span>
+    <p>One day, N kids got one cake (a cylinder in shape). They decided to divide the cake so that everyone can have one piece of that cake. In the interest of fairness, pieces of the cake should be equal in size.
+However, the kids had no knives to cut the cake. Luckily, Doraemon borrowed them a magic cake machine that can cut and clone cake.
+To use Doraemon&rsquo;s cake machine, exactly M instructions must be entered. Otherwise the cake machine will destroy the cake (Doraemon&rsquo;s machines are not stable enough and have strange limits, you know).
+For each instruction, the machine can perform one of the following actions:
+The two kinds of &lsquo;cut&rsquo; actions are shown below:
+The cake is always cutted as a whole. You can not cut just one or several pieces. For example, if you cut horizontally and then vertically, you always get 4 pieces.
+A &lsquo;cut&rsquo; action should make the cake into more pieces (i.e. you can not cut at a same position twice). Finally, there should be exactly N pieces of cake, which are in a same size. Thus each kid can get one and no pieces of cake are left.
+Since the &lsquo;clone&rsquo; action is extremely slow, use it as less as possible.
+This problem contains multi test cases.
+The first line contains an integer T (0 ≤ T ≤ 2000), indicating the number of test cases.
+Following T lines, each line contains one test case.
+Each test case contains two integers N (1 ≤ N ≤ 6000000) and M (0 ≤ M ≤ 3000000), separated by one space, indicating there are N kids and M instructions should be used.
+For each case, output one integer R in one line, where R is the minimal number of &lsquo;clone&rsquo; instructions. If exactly N pieces of cake can not be made from exactly M instructions, output -1 instead of R.</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int main(void){
+  int n, m, x, y, z, t;
+#ifndef ONLINE_JUDGE
+  freopen(&quot;in&quot;, &quot;r&quot;, stdin);
+#endif
+  scanf(&quot;%d&quot;, &amp;t);
+  while (t--){
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    if (n - m &lt;= 0) {
+      printf(&quot;-1\n&quot;); continue;
+    }
+    if (n - m == 1){
+      printf(&quot;0\n&quot;); continue;
+    } //这种情况也要考虑一下…… 因为题目中没有说切的过程中需要等份地切。。
+    int min = 1&lt;&lt;30; // 坑！！
+    for (int i = 0; i &lt;= sqrt(n-m)+1; ++i){
+      x = i;
+      if ((n-m-x)%(2*x-1) == 0){
+        y = (n-m-x)/(2*x-1);
+        z = m - x - y;
+        if (min &gt; z &amp;&amp; z &gt;= 0) min = z;
+      }
+    }
+/*    for (int i = 0; i &lt;= sqrt(n-m) + 1; ++i){
+      y = i;
+      if ((n-m+y)%(2*y+1) == 0){
+        x = (n-m+y)/(2*y+1); z = m - x - y;
+        if (min &gt; z &amp;&amp; z &gt;= 0) min = z;
+      }
+    }
+*/    if (min &gt; m) printf(&quot;-1\n&quot;);
+    else printf(&quot;%d\n&quot;, min);
+  }
+  return 0 ;
+}
+
+</code></pre>
+
+<p>这道题目也太坑了……当初不知道切的过程中不一定要等份地切，只需要最后等份就可以了……次奥……
+唉，还是怪自己，谁让自己没有注意数据范围捏，谁让自己没有想到可以暴力枚举捏，谁让自己还傻乎乎地以为这个题目是个遥远的数学题捏，谁让自己……那么二捏……
+还有，设置 min 的值的时候，搞的不够大啊，然后WA了好几次啊，至于这么纠结么……以后学学人家，最小值的变量要初始化足够大，比如 0x3f3f3f3f
+设竖着切 x 刀，横着切 y 刀，复制 z 次。
+2 * x * (y + 1) + z = n
+x + y + z = m
+两个式子联立，可以得到 n - m = 2 * x * y + x - y = x * y + x + x * y - y &gt;= x * y 所以呢，只需要枚举 x 或者 y 到 sqrt(n - m) 就可以了……是不是很快！
+然后要考虑一种情况，就是 n == m + 1 的情况，这个时候，只需要横着切 m 刀，不用复制。
+其实这是一道水题啊，为毛线自己没有做出来……
+原因很简单，自己平时做题的时候都是做不出来的时候直接去翻人家的解题报告，看别人的代码去了，真正到自己写程序了，会出现各种错误，并且都是从来没有经历过的各种错误，也失去了独立思考问题的能力，以后要都自己做，可以看别人的代码，但是一定要自己独立思考一段时间，有自己的想法才可以，自己敲出来才知道自己经常的错误犯在哪里……然后以后真正比赛的时候，才能够发挥出正常水平，是不？</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

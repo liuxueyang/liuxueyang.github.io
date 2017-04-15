@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>codeforces 192 D &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="This is my Notes">
+  <meta name="keywords" content="Notes,Diary">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">codeforces 192 D</h1>
+    <span class="post-date">Jul 22, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/22/codeforces-192-d/#disqus_thread">Comments</a>
+    </span>
+    <p>link: <a href="http://codeforces.com/contest/330/problem/D">http://codeforces.com/contest/330/problem/D</a>
+The discription looks so long, but the problem is simple if you can grasp the problem quickly.</p>
+
+<pre><code class="language-cpp">
+/*
+ID: zypz4571
+LANG: C++
+TASK: 192d.cpp
+ */
+
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+#include &lt;deque&gt;
+#include &lt;queue&gt;
+#include &lt;list&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;utility&gt;
+#include &lt;functional&gt;
+#include &lt;fstream&gt;
+#include &lt;iomanip&gt;
+#include &lt;sstream&gt;
+#include &lt;numeric&gt;
+#include &lt;cassert&gt;
+#include &lt;ctime&gt;
+
+#define INF 0x3f3f3f3f
+#define REP(i, n) for(int i=0;i&lt;int(n);++i)
+#define FOR(i, a, b) for(int i=int(a);i&lt;int(b);++i)
+#define DWN(i, b, a) for(int i=int(b-1);i&gt;=int(a);--i)
+#define REP_1(i, n) for(int i=1;i&lt;=int(n);++i)
+#define mid int m=(l+r)/2
+using namespace std;
+int dir[4][2] = {{0,-1}, {0, 1}, {-1, 0}, {1, 0}};
+char mat[1003][1003];
+struct Node {
+    int x, y, time;
+};
+Node start, end;
+int ans, matime[1003][1003], n, m;
+bool vis[1003][1003];
+void bfs(Node end) {
+    queue&lt;Node&gt; q; q.push(end);
+    while (!q.empty()) {
+        Node tmp; tmp = q.front(); q.pop();
+        REP (i, 4) {
+            int x, y;
+            x = tmp.x + dir[i][0]; y = tmp.y + dir[i][1];
+            if (x&gt;=0 &amp;&amp; x&lt;n &amp;&amp; y&gt;=0 &amp;&amp; y&lt;m &amp;&amp; mat[x][y] != 'T' &amp;&amp; !vis[x][y]) {
+                Node t; t.x = x; t.y = y; t.time = tmp.time + 1; matime[x][y] = t.time;
+                q.push(t); vis[x][y] = true;
+            }
+        }
+    }
+}
+int main ( int argc, char *argv[] )
+{
+#ifndef ONLINE_JUDGE
+freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+#endif
+    cin&gt;&gt;n&gt;&gt;m;
+    memset(vis, false, sizeof(vis));
+    REP (i, n) {
+        cin&gt;&gt;mat[i];
+        REP (j, m) {
+            if (mat[i][j] == 'E') {
+                end.x = i, end.y = j; end.time = 0;
+                vis[i][j] = true;
+                matime[i][j] = 0;
+            } else if (mat[i][j] == 'S') {
+                start.x = i, start.y = j;
+                matime[i][j] = INF;
+            } else matime[i][j] = INF;
+        }
+    }
+    bfs(end);
+    int Time = matime[start.x][start.y], ans = 0;
+    REP (i, n) {
+        REP (j, m) {
+            if (isdigit(mat[i][j]) &amp;&amp; matime[i][j] != INF) {
+                if (Time &gt;= matime[i][j]) ans += (mat[i][j]-'0');
+            }
+        }
+    }
+    printf(&quot;%d\n&quot;, ans);
+        return EXIT_SUCCESS;
+}                /* ----------  end of function main  ---------- */
+
+</code></pre>
+
+<p>standard dfs</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+
