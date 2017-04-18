@@ -91,7 +91,8 @@
 
 <p>它接收一個函數、一個起始值、一個列表。它的作用相當于：</p>
 
-<pre><code class="language-haskell">foldl f z [x_1, x_2, ..., x_n] == (... ((z `f` x_1) `f` x_2) `f` ...) `f` x_n
+<pre><code class="language-haskell">foldl f z [x_1, x_2, ..., x_n] ==
+(... ((z `f` x_1) `f` x_2) `f` ...) `f` x_n
 </code></pre>
 
 <p>也就是它把起始值作爲<code>f</code>的*左參數*，從左邊迭代列表。</p>
@@ -117,7 +118,8 @@ mfoldl' f accu (x : xs) =
 
 <p>它的作用相當于：</p>
 
-<pre><code class="language-haskell">foldr f z [x_1, x_2, ..., x_n] == (x_1 `f` (x_2 `f` (... (x_n `f` z)...)))
+<pre><code class="language-haskell">foldr f z [x_1, x_2, ..., x_n] == 
+(x_1 `f` (x_2 `f` (... (x_n `f` z)...)))
 </code></pre>
 
 <p>它把起始值作爲<code>f</code>的*右參數*，從右邊開始迭代列表。</p>
