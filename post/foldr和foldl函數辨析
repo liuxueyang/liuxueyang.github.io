@@ -1,0 +1,72 @@
++++
+categories = [Haskell]
+date = "2017-04-18T16:37:32+08:00"
+description = "分析foldl和foldr函數"
+keywords = [Haskell]
+title = "foldl和foldr的不同點"
+
++++
+
+### foldl
+
+`foldl`這個函數的類型是：
+
+``` haskell
+(a -> b -> a) -> a -> [b] -> b
+```
+
+它接收一個函數、一個起始值、一個列表。它的作用相當于：
+
+``` haskell
+foldl f z [x_1, x_2, ..., x_n] == (... ((z `f` x_1) `f` x_2) `f` ...) `f` x_n
+```
+
+也就是它把起始值作爲`f`的*左參數*，從左邊迭代列表。
+
+可以這樣實現這個函數：
+
+``` haskell
+mfoldl' :: (a -> b -> a) -> a -> [b] -> a
+mfoldl' f accu [] = accu
+mfoldl' f accu (x : xs) =
+  mfoldl' f (accu `f` x) xs
+```
+
+``` haskell
+λ> mfoldl' (-) 0 [1..3]
+-6
+```
+
+### foldr
+
+`foldr`這個函數的類型是：
+
+``` haskell
+(a -> b -> b) -> b -> [a] -> b
+```
+
+它的作用相當于：
+
+``` haskell
+foldr f z [x_1, x_2, ..., x_n] == (x_1 `f` (x_2 `f` (... (x_n `f` z)...)))
+```
+
+它把起始值作爲`f`的*右參數*，從右邊開始迭代列表。
+
+這樣實現這個函數：
+
+``` haskell
+mfoldr' :: (a -> b -> b) -> b -> [a] -> b
+mfoldr' f accu [] = accu
+mfoldr' f accu (x : xs) =
+  x `f` (mfoldr' f accu xs)
+```
+
+``` haskell
+λ> mfoldr' (-) 0 [1..3]
+2
+```
+
+----
+
+其實單單從函數的類型上就能夠得到很多信息。這也是強類型語言的一個優點吧。
