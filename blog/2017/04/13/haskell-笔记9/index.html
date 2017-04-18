@@ -75,7 +75,7 @@
 <div class="content container">
   <div class="post">
     <h1 class="post-title">Haskell 笔记9</h1>
-    <span class="post-date">Apr 13, 2017 &middot; 7 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/04/13/haskell-%E7%AC%94%E8%AE%B09/#disqus_thread">Comments</a>
+    <span class="post-date">Apr 13, 2017 &middot; 8 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/04/13/haskell-%E7%AC%94%E8%AE%B09/#disqus_thread">Comments</a>
     </span>
     
 
@@ -118,8 +118,8 @@ shortLines = unlines . filter ((&lt;5) . length) . lines
 palindrome :: String -&gt; String
 palindrome =
   unlines . map (\ str -&gt;
-                   if str == reverse str then &quot;Yes&quot;
-                   else &quot;No&quot;) . lines
+				   if str == reverse str then &quot;Yes&quot;
+				   else &quot;No&quot;) . lines
 </code></pre>
 
 <p>虽然我们写的程序是把一个字符串处理成了另外一个字符串，但是运行的时候，它的表现却是：读入一个字符串，输出结果，然后读入下一个字符串，输出结果，一直到文件结尾。这是因为Haskell的懒惰性质。</p>
@@ -130,8 +130,8 @@ palindrome =
 
 main =
   withFile &quot;girlfriend.txt&quot; ReadMode ( \ h -&gt; do
-                                         lines &lt;- hGetContents h
-                                         putStr lines)
+										 lines &lt;- hGetContents h
+										 putStr lines)
 </code></pre>
 
 <p><code>FilePath</code>类型是String的一个别名：</p>
@@ -267,15 +267,15 @@ main = do
 
   contents &lt;- hGetContents handle
   let oldTasks = lines contents
-      oldTasksNumber = zipWith
-        (\n line -&gt; show n ++ &quot; - &quot; ++ line) [1..] oldTasks
+	  oldTasksNumber = zipWith
+		(\n line -&gt; show n ++ &quot; - &quot; ++ line) [1..] oldTasks
 
   putStrLn . unlines $ oldTasksNumber
   putStrLn &quot;Enter the item number you want to delete:&quot;
 
   input &lt;- getLine
   let pos = read input
-      newTasks = delete (oldTasks !! (pos - 1)) oldTasks
+	  newTasks = delete (oldTasks !! (pos - 1)) oldTasks
 
   hPutStr tempHandle . unlines $ newTasks
   hClose handle
@@ -325,8 +325,8 @@ import Data.List
 
 dispatch :: [(String, [String] -&gt; IO ())]
 dispatch = [ (&quot;add&quot;, add)
-           , (&quot;view&quot;, view)
-           , (&quot;remove&quot;, remove)]
+		   , (&quot;view&quot;, view)
+		   , (&quot;remove&quot;, remove)]
 
 main = do
   (command : args) &lt;- getArgs
@@ -340,17 +340,17 @@ view :: [String] -&gt; IO ()
 view [fileName] = do
   contents &lt;- readFile fileName
   mapM_ putStrLn .
-    zipWith (\n line -&gt; show n ++ &quot; - &quot; ++ line) [0..] .
-    lines $ contents
+	zipWith (\n line -&gt; show n ++ &quot; - &quot; ++ line) [0..] .
+	lines $ contents
 
 remove :: [String] -&gt; IO ()
 remove [filename, pos] = do
   (tempFile, tempHandle) &lt;- openTempFile &quot;/tmp&quot; &quot;TODO&quot;
   content &lt;- readFile filename
   let oldTasks = lines content
-      index = read pos
-      targetItem = oldTasks !! index
-      newTasks = delete targetItem oldTasks
+	  index = read pos
+	  targetItem = oldTasks !! index
+	  newTasks = delete targetItem oldTasks
 
   putStrLn $ &quot;The Item you have removed: &quot; ++ targetItem
   hPutStr tempHandle $ unlines newTasks
@@ -385,18 +385,18 @@ $ ./todo view TODO
 
 <pre><code class="language-haskell">dispatch :: [(String, [String] -&gt; IO ())]
 dispatch = [ (&quot;add&quot;, add)
-           , (&quot;view&quot;, view)
-           , (&quot;remove&quot;, remove)
-           , (&quot;bump&quot;, bump)]
+		   , (&quot;view&quot;, view)
+		   , (&quot;remove&quot;, remove)
+		   , (&quot;bump&quot;, bump)]
 
 bump :: [String] -&gt; IO ()
 bump [fileName, pos] = do
   (tempFile, tempHandle) &lt;- openTempFile &quot;/tmp&quot; &quot;TODO&quot;
   content &lt;- readFile fileName
   let oldTasks = lines content
-      index = read pos
-      targetItem = oldTasks !! index
-      newTasks = targetItem : (delete targetItem oldTasks)
+	  index = read pos
+	  targetItem = oldTasks !! index
+	  newTasks = targetItem : (delete targetItem oldTasks)
 
   putStrLn $ &quot;You have bumpped: &quot; ++ targetItem
   hPutStr tempHandle . unlines $ newTasks
@@ -481,8 +481,8 @@ mkStdGen :: Int -&gt; StdGen
 threeCoins :: StdGen -&gt; (Bool, Bool, Bool)
 threeCoins gen =
   let (firstCoin, newGen) = random gen
-      (secondCoin, newGen') = random newGen
-      (thirdCoin, _) = random newGen'
+	  (secondCoin, newGen') = random newGen
+	  (thirdCoin, _) = random newGen'
   in (firstCoin, secondCoin, thirdCoin)
 
 
@@ -563,11 +563,11 @@ askForNumber gen = do
   putStrLn &quot;Which number in the range from 1 to 10 am I thinking of? &quot;
   numberString &lt;- getLine
   when (not $ null numberString) $ do
-    let number = read numberString
-    if number == randNumber
-      then putStrLn &quot;You are correct!&quot;
-      else putStrLn $ &quot;Sorry, it was &quot; ++ show randNumber
-    askForNumber newGen
+	let number = read numberString
+	if number == randNumber
+	  then putStrLn &quot;You are correct!&quot;
+	  else putStrLn $ &quot;Sorry, it was &quot; ++ show randNumber
+	askForNumber newGen
 </code></pre>
 
 <p>这个程序生成一个数字，然后用户只允许猜一次，然后重新生成一个新数字。</p>
@@ -590,17 +590,149 @@ import qualified Data.ByteString as S
 B.pack :: [GHC.Word.Word8] -&gt; B.ByteString
 </code></pre>
 
-<p>它接收一个<code>Word8</code>的列表，然后返回一个字符串，这个列表是Lazy的，只不过每次读取的块是64KB。</p>
+<p><code>pack</code>这个函数接收一个<code>word8</code>的列表，返回一个<code>ByteString</code>对象。</p>
 
 <p><code>Word8</code>类型是一个只有8位的整数。</p>
 
-<p><code>unpack</code>函数和<code>pack</code>相反，接收一个bytestring，返回一个byte的列表。</p>
+<p><code>unpack</code>这个函数的作用相反，接收一个<code>ByteString</code>对象，返回一个<code>word8</code>列表。</p>
 
-<p><em>TODO</em></p>
+<pre><code class="language-haskell">
+Prelude BS BSL&gt; :t BS.unpack 
+
+BS.unpack :: BS.ByteString -&gt; [GHC.Word.Word8] 
+
+</code></pre>
+
+<p><code>fromChunks</code>这个函数接收一个<code>ByteString</code>列表，然后返回一个lazy bytestring。</p>
+
+<pre><code class="language-haskell">
+Prelude BS BSL&gt; :t BSL.fromChunks 
+
+BSL.fromChunks :: [BS.ByteString] -&gt; BSL.ByteString 
+
+Prelude BS BSL&gt; BSL.fromChunks [BS.pack[97, 98]] 
+
+&quot;ab&quot; 
+
+Prelude BS BSL&gt; :t BSL.fromChunks [BS.pack[97, 98]] 
+
+BSL.fromChunks [BS.pack[97, 98]] :: BSL.ByteString 
+
+</code></pre>
+
+<p>这个函数的行为和我预期的相反，我感觉这个函数名字不恰当。其实从另外一个角度想的话，也能够说得通：把一个<code>ByteString</code>的列表（可以想象成chunks）转化成一个lazy bytestring。也就是说它接收一些strict bytestrings（也就是chunks），然後組成一個lazy bytestring。</p>
+
+<p><code>toChunks</code>這個函數和<code>fromChunks</code>相反。</p>
+
+<p><code>cons</code>和<code>cons'</code>類似于<code>Data.List</code>中的<code>(:)</code>，它們在ByteString的前面追加一個值，不過<code>cons</code>是lazy的，也就是說，即使第一個<code>chunk</code>沒有滿，也會自動追加一個新的chunk。這種時候<code>'cons</code>就很有用了，它對<code>strict ByteString</code>進行操作。</p>
+
+<p>對於文件的操作，也有<code>ByteString</code>的版本：</p>
+
+<pre><code class="language-haskell">import System.Environment 
+
+import qualified Data.ByteString.Lazy as BSL 
+
+
+main = do 
+  (fileSrc : fileDst : _) &lt;- getArgs 
+  copyFile fileSrc fileDst 
+  
+
+copyFile :: FilePath -&gt; FilePath -&gt; IO () 
+copyFile src dst = do 
+  contents &lt;- BSL.readFile src 
+  BSL.writeFile dst contents 
+</code></pre>
 
 <h2 id="exceptions">Exceptions</h2>
 
-<p><em>TODO</em></p>
+<p>輸出一個文本文件有多少行：</p>
+
+<pre><code class="language-haskll">
+import System.Environment 
+import System.IO 
+  
+
+main = do 
+  (fileName : _) &lt;- getArgs 
+  contents &lt;- readFile fileName 
+  putStrLn $ &quot;The file has &quot; ++ (show . length . lines $ contents) ++ &quot; lines.&quot; 
+</code></pre>
+
+<p>可以預先判斷文件是否存在：</p>
+
+<pre><code class="language-haskell">
+import System.Environment 
+import System.IO 
+import System.Directory 
+  
+
+main = do 
+
+  (fileName : _) &lt;- getArgs 
+  fileExist &lt;- doesFileExist fileName 
+
+  if fileExist 
+	then do 
+	contents &lt;- readFile fileName 
+	putStrLn $ &quot;The file has &quot; ++ (show . length . lines $ contents) ++ &quot; lines.&quot; 
+	else do 
+	putStrLn &quot;file does not exist&quot; 
+</code></pre>
+
+<p>也可以加入異常處理：</p>
+
+<pre><code class="language-haskell">
+import System.Environment 
+import System.IO 
+import System.IO.Error 
+import Control.Exception 
+
+main = do 
+  toTry `catch` handler 
+
+toTry :: IO () 
+
+toTry = do 
+  (fileName : _) &lt;- getArgs 
+  contents &lt;- readFile fileName 
+  putStrLn $ &quot;The file has &quot; ++ (show . length . lines $ contents) ++ &quot; lines.&quot; 
+
+handler :: IOError -&gt; IO () 
+
+handler e = do putStrLn &quot;we have some trouble.&quot; 
+
+</code></pre>
+
+<p><code>Learn you a Haskell</code>裏面的程序過時了，<code>catch</code>這個函數不存在于<code>System.IO.Error</code>這個模塊裏面了，而是存在于<code>Control.Exception</code>裏。</p>
+
+<p><code>catch</code>這個函數接收兩個參數，第一個是IO Action，表示想要執行的動作，第二個是handler，表示如果在第一個IO Action裏面出現了異常，那麼就由這個<code>handler</code>函數來捕捉並處理這個異常。</p>
+
+<p>也可以捕捉特定的異常：</p>
+
+<pre><code class="language-haskell">
+handler :: IOError -&gt; IO () 
+handler e 
+  | isDoesNotExistError e = putStrLn &quot;The file doesn't exist!&quot; 
+  | otherwise = ioError e 
+</code></pre>
+
+<p>這個函數裏面，用到了兩個函數<code>isDoesNotExistError</code>，它接收一個IOError對象，返回一個Bool對象，如果IOError對象是一個文件不存在異常的話返回真。ioError接收一個IOError對象，返回一個IO Action，它會繼續拋出這個異常。</p>
+
+<p>可以從異常對象中得到一些信息，比如文件名：</p>
+
+<pre><code class="language-haskell">
+handler :: IOError -&gt; IO () 
+handler e 
+  | isDoesNotExistError e = 
+case ioeGetFileName e of 
+        Just path -&gt; putStrLn $ &quot;The file &quot; ++ path ++ &quot; doesn't exist!&quot; 
+        Nothing -&gt; putStrLn &quot;Whoops!&quot; 
+  | otherwise = ioError e 
+
+</code></pre>
+
+<p><code>ioeGetFileName</code>函數接收一個IOError對象，返回一個maybe String，也就是文件路徑。</p>
 
   </div>
   <div id="disqus_thread"></div>
