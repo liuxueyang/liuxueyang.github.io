@@ -79,6 +79,19 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/05/01/hoj12616-median-tree-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/">hoj12616 Median Tree ——最小生成树入门题&amp;&amp;比赛残留题_Kruscal算法</a>
+      </h1>
+      <span class="post-date">May 1, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/01/hoj12616-median-tree-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.hnu.cn/online/?action=problem&amp;type=show&amp;id=12616 题目大意： 给n个点,m条边，求一棵生成树，使得这个生成树的边的权值的中位数最小。输出这个中位数。 题目思路： 和poj1861&amp;&amp;zoj1542的思路是一样的。可以证明要求的树就是最小生成树。然后就是中位数的概念：长度为N的数列的中位数，就是(N+1)/2位置的数字。百度百科里面貌似不是严格的中位数的概念。 开始写了一遍按照那种不严格的中位数的定义写的。过了。kruscal的过程中，只需要计算到(n-1+1)/2-1的那一条边即可退出。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int n, m; const int em = 10000+10, vm = 1000+10; typedef struct Edge { int u, v, w; bool operator &lt; (const Edge &amp;other) const { return w &lt; other.
+      <a href="http://liuxueyang.github.io/blog/2013/05/01/hoj12616-median-tree-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/05/01/poj1861zoj1542-network-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/">poj1861&amp;&amp;zoj1542 Network ——最小生成树入门题_Kruscal算法</a>
       </h1>
       <span class="post-date">May 1, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/01/poj1861zoj1542-network-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/#disqus_thread">Comments</a>
@@ -187,18 +200,6 @@
       </span>
       
       25日 晚上去图书馆还书，没去跑步。开始读TAOCP，^_^ 26日 都起跑了才发现脚貌似有点儿受伤，大脚趾有些疼的感觉。乖乖回来了o(╯□╰)o 看来得休息几天了。 今天晚上自习的时候开始考虑要不要考研，以前的想法都是坚决不考研的，但是现在，唉……我也不知道该怎么办，总之，不想这些了，现在还是好好学习数学，英语，还有专业课，到时候想考就拼一下。目前最重要的是认真做比赛，还要努力把数学英语搞好，这货哪里都用得到。把自己的基础打好，各种技术都要自己去学，不管以后是去考研还是去找工作，都有好处，具体怎么样，以后的事情以后再说，现在想这些都没用。 纯粹胡思乱想…… 人生貌似有些迷茫了又。。迟早要面对，所谓选择和机会，都是留给认真准备的人的。什么都不会，感觉无路可走…… 看到一句话：当你倒了一杯热水，准备去喝的时候，发现水已经凉了，那么恭喜你，你已经进入状态了。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/25/2013%E5%B9%B44%E6%9C%8824%E6%97%A5-%E9%98%B4%E8%BD%AC%E6%99%B4/">2013年4月24日 阴转晴</a>
-      </h1>
-      <span class="post-date">Apr 25, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/25/2013%E5%B9%B44%E6%9C%8824%E6%97%A5-%E9%98%B4%E8%BD%AC%E6%99%B4/#disqus_thread">Comments</a>
-      </span>
-      
-      晚上有一些冷，开始起跑的时候状态就不好，中途产生了厌跑的心理，这种事情是最可怕的，尤其是这种情况，体力跟不上，还有一些负面情绪，最后在中途停下来了，悲剧了……其实跑步的时候，最大的敌人就是自己，如何战胜自己。后来就是跑跑停停，最后还是勉强跑完了。。 唉，我承认自己的意志力可能永远没有人家强，比如高中同学shiwei，从心底里佩服这种人，能够一上午一动不动地趴桌子上做题。现在还能想起那么专注的情景，似乎外界早已经和自己无关，这种状态我貌似很少有，自从上大学以来。。真的。 不是玩手机，就是看书的时候，看一会儿就看不下去了……唉，心太浮躁了。 也许是电脑用太多了，干什么都想追求速度，电脑卡一点儿就受不了，学什么东西都想一下就学会，从来没有沉下心来认真思考过，没有全神贯注地学习过，最后也是欲速不达。 最近几天睡觉都比较早，除了今天为了补英语作业。。都没有什么时间写代码。在机房的时间也荒废了很多，不是上网了，就是干别的了，反正是时间就这么一点一点地流逝了。时间不等人。
       
       
     </div>
@@ -355,12 +356,15 @@
         ><a href="/page/46/">46</a></li>
         
         <li
+        ><a href="/page/47/">47</a></li>
+        
+        <li
         >
         <a href="/page/31/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

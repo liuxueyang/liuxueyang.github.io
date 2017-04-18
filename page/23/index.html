@@ -79,6 +79,19 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/06/tyvj1004-%E6%BB%91%E9%9B%AA/">tyvj1004 滑雪</a>
+      </h1>
+      <span class="post-date">Jul 6, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/06/tyvj1004-%E6%BB%91%E9%9B%AA/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1004 记忆化搜索
+#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;algorithm&gt; #include &lt;cstring&gt; using namespace std; int m[102][102], dp[102][102], r, C; int dfs(int x, int y) { if (dp[x][y] &gt; 0) return dp[x][y]; dp[x][y]=1; int a,b,c,d; a=b=c=d=0; if (x-1&gt;=1 &amp;&amp; m[x-1][y] &lt; m[x][y]) a = dfs(x-1,y); if (x+1&lt;=r &amp;&amp; m[x+1][y] &lt; m[x][y]) b = dfs(x+1,y); if (y-1&gt;=1 &amp;&amp; m[x][y-1] &lt; m[x][y]) c = dfs(x,y-1); if (y+1&lt;=C &amp;&amp; m[x][y+1] &lt; m[x][y]) d = dfs(x,y+1); dp[x][y] = max(max(a,b),max(c,d))+1; return dp[x][y]; } int main(void) { int Max; freopen(&quot;in.
+      <a href="http://liuxueyang.github.io/blog/2013/07/06/tyvj1004-%E6%BB%91%E9%9B%AA/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/07/04/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84-%E5%88%98%E4%BA%AE%E7%A8%8B/">《一个人的村庄》 ——刘亮程</a>
       </h1>
       <span class="post-date">Jul 4, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/04/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84-%E5%88%98%E4%BA%AE%E7%A8%8B/#disqus_thread">Comments</a>
@@ -191,19 +204,6 @@ sudo update-grub sudo grub-install /dev/sda   注：参考网站 http://forum.u
       
       今天高考结束了……大家都考得挺好的吧，祝福他们。 高考结束后，马上又将会有这么一群孩子，迫不及待的扔下书包，去聚餐，通宵上网，旅行，KTV，闲逛，狂欢……认为自己终于解放了……殊不知，你们离开的，就是天堂。 认真准备期末考试，虽然还是有的时候忍不住会写代码，囧。昨天CF做得真的挫了。这就是一周不写程序的后果，呵呵。坚决不写程序了，准备考试！实在无聊看看python，haskell什么的……
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-b.-sereja-and-array/">Codeforces Round #187 (Div. 2) B. Sereja and Array</a>
-      </h1>
-      <span class="post-date">Jun 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-b.-sereja-and-array/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://codeforces.com/contest/315/problem/B 开始以为线段树，汗……原来是道水题
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cmath&gt; #include &lt;cstring&gt; #include &lt;vector&gt; #include &lt;stack&gt; #include &lt;map&gt; #include &lt;queue&gt; using namespace std; typedef struct Po { int d, a; }Po; Po p[100000+10]; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;187b.in&quot;, &quot;r&quot;, stdin); #endif int n, m; scanf(&quot;%d%d&quot;, &amp;n, &amp;m); for (int i = 1; i &lt;= n; ++i) { scanf(&quot;%d&quot;, &amp;p[i].a); p[i].d = 0; } int D = 0, t, s; for (int i = 0; i &lt; m; ++i) { scanf(&quot;%d&quot;, &amp;t); if (t == 1) { int st, en; scanf(&quot;%d%d&quot;, &amp;st, &amp;en); p[st].
-      <a href="http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-b.-sereja-and-array/">Read On &rarr;</a>
       
     </div>
     
@@ -359,12 +359,15 @@ sudo update-grub sudo grub-install /dev/sda   注：参考网站 http://forum.u
         ><a href="/page/46/">46</a></li>
         
         <li
+        ><a href="/page/47/">47</a></li>
+        
+        <li
         >
         <a href="/page/24/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

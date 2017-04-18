@@ -79,6 +79,19 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/05/05/zoj2750-idiomatic-phrases-game-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%85%A5%E9%97%A8%E9%A2%98_dijkstra%E7%AE%97%E6%B3%95/">zoj2750 Idiomatic Phrases Game ——最短路入门题_Dijkstra算法</a>
+      </h1>
+      <span class="post-date">May 5, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/05/zoj2750-idiomatic-phrases-game-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%85%A5%E9%97%A8%E9%A2%98_dijkstra%E7%AE%97%E6%B3%95/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1750 题目大意： 成语接龙游戏。给定n个单词，每个单词前面先给一个权值，表示由这个单词找到下一个单词所需要花费的时间。问从第一个单词至少要花多少时间才能找到最后一个单词。如果不能找到，输出-1 题目思路： 如果一个单词的最后一个字和另一个成语的第一个字一样的话。那么就可以连一个有向边。就是求一个最短路。注意：题目中说成语至少三个字，别想当然地以为成语就是4个字的……开始没注意到，后来才改的。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MINN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 1000+10; int dist[MAX], S[MAX], n, wei[MAX], edge[MAX][MAX]; char start[MAX][10], end[MAX][10], ch[50]; void Dijkstra(int u0) { int i, j; for (i = 1; i &lt;= n; ++i) { S[i] = 0; dist[i] = edge[u0][i]; } S[u0] = 1; dist[u0] = 0; int u; for (i = 1; i &lt; n; ++i) { int Min = MAXN; u = 1; for (j = 1; j &lt;= n; ++j) { if (S[j] == 0 &amp;&amp; dist[j] &lt; Min) { Min = dist[j]; u = j; } } S[u] = 1; for (j = 1; j &lt;= n; ++j) { if (S[j] == 0 &amp;&amp; edge[u][j] !
+      <a href="http://liuxueyang.github.io/blog/2013/05/05/zoj2750-idiomatic-phrases-game-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%85%A5%E9%97%A8%E9%A2%98_dijkstra%E7%AE%97%E6%B3%95/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/05/05/poj1135zoj1298-domino-effect-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%85%A5%E9%97%A8%E9%A2%98_dijkstra%E7%AE%97%E6%B3%95/">poj1135&amp;&amp;zoj1298 Domino Effect ——最短路入门题_Dijkstra算法</a>
       </h1>
       <span class="post-date">May 5, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/05/poj1135zoj1298-domino-effect-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%85%A5%E9%97%A8%E9%A2%98_dijkstra%E7%AE%97%E6%B3%95/#disqus_thread">Comments</a>
@@ -190,19 +203,6 @@
       题目链接：http://poj.org/problem?id=2421 题目大意： 给定一个矩阵，第 i 行第 j 列表示点 i 和点 j　的距离是ｓ［ｉ］［ｊ］。然后输入Ｑ，下面Ｑ行，每行两个数字ａ，ｂ表示点ａ和点ｂ已经有路相连。求需要至少再修多长的路，可以构成一棵生成树。输出需要在修的路的总长度。 题目思路： 转化为最小生成树求解。有两种思路： １）把已经相连的两个点的权值设置为０，这样，就可以直接求最小生成树了。因为kruscal的过程中，一定会选择到已经相连的这些点，因为它们的权值是0嘛，同时，即使把它们的权值加上，也不会影响结果。这个方法我好不容易想出来了，可是还有一个问题，就是：输入a b 后，如何定位到相应的边，并把这个边的权值设置为0？开始的时候，是暴力找，超时了，然后自己想各种方法，还求出来个公式，用a,b,N,表示出边的编号。最后还是超时了。。看网上别人恰好有人也是这么个思路，但是他是怎么定位边，并把边的权值设置为0的，没仔细看，不知道为什么人家就用这种方法过了…… 2）第二种思路，如果a b 已经相连，很简单，只要它俩的根节点不同，就把它两个合并不就可以了么，这样，kruscal的过程中，就不会再加入这些已经存在的边的权值了。剩下的就是纯的kruscal问题。这个方法很好！看的别人的想法。然后自己写了一下，RE了一次，原因是，合并a b 的时候，没有判断他们的根节点是否不同。。
 #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; typedef struct Edge { int u, v, w; bool operator &lt; (const Edge &amp;o) const { return w &lt; o.
       <a href="http://liuxueyang.github.io/blog/2013/05/02/poj2421-constructing-roads-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/05/01/hoj12616-median-tree-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/">hoj12616 Median Tree ——最小生成树入门题&amp;&amp;比赛残留题_Kruscal算法</a>
-      </h1>
-      <span class="post-date">May 1, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/01/hoj12616-median-tree-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://acm.hnu.cn/online/?action=problem&amp;type=show&amp;id=12616 题目大意： 给n个点,m条边，求一棵生成树，使得这个生成树的边的权值的中位数最小。输出这个中位数。 题目思路： 和poj1861&amp;&amp;zoj1542的思路是一样的。可以证明要求的树就是最小生成树。然后就是中位数的概念：长度为N的数列的中位数，就是(N+1)/2位置的数字。百度百科里面貌似不是严格的中位数的概念。 开始写了一遍按照那种不严格的中位数的定义写的。过了。kruscal的过程中，只需要计算到(n-1+1)/2-1的那一条边即可退出。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int n, m; const int em = 10000+10, vm = 1000+10; typedef struct Edge { int u, v, w; bool operator &lt; (const Edge &amp;other) const { return w &lt; other.
-      <a href="http://liuxueyang.github.io/blog/2013/05/01/hoj12616-median-tree-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/">Read On &rarr;</a>
       
     </div>
     
@@ -358,12 +358,15 @@
         ><a href="/page/46/">46</a></li>
         
         <li
+        ><a href="/page/47/">47</a></li>
+        
+        <li
         >
         <a href="/page/30/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

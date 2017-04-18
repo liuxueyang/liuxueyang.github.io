@@ -79,6 +79,19 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/05/23/hdu1394-minimum-inversion-number-%E7%BA%BF%E6%AE%B5%E6%A0%91/">hdu1394 Minimum Inversion Number ——线段树</a>
+      </h1>
+      <span class="post-date">May 23, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/23/hdu1394-minimum-inversion-number-%E7%BA%BF%E6%AE%B5%E6%A0%91/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=1394 题目大意： 给定一个0到ｎ-1的数字组成的序列，它的逆序数，然后把第一个数字放到末尾，得到一个新的序列，再求逆序数，再把新序列的第一个数字放到末尾，一直这样做，求所有这些序列的逆序数的最小值。 题目思路： 可以先求出起初的序列的逆序数。然后根据逆序数的定义，把一个数字从开头移动到末尾，逆序数的改变量是什么？求出这个改变量，然后剩下的所有序列的逆序数就都求出来了。 这样考虑：一个数字 ｂ[i] 在开头，比它大的数字有 ｂ[i] 个，也就是说和这个数字组成了 ｂ[i] 个逆序，把它放到最后，这个数字可以组成 n-1-ｂ[i] 个逆序，所以逆序数的增量是 n - 1 - ｂ[i] - ｂ[i] ，这样就可以根据原来的序列的逆序数求出剩下的所有序列的逆序数了～
+#include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;cstring&gt; using namespace std; const int MAX = 5000+10; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 int a[MAX&lt;&lt;2], b[MAX], n; void pushup(int rt) { a[rt] = a[rt&lt;&lt;1] + a[rt&lt;&lt;1|1]; } void build(int l, int r, int rt) { if (l == r) {a[rt] = 0; return;} int m = (l + r) &gt;&gt; 1; build(lson); build(rson); pushup(rt); } void update(int p, int l, int r, int rt) { if (l == r) {a[rt]++; return;} int m = (l + r) &gt;&gt; 1; if (p &lt;= m) update(p, lson); else update(p, rson); pushup(rt); } int query(int L, int R,int l, int r, int rt) { if (L &lt;= l &amp;&amp; R &gt;= r) {return a[rt];} int m = (l + r) &gt;&gt; 1, ret = 0; if (L &lt;= m) ret += query(L, R, lson); if (R &gt; m) ret += query(L, R, rson); return ret; } void init() { while (~scanf(&quot;%d&quot;, &amp;n)) { int i, sum = 0, ans; build(0, n - 1, 1); for (i = 0; i &lt; n; ++i) { scanf(&quot;%d&quot;, b+i); sum += query(b[i]+1, n-1, 0, n-1, 1); update(b[i], 0, n-1, 1); } ans = sum; for (i = 0; i &lt; n; ++i) { sum += (n-1-2*b[i]); if (sum &lt; ans) ans = sum; } printf(&quot;%d\n&quot;, ans); } } int main(void) { init(); return 0; }  这题是线段树的单点更新
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/05/23/poj2299-ultra-quicksort-%E7%BA%BF%E6%AE%B5%E6%A0%91/">poj2299 Ultra-QuickSort ——线段树</a>
       </h1>
       <span class="post-date">May 23, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/23/poj2299-ultra-quicksort-%E7%BA%BF%E6%AE%B5%E6%A0%91/#disqus_thread">Comments</a>
@@ -189,19 +202,6 @@
       题目链接：http://poj.org/problem?id=1163 题目思路： 从三角形的底部开始考虑
 #include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; #include &lt;cstdio&gt; using namespace std; const int MAX = 100; int a[MAX][MAX], dp[MAX][MAX]; int main(void) { //freopen(&quot;1163.in&quot;, &quot;r&quot;, stdin); int n,i,j; scanf(&quot;%d&quot;,&amp;n); for (i = 0; i &lt; n; ++i) { for (j = 0; j &lt; i+1; ++j) { scanf(&quot;%d&quot;, &amp;a[i][j]); } } memset(dp, 0, sizeof(dp)); for (i = 0; i &lt; n; ++i) dp[n-1][i] = a[n-1][i]; for (i = n - 2; i &gt;= 0; --i) { for (j = 0; j &lt; n - 1; ++j) { dp[i][j] = max(dp[i+1][j], dp[i+1][j+1]) + a[i][j]; } } printf(&quot;%d\n&quot;, dp[0][0]); return 0; }  还是从最简单的开始做起吧 另外一种写法： #include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; #include &lt;cstdio&gt; using namespace std; const int MAX = 100; int a[MAX][MAX], dp[MAX][MAX], n; int f(int i, int j) { if (dp[i][j] &gt;= 0) return dp[i][j]; else { if (i == n-1) dp[i][j] = a[i][j]; else dp[i][j] = a[i][j] + max(dp[i+1][j], dp[i+1][j+1]); return dp[i][j]; } } int main(void) { int i,j; scanf(&quot;%d&quot;,&amp;n); for (i = 0; i &lt; n; ++i) { for (j = 0; j &lt; i+1; ++j) { scanf(&quot;%d&quot;, &amp;a[i][j]); } } memset(dp, -1, sizeof(dp)); for (i = 0; i &lt; n; ++i) dp[n-1][i] = a[n-1][i]; for (i = n-1; i &gt;= 0; --i) for (j = 0; j &lt; i+1; ++j) f(i, j); printf(&quot;%d\n&quot;, dp[0][0]); return 0; }   这就是所谓的记忆化搜索 
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/05/19/csu1290-random-integers-dp%E5%85%A5%E9%97%A8%E9%A2%98%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/">csu1290 Random Integers ——DP入门题&amp;&amp;比赛残留题</a>
-      </h1>
-      <span class="post-date">May 19, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/19/csu1290-random-integers-dp%E5%85%A5%E9%97%A8%E9%A2%98%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://122.207.68.93/OnlineJudge/problem.php?id=1290 题目大意： 从K个不同的数字里面有放回地随机选N次，求选到的不同的数字的种类的期望。 题目思路： 这题不能用概率公式推导。因为有很多项的阶乘，应该会超double范围。应该用DP做。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; using namespace std; const int MAX=1000+10; double dp[MAX][MAX]; int main(void) { int i, j, k, t; double N, K; scanf(&quot;%d&quot;, &amp;t); while (t--) { scanf(&quot;%lf%lf&quot;, &amp;K, &amp;N); double sum = 0.0; for (i = 0; i &lt;= N; ++i) for (j = 0; j &lt;= K; ++j) dp[i][j] = 0.0; dp[0][0] = 1.0; for (i = 1; i &lt;= N; ++i){ for (j = 1; j &lt;= K; ++j){ dp[i][j]=dp[i-1][j-1]*(K-j+1)/K + dp[i-1][j]*(j/K); //sum += (j*dp[i][j]); } } for (i = 1; i &lt;= K; ++i) { sum += (i * dp[(int)N][i]); } printf(&quot;%.
-      <a href="http://liuxueyang.github.io/blog/2013/05/19/csu1290-random-integers-dp%E5%85%A5%E9%97%A8%E9%A2%98%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/">Read On &rarr;</a>
       
     </div>
     
@@ -357,12 +357,15 @@
         ><a href="/page/46/">46</a></li>
         
         <li
+        ><a href="/page/47/">47</a></li>
+        
+        <li
         >
         <a href="/page/27/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

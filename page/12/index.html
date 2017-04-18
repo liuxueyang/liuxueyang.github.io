@@ -79,6 +79,19 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/10/15/%E5%AE%9E%E9%AA%8C%E5%8D%81%E4%B8%80%E7%BC%96%E5%86%99%E5%AD%90%E7%A8%8B%E5%BA%8F/">实验十一：编写子程序</a>
+      </h1>
+      <span class="post-date">Oct 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/15/%E5%AE%9E%E9%AA%8C%E5%8D%81%E4%B8%80%E7%BC%96%E5%86%99%E5%AD%90%E7%A8%8B%E5%BA%8F/#disqus_thread">Comments</a>
+      </span>
+      
+      将一个0结尾的字符串中的小写字母转化成大写字母
+assume cs:code, ds:data data segment db &quot;Beginner's All-purpose Symbolic Instruction Code.&quot;, 0 data ends code segment start: mov ax, data mov ds, ax mov si, 0 call letterc mov ax, 4c00h int 21h letterc: mov cx, 0 sad: mov cl, [si] jcxz llh cmp cl, 7ah ja next cmp cl, 61h jb next and cl, 11011111b mov [si], cl next: inc si jmp sad llh: ret code ends end start  这货并不复杂……=_= 都是基本的应用
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/10/11/%E8%AF%95%E9%AA%8C%E5%8D%81-3.%E6%95%B0%E5%80%BC%E6%98%BE%E7%A4%BA/">试验十 3.数值显示</a>
       </h1>
       <span class="post-date">Oct 11, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/11/%E8%AF%95%E9%AA%8C%E5%8D%81-3.%E6%95%B0%E5%80%BC%E6%98%BE%E7%A4%BA/#disqus_thread">Comments</a>
@@ -210,21 +223,6 @@ S: CS:8H CS:9H S0: CS:16H EBF0 JMP 8 S1: CS:18H B80000 S2: CS:20H EBF6 JMP 18  �
       这是我到目前为止写的最长的汇编程序了。
 assume cs:sad, ds:data, ss:stack stack segment stack ends data segment db '1975', '1976', '1977', '1978', '1979', '1980', '1981', '1982', '1983' db '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992' db '1993', '1994', '1995' ; 21 years -- 54h bytes dd 16, 22, 382, 1356, 2390, 8000, 16000, 24486, 50065, 97479, 140417, 197514 dd 345980, 590827, 803530, 1183000, 1843000, 2759000, 3753000, 4649000, 5937000 ; income in 21 years -- 54h bytes dw 3, 7, 9, 13, 28, 38, 130, 220, 476, 778, 1001, 1442, 2258, 2793, 4037, 5635, 8226 dw 11542, 14430, 15257, 17800 ; staff in 21 years -- 2ah bytes data ends table segment db 21 dup ('year summ ne ?
       <a href="http://liuxueyang.github.io/blog/2013/10/06/%E5%AE%9E%E9%AA%8C%E4%B8%83%E7%8E%8B%E7%88%BD%E6%88%91%E5%86%99%E7%9A%84%E6%9C%80%E9%95%BF%E7%9A%84%E4%B8%80%E4%B8%AA%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/10/05/bx-bp-si-di%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E8%A7%84%E5%88%99/">bx, bp, si, di寄存器的使用规则</a>
-      </h1>
-      <span class="post-date">Oct 5, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/05/bx-bp-si-di%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E8%A7%84%E5%88%99/#disqus_thread">Comments</a>
-      </span>
-      
-      首先，都可以单独使用。
-另外，组合使用的情况下：
-记住这张图片就行了=_=
-意思就是，bx只能和si，di组合。bp只能和si，di组合。
-      
       
     </div>
     
@@ -380,12 +378,15 @@ assume cs:sad, ds:data, ss:stack stack segment stack ends data segment db '1975'
         ><a href="/page/46/">46</a></li>
         
         <li
+        ><a href="/page/47/">47</a></li>
+        
+        <li
         >
         <a href="/page/13/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

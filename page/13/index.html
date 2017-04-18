@@ -79,6 +79,21 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/10/05/bx-bp-si-di%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E8%A7%84%E5%88%99/">bx, bp, si, di寄存器的使用规则</a>
+      </h1>
+      <span class="post-date">Oct 5, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/05/bx-bp-si-di%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E8%A7%84%E5%88%99/#disqus_thread">Comments</a>
+      </span>
+      
+      首先，都可以单独使用。
+另外，组合使用的情况下：
+记住这张图片就行了=_=
+意思就是，bx只能和si，di组合。bp只能和si，di组合。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/10/05/%E6%9B%B4%E7%81%B5%E6%B4%BB%E7%9A%84%E5%AE%9A%E4%BD%8D%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E7%9A%84%E6%96%B9%E6%B3%95-%E5%B0%86%E6%AF%8F%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E5%89%8D%E5%9B%9B%E4%B8%AA%E5%AD%97%E6%AF%8D%E6%94%B9%E4%B8%BA%E5%A4%A7%E5%86%99/">更灵活的定位内存地址的方法 ——将每个单词的前四个字母改为大写</a>
       </h1>
       <span class="post-date">Oct 5, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/05/%E6%9B%B4%E7%81%B5%E6%B4%BB%E7%9A%84%E5%AE%9A%E4%BD%8D%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E7%9A%84%E6%96%B9%E6%B3%95-%E5%B0%86%E6%AF%8F%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E5%89%8D%E5%9B%9B%E4%B8%AA%E5%AD%97%E6%AF%8D%E6%94%B9%E4%B8%BA%E5%A4%A7%E5%86%99/#disqus_thread">Comments</a>
@@ -220,23 +235,6 @@ x、y、z代表原子之间的化学键
 那么可以列出一个三元一次的方程组，由3个方程组成，可以求出唯一解。
 判断有解的唯一限制条件是：不能出现负数。
 #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;cmath&gt; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); #endif // ONLINE_JUDGE int a, b, c; int x, y, z; while (~scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c)) { int sum = a + b + c; if (sum &amp; 1) { printf(&quot;Impossible\n&quot;); continue; } int tmp = b - a + c; if (tmp &amp; 1) { printf(&quot;Impossible\n&quot;); continue; } y = tmp &gt;&gt; 1; z = c - y; x = a - z; if (x &lt; 0 || y &lt; 0 || z &lt; 0) { printf(&quot;Impossible\n&quot;); continue; } printf(&quot;%d %d %d\n&quot;, x, y, z); } return 0; }  看题要认真。不把问题复杂化。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/10/02/codeforces-magnets/">codeforces Magnets</a>
-      </h1>
-      <span class="post-date">Oct 2, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/02/codeforces-magnets/#disqus_thread">Comments</a>
-      </span>
-      
-      link: http://codeforces.com/contest/344/problem/A
-这道题目很简单。
-把输入的01 和10 当做整数，如果相邻两个数字相等的话，那么就属于同一组，否则，就新增加了一组。
-#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; using namespace std; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); #endif // ONLINE_JUDGE int n; while (~scanf(&quot;%d&quot;, &amp;n)) { int tmp; int pre = -1; int cnt = 0; while (n--) { scanf(&quot;%02d&quot;, &amp;tmp); if (tmp != pre) cnt++; pre = tmp; } printf(&quot;%d\n&quot;, cnt); } return 0; }  ==
-其实，现在想那么多没用。其实……也想读研的，但是，又觉得没什么用……所以，很痛苦。
-路在何方呢？在脚下？
       
       
     </div>
@@ -393,12 +391,15 @@ x、y、z代表原子之间的化学键
         ><a href="/page/46/">46</a></li>
         
         <li
+        ><a href="/page/47/">47</a></li>
+        
+        <li
         >
         <a href="/page/14/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

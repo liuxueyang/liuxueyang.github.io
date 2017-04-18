@@ -79,6 +79,27 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2014/03/04/vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86/">Vim插件管理</a>
+      </h1>
+      <span class="post-date">Mar 4, 2014 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/03/04/vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86/#disqus_thread">Comments</a>
+      </span>
+      
+      话说，用Git和pathogen管理Vim插件再方便不过了！真是神器啊，以后再也不用因为换电脑或者系统重新配置Vim了！
+首先得学会用Git
+安装Git
+sudo apt-get install git  基本设置
+$ git config --global user.name &quot;Your Name&quot; $ git config --global user.email &quot;email@example.com&quot;  建立一个目录 mkdir tmp
+git init touch foo.txt git add foo.txt git commit -m 'for test'  在 http://github.com 注册帐号
+建立远程仓库，仓库名字是TMP
+输入命令
+$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;  在~/.ssh 目录中找到 文件 id_rsa.pub ，在网站的帐号管理SSH Keys中添加 id_rsa.pub 中的内容
+$ git remote add origin https://github.com/yourname/TMP.git $ git push -u origin master  这样，当前目录下的foo.
+      <a href="http://liuxueyang.github.io/blog/2014/03/04/vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2014/02/27/pe%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0ing/">PE文件格式 持续更新ing</a>
       </h1>
       <span class="post-date">Feb 27, 2014 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/02/27/pe%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0ing/#disqus_thread">Comments</a>
@@ -240,19 +261,6 @@ assume cs:code code segment start: mov ax, cs mov ds, ax mov si, offset do0 mov 
       
     </div>
     
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/10/15/%E5%AE%9E%E9%AA%8C%E5%8D%81%E4%B8%80%E7%BC%96%E5%86%99%E5%AD%90%E7%A8%8B%E5%BA%8F/">实验十一：编写子程序</a>
-      </h1>
-      <span class="post-date">Oct 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/15/%E5%AE%9E%E9%AA%8C%E5%8D%81%E4%B8%80%E7%BC%96%E5%86%99%E5%AD%90%E7%A8%8B%E5%BA%8F/#disqus_thread">Comments</a>
-      </span>
-      
-      将一个0结尾的字符串中的小写字母转化成大写字母
-assume cs:code, ds:data data segment db &quot;Beginner's All-purpose Symbolic Instruction Code.&quot;, 0 data ends code segment start: mov ax, data mov ds, ax mov si, 0 call letterc mov ax, 4c00h int 21h letterc: mov cx, 0 sad: mov cl, [si] jcxz llh cmp cl, 7ah ja next cmp cl, 61h jb next and cl, 11011111b mov [si], cl next: inc si jmp sad llh: ret code ends end start  这货并不复杂……=_= 都是基本的应用
-      
-      
-    </div>
-    
     
     
     <ul class="pagination">
@@ -405,12 +413,15 @@ assume cs:code, ds:data data segment db &quot;Beginner's All-purpose Symbolic In
         ><a href="/page/46/">46</a></li>
         
         <li
+        ><a href="/page/47/">47</a></li>
+        
+        <li
         >
         <a href="/page/12/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

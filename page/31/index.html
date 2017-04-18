@@ -79,6 +79,18 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/25/2013%E5%B9%B44%E6%9C%8824%E6%97%A5-%E9%98%B4%E8%BD%AC%E6%99%B4/">2013年4月24日 阴转晴</a>
+      </h1>
+      <span class="post-date">Apr 25, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/25/2013%E5%B9%B44%E6%9C%8824%E6%97%A5-%E9%98%B4%E8%BD%AC%E6%99%B4/#disqus_thread">Comments</a>
+      </span>
+      
+      晚上有一些冷，开始起跑的时候状态就不好，中途产生了厌跑的心理，这种事情是最可怕的，尤其是这种情况，体力跟不上，还有一些负面情绪，最后在中途停下来了，悲剧了……其实跑步的时候，最大的敌人就是自己，如何战胜自己。后来就是跑跑停停，最后还是勉强跑完了。。 唉，我承认自己的意志力可能永远没有人家强，比如高中同学shiwei，从心底里佩服这种人，能够一上午一动不动地趴桌子上做题。现在还能想起那么专注的情景，似乎外界早已经和自己无关，这种状态我貌似很少有，自从上大学以来。。真的。 不是玩手机，就是看书的时候，看一会儿就看不下去了……唉，心太浮躁了。 也许是电脑用太多了，干什么都想追求速度，电脑卡一点儿就受不了，学什么东西都想一下就学会，从来没有沉下心来认真思考过，没有全神贯注地学习过，最后也是欲速不达。 最近几天睡觉都比较早，除了今天为了补英语作业。。都没有什么时间写代码。在机房的时间也荒废了很多，不是上网了，就是干别的了，反正是时间就这么一点一点地流逝了。时间不等人。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/04/24/hdu2795-billboard-%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98/">hdu2795 Billboard ——线段树入门题</a>
       </h1>
       <span class="post-date">Apr 24, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/24/hdu2795-billboard-%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
@@ -187,18 +199,6 @@
       题目链接：http://www.acm.uestc.edu.cn/problem.php?pid=1824 题目大意： 给一个大的字符串，给一个数字n，然后给出n个小的字符串，在大的字符串里面每个字母只能选一次，问最多可以组成多少个小的字符串。小的字符串最多有10个，每个小字符串和大字符串长度最多10000。 题目思路： 因为最多有10个小的字符串，从10个里面选，最多有1024种选法。因为字符串只包含26个小写字母，可以统计每个小字符串里面的每个小写字母的个数，这样，复杂度大约在10×26×1024,是10^5的范围，可以枚举。 比如对于n个字符串，最多有1&lt;&lt;n种，用 x 从1枚举到1&lt;&lt;n - 1，然后用 j 从 0 枚举到n-1，用 1 &lt;&lt; j 和 x 相与，如果为1,则 j +1 表示第 j + 1 个人被选上了，判断它是不是能被选上，如果能被选上，那么 cnt++，再和max相比较，最后得到max。
 #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int L = 100000+10; char s[L], a[15][L]; int t, nn, cnt[29], ca[15][29], cc[29]; int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;j.
       <a href="http://liuxueyang.github.io/blog/2013/04/20/uestc1824-judgment-day-%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/20/2013%E5%B9%B44%E6%9C%8819%E6%97%A5-%E5%9B%9B%E6%A0%A1%E8%81%94%E8%B5%9B%E6%8C%91%E6%88%98%E8%B5%9B%E6%80%BB%E7%BB%93/">2013年4月19日 四校联赛挑战赛总结</a>
-      </h1>
-      <span class="post-date">Apr 20, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/20/2013%E5%B9%B44%E6%9C%8819%E6%97%A5-%E5%9B%9B%E6%A0%A1%E8%81%94%E8%B5%9B%E6%8C%91%E6%88%98%E8%B5%9B%E6%80%BB%E7%BB%93/#disqus_thread">Comments</a>
-      </span>
-      
-      卡在了水题上。后面的题目就不用说了，根本就没看。平时学习的东西根本就没有用上，简单题这一关就过不了。 唯一需要注意的就是，一道题目，有了想法，自己先把能考虑到的情况都考虑周全，不要指望和队友讨论再讨论一下，有的时候队友在思考自己的想法，没有时间，所以自己一定要考虑周全，再敲代码，千万不要有一个想法就敲，快写完的时候发现错了……就悲剧了。还有就是，读题，这次我就读错了一道题目，把队友坑了，虽然后来队友发现了，但我们三个还是都没有想法，比较坑的是，这题可以枚举，因为是10个人，范围很小。我们三个都没有注意到这一点。llh本来当时还问了一下范围，我看题的时候看到了10人，后来忘了，，就说题目没有给……我去……以后一定不能出现这种情况！ 然后就是代码能力，千万不能把代码敲错，比如赛后敲一道题目，思路很清晰，但是敲的时候就错了，调试很久，后来才发现，原来是自己命名的变量用错了，还有一些地方写错了……浪费很多时间，照这个情况，就算这道题目比赛的时候知道怎么做，也不一定能敲出来，虽然就是枚举。 比赛的时候过得第二道题目，我的想法是错的，llh有另一个想法，敲完后不知道哪里错了，虽然给我讲了，但是还是不太理解，最后还是因为一个小细节没处理好。不是想法的问题。当初我能够仔细按照那个想法做一下就好了，以后队友讲想法的时候认真理解。 总的来说，还是水题都过不了。第一：没有想法。第二，代码能力。第三，好好学STL，有的时候，切水题用STL很方便。至于没有想法这个问题，只有多练习，多思考，一般的水题都不会太难，考察的关键是思路和代码能力。 zsl神牛昨天跟我说，每次比赛都要好好总结，比赛后没过的题目都要过了，只要校队有人过的，都必须过，没人过的，也要过几道，如果校队的人都比不过，到了现场赛就不用说了！唉，确实是这样。谢谢sl学长。 这次挑战赛又输了，四校联赛又不能去了，我们队从来没有赢过Babel。唉，太窝囊了…… 从现在起，坚决不能再输给他们了！ 5月份就去南京邀请赛了，我不知道为什么我们从来没有赢过Babel却可以去南京，但是，既然让我们队去了，就别想别的，不要让大家失望，认真珍惜这次出去的机会！
-      
       
     </div>
     
@@ -354,12 +354,15 @@
         ><a href="/page/46/">46</a></li>
         
         <li
+        ><a href="/page/47/">47</a></li>
+        
+        <li
         >
         <a href="/page/32/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

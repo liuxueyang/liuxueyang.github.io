@@ -79,6 +79,21 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/05/22/2016%E5%B9%B45%E6%9C%8822%E6%97%A5/">2016年5月22日</a>
+      </h1>
+      <span class="post-date">May 22, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/05/22/2016%E5%B9%B45%E6%9C%8822%E6%97%A5/#disqus_thread">Comments</a>
+      </span>
+      
+      一天天的，过得飞快。。从现在开始，做事情就好好做，憋半途而废，看书就好好看，憋看 到一半就扔了。。写东西就好好写，憋写到一半就废掉了。。我发现我最近经常做这种事情， 惭愧。做事情认真一点，专注一点。
+哦，最近我还迷上了学画画，也觉得挺有意思的，尤其是进入一个新的世界，虽然还不会画， 但是挺有趣。最近有点放纵，看电影、逛B站、看视频什么的。好好读书啊！
+另外，好好活着，不好么。:joy::joy::joy:
+哦，我的Emacs支持Emoji了。哈哈。棒棒哒！:+1:
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2016/03/18/codeforces-round-#345-div.-2-problem-b/">Codeforces Round #345 (Div. 2) Problem B</a>
       </h1>
       <span class="post-date">Mar 18, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/03/18/codeforces-round-#345-div.-2-problem-b/#disqus_thread">Comments</a>
@@ -219,19 +234,6 @@ double square();  这个规则好像是为了兼容旧版本的C吧。
       
       /* * ===================================================================================== * Filename : list.c * Created : 10/21/14 16:12 * Description : create list. insert a value in a list. delete a value in a list. * reverse list. print list. * Author : Liu Xue Yang (LXY), liuxueyang457@163.com * Motto : Suicide is Painless * ===================================================================================== */ #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; typedef struct Node { int n; struct Node *next; }Node; typedef Node * pNode; /* * argument n is the number of nodes to create */ Node * create(int n) { pNode Head, p_tmp, q; int tmp; Head = (Node*)malloc(sizeof(Node)); Head-&gt;n = -1; Head-&gt;next = NULL; q = Head; while (n--) { scanf ( &quot;%d&quot;, &amp;tmp ); p_tmp = (Node*)malloc(sizeof(Node)); p_tmp-&gt;n = tmp; p_tmp-&gt;next = NULL; q-&gt;next = p_tmp; q = p_tmp; } return Head; } /* * pos starts from position 0 * n is the value */ int delete(Node *h, int pos) { Node* p; Node* n_p; p = h; while (pos--) { if (!
       <a href="http://liuxueyang.github.io/blog/2014/10/23/create-print-insert-delete-and-reverse-list/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2014/10/09/some-sort-algorithms/">some sort algorithms</a>
-      </h1>
-      <span class="post-date">Oct 9, 2014 &middot; 9 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/10/09/some-sort-algorithms/#disqus_thread">Comments</a>
-      </span>
-      
-      In order to know whether a sort algorithm is stable, we need to know how it works.
-SelectionSort /* * ===================================================================================== * Filename : SelectionSort.cpp * Description : SelectionSort * Version : 0.1 * Created : 10/04/14 14:54 * Author : Liu Xue Yang (LXY), liuxueyang457@163.com * Motto : Suicide is Painless * ===================================================================================== */ #include &lt;bits/stdc++.h&gt; using namespace std; int main ( int argc, char *argv[] ) { // 1, 2, 3, 4, 5, 6, 7, 8 const int N = 8; int a[8] = { 7, 6, 3, 2, 1, 4, 5, 8 }; cout &lt;&lt; &quot;original array:&quot; &lt;&lt; endl; for ( int i = 0; i &lt; 8; ++i ) { cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; } cout &lt;&lt; endl; int min_index; for ( int i = 0; i &lt; N; ++i ) { min_index = i; for ( int j = i + 1; j &lt; N; ++j ) { if ( a[j] &lt; a[min_index] ) { min_index = j; } } swap(a[i], a[min_index]); } //output cout &lt;&lt; &quot;\n\nsorted array:&quot; &lt;&lt; endl; for ( int i = 0; i &lt; 8; ++i ) { cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; } cout &lt;&lt; endl; return EXIT_SUCCESS; }	/* ---------- end of function main ---------- */ /* * Is it stable?
-      <a href="http://liuxueyang.github.io/blog/2014/10/09/some-sort-algorithms/">Read On &rarr;</a>
       
     </div>
     
@@ -387,12 +389,15 @@ SelectionSort /* * =============================================================
         ><a href="/page/46/">46</a></li>
         
         <li
+        ><a href="/page/47/">47</a></li>
+        
+        <li
         >
         <a href="/page/8/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

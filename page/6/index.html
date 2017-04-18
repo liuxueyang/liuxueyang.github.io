@@ -79,6 +79,24 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/06/15/karabiner--%E8%87%AA%E5%AE%9A%E4%B9%89macbook-air%E9%94%AE%E7%9B%98/">Karabiner —— 自定义MacBook Air键盘</a>
+      </h1>
+      <span class="post-date">Jun 15, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/06/15/karabiner--%E8%87%AA%E5%AE%9A%E4%B9%89macbook-air%E9%94%AE%E7%9B%98/#disqus_thread">Comments</a>
+      </span>
+      
+      一直以来，我的MacBook Air的键盘有几个键总是莫名其妙不灵。。换了一次键盘，然而问 题依旧，并且，问题不好重现，仿佛它不高兴了就不灵了。。这给打字带来了极大的不爽。。 所以我的解决办法是外接键盘。。或者外接USB键盘，或者外接蓝牙键盘。然而，这便携性 就没有了。。还要经常担心我那个蓝牙键盘的支脚是不是压倒了原装键盘的某个功能键什么 的。。。所以就很蛋疼。。
+所以为了解决蓝牙键盘经常压到Air的原装键盘的问题，我就在原装键盘上面垫上一本小书， 一定程度上解决了这个问题。。然后我就去淘宝搜有没有买专用的板子的啊。。:joy: :joy: 原来我的思路也蛮开阔的。。并没有，随手在Bing搜了一下，看到了V2EX的一个帖子 说如何关闭MacBook Air自带的键盘，诶？这倒是一个办法。然后我就开始折腾了：
+下载了Karabiner这个软件。然后就开 始找怎么把某个组合键映射到经常失灵的U键。打开Karabiner的Preferences，看了一下 Change Key那个标签并没有什么头绪。然后看到Misc &amp; Uninstall这个标签里面有一个 Custom Setting：
+绝壁八成是这个了。。然后在Karabiner的官网里面的Documents里面找到了这个文档： private.xml Reference Manual照着加 了下面的配置：
+ &lt;item&gt; &lt;name&gt;Change 'u' key to fn+v&lt;/name&gt; &lt;identifier&gt;private.make_u_work&lt;/identifier&gt; &lt;autogen&gt;__KeyToKey__ KeyCode::V, ModifierFlag::FN, KeyCode::U &lt;/autogen&gt; &lt;/item&gt;  然后在Karabiner Preferences的Change Key里面就就可以看到我刚才加的选项了，选择 它，点Reload XML，然后就可以用fn+v的组合键代替u这个键了。（因为V和 U长得比较像。。。 :joy: :joy: ) 完美！
+另外一个经常不灵的键就是(这个键，它的位置就是9所在的键。因为6和9比较像……所以 我就把fn+6映射成了9。。同样的做法。:smile: :smiley:
+ &lt;item&gt; &lt;name&gt;Change '9' key to fn+6&lt;/name&gt; &lt;identifier&gt;private.make_9_work&lt;/identifier&gt; &lt;autogen&gt;__KeyToKey__ KeyCode::6, ModifierFlag::FN, KeyCode::9 &lt;/autogen&gt; &lt;/item&gt;  哦，对了，上面的配置里面的autogen里面的KeyCode可以在这里 KeyCode 找到。
+      <a href="http://liuxueyang.github.io/blog/2016/06/15/karabiner--%E8%87%AA%E5%AE%9A%E4%B9%89macbook-air%E9%94%AE%E7%9B%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2016/06/11/codeforces-round-#356-div.-2-c.-bear-and-prime-100/">Codeforces Round #356 (Div. 2) C. Bear and Prime 100</a>
       </h1>
       <span class="post-date">Jun 11, 2016 &middot; 6 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/06/11/codeforces-round-#356-div.-2-c.-bear-and-prime-100/#disqus_thread">Comments</a>
@@ -228,21 +246,6 @@ my %seen; while(&lt;&gt;) { if (/&lt;A HREF=&quot;http([^\&quot;]+)&quot;/) { un
 哦，对了，我发现把KDE Plasma 5里面的各种特效什么的都关掉，还是可以用的，用得挺流 畅，在我的旧电脑上面并不卡。如果追求绝对稳定，当然还是Xfce4靠谱:smiley_cat:
 还有，前两天我又折腾了一下我的树莓派，它支持AirPlay了，最近我发现Real好用，iPad Air上面放的腾讯视频可以很愉快地在电视上面看，并且可以用我的Android手机作为遥控 器，甚至不接显示器的时候，也可以把手机上的音乐AirPlay到树莓派上面播放:smile::smile: 哦，Android里面的QQ音乐和虾米音乐都支持AirPlay，网易云音乐不支持，有点可惜。 这两天它主要承担了给我妈播放电视剧的艰巨任务。。。:joy::joy:另外就是作为我的IRC 的一个Bouncer，其实树莓派，还是蛮有用的嘛。:yum:
       <a href="http://liuxueyang.github.io/blog/2016/05/23/2016%E5%B9%B45%E6%9C%8823%E6%97%A5/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/05/22/2016%E5%B9%B45%E6%9C%8822%E6%97%A5/">2016年5月22日</a>
-      </h1>
-      <span class="post-date">May 22, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/05/22/2016%E5%B9%B45%E6%9C%8822%E6%97%A5/#disqus_thread">Comments</a>
-      </span>
-      
-      一天天的，过得飞快。。从现在开始，做事情就好好做，憋半途而废，看书就好好看，憋看 到一半就扔了。。写东西就好好写，憋写到一半就废掉了。。我发现我最近经常做这种事情， 惭愧。做事情认真一点，专注一点。
-哦，最近我还迷上了学画画，也觉得挺有意思的，尤其是进入一个新的世界，虽然还不会画， 但是挺有趣。最近有点放纵，看电影、逛B站、看视频什么的。好好读书啊！
-另外，好好活着，不好么。:joy::joy::joy:
-哦，我的Emacs支持Emoji了。哈哈。棒棒哒！:+1:
-      
       
     </div>
     
@@ -398,12 +401,15 @@ my %seen; while(&lt;&gt;) { if (/&lt;A HREF=&quot;http([^\&quot;]+)&quot;/) { un
         ><a href="/page/46/">46</a></li>
         
         <li
+        ><a href="/page/47/">47</a></li>
+        
+        <li
         >
         <a href="/page/7/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

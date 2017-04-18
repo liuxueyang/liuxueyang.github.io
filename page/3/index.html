@@ -79,6 +79,25 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/12/26/%E4%BD%BF%E7%94%A8time-machine%E5%A4%87%E4%BB%BD%E7%B3%BB%E7%BB%9F%E6%97%B6%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/">使用Time Machine备份系统时磁盘空间不足的问题</a>
+      </h1>
+      <span class="post-date">Dec 26, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/12/26/%E4%BD%BF%E7%94%A8time-machine%E5%A4%87%E4%BB%BD%E7%B3%BB%E7%BB%9F%E6%97%B6%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a>
+      
+      <br/>
+      
+      </span>
+      
+      Time Machine这个功能我只在当初刚买了MacBook Air之后不久才用过一次。后来就再也没有管它。当初在移动硬盘里面分出125GB的空间作为Time Machine的分区。那次备份的时间是2014年8月24日。距离现在已经两年多了。
+之前我用这个Time Machine把电脑恢复到了2014年8月24日的状态。挺好用的。没有遇到问题。方法如下：
+1. 关机，插入移动硬盘 2. 在电脑开机的时候，按住cmd + R键 3. 选择`Restore From Time Machine Backup`  等一段时间就好了。还原完毕之后，记得在系统设置的Security &amp; Privacy里面打开FileVault，然后把recovery key备份到一个安全的地方。然后我找回了我要的比较重要的文件。更新、升级系统。还是比较顺利的。
+我的SSD大小是120GB。然后我想在把更新后的系统备份到Time Machine里面。系统提示磁盘空间不足，也就是我的移动硬盘里面的Time Machine里面空间不足了，这就比较麻烦了，手上也没有足够空间的移动硬盘了。事实上，合适的Time Machine的空间应该是电脑硬盘空间的两倍，当初我并不知道，所以只分配了一倍。玩手机的时候无意中在国外的一个论坛的不知名的角落里发现一个人七八年之前的回复，说可以在备份的时候剔除某些目录，比如/Users/这个目录。备份完之后，再把被剔除的目录加进来，再备份一次。因为的的Time Machine的剩余空间只有30GB，所以我剔除了/Users/和/Applications这两个目录。成功备份。然后再加入/Users/目录，再备份一次。最后再加入/Applications/目录。继续备份。这个时候即使/Applications/目录的大小大于我的Time Machine的剩余空间，它也没有提示磁盘空间不足，而是会自动删除最老的备份，然后正常备份。挺神奇。为什么最开始的时候它不会自动删除最老的备份呢？
+另外，我发现它把2014年的整个备份删除了。没关系，反正我已经把所有的文件分类导出来了。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2016/12/25/%E5%81%9A%E4%BA%8B%E6%83%85%E5%88%86%E6%B8%85%E4%B8%BB%E6%AC%A1/">做事情分清主次</a>
       </h1>
       <span class="post-date">Dec 25, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/12/25/%E5%81%9A%E4%BA%8B%E6%83%85%E5%88%86%E6%B8%85%E4%B8%BB%E6%AC%A1/#disqus_thread">Comments</a>
@@ -234,21 +253,6 @@ Linux Mint 18 Ubuntu的衍生版，优点是，易用。
       
     </div>
     
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/08/12/dynamic-programming-spoj-diehard---die-hard/">Dynamic-programming: Spoj DIEHARD - DIE HARD</a>
-      </h1>
-      <span class="post-date">Aug 12, 2016 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/08/12/dynamic-programming-spoj-diehard---die-hard/#disqus_thread">Comments</a>
-      </span>
-      
-      题目很好理解：
-有三个区域，你在每个区域里面只能停留一秒，每个区域会对你的两个指标h和a增加或者减少： 区域A：h += 3, a += 2 区域B：h -= 5, a -= 10 区域C：h -= 20, a+= 5 你在任意区域最多只能停留1秒，下一秒必须移动到其它两个区域中的一个，也就是说 你不能一直呆在一个区域。在任意时刻，如果你的两个指标其中的任意一个&lt;=0，那么 游戏结束，输出你一共在游戏里面停留了多长时间。  如果不加什么思考，那么容易想到，直接递归就可以了，递归函数有三个参数：当前的h值， 当前的a值，当前的位置。为了不重复求解，用一个三位数组存储这一步的结果。
-程序如下：
-/* * ===================================================================================== * * Filename: main.cpp * * Description: http://www.spoj.com/problems/DIEHARD/ * * Version: 1.0 * Created: 08/12/2016 20:04:27 * Compiler: g++ * * Author: Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com * * ===================================================================================== */ #include &lt;bits/stdc++.h&gt; #include &lt;cstdio&gt; using namespace std; #define _ ios_base::sync_with_stdio(0);cin.tie(0); #define rep(i, a, n) for (int i = a; i &lt; n; ++i) #define per(i, a, n) for (int i = n-1; i &gt;= a; --i) #define pb push_back #define mp make_pair #define all(x) (x).
-      <a href="http://liuxueyang.github.io/blog/2016/08/12/dynamic-programming-spoj-diehard---die-hard/">Read On &rarr;</a>
-      
-    </div>
-    
     
     
     <ul class="pagination">
@@ -401,12 +405,15 @@ Linux Mint 18 Ubuntu的衍生版，优点是，易用。
         ><a href="/page/46/">46</a></li>
         
         <li
+        ><a href="/page/47/">47</a></li>
+        
+        <li
         >
         <a href="/page/4/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

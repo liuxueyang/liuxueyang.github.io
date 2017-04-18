@@ -79,6 +79,20 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2014/07/20/simple-linux-assembly-program/">simple linux assembly program</a>
+      </h1>
+      <span class="post-date">Jul 20, 2014 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/07/20/simple-linux-assembly-program/#disqus_thread">Comments</a>
+      </span>
+      
+      There are three simple linux assembly program I wrote today.
+##eatcall
+; This is a &quot;Hello-world&quot; program ; makefile is: ; ;eatsyscall: eatsyscall.o ;	ld -o eatsyscall eatsyscall.o ;eatsyscall.o: eatsyscall.asm ;	nasm -f elf -g -F stabs eatsyscall.asm SECTION .data EatMsg: db &quot;Eat at Liu's&quot;, 10 EatLen: equ $-EatMsg SECTION .bss SECTION .text global _start _start: nop mov eax, 4 ; system write mov ebx, 1 ; standard ouput mov ecx, EatMsg mov edx, EatLen int 80h mov eax, 1 mov ebx, 0 int 80h ; The Following is the result: ;~/Hack/SedAwk/asm/eatsyscall-&gt;.
+      <a href="http://liuxueyang.github.io/blog/2014/07/20/simple-linux-assembly-program/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2014/07/04/run-5/">run-5</a>
       </h1>
       <span class="post-date">Jul 4, 2014 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/07/04/run-5/#disqus_thread">Comments</a>
@@ -312,20 +326,6 @@ define local variables:
       
     </div>
     
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2014/05/30/editor/">Editor</a>
-      </h1>
-      <span class="post-date">May 30, 2014 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/05/30/editor/#disqus_thread">Comments</a>
-      </span>
-      
-      Today, I tried some editor. In the past, I always use vim and do not like any other editors at all and have not ever tried others.
-I tried Sublime Text 2, TextMate, Mou, Brackets. Each of them has its own advantages. Maybe every particular editor is prepared for special use.
-For example, Mou is used for write markdown language and it is very useful to preview your document as HTML.
-      <a href="http://liuxueyang.github.io/blog/2014/05/30/editor/">Read On &rarr;</a>
-      
-    </div>
-    
     
     
     <ul class="pagination">
@@ -478,12 +478,15 @@ For example, Mou is used for write markdown language and it is very useful to pr
         ><a href="/page/46/">46</a></li>
         
         <li
+        ><a href="/page/47/">47</a></li>
+        
+        <li
         >
         <a href="/page/10/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/46/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>
