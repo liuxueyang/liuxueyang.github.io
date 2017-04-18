@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Raspberry on 黑历史</title>
+    <link>http://liuxueyang.github.io/tags/raspberry/</link>
+    <description>Recent content in Raspberry on 黑历史</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 14 Feb 2017 15:30:46 +0000</lastBuildDate>
+    
+	<atom:link href="http://liuxueyang.github.io/tags/raspberry/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>开始使用Raspbian</title>
+      <link>http://liuxueyang.github.io/blog/2017/02/14/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8raspbian/</link>
+      <pubDate>Tue, 14 Feb 2017 15:30:46 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2017/02/14/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8raspbian/</guid>
+      <description>这两天折腾了一下树莓派，因为我的树莓派里面的Arch Linux不能启动了。开机的时候，ACT LED并没有闪烁，查了一下wiki才知道这表示pi没有读取SD卡。试了很多次，开始以为接触问题，擦了擦卡然后开机的时候用力按着，还是不行。在IRC里问了一下，后来猜测可能是/boot分区出问题了，或者firmware在系统更新的时候出问题了，或者是pi的硬件的问题，或者是SD卡的问题。
+之前的手机里还有一个SD卡，只有2GB。然后备份数据之后，刷了Raspbian Lite，插入树莓派顺利进入系统了。能正常用。所以只能是SD卡里的系统问题了。
+花了点时间把树莓派里面的数据备份了一下，然后刷了Raspbian jessie，稍微配置了一下。意外地好用。我还是挺满意这个系统的。如果只是在树莓派里写写程序的话，用起来还是挺舒服的。本机用VNC连接到树莓派的桌面，然后就可以像另外一台配置比较低的电脑一样使用了。以前我以为VNC什么的速度可能很慢，画面也不清晰，这两天一直在用，发现其实体验非常好。可以根据主机屏幕的大小来设置树莓派的分辨率，我记得好像是设置一下/boot/config.txt文件里面的framebuffer_width和framebuffer_height这两个变量就好了。然后在VNC的设置里面再设置成同样的分辨率。完美。
+在树莓派里写程序的时候，好像除了一些非常轻量级的IDE能用之外，别的只能用Emacs或者Vim了。JetBrains家的IDE估计是没法用。:P</description>
+    </item>
+    
+  </channel>
+</rss>

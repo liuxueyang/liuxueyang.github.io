@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Codeforces on 黑历史</title>
+    <link>http://liuxueyang.github.io/tags/codeforces/</link>
+    <description>Recent content in Codeforces on 黑历史</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 01 Jul 2016 07:53:06 +0000</lastBuildDate>
+    
+	<atom:link href="http://liuxueyang.github.io/tags/codeforces/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Educational Codeforces Round 10. D. Nested Segments: c&#43;&#43;, perl and common lisp implementation, Segment Tree</title>
+      <link>http://liuxueyang.github.io/blog/2016/07/01/educational-codeforces-round-10.-d.-nested-segments-c---perl-and-common-lisp-implementation-segment-tree/</link>
+      <pubDate>Fri, 01 Jul 2016 07:53:06 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2016/07/01/educational-codeforces-round-10.-d.-nested-segments-c---perl-and-common-lisp-implementation-segment-tree/</guid>
+      <description>Problem Link
+Fenwick Tree，它的本质就是把一个序列的和划分成一个个子序列的和。比如一个序列的长 度是10，那么10的二进制是1010，也就是2^1 + 2^3，所以结果就是树里面2和8两个节点的 和。在树里面，节点（n）表示数列里从1到n的元素的和，那么：
+ (1) = (1) (2) = (2) (3) = (1) + (2) (4) = (4) (5) = (1) + (4) (6) = (2) + (4)   按照右端点排序，然后把它离散化； 按照左端点倒序排列，从大到小循环，计算右端点在Fenwick Tree里面的presum（也就 是之前插入的比当前右端点小的数量），这个presum就是当前的segment包含的segment 的个数； 把当前右端点插入Fewnwick Tree；  题目要求计算每个端点包含的segment的数量，因为后面要用到排序和离散化，所以可以在 结构体或者类中增加一个域表示它原来在数组中的初始位置。每计算一个presum就可以根据 这个域放到结果数组里面的对应位置。
+C++ #include &amp;lt;bits/stdc++.h&amp;gt; using namespace std; struct segment { int x, y, position; }; const int N = 2e5 + 1; int n, fenwick[N]; long long ans[N]; segment S[N]; int cmpx_r(segment a, segment b) { return a.</description>
+    </item>
+    
+    <item>
+      <title>Codeforces Round #356 (Div. 2) C. Bear and Prime 100</title>
+      <link>http://liuxueyang.github.io/blog/2016/06/11/codeforces-round-#356-div.-2-c.-bear-and-prime-100/</link>
+      <pubDate>Sat, 11 Jun 2016 08:05:05 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2016/06/11/codeforces-round-#356-div.-2-c.-bear-and-prime-100/</guid>
+      <description>C. Bear and Prime 100 This is an interactive problem. In the output section below you will see the information about flushing the output.
+Bear Limak thinks of some hidden number — an integer from interval [2, 100]. Your task is to say if the hidden number is prime or composite.
+Integer x &amp;gt; 1 is called prime if it has exactly two distinct divisors, 1 and x. If integer x &amp;gt; 1 is not prime, it&amp;rsquo;s called composite.</description>
+    </item>
+    
+    <item>
+      <title>Codeforces Round #353 (Div. 2) C. Money Transfers</title>
+      <link>http://liuxueyang.github.io/blog/2016/05/31/codeforces-round-#353-div.-2-c.-money-transfers/</link>
+      <pubDate>Tue, 31 May 2016 13:57:13 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2016/05/31/codeforces-round-#353-div.-2-c.-money-transfers/</guid>
+      <description>There are n banks in the city where Vasya lives, they are located in a circle, such that any two banks are neighbouring if their indices differ by no more than 1. Also, bank 1 and bank n are neighbours if n &amp;gt; 1. No bank is a neighbour of itself.
+Vasya has an account in each bank. Its balance may be negative, meaning Vasya owes some money to this bank.</description>
+    </item>
+    
+    <item>
+      <title>Codeforces Round #354 (Div. 2) C. Vasya and String</title>
+      <link>http://liuxueyang.github.io/blog/2016/05/30/codeforces-round-#354-div.-2-c.-vasya-and-string/</link>
+      <pubDate>Mon, 30 May 2016 23:21:39 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2016/05/30/codeforces-round-#354-div.-2-c.-vasya-and-string/</guid>
+      <description>High school student Vasya got a string of length n as a birthday present. This string consists of letters &amp;lsquo;a&amp;rsquo; and &amp;lsquo;b&amp;rsquo; only. Vasya denotes beauty of the string as the maximum length of a substring (consecutive subsequence) consisting of equal letters.
+Vasya can change no more than k characters of the original string. What is the maximum beauty of the string he can achieve?
+Input The first line of the input contains two integers n and k (1 ≤ n ≤ 100 000, 0 ≤ k ≤ n) — the length of the string and the maximum number of characters to change.</description>
+    </item>
+    
+    <item>
+      <title>Codeforces Round #345 (Div. 2) Problem B</title>
+      <link>http://liuxueyang.github.io/blog/2016/03/18/codeforces-round-#345-div.-2-problem-b/</link>
+      <pubDate>Fri, 18 Mar 2016 14:33:20 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2016/03/18/codeforces-round-#345-div.-2-problem-b/</guid>
+      <description>题意 给一个整数序列，长度小于1000，每个元素元素小于1000大于1，把这个序列任意排序，使得相邻的两个数字满足$a[$i] &amp;lt; $a[$i+1]的pair的个数最大。只需要输出最大的pair个数。
+其实画图可以很形象地说明问题。这些图都是用Emacs画的，挺有意思。
+首先统计出每个数字的个数。接下来：
+第一种思考角度如下图：
+从小到大比较相邻组的大小，把较小的那一组的大小累加起来，然而要不要累加较大的这一组的大小那就要看是不是有别的组的大小比它还要大。从下面的图的第2列和地5列可以看到这样的情况。因此还要记录一个最大值。
+这个角度从图里面看是从左往右。a -&amp;gt; b -&amp;gt; c -&amp;gt; d这样的顺序。
+第二种思考方式如下图：
+第一种是从左往右，那么就可以从下往上。其实这样也是合理的。每次从一组里面取出最下面的一个，累加起来。a -&amp;gt; b的顺序。
+不过这个方法实现的时候需要一点技巧。
+然而，最简单的做法还是这样：）
+$\ = $/; while (&amp;lt;&amp;gt;) { $n = $_; $h-&amp;gt;{$_}++ for split &#39; &#39;, &amp;lt;&amp;gt;; print $n - (sort {$b &amp;lt;=&amp;gt; $a} values %{$h})[0]; }  其实画图有局限性，从另一个角度想，把数列分成尽可能长的严格递增（或者只含有一个元素）的子序列，那么每一组一定会含有在整个序列中出现次数最多的那个数字X，如果某个子序列不含有数字X，那么它不足够长。如果某个子序列含有两个数字X，那么它不是严格递增。设整个序列长度为N，在序列中出现次数最多的数字X出现的次数为P，那么就可以分成P个子序列。整个序列中，相邻两个数字递增的pair最多为N-1，分成P个子序列之后，相邻两个数字递增的pair减少了P-1个，所以答案就是 (N - 1) - (P - 1) = N - P，也就是整个序列的长度减去出现次数最多的数字出现的次数……</description>
+    </item>
+    
+    <item>
+      <title>CodeForces 239A. Triangle</title>
+      <link>http://liuxueyang.github.io/blog/2014/03/30/codeforces-239a.-triangle/</link>
+      <pubDate>Sun, 30 Mar 2014 20:42:29 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2014/03/30/codeforces-239a.-triangle/</guid>
+      <description>Link: http://codeforces.com/contest/407/problem/A
+给定直角三角形的2个直角边a，b。求在直角坐标系中，是否存在对应的直角三角形，使得三个定点都在整点上，并且三边都不和坐标轴平行。
+如果存在，输出YES，和三个点的坐标。否则输出NO
+很显然，为了方便，可以把原点作为 一个顶点。
+这道题目做的时候少考虑了很多情况。
+比如：
+如何使得边不和坐标轴平行？ 要保证要求的另外两个点的横坐标或者纵坐标不能相等。
+如何保证三角形是直角三角形？ 只需要保证，另外两个点和坐标轴围成的三角形相似。
+因为范围是1000,所以可以暴力求解。复杂度O（10^6）
+/* * ===================================================================================== * Filename : triangle.cpp * Description : triangle * Version : 0.1 * Created : 03/30/14 15:57 * Author : Liu Xue Yang (LXY), liuxueyang457@163.com * Motto : How about today? * ===================================================================================== */ #include &amp;lt;cmath&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;iostream&amp;gt; using namespace std; /* * === FUNCTION ====================================================================== * Name: gcd * Description: gcd * ===================================================================================== */ int gcd ( int a, int b ) { return b == 0 ?</description>
+    </item>
+    
+    <item>
+      <title>codeforces A. Difference Row</title>
+      <link>http://liuxueyang.github.io/blog/2013/10/07/codeforces-a.-difference-row/</link>
+      <pubDate>Mon, 07 Oct 2013 00:28:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/10/07/codeforces-a.-difference-row/</guid>
+      <description>link: http://codeforces.com/contest/347/problem/A
+开始看起来很复杂的样子，但是刚写下样例，就发现因为中间的都消去了，其实起作用的就是最大值和最小值=_=
+#include &amp;lt;cstdio&amp;gt; #include &amp;lt;algorithm&amp;gt; using namespace std; int a[102]; int main(void) { #ifndef ONLINE_JUDGE freopen(&amp;quot;in.txt&amp;quot;, &amp;quot;r&amp;quot;, stdin); #endif int n; while (~scanf(&amp;quot;%d&amp;quot;, &amp;amp;n)) { int i; for (i = 0; i &amp;lt; n; scanf(&amp;quot;%d&amp;quot;, a+i++)); sort(a, a+n); printf(&amp;quot;%d&amp;quot;, a[n-1]); for (i = 1; i &amp;lt; n-1; ++i) printf(&amp;quot; %d&amp;quot;, a[i]); printf(&amp;quot; %d\n&amp;quot;, a[0]); } return 0; }  排序后输出就行。</description>
+    </item>
+    
+    <item>
+      <title>codeforces B.Fixed Points</title>
+      <link>http://liuxueyang.github.io/blog/2013/10/07/codeforces-b.fixed-points/</link>
+      <pubDate>Mon, 07 Oct 2013 00:23:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/10/07/codeforces-b.fixed-points/</guid>
+      <description>link: http://codeforces.com/contest/347/problem/B
+很简单，最多只能交换一次，也就是说，最多会增加两个。可能会增加一个。也可能一个也不增加（此时都是fixed point）
+#include &amp;lt;cstdio&amp;gt; using namespace std; int a[100002]; int main(void) { #ifndef ONLINE_JUDGE freopen(&amp;quot;in.txt&amp;quot;, &amp;quot;r&amp;quot;, stdin); #endif int n; while (~scanf(&amp;quot;%d&amp;quot;, &amp;amp;n)) { int i, cnt = 0; for (i = 0; i &amp;lt; n; scanf(&amp;quot;%d&amp;quot;, a+i++)); bool flag = false; for (i = 0; i &amp;lt; n; ++i) { if (a[i] == i) cnt++; else if (!flag &amp;amp;&amp;amp; a[a[i] ] == i) { cnt += 2; flag = true; } } if (!</description>
+    </item>
+    
+    <item>
+      <title>codeforces Simple Molecules</title>
+      <link>http://liuxueyang.github.io/blog/2013/10/02/codeforces-simple-molecules/</link>
+      <pubDate>Wed, 02 Oct 2013 22:17:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/10/02/codeforces-simple-molecules/</guid>
+      <description>link:http://codeforces.com/contest/344/problem/B
+刚开始想复杂了。一开始就想当然地以为可以有多个点，其实，人家题目要求只有3个点啊！
+然后题目就简单了。
+A、B、C代表原子的化合价
+x、y、z代表原子之间的化学键
+首先x+y+z一定为偶数，否则不可能有解。
+那么可以列出一个三元一次的方程组，由3个方程组成，可以求出唯一解。
+判断有解的唯一限制条件是：不能出现负数。
+#include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cmath&amp;gt; int main(void) { #ifndef ONLINE_JUDGE freopen(&amp;quot;in.txt&amp;quot;, &amp;quot;r&amp;quot;, stdin); #endif // ONLINE_JUDGE int a, b, c; int x, y, z; while (~scanf(&amp;quot;%d%d%d&amp;quot;, &amp;amp;a, &amp;amp;b, &amp;amp;c)) { int sum = a + b + c; if (sum &amp;amp; 1) { printf(&amp;quot;Impossible\n&amp;quot;); continue; } int tmp = b - a + c; if (tmp &amp;amp; 1) { printf(&amp;quot;Impossible\n&amp;quot;); continue; } y = tmp &amp;gt;&amp;gt; 1; z = c - y; x = a - z; if (x &amp;lt; 0 || y &amp;lt; 0 || z &amp;lt; 0) { printf(&amp;quot;Impossible\n&amp;quot;); continue; } printf(&amp;quot;%d %d %d\n&amp;quot;, x, y, z); } return 0; }  看题要认真。不把问题复杂化。</description>
+    </item>
+    
+    <item>
+      <title>codeforces Magnets</title>
+      <link>http://liuxueyang.github.io/blog/2013/10/02/codeforces-magnets/</link>
+      <pubDate>Wed, 02 Oct 2013 21:39:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/10/02/codeforces-magnets/</guid>
+      <description>link: http://codeforces.com/contest/344/problem/A
+这道题目很简单。
+把输入的01 和10 当做整数，如果相邻两个数字相等的话，那么就属于同一组，否则，就新增加了一组。
+#include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; using namespace std; int main(void) { #ifndef ONLINE_JUDGE freopen(&amp;quot;in.txt&amp;quot;, &amp;quot;r&amp;quot;, stdin); #endif // ONLINE_JUDGE int n; while (~scanf(&amp;quot;%d&amp;quot;, &amp;amp;n)) { int tmp; int pre = -1; int cnt = 0; while (n--) { scanf(&amp;quot;%02d&amp;quot;, &amp;amp;tmp); if (tmp != pre) cnt++; pre = tmp; } printf(&amp;quot;%d\n&amp;quot;, cnt); } return 0; }  ==
+其实，现在想那么多没用。其实……也想读研的，但是，又觉得没什么用……所以，很痛苦。
+路在何方呢？在脚下？</description>
+    </item>
+    
+    <item>
+      <title>codeforces Expecting Trouble</title>
+      <link>http://liuxueyang.github.io/blog/2013/10/02/codeforces-expecting-trouble/</link>
+      <pubDate>Wed, 02 Oct 2013 21:23:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/10/02/codeforces-expecting-trouble/</guid>
+      <description>link:http://codeforces.com/contest/345/problem/A
+写完这道题目才发现这场比赛只能用Ada语言提交==
+好吧，逗我玩呢
+考的是数学期望公式，二项分布的期望E=np
+C++代码：（我可不会Ada……=_=）
+#include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstring&amp;gt; using namespace std; int main(void) { char a[51]; double p; #ifndef ONLINE_JUDGE freopen(&amp;quot;in.txt&amp;quot;, &amp;quot;r&amp;quot;, stdin); #endif // ONLINE_JUDGE while (~scanf(&amp;quot;%s%lf&amp;quot;, a, &amp;amp;p)) { int len = strlen(a); int cnt = 0; int cnt1 = 0; for (int i = 0; i &amp;lt; len; ++i) { if (a[i] == &#39;1&#39;) cnt++; else if (a[i] == &#39;?&#39;) cnt1++; } double Cnt = (double)cnt + p * (double)cnt1; printf(&amp;quot;%.</description>
+    </item>
+    
+    <item>
+      <title>codeforces 199a</title>
+      <link>http://liuxueyang.github.io/blog/2013/09/12/codeforces-199a/</link>
+      <pubDate>Thu, 12 Sep 2013 19:16:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/09/12/codeforces-199a/</guid>
+      <description>link:http://codeforces.com/contest/342/problem/A
+恩恩，读错题了。人家是at most 7，我理解成了at lease 7。好欢乐~
+#include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;algorithm&amp;gt; using namespace std; int cnt[8]; int main(void) { #ifndef ONLINE_JUDGE freopen(&amp;quot;in.txt&amp;quot;, &amp;quot;r&amp;quot;, stdin); #endif int n, i, j, tmp; bool flag; while (~scanf(&amp;quot;%d&amp;quot;, &amp;amp;n)) { flag = true; memset(cnt, 0, sizeof(cnt)); for (i = 0; i &amp;lt; n; ++i) { scanf(&amp;quot;%d&amp;quot;, &amp;amp;tmp); cnt[tmp]++; } int sum = cnt[5] + cnt[7]; if (sum &amp;gt; 0) { printf(&amp;quot;-1\n&amp;quot;); continue; } int c136 = 0, c126 = 0, c124 = 0; if (cnt[1] &amp;gt;= cnt[3] &amp;amp;&amp;amp; cnt[6] &amp;gt;= cnt[3]) {cnt[1] -= cnt[3]; cnt[6] -= cnt[3]; c136 = cnt[3];} else flag = false; if (cnt[1] &amp;gt;= cnt[6] &amp;amp;&amp;amp; cnt[2] &amp;gt;= cnt[6]) {cnt[1] -= cnt[6]; cnt[2] -= cnt[6]; c126 = cnt[6];} else flag = false; if (cnt[1] &amp;gt;= cnt[4] &amp;amp;&amp;amp; cnt[2] &amp;gt;= cnt[4]) { c124 = cnt[4]; cnt[1] -= cnt[4]; cnt[2] -= cnt[4];} else flag = false; if (cnt[1]+cnt[2] &amp;gt; 0) flag = false; if (flag) { for (i = 0; i &amp;lt; c136; ++i) printf(&amp;quot;1 3 6\n&amp;quot;); for (j = 0; j &amp;lt; c126; ++j) printf(&amp;quot;1 2 6\n&amp;quot;); for (i = 0; i &amp;lt; c124; ++i) printf(&amp;quot;1 2 4\n&amp;quot;); } else printf(&amp;quot;-1\n&amp;quot;); } return 0; }  闲的没事儿干，没事儿做做题=_=</description>
+    </item>
+    
+    <item>
+      <title>codeforces 340C Tourist Problem</title>
+      <link>http://liuxueyang.github.io/blog/2013/09/04/codeforces-340c-tourist-problem/</link>
+      <pubDate>Wed, 04 Sep 2013 00:51:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/09/04/codeforces-340c-tourist-problem/</guid>
+      <description>link:http://codeforces.com/problemset/problem/340/C
+开始一点也没思路，赛后看别人写的代码那么短，可是不知道怎么推出来的啊！
+后来明白了。
+首先考虑第一个数字，就是和0想减的内个。那么剩下的n-1个数字有(n-1)!个排列方式。所以呢，在n!个式子里面，第一个位置的和就是：a1 * (n-1)! + a2 * (n-1)! + &amp;hellip;&amp;hellip; + an * (n-1)!；
+然后考虑其它位置：对于ai , aj . 并且相邻。那么剩下 n - 2 个数字，这些数字有 (n-2)!个排列方式，然后把相邻的 ai aj 插入，有 n-1 种插入方式，所以呢，一共有 (n-1) * (n-2)! = (n-1)! 个方式，其它位置的和就是：(n-1)! * fabs(ai - aj) 【i != j, 1 &amp;lt;= i, j &amp;lt;= n】
+关键是第二个式子怎么求呢？好像很难得样子。可以找规律啊。比如，a1, a2 , a3, a4.
+因为有绝对值，我可以先排序，先算正的，在 *2就行了。假设a1 &amp;gt; a2 &amp;gt; a3 &amp;gt; a4
+设：
+以a2结尾的ai - aj 的和是S2.
+以a3……和是S3
+。a4…………S4</description>
+    </item>
+    
+    <item>
+      <title>cf340D Bubble Sort Graph</title>
+      <link>http://liuxueyang.github.io/blog/2013/09/04/cf340d-bubble-sort-graph/</link>
+      <pubDate>Wed, 04 Sep 2013 00:36:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/09/04/cf340d-bubble-sort-graph/</guid>
+      <description>link:http://codeforces.com/problemset/problem/340/D
+感觉很好的一道题目。
+认真思考，发现，逆序的数字对一定有边相连。所以，题目要求没有边相连的最大的集合的点的个数，其实就是找原来的序列的最长上升子序列！
+/* * Filename: tourist.cpp * Created: 09/01/2013 09:07:05 AM * Author: liuxueyang (lxy), zypz457@sina.com * Organization: Hunnan University */ #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;deque&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;list&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;utility&amp;gt; #include &amp;lt;functional&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;iomanip&amp;gt; #include &amp;lt;sstream&amp;gt; #include &amp;lt;numeric&amp;gt; #include &amp;lt;cassert&amp;gt; #include &amp;lt;ctime&amp;gt; #include &amp;lt;iterator&amp;gt; const int INF = 0x3f3f3f3f; const int MOD = 1e9+7; using namespace std; int touch[100009]; int main ( int argc, char *argv[] ) { #ifndef ONLINE_JUDGE freopen(&amp;quot;in.</description>
+    </item>
+    
+    <item>
+      <title>codeforces mysterious present 最长上升子序列&#43;倒序打印路径</title>
+      <link>http://liuxueyang.github.io/blog/2013/08/19/codeforces-mysterious-present-%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97-%E5%80%92%E5%BA%8F%E6%89%93%E5%8D%B0%E8%B7%AF%E5%BE%84/</link>
+      <pubDate>Mon, 19 Aug 2013 15:22:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/08/19/codeforces-mysterious-present-%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97-%E5%80%92%E5%BA%8F%E6%89%93%E5%8D%B0%E8%B7%AF%E5%BE%84/</guid>
+      <description>link:http://codeforces.com/problemset/problem/4/D
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;deque&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;list&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;utility&amp;gt; #include &amp;lt;functional&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;iomanip&amp;gt; #include &amp;lt;sstream&amp;gt; #include &amp;lt;numeric&amp;gt; #include &amp;lt;cassert&amp;gt; #include &amp;lt;ctime&amp;gt; #include &amp;lt;iterator&amp;gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int n,w,h,cnt,ans,d[5009],path[5009],End; bool flag; typedef struct node { int W,H,In; bool operator &amp;lt; (const node &amp;amp;other) const { if(W!</description>
+    </item>
+    
+    <item>
+      <title>codeforces298c</title>
+      <link>http://liuxueyang.github.io/blog/2013/08/17/codeforces298c/</link>
+      <pubDate>Sat, 17 Aug 2013 10:40:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/08/17/codeforces298c/</guid>
+      <description>link:http://codeforces.com/problemset/problem/298/C 这道题目可以看出来我智商确实拙计
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;deque&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;list&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;utility&amp;gt; #include &amp;lt;functional&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;iomanip&amp;gt; #include &amp;lt;sstream&amp;gt; #include &amp;lt;numeric&amp;gt; #include &amp;lt;cassert&amp;gt; #include &amp;lt;ctime&amp;gt; #include &amp;lt;iterator&amp;gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; char a[1111],b[1111]; int main(void) { scanf(&amp;quot;%s%s&amp;quot;,a,b); int lena=strlen(a),lenb=strlen(b),cnt1=0,cnt2=0; for(int i=0;i&amp;lt;lena;++i) if(a[i]==&#39;1&#39;) cnt1++; for(int i=0;i&amp;lt;lenb;++i) if(b[i]==&#39;1&#39;) cnt2++; bool flag=true; if(cnt1%2==1) cnt1++; if(cnt1&amp;lt;cnt2) flag=false; if(flag) printf(&amp;quot;YES\n&amp;quot;); else printf(&amp;quot;NO\n&amp;quot;); return 0; }  拙计o(╯□╰)o</description>
+    </item>
+    
+    <item>
+      <title>codeforces194b</title>
+      <link>http://liuxueyang.github.io/blog/2013/08/15/codeforces194b/</link>
+      <pubDate>Thu, 15 Aug 2013 19:00:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/08/15/codeforces194b/</guid>
+      <description>link:http://codeforces.com/problemset/problem/334/B
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;deque&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;list&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;utility&amp;gt; #include &amp;lt;functional&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;iomanip&amp;gt; #include &amp;lt;sstream&amp;gt; #include &amp;lt;numeric&amp;gt; #include &amp;lt;cassert&amp;gt; #include &amp;lt;ctime&amp;gt; #include &amp;lt;iterator&amp;gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int main(void) { set&amp;lt;int&amp;gt; sadx, sady; int x[9] ,y[9] ; bool flag = true; for (int i=0;i&amp;lt;8;++i) { scanf(&amp;quot;%d%d&amp;quot;,&amp;amp;x[i],&amp;amp;y[i]); sadx.</description>
+    </item>
+    
+    <item>
+      <title>codeforces194a</title>
+      <link>http://liuxueyang.github.io/blog/2013/08/15/codeforces194a/</link>
+      <pubDate>Thu, 15 Aug 2013 18:53:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/08/15/codeforces194a/</guid>
+      <description>link:http://codeforces.com/contest/334/problem/A 很有意思的一道构造题。发现CF上经常出这种不难但是很不错的构造题。
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;deque&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;list&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;utility&amp;gt; #include &amp;lt;functional&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;iomanip&amp;gt; #include &amp;lt;sstream&amp;gt; #include &amp;lt;numeric&amp;gt; #include &amp;lt;cassert&amp;gt; #include &amp;lt;ctime&amp;gt; #include &amp;lt;iterator&amp;gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int main(void) { int n; while (~scanf(&amp;quot;%d&amp;quot;,&amp;amp;n)) for (int i=1;i&amp;lt;=n*n/2;++i) { for (int j=1;j&amp;lt;=n/2;++j) { printf(&amp;quot;%d %d &amp;quot;,i,n*n-i+1); ++i; } i--; printf(&amp;quot;\n&amp;quot;); } return 0; }  o(╯□╰)o 官方解题报告上面写的很明白 1　n^2 2　n^2-1 .</description>
+    </item>
+    
+    <item>
+      <title>codeforces195c</title>
+      <link>http://liuxueyang.github.io/blog/2013/08/15/codeforces195c/</link>
+      <pubDate>Thu, 15 Aug 2013 18:41:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/08/15/codeforces195c/</guid>
+      <description>link:http://codeforces.com/problemset/problem/336/C 从大到小枚举，如果对应的二进制位不等于0，就加进来，最后的sum如果%2^k==0那么就是合法的。
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;deque&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;list&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;utility&amp;gt; #include &amp;lt;functional&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;iomanip&amp;gt; #include &amp;lt;sstream&amp;gt; #include &amp;lt;numeric&amp;gt; #include &amp;lt;cassert&amp;gt; #include &amp;lt;ctime&amp;gt; #include &amp;lt;iterator&amp;gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int a[111111]; int main(void) { #ifndef ONLINE_JUDGE freopen(&amp;quot;in.txt&amp;quot;, &amp;quot;r&amp;quot;, stdin); #endif // ONLINE_JUDGE int n; while (~scanf(&amp;quot;%d&amp;quot;, &amp;amp;n)) { for (int i=0;i&amp;lt;n;++i) scanf(&amp;quot;%d&amp;quot;,a+i); for (int i=29;i&amp;gt;=0;--i) { int sad=1&amp;lt;&amp;lt;i, sum=-1, cnt=0; for (int j=0;j&amp;lt;n;++j) { if((sad&amp;amp;a[j])!</description>
+    </item>
+    
+    <item>
+      <title>codeforces195a</title>
+      <link>http://liuxueyang.github.io/blog/2013/08/15/codeforces195a/</link>
+      <pubDate>Thu, 15 Aug 2013 18:36:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/08/15/codeforces195a/</guid>
+      <description>link:http://codeforces.com/problemset/problem/336/A 很简单的一道题目，当初有个单词不认识，isosceles原来意思是等腰的o(╯□╰)o
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;deque&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;list&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;utility&amp;gt; #include &amp;lt;functional&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;iomanip&amp;gt; #include &amp;lt;sstream&amp;gt; #include &amp;lt;numeric&amp;gt; #include &amp;lt;cassert&amp;gt; #include &amp;lt;ctime&amp;gt; #include &amp;lt;iterator&amp;gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int main(void) { #ifndef ONLINE_JUDGE freopen(&amp;quot;in.txt&amp;quot;, &amp;quot;r&amp;quot;, stdin); #endif // ONLINE_JUDGE int x,y; while (~scanf(&amp;quot;%d%d&amp;quot;,&amp;amp;x,&amp;amp;y)) { int sad=abs(x)+abs(y); if(x&amp;gt;0&amp;amp;&amp;amp;y&amp;gt;0) printf(&amp;quot;%d %d %d %d\n&amp;quot;,0,sad,sad,0); else if(x&amp;gt;0&amp;amp;&amp;amp;y&amp;lt;0) printf(&amp;quot;%d %d %d %d\n&amp;quot;,0,-sad,sad,0); else if(x&amp;lt;0&amp;amp;&amp;amp;y&amp;gt;0) printf(&amp;quot;%d %d %d %d\n&amp;quot;,-sad,0,0,sad); else printf(&amp;quot;%d %d %d %d\n&amp;quot;,-sad,0,0,-sad); } return 0; }  o(╯□╰)o</description>
+    </item>
+    
+    <item>
+      <title>codefoces round193a</title>
+      <link>http://liuxueyang.github.io/blog/2013/07/25/codefoces-round193a/</link>
+      <pubDate>Thu, 25 Jul 2013 05:33:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/07/25/codefoces-round193a/</guid>
+      <description>link: http://codeforces.com/contest/332/problem/A /* ID: zypz4571 LANG: C++ TASK: 193a.cpp */ #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;deque&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;list&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;utility&amp;gt; #include &amp;lt;functional&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;iomanip&amp;gt; #include &amp;lt;sstream&amp;gt; #include &amp;lt;numeric&amp;gt; #include &amp;lt;cassert&amp;gt; #include &amp;lt;ctime&amp;gt; #include &amp;lt;iterator&amp;gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; char a[2222]; int main ( int argc, char *argv[] ) { #ifndef ONLINE_JUDGE freopen(&amp;quot;in.</description>
+    </item>
+    
+    <item>
+      <title>codeforces 192e</title>
+      <link>http://liuxueyang.github.io/blog/2013/07/24/codeforces-192e/</link>
+      <pubDate>Wed, 24 Jul 2013 21:09:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/07/24/codeforces-192e/</guid>
+      <description>link: http://codeforces.com/contest/330/problem/E
+/* ID: zypz4571 LANG: C++ TASK: 192e.cpp */ #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;deque&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;list&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;utility&amp;gt; #include &amp;lt;functional&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;iomanip&amp;gt; #include &amp;lt;sstream&amp;gt; #include &amp;lt;numeric&amp;gt; #include &amp;lt;cassert&amp;gt; #include &amp;lt;ctime&amp;gt; #include &amp;lt;iterator&amp;gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; map&amp;lt;pair&amp;lt;int,int&amp;gt;,bool&amp;gt; coll; int a[100009]; int main ( int argc, char *argv[] ) { #ifndef ONLINE_JUDGE //freopen(&amp;quot;in.</description>
+    </item>
+    
+    <item>
+      <title>abbyy cup a</title>
+      <link>http://liuxueyang.github.io/blog/2013/07/24/abbyy-cup-a/</link>
+      <pubDate>Wed, 24 Jul 2013 21:04:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/07/24/abbyy-cup-a/</guid>
+      <description>link: http://codeforces.com/contest/331/problem/A2
+/* ID: zypz4571 LANG: C++ TASK: abby_a.cpp */ #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;deque&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;list&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;utility&amp;gt; #include &amp;lt;functional&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;iomanip&amp;gt; #include &amp;lt;sstream&amp;gt; #include &amp;lt;numeric&amp;gt; #include &amp;lt;cassert&amp;gt; #include &amp;lt;ctime&amp;gt; #include &amp;lt;iterator&amp;gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; long long int a[300009], sum[300009]; map&amp;lt;int, int&amp;gt; coll; int main ( int argc, char *argv[] ) { #ifndef ONLINE_JUDGE freopen(&amp;quot;in.</description>
+    </item>
+    
+    <item>
+      <title>codeforces 192a</title>
+      <link>http://liuxueyang.github.io/blog/2013/07/22/codeforces-192a/</link>
+      <pubDate>Mon, 22 Jul 2013 03:09:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/07/22/codeforces-192a/</guid>
+      <description>link: http://codeforces.com/contest/330/problem/A brute force. /* ID: zypz4571 LANG: C++ TASK: 191a.cpp */ #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;list&amp;gt; #include &amp;lt;map&amp;gt; #define INF 0x3f3f3f3f #define mid int m=(l+r)/2 using namespace std; int a[102]; int main ( int argc, char *argv[] ) { #ifndef ONLINE_JUDGE freopen(&amp;quot;191a.in&amp;quot;, &amp;quot;r&amp;quot;, stdin); #endif int n, n1=0, cnt=0, Max=0; scanf(&amp;quot;%d&amp;quot;, &amp;amp;n); for (int i=0; i&amp;lt;n; ++i){ scanf(&amp;quot;%d&amp;quot;,a+i); if(a[i]) n1++; } if (n1 == n) Max = n1-1; else { Max = n1; for (int i=0; i&amp;lt;n; ++i) { for (int j=0; j&amp;lt;n; ++j) { cnt = n1; for (int k=i; k&amp;lt;=j; ++k) { if (!</description>
+    </item>
+    
+    <item>
+      <title>codeforces 192b</title>
+      <link>http://liuxueyang.github.io/blog/2013/07/22/codeforces-192b/</link>
+      <pubDate>Mon, 22 Jul 2013 03:07:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/07/22/codeforces-192b/</guid>
+      <description>link: http://codeforces.com/contest/330/problem/B I think the problem is hard at first. However, when you think deep in it you will find it is so easy.
+/* ID: zypz4571 LANG: C++ TASK: 192b.cpp */ #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;deque&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;list&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;utility&amp;gt; #include &amp;lt;functional&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;iomanip&amp;gt; #include &amp;lt;sstream&amp;gt; #include &amp;lt;numeric&amp;gt; #include &amp;lt;cassert&amp;gt; #include &amp;lt;ctime&amp;gt; #define INF 0x3f3f3f3f #define REP(i, n) for(int i=0;i&amp;lt;int(n);++i) #define FOR(i, a, b) for(int i=int(a);i&amp;lt;int(b);++i) #define DWN(i, b, a) for(int i=int(b-1);i&amp;gt;=int(a);--i) #define REP_1(i, n) for(int i=1;i&amp;lt;=int(n);++i) #define mid int m=(l+r)/2 using namespace std; int main ( int argc, char *argv[] ) { #ifndef ONLINE_JUDGE freopen(&amp;quot;in.</description>
+    </item>
+    
+    <item>
+      <title>codeforces 192 c</title>
+      <link>http://liuxueyang.github.io/blog/2013/07/22/codeforces-192-c/</link>
+      <pubDate>Mon, 22 Jul 2013 03:02:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/07/22/codeforces-192-c/</guid>
+      <description>link: http://codeforces.com/contest/330/problem/C broute force but you must be careful about some tricks and think about all the instances
+/* ID: zypz4571 LANG: C++ TASK: 192c.cpp */ #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;deque&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;list&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;utility&amp;gt; #include &amp;lt;functional&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;iomanip&amp;gt; #include &amp;lt;sstream&amp;gt; #include &amp;lt;numeric&amp;gt; #include &amp;lt;cassert&amp;gt; #include &amp;lt;ctime&amp;gt; #define INF 0x3f3f3f3f #define REP(i, n) for(int i=0;i&amp;lt;int(n);++i) #define FOR(i, a, b) for(int i=int(a);i&amp;lt;int(b);++i) #define DWN(i, b, a) for(int i=int(b-1);i&amp;gt;=int(a);--i) #define REP_1(i, n) for(int i=1;i&amp;lt;=int(n);++i) #define mid int m=(l+r)/2 using namespace std; int a[102][102], rows[102], cols[102]; int main ( int argc, char *argv[] ) { #ifndef ONLINE_JUDGE freopen(&amp;quot;in.</description>
+    </item>
+    
+    <item>
+      <title>codeforces 192 D</title>
+      <link>http://liuxueyang.github.io/blog/2013/07/22/codeforces-192-d/</link>
+      <pubDate>Mon, 22 Jul 2013 02:58:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/07/22/codeforces-192-d/</guid>
+      <description>link: http://codeforces.com/contest/330/problem/D The discription looks so long, but the problem is simple if you can grasp the problem quickly.
+/* ID: zypz4571 LANG: C++ TASK: 192d.cpp */ #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;deque&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;list&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;utility&amp;gt; #include &amp;lt;functional&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;iomanip&amp;gt; #include &amp;lt;sstream&amp;gt; #include &amp;lt;numeric&amp;gt; #include &amp;lt;cassert&amp;gt; #include &amp;lt;ctime&amp;gt; #define INF 0x3f3f3f3f #define REP(i, n) for(int i=0;i&amp;lt;int(n);++i) #define FOR(i, a, b) for(int i=int(a);i&amp;lt;int(b);++i) #define DWN(i, b, a) for(int i=int(b-1);i&amp;gt;=int(a);--i) #define REP_1(i, n) for(int i=1;i&amp;lt;=int(n);++i) #define mid int m=(l+r)/2 using namespace std; int dir[4][2] = {{0,-1}, {0, 1}, {-1, 0}, {1, 0}}; char mat[1003][1003]; struct Node { int x, y, time; }; Node start, end; int ans, matime[1003][1003], n, m; bool vis[1003][1003]; void bfs(Node end) { queue&amp;lt;Node&amp;gt; q; q.</description>
+    </item>
+    
+    <item>
+      <title>codeforces magic five －－快速幂模</title>
+      <link>http://liuxueyang.github.io/blog/2013/07/19/codeforces-magic-five-%E5%BF%AB%E9%80%9F%E5%B9%82%E6%A8%A1/</link>
+      <pubDate>Fri, 19 Jul 2013 16:29:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/07/19/codeforces-magic-five-%E5%BF%AB%E9%80%9F%E5%B9%82%E6%A8%A1/</guid>
+      <description>题目链接：http://codeforces.com/contest/327/problem/C 首先先算出一个周期里面的值，保存在ans里面，就是平常的快速幂模m做法． 然后要计算一个公式，比如有k个部分，那么对于没一个位置i, 都有2^i + 2^(i+n) + &amp;hellip; + 2^(i+(k-1)*n) = 2^i(1 + 2^n + &amp;hellip; + 2^((k-1)*n)) = 2^i * (1-2^(n*k))/(1-2^n) 所以结果就是ans * (1-2^(n*k))/(1-2^n) % MOD; 然后就是关键计算(1-2^(n*k))/(1-2^n) % MOD； 用到费马小定理a^(p-1)同余于1(mod 1)．p是一个质数，那么a^(p-2) * a 同余于１(mod 1) ，所以a 的逆元就是 a^(p-2) MOD是一个质数,所以(1-2^(n*k))/(1-2^n) % MOD = (2^(n*k)-1)/(2^n-1) % MOD = (2^(n*k)-1)%MOD * ((2^n-1)^(MOD-2))%MOD
+/* * ===================================================================================== * Filename: magic.cpp * Created: 19/07/2013 12:27:18 * Author: liuxueyang (lxy), 1459917536@qq.com * Organization: Hunan University * * ===================================================================================== */ /* ID: zypz4571 LANG: C++ TASK: magic */ #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;stack&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;list&amp;gt; using namespace std; #define INF 0x3f3f3f3f const double eps=1e-9; char a[100010]; const int MOD=1000000007; #define LL long long int k; LL quick(LL a, LL b) { LL ans=1; while (b) { if(b&amp;amp;1) ans=(ans*a)%MOD; b/=2; a*=a; a%=MOD; } return ans; } int main ( int argc, char *argv[] ) { #ifndef ONLINE_JUDGE freopen(&amp;quot;in.</description>
+    </item>
+    
+    <item>
+      <title>codeforces hungry sequence  水题</title>
+      <link>http://liuxueyang.github.io/blog/2013/07/19/codeforces-hungry-sequence--%E6%B0%B4%E9%A2%98/</link>
+      <pubDate>Fri, 19 Jul 2013 01:07:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/07/19/codeforces-hungry-sequence--%E6%B0%B4%E9%A2%98/</guid>
+      <description>题目链接：http://codeforces.com/problemset/problem/327/B 这道题目虽然超级简单，但是当初我还真的没有想出来做法，囧，看完别人的代码恍然大悟。
+#include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cmath&amp;gt; int main(void) { int n; scanf(&amp;quot;%d&amp;quot;, &amp;amp;n); for (int i = n+1; i &amp;lt;= n+n; ++i) { printf(&amp;quot;%d&amp;quot;, i); if (i != n+n) printf(&amp;quot; &amp;quot;); } printf(&amp;quot;\n&amp;quot;); return 0; }  ＝＝只需要注意到整除这个条件：至少是2倍，所以只需要从n+1一直到2*n就可以了，正好n个数字，最大的数字和最小的数字相比也不超过2.就是这么个简单的道理。 </description>
+    </item>
+    
+    <item>
+      <title>Codeforces Flipping game 动态规划基础</title>
+      <link>http://liuxueyang.github.io/blog/2013/07/19/codeforces-flipping-game-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Fri, 19 Jul 2013 01:05:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/07/19/codeforces-flipping-game-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%9F%BA%E7%A1%80/</guid>
+      <description>题目链接：http://codeforces.com/problemset/problem/327/A 这道题目有O(N^3)的做法，这里转化为动态规划求解，复杂度是O(N)
+#include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;list&amp;gt; #include &amp;lt;map&amp;gt; using namespace std; #define INF 0x3f3f3f3f int a[102], b[102], c[102]; int main ( void ) { int n, n1=0, cnt=0; while (~scanf(&amp;quot;%d&amp;quot;, &amp;amp;n)) { n1 = cnt = 0; memset(a, 0, sizeof(a)); memset(b, 0, sizeof(b)); for (int i=1; i&amp;lt;=n; ++i){ scanf(&amp;quot;%d&amp;quot;,a+i); if(a[i]) n1++; if (a[i]) b[i]=-1; else b[i]=1; } c[0] = 0; for (int i = 1; i &amp;lt;= n; ++i) { c[i] = c[i-1] + b[i]; } int Max = -INF, Min = c[0]; for (int i = 1; i &amp;lt;= n; ++i) { if (c[i] - Min &amp;gt; Max) Max = c[i]-Min; if (c[i] &amp;lt; Min) Min = c[i]; } printf(&amp;quot;%d\n&amp;quot;,n1+Max); } return 0; }  转化为子序列的最大连续和</description>
+    </item>
+    
+    <item>
+      <title>Testing Round #8  A. IQ Test   水题</title>
+      <link>http://liuxueyang.github.io/blog/2013/07/19/testing-round-#8--a.-iq-test---%E6%B0%B4%E9%A2%98/</link>
+      <pubDate>Fri, 19 Jul 2013 00:58:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/07/19/testing-round-#8--a.-iq-test---%E6%B0%B4%E9%A2%98/</guid>
+      <description>题目链接：http://codeforces.com/problemset/problem/328/A 这道题目wa了一次，注意这句话：
+You should also print 42 if the next element of progression is not integer. So answer is always integer.  然后就可以了。
+/* ID: zypz4571 LANG: C++ TASK: iqtest.cpp */ #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;list&amp;gt; #include &amp;lt;map&amp;gt; #define INF 0x3f3f3f3f #define mid int m=(l+r)/2 using namespace std; int main ( int argc, char *argv[] ) { #ifndef ONLINE_JUDGE freopen(&amp;quot;in.</description>
+    </item>
+    
+    <item>
+      <title>Codeforces Testing Round #8 B. Sheldon and Ice Pieces 水题</title>
+      <link>http://liuxueyang.github.io/blog/2013/07/18/codeforces-testing-round-#8-b.-sheldon-and-ice-pieces-%E6%B0%B4%E9%A2%98/</link>
+      <pubDate>Thu, 18 Jul 2013 18:50:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/07/18/codeforces-testing-round-#8-b.-sheldon-and-ice-pieces-%E6%B0%B4%E9%A2%98/</guid>
+      <description>题目链接：http://codeforces.com/problemset/problem/328/B 水题~
+#include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; char n[10], a[202]; int b[13], c[13]; int main(void) { //freopen(&amp;quot;in.txt&amp;quot;, &amp;quot;r&amp;quot;, stdin); scanf(&amp;quot;%s%s&amp;quot;, n, a); int len1 = strlen(n), len2 = strlen(a); memset(b, 0, sizeof(b)); memset(c, 0, sizeof(c)); for (int i = 0; i &amp;lt; len1; ++i) b[n[i]-&#39;0&#39;]++; for (int i = 0; i &amp;lt; len2; ++i) c[a[i]-&#39;0&#39;]++; b[2]+=b[5], b[5]=0, c[2]+=c[5], c[5]=0, b[6]+=b[9], b[9]=0, c[6]+=c[9], c[9]=0; int cnt=0, Max=100000; for (int i = 0; i &amp;lt; 10; ++i){ if (b[i]){ cnt = c[i]/b[i]; if (cnt &amp;lt; Max) Max = cnt; } } printf(&amp;quot;%d\n&amp;quot;, Max); return 0; }  =_=</description>
+    </item>
+    
+    <item>
+      <title>Codeforces Round #190 (Div. 2)  B. Ciel and Flowers</title>
+      <link>http://liuxueyang.github.io/blog/2013/07/03/codeforces-round-#190-div.-2--b.-ciel-and-flowers/</link>
+      <pubDate>Wed, 03 Jul 2013 14:14:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/07/03/codeforces-round-#190-div.-2--b.-ciel-and-flowers/</guid>
+      <description>链接：http://codeforces.com/contest/322/problem/B 这题做错了。没考虑周全。
+#include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;iostream&amp;gt; #include &amp;lt;algorithm&amp;gt; using namespace std; int main(void) { int r, g, b; while (~scanf(&amp;quot;%d%d%d&amp;quot;, &amp;amp;r, &amp;amp;g, &amp;amp;b)) { int x = r % 3, y = g % 3, z = b % 3, Max = max(x, max(y, z)), cnt =r/3+g/3+b/3; if (Max == 1) { if (x == y &amp;amp;&amp;amp; y == z &amp;amp;&amp;amp; x == 1) cnt++; } if (Max == 2) { if (x + y + z == 4) { if (x*y*z) cnt++; else if (!</description>
+    </item>
+    
+    <item>
+      <title>Codeforces Round #187 (Div. 2) B. Sereja and Array</title>
+      <link>http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-b.-sereja-and-array/</link>
+      <pubDate>Sat, 08 Jun 2013 18:38:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-b.-sereja-and-array/</guid>
+      <description>题目链接：http://codeforces.com/contest/315/problem/B 开始以为线段树，汗……原来是道水题
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;stack&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;queue&amp;gt; using namespace std; typedef struct Po { int d, a; }Po; Po p[100000+10]; int main(void) { #ifndef ONLINE_JUDGE freopen(&amp;quot;187b.in&amp;quot;, &amp;quot;r&amp;quot;, stdin); #endif int n, m; scanf(&amp;quot;%d%d&amp;quot;, &amp;amp;n, &amp;amp;m); for (int i = 1; i &amp;lt;= n; ++i) { scanf(&amp;quot;%d&amp;quot;, &amp;amp;p[i].a); p[i].d = 0; } int D = 0, t, s; for (int i = 0; i &amp;lt; m; ++i) { scanf(&amp;quot;%d&amp;quot;, &amp;amp;t); if (t == 1) { int st, en; scanf(&amp;quot;%d%d&amp;quot;, &amp;amp;st, &amp;amp;en); p[st].</description>
+    </item>
+    
+    <item>
+      <title>Codeforces Round #187 (Div. 2) A. Sereja and Bottles</title>
+      <link>http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-a.-sereja-and-bottles/</link>
+      <pubDate>Sat, 08 Jun 2013 18:35:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-a.-sereja-and-bottles/</guid>
+      <description>题目链接：http://codeforces.com/contest/315/problem/A 这到题目比赛的时候过了，赛后WA了……虽然很简单，但是还是没想太清楚
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; using namespace std; #define MAX 103 int a[MAX], b[MAX]; int main(void) { int n; #ifndef ONLINE_JUDGE freopen(&amp;quot;187a.in&amp;quot;, &amp;quot;r&amp;quot;, stdin); #endif while (~scanf(&amp;quot;%d&amp;quot;, &amp;amp;n)) { for (int i = 0; i &amp;lt; n; ++i) scanf(&amp;quot;%d%d&amp;quot;, a+i, b+i); int cnt = 0; for (int i = 0; i &amp;lt; n; ++i) { bool flag = false; for (int j = 0; j &amp;lt; n; ++j) { if (i!</description>
+    </item>
+    
+    <item>
+      <title>Codeforces Round #185 (Div. 2) B. Archer</title>
+      <link>http://liuxueyang.github.io/blog/2013/05/31/codeforces-round-#185-div.-2-b.-archer/</link>
+      <pubDate>Fri, 31 May 2013 11:10:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/05/31/codeforces-round-#185-div.-2-b.-archer/</guid>
+      <description>题目链接：http://codeforces.com/problemset/problem/312/B 题目大意： 很简短，不解释了。 题目思路： 开始怎么也读不懂题意，以为求期望呢，想不开……后来问了别人才知道，原来就是求概率，也没说多少个回合，所以就是求极限…… 所以，这货就是一道很简洁的概率题，推个公式就好了。 #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; using namespace std; int main(void) { int a, b, c, d; double p1, p2, ans; scanf(&amp;quot;%d%d%d%d&amp;quot;, &amp;amp;a, &amp;amp;b, &amp;amp;c, &amp;amp;d); p1 = 1.0*a/b; p2 = 1.0*c/d; ans = p1/(1-(1-p1)*(1-p2)); printf(&amp;quot;%.12f\n&amp;quot;, ans); return 0; }   开始为什么怎么也读不懂捏？果然是理解能力差么？ 这题几天前做的，忘了总结一下了。</description>
+    </item>
+    
+    <item>
+      <title>Codeforces Round #186 (Div. 2) C. Ilya and Matrix</title>
+      <link>http://liuxueyang.github.io/blog/2013/05/31/codeforces-round-#186-div.-2-c.-ilya-and-matrix/</link>
+      <pubDate>Fri, 31 May 2013 11:04:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/05/31/codeforces-round-#186-div.-2-c.-ilya-and-matrix/</guid>
+      <description>题目链接：http://codeforces.com/problemset/problem/313/C 题目大意： 还是看原题吧，意思不难懂。 题目思路： 开始一直没有想法，后来听一然酱讲了才好不容易搞懂，赶脚好神奇。 构造的思路应该算贪心，先把前4大的数字排列到最先划分的4个方格里面，然后再依次把后面比较大的数字依次填充到这四个方格里空着的小格子里面，直到所有的格子填满为止，为什么这个思路是正确的呢？还是模拟一下4*4的格子就差不多理解了吧。 但是关键是怎么算出递归得到的结果？一然酱的思路很巧妙，先把数字逆序排列，再把前序和算出来，目的是方便后面的求和，然后从递归的最底层开始考虑。最底层肯定是所有的数字都包括，也就是前N个数字的和，再往上走，就是前N/4个数字的和，直到N&amp;lt;1为止。碉堡了…… #include &amp;lt;iostream&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; using namespace std; #define LL long long int const int MAX = 1000000*2+10; LL a[MAX], ans, n; bool cmp2(LL a, LL b) { return a &amp;gt; b; } int main(void) { while (~scanf(&amp;quot;%I64d&amp;quot;, &amp;amp;n)) { int i; for (i = 0; i &amp;lt; n; ++i) scanf(&amp;quot;%I64d&amp;quot;, a+i); sort(a, a+n, cmp2); for (i = 1; i &amp;lt; n; ++i) a[i] += a[i-1]; ans = 0; while (n &amp;gt;= 1) { ans += a[n-1]; n = n &amp;gt;&amp;gt; 2; } printf(&amp;quot;%I64d\n&amp;quot;, ans); } return 0 ; }   然后就是注意一下类型用LL…… 这回跟一然酱去网吧做CF，感触颇深，看人家神牛怎么做比赛的，给跪……谢谢一然酱~ </description>
+    </item>
+    
+    <item>
+      <title>Codeforces Round #185 (Div. 1) A. The Closest Pair</title>
+      <link>http://liuxueyang.github.io/blog/2013/05/30/codeforces-round-#185-div.-1-a.-the-closest-pair/</link>
+      <pubDate>Thu, 30 May 2013 00:05:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/05/30/codeforces-round-#185-div.-1-a.-the-closest-pair/</guid>
+      <description>题目链接：http://codeforces.com/problemset/problem/311/A 题目大意： 题目很短，不解释了。^_^ 题目思路： 开始感觉很难，没思路。看了解题报告，发现原来是道水题嘛。程序里面有个break语句，要让循环次数达到最大，并且循环次数容易计算，只需要让这个break;永远不会执行就可以了。也就是说，可以让p[j].x - p[i].x &amp;gt;= d 永远不成立，只需要让p[j].x - p[i].x总等于0就可以了！因为题目让生成任意一组符合条件的数据嘛，所以，可以让产生的所有的点的横坐标都是一样的就可以了。
+#include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;iostream&amp;gt; #include &amp;lt;cmath&amp;gt; using namespace std; #define LL long long int main(void) { #ifndef ONLINE_JUDGE //freopen(&amp;quot;185_c.in1&amp;quot;, &amp;quot;r&amp;quot;, stdin); #endif LL n, k; scanf(&amp;quot;%I64d%I64d&amp;quot;, &amp;amp;n, &amp;amp;k); if (n*(n-1)/2 &amp;lt;= k){ printf(&amp;quot;no solution\n&amp;quot;); } else { for (int i = 0; i &amp;lt; n; ++i) { printf(&amp;quot;1 %d\n&amp;quot;, i); } } return 0; }  很简单的思路，当初为什么没有想到？</description>
+    </item>
+    
+    <item>
+      <title>CF 281A Word Capitalization</title>
+      <link>http://liuxueyang.github.io/blog/2013/03/11/cf-281a-word-capitalization/</link>
+      <pubDate>Mon, 11 Mar 2013 20:34:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/03/11/cf-281a-word-capitalization/</guid>
+      <description>A. Word Capitalization time limit per test 2 seconds memory limit per test 256 megabytes input standard input output standard output
+Capitalization is writing a word with its first letter as a capital letter. Your task is to capitalize the given word.
+Note, that during capitalization all the letters except the first one remains unchanged. Input
+A single line contains a non-empty word. This word consists of lowercase and uppercase English letters.</description>
+    </item>
+    
+    <item>
+      <title>CF 142B T-primes</title>
+      <link>http://liuxueyang.github.io/blog/2013/03/10/cf-142b-t-primes/</link>
+      <pubDate>Sun, 10 Mar 2013 16:36:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/03/10/cf-142b-t-primes/</guid>
+      <description>B. T-primes time limit per test 2 seconds memory limit per test 256 megabytes input standard input output standard output
+We know that prime numbers are positive integers that have exactly two distinct positive divisors. Similarly, we&amp;rsquo;ll call a positive integer t Т-prime, if thas exactly three distinct positive divisors.
+You are given an array of n positive integers. For each of them determine whether it is Т-prime or not. Input</description>
+    </item>
+    
+    <item>
+      <title>CF 230A Dragons</title>
+      <link>http://liuxueyang.github.io/blog/2013/03/10/cf-230a-dragons/</link>
+      <pubDate>Sun, 10 Mar 2013 16:30:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/03/10/cf-230a-dragons/</guid>
+      <description>C - Dragons Time Limit:2000MS Memory Limit:262144KB 64bit IO Format:%I64d &amp;amp; %I64u Submit Status Practice CodeForces 230A
+Description
+Kirito is stuck on a level of the MMORPG he is playing now. To move on in the game, he&amp;rsquo;s got to defeat all n dragons that live on this level. Kirito and the dragons have strength, which is represented by an integer. In the duel between two opponents the duel&amp;rsquo;s outcome is determined by their strength.</description>
+    </item>
+    
+    <item>
+      <title>CF 231A Team</title>
+      <link>http://liuxueyang.github.io/blog/2013/03/10/cf-231a-team/</link>
+      <pubDate>Sun, 10 Mar 2013 16:28:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/03/10/cf-231a-team/</guid>
+      <description>A - Team Time Limit:2000MS Memory Limit:262144KB 64bit IO Format:%I64d &amp;amp; %I64u Submit Status Practice CodeForces 231A
+Description
+One day three best friends Petya, Vasya and Tonya decided to form a team and take part in programming contests. Participants are usually offered several problems during programming contests. Long before the start the friends decided that they will implement a problem if at least two of them are sure about the solution.</description>
+    </item>
+    
+    <item>
+      <title>CF271 C. Secret</title>
+      <link>http://liuxueyang.github.io/blog/2013/02/15/cf271-c.-secret/</link>
+      <pubDate>Fri, 15 Feb 2013 17:14:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/02/15/cf271-c.-secret/</guid>
+      <description>C. Secret time limit per test 2 seconds memory limit per test 256 megabytes input standard input output standard output
+The Greatest Secret Ever consists of n words, indexed by positive integers from 1 to n. The secret needs dividing between k Keepers (let&amp;rsquo;s index them by positive integers from 1 to k), the i-th Keeper gets a non-empty set of words with numbers from the set Ui = (ui, 1, ui, 2, &amp;hellip;, ui, |Ui|).</description>
+    </item>
+    
+    <item>
+      <title>CF271 A. Beautiful Year</title>
+      <link>http://liuxueyang.github.io/blog/2013/02/15/cf271-a.-beautiful-year/</link>
+      <pubDate>Fri, 15 Feb 2013 16:10:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/02/15/cf271-a.-beautiful-year/</guid>
+      <description>A. Beautiful Year time limit per test 2 seconds memory limit per test 256 megabytes input standard input output standard output
+It seems like the year of 2013 came only yesterday. Do you know a curious fact? The year of 2013 is the first year after the old 1987 with only distinct digits.
+Now you are suggested to solve the following problem: given a year number, find the minimum year number which is strictly larger than the given one and has only distinct digits.</description>
+    </item>
+    
+    <item>
+      <title>CF271 B. Prime Matrix</title>
+      <link>http://liuxueyang.github.io/blog/2013/02/15/cf271-b.-prime-matrix/</link>
+      <pubDate>Fri, 15 Feb 2013 16:06:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/02/15/cf271-b.-prime-matrix/</guid>
+      <description>B. Prime Matrix time limit per test 2 seconds memory limit per test 256 megabytes input standard input output standard output
+You&amp;rsquo;ve got an n × m matrix. The matrix consists of integers. In one move, you can apply a single transformation to the matrix: choose an arbitrary element of the matrix and increase it by 1. Each element can be increased an arbitrary number of times.
+You are really curious about prime numbers.</description>
+    </item>
+    
+    <item>
+      <title>CF266 B. Queue at the School</title>
+      <link>http://liuxueyang.github.io/blog/2013/01/23/cf266-b.-queue-at-the-school/</link>
+      <pubDate>Wed, 23 Jan 2013 10:23:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/01/23/cf266-b.-queue-at-the-school/</guid>
+      <description>B. Queue at the School time limit per test 2 seconds memory limit per test 256 megabytes input standard input output standard output
+During the break the schoolchildren, boys and girls, formed a queue of n people in the canteen. Initially the children stood in the order they entered the canteen. However, after a while the boys started feeling awkward for standing in front of the girls in the queue and they started letting the girls move forward each second.</description>
+    </item>
+    
+    <item>
+      <title>CF266 A. Stones on the Table</title>
+      <link>http://liuxueyang.github.io/blog/2013/01/23/cf266-a.-stones-on-the-table/</link>
+      <pubDate>Wed, 23 Jan 2013 10:19:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/01/23/cf266-a.-stones-on-the-table/</guid>
+      <description>A. Stones on the Table time limit per test 2 seconds memory limit per test 256 megabytes input standard input output standard output
+There are n stones on the table in a row, each of them can be red, green or blue. Count the minimum number of stones to take from the table so that any two neighboring stones had different colors. Stones in a row are considered neighboring if there are no other stones between them.</description>
+    </item>
+    
+    <item>
+      <title>CodeForce 264 A. Escape from Stones</title>
+      <link>http://liuxueyang.github.io/blog/2013/01/21/codeforce-264-a.-escape-from-stones/</link>
+      <pubDate>Mon, 21 Jan 2013 10:53:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/01/21/codeforce-264-a.-escape-from-stones/</guid>
+      <description>A. Escape from Stones time limit per test 2 seconds memory limit per test 256 megabytes input standard input output standard output
+Squirrel Liss lived in a forest peacefully, but unexpected trouble happens. Stones fall from a mountain. Initially Squirrel Liss occupies an interval [0, 1]. Next, n stones will fall and Liss will escape from the stones. The stones are numbered from 1 to n in order.
+The stones always fall to the center of Liss&amp;rsquo;s interval.</description>
+    </item>
+    
+    <item>
+      <title>A. Roma and Lucky Numbers</title>
+      <link>http://liuxueyang.github.io/blog/2013/01/15/a.-roma-and-lucky-numbers/</link>
+      <pubDate>Tue, 15 Jan 2013 10:56:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/01/15/a.-roma-and-lucky-numbers/</guid>
+      <description>A. Roma and Lucky Numbers time limit per test 1 second memory limit per test 256 megabytes input standard input output standard output
+Roma (a popular Russian name that means &amp;lsquo;Roman&amp;rsquo;) loves the Little Lvov Elephant&amp;rsquo;s lucky numbers.
+Let us remind you that lucky numbers are positive integers whose decimal representation only contains lucky digits 4 and 7. For example, numbers 47, 744, 4 are lucky and 5, 17, 467 are not.</description>
+    </item>
+    
+  </channel>
+</rss>

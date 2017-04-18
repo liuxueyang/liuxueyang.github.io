@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Uestc on 黑历史</title>
+    <link>http://liuxueyang.github.io/tags/uestc/</link>
+    <description>Recent content in Uestc on 黑历史</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 20 Apr 2013 09:30:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://liuxueyang.github.io/tags/uestc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>uestc1824 Judgment Day ——比赛残留题</title>
+      <link>http://liuxueyang.github.io/blog/2013/04/20/uestc1824-judgment-day-%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/</link>
+      <pubDate>Sat, 20 Apr 2013 09:30:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/04/20/uestc1824-judgment-day-%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/</guid>
+      <description>题目链接：http://www.acm.uestc.edu.cn/problem.php?pid=1824 题目大意： 给一个大的字符串，给一个数字n，然后给出n个小的字符串，在大的字符串里面每个字母只能选一次，问最多可以组成多少个小的字符串。小的字符串最多有10个，每个小字符串和大字符串长度最多10000。 题目思路： 因为最多有10个小的字符串，从10个里面选，最多有1024种选法。因为字符串只包含26个小写字母，可以统计每个小字符串里面的每个小写字母的个数，这样，复杂度大约在10×26×1024,是10^5的范围，可以枚举。 比如对于n个字符串，最多有1&amp;lt;&amp;lt;n种，用 x 从1枚举到1&amp;lt;&amp;lt;n - 1，然后用 j 从 0 枚举到n-1，用 1 &amp;lt;&amp;lt; j 和 x 相与，如果为1,则 j +1 表示第 j + 1 个人被选上了，判断它是不是能被选上，如果能被选上，那么 cnt++，再和max相比较，最后得到max。
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;stack&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;algorithm&amp;gt; #define lson l, m, rt&amp;lt;&amp;lt;1 #define rson m+1, r, rt&amp;lt;&amp;lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int L = 100000+10; char s[L], a[15][L]; int t, nn, cnt[29], ca[15][29], cc[29]; int main(void){ #ifndef ONLINE_JUDGE freopen(&amp;quot;j.</description>
+    </item>
+    
+    <item>
+      <title>uestc1307 windy数 ——数位DP入门题</title>
+      <link>http://liuxueyang.github.io/blog/2013/04/15/uestc1307-windy%E6%95%B0-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/</link>
+      <pubDate>Mon, 15 Apr 2013 19:51:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/04/15/uestc1307-windy%E6%95%B0-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/</guid>
+      <description>题目链接：http://acm.uestc.edu.cn/problem.php?pid=1307  题目大意： 不含前导零且相邻两个数字之差至少为2的正整数被称为windy数。windy想知道，在A和B之间，包括A和B，总共有多少个windy数？ 思路： 具体解释代码中有。看的这个人的代码：http://blog.csdn.net/acm_cxlove/article/details/7819907# 然后自己又分析了一下，终于明白了。
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;stack&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;algorithm&amp;gt; #define lson l, m, rt&amp;lt;&amp;lt;1 #define rson m+1, r, rt&amp;lt;&amp;lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int dp[15][10], a[15]; // 这个函数求的是区间（0，n）内的个数 LL solve(int n){ int len = 0; LL ans = 0; while (n){ a[++len] = n % 10; n /= 10; }int i, j; a[len+1] = 0; // 长度为1~len-1 for (i = 1; i &amp;lt;= len-1; ++i) for (j = 1; j &amp;lt;= 9; ++j) // 注意j从1开始，因为最高位不能是0！ ans += dp[i][j]; // debug了好久！！！ // 长度为len，但是最高位是a[len] - 1 for (i = 1; i &amp;lt;= a[len] - 1; ++i) ans += dp[len][i]; // 长度为len，但是最高位是a[len] for (i = len - 1; i &amp;gt;= 1; --i){ for (j = 0; j &amp;lt; a[i]; ++j) if (abs(a[i+1] - j) &amp;gt;= 2) ans += dp[i][j]; if (abs(a[i] - a[i+1]) &amp;lt; 2) break; } return ans; } int main(void){ #ifndef ONLINE_JUDGE freopen(&amp;quot;uestcoj1307.</description>
+    </item>
+    
+  </channel>
+</rss>

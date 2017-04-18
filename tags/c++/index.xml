@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; on 黑历史</title>
+    <link>http://liuxueyang.github.io/tags/c&#43;&#43;/</link>
+    <description>Recent content in C&#43;&#43; on 黑历史</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 06 Mar 2017 11:25:18 +0000</lastBuildDate>
+    
+	<atom:link href="http://liuxueyang.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>const member function in cpp</title>
+      <link>http://liuxueyang.github.io/blog/2017/03/06/const-member-function-in-cpp/</link>
+      <pubDate>Mon, 06 Mar 2017 11:25:18 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2017/03/06/const-member-function-in-cpp/</guid>
+      <description>默认情况下，this是一个const pointer to the nonconst version of the class type。比如有一个类A，那么在类里面，this的类型是A * const。因为不能把一个const对象的地址赋值给一个指向nonconst对象的指针，因此不能把this绑定到一个const对象上。这就导致，不能在const对象上调用一个nonconst member function。
+解决方法就是，把this声明为const。可是this是隐性的变量，所以C++的解决方法就是在参数列表后面指定const。这样的函数就是const member function。它的语义是：this是一个const pointer to a const object of the class type。这样，const对象和nonconst对象都可以调用这个函数。</description>
+    </item>
+    
+    <item>
+      <title>const pointer and pointer to const in Cpp</title>
+      <link>http://liuxueyang.github.io/blog/2017/03/06/const-pointer-and-pointer-to-const-in-cpp/</link>
+      <pubDate>Mon, 06 Mar 2017 10:03:28 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2017/03/06/const-pointer-and-pointer-to-const-in-cpp/</guid>
+      <description>中文翻译好像有常量指针和指针常量这两种说法。然而翻译过来让我更加费解。还是英文更加直白。
+pointer to const const int b = 30; const int * bptr = &amp;amp;b;  bptr是一个指针，它指向的是一个类型为const int的对象。可以对bptr本身的内容（保存的地址）进行修改，但是不能对它指向的对象进行修改：
+const int c = 31; bptr = &amp;amp;c;  这样，bptr就指向了另外一个const对象。
+有个例外：可以让pointer to const指向一个nonconst对象。
+int d = 32; bptr = &amp;amp;d;  需要注意的是，即使d变量是nonconst，仍然不能通过bptr这个指针对b进行修改：
+// *bptr = 33; // error!  总之，
+ 我可以指向const对象，也可以指向nonconst对象，你也可以修改我。但是，你不能修改我指向的*对象*。 &amp;mdash; pointer to const
+ const pointer int a = 3; int * const aptr = &amp;amp;a;  aptr是一个常量，同时是一个指针。不能对aptr里面保存的地址进行修改。但是可以对aptr所指向的对象进行修改：</description>
+    </item>
+    
+    <item>
+      <title>NFA2DFA</title>
+      <link>http://liuxueyang.github.io/blog/2014/05/28/nfa2dfa/</link>
+      <pubDate>Wed, 28 May 2014 14:01:53 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2014/05/28/nfa2dfa/</guid>
+      <description>input: number of symbols symbol set(each space between two symbol) number of states(state number starts from 1 to n by default) start state number number of accept states accept states set state transfer table (epsilon transfer is at column one and if there are several epsilon transfers, seperate them with a comma without spaces) The following file is the input file.
+NFA2DFA.txt 2 a b 4 1 1 3 3 2 1 -1 1 -1 -1 3 4 -1 -1 3  we input a integer N by str.</description>
+    </item>
+    
+  </channel>
+</rss>
