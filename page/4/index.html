@@ -79,6 +79,21 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/08/04/show-and-hide-dot-files-in-finder-of-os-x-el-capitan/">show and hide dot files in Finder of OS X El Capitan</a>
+      </h1>
+      <span class="post-date">Aug 4, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/08/04/show-and-hide-dot-files-in-finder-of-os-x-el-capitan/#disqus_thread">Comments</a>
+      </span>
+      
+      Fish Run the following code in fish shell. Then it works as a charm. :-)
+function showFiles defaults write com.apple.finder AppleShowAllFiles YES killall Finder /System/Library/CoreServices/Finder.app end funcsave showFiles function hideFiles defaults write com.apple.finder AppleShowAllFiles NO killall Finder /System/Library/CoreServices/Finder.app end funcsave hideFiles  :joy:
+zsh Add the following code to ~/.zshrc
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app' alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'  then run source ~/.
+      <a href="http://liuxueyang.github.io/blog/2016/08/04/show-and-hide-dot-files-in-finder-of-os-x-el-capitan/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2016/08/01/text-adventure-game-in-land-of-lisp/">Text Adventure Game in Land of Lisp</a>
       </h1>
       <span class="post-date">Aug 1, 2016 &middot; 4 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/08/01/text-adventure-game-in-land-of-lisp/#disqus_thread">Comments</a>
@@ -212,20 +227,6 @@ max sum of a sequence can be from one of the three:
 平常的线段树点更新和区间查询
 #include &lt;iostream&gt; #include &lt;string.h&gt; using namespace std; struct SegmentTreeNode { // fields on the node long long sum; void assignLeaf(int value) { sum = value; } void merge(SegmentTreeNode &amp;left, SegmentTreeNode &amp;right) { sum = left.sum + right.sum; } long long getValue() { return sum; } }; template &lt;class T, class V&gt; class SegmentTree { SegmentTreeNode *nodes; int N; public: SegmentTree(T arr[], int N) { this-&gt;N = N; nodes = new SegmentTreeNode[getSegmentTreeSize(N)]; buildTree(arr, 1, 0, N - 1); } ~SegmentTree() { delete[] nodes; } V getValue(int lo, int hi) { SegmentTreeNode result = getValue(1, 0, N - 1, lo, hi); return result.
       <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-akvqld03---how-to-handle-the-fans/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/07/25/segment-tree-lazy-propagation-codechef-flipping-coins/">segment tree, lazy propagation, codechef: Flipping Coins</a>
-      </h1>
-      <span class="post-date">Jul 25, 2016 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/07/25/segment-tree-lazy-propagation-codechef-flipping-coins/#disqus_thread">Comments</a>
-      </span>
-      
-      Problem Link
-平常的线段树区间更新、区间查询加上懒惰更新
-// 2016/07/24 22:01:19 PM // Sabastian #include &lt;iostream&gt; #include &lt;math.h&gt; #include &lt;stdio.h&gt; #include &lt;string.h&gt; using namespace std; typedef long long ll; typedef struct TreeNode { int start, end; ll total; bool lazy; TreeNode() : total(0), lazy(false) {} void merge(TreeNode &amp; left, TreeNode &amp; right) { total = (left.lazy ? left.end - left.start + 1 - left.total : left.total) + (right.lazy ? right.end - right.start + 1 - right.
-      <a href="http://liuxueyang.github.io/blog/2016/07/25/segment-tree-lazy-propagation-codechef-flipping-coins/">Read On &rarr;</a>
       
     </div>
     

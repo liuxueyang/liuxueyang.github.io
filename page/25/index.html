@@ -79,6 +79,19 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/05/26/agri-net-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">Agri-Net ——最小生成树</a>
+      </h1>
+      <span class="post-date">May 26, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/26/agri-net-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.hust.edu.cn/vjudge/contest/view.action?cid=24534#problem/A 题目大意： 给定无向图，邻接矩阵。求最小生成树权值。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; using namespace std; #define MAXN 110 #define MAXM 5009 typedef struct edge { int u, v, w; bool operator &lt; (const edge &amp;other) const { return w &lt; other.w; } }edge; edge edges[MAXM]; int parent[MAXN]; int n, m, i, j; void init() { for (i = 1; i &lt;= n; ++i) parent[i] = -1; } int find(int x) { int s; for (s = x; parent[s] &gt;= 0; s = parent[s]) ; while (s !
+      <a href="http://liuxueyang.github.io/blog/2013/05/26/agri-net-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/05/25/hdu1176-%E5%85%8D%E8%B4%B9%E9%A6%85%E9%A5%BC-dp/">hdu1176 免费馅饼 ——DP</a>
       </h1>
       <span class="post-date">May 25, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/25/hdu1176-%E5%85%8D%E8%B4%B9%E9%A6%85%E9%A5%BC-dp/#disqus_thread">Comments</a>
@@ -185,18 +198,6 @@
       题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=1394 题目大意： 给定一个0到ｎ-1的数字组成的序列，它的逆序数，然后把第一个数字放到末尾，得到一个新的序列，再求逆序数，再把新序列的第一个数字放到末尾，一直这样做，求所有这些序列的逆序数的最小值。 题目思路： 可以先求出起初的序列的逆序数。然后根据逆序数的定义，把一个数字从开头移动到末尾，逆序数的改变量是什么？求出这个改变量，然后剩下的所有序列的逆序数就都求出来了。 这样考虑：一个数字 ｂ[i] 在开头，比它大的数字有 ｂ[i] 个，也就是说和这个数字组成了 ｂ[i] 个逆序，把它放到最后，这个数字可以组成 n-1-ｂ[i] 个逆序，所以逆序数的增量是 n - 1 - ｂ[i] - ｂ[i] ，这样就可以根据原来的序列的逆序数求出剩下的所有序列的逆序数了～
 #include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;cstring&gt; using namespace std; const int MAX = 5000+10; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 int a[MAX&lt;&lt;2], b[MAX], n; void pushup(int rt) { a[rt] = a[rt&lt;&lt;1] + a[rt&lt;&lt;1|1]; } void build(int l, int r, int rt) { if (l == r) {a[rt] = 0; return;} int m = (l + r) &gt;&gt; 1; build(lson); build(rson); pushup(rt); } void update(int p, int l, int r, int rt) { if (l == r) {a[rt]++; return;} int m = (l + r) &gt;&gt; 1; if (p &lt;= m) update(p, lson); else update(p, rson); pushup(rt); } int query(int L, int R,int l, int r, int rt) { if (L &lt;= l &amp;&amp; R &gt;= r) {return a[rt];} int m = (l + r) &gt;&gt; 1, ret = 0; if (L &lt;= m) ret += query(L, R, lson); if (R &gt; m) ret += query(L, R, rson); return ret; } void init() { while (~scanf(&quot;%d&quot;, &amp;n)) { int i, sum = 0, ans; build(0, n - 1, 1); for (i = 0; i &lt; n; ++i) { scanf(&quot;%d&quot;, b+i); sum += query(b[i]+1, n-1, 0, n-1, 1); update(b[i], 0, n-1, 1); } ans = sum; for (i = 0; i &lt; n; ++i) { sum += (n-1-2*b[i]); if (sum &lt; ans) ans = sum; } printf(&quot;%d\n&quot;, ans); } } int main(void) { init(); return 0; }  这题是线段树的单点更新
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/05/23/poj2299-ultra-quicksort-%E7%BA%BF%E6%AE%B5%E6%A0%91/">poj2299 Ultra-QuickSort ——线段树</a>
-      </h1>
-      <span class="post-date">May 23, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/23/poj2299-ultra-quicksort-%E7%BA%BF%E6%AE%B5%E6%A0%91/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://poj.org/problem?id=2299 题目大意： 给n个任意的数字，把他们排序，求最少的交换次数。 题目思路： 开始没想法。后来zjl一说才知道。原来就是求逆序数！每一个数字前面有多少比它小的，这个数字就至少要交换多少次。所以，只需要求这列数字的逆序数就可以！好神奇 还有一个，就是每个数字的范围比较大，开始我还在想开数组貌似放不下，后来zjl说离散化……好吧，果然，我肿么没想到o(╯□╰)o感觉挺自然的想法啊…… 剩下的就是原来做过的题目了……甚至比原来做过的还简单 最后一个问题就是，最后的结果应该是long long 的，稍微算一下就知道，最大值(2*10^11)超过了4个字节的整型范围(4 * 10^9)，long long 范围是(1*10^19)，所以输出要按照long long 输出……这个问题以后一定要注意，判断一下数字的范围！别傻乎乎地就用int…… //#define LOCAL #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x7fffffff; const int MINN = -0x7fffffff; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 500000+10; typedef struct node { int val, index; bool operator &lt; (const node &amp; other) const { return val &lt; other.
-      <a href="http://liuxueyang.github.io/blog/2013/05/23/poj2299-ultra-quicksort-%E7%BA%BF%E6%AE%B5%E6%A0%91/">Read On &rarr;</a>
       
     </div>
     

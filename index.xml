@@ -6,10 +6,23 @@
     <description>Recent content on 黑历史</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 13 Apr 2017 08:01:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 18 Apr 2017 16:37:32 +0800</lastBuildDate>
     
 	<atom:link href="http://liuxueyang.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>foldl和foldr的不同點</title>
+      <link>http://liuxueyang.github.io/blog/2017/04/18/foldl%E5%92%8Cfoldr%E7%9A%84%E4%B8%8D%E5%90%8C%E9%BB%9E/</link>
+      <pubDate>Tue, 18 Apr 2017 16:37:32 +0800</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2017/04/18/foldl%E5%92%8Cfoldr%E7%9A%84%E4%B8%8D%E5%90%8C%E9%BB%9E/</guid>
+      <description>foldl foldl這個函數的類型是：
+(a -&amp;gt; b -&amp;gt; a) -&amp;gt; a -&amp;gt; [b] -&amp;gt; b  它接收一個函數、一個起始值、一個列表。它的作用相當于：
+foldl f z [x_1, x_2, ..., x_n] == (... ((z `f` x_1) `f` x_2) `f` ...) `f` x_n  也就是它把起始值作爲f的*左參數*，從左邊迭代列表。
+可以這樣實現這個函數：
+mfoldl&#39; :: (a -&amp;gt; b -&amp;gt; a) -&amp;gt; a -&amp;gt; [b] -&amp;gt; a mfoldl&#39; f accu [] = accu mfoldl&#39; f accu (x : xs) = mfoldl&#39; f (accu `f` x) xs  λ&amp;gt; mfoldl&#39; (-) 0 [1.</description>
+    </item>
     
     <item>
       <title>Haskell 笔记9</title>

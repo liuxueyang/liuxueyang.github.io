@@ -79,6 +79,20 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/30/nefu118-n%E5%90%8E%E9%9D%A2%E6%9C%89%E5%A4%9A%E5%B0%91%E4%B8%AA0-%E6%95%B0%E8%AE%BA/">nefu118 n!后面有多少个0 数论</a>
+      </h1>
+      <span class="post-date">Mar 30, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/30/nefu118-n%E5%90%8E%E9%9D%A2%E6%9C%89%E5%A4%9A%E5%B0%91%E4%B8%AA0-%E6%95%B0%E8%AE%BA/#disqus_thread">Comments</a>
+      </span>
+      
+      数论题。统计n!里面有多少个素数5即可。公式：[n/p] + [n/p^2] + [n/p^3] + …… 然后发现一个很无语的问题，nefu上面不能用这个：
+#ifndef ONLINE_JUDGE freopen(&quot;nefu118.in&quot;, &quot;r&quot;, stdin); #endif  要不要这样啊，别的OJ可都是可以用的好不……
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cmath&gt; using namespace std; int main(void){ int n, m; scanf(&quot;%d&quot;, &amp;m); while (m--){ scanf(&quot;%d&quot;, &amp;n); int t = 5, cnt = 0; while (t &lt;= n){ cnt += n/t; t *= 5; } printf(&quot;%d\n&quot;, cnt); } return 0; }  然后，这么个简单的问题，还是纠结了一下……刚开始做数学，加油！ ↖(^ω^)↗
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/03/29/hdu-1712-acboy-needs-your-help-%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85/">hdu 1712 ACboy needs your help 分组背包</a>
       </h1>
       <span class="post-date">Mar 29, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/29/hdu-1712-acboy-needs-your-help-%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85/#disqus_thread">Comments</a>
@@ -199,18 +213,6 @@ Problem Description Many years ago , in Teddy’s hometown there was a man who w
       
       One day, N kids got one cake (a cylinder in shape). They decided to divide the cake so that everyone can have one piece of that cake. In the interest of fairness, pieces of the cake should be equal in size. However, the kids had no knives to cut the cake. Luckily, Doraemon borrowed them a magic cake machine that can cut and clone cake. To use Doraemon&rsquo;s cake machine, exactly M instructions must be entered.
       <a href="http://liuxueyang.github.io/blog/2013/03/19/zoj-3407-doraemons-cake-machine/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/18/poj-1061-%E9%9D%92%E8%9B%99%E7%9A%84%E7%BA%A6%E4%BC%9A--%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/">poj 1061 青蛙的约会  ——扩展欧几里得</a>
-      </h1>
-      <span class="post-date">Mar 18, 2013 &middot; 4 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/18/poj-1061-%E9%9D%92%E8%9B%99%E7%9A%84%E7%BA%A6%E4%BC%9A--%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/#disqus_thread">Comments</a>
-      </span>
-      
-      #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cmath&gt; #include &lt;cstring&gt; #define LL long long int LL exgcd(LL a, LL b, LL &amp;x, LL &amp;y){ if (b == 0){ x = 1; y = 0; return a; } LL r = exgcd(b, a%b, x, y); LL t = x; x = y; y = t - a / b * y; return r; } LL gcd(LL a, LL b){ return b ==0?a:gcd(b,a%b); } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;poj1061.
-      <a href="http://liuxueyang.github.io/blog/2013/03/18/poj-1061-%E9%9D%92%E8%9B%99%E7%9A%84%E7%BA%A6%E4%BC%9A--%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/">Read On &rarr;</a>
       
     </div>
     

@@ -79,6 +79,19 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu2191-%E6%82%BC%E5%BF%B5512%E6%B1%B6%E5%B7%9D%E5%A4%A7%E5%9C%B0%E9%9C%87-----%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/">hdu2191 悼念512汶川大地震     ——多重背包</a>
+      </h1>
+      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu2191-%E6%82%BC%E5%BF%B5512%E6%B1%B6%E5%B7%9D%E5%A4%A7%E5%9C%B0%E9%9C%87-----%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://acm.hdu.edu.cn/showproblem.php?pid=2191 最简单的那种
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int n, V, t, f[111], c[111], w[111], m[111]; void zeropack(int c, int w) { for (int v=V; v&gt;=c; --v) { f[v]=max(f[v],f[v-c]+w); } return; } void completepack(int c, int w) { for (int v=c;v&lt;=V;++v) f[v]=max(f[v],f[v-c]+w); return; } void multipack(int c, int w, int m) { if (c*m &gt;= V) { completepack(c,w); return; } int k=1; while (k&lt;m) { zeropack(c*k,w*k); m-=k; k*=2; } zeropack(c*m,w*m); return; } int main(void) { ios::sync_with_stdio(false); #ifndef ONLINE_JUDGE freopen(&quot;in.
+      <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu2191-%E6%82%BC%E5%BF%B5512%E6%B1%B6%E5%B7%9D%E5%A4%A7%E5%9C%B0%E9%9C%87-----%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu1059-dividing-%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/">hdu1059 Dividing ——多重背包</a>
       </h1>
       <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu1059-dividing-%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/#disqus_thread">Comments</a>
@@ -190,19 +203,6 @@
       link:http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=503 分成２半，并且两半的差距最小，背包的体积变成V/2
 #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int V, c[111], w[111], f[55555], n; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.
       <a href="http://liuxueyang.github.io/blog/2013/08/06/uva562-dividing-coins---01%E8%83%8C%E5%8C%85/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/06/uva624-cd%EF%BC%90%EF%BC%91%E8%83%8C%E5%8C%85-%E8%BE%93%E5%87%BA%E6%9C%80%E4%BC%98%E8%A7%A3/">uva624 CD　　　０１背包&#43;输出最优解</a>
-      </h1>
-      <span class="post-date">Aug 6, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/06/uva624-cd%EF%BC%90%EF%BC%91%E8%83%8C%E5%8C%85-%E8%BE%93%E5%87%BA%E6%9C%80%E4%BC%98%E8%A7%A3/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=565 用一个二维数组g[i][v]表示：当状态转移到v的时候，第i个物品是不是用到，如果用到标记１，否则标记０． 输出路径的时候，注意，从物品编号０一直到n-1.如果某个物品被用到了，g[i][v]里面的v，就要减去这个物品的体积，然后继续往下找．
-/* * ===================================================================================== * Filename: cd.cpp * Created: 04/08/2013 15:21:34 * Author: liuxueyang (lxy), 1459917536@qq.com * Organization: Hunan University * * ===================================================================================== */ /* ID: zypz4571 LANG: C++ TASK: cd.cpp */ #include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;set&gt; #include &lt;stack&gt; #include &lt;map&gt; #include &lt;list&gt; #define INF 0x3f3f3f3f #define MOD 1000000007 #define LL long long const double eps=1e-9; using namespace std; int V, n, c[22], f[22222], g[22][22222]; int main ( int argc, char *argv[] ) { #ifndef ONLINE_JUDGE freopen(&quot;in.
-      <a href="http://liuxueyang.github.io/blog/2013/08/06/uva624-cd%EF%BC%90%EF%BC%91%E8%83%8C%E5%8C%85-%E8%BE%93%E5%87%BA%E6%9C%80%E4%BC%98%E8%A7%A3/">Read On &rarr;</a>
       
     </div>
     

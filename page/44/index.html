@@ -79,6 +79,18 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/12/12/hanoi/">Hanoi</a>
+      </h1>
+      <span class="post-date">Dec 12, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/12/hanoi/#disqus_thread">Comments</a>
+      </span>
+      
+      #include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; using namespace std; int step = 1; void move(char from, char to) { printf(&quot;%d: %c-&gt;%c\n&quot;, step++, from, to); } void h(int n, char from, char via, char to) { if (n == 1) {move(from, to); return;} h(n-1, from, to, via); move(from, to); h(n-1, via, from, to); } int main(void) { int n; while (cin &gt;&gt; n) { step = 1; h(n, 'x', 'y', 'z'); } return 0; }  挺简单的一个Hanoi程序
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2012/12/10/tips/">tips</a>
       </h1>
       <span class="post-date">Dec 10, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/10/tips/#disqus_thread">Comments</a>
@@ -192,19 +204,6 @@ Input 第一行一个整数T，表示有T组数据。 每组数据第一行一�
 Output 对第i组数据,首先输出“Case i:”和回车, 对于每个Query询问，输出一个整数并回车,表示询问的段中的总人数,这个数保持在int以内。
 Sample Input 1 10 1 2 3 4 5 6 7 8 9 10 Query 1 3 Add 3 6 Query 2 7 Sub 10 2 Add 6 3 Query 3 10 End
       <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu-1166-%E6%95%8C%E5%85%B5%E5%B8%83%E9%98%B5/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu1754-i-hate-it-%E7%BA%BF%E6%AE%B5%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/">hdu1754 I Hate It ——线段数入门题</a>
-      </h1>
-      <span class="post-date">Nov 23, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu1754-i-hate-it-%E7%BA%BF%E6%AE%B5%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=1754
-#include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;algorithm&gt; #define maxn 200000&lt;&lt;2 //#define max(a,b) ((a)&gt;(b)?(a):(b)) #define lson l,m,rt&lt;&lt;1 #define rson m+1,r,rt&lt;&lt;1|1 int Max[maxn]; using namespace std; void pushup(int rt) { Max[rt] = max(Max[rt&lt;&lt;1],Max[rt&lt;&lt;1|1]); } void build(int l, int r, int rt) { if(l==r) {scanf(&quot;%d&quot;, &amp;Max[rt]); return;} int m=l+((r-l)&gt;&gt;1); build(lson);build(rson); pushup(rt); } void update(int p, int ck, int l, int r, int rt) { if (l==r) {Max[rt] = ck; return;} int m=l+((r-l)&gt;&gt;1); if (p &lt;= m) update(p, ck, lson); else update(p, ck, rson); pushup(rt); } int query(int L, int R, int l, int r, int rt) { if (L &lt;= l &amp;&amp; R &gt;= r) {return Max[rt];} int m=l+((r-l)&gt;&gt;1); int ret = 0; if (L&lt;=m) ret = max(query(L,R,lson),ret); if (R&gt;m) ret = max(query(L,R,rson),ret); return ret; } int main(void) { int N, M; #ifndef ONLINE_JUDGE freopen(&quot;in.
-      <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu1754-i-hate-it-%E7%BA%BF%E6%AE%B5%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
       
     </div>
     

@@ -79,6 +79,19 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/18/sgu546-ternary-password/">sgu546 Ternary Password</a>
+      </h1>
+      <span class="post-date">Jul 18, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/18/sgu546-ternary-password/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.sgu.ru/problem.php?contest=0&amp;problem=546 这题还好，１Ｙ，考虑情况周全，就没问题了，还好提交之前把想到的情况都测试了一遍．．
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; char s[202]; int n, a, b, a0[202], b0[202]; int main(void) { //freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); while (~scanf(&quot;%d%d%d%s&quot;, &amp;n, &amp;a, &amp;b, s)) { int a1 = 0, b1 = 0; for (int i = 0;i &lt; n; ++i) { if (s[i] == '0') a0[a1] = i, a1++; else if (s[i] == '1') b0[b1] = i, b1++; } if (a1 == a &amp;&amp; b1 == b) printf(&quot;0\n%s\n&quot;, s); else if (a+b&gt;n) printf(&quot;-1\n&quot;); else { int cnt = 0, a2 = 0, b2 = 0; a2 = a1-a, b2 = b1-b; if (a1 &lt; a) { for (int f = 0; f &lt; b2 &amp;&amp; a1 &lt; a; ++f) s[b0[f]] = '0', cnt++, a1++, b1--; if (a1 &lt; a) { for (int e = 0; e &lt; n &amp;&amp; a1 &lt; a; ++e) if (s[e] == '2') s[e] = '0', cnt++, a1++; } } if (b1 &lt; b) { for (int f = 0; f &lt; a2 &amp;&amp; b1 &lt; b; ++f) s[a0[f]] = '1', cnt++, b1++, a1--; if (b1 &lt; b) { for (int e = 0; e &lt; n &amp;&amp; b1&lt;b; ++e) if (s[e] == '2') s[e] = '1', cnt++, b1++; } } if (a1 &gt; a) { for (int f = 0; f &lt; n &amp;&amp; a1 &gt; a; ++f) if (s[f] == '0') a1--, s[f] = '2', cnt++; } if (b1 &gt; b) { for (int f = 0; f &lt; n &amp;&amp; b1 &gt; b; ++f) if (s[f] == '1') b1--, s[f] = '2', cnt++; } printf(&quot;%d\n%s\n&quot;, cnt, s); } } return 0; }  只是我的方法貌似比较笨＝＝
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/07/18/sgu551-preparing-problem/">sgu551 Preparing Problem</a>
       </h1>
       <span class="post-date">Jul 18, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/18/sgu551-preparing-problem/#disqus_thread">Comments</a>
@@ -189,19 +202,6 @@
       
       题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1018 范围只有20，在long long Int范围内。
 #include &lt;cstdio&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; using namespace std; int main(void) { freopen(&quot;in1.txt&quot;, &quot;r&quot;, stdin); int n, k, h, a[10]; long long int s=1; scanf(&quot;%d%d&quot;,&amp;n,&amp;k); h=k; for(int i=1;i&lt;=n;++i)s*=i; while (s%10==0) s/=10; while (k--) if(s) a[k]=s%10,s/=10; else break; for (int i=k+1;i&lt;=h-1;++i)printf(&quot;%d&quot;,a[i]);printf(&quot;\n&quot;); return 0; }  =_=
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/07/07/tyvj1017---%E5%86%97%E4%BD%99%E5%85%B3%E7%B3%BB-%E5%B9%B6%E6%9F%A5%E9%9B%86/">tyvj1017 - 冗余关系 ——并查集</a>
-      </h1>
-      <span class="post-date">Jul 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/07/tyvj1017---%E5%86%97%E4%BD%99%E5%85%B3%E7%B3%BB-%E5%B9%B6%E6%9F%A5%E9%9B%86/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1017 并查集
-#include &lt;cstdio&gt; #include &lt;cstdlib&gt; using namespace std; int parent[1001],n,m; void init() {for(int i=1;i&lt;=m;++i)parent[i]=-1; } int Find(int x) {int s; for(s=x;parent[s]&gt;=0;s=parent[s]);while (s!=x) {int tmp=parent[x];parent[x]=s;x=tmp; }return s; } void Union(int R1,int R2) { int r1=Find(R1),r2=Find(R2),tmp=parent[r1]+parent[r2]; if (parent[r1]&lt;parent[r2]) parent[r2]=r1,parent[r1]=tmp; else parent[r1]=r2,parent[r2]=tmp; } int main(void) { freopen(&quot;in1.txt&quot;,&quot;r&quot;,stdin); int cnt=0;scanf(&quot;%d%d&quot;,&amp;n,&amp;m); init(); while (n--) { int a,b; scanf(&quot;%d%d&quot;,&amp;a,&amp;b); if(Find(a)==Find(b)) cnt++; else Union(a,b); } printf(&quot;%d\n&quot;,cnt); return 0; }  =_=
       
       
     </div>

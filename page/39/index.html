@@ -79,6 +79,20 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/10/cf-142b-t-primes/">CF 142B T-primes</a>
+      </h1>
+      <span class="post-date">Mar 10, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/10/cf-142b-t-primes/#disqus_thread">Comments</a>
+      </span>
+      
+      B. T-primes time limit per test 2 seconds memory limit per test 256 megabytes input standard input output standard output
+We know that prime numbers are positive integers that have exactly two distinct positive divisors. Similarly, we&rsquo;ll call a positive integer t Т-prime, if thas exactly three distinct positive divisors.
+You are given an array of n positive integers. For each of them determine whether it is Т-prime or not. Input
+      <a href="http://liuxueyang.github.io/blog/2013/03/10/cf-142b-t-primes/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/03/10/cf-230a-dragons/">CF 230A Dragons</a>
       </h1>
       <span class="post-date">Mar 10, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/10/cf-230a-dragons/#disqus_thread">Comments</a>
@@ -196,19 +210,6 @@ Problem Description In the game of DotA, Pudge’s meat hook is actually the mos
 Now Pudge wants to do some operations on the hook.
 Let us number the consecutive metallic sticks of the hook from 1 to N.
       <a href="http://liuxueyang.github.io/blog/2013/03/04/hdu-1698-just-a-hook/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/02/poj-2828-buy-tickets/">poj 2828 Buy Tickets</a>
-      </h1>
-      <span class="post-date">Mar 2, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/02/poj-2828-buy-tickets/#disqus_thread">Comments</a>
-      </span>
-      
-      Description Input Output Sample Input Sample Output 这道题目想法很重要，先建树，每个节点表示这个区间内的空的位置的数量，然后，从后往前读，Pos的值表示这个人前面有多少个空位，之所以从后往前读，是因为这样每个人的位置是确定的，以后就不用移动了，以后直接在树里面查找空位就可以了。 具体实现见代码：
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; using namespace std; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 const int maxn = 222222; int tree[maxn&lt;&lt;2], val[maxn], pos[maxn], ans[maxn]; int id; void build(int l, int r, int rt){ tree[rt] = r - l + 1; if (l == r) {return;} int m = (l + r) &gt;&gt; 1; build(lson); build(rson); } void update(int p, int l, int r, int rt){ tree[rt]--; if (l == r){id = l-1; return;} int m = (l + r) &gt;&gt; 1; if (tree[rt&lt;&lt;1] &gt;= p) update(p, lson); else {p -= tree[rt&lt;&lt;1]; update(p, rson);} } int main(void){ int n; #ifndef ONLINE_JUDGE freopen(&quot;poj2828.
-      <a href="http://liuxueyang.github.io/blog/2013/03/02/poj-2828-buy-tickets/">Read On &rarr;</a>
       
     </div>
     

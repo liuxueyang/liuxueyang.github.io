@@ -79,6 +79,19 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/10/05/%E6%9B%B4%E7%81%B5%E6%B4%BB%E7%9A%84%E5%AE%9A%E4%BD%8D%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E7%9A%84%E6%96%B9%E6%B3%95-%E5%B0%86%E6%AF%8F%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E5%89%8D%E5%9B%9B%E4%B8%AA%E5%AD%97%E6%AF%8D%E6%94%B9%E4%B8%BA%E5%A4%A7%E5%86%99/">更灵活的定位内存地址的方法 ——将每个单词的前四个字母改为大写</a>
+      </h1>
+      <span class="post-date">Oct 5, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/05/%E6%9B%B4%E7%81%B5%E6%B4%BB%E7%9A%84%E5%AE%9A%E4%BD%8D%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E7%9A%84%E6%96%B9%E6%B3%95-%E5%B0%86%E6%AF%8F%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E5%89%8D%E5%9B%9B%E4%B8%AA%E5%AD%97%E6%AF%8D%E6%94%B9%E4%B8%BA%E5%A4%A7%E5%86%99/#disqus_thread">Comments</a>
+      </span>
+      
+      很简单的一个程序
+assume cs:code, ss:stack, ds:data data segment db '1. display ' db '2. brows ' db '3. replace ' db '4. modify ' data ends stack segment dw 0, 0, 0, 0, 0, 0, 0, 0 stack ends code segment start: mov ax, data mov ds, ax mov ax, stack mov ss, ax mov sp, 10h mov bx, 3 mov cx, 4 s: push cx mov si, 4 mov cx, si mov si, 0 s0: mov al, [bx][si] and al, 11011111b mov [bx][si], al inc si loop s0 pop cx add bx, 10h loop s mov ax, 4c00h int 21h code ends end start  逻辑挺清晰的。自不必说。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/10/04/%E6%9B%B4%E7%81%B5%E6%B4%BB%E7%9A%84%E5%AE%9A%E4%BD%8D%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E7%9A%84%E6%96%B9%E6%B3%95%E5%A4%A7%E5%B0%8F%E5%86%99%E8%BD%AC%E6%8D%A2/">更灵活的定位内存地址的方法——大小写转换</a>
       </h1>
       <span class="post-date">Oct 4, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/04/%E6%9B%B4%E7%81%B5%E6%B4%BB%E7%9A%84%E5%AE%9A%E4%BD%8D%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E7%9A%84%E6%96%B9%E6%B3%95%E5%A4%A7%E5%B0%8F%E5%86%99%E8%BD%AC%E6%8D%A2/#disqus_thread">Comments</a>
@@ -225,23 +238,6 @@ x、y、z代表原子之间的化学键
 其实，现在想那么多没用。其实……也想读研的，但是，又觉得没什么用……所以，很痛苦。
 路在何方呢？在脚下？
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/10/02/codeforces-expecting-trouble/">codeforces Expecting Trouble</a>
-      </h1>
-      <span class="post-date">Oct 2, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/02/codeforces-expecting-trouble/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://codeforces.com/contest/345/problem/A
-写完这道题目才发现这场比赛只能用Ada语言提交==
-好吧，逗我玩呢
-考的是数学期望公式，二项分布的期望E=np
-C++代码：（我可不会Ada……=_=）
-#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;iostream&gt; #include &lt;cstring&gt; using namespace std; int main(void) { char a[51]; double p; #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); #endif // ONLINE_JUDGE while (~scanf(&quot;%s%lf&quot;, a, &amp;p)) { int len = strlen(a); int cnt = 0; int cnt1 = 0; for (int i = 0; i &lt; len; ++i) { if (a[i] == '1') cnt++; else if (a[i] == '?') cnt1++; } double Cnt = (double)cnt + p * (double)cnt1; printf(&quot;%.
-      <a href="http://liuxueyang.github.io/blog/2013/10/02/codeforces-expecting-trouble/">Read On &rarr;</a>
       
     </div>
     

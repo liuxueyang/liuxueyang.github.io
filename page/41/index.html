@@ -79,6 +79,18 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/01/30/poj-2752/">poj 2752</a>
+      </h1>
+      <span class="post-date">Jan 30, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/01/30/poj-2752/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://poj.org/problem?id=2752 #include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;cstring&gt; #define N 400000 using namespace std; char s[N]; int next[N], a[N]; void getnext(char *p, int *next) { int i = 0, j = -1, len = strlen(p); next[0] = -1; while (i &lt; len) { if (j == -1 || p[j] == p[i]) { i++; j++; next[i] = j; } else j = next[j]; } } int main(void) { freopen(&quot;poj2752.in&quot;, &quot;r&quot;, stdin); while (~scanf(&quot;%s&quot;, s)) { getnext(s, next); int len = strlen(s), i, k = 0; i = len; a[0] = len; while (next[i] &gt; 0) { i = next[i]; a[++k] = i; } for (int j = k; j &gt;= 0; --j) { printf(&quot;%d&quot;, a[j]); if (j) printf(&quot; &quot;); } printf(&quot;\n&quot;); } return 0; }  这道题目要求既是前缀字符串又是后缀字符串的所有可能的长度，正好运用了KMP算法里面next数组的意义，要保证结果是针对整个字符串的，所以在next数组中从后往前扫描即可，因为，next数组中，越往后，数字就越大，并且表示的是后缀和前缀相同的最大长度，所以所得到的结果顺序是反的，要求从小到大输出，逆序输出就可以了。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/01/23/cf266-b.-queue-at-the-school/">CF266 B. Queue at the School</a>
       </h1>
       <span class="post-date">Jan 23, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/01/23/cf266-b.-queue-at-the-school/#disqus_thread">Comments</a>
@@ -202,25 +214,6 @@ Problem Description Given an positive integer A (1 &lt;= A &lt;= 100), output th
 For example, given A = 26, we can write A in binary form as 11010, so the lowest bit of A is 10, so the output should be 2.
 Another example goes like this: given A = 88, we can write A in binary form as 1011000, so the lowest bit of A is 1000, so the output should be 8.
       <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1196/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1201/">hdu 1201</a>
-      </h1>
-      <span class="post-date">Jan 22, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1201/#disqus_thread">Comments</a>
-      </span>
-      
-      18岁生日
-Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 12363 Accepted Submission(s): 3885
-Problem Description Gardon的18岁生日就要到了，他当然很开心，可是他突然想到一个问题，是不是每个人从出生开始，到达18岁生日时所经过的天数都是一样的呢？似乎并不全都是这样，所以他想请你帮忙计算一下他和他的几个朋友从出生到达18岁生日所经过的总天数，让他好来比较一下。
-Input 一个数T，后面T行每行有一个日期，格式是YYYY-MM-DD。如我的生日是1988-03-07。
-Output T行，每行一个数，表示此人从出生到18岁生日所经过的天数。如果这个人没有18岁生日，就输出-1。
-Sample Input 1 1988-03-07
-Sample Output 6574
-#include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;cstring&gt; using namespace std; bool leap(int n) { if (n%400==0 || (n%4==0 &amp;&amp; n%100!=0)) return true; else return false; } int main(void) { int t, y, m, d; #ifndef ONLINE_JUDGE freopen(&quot;18.in&quot;, &quot;r&quot;, stdin); #endif scanf(&quot;%d&quot;, &amp;t); while (t--) { scanf(&quot;%d-%d-%d&quot;, &amp;y, &amp;m, &amp;d); if (leap(y)&amp;&amp;(m==2)&amp;&amp;(d==29)) { printf(&quot;-1\n&quot;); continue; } int sum = 0; for (int i = 1; i &lt;= 17; ++i) if (leap(i+y)) sum += 366; else sum += 365; sum += 365; if (leap(y) &amp;&amp; (m&lt;2 || (m==2&amp;&amp;d&lt;=29))) sum++; if (leap(y+18) &amp;&amp; (m&gt;2 || (m==2&amp;&amp;d==29))) sum++; printf(&quot;%d\n&quot;, sum); } return 0; }  看的人家的代码才搞定……简洁，准确，代码要多练，才能精简
-      
       
     </div>
     

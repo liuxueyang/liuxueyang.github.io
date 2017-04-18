@@ -79,6 +79,19 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/19/poj2001-shortest-prefixes-%E5%AD%97%E5%85%B8%E6%A0%91%E5%A4%8D%E4%B9%A0/">poj2001 Shortest Prefixes ——字典树复习</a>
+      </h1>
+      <span class="post-date">Apr 19, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/19/poj2001-shortest-prefixes-%E5%AD%97%E5%85%B8%E6%A0%91%E5%A4%8D%E4%B9%A0/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://poj.org/problem?id=2001 这道题目以前写过，复习一下字典树，再写一遍……
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;set&gt; #include &lt;map&gt; #include &lt;vector&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; char a[1000+10][30], base = 'a'; const int lo = 26; typedef struct trie{ int num; bool terminal; struct trie *son[lo]; }trie; trie *newtrie(){ trie *pnt = new trie; pnt-&gt;num = 1; pnt-&gt;terminal = false; for (int i = 0; i &lt; lo; ++i) pnt-&gt;son[i] = NULL; return pnt; } void insert(char str[], trie *pnt, int len){ trie *tem = pnt; for (int i= 0; i &lt; len; ++i){ if (tem-&gt;son[str[i]-base] !
+      <a href="http://liuxueyang.github.io/blog/2013/04/19/poj2001-shortest-prefixes-%E5%AD%97%E5%85%B8%E6%A0%91%E5%A4%8D%E4%B9%A0/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/04/19/poj1298-the-hardest-problem-ever-%E6%B0%B4%E9%A2%98/">poj1298 The Hardest Problem Ever ——水题</a>
       </h1>
       <span class="post-date">Apr 19, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/19/poj1298-the-hardest-problem-ever-%E6%B0%B4%E9%A2%98/#disqus_thread">Comments</a>
@@ -187,18 +200,6 @@
       
       13日 晴 那天去中南比赛，回来比较累，下午睡了一觉，晚上去跑步，然后喝了一口水，我去……跑的过程中各种纠结，，唉，全程不舒服，走走停停，很不爽。 14日 晴 天气比较好，可惜，晚上校队有讨论，回到宿舍已经10点半了，这个时候的湘江边几乎没什么人了，貌似还有点儿害怕~长沙这种，地方嘛，^_^ 跑一半路程就回来了，一点儿也没意思，o(╯□╰)o 后来权当散步了。。。。 最近几天貌似状态不好啊。 15日 晴，小雨 晚上去跑步，开始有一哥们儿在我后面跑，赶脚好有动力，O(∩_∩)O哈哈~所以开始速度比较快，跑到后期那哥们儿从另一条路走了，每个人的路线都不一样啊，后来一直自己跑，回来的路上，突然下起了雨，悲剧了，还是雨点儿特别大的那种，然后继续跑，最担心的是手机和P3进水了……o(╯□╰)o不过还好，不到几分钟，雨就停了，后来觉得没什么意思，走走停停地回来了…… 今天为yr酱他当初每天做几道题，不算水题，答曰：10+。我……难道这就是境界的差别么？唉，不可同日而语 难道大神们都是这么练出来的么？好吧，ORZ……加油吧，显然是做的太慢了。。 妈妈说，在ACM界有三种人可以生存下来：1. 天赋异禀 2. 勤奋过人 3. 媳妇熬成婆 照个进度下去，要是还不努力，我估计最多属于第三种。。o(╯□╰)o 不扯了，赶紧刷题去！
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/15/uva10591---happy-number-%E6%B0%B4%E9%A2%98/">uva10591 - Happy Number ——水题</a>
-      </h1>
-      <span class="post-date">Apr 15, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/15/uva10591---happy-number-%E6%B0%B4%E9%A2%98/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1532 题目大意： 给一个数字，各位数字的平方和相加，依次循环，如果最后得到1，那么这个数字就是happy number，如果不能，就是unhappy number。 思路： 因为题目范围只有10^9，所以可以暴力求解，数字的平方和最大是9*9*9=729，可以用一个数组标记这个数字是否被访问过。 #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int visit[1000]; int solve(int n){ int m = 0; while (n){ m += (n%10)*(n%10); n /= 10; } return m; } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;uva10591.
-      <a href="http://liuxueyang.github.io/blog/2013/04/15/uva10591---happy-number-%E6%B0%B4%E9%A2%98/">Read On &rarr;</a>
       
     </div>
     

@@ -79,6 +79,21 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/10/11/%E8%AF%95%E9%AA%8C%E5%8D%81-3.%E6%95%B0%E5%80%BC%E6%98%BE%E7%A4%BA/">试验十 3.数值显示</a>
+      </h1>
+      <span class="post-date">Oct 11, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/11/%E8%AF%95%E9%AA%8C%E5%8D%81-3.%E6%95%B0%E5%80%BC%E6%98%BE%E7%A4%BA/#disqus_thread">Comments</a>
+      </span>
+      
+      题目的意思是：
+　把一个16进制的数字转化成十进制，然后在屏幕的第3行，第8列，用绿色输出。
+这货倒是不太难，就是学会调用之前写过的函数就行了==
+assume cs:code, ds:data, ss:stack data segment db 10 dup(0) data ends stack segment dw 10 dup(0) stack ends code segment start: mov ax, 12666 mov dx, 0 mov bx, data mov ds, bx mov si, 0 call dtoc mov dh, 8 mov dl, 3 mov cl, 2 call show_str mov ax, 4c00h int 21h dtoc: push si mov bx, 10 mov cx, ax mov di, 0 sad: div bx add dx, 30h push dx mov dx, 0 inc di mov cx, ax add cx, 1 loop sad mov bp, 0 mov cx, di ago: pop dx mov al, dl mov ds:[bp], al inc bp loop ago mov ds:[bp], 0 pop si ret show_str: push dx push cx ;row dec dh mov al, 0a0h mul dh push ax ;col dec dl mov al, 2h mul dl pop bx add ax, bx mov di, 0b800h mov es, di mov bp, ax mov bl, cl change: mov cl, [si] mov ch, 0 jcxz ok mov di, si add di, di mov al, ds:[si] mov byte ptr es:[bp+di], al mov byte ptr es:[bp+di+1], bl inc si jmp short change ok: pop cx pop dx ret code ends end start  虽然很长……看起来好腻害的样子=_=
+      <a href="http://liuxueyang.github.io/blog/2013/10/11/%E8%AF%95%E9%AA%8C%E5%8D%81-3.%E6%95%B0%E5%80%BC%E6%98%BE%E7%A4%BA/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/10/10/%E8%A7%A3%E5%86%B3%E9%99%A4%E6%B3%95%E6%BA%A2%E5%87%BA%E9%97%AE%E9%A2%98/">解决除法溢出问题</a>
       </h1>
       <span class="post-date">Oct 10, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/10/%E8%A7%A3%E5%86%B3%E9%99%A4%E6%B3%95%E6%BA%A2%E5%87%BA%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a>
@@ -209,19 +224,6 @@ assume cs:sad, ds:data, ss:stack stack segment stack ends data segment db '1975'
 另外，组合使用的情况下：
 记住这张图片就行了=_=
 意思就是，bx只能和si，di组合。bp只能和si，di组合。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/10/05/%E6%9B%B4%E7%81%B5%E6%B4%BB%E7%9A%84%E5%AE%9A%E4%BD%8D%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E7%9A%84%E6%96%B9%E6%B3%95-%E5%B0%86%E6%AF%8F%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E5%89%8D%E5%9B%9B%E4%B8%AA%E5%AD%97%E6%AF%8D%E6%94%B9%E4%B8%BA%E5%A4%A7%E5%86%99/">更灵活的定位内存地址的方法 ——将每个单词的前四个字母改为大写</a>
-      </h1>
-      <span class="post-date">Oct 5, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/05/%E6%9B%B4%E7%81%B5%E6%B4%BB%E7%9A%84%E5%AE%9A%E4%BD%8D%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E7%9A%84%E6%96%B9%E6%B3%95-%E5%B0%86%E6%AF%8F%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E5%89%8D%E5%9B%9B%E4%B8%AA%E5%AD%97%E6%AF%8D%E6%94%B9%E4%B8%BA%E5%A4%A7%E5%86%99/#disqus_thread">Comments</a>
-      </span>
-      
-      很简单的一个程序
-assume cs:code, ss:stack, ds:data data segment db '1. display ' db '2. brows ' db '3. replace ' db '4. modify ' data ends stack segment dw 0, 0, 0, 0, 0, 0, 0, 0 stack ends code segment start: mov ax, data mov ds, ax mov ax, stack mov ss, ax mov sp, 10h mov bx, 3 mov cx, 4 s: push cx mov si, 4 mov cx, si mov si, 0 s0: mov al, [bx][si] and al, 11011111b mov [bx][si], al inc si loop s0 pop cx add bx, 10h loop s mov ax, 4c00h int 21h code ends end start  逻辑挺清晰的。自不必说。
       
       
     </div>

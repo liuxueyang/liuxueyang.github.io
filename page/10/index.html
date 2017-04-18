@@ -79,6 +79,19 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2014/05/28/nfa2dfa/">NFA2DFA</a>
+      </h1>
+      <span class="post-date">May 28, 2014 &middot; 8 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/05/28/nfa2dfa/#disqus_thread">Comments</a>
+      </span>
+      
+      input: number of symbols symbol set(each space between two symbol) number of states(state number starts from 1 to n by default) start state number number of accept states accept states set state transfer table (epsilon transfer is at column one and if there are several epsilon transfers, seperate them with a comma without spaces) The following file is the input file.
+NFA2DFA.txt 2 a b 4 1 1 3 3 2 1 -1 1 -1 -1 3 4 -1 -1 3  we input a integer N by str.
+      <a href="http://liuxueyang.github.io/blog/2014/05/28/nfa2dfa/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2014/05/27/chapter-5/">Chapter 5</a>
       </h1>
       <span class="post-date">May 27, 2014 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/05/27/chapter-5/#disqus_thread">Comments</a>
@@ -232,26 +245,6 @@ git init touch foo.txt git add foo.txt git commit -m 'for test'  在 http://gith
 $ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;  在~/.ssh 目录中找到 文件 id_rsa.pub ，在网站的帐号管理SSH Keys中添加 id_rsa.pub 中的内容
 $ git remote add origin https://github.com/yourname/TMP.git $ git push -u origin master  这样，当前目录下的foo.
       <a href="http://liuxueyang.github.io/blog/2014/03/04/vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2014/02/27/pe%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0ing/">PE文件格式 持续更新ing</a>
-      </h1>
-      <span class="post-date">Feb 27, 2014 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/02/27/pe%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0ing/#disqus_thread">Comments</a>
-      </span>
-      
-      PE文件就是exe文件和dll文件，前者是可执行文件，后者是动态连接库文件。两者的区别仅仅是字面上的，唯一的区别就是内部的一个字段标识这个文件是exe文件还是dll文件。
-对于PE文件格式，举一个例子来说明比较清楚：
-　比如我打开一个.exe文件，gvim.exe 也就是gvim的安装程序
-　首先就是DOS头：前两个字节，5A4Dh 表示MZ，这只是一个DOS可执行文件标记，表示这个文件是一个可执行文件。
-　DOS头的最后一个Double word 在地址3ch处，可以发现它的值是：0000 00D8 h 它指向真正的PE头。
-　找到对应的PE头，第一个 Double word 是 0000 4550 h 代表的是PE.. 那么IMAGE_OPTIONAL_HEADER32的起始地址就是 D8h + 18h = F0h
-　在IMAGE_OPTIONAL_HEADER32的基础上 F0h + 20h = 110h 就得到了SectionAlignment 这个字段，可以发现，它的值是：0000 1000 h，这是程序被装入内存的时候区块对齐大小，默认值是目标CPU的页尺寸，紧接着下一个字段是：FileAlignment 这个字段，它的值是：0000 0200 h，它是磁盘上PE文件内的区块对齐大小。
-　PE头D8h + 78 h 就得到了DataDirectory 这个字段，它是一个16个元素的数组，数据类型是IMAGE_DATA_DIRECTORY，这个结构体有两个成员：第一个成员是数据块的起始RVA，第二个成员是数据块的长度。数组的第一个元素是Export Table，发现都是0，说明没有输出表；第二个元素是输入表，地址是0000 73A4 h 大小是 0000 00B4h 。
-　用PE Editor 这个程序打开gvim.exe 文件，得到如下的结果，发现结果和上面是一样的，我还发现了刚才犯的一个错误，SectionAlignment 的值应该是1000h 也就是CPU页大小是4kB，刚才写成了100h……汗
-      
       
     </div>
     
