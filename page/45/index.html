@@ -79,6 +79,107 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/12/10/tips/">tips</a>
+      </h1>
+      <span class="post-date">Dec 10, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/10/tips/#disqus_thread">Comments</a>
+      </span>
+      
+      其实，一天过完之后，你真应该问问自己，今天自己干嘛了？还记得昨天你干了什么吗？前天呢？ 如果你记不起来，那你多半是在混日子。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/12/04/%E6%95%B0%E7%BB%84%E5%90%8D%E5%92%8C%E6%8C%87%E9%92%88%E7%9B%B8%E5%90%8C%E5%90%97/">数组名和指针相同吗？</a>
+      </h1>
+      <span class="post-date">Dec 4, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/04/%E6%95%B0%E7%BB%84%E5%90%8D%E5%92%8C%E6%8C%87%E9%92%88%E7%9B%B8%E5%90%8C%E5%90%97/#disqus_thread">Comments</a>
+      </span>
+      
+      /* 数组名和指针相同吗？ */ #include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; using namespace std; int a[][3] = {{1, 2, 3}, {1, 2, 3}, {4, 5, 6}, {3, 4, 5}}; int sizef(int b[][3]) { cout &lt;&lt; sizeof(b) &lt;&lt; endl; cout &lt;&lt; sizeof(b[0]) &lt;&lt; endl; cout &lt;&lt; sizeof(b)/sizeof(b[0]) &lt;&lt; endl; } int main(void) { // int a[][3] = {{1, 2, 3}, {1, 2, 3}, {4, 5, 6}, {3, 4, 5}}; cout &lt;&lt; sizeof(a) &lt;&lt; endl; cout &lt;&lt; sizeof(a[0]) &lt;&lt; endl; cout &lt;&lt; sizeof(a)/sizeof(a[0]) &lt;&lt; endl; cout &lt;&lt; &quot;***********&quot; &lt;&lt; endl; sizef(a); // cout &lt;&lt; sizef(a) &lt;&lt; endl; system(&quot;pause&quot;); return 0; }  上面的程序的结果是： 48 12 4
+      <a href="http://liuxueyang.github.io/blog/2012/12/04/%E6%95%B0%E7%BB%84%E5%90%8D%E5%92%8C%E6%8C%87%E9%92%88%E7%9B%B8%E5%90%8C%E5%90%97/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/29/zoj-2110-tempter-of-the-bone/">zoj 2110 Tempter of the Bone</a>
+      </h1>
+      <span class="post-date">Nov 29, 2012 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/29/zoj-2110-tempter-of-the-bone/#disqus_thread">Comments</a>
+      </span>
+      
+      The doggie found a bone in an ancient maze, which fascinated him a lot. However, when he picked it up, the maze began to shake, and the doggie could feel the ground sinking. He realized that the bone was a trap, and he tried desperately to get out of this maze.
+The maze was a rectangle with sizes N by M. There was a door in the maze. At the beginning, the door was closed and it would open at the T-th second for a short period of time (less than 1 second).
+      <a href="http://liuxueyang.github.io/blog/2012/11/29/zoj-2110-tempter-of-the-bone/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/27/erlang_3/">Erlang_3</a>
+      </h1>
+      <span class="post-date">Nov 27, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/27/erlang_3/#disqus_thread">Comments</a>
+      </span>
+      
+      计算阶乘两种写法：
+-module(continue). -export([factor/1]). factor(0) -&gt; 1; factor(N) -&gt; N * factor(N - 1). %factor(N) when N &gt; 0 -&gt; % N * factor(N - 1); %factor(0) -&gt; 1.  这里注意，第一种写法，如果输入的值是负数，那么函数进入死循环，内存溢出，第二种写法输入负数，函数会不执行。 内置函数： hd/1 返回列表第一个元素 tl/1 返回删除第一个元素后的其余部分 length/1 返回列表的长度 tuple_size/1 返回元组的数目 element/2 返回元组的第n个元素 setlement(2, Tuple). setelement/3 替换元组的第一个元素，并返回新的元组 setelement(3, Tuple, Three). erlang:appedn_element/2 向元组添加一个元素作为最后的元素 erlang:append_element(Tuple, 6).
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/27/erlang_2/">Erlang_2</a>
+      </h1>
+      <span class="post-date">Nov 27, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/27/erlang_2/#disqus_thread">Comments</a>
+      </span>
+      
+      1.函数 举个例子：判断一个数字是奇数还是偶数
+-module(rev). -export([even/1]). even(Value) -&gt; if Value rem 2 == 1 -&gt; odd; Value rem 2 == 0 -&gt; even end.  文件名和模块名要相同。在终端中引用函数的时候，先编译，c(rev). 然后引用函数 rev:even(N). 其中N是一个已经赋值的变量。 上面的函数的另一种写法： -module(rev). -export([even/1]). even(Value) -&gt; case Value rem 2 of 1 -&gt; odd; 0 -&gt; even end.  
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/26/bash-%E6%94%B9%E4%B8%BA-vim-%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F/">bash 改为 vim 输入模式</a>
+      </h1>
+      <span class="post-date">Nov 26, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/26/bash-%E6%94%B9%E4%B8%BA-vim-%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F/#disqus_thread">Comments</a>
+      </span>
+      
+      打开文件：vim ~/.bashrc 加上这条语句：set -o vi &gt;&gt; ~/.bashrc
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/24/erlang_1/">Erlang_1</a>
+      </h1>
+      <span class="post-date">Nov 24, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/24/erlang_1/#disqus_thread">Comments</a>
+      </span>
+      
+      1.在终端运行的时候末尾要输入 . 号 2.数学运算符： + 加法 正号 - 减法 负号 * 乘法 / 浮点除法 div 整数除法 rem 整数取余 3.基元表示文字常量 4.布尔类型 没有单独表示布尔类型的布尔值或字符 and 与 andalso 第一个参数为假，返回假则第二个参数不需计算 or 或 orelse 第一个参数是真，返回真，不计算第二个参数 xor 异或 不同为真，相同为假 not 非 5.元组 {a, b, c, d} 元组中的数据元素不一定是相同的类型
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu-1161-eddys-mistakes/">hdu 1161 Eddy&#39;s mistakes</a>
+      </h1>
+      <span class="post-date">Nov 23, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu-1161-eddys-mistakes/#disqus_thread">Comments</a>
+      </span>
+      
+      Eddy&rsquo;s mistakes
+Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 5189 Accepted Submission(s): 2956
+Problem Description Eddy usually writes articles ,but he likes mixing the English letter uses, for example &ldquo;computer science&rdquo; is written frequently &ldquo;coMpUtEr scIeNce&rdquo; by him, this mistakes lets Eddy&rsquo;s English teacher be extremely discontentment.Now please you to write a procedure to be able in the Bob article English letter to turn completely the small letter.
+      <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu-1161-eddys-mistakes/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu-1166-%E6%95%8C%E5%85%B5%E5%B8%83%E9%98%B5/">hdu 1166 敌兵布阵</a>
       </h1>
       <span class="post-date">Nov 23, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu-1166-%E6%95%8C%E5%85%B5%E5%B8%83%E9%98%B5/#disqus_thread">Comments</a>
@@ -104,110 +205,6 @@ Sample Input 1 10 1 2 3 4 5 6 7 8 9 10 Query 1 3 Add 3 6 Query 2 7 Sub 10 2 Add 
       题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=1754
 #include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;algorithm&gt; #define maxn 200000&lt;&lt;2 //#define max(a,b) ((a)&gt;(b)?(a):(b)) #define lson l,m,rt&lt;&lt;1 #define rson m+1,r,rt&lt;&lt;1|1 int Max[maxn]; using namespace std; void pushup(int rt) { Max[rt] = max(Max[rt&lt;&lt;1],Max[rt&lt;&lt;1|1]); } void build(int l, int r, int rt) { if(l==r) {scanf(&quot;%d&quot;, &amp;Max[rt]); return;} int m=l+((r-l)&gt;&gt;1); build(lson);build(rson); pushup(rt); } void update(int p, int ck, int l, int r, int rt) { if (l==r) {Max[rt] = ck; return;} int m=l+((r-l)&gt;&gt;1); if (p &lt;= m) update(p, ck, lson); else update(p, ck, rson); pushup(rt); } int query(int L, int R, int l, int r, int rt) { if (L &lt;= l &amp;&amp; R &gt;= r) {return Max[rt];} int m=l+((r-l)&gt;&gt;1); int ret = 0; if (L&lt;=m) ret = max(query(L,R,lson),ret); if (R&gt;m) ret = max(query(L,R,rson),ret); return ret; } int main(void) { int N, M; #ifndef ONLINE_JUDGE freopen(&quot;in.
       <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu1754-i-hate-it-%E7%BA%BF%E6%AE%B5%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/20/ubuntu-12.04-%E5%AE%89%E8%A3%85%E4%B9%8B%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/">ubuntu 12.04 安装之后的配置问题</a>
-      </h1>
-      <span class="post-date">Nov 20, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/20/ubuntu-12.04-%E5%AE%89%E8%A3%85%E4%B9%8B%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a>
-      </span>
-      
-       首先换软件源。 如果安装vim的时候出现问题，比如： Reading package lists&hellip; DoneBuilding dependency tree Reading state information&hellip; DonePackage vim is not available, but is referred to by another package.This may mean that the package is missing, has been obsoleted, oris only available from another source E: Package &lsquo;vim&rsquo; has no installation candidate 执行 sudo apt-get update 就可以了 如果刚刚安装上系统，没有中文输入法，也没有输入法的切换面板，执行： killall ibus-daemon ibus-daemon -d 然后就出现了输入法切换面板，点击，找到 preferences 选项，在 inputmethod 里面添加中文输入法就可以了。 设置允许root 登录 ： vi /etc/lightdm/lightdm.conf. 在这个文件末尾加上下面两行代码 greeter-show-manual-login=trueallow-guest=false 保存退出。然后 sudo passwd root 设置root登录密码就可以了。  
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/12/ubuntu12.04-inodeclient-%E8%BF%9E%E6%A0%A1%E5%9B%AD%E7%BD%91/">ubuntu12.04 iNodeClient 连校园网</a>
-      </h1>
-      <span class="post-date">Nov 12, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/12/ubuntu12.04-inodeclient-%E8%BF%9E%E6%A0%A1%E5%9B%AD%E7%BD%91/#disqus_thread">Comments</a>
-      </span>
-      
-      百度文库里面有一个文档，叫做”ubuntu_12.04_安装_iNodeClient_教程“，按照那个做，安装上之后然后发现能通过身份验证，但是连不上网，继续执行下面的操作。 sudo chmod -R 777 /home/suruibin/iNodeClient（后面这个路径改成你自己的安装目录）
-进入目录 cd iNodeClient 安装：sudo ./install.sh
-sudo ln -s /usr/lib/i386-linux-gnu/libtiff.so.4 /usr/lib/i386-linux-gnu/libtiff.so.3
-sudo apt-get install libjpeg62
-从网上找到libtiff.so.4这个文件，执行 sudo cp libtiff.so.4 /usr/lib
-到此iNodeClient安装好了，输入用户名，密码什么的就可以了。
-2012-11-12 22:45:04
-这个方法以前一直可以，但是最近貌似不行了……囧，后来找各种方法，http://hi.baidu.com/shen1000shen/item/c935a9383b615542033edcf9 这位神牛总结的很好，佩服！终于连上网了，Ubuntu爽到爆～
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-537---artificial-intelligence/">uva 537 - Artificial Intelligence?</a>
-      </h1>
-      <span class="post-date">Nov 9, 2012 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-537---artificial-intelligence/#disqus_thread">Comments</a>
-      </span>
-      
-      Physics teachers in high school often think that problems given as text are more demanding than pure computations. After all, the pupils have to read and understand the problem first! So they don&rsquo;t state a problem like U=10V, I=5A, P=?&quot; but rather likeYou have an electrical circuit that contains a battery with a voltage of U=10V and a light-bulb. There&rsquo;s an electrical current of I=5A through the bulb. Which power is generated in the bulb?
-      <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-537---artificial-intelligence/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/09/vim-%E9%85%8D%E7%BD%AE-%E8%BD%AC%E8%BD%BD/">vim 配置 转载</a>
-      </h1>
-      <span class="post-date">Nov 9, 2012 &middot; 8 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/09/vim-%E9%85%8D%E7%BD%AE-%E8%BD%AC%E8%BD%BD/#disqus_thread">Comments</a>
-      </span>
-      
-      一个比较偷懒的方法是执行一下命令： cd /etc/vim sudo vi vimrc 然后把里面的注释去掉就可以了,但是里面的配置不太全。 原文链接 http://www.oschina.net/code/snippet_103341_9644 linux 平台：
-&quot; ----------------- Author: Ruchee &quot; ----------------- Email: my@ruchee.com &quot; ----------------- WebSite: http://www.ruchee.com &quot; ----------------- Date: 2012-05-01 &quot; Ctrl + H --光标移当前行行首 &quot; Ctrl + J --光标移下一行行首 &quot; Ctrl + K --光标移上一行行尾 &quot; Ctrl + L --光标移当前行行尾 &quot; Ctrl + C --编译 [支持C/C++、Java、Haskell] &quot; Ctrl + R --运行 [支持C/C++、Java、Haskell、Lua、Perl、Python、Ruby] &quot; Ctrl + ] --转到函数定义 &quot; Ctrl + T --返回调用函数 &quot; Ctrl + E --一步加载语法模板和作者、时间信息 &quot; &lt;C-P&gt; --单词补全 &quot; &lt;C-X&gt;&lt;C-L&gt; --整行补全 &quot; Tab键 --插入模式下的全功能语法结构补全 [snipMate插件] &quot; Shift + Insert --向Vim中粘贴从别处复制的内容 &quot; u [小写] --单步复原 [非插入模式] &quot; U [大写] --整行复原 [非插入模式] &quot; jj --保存文件并留在插入模式 [插入模式] &quot; kk --返回Normal模式 [插入模式] &quot; nt --打开NERDTree [非插入模式] &quot; tl --打开TagList [非插入模式] &quot; za --打开或关闭当前折叠 &quot; zM --关闭所有折叠 &quot; zR --打开所有折叠 &quot; :set syntax=cpp --手动选择语法高亮 [或 :set filetype=cpp] &quot; :%!
-      <a href="http://liuxueyang.github.io/blog/2012/11/09/vim-%E9%85%8D%E7%BD%AE-%E8%BD%AC%E8%BD%BD/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-10010---wheres-waldorf/">uva 10010 - Where&#39;s Waldorf?</a>
-      </h1>
-      <span class="post-date">Nov 9, 2012 &middot; 4 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-10010---wheres-waldorf/#disqus_thread">Comments</a>
-      </span>
-      
-      Given a m by n grid of letters, ( ), and a list of words, find the location in the grid at which the word can be found. A word matches a straight, uninterrupted line of letters in the grid. A word can match the letters in the grid regardless of case (i.e. upper and lower case letters are to be treated as the same). The matching can be done in any of the eight directions either horizontally, vertically or diagonally through the grid.
-      <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-10010---wheres-waldorf/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-253---cube-painting/">uva 253 - Cube painting</a>
-      </h1>
-      <span class="post-date">Nov 8, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-253---cube-painting/#disqus_thread">Comments</a>
-      </span>
-      
-      We have a machine for painting cubes. It is supplied with three different colors: blue, red and green. Each face of the cube gets one of these colors. The cube&rsquo;s faces are numbered as in Figure 1.  Figure 1. Since a cube has 6 faces, our machine can paint a face-numbered cube in different ways. When ignoring the face-numbers, the number of different paintings is much less, because a cube can be rotated.
-      <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-253---cube-painting/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-10161---ant-on-a-chessboard/">uva 10161 - Ant on a Chessboard</a>
-      </h1>
-      <span class="post-date">Nov 8, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-10161---ant-on-a-chessboard/#disqus_thread">Comments</a>
-      </span>
-      
-      One day, an ant called Alice came to an M*M chessboard. She wanted to go around all the grids. So she began to walk along the chessboard according to this way: (you can assume that her speed is one grid per second) At the first second, Alice was standing at (1,1). Firstly she went up for a grid, then a grid to the right, a grid downward. After that, she went a grid to the right, then two grids upward, and then two grids to the left…in a word, the path was like a snake.
-      <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-10161---ant-on-a-chessboard/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-113---power-of-cryptography/">uva 113 - Power of Cryptography</a>
-      </h1>
-      <span class="post-date">Nov 8, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-113---power-of-cryptography/#disqus_thread">Comments</a>
-      </span>
-      
-      Current work in cryptography involves (among other things) large prime numbers and computing powers of numbers modulo functions of these primes. Work in this area has resulted in the practical use of results from number theory and other branches of mathematics once considered to be of only theoretical interest. This problem involves the efficient computation of integer roots of numbers. Given an integer and an integer you are to write a program that determines , the positive root of p.
-      <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-113---power-of-cryptography/">Read On &rarr;</a>
       
     </div>
     

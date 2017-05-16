@@ -79,6 +79,119 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/29/hdu-1712-acboy-needs-your-help-%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85/">hdu 1712 ACboy needs your help 分组背包</a>
+      </h1>
+      <span class="post-date">Mar 29, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/29/hdu-1712-acboy-needs-your-help-%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85/#disqus_thread">Comments</a>
+      </span>
+      
+      ACboy needs your help
+Time Limit: 1000&frasl;1000 MS (Java/Others) Memory Limit: 32768&frasl;32768 K (Java/Others) Total Submission(s): 2403 Accepted Submission(s): 1223
+Problem Description ACboy has N courses this term, and he plans to spend at most M days on study.Of course,the profit he will gain from different course depending on the days he spend on it.How to arrange the M days for the N courses to maximize the profit?
+Input The input consists of multiple data sets.
+      <a href="http://liuxueyang.github.io/blog/2013/03/29/hdu-1712-acboy-needs-your-help-%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/29/hdu-2159-fate-%E4%BA%8C%E7%BB%B4%E8%83%8C%E5%8C%85/">hdu 2159 FATE 二维背包</a>
+      </h1>
+      <span class="post-date">Mar 29, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/29/hdu-2159-fate-%E4%BA%8C%E7%BB%B4%E8%83%8C%E5%8C%85/#disqus_thread">Comments</a>
+      </span>
+      
+      FATE
+Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 32768&frasl;32768 K (Java/Others) Total Submission(s): 4682 Accepted Submission(s): 2105
+Problem Description 最近xhd正在玩一款叫做FATE的游戏，为了得到极品装备，xhd在不停的杀怪做任务。久而久之xhd开始对杀怪产生的厌恶感，但又不得不通过杀怪来升完这最后一级。现在的问题是，xhd升掉最后一级还需n的经验值，xhd还留有m的忍耐度，每杀一个怪xhd会得到相应的经验，并减掉相应的忍耐度。当忍耐度降到0或者0以下时，xhd就不会玩这游戏。xhd还说了他最多只杀s只怪。请问他能升掉这最后一级吗？
+Input 输入数据有多组，对于每组数据第一行输入n，m，k，s(0 &lt; n,m,k,s &lt; 100)四个正整数。分别表示还需的经验值，保留的忍耐度，怪的种数和最多的杀怪数。接下来输入k行数据。每行数据输入两个正整数a，b(0 &lt; a,b &lt; 20)；分别表示杀掉一只这种怪xhd会得到的经验值和会减掉的忍耐度。(每种怪都有无数个)
+Output 输出升完这级还能保留的最大忍耐度，如果无法升完这级输出-1。
+Sample Input 10 10 1 10 1 1 10 10 1 9 1 1 9 10 2 10 1 1 2 2
+Sample Output 0 -1 1
+二维背包。这道题目开始的思路是错误的，我把经验值看成了一个背包容量，实际上，这是不恰当的。因为，这个背包容量必须至少要装满，还有，可以超过这个容量，如果超过了，这样做是不可解的。 后来也没有认真想，就看了一下别人的代码，惭愧……又在翻别人的代码。。 明白了，把忍耐值看成一个背包，怪物个数看成另一个背包，这样就有2个背包容量，求出最大的经验值，然后再遍历一次，求出比要求的经验值大的，并且忍耐度最小的，就ＯＫ了。 明白了之后，然后我就把原来的代码开始修改，悲剧的是，后面的改了，但是输入的地方没有改，死活也Ａ不了……明明就40行代码，搞得这么纠结……次嗷……
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstring&gt; #include &lt;cstdlib&gt; #include &lt;algorithm&gt; using namespace std; const int MAX = 0x3f3f3f3f; int f[120][120]; int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;2159.
+      <a href="http://liuxueyang.github.io/blog/2013/03/29/hdu-2159-fate-%E4%BA%8C%E7%BB%B4%E8%83%8C%E5%8C%85/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/28/poj-1014-dividing-%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/">poj 1014 Dividing 多重背包</a>
+      </h1>
+      <span class="post-date">Mar 28, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/28/poj-1014-dividing-%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/#disqus_thread">Comments</a>
+      </span>
+      
+      Description Input Output Sample Input Sample Output
+#include &lt;iostream&gt; #include &lt;cstring&gt; #include &lt;cstdio&gt; #include &lt;algorithm&gt; #include &lt;cstdlib&gt; using namespace std; int f[120000+10], V; const int MAX = 0x3f3f3f3f; void zeropack(int c, int w){ for (int v = V; v &gt;= c; --v){ f[v] = max(f[v], f[v-c] + w); } } void completepack(int c, int w){ for (int v = c; v &lt;= V; ++v){ f[v] = max(f[v], f[v-c] + w); } } int main(void){ int a[7], cnt = 1; #ifndef ONLINE_JUDGE freopen(&quot;1014.
+      <a href="http://liuxueyang.github.io/blog/2013/03/28/poj-1014-dividing-%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/28/hdu-1114-piggy-bank-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">hdu 1114 Piggy-Bank 完全背包</a>
+      </h1>
+      <span class="post-date">Mar 28, 2013 &middot; 4 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/28/hdu-1114-piggy-bank-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/#disqus_thread">Comments</a>
+      </span>
+      
+      Piggy-Bank
+Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 6841 Accepted Submission(s): 3375
+Problem Description Before ACM can do anything, a budget must be prepared and the necessary financial support obtained. The main income for this action comes from Irreversibly Bound Money (IBM). The idea behind is simple. Whenever some ACM member has any small money, he takes all the coins and throws them into a piggy-bank.
+      <a href="http://liuxueyang.github.io/blog/2013/03/28/hdu-1114-piggy-bank-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/28/hdu-2602-bone-collector-01%E8%83%8C%E5%8C%85/">hdu 2602 Bone Collector 01背包</a>
+      </h1>
+      <span class="post-date">Mar 28, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/28/hdu-2602-bone-collector-01%E8%83%8C%E5%8C%85/#disqus_thread">Comments</a>
+      </span>
+      
+      Bone Collector
+Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 32768&frasl;32768 K (Java/Others) Total Submission(s): 17590 Accepted Submission(s): 6954
+Problem Description Many years ago , in Teddy’s hometown there was a man who was called “Bone Collector”. This man like to collect varies of bones , such as dog’s , cow’s , also he went to the grave … The bone collector had a big bag with a volume of V ,and along his trip of collecting there are a lot of bones , obviously , different bone has different value and different volume, now given the each bone’s value along his trip , can you calculate out the maximum of the total value the bone collector can get ?
+      <a href="http://liuxueyang.github.io/blog/2013/03/28/hdu-2602-bone-collector-01%E8%83%8C%E5%8C%85/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/21/zoj-3410-laytons-escape/">zoj 3410 Layton&#39;s Escape</a>
+      </h1>
+      <span class="post-date">Mar 21, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/21/zoj-3410-laytons-escape/#disqus_thread">Comments</a>
+      </span>
+      
+      Professor Layton is a renowned archaeologist from London&rsquo;s Gressenheller University. He and his apprentice Luke has solved various mysteries in different places. Unfortunately, Layton and Luke are trapped in a pyramid now. To escape from this dangerous place, they need to pass N traps. For each trap, they can use Ti minutes to remove it. If they pass an unremoved trap, they will lose 1 HP. They have K HP at the beginning of the escape and they will die at 0 HP.
+      <a href="http://liuxueyang.github.io/blog/2013/03/21/zoj-3410-laytons-escape/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/20/zoj-3409-kkv/">zoj 3409 KKV</a>
+      </h1>
+      <span class="post-date">Mar 20, 2013 &middot; 5 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/20/zoj-3409-kkv/#disqus_thread">Comments</a>
+      </span>
+      
+      KKV (short for Kinetic Kill Vehicle), a new kind of projectile, is a powerful weapon and has a great ability to move in the space. PLA developed a new missile based on the technology of KKV, and this kind of missile can launch and fly in the space, find the target and destroy it. Now the launch site of the KKV missile is at position (0, 0, 0), the missile will fly through N polygonal lines in order and its initial speed is zero.
+      <a href="http://liuxueyang.github.io/blog/2013/03/20/zoj-3409-kkv/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/19/zoj-3406-another-very-easy-task/">zoj 3406 Another Very Easy Task</a>
+      </h1>
+      <span class="post-date">Mar 19, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/19/zoj-3406-another-very-easy-task/#disqus_thread">Comments</a>
+      </span>
+      
+      This task is so easy that the description is omitted.
+#include &lt;iostream&gt; #include &lt;cctype&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; using namespace std; char a[100000]; int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;1.in&quot;, &quot;r&quot;, stdin); freopen(&quot;1.out&quot;, &quot;w&quot;, stdout); #endif while (gets(a)){ int len = strlen(a); bool flag = false; int cnt = 0; for (int i = 0; i &lt; len; ++i){ cnt = 0; flag = false; while (isalpha(a[i])){ if (!
+      <a href="http://liuxueyang.github.io/blog/2013/03/19/zoj-3406-another-very-easy-task/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/03/19/zoj-3407-doraemons-cake-machine/">zoj 3407 Doraemon&#39;s Cake Machine</a>
       </h1>
       <span class="post-date">Mar 19, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/19/zoj-3407-doraemons-cake-machine/#disqus_thread">Comments</a>
@@ -98,124 +211,6 @@
       
       #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cmath&gt; #include &lt;cstring&gt; #define LL long long int LL exgcd(LL a, LL b, LL &amp;x, LL &amp;y){ if (b == 0){ x = 1; y = 0; return a; } LL r = exgcd(b, a%b, x, y); LL t = x; x = y; y = t - a / b * y; return r; } LL gcd(LL a, LL b){ return b ==0?a:gcd(b,a%b); } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;poj1061.
       <a href="http://liuxueyang.github.io/blog/2013/03/18/poj-1061-%E9%9D%92%E8%9B%99%E7%9A%84%E7%BA%A6%E4%BC%9A--%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/16/uva-11991---easy-problem-from-rujia-liu/">uva 11991 - Easy Problem from Rujia Liu?</a>
-      </h1>
-      <span class="post-date">Mar 16, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/16/uva-11991---easy-problem-from-rujia-liu/#disqus_thread">Comments</a>
-      </span>
-      
-      Though Rujia Liu usually sets hard problems for contests (for example, regional contests like Xi&rsquo;an 2006, Beijing 2007 and Wuhan 2009, or UVa OJ contests like Rujia Liu&rsquo;s Presents 1 and 2), he occasionally sets easy problem (for example, &lsquo;the Coco-Cola Store&rsquo; in UVa OJ), to encourage more people to solve his problems :D Given an array, your task is to find the k-th occurrence (from left to right) of an integer v.
-      <a href="http://liuxueyang.github.io/blog/2013/03/16/uva-11991---easy-problem-from-rujia-liu/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/16/uva-11995---i-can-guess-the-data-structure/">uva 11995 - I Can Guess the Data Structure!</a>
-      </h1>
-      <span class="post-date">Mar 16, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/16/uva-11995---i-can-guess-the-data-structure/#disqus_thread">Comments</a>
-      </span>
-      
-      There is a bag-like data structure, supporting two operations: Throw an element x into the bag. Take out an element from the bag. Given a sequence of operations with return values, you&rsquo;re going to guess the data structure. It is a stack (Last-In, First-Out), a queue (First-In, First-Out), a priority-queue (Always take out larger elements first) or something else that you can hardly imagine! There are several test cases. Each test case begins with a line containing a single integer n (1&lt;=n&lt;=1000).
-      <a href="http://liuxueyang.github.io/blog/2013/03/16/uva-11995---i-can-guess-the-data-structure/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/15/hdu-1065-i-think-i-need-a-houseboat/">hdu 1065 I Think I Need a Houseboat</a>
-      </h1>
-      <span class="post-date">Mar 15, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/15/hdu-1065-i-think-i-need-a-houseboat/#disqus_thread">Comments</a>
-      </span>
-      
-      I Think I Need a Houseboat
-Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 5929 Accepted Submission(s): 1761
-Problem Description
-Fred Mapper is considering purchasing some land in Louisiana to build his house on. In the process of investigating the land, he learned that the state of Louisiana is actually shrinking by 50 square miles each year, due to erosion caused by the Mississippi River. Since Fred is hoping to live in this house the rest of his life, he needs to know if his land is going to be lost to erosion.
-      <a href="http://liuxueyang.github.io/blog/2013/03/15/hdu-1065-i-think-i-need-a-houseboat/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/15/hdu-1214-%E5%9C%86%E6%A1%8C%E4%BC%9A%E8%AE%AE/">hdu 1214 圆桌会议</a>
-      </h1>
-      <span class="post-date">Mar 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/15/hdu-1214-%E5%9C%86%E6%A1%8C%E4%BC%9A%E8%AE%AE/#disqus_thread">Comments</a>
-      </span>
-      
-      圆桌会议
-Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 2179 Accepted Submission(s): 1490
-Problem Description HDU ACM集训队的队员在暑假集训时经常要讨论自己在做题中遇到的问题.每当面临自己解决不了的问题时,他们就会围坐在一张圆形的桌子旁进行交流,经过大家的讨论后一般没有解决不了的问题,这也只有HDU ACM集训队特有的圆桌会议,有一天你也可以进来体会一下哦:),在一天在讨论的时候,Eddy想出了一个极为古怪的想法,如果他们在每一分钟内,一对相邻的两个ACM队员交换一下位子,那么要多少时间才能得到与原始状态相反的座位顺序呢?(即对于每个队员，原先在他左面的队员后来在他右面，原先在他右面的队员在他左面),这当然难不倒其他的聪明的其他队友们,马上就把这个古怪的问题给解决了,你知道是怎么解决的吗?
-Input 对于给定数目N(1&lt;=N&lt;=32767)，表示有N个人,求要多少时间才能得到与原始状态相反的座位顺序(reverse)即对于每个人，原先在他左面的人后来在他右面，原先在他右面的人在他左面。
-Output 对每个数据输出一行，表示需要的时间(以分钟为单位)
-Sample Input 4 5 6
-Sample Output 2 4 6
-#include &lt;cstdio&gt; #include &lt;cstdlib&gt; int main(void){ int n; #ifndef ONLINE_JUDGE freopen(&quot;1214.in&quot;, &quot;r&quot;, stdin); #endif while (~scanf(&quot;%d&quot;, &amp;n)){ int a, b; a = n / 2; b = n - a; printf(&quot;%d\n&quot;, a*(a-1)/2+b*(b-1)/2); } return 0; }  这道题目意思很好明白，就是每次只能两个人交换位置，求最少交换多少次，才能够产生顺序相反的排列。
-      <a href="http://liuxueyang.github.io/blog/2013/03/15/hdu-1214-%E5%9C%86%E6%A1%8C%E4%BC%9A%E8%AE%AE/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/15/hdu-1056-hangover/">hdu 1056 HangOver</a>
-      </h1>
-      <span class="post-date">Mar 15, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/15/hdu-1056-hangover/#disqus_thread">Comments</a>
-      </span>
-      
-      HangOver
-Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 7186 Accepted Submission(s): 2884
-Problem Description How far can you make a stack of cards overhang a table? If you have one card, you can create a maximum overhang of half a card length. (We&rsquo;re assuming that the cards must be perpendicular to the table.) With two cards you can make the top card overhang the bottom one by half a card length, and the bottom one overhang the table by a third of a card length, for a total maximum overhang of 1&frasl;2 + 1&frasl;3 = 5&frasl;6 card lengths.
-      <a href="http://liuxueyang.github.io/blog/2013/03/15/hdu-1056-hangover/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/13/poj-1659-frogs-neighborhood/">poj 1659 Frogs&#39; Neighborhood</a>
-      </h1>
-      <span class="post-date">Mar 13, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/13/poj-1659-frogs-neighborhood/#disqus_thread">Comments</a>
-      </span>
-      
-      Frogs&rsquo; Neighborhood Time Limit: 5000MS Memory Limit: 10000K Total Submissions: 5599 Accepted: 2419 Special Judge
-Description
-未名湖附近共有N个大小湖泊L1, L2, &hellip;, Ln(其中包括未名湖)，每个湖泊Li里住着一只青蛙Fi(1 ≤ i ≤ N)。如果湖泊Li和Lj之间有水路相连，则青蛙Fi和Fj互称为邻居。现在已知每只青蛙的邻居数目x1, x2, &hellip;, xn，请你给出每两个湖泊之间的相连关系。
-Input
-第一行是测试数据的组数T(0 ≤ T ≤ 20)。每组数据包括两行，第一行是整数N(2 &lt; N &lt; 10)，第二行是N个整数，x1, x2,&hellip;, xn(0 ≤ xi ≤ N)。
-Output
-对输入的每组测试数据，如果不存在可能的相连关系，输出&rdquo;NO&rdquo;。否则输出&rdquo;YES&rdquo;，并用N×N的矩阵表示湖泊间的相邻关系，即如果湖泊i与湖泊j之间有水路相连，则第i行的第j个数字为1，否则为0。每两个数字之间输出一个空格。如果存在多种可能，只需给出一种符合条件的情形。相邻两组测试数据之间输出一个空行。
-Sample Input
-3 7 4 3 1 5 4 2 1 6 4 3 1 4 2 0 6 2 3 1 1 2 1
-      <a href="http://liuxueyang.github.io/blog/2013/03/13/poj-1659-frogs-neighborhood/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/13/poj-3225-help-with-intervals/">poj 3225 Help with Intervals</a>
-      </h1>
-      <span class="post-date">Mar 13, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/13/poj-3225-help-with-intervals/#disqus_thread">Comments</a>
-      </span>
-      
-      Description Input Output Sample Input Sample Output #include &lt;cstdio&gt; using namespace std; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 const int maxn = 65535*2+10; int cover[maxn&lt;&lt;2],xorm[maxn&lt;&lt;2]; bool hash[maxn+10]; void fxor(int rt){ if (cover[rt] != -1) cover[rt] ^= 1; else xorm[rt] ^= 1; } void PushDown(int rt){ if (cover[rt] != -1){ cover[rt&lt;&lt;1] = cover[rt&lt;&lt;1|1] = cover[rt]; xorm[rt&lt;&lt;1] = xorm[rt&lt;&lt;1|1] = 0; cover[rt] = -1; // there has been a BUG.
-      <a href="http://liuxueyang.github.io/blog/2013/03/13/poj-3225-help-with-intervals/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/13/hdu-1040-as-easy-as-a-b/">hdu 1040 As Easy As A&#43;B</a>
-      </h1>
-      <span class="post-date">Mar 13, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/13/hdu-1040-as-easy-as-a-b/#disqus_thread">Comments</a>
-      </span>
-      
-      As Easy As A+B
-Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 26401 Accepted Submission(s): 11218
-Problem Description These days, I am thinking about a question, how can I get a problem as easy as A+B? It is fairly difficulty to do such a thing. Of course, I got it after many waking nights. Give you some integers, your task is to sort these number ascending (升序).
-      <a href="http://liuxueyang.github.io/blog/2013/03/13/hdu-1040-as-easy-as-a-b/">Read On &rarr;</a>
       
     </div>
     

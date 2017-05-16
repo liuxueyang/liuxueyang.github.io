@@ -79,6 +79,175 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/09/04/codeforces-340c-tourist-problem/">codeforces 340C Tourist Problem</a>
+      </h1>
+      <span class="post-date">Sep 4, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/09/04/codeforces-340c-tourist-problem/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://codeforces.com/problemset/problem/340/C
+开始一点也没思路，赛后看别人写的代码那么短，可是不知道怎么推出来的啊！
+后来明白了。
+首先考虑第一个数字，就是和0想减的内个。那么剩下的n-1个数字有(n-1)!个排列方式。所以呢，在n!个式子里面，第一个位置的和就是：a1 * (n-1)! + a2 * (n-1)! + &hellip;&hellip; + an * (n-1)!；
+然后考虑其它位置：对于ai , aj . 并且相邻。那么剩下 n - 2 个数字，这些数字有 (n-2)!个排列方式，然后把相邻的 ai aj 插入，有 n-1 种插入方式，所以呢，一共有 (n-1) * (n-2)! = (n-1)! 个方式，其它位置的和就是：(n-1)! * fabs(ai - aj) 【i != j, 1 &lt;= i, j &lt;= n】
+关键是第二个式子怎么求呢？好像很难得样子。可以找规律啊。比如，a1, a2 , a3, a4.
+因为有绝对值，我可以先排序，先算正的，在 *2就行了。假设a1 &gt; a2 &gt; a3 &gt; a4
+设：
+以a2结尾的ai - aj 的和是S2.
+以a3……和是S3
+。a4…………S4
+      <a href="http://liuxueyang.github.io/blog/2013/09/04/codeforces-340c-tourist-problem/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/09/04/cf340d-bubble-sort-graph/">cf340D Bubble Sort Graph</a>
+      </h1>
+      <span class="post-date">Sep 4, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/09/04/cf340d-bubble-sort-graph/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://codeforces.com/problemset/problem/340/D
+感觉很好的一道题目。
+认真思考，发现，逆序的数字对一定有边相连。所以，题目要求没有边相连的最大的集合的点的个数，其实就是找原来的序列的最长上升子序列！
+/* * Filename: tourist.cpp * Created: 09/01/2013 09:07:05 AM * Author: liuxueyang (lxy), zypz457@sina.com * Organization: Hunnan University */ #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int MOD = 1e9+7; using namespace std; int touch[100009]; int main ( int argc, char *argv[] ) { #ifndef ONLINE_JUDGE freopen(&quot;in.
+      <a href="http://liuxueyang.github.io/blog/2013/09/04/cf340d-bubble-sort-graph/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B03/">读书笔记3</a>
+      </h1>
+      <span class="post-date">Sep 3, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B03/#disqus_thread">Comments</a>
+      </span>
+      
+      这段时间懒得写博客了。
+还是写一点吧。
+最近看完的书：
+《天才在左，疯子在右》 作者：高铭 ——心理学科普类
+超级有意思的一本书，现在开始明白为什么有很多人都对心理学感兴趣了，人的精神世界真的很奇妙。
+世界上有太多的未知，我们都被未知奴役着。只能怀着敬畏的心态，面对这个充满神奇的世界吧。有太多超出我们想象的东西了，也有太多不能解释的东西了。
+《目送》 作者：龙应台 ——散文、随笔
+这本书和龙应台以前的作品风格完全不同，感情很细腻，尤其是有些细节，很让人感动。一句话印象很深刻，写的是我们每个人：
+　我慢慢地、慢慢地了解到，所谓父女母子一场，只不过意味着，你和他的缘分就是今生今世不断地在目送他的背影渐行渐远。你站立在小路的这一端，看着他逐渐消失在小路转弯的地方，而且，他用背影默默告诉你：不必追。
+《推理要在晚餐后》 作者：东川笃哉 ——推理小说
+　很漂亮的本格推理小说！最喜欢这种了，不长，但是很精彩。当初梦想当职业棒球选手或者私人侦探的影山却是一个大家族的管家，凭着精妙的推理解决了一个又一个案件，并且是光凭口述，只不过，却当了管家，可惜了，正因为如此，这个角色堪称完美啊。
+　记录一下里面的案件：
+　杀人现场请拖鞋：一男的同时跟几个女人同时交往，女A和男交换过钥匙，女B发现了女A的钥匙后，通过某种手段，找到女A的住所，发现确实是女A的钥匙，等女A出门后，潜入房间，不料女A中途返回家，女B无处藏身再加上女A当时穿的是长靴，因为想起天气预报要下雨，阳台的衣服没有收，所以返回家来收，穿长靴懒得脱了，所以直接爬着进屋，这是日本的习惯吧，进屋拖鞋。这个时候女A毫无自卫能力，女B趁机从背后杀死。
+　来一杯杀人红酒如何：冒充情人送给被害者一瓶红酒，然后被害者被氰酸钾毒死。被害者有洁癖，所以杯子是干净的，红酒是高档红酒，没开封过，同时，被害者是独自在自己房间内喝酒。那怎么下的毒呢？答案就是：日本的红酒是那种软木塞，虽然软木塞上有金属盖子密封着，但是留有两个小孔，用注射器把氰酸钾注入就可以了。这种细节都可以想到，orz
+　美丽的蔷薇中蕴含着杀意：大概是一个家族显赫的男人，带回来一个女人，这个女人以前是做特殊职业的，也就是我们平常说的妓女，事实上，这个女人是一个性格开朗人也很不错的人，家里人不同意等等……后来有一些家人了解了这个女人后改变了当初的看法，但是有个弟兄貌似还是不同意，直到一天，女人平静地躺在家族宅邸的蔷薇花坛里，很美，但是死了。这个案件里面，很有意思的一段推理：已知女人很喜欢猫，晚上睡觉的时候猫也在床边，第二天早晨女人死了后，发现猫受伤了，同时，第二天人们发现尸体的时候，为了确认是不是死亡，开始试图把尸体搬下来，这样那几个人的手背上都有划伤，同时，宅邸里还有其他的花园，为什么凶手要选择蔷薇呢？答案：凶手为了掩饰猫的抓伤。案件的原因：由于女人以前是特殊职业的，那个弟兄可能和她有过不光彩的经历，同时发生了争执，为了以后在家族里的地位和权势，酿成了悲剧。
+……………………
+算了，，不写了，，，发现写出来一点也没意思。。。。其实最有意思的是里面的细节和巧妙的推理……都把真相写出来了，味同嚼蜡。
+我还是只记录关键的事件吧：
+　新娘深陷密室之中：又是一个迷失杀人案。由于各种误会+包庇，第一个冲进现场的人竟然把凶手放走了，其实当时凶手就在房间的角落，只不过当时第一个进入房间的人的注意力只在尸体上了。里面有一个细节：根据管家对不同人的习惯称呼，巧妙地让凶手露出马脚，这需要反映足够快啊。
+　请小心劈腿：一个男人被杀，发现尸体的时候赤身裸体。并且根据目击者的口述，曾见过男人和一个160左右的女人在一起，另一个是曾见过男人和一个170左右的男人在一起。为什么呢？男人穿了增高鞋，产生视觉上的偏差，本来女人160左右，同时女人逃离现场时穿了男人的增高鞋。很巧妙的伪装。杀人动机很无聊：身高欺骗。我见过的最无聊的……
+　请看来自死者的留言：案件很复杂的样子。主要是就是一个女强人被杀。原因是这个女人曾把凶手的女朋友害的自杀了。但是里面的推理很不错，凶手伪装死亡讯息，跟据这个排除可能性，同时，还有一个13岁的少女做帮凶，只不过，那是个美丽的错误……
+《麦田里的守望者》 作者：塞林格 ——小说
+　说实话，这本书读到百分之六十，发现自己真的没怎么读懂。唯一学到的一句话就是：“他妈的混帐玩意儿”。
+　不过现在觉得也许有点懂了。也许我们每个人身上都有霍尔顿的影子吧。肆意挥霍自己的青春。
+　先放下，以后再继续看，或者重新看一遍。
+嗨，中村。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/26/hdu4497-gcd-and-lcm-%E7%B4%A0%E6%95%B0%E5%88%86%E8%A7%A3-%E8%AE%A1%E6%95%B0/">hdu4497 GCD and LCM ——素数分解&#43;计数</a>
+      </h1>
+      <span class="post-date">Aug 26, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/26/hdu4497-gcd-and-lcm-%E7%B4%A0%E6%95%B0%E5%88%86%E8%A7%A3-%E8%AE%A1%E6%95%B0/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://acm.hdu.edu.cn/showproblem.php?pid=4497
+如果G%L != 0，说明一定无解。
+把K = G / L质数分解，G / L = p1^t1 * p2^t2 * p3^t3 * ……；同时 x/= L, y/= L, z/=L，不影响结果。
+假设三个数字的质数分解是：
+x = p1^i1 * p2^i2 * p3^i3 * ……
+y = p1^j1 * p2^j2 * p3^j3 * ……
+z = p1^k1 * p2^k2 * p3^k3 * ……
+要保证x, y, z互质，并且lcm(x, y, z) = K, 那么对于p1来说，i1, j1, k1里面一定有一个是0，并且一定有一个是t1，所以有3种情况：
+0 0 t1 有3种
+t1 t1 0 有3种
+      <a href="http://liuxueyang.github.io/blog/2013/08/26/hdu4497-gcd-and-lcm-%E7%B4%A0%E6%95%B0%E5%88%86%E8%A7%A3-%E8%AE%A1%E6%95%B0/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/25/poj1026-cipher-%E7%BD%AE%E6%8D%A2%E7%BE%A4/">poj1026 Cipher ——置换群</a>
+      </h1>
+      <span class="post-date">Aug 25, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/25/poj1026-cipher-%E7%BD%AE%E6%8D%A2%E7%BE%A4/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://poj.org/problem?id=1026
+其实这道题目和poj2369这道题目一样。
+都是基础的置换群题目。把那道题目理解了，这道题就没问题了。
+不过我的方法貌似比较挫，或者处理方法效率不高，比较慢……
+就是对每个数字求出循环节，用rec[]保存，然后用k%rec[]得到余数，
+再模拟这个余数次就得到了目标位置。
+/* ID: zypz4571 LANG: C++ TASK: decode.cpp */ #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; char str[222]; int rec[222], a[222], b[222], c[222]; bool flag[222]; int main ( int argc, char *argv[] ) { #ifndef ONLINE_JUDGE freopen(&quot;in.
+      <a href="http://liuxueyang.github.io/blog/2013/08/25/poj1026-cipher-%E7%BD%AE%E6%8D%A2%E7%BE%A4/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/24/poj2369-permutations-%E7%BD%AE%E6%8D%A2%E7%BE%A4/">poj2369 Permutations ——置换群</a>
+      </h1>
+      <span class="post-date">Aug 24, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/24/poj2369-permutations-%E7%BD%AE%E6%8D%A2%E7%BE%A4/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://poj.org/problem?id=2369
+置换群，最简单的那种。
+找所有数字循环节的最小公倍数。
+/* ID: zypz4571 LANG: C++ TASK: permutations.cpp */ #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int a[1111]; bool flag[1111]; int gcd(int x, int y) { return y == 0 ?
+      <a href="http://liuxueyang.github.io/blog/2013/08/24/poj2369-permutations-%E7%BD%AE%E6%8D%A2%E7%BE%A4/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/23/2009%E5%B9%B4%E5%88%B02013%E5%B9%B4%E7%94%B2%E5%AD%90%E5%9B%ADed/">2009年到2013年甲子园ED</a>
+      </h1>
+      <span class="post-date">Aug 23, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/23/2009%E5%B9%B4%E5%88%B02013%E5%B9%B4%E7%94%B2%E5%AD%90%E5%9B%ADed/#disqus_thread">Comments</a>
+      </span>
+      
+      2009年
+http://v.youku.com/v_show/id_XMTY3MTM4NjQw.html
+2010年 最喜欢的一个！看过N遍
+http://v.youku.com/v_show/id_XMjAwMzEwMDI4.html
+2011年
+http://v.youku.com/v_show/id_XMjk3NTQ4OTky.html
+也不错！
+2012年 超级好听啊~^_^比10年的还好，看过N+1遍……o(╯□╰)o
+http://v.youku.com/v_show/id_XMzY5OTM3Mzg4.html
+2013年春季甲子园
+http://v.youku.com/v_show/id_XNTYzODI0NTA4.html
+印象最深的是2011年打进甲子园的至学馆。
+http://v.youku.com/v_show/id_XMjkxOTcwNjI0.html
+这是至学馆校歌《追梦人》
+这是11年一支甲子园参赛队，名为至学馆，他们的故事犹如真人版的TOUCH，为了实现打入甲子园的梦想而努力，但王牌投手桐林史树 却遭遇车祸，不幸丧生，不仅如此，球队二号投手
+麻王健之郎 因为练习过重，导致手臂受伤，只能终止投手生涯，虽然前往甲子园的路上有无数强大的敌手，但他们最终击败了所有对手，打入了11年甲子园！以上是他们在取得甲子园入场券后唱校歌的场景，其中那个看台上的照片就是桐林史树。
+嗨，中村。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/22/%E4%BD%BF%E7%94%A8stl%E7%A6%BB%E6%95%A3%E5%8C%96/">使用STL离散化</a>
+      </h1>
+      <span class="post-date">Aug 22, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/22/%E4%BD%BF%E7%94%A8stl%E7%A6%BB%E6%95%A3%E5%8C%96/#disqus_thread">Comments</a>
+      </span>
+      
+      把原来的数组a复制一份拷贝b 用sort先把数组a排序 用unique消除a里面重复的元素 对于b中的每一个元素，用lower_bound找到它在a中的位置，也就是离散化之后的编号。 没了。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int main(void) { int a[6] = {15, 14, 11, 20, 13, 13}, b[111]; for (int i=0; i &lt; 6; ++i) b[i] = a[i]; sort(a, a+6); int len = unique(a, a+6) - a; for (int i = 0;i &lt; 6; ++i) b[i] = lower_bound(a, a+len, b[i]) - a + 1; for (int i = 0; i &lt; 6; ++i) printf(&quot;%d &quot;, b[i]); printf(&quot;\n&quot;); return 0; }  嗨！中村。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/08/22/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02/">读书笔记2</a>
       </h1>
       <span class="post-date">Aug 22, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/22/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02/#disqus_thread">Comments</a>
@@ -168,132 +337,6 @@
 暴力，数据明显太水了吧，n=10^5, O(n^2)的复杂度哎喂。想让大家暴力写直接让n=1000不就得了么，这算什么。
 #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; char a[111111], b[11111]; //#define LL long long #define LL __int64 int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.
       <a href="http://liuxueyang.github.io/blog/2013/08/21/hdu4691-front-compression-%E6%9A%B4%E5%8A%9B--%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/20/hdu4690-ebcdic-%E6%B0%B4%E9%A2%98%E8%80%83%E8%80%90%E5%BF%83/">hdu4690 EBCDIC ——水题，考耐心</a>
-      </h1>
-      <span class="post-date">Aug 20, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/20/hdu4690-ebcdic-%E6%B0%B4%E9%A2%98%E8%80%83%E8%80%90%E5%BF%83/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://acm.hdu.edu.cn/showproblem.php?pid=4690
-考的是耐心何细心啊，用map把两个表格映射一下就行~
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; string A[16][16] = { &quot;NUL&quot;,&quot;SOH&quot;,&quot;STX&quot;,&quot;ETX&quot;,&quot;&quot;,&quot;HT&quot;,&quot;&quot;,&quot;DEL&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;VT&quot;,&quot;FF&quot;,&quot;CR&quot;,&quot;SO&quot;,&quot;SI&quot;, &quot;DLE&quot;,&quot;DC1&quot;,&quot;DC2&quot;,&quot;DC3&quot;,&quot;&quot;,&quot;&quot;,&quot;BS&quot;,&quot;&quot;,&quot;CAN&quot;,&quot;EM&quot;,&quot;&quot;,&quot;&quot;,&quot;IFS&quot;,&quot;IGS&quot;,&quot;IRS&quot;,&quot;IUS ITB&quot;, &quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;LF&quot;,&quot;ETB&quot;,&quot;ESC&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;ENQ&quot;,&quot;ACK&quot;,&quot;BEL&quot;, &quot;&quot;,&quot;&quot;,&quot;SYN&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;EOT&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;DC4&quot;,&quot;NAK&quot;,&quot;&quot;,&quot;SUB&quot;, &quot;SP&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;.
-      <a href="http://liuxueyang.github.io/blog/2013/08/20/hdu4690-ebcdic-%E6%B0%B4%E9%A2%98%E8%80%83%E8%80%90%E5%BF%83/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/20/hdu4686-arc-of-dream-%E6%9E%84%E9%80%A0%E7%9F%A9%E9%98%B5-%E5%BF%AB%E9%80%9F%E5%B9%82/">hdu4686 Arc of Dream ——构造矩阵&#43;快速幂</a>
-      </h1>
-      <span class="post-date">Aug 20, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/20/hdu4686-arc-of-dream-%E6%9E%84%E9%80%A0%E7%9F%A9%E9%98%B5-%E5%BF%AB%E9%80%9F%E5%B9%82/#disqus_thread">Comments</a>
-      </span>
-      
-      link: http://acm.hdu.edu.cn/showproblem.php?pid=4686
-构造出来的矩阵是这样的：根据题目的ai * bi = ……，可以发现 矩阵1 * 矩阵3 = 矩阵2。然后就是矩阵快速幂了。
-1
-1	ai	bi	ai*bi	Si 0	0	0	0	0 0	0	0	0	0 0	0	0	0	0 0	0	0	0	0  2
-1	ai+1	bi+1	ai+1*bi+1	Si+1 0	0	0	0	0 0	0	0	0	0 0	0	0	0	0 0	0	0	0	0  3
-1	AY	BY	AY*BY	AY*BY 0	AX	0	AX*BY	AX*BY 0	0	BX	AY*BX	AY*BX 0	0	0	AX*BX	AX*BX 0	0	0	0	1  #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; #define LL __int64 #define MOD 1000000007 typedef struct { LL m[5][5]; }mat; mat X, Y; LL n, a0, ax, ay, b0, bx, by; mat multi(mat a, mat b) { mat c; int j, i, k; for (i = 0; i &lt; 5; ++i) { for (j = 0; j &lt; 5; ++j) { c.
-      <a href="http://liuxueyang.github.io/blog/2013/08/20/hdu4686-arc-of-dream-%E6%9E%84%E9%80%A0%E7%9F%A9%E9%98%B5-%E5%BF%AB%E9%80%9F%E5%B9%82/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/20/%E5%B0%B1%E8%AF%B4%E4%B8%80%E5%8F%A5/">就说一句</a>
-      </h1>
-      <span class="post-date">Aug 20, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/20/%E5%B0%B1%E8%AF%B4%E4%B8%80%E5%8F%A5/#disqus_thread">Comments</a>
-      </span>
-      
-      做了一年ACM，今天才顿悟，为什么还一直处于这么渣的阶段，原来是打开方式不对！
-更多的是看例题，写实现，思考算法，体会算法思想，而不是想都不想就上去飞快的敲代码，然后找无穷无尽的BUG！
-所以，以后多想，多看论文，少敲键盘吧。如果一个算法没理解就去做题，基本是必然会写错的，即使是小错也会浪费很多时间。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/20/ural-1057amount-of-degrees-%E6%95%B0%E4%BD%8Ddp/">ural 1057Amount of Degrees ——数位DP</a>
-      </h1>
-      <span class="post-date">Aug 20, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/20/ural-1057amount-of-degrees-%E6%95%B0%E4%BD%8Ddp/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://acm.timus.ru/problem.aspx?space=1&amp;num=1057
-论文： 浅谈数位类统计问题 刘聪
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int a[33][33]; int bto2(int x, int b) { int tm[33], cnt = 0, ans = 0; while (x) { tm[cnt++] = x % b; x /= b; } for (int i = cnt - 1; i &gt;= 0; --i) { if (tm[i] &amp;&amp; (tm[i] !
-      <a href="http://liuxueyang.github.io/blog/2013/08/20/ural-1057amount-of-degrees-%E6%95%B0%E4%BD%8Ddp/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/19/codeforces-mysterious-present-%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97-%E5%80%92%E5%BA%8F%E6%89%93%E5%8D%B0%E8%B7%AF%E5%BE%84/">codeforces mysterious present 最长上升子序列&#43;倒序打印路径</a>
-      </h1>
-      <span class="post-date">Aug 19, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/19/codeforces-mysterious-present-%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97-%E5%80%92%E5%BA%8F%E6%89%93%E5%8D%B0%E8%B7%AF%E5%BE%84/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://codeforces.com/problemset/problem/4/D
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int n,w,h,cnt,ans,d[5009],path[5009],End; bool flag; typedef struct node { int W,H,In; bool operator &lt; (const node &amp;other) const { if(W!
-      <a href="http://liuxueyang.github.io/blog/2013/08/19/codeforces-mysterious-present-%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97-%E5%80%92%E5%BA%8F%E6%89%93%E5%8D%B0%E8%B7%AF%E5%BE%84/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/18/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01/">读书笔记1</a>
-      </h1>
-      <span class="post-date">Aug 18, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/18/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01/#disqus_thread">Comments</a>
-      </span>
-      
-      不想说什么了，今天一大早来机房，就为了写这两天的读书笔记，做点摘抄什么的，马不停蹄，人不停爪地敲了一个多小时，手都抽筋了，写完的时候，添加标签的时候，界面一刷新，然后什么都没有了！有想砸电脑的冲动啊。博客园的后台编辑器支持自动保存的，不过只支持IE9内核以上的和chrome以及firefox的浏览器，好吧。算我倒霉了。还是简要记录一下吧，早上写的一堆白写了。不忍心。
-8月16日中午kpw到货，激动啊。一直很后悔的就是大学里面没有怎么读书，很多想读的书都没有看过，所以剩下的时间里多看看书吧。
-8月16日
-《我所理解的生活》韩寒
-一下午+晚上读完了，很可惜，很多文章都是看过的，或者是再韩寒的博客上或者是在读者青年文摘上。不过总的来说还是不错的。
-8月17日
-《小王子》
-小学的时候就看过这本书，大一的时候看过一遍英文版的，上午读完了一遍，每一次读都有不同的感受，尤其是在不同的阶段，不同的心境下。很美丽的一个童话。
-昨晚看一然酱的kindle，好吧，好多技术方面的书啊，linux,python,Haskell各种啊，我的里面从汉书到韩寒到漫画都有啊，一本学习的书都没有啊，这就是传说中的茶具么？好吧，其实即使有学习的书，我想按照我这个阅读的优先级，我也是永远也不会看的o(╯□╰)o其实kindle除了看小说，看散文漫画什么的超级方便以外，看技术的书确实也不方便啊，尤其是需要翻来翻去的那种书。
-一天之中最宁静的时光，就是深夜躺在楼顶，伴着月光，静静地看书，困了就昏睡过去，凌晨醒来，一边欣赏着美丽的朝霞，一边继续懒散地看书，然后一天又开始了。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/18/codeforces105d-bag-of-mice-%E6%A6%82%E7%8E%87dp/">codeforces105d Bag of mice ——概率DP</a>
-      </h1>
-      <span class="post-date">Aug 18, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/18/codeforces105d-bag-of-mice-%E6%A6%82%E7%8E%87dp/#disqus_thread">Comments</a>
-      </span>
-      
-      Link:
-http://codeforces.com/problemset/problem/148/D
-Refer to:
-http://www.cnblogs.com/kuangbin/archive/2012/10/04/2711184.html
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; double a[1111][1111]; int main(void) { int w,b; #ifndef ONLINE_JUDGE freopen(&quot;in.
-      <a href="http://liuxueyang.github.io/blog/2013/08/18/codeforces105d-bag-of-mice-%E6%A6%82%E7%8E%87dp/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/18/zoj3551-bloodsucker-%E6%A6%82%E7%8E%87dp/">zoj3551 Bloodsucker ——概率DP</a>
-      </h1>
-      <span class="post-date">Aug 18, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/18/zoj3551-bloodsucker-%E6%A6%82%E7%8E%87dp/#disqus_thread">Comments</a>
-      </span>
-      
-      Link: http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=4530
-A[i]数组表示当吸血鬼有 I 个的时候，还需要的天数。可以列出方程：
-A[i] = p1(a[i+1]+1) + (1-p1)(a[i]+1) p1=(i*(n-i))p / (n(n-1)/2)
-这道题目错了很多次，原因就是强制类型转换的时候，有一个细节，
-(double)(n(n-1))/2.0 是错的，应该写成：(double)n(n-1)/2.0。这个小细节以后注意吧
-# include&lt;stdio.h&gt; # include&lt;string.h&gt; # include&lt;stdlib.h&gt; int main(void) { // freopen(&quot;in.txt&quot;, &quot;r&quot;,stdin ); int t; scanf(&quot;%d&quot;,&amp;t); while (t--) { int n; double p; scanf(&quot;%d%lf&quot;,&amp;n,&amp;p); double sad=0.0,dw=(double)n*(n-1)/2.0; for(int i=n-1;i&gt;=1;--i) { double lxy=i; lxy*=(n-i); lxy*=p; lxy=lxy/dw; sad+=1.0/lxy; } printf(&quot;%.3f\n&quot;,sad); } return 0; }  O(╯□╰)o
-      
       
     </div>
     

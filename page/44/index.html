@@ -79,6 +79,108 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/12/15/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.2.2-%E7%94%9F%E6%88%90%E5%8F%AF%E9%87%8D%E9%9B%86%E7%9A%84%E6%8E%92%E5%88%97/">入门经典 第七章 7.2.2 生成可重集的排列</a>
+      </h1>
+      <span class="post-date">Dec 15, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/15/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.2.2-%E7%94%9F%E6%88%90%E5%8F%AF%E9%87%8D%E9%9B%86%E7%9A%84%E6%8E%92%E5%88%97/#disqus_thread">Comments</a>
+      </span>
+      
+      先把数列排序，再修改以前的程序。
+注意体会for里面的条件
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/12/15/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.2.1-%E7%94%9F%E6%88%901%E5%88%B0n%E7%9A%84%E6%8E%92%E5%88%97/">入门经典 第七章 7.2.1 生成1到N的排列</a>
+      </h1>
+      <span class="post-date">Dec 15, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/15/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.2.1-%E7%94%9F%E6%88%901%E5%88%B0n%E7%9A%84%E6%8E%92%E5%88%97/#disqus_thread">Comments</a>
+      </span>
+      
+      注意多体会递归的想法
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/12/14/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.7.4-%E5%8F%8C%E5%9F%BA%E5%9B%9E%E6%96%87%E6%95%B0/">入门经典 第七章 7.7.4 双基回文数</a>
+      </h1>
+      <span class="post-date">Dec 14, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/14/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.7.4-%E5%8F%8C%E5%9F%BA%E5%9B%9E%E6%96%87%E6%95%B0/#disqus_thread">Comments</a>
+      </span>
+      
+      双基回文数很多，所以可以暴力。
+#include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;iomanip&gt; using namespace std; int trans(int n, int base) { int a[100], i = 1; a[0]=n%base; n/=base; while (n) { a[i++]=n%base; n/=base; } int len = i; int mrk = 1; for (i = 0; i &lt; len; ++i) { if (a[i] != a[len-1-i]) { mrk = 0; break; } } return mrk; } int main(void) { int n; #ifndef ONLINE_JUDGE freopen(&quot;in&quot;, &quot;r&quot;, stdin); #endif while (~scanf(&quot;%d&quot;, &amp;n)) { int mrk = 0, cnt = 0; for (int i = n+1; ; ++i) { cnt = 0; for (int j = 2; j &lt; 11; ++j) { if (trans(i, j)) { cnt++; if (cnt==2) { mrk = 1; printf(&quot;%d\n&quot;, i); break; } } } if (mrk) break; } } return 0; }  注意在trans()函数中，a数组不能小于32，原因是，转化成2进制的时候，数组要足够大，刚开始只开了20，出现了错误，并且发现一个有趣的问题，i的值会竟然会自动调整！不信的话，你试试把代码改成下面这样：（只改这个地方，其他地方不变）
+      <a href="http://liuxueyang.github.io/blog/2012/12/14/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.7.4-%E5%8F%8C%E5%9F%BA%E5%9B%9E%E6%96%87%E6%95%B0/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/12/14/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.7.3-%E5%88%86%E6%95%B0%E6%8B%86%E5%88%86/">入门经典 第七章 7.7.3 分数拆分</a>
+      </h1>
+      <span class="post-date">Dec 14, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/14/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.7.3-%E5%88%86%E6%95%B0%E6%8B%86%E5%88%86/#disqus_thread">Comments</a>
+      </span>
+      
+      找出x,y的范围，枚举就可以了
+#include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; using namespace std; int main(void) { int k; #ifndef ONLINE_JUDGE freopen(&quot;in&quot;, &quot;r&quot;, stdin); #endif while (~scanf(&quot;%d&quot;, &amp;k)) { for (int i = k+1; i &lt;= 2*k; ++i) { if ((k*i)/(i-k)%1==0) printf(&quot;1/%d = 1/%d + 1/%d\n&quot;, k, (k*i)/(i-k), i); } } return 0; }   
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/12/14/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.7.2-%E6%9C%80%E5%A4%A7%E4%B9%98%E7%A7%AF/">入门经典 第七章 7.7.2 最大乘积</a>
+      </h1>
+      <span class="post-date">Dec 14, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/14/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.7.2-%E6%9C%80%E5%A4%A7%E4%B9%98%E7%A7%AF/#disqus_thread">Comments</a>
+      </span>
+      
+      因为范围只有18个数字，所以可以枚举起点和终点。
+#include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;cmath&gt; using namespace std; long long int f(int a[], int start, int end) { long long int sum = 1; for (int i = start; i &lt; end + 1; ++i) { sum *= a[i]; } return sum; } int main(void) { int n, a[20]; #ifndef ONLINE_JUDGE freopen(&quot;in&quot;, &quot;r&quot;, stdin); #endif while (~scanf(&quot;%d&quot;, &amp;n)) { for (int i = 0; i &lt; n; ++i) scanf(&quot;%d&quot;, &amp;a[i]); long long int sum=-1; for (int i = 0; i &lt; n; ++i) { for (int j = i; j &lt; n; ++j) { if (f(a, i, j) &gt; sum) sum = f(a, i, j); } } printf(&quot;%lld\n&quot;, sum); } return 0; }  根据数据范围，估算一下能不能暴力
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/12/14/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.7.1-%E9%99%A4%E6%B3%95/">入门经典 第七章 7.7.1 除法</a>
+      </h1>
+      <span class="post-date">Dec 14, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/14/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.7.1-%E9%99%A4%E6%B3%95/#disqus_thread">Comments</a>
+      </span>
+      
+      这道题目还是卡了很久，原因是要考虑0是不是出现过，要标记。
+#include &lt;stdio.h&gt; #include &lt;ctype.h&gt; #include &lt;string.h&gt; #include &lt;stdlib.h&gt; #include &lt;math.h&gt; void f(int a[], int n) { a[n%10] = 1; n/=10; while (n) { a[n%10] = 1; n/=10; } return; } int main(void) { int n, i, a[11], k, temp; freopen(&quot;in&quot;, &quot;r&quot;, stdin); while (~scanf(&quot;%d&quot;, &amp;n)) { for (i = 100; i &lt; 50000; ++i) { k = i * n; memset(a, 0, sizeof(a)); temp = k; if (temp/100000!=0) continue; f(a, temp); f(a, i); a[temp/10000] = a[i/10000] = 1; int mrk=1; for (int s = 0; s &lt; 10; ++s) { if(!
+      <a href="http://liuxueyang.github.io/blog/2012/12/14/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.7.1-%E9%99%A4%E6%B3%95/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/12/14/gdb%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E7%AE%80%E8%A6%81%E6%80%BB%E7%BB%93/">gdb调试方法简要总结</a>
+      </h1>
+      <span class="post-date">Dec 14, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/14/gdb%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E7%AE%80%E8%A6%81%E6%80%BB%E7%BB%93/#disqus_thread">Comments</a>
+      </span>
+      
+      在编译的时候加上 -g 选项，如： g++ -Wall -g test.cpp -o test 开始调试： gdb test 基本命令： l 显示代码，是list的简写 b 插入断点，是break的简写 n 下一步，是next的简写 s 单步运行，是stepinto的简写，可以进入函数内部 p 打印，是print的简写，可以打印变量 disp 在每一步运行中显示要求的变量，是display的简写 d disp 编号 删除指定编号的display，d是delete的简写 dis disp 编号 禁止指定编号的display，dis是disable的简写 en disp 编号 恢复指定编号的display，en是enable的简写 u 行号 运行到指定行号
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/12/14/%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6--%E5%AE%9E%E7%8E%B0%E5%AF%BB%E6%89%BE%E6%95%B0%E7%BB%84%E7%9A%84%E7%AC%ACk%E5%A4%A7%E7%9A%84%E5%85%83%E7%B4%A0/">重载运算符 [] 实现寻找数组的第K大的元素</a>
+      </h1>
+      <span class="post-date">Dec 14, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/14/%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6--%E5%AE%9E%E7%8E%B0%E5%AF%BB%E6%89%BE%E6%95%B0%E7%BB%84%E7%9A%84%E7%AC%ACk%E5%A4%A7%E7%9A%84%E5%85%83%E7%B4%A0/#disqus_thread">Comments</a>
+      </span>
+      
+      方法是利用快排的想法，效率O(N)
+/* * use the method of quicksort. The time efficiency is * O(N). * * */ #include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;iomanip&gt; using namespace std; class Array { public: friend istream &amp; operator &gt;&gt; (istream &amp; input, Array &amp; a); friend ostream &amp; operator &lt;&lt; (ostream &amp; outpu, Array &amp; a); int operator [] (int p); void exchange(int &amp;s, int &amp;t); int partition(int *p, int l, int r); int k_element(int *p, int l, int r, int k); int getlen(){return len;} private: int *a; int len; }; int Array::operator [] (int p) { return k_element(a, 0, len-1, p); } int Array::k_element(int *p, int l, int r, int k) { if (l &lt; r) { int q = partition(p, l, r); if (q + 1 == k) return p[q]; else if (q + 1 &gt; k) return k_element(p, l, q-1, k); else return k_element(p, q+1, r, k); //这个地方尤其要注意，应该还是k，而不是k-q-1！ } else return p[l]; } ostream &amp; operator &lt;&lt; (ostream &amp; output, Array &amp; array) { for (int i = 0; i &lt; array.
+      <a href="http://liuxueyang.github.io/blog/2012/12/14/%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6--%E5%AE%9E%E7%8E%B0%E5%AF%BB%E6%89%BE%E6%95%B0%E7%BB%84%E7%9A%84%E7%AC%ACk%E5%A4%A7%E7%9A%84%E5%85%83%E7%B4%A0/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2012/12/14/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%B1%BB%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E7%8E%B0%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%9A%84%E5%8A%A0%E5%87%8F%E4%B9%98%E8%BF%90%E7%AE%97/">创建一个类，重载运算符实现多项式的加，减，乘运算</a>
       </h1>
       <span class="post-date">Dec 14, 2012 &middot; 4 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/14/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%B1%BB%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E7%8E%B0%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%9A%84%E5%8A%A0%E5%87%8F%E4%B9%98%E8%BF%90%E7%AE%97/#disqus_thread">Comments</a>
@@ -99,107 +201,6 @@
       
       #include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; using namespace std; int step = 1; void move(char from, char to) { printf(&quot;%d: %c-&gt;%c\n&quot;, step++, from, to); } void h(int n, char from, char via, char to) { if (n == 1) {move(from, to); return;} h(n-1, from, to, via); move(from, to); h(n-1, via, from, to); } int main(void) { int n; while (cin &gt;&gt; n) { step = 1; h(n, 'x', 'y', 'z'); } return 0; }  挺简单的一个Hanoi程序
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/12/10/tips/">tips</a>
-      </h1>
-      <span class="post-date">Dec 10, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/10/tips/#disqus_thread">Comments</a>
-      </span>
-      
-      其实，一天过完之后，你真应该问问自己，今天自己干嘛了？还记得昨天你干了什么吗？前天呢？ 如果你记不起来，那你多半是在混日子。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/12/04/%E6%95%B0%E7%BB%84%E5%90%8D%E5%92%8C%E6%8C%87%E9%92%88%E7%9B%B8%E5%90%8C%E5%90%97/">数组名和指针相同吗？</a>
-      </h1>
-      <span class="post-date">Dec 4, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/04/%E6%95%B0%E7%BB%84%E5%90%8D%E5%92%8C%E6%8C%87%E9%92%88%E7%9B%B8%E5%90%8C%E5%90%97/#disqus_thread">Comments</a>
-      </span>
-      
-      /* 数组名和指针相同吗？ */ #include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; using namespace std; int a[][3] = {{1, 2, 3}, {1, 2, 3}, {4, 5, 6}, {3, 4, 5}}; int sizef(int b[][3]) { cout &lt;&lt; sizeof(b) &lt;&lt; endl; cout &lt;&lt; sizeof(b[0]) &lt;&lt; endl; cout &lt;&lt; sizeof(b)/sizeof(b[0]) &lt;&lt; endl; } int main(void) { // int a[][3] = {{1, 2, 3}, {1, 2, 3}, {4, 5, 6}, {3, 4, 5}}; cout &lt;&lt; sizeof(a) &lt;&lt; endl; cout &lt;&lt; sizeof(a[0]) &lt;&lt; endl; cout &lt;&lt; sizeof(a)/sizeof(a[0]) &lt;&lt; endl; cout &lt;&lt; &quot;***********&quot; &lt;&lt; endl; sizef(a); // cout &lt;&lt; sizef(a) &lt;&lt; endl; system(&quot;pause&quot;); return 0; }  上面的程序的结果是： 48 12 4
-      <a href="http://liuxueyang.github.io/blog/2012/12/04/%E6%95%B0%E7%BB%84%E5%90%8D%E5%92%8C%E6%8C%87%E9%92%88%E7%9B%B8%E5%90%8C%E5%90%97/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/29/zoj-2110-tempter-of-the-bone/">zoj 2110 Tempter of the Bone</a>
-      </h1>
-      <span class="post-date">Nov 29, 2012 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/29/zoj-2110-tempter-of-the-bone/#disqus_thread">Comments</a>
-      </span>
-      
-      The doggie found a bone in an ancient maze, which fascinated him a lot. However, when he picked it up, the maze began to shake, and the doggie could feel the ground sinking. He realized that the bone was a trap, and he tried desperately to get out of this maze.
-The maze was a rectangle with sizes N by M. There was a door in the maze. At the beginning, the door was closed and it would open at the T-th second for a short period of time (less than 1 second).
-      <a href="http://liuxueyang.github.io/blog/2012/11/29/zoj-2110-tempter-of-the-bone/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/27/erlang_3/">Erlang_3</a>
-      </h1>
-      <span class="post-date">Nov 27, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/27/erlang_3/#disqus_thread">Comments</a>
-      </span>
-      
-      计算阶乘两种写法：
--module(continue). -export([factor/1]). factor(0) -&gt; 1; factor(N) -&gt; N * factor(N - 1). %factor(N) when N &gt; 0 -&gt; % N * factor(N - 1); %factor(0) -&gt; 1.  这里注意，第一种写法，如果输入的值是负数，那么函数进入死循环，内存溢出，第二种写法输入负数，函数会不执行。 内置函数： hd/1 返回列表第一个元素 tl/1 返回删除第一个元素后的其余部分 length/1 返回列表的长度 tuple_size/1 返回元组的数目 element/2 返回元组的第n个元素 setlement(2, Tuple). setelement/3 替换元组的第一个元素，并返回新的元组 setelement(3, Tuple, Three). erlang:appedn_element/2 向元组添加一个元素作为最后的元素 erlang:append_element(Tuple, 6).
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/27/erlang_2/">Erlang_2</a>
-      </h1>
-      <span class="post-date">Nov 27, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/27/erlang_2/#disqus_thread">Comments</a>
-      </span>
-      
-      1.函数 举个例子：判断一个数字是奇数还是偶数
--module(rev). -export([even/1]). even(Value) -&gt; if Value rem 2 == 1 -&gt; odd; Value rem 2 == 0 -&gt; even end.  文件名和模块名要相同。在终端中引用函数的时候，先编译，c(rev). 然后引用函数 rev:even(N). 其中N是一个已经赋值的变量。 上面的函数的另一种写法： -module(rev). -export([even/1]). even(Value) -&gt; case Value rem 2 of 1 -&gt; odd; 0 -&gt; even end.  
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/26/bash-%E6%94%B9%E4%B8%BA-vim-%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F/">bash 改为 vim 输入模式</a>
-      </h1>
-      <span class="post-date">Nov 26, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/26/bash-%E6%94%B9%E4%B8%BA-vim-%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F/#disqus_thread">Comments</a>
-      </span>
-      
-      打开文件：vim ~/.bashrc 加上这条语句：set -o vi &gt;&gt; ~/.bashrc
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/24/erlang_1/">Erlang_1</a>
-      </h1>
-      <span class="post-date">Nov 24, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/24/erlang_1/#disqus_thread">Comments</a>
-      </span>
-      
-      1.在终端运行的时候末尾要输入 . 号 2.数学运算符： + 加法 正号 - 减法 负号 * 乘法 / 浮点除法 div 整数除法 rem 整数取余 3.基元表示文字常量 4.布尔类型 没有单独表示布尔类型的布尔值或字符 and 与 andalso 第一个参数为假，返回假则第二个参数不需计算 or 或 orelse 第一个参数是真，返回真，不计算第二个参数 xor 异或 不同为真，相同为假 not 非 5.元组 {a, b, c, d} 元组中的数据元素不一定是相同的类型
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu-1161-eddys-mistakes/">hdu 1161 Eddy&#39;s mistakes</a>
-      </h1>
-      <span class="post-date">Nov 23, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu-1161-eddys-mistakes/#disqus_thread">Comments</a>
-      </span>
-      
-      Eddy&rsquo;s mistakes
-Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 5189 Accepted Submission(s): 2956
-Problem Description Eddy usually writes articles ,but he likes mixing the English letter uses, for example &ldquo;computer science&rdquo; is written frequently &ldquo;coMpUtEr scIeNce&rdquo; by him, this mistakes lets Eddy&rsquo;s English teacher be extremely discontentment.Now please you to write a procedure to be able in the Bob article English letter to turn completely the small letter.
-      <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu-1161-eddys-mistakes/">Read On &rarr;</a>
       
     </div>
     

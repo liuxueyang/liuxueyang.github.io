@@ -79,6 +79,115 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/02/hdu-2795-billboard/">hdu 2795 Billboard</a>
+      </h1>
+      <span class="post-date">Mar 2, 2013 &middot; 4 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/02/hdu-2795-billboard/#disqus_thread">Comments</a>
+      </span>
+      
+      Billboard
+Time Limit: 20000&frasl;8000 MS (Java/Others) Memory Limit: 32768&frasl;32768 K (Java/Others) Total Submission(s): 5912 Accepted Submission(s): 2682
+Problem Description At the entrance to the university, there is a huge rectangular billboard of size h*w (h is its height and w is its width). The board is the place where all possible announcements are posted: nearest programming competitions, changes in the dining room menu, and other important information.
+On September 1, the billboard was empty.
+      <a href="http://liuxueyang.github.io/blog/2013/03/02/hdu-2795-billboard/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/02/hdu-1394-minimum-inversion-number/">hdu 1394 Minimum Inversion Number</a>
+      </h1>
+      <span class="post-date">Mar 2, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/02/hdu-1394-minimum-inversion-number/#disqus_thread">Comments</a>
+      </span>
+      
+      Minimum Inversion Number
+Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 5892 Accepted Submission(s): 3587
+Problem Description The inversion number of a given number sequence a1, a2, &hellip;, an is the number of pairs (ai, aj) that satisfy i &lt; j and ai &gt; aj.
+For a given sequence of numbers a1, a2, &hellip;, an, if we move the first m &gt;= 0 numbers to the end of the seqence, we will obtain another sequence.
+      <a href="http://liuxueyang.github.io/blog/2013/03/02/hdu-1394-minimum-inversion-number/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/02/27/poj-2945-find-the-clones/">poj 2945 Find the Clones</a>
+      </h1>
+      <span class="post-date">Feb 27, 2013 &middot; 4 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/02/27/poj-2945-find-the-clones/#disqus_thread">Comments</a>
+      </span>
+      
+      Find the Clones Time Limit: 5000MS Memory Limit: 65536K Total Submissions: 6265 Accepted: 2328
+Description Doubleville, a small town in Texas, was attacked by the aliens. They have abducted some of the residents and taken them to the a spaceship orbiting around earth. After some (quite unpleasant) human experiments, the aliens cloned the victims, and released multiple copies of them back in Doubleville. So now it might happen that there are 6 identical person named Hugh F.
+      <a href="http://liuxueyang.github.io/blog/2013/02/27/poj-2945-find-the-clones/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/02/27/poj-1056-immediate-decodability/">poj 1056 IMMEDIATE DECODABILITY</a>
+      </h1>
+      <span class="post-date">Feb 27, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/02/27/poj-1056-immediate-decodability/#disqus_thread">Comments</a>
+      </span>
+      
+      Description Input Output Sample Input Sample Output
+#include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;cstring&gt; using namespace std; const int sonnum = 2, base = '0'; struct Trie { int num; bool terminal; Trie *son[sonnum]; }; Trie *NewTrie() { Trie *temp = new Trie; temp-&gt;num = 1; temp-&gt;terminal = false; for (int i = 0; i &lt; sonnum; ++i) temp-&gt;son[i] = NULL; return temp; } bool Insert(Trie *pnt, char *s, int len) { Trie *temp = pnt; bool mrk = true; for (int i = 0; i &lt; len; ++i) { if (temp-&gt;son[s[i]-base] == NULL) temp-&gt;son[s[i]-base] = NewTrie(); else { temp-&gt;son[s[i]-base]-&gt;num++; if (temp-&gt;son[s[i]-base]-&gt;terminal == true) mrk = false; } temp = temp-&gt;son[s[i]-base]; } temp-&gt;terminal = true; return mrk; } int main(void) { Trie *tree; char a[20]; int cnt = 1; #ifndef ONLINE_JUDGE freopen(&quot;poj2056.
+      <a href="http://liuxueyang.github.io/blog/2013/02/27/poj-1056-immediate-decodability/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/02/27/poj-2503-babelfish/">poj 2503 Babelfish</a>
+      </h1>
+      <span class="post-date">Feb 27, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/02/27/poj-2503-babelfish/#disqus_thread">Comments</a>
+      </span>
+      
+      Babelfish Time Limit: 3000MS Memory Limit: 65536K Total Submissions: 26498 Accepted: 11378
+Description You have just moved from Waterloo to a big city. The people here speak an incomprehensible dialect of a foreign language. Fortunately, you have a dictionary to help you understand them.
+Input Input consists of up to 100,000 dictionary entries, followed by a blank line, followed by a message of up to 100,000 words. Each dictionary entry is a line containing an English word, followed by a space and a foreign language word.
+      <a href="http://liuxueyang.github.io/blog/2013/02/27/poj-2503-babelfish/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/02/26/poj-2001-shortest-prefixes-%E5%AD%97%E5%85%B8%E6%A0%91%E5%85%A5%E9%97%A8/">poj 2001 Shortest Prefixes ——字典树入门</a>
+      </h1>
+      <span class="post-date">Feb 26, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/02/26/poj-2001-shortest-prefixes-%E5%AD%97%E5%85%B8%E6%A0%91%E5%85%A5%E9%97%A8/#disqus_thread">Comments</a>
+      </span>
+      
+      #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; using namespace std; char a[1000+10][25]; const int sonnum = 26, base = 'a'; struct Trie { int num; bool terminal; struct Trie *son[sonnum]; }; Trie *NewTrie() { Trie *temp = new Trie; temp-&gt;num = 1; temp-&gt;terminal = false; for (int i = 0; i &lt; sonnum; ++i) temp-&gt;son[i] = NULL; return temp; } void Insert(Trie *pnt, char *s, int len) { Trie *temp = pnt; for (int i = 0; i &lt; len; ++i) { if (temp-&gt;son[s[i]-base] == NULL) temp-&gt;son[s[i]-base] = NewTrie(); else temp-&gt;son[s[i]-base]-&gt;num++; temp = temp-&gt;son[s[i]-base]; } temp-&gt;terminal = true; } Trie *Find(Trie *pnt, char *s, int len) { Trie *temp = pnt; for (int i = 0; i &lt; len; ++i) { if (temp-&gt;son[s[i]-base]-&gt;num == 1) { printf(&quot;%c&quot;, s[i]); return temp; } printf(&quot;%c&quot;, s[i]); temp = temp-&gt;son[s[i]-base]; } return temp; } int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;poj2001.
+      <a href="http://liuxueyang.github.io/blog/2013/02/26/poj-2001-shortest-prefixes-%E5%AD%97%E5%85%B8%E6%A0%91%E5%85%A5%E9%97%A8/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-c.-secret/">CF271 C. Secret</a>
+      </h1>
+      <span class="post-date">Feb 15, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-c.-secret/#disqus_thread">Comments</a>
+      </span>
+      
+      C. Secret time limit per test 2 seconds memory limit per test 256 megabytes input standard input output standard output
+The Greatest Secret Ever consists of n words, indexed by positive integers from 1 to n. The secret needs dividing between k Keepers (let&rsquo;s index them by positive integers from 1 to k), the i-th Keeper gets a non-empty set of words with numbers from the set Ui = (ui, 1, ui, 2, &hellip;, ui, |Ui|).
+      <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-c.-secret/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-a.-beautiful-year/">CF271 A. Beautiful Year</a>
+      </h1>
+      <span class="post-date">Feb 15, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-a.-beautiful-year/#disqus_thread">Comments</a>
+      </span>
+      
+      A. Beautiful Year time limit per test 2 seconds memory limit per test 256 megabytes input standard input output standard output
+It seems like the year of 2013 came only yesterday. Do you know a curious fact? The year of 2013 is the first year after the old 1987 with only distinct digits.
+Now you are suggested to solve the following problem: given a year number, find the minimum year number which is strictly larger than the given one and has only distinct digits.
+      <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-a.-beautiful-year/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-b.-prime-matrix/">CF271 B. Prime Matrix</a>
       </h1>
       <span class="post-date">Feb 15, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-b.-prime-matrix/#disqus_thread">Comments</a>
@@ -100,118 +209,6 @@ You are really curious about prime numbers.
       
       题目链接：http://poj.org/problem?id=2752 #include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;cstring&gt; #define N 400000 using namespace std; char s[N]; int next[N], a[N]; void getnext(char *p, int *next) { int i = 0, j = -1, len = strlen(p); next[0] = -1; while (i &lt; len) { if (j == -1 || p[j] == p[i]) { i++; j++; next[i] = j; } else j = next[j]; } } int main(void) { freopen(&quot;poj2752.in&quot;, &quot;r&quot;, stdin); while (~scanf(&quot;%s&quot;, s)) { getnext(s, next); int len = strlen(s), i, k = 0; i = len; a[0] = len; while (next[i] &gt; 0) { i = next[i]; a[++k] = i; } for (int j = k; j &gt;= 0; --j) { printf(&quot;%d&quot;, a[j]); if (j) printf(&quot; &quot;); } printf(&quot;\n&quot;); } return 0; }  这道题目要求既是前缀字符串又是后缀字符串的所有可能的长度，正好运用了KMP算法里面next数组的意义，要保证结果是针对整个字符串的，所以在next数组中从后往前扫描即可，因为，next数组中，越往后，数字就越大，并且表示的是后缀和前缀相同的最大长度，所以所得到的结果顺序是反的，要求从小到大输出，逆序输出就可以了。
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/01/23/cf266-b.-queue-at-the-school/">CF266 B. Queue at the School</a>
-      </h1>
-      <span class="post-date">Jan 23, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/01/23/cf266-b.-queue-at-the-school/#disqus_thread">Comments</a>
-      </span>
-      
-      B. Queue at the School time limit per test 2 seconds memory limit per test 256 megabytes input standard input output standard output
-During the break the schoolchildren, boys and girls, formed a queue of n people in the canteen. Initially the children stood in the order they entered the canteen. However, after a while the boys started feeling awkward for standing in front of the girls in the queue and they started letting the girls move forward each second.
-      <a href="http://liuxueyang.github.io/blog/2013/01/23/cf266-b.-queue-at-the-school/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/01/23/cf266-a.-stones-on-the-table/">CF266 A. Stones on the Table</a>
-      </h1>
-      <span class="post-date">Jan 23, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/01/23/cf266-a.-stones-on-the-table/#disqus_thread">Comments</a>
-      </span>
-      
-      A. Stones on the Table time limit per test 2 seconds memory limit per test 256 megabytes input standard input output standard output
-There are n stones on the table in a row, each of them can be red, green or blue. Count the minimum number of stones to take from the table so that any two neighboring stones had different colors. Stones in a row are considered neighboring if there are no other stones between them.
-      <a href="http://liuxueyang.github.io/blog/2013/01/23/cf266-a.-stones-on-the-table/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1046/">hdu 1046</a>
-      </h1>
-      <span class="post-date">Jan 22, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1046/#disqus_thread">Comments</a>
-      </span>
-      
-      Gridland
-Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 2455 Accepted Submission(s): 1168
-Problem Description For years, computer scientists have been trying to find efficient solutions to different computing problems. For some of them efficient algorithms are already available, these are the “easy” problems like sorting, evaluating a polynomial or finding the shortest path in a graph. For the “hard” ones only exponential-time algorithms are known. The traveling-salesman problem belongs to this latter group.
-      <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1046/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1048/">hdu 1048</a>
-      </h1>
-      <span class="post-date">Jan 22, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1048/#disqus_thread">Comments</a>
-      </span>
-      
-      The Hardest Problem Ever
-Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 11459 Accepted Submission(s): 5165
-Problem Description Julius Caesar lived in a time of danger and intrigue. The hardest situation Caesar ever faced was keeping himself alive. In order for him to survive, he decided to create one of the first ciphers. This cipher was so incredibly sound, that no one could figure it out without knowing how it worked.
-      <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1048/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1049/">hdu 1049</a>
-      </h1>
-      <span class="post-date">Jan 22, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1049/#disqus_thread">Comments</a>
-      </span>
-      
-      Climbing Worm
-Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 8745 Accepted Submission(s): 5659
-Problem Description An inch worm is at the bottom of a well n inches deep. It has enough energy to climb u inches every minute, but then has to rest a minute before climbing again. During the rest, it slips down d inches. The process of climbing and resting then repeats. How long before the worm climbs out of the well?
-      <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1049/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1064/">hdu 1064</a>
-      </h1>
-      <span class="post-date">Jan 22, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1064/#disqus_thread">Comments</a>
-      </span>
-      
-      Financial Management
-Time Limit: 400&frasl;200 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 6666 Accepted Submission(s): 4157
-Problem Description Larry graduated this year and finally has a job. He’s making a lot of money, but somehow never seems to have enough. Larry has decided that he needs to grab hold of his financial portfolio and solve his financing problems. The first step is to figure out what’s been going on with his money.
-      <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1064/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1144/">hdu 1144</a>
-      </h1>
-      <span class="post-date">Jan 22, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1144/#disqus_thread">Comments</a>
-      </span>
-      
-      Prerequisites?
-Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 634 Accepted Submission(s): 401
-Problem Description Freddie the frosh has chosen to take k courses. To meet the degree requirements, he must take courses from each of several categories. Can you assure Freddie that he will graduate, based on his course selection?
-Input Input consists of several test cases. For each case, the first line of input contains 1 ≤ k ≤ 100, the number of courses Freddie has chosen, and 0 ≤ m ≤ 100, the number of categories.
-      <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1144/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1076/">hdu 1076</a>
-      </h1>
-      <span class="post-date">Jan 22, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1076/#disqus_thread">Comments</a>
-      </span>
-      
-      An Easy Task
-Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 10133 Accepted Submission(s): 6291
-Problem Description Ignatius was born in a leap year, so he want to know when he could hold his birthday party. Can you tell him?
-Given a positive integers Y which indicate the start year, and a positive integer N, your task is to tell the Nth leap year from year Y.
-      <a href="http://liuxueyang.github.io/blog/2013/01/22/hdu-1076/">Read On &rarr;</a>
       
     </div>
     

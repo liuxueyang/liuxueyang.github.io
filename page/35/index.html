@@ -79,6 +79,108 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/08/2013%E5%B9%B44%E6%9C%887%E6%97%A5-%E6%99%B4/">2013年4月7日 晴</a>
+      </h1>
+      <span class="post-date">Apr 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/08/2013%E5%B9%B44%E6%9C%887%E6%97%A5-%E6%99%B4/#disqus_thread">Comments</a>
+      </span>
+      
+      昨天补概率论作业，没时间写，补上~ 今天天气很好，但是下午最后一节有课，所以打算晚上9点钟去跑步。 不得不说，晚上的湘江边很美，尤其是天气很好的晚上，春天，也许是最适合跑步的季节，不冷不热，微风习习，一路上还看见不少跑步的男男女女，有的是为了锻炼身体，有的是为了减肥，有的单纯是因为爱好。 今天跑步状态不错，很稳，时间，速度都控制得很准，正好半小时。然后在湘江边做了一下拉伸，稍微休息了一下，欣赏了一下美景，就心满意足地回来了。 其实，晚上去跑步也别有一种感觉。以后，下午最后一节有课就晚上去跑，否则就下午。 附上一段代码：
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;.in&quot;, &quot;r&quot;, stdin); #endif int day = 当前寿命; while (1){ if (!
+      <a href="http://liuxueyang.github.io/blog/2013/04/08/2013%E5%B9%B44%E6%9C%887%E6%97%A5-%E6%99%B4/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/07/speedcells-spfa/">speedcell&#39;s SPFA</a>
+      </h1>
+      <span class="post-date">Apr 7, 2013 &middot; 5 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/07/speedcells-spfa/#disqus_thread">Comments</a>
+      </span>
+      
+      版权永久属于speedcell，神代码，给跪了……yr酱V5…… 这东西虽然还没有学，先收藏起来~ 多谢yr酱……O(∩_∩)O哈哈~
+/* Author : Speedcell Update : 2013-03-24 Version : soppYcell 2.1(a) */ #include &lt;algorithm&gt; #include &lt;iostream&gt; #include &lt;fstream&gt; #include &lt;sstream&gt; #include &lt;iomanip&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;list&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;vector&gt; #include &lt;string&gt; #include &lt;bitset&gt; #include &lt;memory&gt; #include &lt;complex&gt; #include &lt;numeric&gt; #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;string.h&gt; #include &lt;math.h&gt; #include &lt;time.h&gt; #include &lt;ctype.h&gt; #include &lt;locale.h&gt; using namespace std; #pragma pack(4) #ifndef __CONSTANT__ #define __CONSTANT__ typedef long long LONG; const double pi = acos(-1.
+      <a href="http://liuxueyang.github.io/blog/2013/04/07/speedcells-spfa/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-2165-red-and-black-bfs%E5%85%A5%E9%97%A8%E9%A2%98/">zoj 2165 Red and Black ——BFS入门题</a>
+      </h1>
+      <span class="post-date">Apr 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-2165-red-and-black-bfs%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1165 题意： 给一个字符矩阵，“.”代表黑色格子，“#”代表红色格子，有一个起点“@”，它属于黑色格子，一个人从起点出发，只能走黑色格子，并且只能上下左右走，不能对角线走，问这个人能走到的黑色格子有多少个。输出个数。输入W，H，代表有W列，H行，然后输入一个字符矩阵，输出能走到的最多的黑色格子的个数，包括起点。 思路： 这个题目很简单，和zoj 2110 类似，但是这道题目比那道简单多了，不用剪枝，不用恢复现场，直接深搜就可以。首先找到起点，然后从起点出发，判断这个点是不是被访问过，如果被访问过，就return；否则判断这个格子是不是黑色格子或者是起点，如果是，就cnt++，然后标记这个格子已经被访问过，如果不是，return; 如果没有return，就在这个点的四个方向继续深搜。思路很清晰。1A。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; int w, h, cnt = 0; char s[22][22]; bool flag[22][22]; int dir[4][2] = {{0,1},{1,0},{-1,0},{0,-1}}; void dfs(int i, int j){ if (i &lt;= 0 || j &lt;= 0 || i &gt; h || j &gt; w) return; if (flag[i][j]) return; if (s[i][j] == '.
+      <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-2165-red-and-black-bfs%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-2412-farm-irrigation-dfs%E5%85%A5%E9%97%A8%E9%A2%98/">zoj 2412 Farm Irrigation ——DFS入门题</a>
+      </h1>
+      <span class="post-date">Apr 7, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-2412-farm-irrigation-dfs%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1412 题意： 有11种正方形，每种正方形里面对应一种形状的水管，不同的的正方形一用A到K表示，给一个矩阵，问至少需要多少个水源可以使矩形中所有的地方都可以被灌溉，如果两个相邻的正方形的水管正好对口，那么这两个正方形可以共用一个水源。 思路： 开始感觉很复杂，明显可以DFS做，但是感觉比较麻烦，关键是怎么处理题目中的条件。 首先，处理11种不同的水管，分4个方向，1表示有接口，0表示没有接口。用一个二维数组存所有种类的水管。 然后，把输入的字符转化成数字，可以再输入的时候边输入边处理，用字符减去字符“A”就可以了，对应的上面给11中不同水管中的一种。以上这两个处理方法要注意，学习一下，稍微看了一下别人的代码才想到的。这种看似比较简单的处理，往往给解题带来比较大的方便。 最后，就是如何深搜了。这个要考虑清楚。用一个flag二维数组表示是否访问过这个方格。深搜的时候，如果访问到它时，先判断它是否被访问过，然后立刻标记为已访问。然后就是判断当前方格的四个方向是不是有接口，如果某个方向有接口的话，就判断这个方向上的下一个方格中，和当前方格相邻的边是不是有接口，如果有接口，则继续深搜这个相邻的点。这里有个处理：（k+2）%4，意味着，比如：当前方格如果右边有接口，则判断右边的方格的左边的边是不是有接口，其它情况一样。然后就是主函数里面的dfs外面的for循环，思想和以前做过的zoj 1709是一样的，就是搜到某个点的时候，用一个mrk标记一下，把和它有关系的点都搜完，如果有符合条件的，mrk会改变，然后就cnt++用来计数，这种题目是相似的，都是要求符合条件的点相邻。 有一个细节，就是矩阵的数组还是从1开始吧，数组稍微开大一点儿，这样在深搜下一个方向的时候，就不会因为数组越界出错了。这个问题以前没有注意到。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; int grid[11][4] = {{0,0,1,1},{1,0,0,1},{0,1,1,0},{1,1,0,0},{0,1,0,1}, {1,0,1,0},{1,0,1,1},{0,1,1,1},{1,1,1,0},{1,1,0,1},{1,1,1,1}}; int dir[4][2] = {{0,1},{1,0},{0,-1},{-1,0}}; bool flag[55][55]; int s[55][55]; bool mrk = false; int n, m; void dfs(int i, int j){ if (i &lt;= 0 || i &gt; m || j &lt;= 0 || j &gt; n) return; if (flag[i][j]) return; mrk = true; flag[i][j] = true; for (int k = 0; k &lt; 4; ++k){ if (grid[s[i][j]][k] &amp;&amp; grid[s[i+dir[k][0]][j+dir[k][1]]][(k+2)%4]){ dfs(i+dir[k][0], j+dir[k][1]); } } return; } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;zoj2412.
+      <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-2412-farm-irrigation-dfs%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/07/2013%E5%B9%B44%E6%9C%886%E6%97%A5%E5%9B%9B%E6%A0%A1%E8%81%94%E8%B5%9B%E6%80%BB%E7%BB%93/">2013年4月6日四校联赛总结</a>
+      </h1>
+      <span class="post-date">Apr 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/07/2013%E5%B9%B44%E6%9C%886%E6%97%A5%E5%9B%9B%E6%A0%A1%E8%81%94%E8%B5%9B%E6%80%BB%E7%BB%93/#disqus_thread">Comments</a>
+      </span>
+      
+      昨天的四校联赛比赛很失败，整场比赛我似乎都没有做题，也没有几乎敲键盘，差点儿爆零……最后还是队友过了一道，很对不起队友，糗……最近都在看课本，敲键盘不多，都没有感觉了，水题也想不到该怎么做…… 最大的问题是没有准确分析复杂度，两道题目明显可以暴力的，可是就是没有想到，开始也分析了一下复杂度，但是貌似觉得很大，就没有往下去想，以后不能想当然，准确分析复杂度后再想解决办法。 yr说的对，最重要的是学会如何在逆境中最大化地利用有限资源的那种能力。也许现在学的东西还不多，但是，你把学过的东西真正掌握了嘛？你是不是在比赛的时候真正把学过的东西最大化地用上了？你是不是发挥出了平时训练出来的能力？ yr给的建议：学知识的顺序还是按照白书的顺序来吧。书太多了，自己竟然把白书给忘了……先把例题切掉，打一下基础。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/07/2013%E5%B9%B44%E6%9C%886%E6%97%A5--%E6%99%B4/">2013年4月6日  晴</a>
+      </h1>
+      <span class="post-date">Apr 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/07/2013%E5%B9%B44%E6%9C%886%E6%97%A5--%E6%99%B4/#disqus_thread">Comments</a>
+      </span>
+      
+      比赛完去跑步，今天天气很好，有温和的阳光，还有微微的风，跑步正合适，开始还是跑得有点儿快……中途前面还有骑直行车的，然后动力就来了，速度加快了，紧跟着自行车，跑得比较爽，也不感觉特别累，明显比前两天跑得快，路程比以前长，但是还是比平常快了整整五分钟！唉，先慢慢来吧，先不追求速度，关键是跑得高兴。^_^ 阳春三月，江边有很多放风筝的，哈哈，突然发现春天真的来了。 所有的不愉快，都随风而去……温和的阳光里，跑步结束，望着天上各种各样的风筝，变得豁达起来。周围的三五成群的人们，都在享受这春光，多美好的境界。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-1709-oil-deposits-dfs%E5%85%A5%E9%97%A8%E9%A2%98/">zoj 1709 Oil Deposits ——DFS入门题</a>
+      </h1>
+      <span class="post-date">Apr 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-1709-oil-deposits-dfs%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=709 题目大意： 给一个矩阵，*代表空地，@代表油田，并且@如果水平，竖直，对角线相邻的话就认为是一块油田，问有多少块油田。 思路就是DFS，从第一个字符开始搜，找到一个@就标记一下，cnt++，然后看它的八个方向上是不是有@，如果有，全部标记为*，不需要恢复现场。然后输出cnt的值就行了。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; char s[110][110]; bool flag; int cnt, n, m; int dir[8][2] = {{0,1},{0,-1},{-1,0},{1,0},{1,1},{-1,1},{1,-1},{-1,-1}}; void dfs(int i, int j){ if (i &lt; 0 || j &lt; 0 || i &gt; m || j &gt; n) return; if (s[i][j] == '*') return; if (s[i][j] == '@') flag = true; s[i][j] = '*'; for (int k = 0; k &lt; 8; ++k){ if (s[i+dir[k][0]][j+dir[k][1]] == '@'){ dfs(i+dir[k][0], j+dir[k][1]); } } } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;zoj1709.
+      <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-1709-oil-deposits-dfs%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/06/zoj-2110-tempter-of-the-bone-dfs-%E5%89%AA%E6%9E%9D/">zoj 2110 Tempter of the Bone ——DFS&#43;剪枝</a>
+      </h1>
+      <span class="post-date">Apr 6, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/06/zoj-2110-tempter-of-the-bone-dfs-%E5%89%AA%E6%9E%9D/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1110 题意： 给一个矩阵，‘X’代表墙壁，‘.’代表空格，‘S’代表起始位置，‘D’代表终点。从起点开始，每个空格只许经过一次，求在规定的时间t的时候，能否正好到达终点。每走一个花费1个单位时间。输入n,m,t，分别代表矩阵的行，列，规定的时间。 思路： 深度优先搜索，从起点开始，按照四个方向搜索，判断某个方向的下一个方格如果不是墙壁的话，就把它标为墙壁，然后从这个点继续往下搜索，如果从这个点往下搜索失败后，就要把这个点标记回原来的空格符号：‘.’。然后尝试下一个方向。直到i == di, j == dj, t == T的时候，表示搜索成功，flag = true; return; 其中si sj 是起点位置，di dj是终点位置，T是当前所花费的时间。 然后还有几处剪枝：如果这个矩阵的空格的数目小于等于时间t，那么不可能成功。这在主函数里面可以剪枝。在dfs的过程中，如果发现剩余的时间小于当前位置到终点的最小距离，可以直接判断搜索失败；如果剩余的时间和当前位置到终点的最小时间的差值是奇数的话，可以判断搜索一定失败，可以剪枝，如果是偶数的话，则可能成功。 今天突然发现，以前写的解题报告太搓了……向kedebug的博客学习，O(∩_∩)O哈哈~加油
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; bool flag; char s[9][9]; int t, n, m, si, sj, di, dj; int dir[4][4] = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}}; void dfs(int i, int j, int T){ if (i == di &amp;&amp; j == dj &amp;&amp; T == t){ flag = true; return; } if (i &lt;= 0 || j &lt;= 0 || i &gt; n || j &gt; m) return; int temp = t - T - abs(i-di) - abs(j-dj); if (temp &lt; 0 || temp&amp;1)return; for (int k = 0; k &lt; 4; ++k){ if (s[i+dir[k][0]][j+dir[k][1]] !
+      <a href="http://liuxueyang.github.io/blog/2013/04/06/zoj-2110-tempter-of-the-bone-dfs-%E5%89%AA%E6%9E%9D/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/04/06/2013%E5%B9%B44%E6%9C%885%E6%97%A5--%E9%9B%A8%E9%98%B4/">2013年4月5日  雨，阴</a>
       </h1>
       <span class="post-date">Apr 6, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/06/2013%E5%B9%B44%E6%9C%885%E6%97%A5--%E9%9B%A8%E9%98%B4/#disqus_thread">Comments</a>
@@ -100,103 +202,6 @@
 Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 11367 Accepted Submission(s): 3168
 Problem Description Marsha and Bill own a collection of marbles. They want to split the collection among themselves so that both receive an equal share of the marbles. This would be easy if all the marbles had the same value, because then they could just split the collection in half. But unfortunately, some of the marbles are larger, or more beautiful than others.
       <a href="http://liuxueyang.github.io/blog/2013/04/05/hdu-1059-dividing-%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85%E5%A4%8D%E4%B9%A0/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/05/2013%E5%B9%B44%E6%9C%884%E6%97%A5--%E9%9B%A8/">2013年4月4日  雨</a>
-      </h1>
-      <span class="post-date">Apr 5, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/05/2013%E5%B9%B44%E6%9C%884%E6%97%A5--%E9%9B%A8/#disqus_thread">Comments</a>
-      </span>
-      
-      清明时节雨纷纷，从中午开始就一直下雨……跑步自然没有跑成，这是让我惊奇的是，今天竟然没有感觉到大腿酸痛，，还好好的，，这不科学……本来是很久不运动了的，o(╯□╰)o 中午看到一本中文版《跑者世界》心里满是欣喜，高中时候就听说过这本杂志，村上君还提到过，只是一直没见过哪里卖，然后就跑到综合楼自习的时候看，，好吧……无语了，说实话，这本可能不是真正的《Runner&rsquo;s world》，手上这本杂志唯一吸引我的就是他的封面了……内容明显是各种广告。。 希望明天不下雨，继续跑步！ 发点儿牢骚。最近脑袋里面老是不知不觉地就冒出那些个破事儿……唉，没出息。。还是多干点儿正事儿吧，实在无聊，那就多读点儿闲书吧！这么好的日子，何必让自己那么纠结呢。 中午睡午觉的时候，又想起，明年暑假我就大四了啊，就该找工作了，就该面对各种了，可是，我准备好了么？
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/04/2013%E5%B9%B44%E6%9C%883%E6%97%A5--%E5%B0%8F%E9%9B%A8%E9%98%B4/">2013年4月3日  小雨，阴</a>
-      </h1>
-      <span class="post-date">Apr 4, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/04/2013%E5%B9%B44%E6%9C%883%E6%97%A5--%E5%B0%8F%E9%9B%A8%E9%98%B4/#disqus_thread">Comments</a>
-      </span>
-      
-      今天第一次跑步，从下午5点开始，大约跑了半个小时。各种爽啊，又找回了从前那种感觉，只不过一开始跑的时候有点儿兴奋，跑的有点儿快了，到后来有点儿撑不住……坐等明天腿部肌肉酸痛，哈哈，不管那么多了，人生得意须尽欢不是么~ 尤其是今天的天气，湘江上弥漫着水雾，恰好刚刚下过一点儿小雨，空气湿漉漉的，跑步的过程中，真的像梦境一般，周围是安静的，只注意着自己的呼吸，耳机的音乐，前进的脚步声……这种时候适合冥想，向往禅的境界。突然发现，也许自己最大的损失就是没有早些坚持跑步锻炼，在跑步的过程中，那样的状态，是什么也不能达到的，这就是人生的意义么。 有时候，自己就那么不知不觉地跑着，过了一段时间，突然发现，自己竟然跑了这么远了，竟然到了这个原来看似很遥远的地方；还有的时候，感觉还没怎么跑，然后发现自己早就已经看不到起点了，想要回去已经不是那么容易了。 刚回到公寓，天气就下起雨来了，好吧……我的运气要不要这么好啊！恰好去食堂吃饭，出来雨停了，O(∩_∩)O哈哈~ 突然发现，自己一天当中，最有意义，利用最充分的时间就是出去跑步的这段时间，尤其是跑完后，似乎一切都豁然开朗了，什么都想通了。 穿着专业跑鞋跑步确实爽，还有当初买的那个飞利浦的GoGear就是为了跑步的时候用的，遗憾的是一直都没有派上真正的用场，现在用着超爽。 最近的一些事情很多次让我想起了《当我跑步时，我在想些什么》里面村上君的那句话：原来大家都是一样的啊，哈哈。其实很多事情面前，每个人都是一样的，你遇到的困难别人也遇到过，所以，加油吧！没什么大不了的不是么。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/03/2013%E5%B9%B43%E6%9C%88zoj%E6%9C%88%E8%B5%9B%E6%80%BB%E7%BB%93/">2013年3月zoj月赛总结</a>
-      </h1>
-      <span class="post-date">Apr 3, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/03/2013%E5%B9%B43%E6%9C%88zoj%E6%9C%88%E8%B5%9B%E6%80%BB%E7%BB%93/#disqus_thread">Comments</a>
-      </span>
-      
-      周日的比赛，一直没有时间写，补上。 唉，其实菜鸟也没什么可总结的，无非都是什么都不会，但每次比赛后还是留下一点儿东西吧，不管有木有用…… 当然是没有任何悬念地被虐。然后就木有然后了…… 整场比赛只做了一道水题，并且还是比赛最后才A的，就是前面博客写过的那个楼外楼的那道 。另外还有一道，是DP+快速幂，好像是chosing number，clj好不容易把DP的部分做出来了，只可惜，我不会快速幂……泪……所以这两天才赶紧把快速幂看了。然后第一题，可以转化成线段树，以前的线段树题目都白写了，真正遇到题目的时候还是不会做，其实就算还记得也写不出来，因为据说要先把题目中树的每个节点编号，然后就转化成线段树了，很明显，那个转化我不会……然后还有一道DP，虽然一直都知道DP狠重要，但还是一直以来都没有认真做过，以后好好做DP，别的还有组合数学题，貌似 还有一个图论题，这些东西都没接触过…… 赶紧加油吧，慢慢积累，有计划，然后坚持不懈。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/02/poj-1995-raising-modulo-numbers-%E5%BF%AB%E9%80%9F%E5%B9%82/">poj 1995 Raising Modulo Numbers ——快速幂</a>
-      </h1>
-      <span class="post-date">Apr 2, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/02/poj-1995-raising-modulo-numbers-%E5%BF%AB%E9%80%9F%E5%B9%82/#disqus_thread">Comments</a>
-      </span>
-      
-      #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; int m; LL power(LL a, LL k){ LL ans = 1; while (k){ if (k&amp;1){ ans = (ans * a) % m; k--; } k &gt;&gt;= 1; a = (a*a)%m; } return ans; } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;1995.
-      <a href="http://liuxueyang.github.io/blog/2013/04/02/poj-1995-raising-modulo-numbers-%E5%BF%AB%E9%80%9F%E5%B9%82/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/02/poj-3233-matrix-power-series-%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82-%E4%BA%8C%E5%88%86%E6%B1%82%E8%A7%A3/">poj 3233 Matrix Power Series ——矩阵快速幂&#43;二分求解</a>
-      </h1>
-      <span class="post-date">Apr 2, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/02/poj-3233-matrix-power-series-%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82-%E4%BA%8C%E5%88%86%E6%B1%82%E8%A7%A3/#disqus_thread">Comments</a>
-      </span>
-      
-      Description Input Output Sample Input Sample Output
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; using namespace std; #define LL long long #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 typedef struct matrix{ int a[33][33]; }matrix; matrix A, B, per; int m, k, n; void init(){ scanf(&quot;%d%d%d&quot;, &amp;n, &amp;k, &amp;m); for (int i = 0; i &lt; n; ++i){ for (int j = 0; j &lt; n; ++j){ scanf(&quot;%d&quot;, &amp;A.
-      <a href="http://liuxueyang.github.io/blog/2013/04/02/poj-3233-matrix-power-series-%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82-%E4%BA%8C%E5%88%86%E6%B1%82%E8%A7%A3/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/31/zoj-3693-happy-great-bg/">zoj 3693 Happy Great BG</a>
-      </h1>
-      <span class="post-date">Mar 31, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/31/zoj-3693-happy-great-bg/#disqus_thread">Comments</a>
-      </span>
-      
-      The summer training of ZJU ICPC in July is about to end. To celebrate this great and happy day, the coaches of ZJU ICPC Team Navi and Fancy decided to BG everyone! Beside the two coaches, there are N participants. Those participants are divided into four groups to make problems for other groups. After a brief discussion, they decided to go to Lou Wai Lou and have a great lunch. The cost for each person to have a meal in Lou Wai Lou is W yuan.
-      <a href="http://liuxueyang.github.io/blog/2013/03/31/zoj-3693-happy-great-bg/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/31/hdu-2035-%E4%BA%BA%E8%A7%81%E4%BA%BA%E7%88%B1ab-%E5%90%8C%E4%BD%99%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%A7%E8%B4%A8/">hdu 2035 人见人爱A^B ——同余的简单性质</a>
-      </h1>
-      <span class="post-date">Mar 31, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/31/hdu-2035-%E4%BA%BA%E8%A7%81%E4%BA%BA%E7%88%B1ab-%E5%90%8C%E4%BD%99%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%A7%E8%B4%A8/#disqus_thread">Comments</a>
-      </span>
-      
-      Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others)Total Submission(s): 15572 Accepted Submission(s): 11012 
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/31/hdu-1021-fibonacci-again---%E5%90%8C%E4%BD%99%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%A7%E8%B4%A8/">hdu 1021 Fibonacci Again   ——同余的简单性质</a>
-      </h1>
-      <span class="post-date">Mar 31, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/31/hdu-1021-fibonacci-again---%E5%90%8C%E4%BD%99%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%A7%E8%B4%A8/#disqus_thread">Comments</a>
-      </span>
-      
-      Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others)Total Submission(s): 26755 Accepted Submission(s): 12950 
-      
       
     </div>
     

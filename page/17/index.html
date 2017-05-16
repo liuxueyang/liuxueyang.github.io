@@ -79,6 +79,132 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/20/hdu4690-ebcdic-%E6%B0%B4%E9%A2%98%E8%80%83%E8%80%90%E5%BF%83/">hdu4690 EBCDIC ——水题，考耐心</a>
+      </h1>
+      <span class="post-date">Aug 20, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/20/hdu4690-ebcdic-%E6%B0%B4%E9%A2%98%E8%80%83%E8%80%90%E5%BF%83/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://acm.hdu.edu.cn/showproblem.php?pid=4690
+考的是耐心何细心啊，用map把两个表格映射一下就行~
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; string A[16][16] = { &quot;NUL&quot;,&quot;SOH&quot;,&quot;STX&quot;,&quot;ETX&quot;,&quot;&quot;,&quot;HT&quot;,&quot;&quot;,&quot;DEL&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;VT&quot;,&quot;FF&quot;,&quot;CR&quot;,&quot;SO&quot;,&quot;SI&quot;, &quot;DLE&quot;,&quot;DC1&quot;,&quot;DC2&quot;,&quot;DC3&quot;,&quot;&quot;,&quot;&quot;,&quot;BS&quot;,&quot;&quot;,&quot;CAN&quot;,&quot;EM&quot;,&quot;&quot;,&quot;&quot;,&quot;IFS&quot;,&quot;IGS&quot;,&quot;IRS&quot;,&quot;IUS ITB&quot;, &quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;LF&quot;,&quot;ETB&quot;,&quot;ESC&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;ENQ&quot;,&quot;ACK&quot;,&quot;BEL&quot;, &quot;&quot;,&quot;&quot;,&quot;SYN&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;EOT&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;DC4&quot;,&quot;NAK&quot;,&quot;&quot;,&quot;SUB&quot;, &quot;SP&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;.
+      <a href="http://liuxueyang.github.io/blog/2013/08/20/hdu4690-ebcdic-%E6%B0%B4%E9%A2%98%E8%80%83%E8%80%90%E5%BF%83/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/20/hdu4686-arc-of-dream-%E6%9E%84%E9%80%A0%E7%9F%A9%E9%98%B5-%E5%BF%AB%E9%80%9F%E5%B9%82/">hdu4686 Arc of Dream ——构造矩阵&#43;快速幂</a>
+      </h1>
+      <span class="post-date">Aug 20, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/20/hdu4686-arc-of-dream-%E6%9E%84%E9%80%A0%E7%9F%A9%E9%98%B5-%E5%BF%AB%E9%80%9F%E5%B9%82/#disqus_thread">Comments</a>
+      </span>
+      
+      link: http://acm.hdu.edu.cn/showproblem.php?pid=4686
+构造出来的矩阵是这样的：根据题目的ai * bi = ……，可以发现 矩阵1 * 矩阵3 = 矩阵2。然后就是矩阵快速幂了。
+1
+1	ai	bi	ai*bi	Si 0	0	0	0	0 0	0	0	0	0 0	0	0	0	0 0	0	0	0	0  2
+1	ai+1	bi+1	ai+1*bi+1	Si+1 0	0	0	0	0 0	0	0	0	0 0	0	0	0	0 0	0	0	0	0  3
+1	AY	BY	AY*BY	AY*BY 0	AX	0	AX*BY	AX*BY 0	0	BX	AY*BX	AY*BX 0	0	0	AX*BX	AX*BX 0	0	0	0	1  #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; #define LL __int64 #define MOD 1000000007 typedef struct { LL m[5][5]; }mat; mat X, Y; LL n, a0, ax, ay, b0, bx, by; mat multi(mat a, mat b) { mat c; int j, i, k; for (i = 0; i &lt; 5; ++i) { for (j = 0; j &lt; 5; ++j) { c.
+      <a href="http://liuxueyang.github.io/blog/2013/08/20/hdu4686-arc-of-dream-%E6%9E%84%E9%80%A0%E7%9F%A9%E9%98%B5-%E5%BF%AB%E9%80%9F%E5%B9%82/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/20/%E5%B0%B1%E8%AF%B4%E4%B8%80%E5%8F%A5/">就说一句</a>
+      </h1>
+      <span class="post-date">Aug 20, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/20/%E5%B0%B1%E8%AF%B4%E4%B8%80%E5%8F%A5/#disqus_thread">Comments</a>
+      </span>
+      
+      做了一年ACM，今天才顿悟，为什么还一直处于这么渣的阶段，原来是打开方式不对！
+更多的是看例题，写实现，思考算法，体会算法思想，而不是想都不想就上去飞快的敲代码，然后找无穷无尽的BUG！
+所以，以后多想，多看论文，少敲键盘吧。如果一个算法没理解就去做题，基本是必然会写错的，即使是小错也会浪费很多时间。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/20/ural-1057amount-of-degrees-%E6%95%B0%E4%BD%8Ddp/">ural 1057Amount of Degrees ——数位DP</a>
+      </h1>
+      <span class="post-date">Aug 20, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/20/ural-1057amount-of-degrees-%E6%95%B0%E4%BD%8Ddp/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://acm.timus.ru/problem.aspx?space=1&amp;num=1057
+论文： 浅谈数位类统计问题 刘聪
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int a[33][33]; int bto2(int x, int b) { int tm[33], cnt = 0, ans = 0; while (x) { tm[cnt++] = x % b; x /= b; } for (int i = cnt - 1; i &gt;= 0; --i) { if (tm[i] &amp;&amp; (tm[i] !
+      <a href="http://liuxueyang.github.io/blog/2013/08/20/ural-1057amount-of-degrees-%E6%95%B0%E4%BD%8Ddp/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/19/codeforces-mysterious-present-%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97-%E5%80%92%E5%BA%8F%E6%89%93%E5%8D%B0%E8%B7%AF%E5%BE%84/">codeforces mysterious present 最长上升子序列&#43;倒序打印路径</a>
+      </h1>
+      <span class="post-date">Aug 19, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/19/codeforces-mysterious-present-%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97-%E5%80%92%E5%BA%8F%E6%89%93%E5%8D%B0%E8%B7%AF%E5%BE%84/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://codeforces.com/problemset/problem/4/D
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int n,w,h,cnt,ans,d[5009],path[5009],End; bool flag; typedef struct node { int W,H,In; bool operator &lt; (const node &amp;other) const { if(W!
+      <a href="http://liuxueyang.github.io/blog/2013/08/19/codeforces-mysterious-present-%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97-%E5%80%92%E5%BA%8F%E6%89%93%E5%8D%B0%E8%B7%AF%E5%BE%84/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/18/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01/">读书笔记1</a>
+      </h1>
+      <span class="post-date">Aug 18, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/18/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01/#disqus_thread">Comments</a>
+      </span>
+      
+      不想说什么了，今天一大早来机房，就为了写这两天的读书笔记，做点摘抄什么的，马不停蹄，人不停爪地敲了一个多小时，手都抽筋了，写完的时候，添加标签的时候，界面一刷新，然后什么都没有了！有想砸电脑的冲动啊。博客园的后台编辑器支持自动保存的，不过只支持IE9内核以上的和chrome以及firefox的浏览器，好吧。算我倒霉了。还是简要记录一下吧，早上写的一堆白写了。不忍心。
+8月16日中午kpw到货，激动啊。一直很后悔的就是大学里面没有怎么读书，很多想读的书都没有看过，所以剩下的时间里多看看书吧。
+8月16日
+《我所理解的生活》韩寒
+一下午+晚上读完了，很可惜，很多文章都是看过的，或者是再韩寒的博客上或者是在读者青年文摘上。不过总的来说还是不错的。
+8月17日
+《小王子》
+小学的时候就看过这本书，大一的时候看过一遍英文版的，上午读完了一遍，每一次读都有不同的感受，尤其是在不同的阶段，不同的心境下。很美丽的一个童话。
+昨晚看一然酱的kindle，好吧，好多技术方面的书啊，linux,python,Haskell各种啊，我的里面从汉书到韩寒到漫画都有啊，一本学习的书都没有啊，这就是传说中的茶具么？好吧，其实即使有学习的书，我想按照我这个阅读的优先级，我也是永远也不会看的o(╯□╰)o其实kindle除了看小说，看散文漫画什么的超级方便以外，看技术的书确实也不方便啊，尤其是需要翻来翻去的那种书。
+一天之中最宁静的时光，就是深夜躺在楼顶，伴着月光，静静地看书，困了就昏睡过去，凌晨醒来，一边欣赏着美丽的朝霞，一边继续懒散地看书，然后一天又开始了。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/18/codeforces105d-bag-of-mice-%E6%A6%82%E7%8E%87dp/">codeforces105d Bag of mice ——概率DP</a>
+      </h1>
+      <span class="post-date">Aug 18, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/18/codeforces105d-bag-of-mice-%E6%A6%82%E7%8E%87dp/#disqus_thread">Comments</a>
+      </span>
+      
+      Link:
+http://codeforces.com/problemset/problem/148/D
+Refer to:
+http://www.cnblogs.com/kuangbin/archive/2012/10/04/2711184.html
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; double a[1111][1111]; int main(void) { int w,b; #ifndef ONLINE_JUDGE freopen(&quot;in.
+      <a href="http://liuxueyang.github.io/blog/2013/08/18/codeforces105d-bag-of-mice-%E6%A6%82%E7%8E%87dp/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/18/zoj3551-bloodsucker-%E6%A6%82%E7%8E%87dp/">zoj3551 Bloodsucker ——概率DP</a>
+      </h1>
+      <span class="post-date">Aug 18, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/18/zoj3551-bloodsucker-%E6%A6%82%E7%8E%87dp/#disqus_thread">Comments</a>
+      </span>
+      
+      Link: http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=4530
+A[i]数组表示当吸血鬼有 I 个的时候，还需要的天数。可以列出方程：
+A[i] = p1(a[i+1]+1) + (1-p1)(a[i]+1) p1=(i*(n-i))p / (n(n-1)/2)
+这道题目错了很多次，原因就是强制类型转换的时候，有一个细节，
+(double)(n(n-1))/2.0 是错的，应该写成：(double)n(n-1)/2.0。这个小细节以后注意吧
+# include&lt;stdio.h&gt; # include&lt;string.h&gt; # include&lt;stdlib.h&gt; int main(void) { // freopen(&quot;in.txt&quot;, &quot;r&quot;,stdin ); int t; scanf(&quot;%d&quot;,&amp;t); while (t--) { int n; double p; scanf(&quot;%d%lf&quot;,&amp;n,&amp;p); double sad=0.0,dw=(double)n*(n-1)/2.0; for(int i=n-1;i&gt;=1;--i) { double lxy=i; lxy*=(n-i); lxy*=p; lxy=lxy/dw; sad+=1.0/lxy; } printf(&quot;%.3f\n&quot;,sad); } return 0; }  O(╯□╰)o
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/08/17/codeforces298c/">codeforces298c</a>
       </h1>
       <span class="post-date">Aug 17, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/17/codeforces298c/#disqus_thread">Comments</a>
@@ -100,110 +226,6 @@
       link:http://poj.org/problem?id=1458 最基础的那种
 #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int sad[1111][1111];char apple[1111],pear[1111]; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin ); #endif // ONLINE_JUDGE // while (gets(apple)!
       <a href="http://liuxueyang.github.io/blog/2013/08/17/poj1458-common-subsequence-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces194b/">codeforces194b</a>
-      </h1>
-      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces194b/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://codeforces.com/problemset/problem/334/B
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int main(void) { set&lt;int&gt; sadx, sady; int x[9] ,y[9] ; bool flag = true; for (int i=0;i&lt;8;++i) { scanf(&quot;%d%d&quot;,&amp;x[i],&amp;y[i]); sadx.
-      <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces194b/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces194a/">codeforces194a</a>
-      </h1>
-      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces194a/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://codeforces.com/contest/334/problem/A 很有意思的一道构造题。发现CF上经常出这种不难但是很不错的构造题。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int main(void) { int n; while (~scanf(&quot;%d&quot;,&amp;n)) for (int i=1;i&lt;=n*n/2;++i) { for (int j=1;j&lt;=n/2;++j) { printf(&quot;%d %d &quot;,i,n*n-i+1); ++i; } i--; printf(&quot;\n&quot;); } return 0; }  o(╯□╰)o 官方解题报告上面写的很明白 1　n^2 2　n^2-1 .
-      <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces194a/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces195c/">codeforces195c</a>
-      </h1>
-      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces195c/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://codeforces.com/problemset/problem/336/C 从大到小枚举，如果对应的二进制位不等于0，就加进来，最后的sum如果%2^k==0那么就是合法的。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int a[111111]; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); #endif // ONLINE_JUDGE int n; while (~scanf(&quot;%d&quot;, &amp;n)) { for (int i=0;i&lt;n;++i) scanf(&quot;%d&quot;,a+i); for (int i=29;i&gt;=0;--i) { int sad=1&lt;&lt;i, sum=-1, cnt=0; for (int j=0;j&lt;n;++j) { if((sad&amp;a[j])!
-      <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces195c/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces195a/">codeforces195a</a>
-      </h1>
-      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces195a/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://codeforces.com/problemset/problem/336/A 很简单的一道题目，当初有个单词不认识，isosceles原来意思是等腰的o(╯□╰)o
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); #endif // ONLINE_JUDGE int x,y; while (~scanf(&quot;%d%d&quot;,&amp;x,&amp;y)) { int sad=abs(x)+abs(y); if(x&gt;0&amp;&amp;y&gt;0) printf(&quot;%d %d %d %d\n&quot;,0,sad,sad,0); else if(x&gt;0&amp;&amp;y&lt;0) printf(&quot;%d %d %d %d\n&quot;,0,-sad,sad,0); else if(x&lt;0&amp;&amp;y&gt;0) printf(&quot;%d %d %d %d\n&quot;,-sad,0,0,sad); else printf(&quot;%d %d %d %d\n&quot;,-sad,0,0,-sad); } return 0; }  o(╯□╰)o
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu4671-backup-plan-%E6%9E%84%E9%80%A0%E9%A2%98/">hdu4671 Backup Plan ——构造题</a>
-      </h1>
-      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu4671-backup-plan-%E6%9E%84%E9%80%A0%E9%A2%98/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://acm.hdu.edu.cn/showproblem.php?pid=4671 其实是不难的那种构造题，先排第一列，第二列从后往前选。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int sad[111], fun[111][111]; int main(void) { int n, m; while (~scanf(&quot;%d%d&quot;,&amp;n,&amp;m)) { for(int i=1;i&lt;=n;++i) { sad[i]=m/n; if(i&lt;=m%n) sad[i]++; } int row=1; for(int i=1;i&lt;=n;++i) { int k=n; for(int j=1;j&lt;=sad[i];++j) { while (i==k||k==0) {if(i==k) k--; if(k==0) k=n;} fun[row][0]=i; fun[row][1]=k; k--; row++; } } for(int i=1;i&lt;=m;++i) { printf(&quot;%d %d&quot;,fun[i][0],fun[i][1]); for(int j=1;j&lt;=n;++j) { if(j!
-      <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu4671-backup-plan-%E6%9E%84%E9%80%A0%E9%A2%98/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu4666-hyperspace-%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB/">hdu4666 Hyperspace ——曼哈顿距离</a>
-      </h1>
-      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu4666-hyperspace-%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://acm.hdu.edu.cn/showproblem.php?pid=4666 这题学会了怎么处理曼哈顿距离。 比如维数是k，那么每个点有2^k个状态，求出在每个状态下，所有点的最大值，最小值，求他们的差，从中找到最大值就行。 开始觉得不好处理的是，删除的时候怎么办。比如要删除一个点，我可以在2^k个中的每个状态里面先找到这个点在这个状态下的值，删除这个值就行了。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; multiset&lt;int&gt; a[44]; int sad[66666][10],will[66666][44]; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.
-      <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu4666-hyperspace-%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/15/poj3181-dollar-dayz-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">poj3181 Dollar Dayz ——完全背包</a>
-      </h1>
-      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/poj3181-dollar-dayz-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://poj.org/problem?id=3181 本来很常规的一道完全背包，比较有意思的一点是，结果会超int，更有意思的解决方法是，不用高精度，用两个整型的拼接起来就行了。ORZ
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; typedef unsigned long long ULL; ULL dp[1111], dp1[1111]; int main(void) { ios::sync_with_stdio(false); #ifndef ONLINE_JUDGE freopen(&quot;in.
-      <a href="http://liuxueyang.github.io/blog/2013/08/15/poj3181-dollar-dayz-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/15/uva147-dollars------%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">uva147 Dollars      ——完全背包</a>
-      </h1>
-      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/uva147-dollars------%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=83 和完全背包一样的思想。 有两个trick： 没了。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; long long d[33333]; int a[11]={5,10,20,50,100,200,500,1000,2000,5000,10000}; int main(void) { ios::sync_with_stdio(false); #ifndef ONLINE_JUDGE freopen(&quot;in.
-      <a href="http://liuxueyang.github.io/blog/2013/08/15/uva147-dollars------%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">Read On &rarr;</a>
       
     </div>
     

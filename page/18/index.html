@@ -79,6 +79,110 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces194b/">codeforces194b</a>
+      </h1>
+      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces194b/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://codeforces.com/problemset/problem/334/B
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int main(void) { set&lt;int&gt; sadx, sady; int x[9] ,y[9] ; bool flag = true; for (int i=0;i&lt;8;++i) { scanf(&quot;%d%d&quot;,&amp;x[i],&amp;y[i]); sadx.
+      <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces194b/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces194a/">codeforces194a</a>
+      </h1>
+      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces194a/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://codeforces.com/contest/334/problem/A 很有意思的一道构造题。发现CF上经常出这种不难但是很不错的构造题。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int main(void) { int n; while (~scanf(&quot;%d&quot;,&amp;n)) for (int i=1;i&lt;=n*n/2;++i) { for (int j=1;j&lt;=n/2;++j) { printf(&quot;%d %d &quot;,i,n*n-i+1); ++i; } i--; printf(&quot;\n&quot;); } return 0; }  o(╯□╰)o 官方解题报告上面写的很明白 1　n^2 2　n^2-1 .
+      <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces194a/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces195c/">codeforces195c</a>
+      </h1>
+      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces195c/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://codeforces.com/problemset/problem/336/C 从大到小枚举，如果对应的二进制位不等于0，就加进来，最后的sum如果%2^k==0那么就是合法的。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int a[111111]; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); #endif // ONLINE_JUDGE int n; while (~scanf(&quot;%d&quot;, &amp;n)) { for (int i=0;i&lt;n;++i) scanf(&quot;%d&quot;,a+i); for (int i=29;i&gt;=0;--i) { int sad=1&lt;&lt;i, sum=-1, cnt=0; for (int j=0;j&lt;n;++j) { if((sad&amp;a[j])!
+      <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces195c/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces195a/">codeforces195a</a>
+      </h1>
+      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/codeforces195a/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://codeforces.com/problemset/problem/336/A 很简单的一道题目，当初有个单词不认识，isosceles原来意思是等腰的o(╯□╰)o
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); #endif // ONLINE_JUDGE int x,y; while (~scanf(&quot;%d%d&quot;,&amp;x,&amp;y)) { int sad=abs(x)+abs(y); if(x&gt;0&amp;&amp;y&gt;0) printf(&quot;%d %d %d %d\n&quot;,0,sad,sad,0); else if(x&gt;0&amp;&amp;y&lt;0) printf(&quot;%d %d %d %d\n&quot;,0,-sad,sad,0); else if(x&lt;0&amp;&amp;y&gt;0) printf(&quot;%d %d %d %d\n&quot;,-sad,0,0,sad); else printf(&quot;%d %d %d %d\n&quot;,-sad,0,0,-sad); } return 0; }  o(╯□╰)o
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu4671-backup-plan-%E6%9E%84%E9%80%A0%E9%A2%98/">hdu4671 Backup Plan ——构造题</a>
+      </h1>
+      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu4671-backup-plan-%E6%9E%84%E9%80%A0%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://acm.hdu.edu.cn/showproblem.php?pid=4671 其实是不难的那种构造题，先排第一列，第二列从后往前选。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int sad[111], fun[111][111]; int main(void) { int n, m; while (~scanf(&quot;%d%d&quot;,&amp;n,&amp;m)) { for(int i=1;i&lt;=n;++i) { sad[i]=m/n; if(i&lt;=m%n) sad[i]++; } int row=1; for(int i=1;i&lt;=n;++i) { int k=n; for(int j=1;j&lt;=sad[i];++j) { while (i==k||k==0) {if(i==k) k--; if(k==0) k=n;} fun[row][0]=i; fun[row][1]=k; k--; row++; } } for(int i=1;i&lt;=m;++i) { printf(&quot;%d %d&quot;,fun[i][0],fun[i][1]); for(int j=1;j&lt;=n;++j) { if(j!
+      <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu4671-backup-plan-%E6%9E%84%E9%80%A0%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu4666-hyperspace-%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB/">hdu4666 Hyperspace ——曼哈顿距离</a>
+      </h1>
+      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu4666-hyperspace-%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://acm.hdu.edu.cn/showproblem.php?pid=4666 这题学会了怎么处理曼哈顿距离。 比如维数是k，那么每个点有2^k个状态，求出在每个状态下，所有点的最大值，最小值，求他们的差，从中找到最大值就行。 开始觉得不好处理的是，删除的时候怎么办。比如要删除一个点，我可以在2^k个中的每个状态里面先找到这个点在这个状态下的值，删除这个值就行了。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; multiset&lt;int&gt; a[44]; int sad[66666][10],will[66666][44]; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.
+      <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu4666-hyperspace-%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/15/poj3181-dollar-dayz-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">poj3181 Dollar Dayz ——完全背包</a>
+      </h1>
+      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/poj3181-dollar-dayz-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://poj.org/problem?id=3181 本来很常规的一道完全背包，比较有意思的一点是，结果会超int，更有意思的解决方法是，不用高精度，用两个整型的拼接起来就行了。ORZ
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; typedef unsigned long long ULL; ULL dp[1111], dp1[1111]; int main(void) { ios::sync_with_stdio(false); #ifndef ONLINE_JUDGE freopen(&quot;in.
+      <a href="http://liuxueyang.github.io/blog/2013/08/15/poj3181-dollar-dayz-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/15/uva147-dollars------%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">uva147 Dollars      ——完全背包</a>
+      </h1>
+      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/uva147-dollars------%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=83 和完全背包一样的思想。 有两个trick： 没了。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; long long d[33333]; int a[11]={5,10,20,50,100,200,500,1000,2000,5000,10000}; int main(void) { ios::sync_with_stdio(false); #ifndef ONLINE_JUDGE freopen(&quot;in.
+      <a href="http://liuxueyang.github.io/blog/2013/08/15/uva147-dollars------%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/08/15/uva674-coin-change-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">uva674 Coin Change ——完全背包</a>
       </h1>
       <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/uva674-coin-change-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/#disqus_thread">Comments</a>
@@ -100,109 +204,6 @@
       link:http://acm.hdu.edu.cn/showproblem.php?pid=2191 最简单的那种
 #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int n, V, t, f[111], c[111], w[111], m[111]; void zeropack(int c, int w) { for (int v=V; v&gt;=c; --v) { f[v]=max(f[v],f[v-c]+w); } return; } void completepack(int c, int w) { for (int v=c;v&lt;=V;++v) f[v]=max(f[v],f[v-c]+w); return; } void multipack(int c, int w, int m) { if (c*m &gt;= V) { completepack(c,w); return; } int k=1; while (k&lt;m) { zeropack(c*k,w*k); m-=k; k*=2; } zeropack(c*m,w*m); return; } int main(void) { ios::sync_with_stdio(false); #ifndef ONLINE_JUDGE freopen(&quot;in.
       <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu2191-%E6%82%BC%E5%BF%B5512%E6%B1%B6%E5%B7%9D%E5%A4%A7%E5%9C%B0%E9%9C%87-----%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu1059-dividing-%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/">hdu1059 Dividing ——多重背包</a>
-      </h1>
-      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu1059-dividing-%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://acm.hdu.edu.cn/showproblem.php?pid=1059 最简单的那种
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int V,m[6],c[6],w[6],f[66666]; void zeropack(int c, int w) { for (int v=V;v&gt;=c;--v) f[v]=max(f[v],f[v-c]+w); return; } void completepack(int c,int w) { for(int v=c;v&lt;=V;++v) f[v]=max(f[v],f[v-c]+w); return; } void multipack(int c,int w,int m) { if(c*m&gt;=V) { completepack(c,w); return; } int k=1; while (k&lt;m) { zeropack(k*c,k*w); m-=k; k*=2; } zeropack(c*m,w*m); return; } int main(void) { ios::sync_with_stdio(false); #ifndef ONLINE_JUDGE freopen(&quot;in.
-      <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu1059-dividing-%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu1114-piggy-bank-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">hdu1114 Piggy-Bank ——完全背包</a>
-      </h1>
-      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu1114-piggy-bank-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://acm.hdu.edu.cn/showproblem.php?pid=1114 只不过求得是最小值。没什么可说的，连我都会做……o(╯□╰)o
-/* ID: zypz4571 LANG: C++ TASK: pig.cpp */ #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int f[11111],c[555],w[555], V, n; void completepack(int c,int w) { for(int v=c;v&lt;=V;++v) f[v]=min(f[v],f[v-c]+w); } int main ( int argc, char *argv[] ) { #ifndef ONLINE_JUDGE freopen(&quot;in.
-      <a href="http://liuxueyang.github.io/blog/2013/08/15/hdu1114-piggy-bank-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/15/zoj3623-battle-ships-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E7%AE%80%E5%8D%95dp-%E6%B3%9B%E5%8C%96%E8%83%8C%E5%8C%85/">zoj3623 Battle Ships ——完全背包？简单DP！|| 泛化背包</a>
-      </h1>
-      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/zoj3623-battle-ships-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E7%AE%80%E5%8D%95dp-%E6%B3%9B%E5%8C%96%E8%83%8C%E5%8C%85/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=3623 看起来像完全背包，但是物品价值是变化的，所以很多人搞的很复杂。 晚上的代码要么很复杂，有一个代码虽然很简洁在zoj可以过，但是是错误的。求教lyl神犇，果然思想很深刻，抓住乐问题的本质，想法比网上搜到的所有博客里面的做法都简洁。 事实上，就是简单的DP，抓住一个技巧：让时间倒流，也就是说，把时间反过来考虑，先在将来把船造好，然后在过去用船攻击，哈哈，太巧秒了，说起来很别扭，很有意思，dp[j+time[i]]=max(dp[j]+j*time[i])；dp[j]表示在j这个时间，所造成的最大伤害。这样就可以枚举时间，在每个特定的时间内，枚举船的种类，找到最大值。最终在dp[]数组里面找到符合条件的并且时间最少的解。 只能说，ORZ…… 后来好不容易想明白了。茶具从哪里来……
-/* ID: zypz4571 LANG: C++ TASK: battle.cpp */ #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int Time[33],dam[33], f[444]; int main ( int argc, char *argv[] ) { #ifndef ONLINE_JUDGE freopen(&quot;in.
-      <a href="http://liuxueyang.github.io/blog/2013/08/15/zoj3623-battle-ships-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E7%AE%80%E5%8D%95dp-%E6%B3%9B%E5%8C%96%E8%83%8C%E5%8C%85/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/15/poj3249-test-for-job--%E6%8B%93%E6%89%91-dp/">poj3249 Test for Job  ——拓扑&#43;DP</a>
-      </h1>
-      <span class="post-date">Aug 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/15/poj3249-test-for-job--%E6%8B%93%E6%89%91-dp/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://poj.org/problem?id=3249 在拓扑排序的过程中进行状态转移，dp[i]表示从起点到 i 这个点所得到的的最大值。比如从u点到v点，dp[v]=max(dp[v], dp[u]+a[v]) a[]数组是点的价值，最终的dp[]数组里面的最大值就是所求的。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; #define N 111111 using namespace std; int WO[N],NI[N],dp[N],TA[N]; vector&lt;int&gt; V[N]; queue&lt;int&gt; QU; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.
-      <a href="http://liuxueyang.github.io/blog/2013/08/15/poj3249-test-for-job--%E6%8B%93%E6%89%91-dp/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/11/hdu3033-i-love-sneakers--------%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85%E5%8F%98%E5%BD%A2/">hdu3033 I love sneakers!        分组背包变形</a>
-      </h1>
-      <span class="post-date">Aug 11, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/11/hdu3033-i-love-sneakers--------%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85%E5%8F%98%E5%BD%A2/#disqus_thread">Comments</a>
-      </span>
-      
-      分组背包要求每一组里面只能选一个，这个题目要求每一组里面至少选一个物品。 dp[i, j] 表示前 i 组里面在每组至少放进一个物品的情况下，当花费 j 的时候，所得到的的最大价值。这个状态可以由三个状态转移过来： a[i, j].b表示第 i 组第 j 个物品的花费，v表示背包容量。 初始化： 如果一种物品都不放，那么对应的所有的背包容量都是0，也就是：dp[0, 0~M] = 0； 其他的情况，都初始化成-INF。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; typedef struct node { int b,v; }node; vector&lt;node&gt; a[11]; int dp[11][10009]; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.
-      <a href="http://liuxueyang.github.io/blog/2013/08/11/hdu3033-i-love-sneakers--------%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85%E5%8F%98%E5%BD%A2/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/11/hdu1712-acboy-needs-your-help----%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85/">hdu1712 ACboy needs your help    分组背包</a>
-      </h1>
-      <span class="post-date">Aug 11, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/11/hdu1712-acboy-needs-your-help----%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85/#disqus_thread">Comments</a>
-      </span>
-      
-      最基础的分组背包~
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int dp[102], a[102][102]; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin ); #endif // ONLINE_JUDGE int n,m; while (~scanf(&quot;%d%d&quot;,&amp;n,&amp;m)&amp;&amp;(n||m)) { for (int i=1;i&lt;=n;++i) { for (int j=1;j&lt;=m;++j) scanf(&quot;%d&quot;,&amp;a[i][j]); } memset(dp,0,sizeof(dp)); for (int i=1;i&lt;=n;++i) { for (int v=m;v&gt;=0;--v) { for (int j=1;j&lt;=v;++j) { dp[v]=max(dp[v],dp[v-j]+a[i][j]); } } } printf(&quot;%d\n&quot;,dp[m]); } return 0; }  没什么可说的。1Y
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/11/%E5%BD%93%E6%88%91%E6%8A%8A%E7%94%B5%E8%84%91500g%E7%A1%AC%E7%9B%98%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BA%86%E7%9A%84%E6%97%B6%E5%80%99%E5%9C%A8%E6%83%B3%E4%BA%9B%E4%BB%80%E4%B9%88/">当我把电脑500G硬盘格式化了的时候，在想些什么</a>
-      </h1>
-      <span class="post-date">Aug 11, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/11/%E5%BD%93%E6%88%91%E6%8A%8A%E7%94%B5%E8%84%91500g%E7%A1%AC%E7%9B%98%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BA%86%E7%9A%84%E6%97%B6%E5%80%99%E5%9C%A8%E6%83%B3%E4%BA%9B%E4%BB%80%E4%B9%88/#disqus_thread">Comments</a>
-      </span>
-      
-      所以我就想重新尝试一下怎么装多系统，bootloader,MBR到底是怎么回事儿。 简要记录一下： 首先，在可以作为启动盘的Ｕ盘里面，备份一份可以用的WinXP镜像+校园网客户端安装文件+驱动精灵安装文件。然后再说别的。 我的硬盘初步规划是这样的：把硬盘分成4个分区，3P+1E。也就是3个主分区，1个扩展分区。每个50G。硬盘主分区最多有4个，为了以后装Linux，我分了3个主分区，一个用来装WinXP，另外两个装Ubuntu，CentOS。扩展分区再划分出几个逻辑分区：分出100G作为WinXP里面的D盘，装软件；再分出100G作为WinXP里面的E盘，存文档。足够用。剩下的100+G，分出1G作为Ubuntu的swap分区，再分出1G作为CentOS的swap分区。剩下的作为空闲分区备用。 这样三个主分区编号分别是：/dev/sda1 /dev/sda2 /dev/sda3 D，E两个盘的编号是：/dev/sda5 /dev/sda6 两个swap分区的编号是：/dev/sda7 /dev/sda8 先装winXP系统，找一个Ghost版的，把U盘用大白菜制作成启动盘，进入PE，还原系统就行了。 然后装Ubuntu，自己有一张安装盘，12.04版的。为了省事儿+还没什么经验，所以我选择了只把Linux分成两个分区，一个根分区 / ，一个swap分区。根分区挂载在 /dev/sda2，swap分区挂载在 /dev/sda7。然后重要的一点：bootloader安装在500G硬盘的最前面！然后就没什么注意的了，直接装就行。 最后装CentOS，同样，我自己有一张安装盘，CentOS 6.0。同样，也是只分两个分区，一个根分区 /，一个swap分区。根分区挂载在 /dev/sda3，swap分区挂载在 /dev/sda8。然后同样很重要的一点：bootloader安装在 /dev/sda3这个主分区里面！如果也安装在整个硬盘的最前面的话，会覆盖掉Ubuntu安装的Grub2。所以，要安装的CentOS所在的主分区的里面就行了，Ubuntu的Grub2的bootloader可以将启动权转交给这个主分区的bootloader。然后同样也没什么注意的了，直接装就行。 如果装完CentOS后，发现开机之后的Grub2没有CentOS的启动选项，或者因为重复装了多次系统，把原来的系统格式化了，但是启动选项里面依然有记录。可以进入Ubuntu，打开终端更新一下Grub2：sudo update-grub2。然后重启就可以了。 为什么要先装WinXP在装Linux呢？因为WinXP无节操，系统重装的时候会重写MBR，把Linux的启动选项覆盖掉，所以就看不到Grub界面了. 如果你很不幸Win系统挂了，其实解决办法也不是没有，比如这篇：ubuntu12.04 修复Grub2 这种东西紧急情况下其实还是挺有用的。o(╯□╰)o 某些细节可能写的不那么准确，就是这么理解的…… 一切弄好之后，机器启动进入Grub2界面：有Ubunt，CentOS，WinXP启动选项。 完美~ 我是不是有点无聊……囧o(╯□╰)o 鼠标一点，整个硬盘的资料就没了，人生似乎可以重新开始了，又可以重新做人了，但是，记忆呢，记忆能不能格式化？
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/06/hdu2955-robberies-%EF%BC%90%EF%BC%91%E8%83%8C%E5%8C%85%E6%A6%82%E7%8E%87/">hdu2955 Robberies 　０１背包＋概率</a>
-      </h1>
-      <span class="post-date">Aug 6, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/06/hdu2955-robberies-%EF%BC%90%EF%BC%91%E8%83%8C%E5%8C%85%E6%A6%82%E7%8E%87/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://acm.hdu.edu.cn/showproblem.php?pid=2955 首先，这个题目的背包容量不能是概率．１．精度不清楚．２．把概率相加有什么意义呢？所以，转换一下，把所有银行的珠宝和当作背包容量，把小偷安全的概率当作物品价值．可以先求出背包尽可能满的情况下，安全概率最大的解．然后在这些解里面，找出安全概率满足大于１－Ｐ的并且价值最大的就行． 题目读清楚．人给的是被抓住的概率和每个银行被抓住的概率．这个是不能直接用的．比如连续偷几个银行，就要分别算出安全的概率，这样概率就可以直接相乘了． 只要要偷的几个银行的安全概率的积大于１－P就行．
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int V, n, c[11111]; double w[11111], f[11111]; int main(void) { ios::sync_with_stdio(false); #ifndef ONLINE_JUDGE freopen(&quot;in.
-      <a href="http://liuxueyang.github.io/blog/2013/08/06/hdu2955-robberies-%EF%BC%90%EF%BC%91%E8%83%8C%E5%8C%85%E6%A6%82%E7%8E%87/">Read On &rarr;</a>
       
     </div>
     

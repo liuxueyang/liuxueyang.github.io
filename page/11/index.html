@@ -79,6 +79,143 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2014/05/27/chapter-5/">Chapter 5</a>
+      </h1>
+      <span class="post-date">May 27, 2014 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/05/27/chapter-5/#disqus_thread">Comments</a>
+      </span>
+      
+      ##Optional Parameters
+we can use optional arguments in a function, such as:
+```common lisp (defun foo (a b &amp;optional c d) (list a b c d))
+ This will result: ```common lisp (foo 1 2)	-&gt; (1 2 NIL NIL) (foo 1 2 3)	-&gt; (1 2 3 NIL) (foo 1 2 3 4)	-&gt; (1 2 3 4)  Besides, we can set default value for a argument:
+``` common lisp (defun foo (a &amp;optional (b 10)) (list a b))
+      <a href="http://liuxueyang.github.io/blog/2014/05/27/chapter-5/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2014/05/26/my-new-post/">My new post</a>
+      </h1>
+      <span class="post-date">May 26, 2014 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/05/26/my-new-post/#disqus_thread">Comments</a>
+      </span>
+      
+      From now on, I will write something everyday to improve myself. Maybe writing is a good habbit.
+When I get to use hexo, I get in trouble. But I find the solution at this website
+When I start a new console or reboot my computer and enter hexo command, I get hexo: command not found. I solved this problem at last.
+ enter nvm current command. I get v0.10.28. get to the ~/.
+      <a href="http://liuxueyang.github.io/blog/2014/05/26/my-new-post/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2014/05/09/some-simple-recursive-lisp-programs/">some simple recursive lisp programs</a>
+      </h1>
+      <span class="post-date">May 9, 2014 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/05/09/some-simple-recursive-lisp-programs/#disqus_thread">Comments</a>
+      </span>
+      
+      Write a procedure count-list to count the number of elements in a list  (defun count-list (numbers) (if (null numbers) 0 (+ 1 (count-list (rest numbers))))) (print (count-list '(1 2 3))) result: 3   Write a procedure reverse-list to reverse each word in a list of words  (defun reverse-list (numbers) (if (null numbers) nil (cons (reverse (first numbers)) (reverse-list (rest numbers))))) (reverse-list '(&quot;dog&quot; &quot;pan&quot; &quot;tar&quot; &quot;tip&quot; &quot;net&quot;))  result: (&quot;god&quot; &quot;nap&quot; &quot;rat&quot; &quot;pit&quot; &quot;ten&quot;)
+      <a href="http://liuxueyang.github.io/blog/2014/05/09/some-simple-recursive-lisp-programs/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2014/04/29/april-fools-day-contest-2014/">April Fools Day Contest 2014</a>
+      </h1>
+      <span class="post-date">Apr 29, 2014 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/04/29/april-fools-day-contest-2014/#disqus_thread">Comments</a>
+      </span>
+      
+      April Fools Day Contest 2014
+Ａ、Ｃ、Ｈ三道题目
+A. The Great Game
+这题没看懂。。看了官方题解真是恍然大悟啊，原来是石头剪刀布啊！！！
+8&lt; 代表剪刀啊
+() 代表石头啊
+[] 代表布啊
+真是逆天啊，这么一说还真觉得有点像。。。。尤其是那个剪刀。
+给那个出题人的想象力跪了。
+ /* * ===================================================================================== * Filename : TheGreatGame.cpp * Description : So Funny * Version : 0.1 * Created : 04/29/14 07:58 * Author : Liu Xue Yang (LXY), liuxueyang457@163.com * Motto : How about today? * ===================================================================================== */ #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;cstring&gt; using namespace std; /* * === FUNCTION ====================================================================== * Name: judge * Description: who win?
+      <a href="http://liuxueyang.github.io/blog/2014/04/29/april-fools-day-contest-2014/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2014/04/10/%E6%8C%87%E9%92%88%E7%9A%84%E9%97%AE%E9%A2%98/">指针的问题</a>
+      </h1>
+      <span class="post-date">Apr 10, 2014 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/04/10/%E6%8C%87%E9%92%88%E7%9A%84%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      这些细节的问题涉及到语言内部的实现和处理，现在还是没有太懂。
+尤其是关于const的问题。
+比如说下面的代码：
+#include &lt;stdio.h&gt; int main(void) { const int x = 1; int y = 3; int * p = (int *)&amp;x; *p = 3; printf(&quot;x = %d\n&quot;, x); printf(&quot;*p = %d\n&quot;, *p); if (y == true) printf(&quot;true\n&quot;); return 0; } /* output: x = 1 *p = 3 */  也就是说，const类型的整型变量的值并没有改变。印象中好像是const类型的变量在内存中存放的位置和普通变量不一样之类的……当初也想到这个了，笔试的时候不太确定。整道题做错了。。。白写了那么多啊囧。
+这个问题具体的原因现在还不太懂，问题先留在这里，等会儿再去查。。。还有坑爹的实验要去做。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2014/03/31/codeforces-239-long-path/">CodeForces 239 Long Path</a>
+      </h1>
+      <span class="post-date">Mar 31, 2014 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/03/31/codeforces-239-long-path/#disqus_thread">Comments</a>
+      </span>
+      
+      每个房间有两个单向出口，就是只能进不能出，这个开始理解错了。
+进入房间的时候，首先要在屋顶画一个叉叉，如果画完之后叉叉的个数是奇数的话：那么就从第二条出口出去，会到达ｐ[ i ]房间；如果叉叉的个数是偶数的话，那么就到下一个房间。
+问从1到ｎ+1房间一共走了多少个这样的单项出口。
+有一个条件：1 &lt;= p[ i ] &lt;= i 这个开始也没有注意到==。这是个很重要的条件。
+说明人只能通过第二个出口向后退，而不能向前跳跃。如果人要向前走，只能一步一步的通过第一条出口。
+所以，dp[ i ] 表示从i 房间到 i +1 房间需要经过的出口数。
+还有一个特点：如果人第一次到房间 i ，那么他必定下一步到达房间p[ i ], 然后再考虑从房间p [ i ] 出发到达 p[ i +1] 房间。如果要到达i + 1房间。那么需要经过的出口数目就是：2 + dp[ p[i], p[i] + 1, &hellip; , i - 1 ] .其中的2 就是从房间 i 到房间p[ i ] 和从房间 i 到房间 i + 1的两步。另外一部分也就是从房间p[ i ] 到房间p[ i ] +1 ，从房间p[ i ] + 1 到房间 p[ i ] + 2等等。
+      <a href="http://liuxueyang.github.io/blog/2014/03/31/codeforces-239-long-path/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2014/03/30/codeforces-239a.-triangle/">CodeForces 239A. Triangle</a>
+      </h1>
+      <span class="post-date">Mar 30, 2014 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/03/30/codeforces-239a.-triangle/#disqus_thread">Comments</a>
+      </span>
+      
+      Link: http://codeforces.com/contest/407/problem/A
+给定直角三角形的2个直角边a，b。求在直角坐标系中，是否存在对应的直角三角形，使得三个定点都在整点上，并且三边都不和坐标轴平行。
+如果存在，输出YES，和三个点的坐标。否则输出NO
+很显然，为了方便，可以把原点作为 一个顶点。
+这道题目做的时候少考虑了很多情况。
+比如：
+如何使得边不和坐标轴平行？ 要保证要求的另外两个点的横坐标或者纵坐标不能相等。
+如何保证三角形是直角三角形？ 只需要保证，另外两个点和坐标轴围成的三角形相似。
+因为范围是1000,所以可以暴力求解。复杂度O（10^6）
+/* * ===================================================================================== * Filename : triangle.cpp * Description : triangle * Version : 0.1 * Created : 03/30/14 15:57 * Author : Liu Xue Yang (LXY), liuxueyang457@163.com * Motto : How about today? * ===================================================================================== */ #include &lt;cmath&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;iostream&gt; using namespace std; /* * === FUNCTION ====================================================================== * Name: gcd * Description: gcd * ===================================================================================== */ int gcd ( int a, int b ) { return b == 0 ?
+      <a href="http://liuxueyang.github.io/blog/2014/03/30/codeforces-239a.-triangle/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2014/03/22/longest-increasing-subsequence/">Longest Increasing Subsequence</a>
+      </h1>
+      <span class="post-date">Mar 22, 2014 &middot; 5 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/03/22/longest-increasing-subsequence/#disqus_thread">Comments</a>
+      </span>
+      
+      很久不写算法了== 写个东西练练手
+最长上升子序列
+输入n，然后是数组a[ ]的n个元素
+输出最长上升子序列的长度
+一、最简单的方法复杂度O(n * n)
+DP[ i ] 是以a[ i ] 为结尾的最长上升子序列的长度。 DP[ i ] = max{DP[ j ] + 1 | j &lt; i &amp;&amp; a[ j ] &lt; a[ i ]}  代码：
+/* * ===================================================================================== * Filename : LongestIncrSub1.cpp * Description : O(n^2) * Version : a better Algorithm of O(n^2) * Created : 03/22/14 22:03 * Author : Liu Xue Yang (LXY), liuxueyang457@163.
+      <a href="http://liuxueyang.github.io/blog/2014/03/22/longest-increasing-subsequence/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2014/03/04/vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86/">Vim插件管理</a>
       </h1>
       <span class="post-date">Mar 4, 2014 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/03/04/vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86/#disqus_thread">Comments</a>
@@ -115,149 +252,6 @@ $ git remote add origin https://github.com/yourname/TMP.git $ git push -u origin
 　PE头D8h + 78 h 就得到了DataDirectory 这个字段，它是一个16个元素的数组，数据类型是IMAGE_DATA_DIRECTORY，这个结构体有两个成员：第一个成员是数据块的起始RVA，第二个成员是数据块的长度。数组的第一个元素是Export Table，发现都是0，说明没有输出表；第二个元素是输入表，地址是0000 73A4 h 大小是 0000 00B4h 。
 　用PE Editor 这个程序打开gvim.exe 文件，得到如下的结果，发现结果和上面是一样的，我还发现了刚才犯的一个错误，SectionAlignment 的值应该是1000h 也就是CPU页大小是4kB，刚才写成了100h……汗
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2014/02/04/poj1298-the-hardest-problem-ever-%E7%AE%80%E5%8D%95%E9%A2%98/">poj1298 The Hardest Problem Ever 简单题</a>
-      </h1>
-      <span class="post-date">Feb 4, 2014 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/02/04/poj1298-the-hardest-problem-ever-%E7%AE%80%E5%8D%95%E9%A2%98/#disqus_thread">Comments</a>
-      </span>
-      
-      链接：http://poj.org/problem?id=1298&amp;lang=default&amp;change=true
-简单的入门题目也有这么强悍的技巧啊！！
-书上面的代码：
-很厉害有没有=_=
-n;main(k){for(;read(0,&amp;n,1);k-=n&lt;11)k%3||putchar(n%91&lt;65?n:n%70%44+65);}  72字节。
-用到了read这个函数
-对于不需要处理的字符串，没有作处理，简化了很多。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2014/02/03/poj2368-buttons-nim%E5%8F%96%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F/">poj2368 Buttons Nim取石子游戏</a>
-      </h1>
-      <span class="post-date">Feb 3, 2014 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/02/03/poj2368-buttons-nim%E5%8F%96%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F/#disqus_thread">Comments</a>
-      </span>
-      
-      链接：http://poj.org/problem?id=2368
-和前面差距还是很大啊囧
-代码：
-k,a;main(i){for(scanf(&quot;%d&quot;,&amp;k),a=k-1,i=3;i&lt;=k/2&amp;&amp;k%i;++i);k%i||(a=i-1);printf(&quot;%d\n&quot;,a);}  短码之美那本书上面的这道题目的代码思路是对的，可是会TLE的。
-可是ozy的代码还是那么短得可怕😨
-那个，又省掉了一个特别脑残的变量。。
-代码：
-k;main(i){for(scanf(&quot;%d&quot;,&amp;k),i=3;i&lt;=k/2&amp;&amp;k%i;++i);printf(&quot;%d\n&quot;,k%i?k-1:i-1);}  78字节。
-第二名了，，虽然和第一名还差好多=_=
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2014/02/02/2014%E6%96%B0%E5%B9%B4/">2014新年</a>
-      </h1>
-      <span class="post-date">Feb 2, 2014 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/02/02/2014%E6%96%B0%E5%B9%B4/#disqus_thread">Comments</a>
-      </span>
-      
-      那个，过年了。今天是正月初三。现在在我姥姥家。
-外面二姨她们在斗地主，很欢乐。
-无聊，找到台电脑，上网呗。
-没什么可看的，想起下学期有门课叫做编译原理。
-不妨google一下编译原理吧。然后就顺着找到了这个人的wiki里面的这篇文章：http://www.annhe.net/article-2445.html.
-正好是湖大的，校友，比我大一届，10级的。去的新浪，羡慕啊。
-那个，等到今年9月份，就该我了。。
-可我怎么觉得我还差早呢？
-在家比较混乱的样子，最多看看短码之美那本书娱乐一下，感觉挺有意思的样子，但还是看的很慢啊囧╭(╯^╰)╮
-上学期没有挂，真是rp爆发加运气好啊，首先要感谢的是德克士，给我提供了那么暖和的复习环境……=_=
-话说德克士里放的歌开始听着像噪音，到后来听着越来越好听了有没？到后期甚至拿air查到某首歌的名字然后回去自己听，恩恩，有学习的气氛。。
-放假前说好的寒假要好好学习准备找工作面试的，说好了的……
-结果到家三天后开始练车，累还来不及呢。腊月28后就开始被使唤了。接着就过年了，然后就到现在了。
-也没出去玩过。
-最多前两天下午出去跑步一小时。。中间还带走的=_=
-新年愿望就是那种永远不会实现的东西，但我还是想说：
-大三下学期不挂科 校招能表现好一点，找个好工作，最好在北京的那种，离家近 %&gt;_&lt;% 上半年好好学习，想学神马学神马，关键是认真，细心，不浮躁 练长跑，每周保持一定的运动量，明年毕业之前跑一场全马  (ˇˍˇ）
-就这样了囧
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2014/01/22/%E5%9D%87%E5%88%8601/">均分01</a>
-      </h1>
-      <span class="post-date">Jan 22, 2014 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/01/22/%E5%9D%87%E5%88%8601/#disqus_thread">Comments</a>
-      </span>
-      
-      真是无语，刚才写了一遍，添加博客标签的时候，浏览器自动刷新了一下，
-然后tm写的东西就没有了！！还得重写。。
-开始没懂，学弟给讲的==
-感觉很厉害的样子。
-可以切分一次。 不管什么串，一定可以切分两次完成。  证明：
-　把这个串的首尾相连，设连接点是A，串的中点是B，设直线AB是L，L的左右的0的个数不相等，不妨设左边大于右边。顺时针旋转直线L，每旋转一次左右两边0的个数只可能发生两种变化：不变，+1，-1 。
-　等旋转一周的时候，直线回到原来的位置，此时左边小于右边。由于0的个数的变化是连续的，所以一定有一个时刻，左边等于右边。
-　证毕。感觉很厉害的样子。
-#include &lt;stdio.h&gt; #include &lt;string.h&gt; int howmany(char *s) { int i, len = strlen(s) / 2; int t = 0; for (i = 0; i &lt; len; ++i) { if (s[i] == '0') { t++; } if (s[i+len] == '0') { t--; } } if (!t) return 1; else return 2; } int main(void) { printf(&quot;%d\n&quot;, howmany(&quot;00001111&quot;)); return 0; }  囧
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/10/21/poj1852-ants-%E6%83%B3%E6%B3%95%E9%A2%98%E6%B0%B4%E9%A2%98/">poj1852 Ants ——想法题、水题</a>
-      </h1>
-      <span class="post-date">Oct 21, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/21/poj1852-ants-%E6%83%B3%E6%B3%95%E9%A2%98%E6%B0%B4%E9%A2%98/#disqus_thread">Comments</a>
-      </span>
-      
-      求最短时间和最长时间。
-当两个蚂蚁相遇的时候，可以看做两个蚂蚁穿过，对结果没有影响。O（N）的复杂度
-c++版：
-#include &lt;cstdio&gt; #define min(a, b) (a) &lt; (b) ? (a) : (b) #define max(a, b) (a) &gt; (b) ? (a) : (b) int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); #endif // ONLINE_JUDGE int Case; scanf(&quot;%d&quot;, &amp;Case); int n, L, Min, Max; while (Case--) { Min = -1; Max = -1; scanf(&quot;%d%d&quot;, &amp;L, &amp;n); int tmp; while (n--) { scanf(&quot;%d&quot;, &amp;tmp); int t1 = min(tmp, L - tmp); int t2 = max(tmp, L - tmp); if (Min &lt; t1) Min = t1; if (Max &lt; t2) Max = t2; } printf(&quot;%d %d\n&quot;, Min, Max); } return 0; }  Java版：
-      <a href="http://liuxueyang.github.io/blog/2013/10/21/poj1852-ants-%E6%83%B3%E6%B3%95%E9%A2%98%E6%B0%B4%E9%A2%98/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/10/17/%E7%BC%96%E5%86%99%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%AD7ch%E7%9A%84%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B%E5%B0%86%E4%B8%80%E4%B8%AA%E4%BB%A50%E7%BB%93%E5%B0%BE%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E5%8C%96%E4%B8%BA%E5%A4%A7%E5%86%99/">编写安装中断7ch的中断例程：将一个以0结尾的字符串，转化为大写</a>
-      </h1>
-      <span class="post-date">Oct 17, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/17/%E7%BC%96%E5%86%99%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%AD7ch%E7%9A%84%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B%E5%B0%86%E4%B8%80%E4%B8%AA%E4%BB%A50%E7%BB%93%E5%B0%BE%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E5%8C%96%E4%B8%BA%E5%A4%A7%E5%86%99/#disqus_thread">Comments</a>
-      </span>
-      
-      中断的安装程序：
-assume cs:code code segment start: mov ax, cs mov ds, ax mov si, offset chstr mov ax, 0 mov es, ax mov di, 200h mov cx, offset chstrend - offset chstr cld rep movsb mov ax, 0 mov es, ax mov word ptr es:[7ch * 4 + 0], 200h mov word ptr es:[7ch * 4 + 2], 0 mov ax, 4c00h int 21h chstr: mov si, 0 lh: mov cx, 0 mov cl, [si] jcxz ok and byte ptr [si], 11011111b inc si jmp lh ok: iret chstrend: nop code ends end start  测试程序：
-      <a href="http://liuxueyang.github.io/blog/2013/10/17/%E7%BC%96%E5%86%99%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%AD7ch%E7%9A%84%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B%E5%B0%86%E4%B8%80%E4%B8%AA%E4%BB%A50%E7%BB%93%E5%B0%BE%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E5%8C%96%E4%B8%BA%E5%A4%A7%E5%86%99/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/10/17/%E7%BC%96%E5%86%99%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B7ch%E8%AE%A1%E7%AE%97word%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%B9%B3%E6%96%B9/">编写中断例程7ch：计算word型数据的平方</a>
-      </h1>
-      <span class="post-date">Oct 17, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/17/%E7%BC%96%E5%86%99%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B7ch%E8%AE%A1%E7%AE%97word%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%B9%B3%E6%96%B9/#disqus_thread">Comments</a>
-      </span>
-      
-      实现计算一个word型数据的平方。
-这是安装程序。
-assume cs:code code segment start: mov ax, cs mov ds, ax mov si, offset sqr mov ax, 0 mov es, ax mov di, 200h mov cx, offset sqrend - offset sqr cld rep movsb mov ax, 0 mov es, ax mov word ptr es:[7ch * 4+0], 200h mov word ptr es:[7ch * 4 + 2], 0 mov ax, 4c00h int 21h sqr: mul ax iret sqrend: nop code ends end start  这是应用程序。
-      <a href="http://liuxueyang.github.io/blog/2013/10/17/%E7%BC%96%E5%86%99%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B7ch%E8%AE%A1%E7%AE%97word%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%B9%B3%E6%96%B9/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/10/17/%E7%BC%96%E5%86%990%E5%8F%B7%E4%B8%AD%E6%96%AD%E7%9A%84%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F%E5%A4%84%E7%90%86%E9%99%A4%E6%B3%95%E6%BA%A2%E5%87%BA/">编写0号中断的处理程序：处理除法溢出</a>
-      </h1>
-      <span class="post-date">Oct 17, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/17/%E7%BC%96%E5%86%990%E5%8F%B7%E4%B8%AD%E6%96%AD%E7%9A%84%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F%E5%A4%84%E7%90%86%E9%99%A4%E6%B3%95%E6%BA%A2%E5%87%BA/#disqus_thread">Comments</a>
-      </span>
-      
-      在除法溢出的时候，在屏幕中间显示字符串“divide error!”
-安装程序：
-assume cs:code code segment start: mov ax, cs mov ds, ax mov si, offset do0 mov ax, 0 mov es, ax mov di, 200h mov cx, offset do0end - offset do0 cld rep movsb mov ax, 0 mov ds, ax mov word ptr ds:[0*4], 200h mov word ptr ds:[0*4 + 2], 0 do0: jmp do0start db &quot;divide error!&quot; do0start: mov ax, cs mov ds, ax mov si, 202h mov ax, 0b800h mov es, ax mov di, 12*160+36*2 mov cx, 13 s: mov al, [si] mov es:[di], al mov byte ptr es:[di+1], 01001001b inc si add di, 2 loop s mov ax, 4c00h int 21h do0end: nop mov ax, 4c00h int 21h code ends end start  测试程序：
-      <a href="http://liuxueyang.github.io/blog/2013/10/17/%E7%BC%96%E5%86%990%E5%8F%B7%E4%B8%AD%E6%96%AD%E7%9A%84%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F%E5%A4%84%E7%90%86%E9%99%A4%E6%B3%95%E6%BA%A2%E5%87%BA/">Read On &rarr;</a>
       
     </div>
     

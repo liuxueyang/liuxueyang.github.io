@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Adding Exits to a Maze &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="求无向图的连通分量的个数">
+  <meta name="keywords" content="Algorithm,DFS">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+        <img src="https://www.gravatar.com/avatar/2e3a2be066049f38f7a3f80eff0a5400?s=200"
+             alt="gravatar" title="liuxueyang">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Adding Exits to a Maze</h1>
+    <span class="post-date">May 16, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/05/16/adding-exits-to-a-maze/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://liuxueyang.github.io/categories/algorithm">Algorithm</a><a class="label" href="http://liuxueyang.github.io/categories/dfs">DFS</a>
+    </span>
+    <p>题目链接：<a href="https://gitlab.com/liuxueyang/algorithms-on-graph-exercise/blob/master/week1/09_graph_decomposition_problems_1.pdf">pdf</a></p>
+
+<p>给出一个无向图，求连通分量的个数。对这个图做一遍DFS同时计数就好了。因
+为我用邻接表表示图，所以还要记得孤点的情况，这个后来才发现。</p>
+
+<pre><code class="language-cpp">// Begin: Fri May 12 19:52:46 CST 2017
+// Finish: Fri May 12 20:16:44 CST 2017
+
+
+// 求有几个连通块。。
+
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+
+void
+dfs(vector&lt;vector&lt;int&gt; &gt; &amp;adj, vector&lt;bool&gt; &amp;visit, int x)
+{
+  visit[x] = true;
+
+  for (size_t i = 0; i &lt; adj[x].size(); ++i) {
+    if (!visit[adj[x][i]]) {
+      dfs(adj, visit, adj[x][i]);
+    }
+  }
+
+}
+
+int number_of_components(vector&lt;vector&lt;int&gt; &gt; &amp;adj, int n) {
+  int res = 0;
+  vector&lt;bool&gt; visit(n, false);
+
+  // 所以我忘了孤点。。。。T_T
+  
+  for (size_t i = 0; i &lt; adj.size(); ++i) {
+    for (size_t j = 0; j &lt; adj[i].size(); ++j) {
+      if (!visit[adj[i][j]]) {
+	res++;
+	dfs(adj, visit, adj[i][j]);
+      }
+    }
+  }
+
+  // 加上孤点。。。。
+  for (int i = 0; i &lt; n; ++i) {
+    if (!visit[i]) res++;
+  }
+
+
+  return res;
+}
+
+int main() {
+  size_t n, m;
+
+  cin &gt;&gt; n &gt;&gt; m;
+  // while(std::cin &gt;&gt; n &gt;&gt; m) {
+    vector&lt;vector&lt;int&gt; &gt; adj(n, vector&lt;int&gt;());
+    
+    for (size_t i = 0; i &lt; m; i++) {
+      int x, y;
+      std::cin &gt;&gt; x &gt;&gt; y;
+      adj[x - 1].push_back(y - 1);
+      adj[y - 1].push_back(x - 1);
+    }
+    
+    std::cout &lt;&lt; number_of_components(adj, n) &lt;&lt; endl;
+  // }
+}
+
+</code></pre>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

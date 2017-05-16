@@ -79,6 +79,110 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/20/ubuntu-12.04-%E5%AE%89%E8%A3%85%E4%B9%8B%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/">ubuntu 12.04 安装之后的配置问题</a>
+      </h1>
+      <span class="post-date">Nov 20, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/20/ubuntu-12.04-%E5%AE%89%E8%A3%85%E4%B9%8B%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+       首先换软件源。 如果安装vim的时候出现问题，比如： Reading package lists&hellip; DoneBuilding dependency tree Reading state information&hellip; DonePackage vim is not available, but is referred to by another package.This may mean that the package is missing, has been obsoleted, oris only available from another source E: Package &lsquo;vim&rsquo; has no installation candidate 执行 sudo apt-get update 就可以了 如果刚刚安装上系统，没有中文输入法，也没有输入法的切换面板，执行： killall ibus-daemon ibus-daemon -d 然后就出现了输入法切换面板，点击，找到 preferences 选项，在 inputmethod 里面添加中文输入法就可以了。 设置允许root 登录 ： vi /etc/lightdm/lightdm.conf. 在这个文件末尾加上下面两行代码 greeter-show-manual-login=trueallow-guest=false 保存退出。然后 sudo passwd root 设置root登录密码就可以了。  
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/12/ubuntu12.04-inodeclient-%E8%BF%9E%E6%A0%A1%E5%9B%AD%E7%BD%91/">ubuntu12.04 iNodeClient 连校园网</a>
+      </h1>
+      <span class="post-date">Nov 12, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/12/ubuntu12.04-inodeclient-%E8%BF%9E%E6%A0%A1%E5%9B%AD%E7%BD%91/#disqus_thread">Comments</a>
+      </span>
+      
+      百度文库里面有一个文档，叫做”ubuntu_12.04_安装_iNodeClient_教程“，按照那个做，安装上之后然后发现能通过身份验证，但是连不上网，继续执行下面的操作。 sudo chmod -R 777 /home/suruibin/iNodeClient（后面这个路径改成你自己的安装目录）
+进入目录 cd iNodeClient 安装：sudo ./install.sh
+sudo ln -s /usr/lib/i386-linux-gnu/libtiff.so.4 /usr/lib/i386-linux-gnu/libtiff.so.3
+sudo apt-get install libjpeg62
+从网上找到libtiff.so.4这个文件，执行 sudo cp libtiff.so.4 /usr/lib
+到此iNodeClient安装好了，输入用户名，密码什么的就可以了。
+2012-11-12 22:45:04
+这个方法以前一直可以，但是最近貌似不行了……囧，后来找各种方法，http://hi.baidu.com/shen1000shen/item/c935a9383b615542033edcf9 这位神牛总结的很好，佩服！终于连上网了，Ubuntu爽到爆～
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-537---artificial-intelligence/">uva 537 - Artificial Intelligence?</a>
+      </h1>
+      <span class="post-date">Nov 9, 2012 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-537---artificial-intelligence/#disqus_thread">Comments</a>
+      </span>
+      
+      Physics teachers in high school often think that problems given as text are more demanding than pure computations. After all, the pupils have to read and understand the problem first! So they don&rsquo;t state a problem like U=10V, I=5A, P=?&quot; but rather likeYou have an electrical circuit that contains a battery with a voltage of U=10V and a light-bulb. There&rsquo;s an electrical current of I=5A through the bulb. Which power is generated in the bulb?
+      <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-537---artificial-intelligence/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/09/vim-%E9%85%8D%E7%BD%AE-%E8%BD%AC%E8%BD%BD/">vim 配置 转载</a>
+      </h1>
+      <span class="post-date">Nov 9, 2012 &middot; 8 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/09/vim-%E9%85%8D%E7%BD%AE-%E8%BD%AC%E8%BD%BD/#disqus_thread">Comments</a>
+      </span>
+      
+      一个比较偷懒的方法是执行一下命令： cd /etc/vim sudo vi vimrc 然后把里面的注释去掉就可以了,但是里面的配置不太全。 原文链接 http://www.oschina.net/code/snippet_103341_9644 linux 平台：
+&quot; ----------------- Author: Ruchee &quot; ----------------- Email: my@ruchee.com &quot; ----------------- WebSite: http://www.ruchee.com &quot; ----------------- Date: 2012-05-01 &quot; Ctrl + H --光标移当前行行首 &quot; Ctrl + J --光标移下一行行首 &quot; Ctrl + K --光标移上一行行尾 &quot; Ctrl + L --光标移当前行行尾 &quot; Ctrl + C --编译 [支持C/C++、Java、Haskell] &quot; Ctrl + R --运行 [支持C/C++、Java、Haskell、Lua、Perl、Python、Ruby] &quot; Ctrl + ] --转到函数定义 &quot; Ctrl + T --返回调用函数 &quot; Ctrl + E --一步加载语法模板和作者、时间信息 &quot; &lt;C-P&gt; --单词补全 &quot; &lt;C-X&gt;&lt;C-L&gt; --整行补全 &quot; Tab键 --插入模式下的全功能语法结构补全 [snipMate插件] &quot; Shift + Insert --向Vim中粘贴从别处复制的内容 &quot; u [小写] --单步复原 [非插入模式] &quot; U [大写] --整行复原 [非插入模式] &quot; jj --保存文件并留在插入模式 [插入模式] &quot; kk --返回Normal模式 [插入模式] &quot; nt --打开NERDTree [非插入模式] &quot; tl --打开TagList [非插入模式] &quot; za --打开或关闭当前折叠 &quot; zM --关闭所有折叠 &quot; zR --打开所有折叠 &quot; :set syntax=cpp --手动选择语法高亮 [或 :set filetype=cpp] &quot; :%!
+      <a href="http://liuxueyang.github.io/blog/2012/11/09/vim-%E9%85%8D%E7%BD%AE-%E8%BD%AC%E8%BD%BD/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-10010---wheres-waldorf/">uva 10010 - Where&#39;s Waldorf?</a>
+      </h1>
+      <span class="post-date">Nov 9, 2012 &middot; 4 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-10010---wheres-waldorf/#disqus_thread">Comments</a>
+      </span>
+      
+      Given a m by n grid of letters, ( ), and a list of words, find the location in the grid at which the word can be found. A word matches a straight, uninterrupted line of letters in the grid. A word can match the letters in the grid regardless of case (i.e. upper and lower case letters are to be treated as the same). The matching can be done in any of the eight directions either horizontally, vertically or diagonally through the grid.
+      <a href="http://liuxueyang.github.io/blog/2012/11/09/uva-10010---wheres-waldorf/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-253---cube-painting/">uva 253 - Cube painting</a>
+      </h1>
+      <span class="post-date">Nov 8, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-253---cube-painting/#disqus_thread">Comments</a>
+      </span>
+      
+      We have a machine for painting cubes. It is supplied with three different colors: blue, red and green. Each face of the cube gets one of these colors. The cube&rsquo;s faces are numbered as in Figure 1.  Figure 1. Since a cube has 6 faces, our machine can paint a face-numbered cube in different ways. When ignoring the face-numbers, the number of different paintings is much less, because a cube can be rotated.
+      <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-253---cube-painting/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-10161---ant-on-a-chessboard/">uva 10161 - Ant on a Chessboard</a>
+      </h1>
+      <span class="post-date">Nov 8, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-10161---ant-on-a-chessboard/#disqus_thread">Comments</a>
+      </span>
+      
+      One day, an ant called Alice came to an M*M chessboard. She wanted to go around all the grids. So she began to walk along the chessboard according to this way: (you can assume that her speed is one grid per second) At the first second, Alice was standing at (1,1). Firstly she went up for a grid, then a grid to the right, a grid downward. After that, she went a grid to the right, then two grids upward, and then two grids to the left…in a word, the path was like a snake.
+      <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-10161---ant-on-a-chessboard/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-113---power-of-cryptography/">uva 113 - Power of Cryptography</a>
+      </h1>
+      <span class="post-date">Nov 8, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-113---power-of-cryptography/#disqus_thread">Comments</a>
+      </span>
+      
+      Current work in cryptography involves (among other things) large prime numbers and computing powers of numbers modulo functions of these primes. Work in this area has resulted in the practical use of results from number theory and other branches of mathematics once considered to be of only theoretical interest. This problem involves the efficient computation of integer roots of numbers. Given an integer and an integer you are to write a program that determines , the positive root of p.
+      <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-113---power-of-cryptography/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-621---secret-research/">uva 621 - Secret Research</a>
       </h1>
       <span class="post-date">Nov 7, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-621---secret-research/#disqus_thread">Comments</a>
@@ -100,103 +204,6 @@
       
       (An homage to Theodore Seuss Geisel) The Cat in the Hat is a nasty creature,But the striped hat he is wearing has a rather nifty feature. With one flick of his wrist he pops his top off. Do you know what&rsquo;s inside that Cat&rsquo;s hat?A bunch of small cats, each with its own striped hat. Each little cat does the same as line three,All except the littlest ones, who just say ``Why me?
       <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-107---the-cat-in-the-hat/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-10790---how-many-points-of-intersection/">uva 10790 - How Many Points of Intersection?</a>
-      </h1>
-      <span class="post-date">Nov 7, 2012 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-10790---how-many-points-of-intersection/#disqus_thread">Comments</a>
-      </span>
-      
-      We have two rows. There are a dots on the top row and b dots on the bottom row. We draw line segments connecting every dot on the top row with every dot on the bottom row. The dots are arranged in such a way that the number of internal intersections among the line segments is maximized. To achieve this goal we must not allow more than two line segments to intersect in a point.
-      <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-10790---how-many-points-of-intersection/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/06/uva-11044-searching-for-nessy/">uva 11044 Searching for Nessy</a>
-      </h1>
-      <span class="post-date">Nov 6, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/06/uva-11044-searching-for-nessy/#disqus_thread">Comments</a>
-      </span>
-      
-      The Loch Ness Monsteris a mysterious and unidentified animal said to inhabit Loch Ness, a large deep freshwater loch near the city of Inverness in northern Scotland. Nessie is usually categorized as a type of lake monster. http://en.wikipedia.org/wiki/Loch_Ness_Monster In July 2003, the BBC reported an extensive investigation of Loch Ness by a BBC team, using 600 separate sonar beams, found no trace of any ¨sea monster¨ (i.e., any large animal, known or unknown) in the loch.
-      <a href="http://liuxueyang.github.io/blog/2012/11/06/uva-11044-searching-for-nessy/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/06/uva-573-the-snail/">uva 573 The Snail</a>
-      </h1>
-      <span class="post-date">Nov 6, 2012 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/06/uva-573-the-snail/#disqus_thread">Comments</a>
-      </span>
-      
-      The Snail
-A snail is at the bottom of a 6-foot well and wants to climb to the top. The snail can climb 3 feet while the sun is up, but slides down 1 foot at night while sleeping. The snail has a fatigue factor of 10%, which means that on each successive day the snail climbs 10% 3 = 0.3 feet less than it did the previous day. (The distance lost to fatigue is always 10% of the first day&rsquo;s climbing distance.
-      <a href="http://liuxueyang.github.io/blog/2012/11/06/uva-573-the-snail/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/06/lost/">lost</a>
-      </h1>
-      <span class="post-date">Nov 6, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/06/lost/#disqus_thread">Comments</a>
-      </span>
-      
-      从今年暑假7月15日开始学ACM到现在已经快4个月了，水平还是那么的水。。。照这样下去，明年的这个时候该是什么样子，，唉。。 从开始到现在走了不少弯路，明显把太多时间花在了做水题上，也没有做多少总结，根本没有去认真学一下正经的算法，其实算法才是最重要的，把算法学好需要很长的时间积累，不是短期内就可以搞定的。以后少做水题，多学算法，针对学习的算法多练习，平均每天做3题比较合适，还有，多总结，经常用的算法多写几遍，熟练，代码要精简。 好好加油吧，再坚持一阵子，虽然不知道以后会变成怎样。 看书要有针对性地看。做ACM，关键是态度，人家做IOI的，不也是高中生吗，人家照样比大学生强。至于队友，LLH明年大四肯定就不做了，这让我颇有压力，希望在大二这一年剩下的时间里面好好做，争取能取得一点成绩，这样也算少留下一点遗憾吧。明年我还要不要继续做下去，再说。也许会，也许不会。 让时间决定。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/06/%E8%BD%AC%E8%BD%BD--acm%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92/">转载  ACM训练计划</a>
-      </h1>
-      <span class="post-date">Nov 6, 2012 &middot; 7 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/06/%E8%BD%AC%E8%BD%BD--acm%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92/#disqus_thread">Comments</a>
-      </span>
-      
-      看完人家的博客，发现任重道远。。。 一位高手对我的建议： 一般要做到50行以内的程序不用调试、100行以内的二分钟内调试成功.acm主要是考算法的，主要时间是花在思考算法上，不是花在写程序与debug上。 下面给个计划你练练： 第一阶段：练经典常用算法，下面的每个算法给我打上十到二十遍，同时自己精简代码，因为太常用，所以要练到写时不用想，10-15分钟内打完，甚至关掉显示器都可以把程序打出来. 1.最短路(Floyd、Dijstra,BellmanFord) 2.最小生成树(先写个prim,kruscal要用并查集，不好写) 3.大数（高精度）加减乘除 4.二分查找. (代码可在五行以内) 5.叉乘、判线段相交、然后写个凸包. 6.BFS、DFS,同时熟练hash表(要熟，要灵活,代码要简) 7.数学上的有：辗转相除（两行内），线段交点、多角形面积公式. 8. 调用系统的qsort, 技巧很多，慢慢掌握. 9. 任意进制间的转换 第二阶段：练习复杂一点，但也较常用的算法。 如： 1. 二分图匹配（匈牙利），最小路径覆盖 2. 网络流，最小费用流。 3. 线段树. 4. 并查集。 5. 熟悉动态规划的各个典型：LCS、最长递增子串、三角剖分、记忆化dp 6.博弈类算法。博弈树，二进制法等。 7.最大团，最大独立集。 8.判断点在多边形内。 9. 差分约束系统. 10. 双向广度搜索、A*算法，最小耗散优先. 第三阶段：前两个阶段是打基础，第三阶段是锻炼在比赛中可以快速建立模型、想新算法。这就要平时多做做综合的题型了。 1. 把oibh上的论文看看（大概几百篇的，我只看了一点点，呵呵）。 2. 平时扫扫zoj上的难题啦，别老做那些不用想的题.(中大acm的版主经常说我挑简单的来做:-P ) 3. 多参加网上的比赛，感受一下比赛的气氛，评估自己的实力. 4. 一道题不要过了就算，问一下人，有更好的算法也打一下。 5. 做过的题要记好 :-) （一） 不可能都完全记住那么多的算法. 常用算法,拿过来就可以写出来 不常用的,拿起书来,看10分钟,就能理解算法(因为以前记过). 对以前没有记过的算法,就不好说了,难的可能要研究好几天. 这样就可以了. 应该熟练掌握的常用的算法应该有: 各种排序算法（插入排序、冒泡排序、选择排序，快速排序，堆排序，归并排序） 线性表(一般的线性表,栈,队列)的插入和删除 二叉树的遍历（前序，中序，后序） 图的遍历（深度优先，广度优先） 二分法查找，排序二叉树，Hash查找（处理冲突的方法）。 （二） 分析一个东西,你可以用不同的眼光去看待,有很多时候,就跟自己生活一样,觉得小时候看待问题很幼稚,现在看问题全面了,而且方式不一样了,为什么,就是成长吧,就跟这个一样的,你对算法,比如写一个程序,可能直接写很简单,可是可以有一些有趣的方式,比如通过什么样来表达,怎么样更高效..等等吧 （三） 于大学里把基本的专业课学扎实就ok，如：数据结构，离散，操作系统等。碰到一些基本的数据结构和算法，如查找排序要根据原理马上能写出相应的代码就行了，我个人是这样理解的，对于更深层次的东西，也是建立在自己熟练的基础之上的吧 （四） 算法与数据结构考验试题精析》第2版 机械工业出版社 如果你想练习的话，这里有N多的题可以来练习，但实际中能用到的比较少，除非搞一些高端的玩意，不过平时也可以在自己的项目中结合使用 （五） 数据结构在平时可能用不上，但数据结构可以培养你程序时如果注意效率的意识，一个学过数据结构的人和一个没有学过数结构的人写出来的程序可能在效率上有差别。 （六） 搞ACM需要的掌握的算法.
-      <a href="http://liuxueyang.github.io/blog/2012/11/06/%E8%BD%AC%E8%BD%BD--acm%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/05/uva10177-2/3/4-d-sqr/rects/cubes/boxes/">uva10177 (2/3/4)-D Sqr/Rects/Cubes/Boxes?</a>
-      </h1>
-      <span class="post-date">Nov 5, 2012 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/05/uva10177-2/3/4-d-sqr/rects/cubes/boxes/#disqus_thread">Comments</a>
-      </span>
-      
-      Problem J (2/3/4)-D Sqr/Rects/Cubes/Boxes? Input: standard input Output: standard output Time Limit: 2 seconds You can see a (4x4) grid below. Can you tell me how many squares and rectangles are hidden there? You can assume that squares are not rectangles. Perhaps one can count it by hand but can you count it for a (100x100) grid or a (10000x10000) grid. Can you do it for higher dimensions? That is can you count how many cubes or boxes of different size are there in a (10x10x10) sized cube or how many hyper-cubes or hyper-boxes of different size are there in a four-dimensional (5x5x5x5) sized hypercube.
-      <a href="http://liuxueyang.github.io/blog/2012/11/05/uva10177-2/3/4-d-sqr/rects/cubes/boxes/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/05/uva-100-the-3n-1-problem/">uva 100 The 3n&#43;1 problem</a>
-      </h1>
-      <span class="post-date">Nov 5, 2012 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/05/uva-100-the-3n-1-problem/#disqus_thread">Comments</a>
-      </span>
-      
-      Problems in Computer Science are often classified as belonging to a certain class of problems (e.g., NP, Unsolvable, Recursive). In this problem you will be analyzing a property of an algorithm whose classification is not known for all possible inputs. Consider the following algorithm: 2. print n 3. if n = 1 then STOP 4. if n is odd then 5. else 6. GOTO 2 Given the input 22, the following sequence of numbers will be printed 22 11 34 17 52 26 13 40 20 10 5 16 8 4 2 1 It is conjectured that the algorithm above will terminate (when a 1 is printed) for any integral input value.
-      <a href="http://liuxueyang.github.io/blog/2012/11/05/uva-100-the-3n-1-problem/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/05/uva-10038-jolly-jumpers/">uva 10038 Jolly Jumpers</a>
-      </h1>
-      <span class="post-date">Nov 5, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/05/uva-10038-jolly-jumpers/#disqus_thread">Comments</a>
-      </span>
-      
-      A sequence of n &gt; 0 integers is called a jolly jumper if the absolute values of the difference between successive elements take on all the values 1 through n-1. For instance, is a jolly jumper, because the absolutes differences are 3, 2, and 1 respectively. The definition implies that any sequence of a single integer is a jolly jumper. You are to write a program to determine whether or not each of a number of sequences is a jolly jumper.
-      <a href="http://liuxueyang.github.io/blog/2012/11/05/uva-10038-jolly-jumpers/">Read On &rarr;</a>
       
     </div>
     

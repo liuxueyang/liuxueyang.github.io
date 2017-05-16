@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Graph on 黑历史</title>
+    <link>http://liuxueyang.github.io/categories/graph/</link>
+    <description>Recent content in Graph on 黑历史</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 16 May 2017 23:24:52 +0800</lastBuildDate>
+    
+	<atom:link href="http://liuxueyang.github.io/categories/graph/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Checking Whether Any Intersection in a City is Reachable from Any Other</title>
+      <link>http://liuxueyang.github.io/blog/2017/05/16/checking-whether-any-intersection-in-a-city-is-reachable-from-any-other/</link>
+      <pubDate>Tue, 16 May 2017 23:24:52 +0800</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2017/05/16/checking-whether-any-intersection-in-a-city-is-reachable-from-any-other/</guid>
+      <description>题目链接：pdf
+题目给出一个有向图，要求输出图中强连通分量的个数。
+我把这样的强连通分量叫做一个sink：不存在一个边从这个强连通分量中的任意 一个点连接到其它连通分量。也就是说如果把这个强连通分量缩成一个点的话， 它的出度为0。
+我把和一个图的所有边都反向的图叫做反向图。貌似没有这样的术语。不知道 reverse graph应该怎么翻译。
+思路大概是这样的：
+ 如果我们知道一个有向图的sink中的一个点，那么我们就可以求出这个强连 通分量的所有点，因为强连通分量中的任意两个点都相互可达。 如何求有相同的sink？我们知道反向图的强连通分量的个数和原图的强连通 分量一定是一样的，只是方向不同。并且，原图的sink对应于反向图的 source strong connected component，所以我们可以通过求反向图的source SCC，来求原图的sink。 求一个图的source SCC的思路和用DFS求拓扑排序的思路是一样的，我们可以 按照所有点的DFS回退的时刻降序排序，这样DFS最晚回退的点就是反向图的 source SCC，也就是原图的sink，我们可以第二次DFS得到这个sink中的所有 点并且从原图中去掉，继续求下一个sink，同时计数。  实现的过程中出现了非常难以发现的bug：一个vector，我在dfs里面加入元素， 然后在调用dfs的外层循环中循环这个vector。所以对于小数据并没有显现出错 误，对于10000的数据就出现段错误了。调试了很久，不过xhe也教了我好多调试 的方法，比如gdb，valgrind，libsigseg库，strace等。不过gdb调试的时候查 看STL数据结构里面的数据的时候还是有点小麻烦，这个时候IDE的调试工具就好 用很多了。
+另外，gdb设置端点竟然支持条件表达式，这个功能非常有用。
+// Sat May 13 09:28:34 CST 2017 // Sat May 13 10:46:30 CST 2017 // 求一个有向图的强连通分量的个数。。。 /* 1. 建reverse graph 2. 降序排序post 3. 在原图中依次求强连通分量，并且从图中去掉 */ #include &amp;lt;algorithm&amp;gt; #include &amp;lt;iostream&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;utility&amp;gt; using namespace std; typedef vector&amp;lt;int&amp;gt; VI; typedef pair&amp;lt;int, int&amp;gt; PII; int cnt; vector&amp;lt;PII&amp;gt; post;	// index, post void dfs(vector&amp;lt;VI&amp;gt; &amp;amp;adj, vector&amp;lt;bool&amp;gt; &amp;amp;used, int x, bool get_post) { used[x] = true; for (auto &amp;amp;v1 : adj[x]) { if (!</description>
+    </item>
+    
+  </channel>
+</rss>

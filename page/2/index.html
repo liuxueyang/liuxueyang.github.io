@@ -79,6 +79,142 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/04/13/haskell-%E7%AC%94%E8%AE%B09/">Haskell 笔记9</a>
+      </h1>
+      <span class="post-date">Apr 13, 2017 &middot; 8 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/04/13/haskell-%E7%AC%94%E8%AE%B09/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="http://liuxueyang.github.io/categories/haskell">Haskell</a>
+      </span>
+      
+      这是第九章的笔记
+Hello, world! Files and streams getContents：从标准输入读数据，返回IO Action，一直到文件末尾。
+-- print lines whose length is less than 10 main = do lines &lt;- getContents putStr . shortLines $ lines shortLines :: String -&gt; String shortLines = unlines . filter ((&lt; 10) . length) . lines -- Function composition简直好用  interact：接收一个类型为String -&gt; String的函数作为参数，返回一个IO Action，这个IO Action接收一个输入，用之前的String -&gt; String函数处理之后，然后返回一个IO Action，这个IO Action执行的时候会输出处理之后的字符串。
+main = interact shortLines shortLines = unlines . filter ((&lt;5) . length) .
+      <a href="http://liuxueyang.github.io/blog/2017/04/13/haskell-%E7%AC%94%E8%AE%B09/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/04/12/%E5%87%A0%E7%A7%8D%E4%B8%AA%E4%BA%BA%E6%96%87%E6%A1%A3%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88/">几种个人文档同步方案</a>
+      </h1>
+      <span class="post-date">Apr 12, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/04/12/%E5%87%A0%E7%A7%8D%E4%B8%AA%E4%BA%BA%E6%96%87%E6%A1%A3%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88/#disqus_thread">Comments</a>
+      </span>
+      
+      因为前几天（4月7日晚上）我的笔记本硬盘突然坏了，不能读盘了，造成了一些损失，之前做得Coursera上的三部分PL课的作业什么的都没有了，当初也没有多想就没有放到网盘里面同步，万万没想到硬盘会出问题。另外损失了大概两天的工作量，因为两天之前同步过一次Dropbox，因为需要频繁修改一些文件，Dropbox也就会频繁同步，我的电脑比较老了，一直开着Dropbox比较占内存和CPU，所以只是偶尔打开Dropbox。这也算是一个教训吧，所以在这里纪录一下。
+最简单的就是用网盘了，比如Dropbox之类的。Slackware里面我用Dropbox和OneDrive。另外一种方法就是Gitlab或者Bitbucket的私有仓储，如果可以公开的话，可以直接放到Github的公开仓库，缺点就是需要频繁git add，git push什么的，这个时候Emacs的插件magit就很有用了。
+以后尤其是手写的文档，一定要注意经常同步。不管是移动硬盘还是笔记本硬盘都不如网盘靠谱，至于数据的安全性嘛，都是一些笔记啊，程序啊之类的，好像也没有什么特别需要保护的。当然也可以把文件加密再上传到网盘。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/04/12/haskell-%E7%AC%94%E8%AE%B07/">Haskell 笔记7</a>
+      </h1>
+      <span class="post-date">Apr 12, 2017 &middot; 6 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/04/12/haskell-%E7%AC%94%E8%AE%B07/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="http://liuxueyang.github.io/categories/haskell">Haskell</a>
+      </span>
+      
+      这是一些阅读Learn You a Haskell for Great Good!的时候的笔记，之前用Latex写的，放在Dropbox里面，现在想把它们整理一下，放在博客里。这是第七章 Modules的笔记。
+Loading modules 之前用TeXmacs虽然挺方便，但还是感觉有点不舒服。所以还是换回来吧。
+在默认的Prelude模块里面，已经默认引入了一些Data.List中的函数。另外，引入Data.List模块的时候不需要使用带限定符的方法，因为Prelude里面的函数除了默认引入的Data.List的部分函数以外，不会和Data.List里面的其它函数命名冲突。然而，如果再引用其它模块的时候就不一定了。一般情况下只需要用一般的引入模块的方法就够了：import Data.List
+Data.List group这个函数，它接收一个列表，把列表中相邻并且相等的元素合成一个子列表，对于相等但是不相邻的元素，它会分别合成独立的子列表，也就是说，它并不会排序。比如：
+λ&gt; group [1, 2, 2, 2, 3, 4, 2, 2, 2, 5, 6] [[1],[2,2,2],[3],[4],[2,2,2],[5],[6]]  如果想要一个列表中的某个元素的个数，可以这样做：
+λ&gt; map (\ xs@(x : xs') -&gt; (x, length xs)) $ group . sort $ [1, 2, 2, 2, 3, 4, 2, 2, 2, 5, 6] [(1,1),(2,6),(3,1),(4,1),(5,1),(6,1)]  这里我用到了function composition(.)、function application($)、lambda表达式、lambda表达式中的模式匹配、用@符号来捕获整个模式（注意它的用法，用@符号来把整个模式和部分模式分隔开）。
+init函数的意思是得到列表的前n - 1个元素，inits的意思是依次得到列表的前0, 1, 2 ... n个元素组成一个嵌套列表。
+      <a href="http://liuxueyang.github.io/blog/2017/04/12/haskell-%E7%AC%94%E8%AE%B07/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/04/12/haskell-%E7%AC%94%E8%AE%B01/">Haskell 笔记1</a>
+      </h1>
+      <span class="post-date">Apr 12, 2017 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/04/12/haskell-%E7%AC%94%E8%AE%B01/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="http://liuxueyang.github.io/categories/haskell">Haskell</a>
+      </span>
+      
+      这是一些阅读Learn You a Haskell for Great Good!的时候的笔记，之前用Latex写的，放在Dropbox里面，现在想把它们整理一下，放在博客里。这是第二章 Starting Out的笔记。
+Baby&rsquo;s first functions 2017/03/15 10:32:18
+function call的优先级最高。
+定义函数这样：
+doubleMe x = x * 2  和SML基本一样。
+doubleUs x y = doubleMe x + doubleMe y doubleUs1(x, y) = doubleMe x + doubleMe y  这两个的区别？
+第一个是curried function，第二个函数接收一个参数，这个参数是一个含有两个元素的tuple，也叫做pair。
+函数调用格式：
+doubleUs 3 4 doubleUs1(3, 4)  if else格式：
+if x &gt; 50 then x else x * 3  和SML基本一样。同样，else部分不能省略。因为这是一个「表达式」，表达式必须有一个值，所以，不管条件是否满足，一定要有一部分被求值，并且当作这个表达式的值。并且，这两部分的表达式的返回值的类型必须一样。
+不能在ghci里面像在文件里面那样定义函数。有几种解决方法：defun function in ghci
+      <a href="http://liuxueyang.github.io/blog/2017/04/12/haskell-%E7%AC%94%E8%AE%B01/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/04/10/%E9%87%8D%E6%96%B0%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">重新整理博客</a>
+      </h1>
+      <span class="post-date">Apr 10, 2017 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/04/10/%E9%87%8D%E6%96%B0%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/#disqus_thread">Comments</a>
+      </span>
+      
+      这么长时间过去了，好像很久不管这个博客了，差不多10个月过去了。是时候 把这些零散的东西整理一下了。争取把之前在别的地方写的东西都整理到这里 来。这样以后查看会方便很多吧！
+主要是2014年的「博客园」上面的东西。找了一下现有的工具hexo-migrator-cnblogs发现早已经不维护了，现在也不能用了。所以写了一个简单的脚本来爬取我的博客：
+# 2017/04/11 00:45:15 AM # Author: liuxueyang from bs4 import BeautifulSoup import requests import re import os.path url = 'http://www.cnblogs.com/liuxueyang/default.html?page=' page_nums = range(1, 11) cnt = 0 already_urls = [] if os.path.exists('already.txt'): with open('already.txt', 'r') as already_f: already_urls = already_urls + already_f.readlines() for page_num in page_nums: url1 = url + str(page_num) r = requests.get(url1) soup = BeautifulSoup(r.content, 'html5lib') titles = soup.find_all('a', class_='posttitle') for title in titles: print '==' * 20, '\n\n' cnt += 1 blog_url = title.
+      <a href="http://liuxueyang.github.io/blog/2017/04/10/%E9%87%8D%E6%96%B0%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/03/16/%E6%95%B4%E7%90%86bilibili%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%BC%93%E5%AD%98%E7%9A%84%E8%A7%86%E9%A2%91/">整理Bilibili安卓客户端缓存的视频</a>
+      </h1>
+      <span class="post-date">Mar 16, 2017 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/03/16/%E6%95%B4%E7%90%86bilibili%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%BC%93%E5%AD%98%E7%9A%84%E8%A7%86%E9%A2%91/#disqus_thread">Comments</a>
+      </span>
+      
+      昨天晚上无意中看到了B站竟然有TOUCH。。完全没想到。所以我决定这次要把这部动画片全部下载下来，B站的视频质量看起来还不错。所以最简单的方法就是用安卓客户端缓存，然后在电脑上处理了。
+其实之前我做过这件事情。当初是为了整理「暖暖日记」这部番，因为它每集仅仅有5分钟左右。每个视频只有一个文件，所以只需要找到所有视频然后读json文件找到视频名称，重命名就好了。
+不过这次好像有点不同：每集一般有25分钟，缓存的是高清的。奇怪的是：即使是同一集，最开始我缓存的时候某一集是仅仅有一个mp4文件，然后我又实验了一次，发现它就变成了多个flv文件。。真是迷。。
+处理也不难，如果是单个mp4文件直接重命名就好了。如果是多个flv文件，那么就需要先合并，然后再命名。
+然后看了一下之前写的Perl程序，竟然，看不太懂了。。。T_T，然而还好，最后还是搞定了：
+#!/usr/bin/perl # Date : 2017/03/16 19:14:35 # Finish: 2017/03/16 22:04:07 # NOTE: There MUST NOT be any non-ascii character in the path!!!!!!!!!! use strict; use warnings; use 5.014; use Cwd; use JSON qw(); use open ':std', ':encoding(UTF-8)'; use File::Copy; my $cur_dir = '/home/repl/Videos/Bilibili/Fanju/TOUCH/s_2425'; opendir(DIR, $cur_dir) or dir $!; while (my $file = readdir(DIR)) { next if ($file =~ /^\./); # get index_title my $json_file = $cur_dir .
+      <a href="http://liuxueyang.github.io/blog/2017/03/16/%E6%95%B4%E7%90%86bilibili%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%BC%93%E5%AD%98%E7%9A%84%E8%A7%86%E9%A2%91/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/03/06/%E5%A4%8D%E4%B9%A0c--/">复习C&#43;&#43;</a>
+      </h1>
+      <span class="post-date">Mar 6, 2017 &middot; 8 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/03/06/%E5%A4%8D%E4%B9%A0c--/#disqus_thread">Comments</a>
+      </span>
+      
+      今天复习了一下C++。很久很久不碰这门语言，早上看到一段代码竟然感觉十分陌生。this，const pointer，引用之类的，有点忘了。其实也不是忘，就是感觉很陌生。比如this别的语言里面也有，只是不是指针，比较容易混淆。所以就大概查了一下C++ Primer，然后做了几道题目。放在这里。
+题目一 给CMyString类写一个方法，使它能够支持赋值=操作。CMyString类已经给出。
+#include &lt;bits/stdc++.h&gt; // implement a operator `=` on class CMyString using namespace std; class CMyString { public: CMyString(char * pData = NULL); CMyString(const CMyString &amp; str); CMyString &amp; operator =(const CMyString &amp;); void print(); ~CMyString(void); private: char * m_pData; }; CMyString &amp; CMyString::operator =(const CMyString &amp; str) { // if (this == &amp;str) return *this; // delete [] m_pData; // m_pData = NULL; // m_pData = new char[strlen(str.
+      <a href="http://liuxueyang.github.io/blog/2017/03/06/%E5%A4%8D%E4%B9%A0c--/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/03/06/const-member-function-in-cpp/">const member function in cpp</a>
+      </h1>
+      <span class="post-date">Mar 6, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/03/06/const-member-function-in-cpp/#disqus_thread">Comments</a>
+      </span>
+      
+      默认情况下，this是一个const pointer to the nonconst version of the class type。比如有一个类A，那么在类里面，this的类型是A * const。因为不能把一个const对象的地址赋值给一个指向nonconst对象的指针，因此不能把this绑定到一个const对象上。这就导致，不能在const对象上调用一个nonconst member function。
+解决方法就是，把this声明为const。可是this是隐性的变量，所以C++的解决方法就是在参数列表后面指定const。这样的函数就是const member function。它的语义是：this是一个const pointer to a const object of the class type。这样，const对象和nonconst对象都可以调用这个函数。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2017/03/06/const-pointer-and-pointer-to-const-in-cpp/">const pointer and pointer to const in Cpp</a>
       </h1>
       <span class="post-date">Mar 6, 2017 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/03/06/const-pointer-and-pointer-to-const-in-cpp/#disqus_thread">Comments</a>
@@ -105,148 +241,6 @@ int d = 32; bptr = &amp;d;  需要注意的是，即使d变量是nonconst，仍�
       
       我已经很久没有碰过C++这门语言了。重新看到C++程序的时候竟然有些陌生，很多语法都模糊了。所以我打算复习一下。
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2017/02/17/%E5%AD%A6%E4%B9%A0org-mode/">学习org-mode</a>
-      </h1>
-      <span class="post-date">Feb 17, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/02/17/%E5%AD%A6%E4%B9%A0org-mode/#disqus_thread">Comments</a>
-      </span>
-      
-      今天我花了非常多的时间来学习org-mode，以前主要用它来记录每天的工作和学习日志，仅仅记录学习时间，几乎只用到了Clock in, Clock out之类的功能。这两天我发现我非常有必要对学过的东西做一个总结或者笔记，供以后查看，不然每次捡起很久之前看的东西还是有点困难。比如前几周学的PL课程，分三部分，学完第一部分觉得还可以，第二部分就比较难了，有些比较新的概念虽然没有完全理解，但是照葫芦画瓢做作业还是可以的。然后到了第三部分，也能够顺利把作业完成。然而到了最后的考试的时候考到第二部分的知识和概念，我竟然几乎完全记不起来了！说实话我还是挺惊讶的。所以我决定以后要经常作笔记，没有完全理解的概念和原理应该经常回顾，反复消化。所以我决定认真学习一下org-mode，用它来管理我的笔记。
-本来我把笔记放在了 Dropbox 里面同步，后来想了想，我可能还是会拷贝一份在这里。以后查阅可能会方便很多。随后我会陆续把关于org-mode的笔记贴到下面。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2017/02/16/%E8%A7%A3%E5%86%B3konsole%E4%B8%8Bemacs-org-mode%E5%BF%AB%E6%8D%B7%E9%94%AE%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/">解决Konsole下Emacs org-mode快捷键不能使用的问题</a>
-      </h1>
-      <span class="post-date">Feb 16, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/02/16/%E8%A7%A3%E5%86%B3konsole%E4%B8%8Bemacs-org-mode%E5%BF%AB%E6%8D%B7%E9%94%AE%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a>
-      </span>
-      
-      如果想在终端里面使用Emacs的话，org-mode的有些快捷键可能会失效，比如M-LEFT，这个问题在这里有一个解决方案：Stack Overflow。然而我还是觉得挺麻烦的。
-今天瞎玩的时候，一个非常偶然的机会，发现这个问题在KDE 4里面的原生的Konsole里面可以非常容易地被解决，只需要在Profile的设置里面的Keyboard标签里面的Key Bindings设置成Default (Xfree 4)，如图：
-然后在org-mode里面就可以使用类似于M-LEFT之类的快捷键了。虽然GUI版本的Emacs可能会比较好看，不过还是终端下用Emacs更方便一点。另外，说到终端，以前经常用Terminator，不过在KDE 4里面其实原生的Konsole体验更好。顺便说一句：Slackware是我用过的最好用的发行版。KDE 4非常好用，当作主力机使用了两个多月了，没有出现过问题。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2017/02/14/%E5%AF%B9%E6%8A%98%E8%85%BE%E7%BC%96%E8%BE%91%E5%99%A8%E9%85%8D%E7%BD%AE%E7%9A%84%E6%83%B3%E6%B3%95/">对折腾编辑器配置的想法</a>
-      </h1>
-      <span class="post-date">Feb 14, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/02/14/%E5%AF%B9%E6%8A%98%E8%85%BE%E7%BC%96%E8%BE%91%E5%99%A8%E9%85%8D%E7%BD%AE%E7%9A%84%E6%83%B3%E6%B3%95/#disqus_thread">Comments</a>
-      </span>
-      
-      我是先接触的Vim，用了很长一段时间，去年才开始使用Emacs。两种编辑器我觉得都挺不错，有的时候使用Emacs，有的时候使用Vim。当然，我也喜欢使用各种IDE。对于我来说，使用Vim和Emacs最大的乐趣就是可以定制各种各样奇怪的东西，虽然只是找别人开发分享的插件，但还是充满了乐趣。有的时候发现了某个非常厉害的插件会特别特别兴奋，这种情况遇到过两次：一次是abo-abo这个俄罗斯人开发的Emacs插件，一次是junegunn这个韩国人开发的Vim插件。
-有机会也学着写写怎么写插件吧。配置编辑器其实挺花时间并且会上瘾，看来也没有什么意义，因为使用再好的编辑器，也没法阻止你写出丑陋的程序，也没法提高工作和学习效率。所以听过一句话，大意大概是这样：如果世界上的程序员能够把折腾编辑器的一般精力花在「更有价值」的事情上面的话，工作效率也许会提升不止一倍。
-我配置过很多次Vim和Emacs，也因为这样或者那样的原因推翻过很多次。也使用过一些类似于Spacemacs的这种称为「世界级配置」的Emacs。然而我还是喜欢自己从头开始配置，因为别人的需求和我个人的需求不可能完全一致，使用别人的非常全面的配置反而会给我引来更多没法预料的问题，太臃肿的配置也让可移植性变差，比如版本问题，比如想要引入一个插件的时候，和原来的配置的冲突问题等等。
-慢慢的我还是比较喜欢非常轻量级的、能够恰好满足我的个人需求的配置。我可以根据需要来手动加载当前需要的配置和插件，而不是当启动的时候一次性一次性全部加载进来。还有，如果不是特别需要，就不要加入新的插件，尽量保持配置文件的清晰和简洁，能够轻易移植。所以我打算慢慢地开始重新配置我的编辑器，要遵守的原则是：尽量保持简洁、轻量。不要强行解决「次要」问题，不适合使用编辑器做的事情就不要强行来实现。
-其实，Emacs本身的初始配置对于一些场景来说，就已经够用了。
-另外，这两种编辑器，如果非要做一个比较的话，我更喜欢Emacs，但是类似于临时修改个系统配置文件之类的事情，使用Vim快速解决。对于日常工作：写程序、记笔记等，我全部在Emacs里面做。
- 唉……如果老是依赖某种东西的话，毕竟不算是真正的勇气。——风间彻
- 2016/02/17 01:16:57AM 更新 昨晚又折腾了很久的Emacs，该完成的任务又没有完成。其实仔细想想，折腾编辑器确实耽误了我非常非常多的时间，带来的回报却很少。所以决定不再自己折腾和配置编辑器了。刚才又适用了一下 Spacemacs，其实感觉还不错。至于到底是不是完全适合自己，倒不是最重要的，重要的是能用，能够比较方便地实现日常的编辑工作，如果有些小的瑕疵或者违反我个人的习惯的话，那就慢慢适应吧。我不得不承认，我自己再怎么配置也不可能有 Spacemacs 的配置全面可靠。所以我决定以后就用 Spacemacs 了。花很多时间折腾编辑器甚至舍本逐末对目前的我来说是一件非常不明智的事情。
-如果要使用 Spacemacs 的话唯一需要做的事情就是，找时间认真看一下它的文档：http://spacemacs.org/doc/DOCUMENTATION.html。遇到问题最先应该找的就是官方文档，可能你遇到的问题官方文档里面没有特别拿一节或者一章来说明，但是很可能在其它某个小结里面做了说明，这个时候就体现出浏览一遍文档的重要性了。
-目前，我在 Spacemacs 里面只做了很少的配置：
- 加了lispy插件 更换了插件源 如果状态栏里面的Unicode符号显示乱码的话，把dotspacemacs-mode-line-unicode-symbols这个变量设置成nil  另外特别需要注意的是：不要强行解决不重要的问题。有些问题其实并没有那么重要，花很多时间去解决无关紧要的问题就是浪费时间。要做到这一点还是需要有自制力，克服所谓的「洁癖」或者「强迫症」。
-[2017-02-17 Fri 09:59] 更新 在使用 Spacemacs 的过程中，还是应该保持一个.org文件，来专门记录遇到的快捷键，以便以后需要的时候能够方便查阅。这么多快捷键肯定是一下记不住的。今天一整天都在使用 Spacemacs，说实话，体验非常好。对我来说简直完美：有一些美化，能够实现我需要的功能。虽然可能有些解决方案不如abo-abo的插件体验那么好，或者好像也没有加入 multicursors 的功能，但还是让我满意的。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2017/02/14/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8raspbian/">开始使用Raspbian</a>
-      </h1>
-      <span class="post-date">Feb 14, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/02/14/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8raspbian/#disqus_thread">Comments</a>
-      </span>
-      
-      这两天折腾了一下树莓派，因为我的树莓派里面的Arch Linux不能启动了。开机的时候，ACT LED并没有闪烁，查了一下wiki才知道这表示pi没有读取SD卡。试了很多次，开始以为接触问题，擦了擦卡然后开机的时候用力按着，还是不行。在IRC里问了一下，后来猜测可能是/boot分区出问题了，或者firmware在系统更新的时候出问题了，或者是pi的硬件的问题，或者是SD卡的问题。
-之前的手机里还有一个SD卡，只有2GB。然后备份数据之后，刷了Raspbian Lite，插入树莓派顺利进入系统了。能正常用。所以只能是SD卡里的系统问题了。
-花了点时间把树莓派里面的数据备份了一下，然后刷了Raspbian jessie，稍微配置了一下。意外地好用。我还是挺满意这个系统的。如果只是在树莓派里写写程序的话，用起来还是挺舒服的。本机用VNC连接到树莓派的桌面，然后就可以像另外一台配置比较低的电脑一样使用了。以前我以为VNC什么的速度可能很慢，画面也不清晰，这两天一直在用，发现其实体验非常好。可以根据主机屏幕的大小来设置树莓派的分辨率，我记得好像是设置一下/boot/config.txt文件里面的framebuffer_width和framebuffer_height这两个变量就好了。然后在VNC的设置里面再设置成同样的分辨率。完美。
-在树莓派里写程序的时候，好像除了一些非常轻量级的IDE能用之外，别的只能用Emacs或者Vim了。JetBrains家的IDE估计是没法用。:P
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2017/02/14/use-hexo/">Use Hexo</a>
-      </h1>
-      <span class="post-date">Feb 14, 2017 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/02/14/use-hexo/#disqus_thread">Comments</a>
-      </span>
-      
-      Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick Start Create a new post $ hexo new &quot;My New Post&quot;  More info: Writing
-Run server $ hexo server  More info: Server
-Generate static files $ hexo generate  More info: Generating
-      <a href="http://liuxueyang.github.io/blog/2017/02/14/use-hexo/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2017/01/02/%E6%8A%98%E8%85%BEemacs%E5%92%8Cfcitx%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/">折腾Emacs和Fcitx的兼容问题</a>
-      </h1>
-      <span class="post-date">Jan 2, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/01/02/%E6%8A%98%E8%85%BEemacs%E5%92%8Cfcitx%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a>
-      
-      <br/>
-      
-      </span>
-      
-      在Emacs时而不能使用Fcitx中文输入法。
-我只是把这件事记录在这里，我并没有搞定这个问题。
- 把下面的程序放到~/.xprofile文件里。未果。  export LANG=zh_CN.UTF8 export LC_CTYPE=en_US.UTF-8 export XMODIFIERS='@im=fcitx' export GTK_IM_MODULE=fcitx export QT_IM_MODULE=fcitx export GTK3_IM_MODULE=fcitx   放到~/.bashrc或者~/.zshrc、~/.profile里。未果。 试试XEmacs。未果。 卸载Fcitx之后重新安装，未果。 卸载Fcitx这后安装ibus输入法，也不能在Emacs里面使用ibus。 把上面的设置改成ibus，未果。 重新手动编译ibus，未果。 元旦结束，放弃。 元旦第二天，继续。 编译安装ibus-wubi，未果。 一天加半天过去，觉悟。放弃解决这个问题。  
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/12/30/slackware-dolphin%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%BE%E7%A4%BA%E4%B9%B1%E7%A0%81/">Slackware Dolphin中文文件夹显示乱码</a>
-      </h1>
-      <span class="post-date">Dec 30, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/12/30/slackware-dolphin%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%BE%E7%A4%BA%E4%B9%B1%E7%A0%81/#disqus_thread">Comments</a>
-      
-      <br/>
-      
-      </span>
-      
-      在Slackware里面的KDE 4的默认文件夹管理器Dolphin里面，中文文件夹的名称显示是一堆问号。这个问题是我前两天遇到的，还是记在这里吧。问题描述如下。
-Dolphin的侧边栏可以显示中文，如图：
-如果我想要建立一个中文名称的文件夹的话：
-就会成为这样：
-我的locale是这样的：
-我的解决方法是这样的：
-在/etc/profile.d/lang.sh这个文件里面，有这样一句话：
-# en_US is the Slackware default locale: export LANG=en_US  把它改成这样就可以了：
-export LANG=zh_CN.utf-8  重新登录如果不行，那就重启，问题应该就解决了。比如：
-顺便说一句，在这两天我整理文件的过程中发现，最好用最方便的文件管理器是：KDE的Dolphin，因为我可以这样：
-其次是macOS的Finder，它也有类似的文件夹显示方式。其它的比如Xfce里面的默认文件夹管理器，删除文件夹的时候没有提示，我严重怀疑有一次整理文件夹的时候误删了一些东西，因为我只发现了一次，并且从回收站里找到了，八成还有别的，我没发现……所以那些简洁的文件管理器也就日常用用还可以。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/12/29/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8slackware/">开始使用Slackware</a>
-      </h1>
-      <span class="post-date">Dec 29, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/12/29/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8slackware/#disqus_thread">Comments</a>
-      
-      <br/>
-      
-      </span>
-      
-      前两天，我在整理我的硬盘，顺便整理了一下我的openSUSE Leap里面的资料，同样也是十分的混乱。花了很长时间整理，全部移动到移动硬盘里。过程中发现openSUSE Leap的官方源连不上了，正常情况下官方源应该会选择国内速度最快的镜像的，然而有的时候就是蜜汁连不上……去年我也遇到过这种情况，然后我就放弃这个发行版了（后来又回来了……）。这次我决定替换掉openSUSE Leap 42.2，理由：
- 官方源有的时候连不上； 早上开机，一直使用到晚上，有的时候即使使用Xfce4也会变得卡； Plasma 5的BUG太多，出问题的次数太多； 跨版本升级的时候有点麻烦； 其实忍它很久了。  好吧，其实都是借口，我只是想试一试Slackware了。看了一下官方的文档，地址在这里：Document，这个文档挺不错的。粗略看完了。安装过程原来挺简单的，我还以为有多复杂。其中有一点挺人性化：安装过程中会提示你要不要制作一个启动盘，这样在系统出现问题无法启动的时候，利用启动盘就可以直接启动系统，然后我就制作了一个。没想到，很快我就用上了。Slackware使用的是LILO，而不是GRUB，Slackware不是那么激进，开发过程比较慢也比较保守，这一点我还是比较喜欢的，不用经常更新。是这样的：安装完之后，我发现LILO的第一个启动项是Windows而不是Slackware，我想把第一个换成Linux。然后在LILO的高级设置里面只选择了Windows，然后保存重启，发现启动项里只有Windows了……原来高级设置里的启动项目需要自己一个一个添加。没法进Slackware了，所以之前的启动盘就有用了，顺利进入Slackware，重新设置LILO，顺利解决。
-桌面环境我选择的KDE，安装完毕之后，干净清爽，KDE 4竟然非常流畅，完全不想Plasma 5在我的老电脑上面会经常卡顿。KDE 4一点也不卡，这点让我还是有点惊喜的。然后是中文一系列的配置：
- KeepassX fcitx中文双拼输入法 zsh, fish修改默认shell，oh-my-zsh, fisherman Terminator安装了，不过我现在还是用的默认的Konsole，干净好用，分割其实我也用到少，不如Tab方便 Shadowsocks的GUI版本我遇到点问题，但是命令行版本能用 Dropbox同步Emacs配置，个人文档 Jetbrains全家桶，顺利安装 Android Studio，顺利安装  哦，值得一提的是，系统默认提供了clisp。哈哈。这两天使用的过程中，我还是非常满意的。这么好的发行版，不知道为什么用户那么少。可能是因为安装软件比较麻烦？没有好用的软件包管理器？这个对于我来说不是什么问题。反而是好事，我可不想用zypper install, pacman -S或者apt install安装一堆我可能永远用不到的软件。有的软件需要自己编译，自己解决依赖，有的可以找到二进制包，总的来说还是挺方便的。比如，我要安装VLC这个播放器，过程是这样的：
- 在slackbuilds里面下载VLC的SlackBuild包：vlc.tar.gz到$HOME/Downloads，并解压缩：  wget https://slackbuilds.org/slackbuilds/14.2/multimedia/vlc.tar.gz ~/Downloads	tar -xvzf vlc.tar.gz   看一下vlc.info  cd vlc cat ./vlc.info  可以看到它有很多依赖，然后它的源代码的包在DOWNLOAD这个变量里面（一般情况下都是这个变量，只不过有的时候64位和32位是分开的，变量名字可能会不同，所以要注意一下。）
- 下载源代码  source ./vlc.info wget $DOWNLOAD   编译：  sudo ./vlc.SlackBuild 编译的过程中出错了：  checking for libavutil variant&hellip; none checking for GST_APP&hellip; yes checking for GST_VIDEO&hellip; yes checking for AVCODEC&hellip; no configure: error: No package &lsquo;libavcodec&rsquo; found No package &lsquo;libavutil&rsquo; found.
-      <a href="http://liuxueyang.github.io/blog/2016/12/29/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8slackware/">Read On &rarr;</a>
       
     </div>
     

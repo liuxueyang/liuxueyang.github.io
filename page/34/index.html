@@ -79,6 +79,107 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/15/hdu2098-%E4%B8%8D%E8%A6%8162-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/">hdu2098 不要62 ——数位DP入门题</a>
+      </h1>
+      <span class="post-date">Apr 15, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/15/hdu2098-%E4%B8%8D%E8%A6%8162-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=2089 题目大意： 含有4或者62的数字是不吉利数字，给一个区间，[m, n]，求这个区间内的除了不吉利数字以外的数字的数目。 思路： 由于数据范围只有1~1000000，可以暴力，水题，但是为了练习一下数位DP，没有把它当水题做…… 看的是这个人的代码：http://blog.csdn.net/acm_cxlove/article/details/7819907# 和hdu3555那道题目相似，但是多了一个条件，多了一个不含有4的条件，讨论一下。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; LL dp[8][3]; int a[8], b[8]; bool flag; int solve(int k){ int len = 0; LL temp = k; while (k){ a[++len] = k % 10; k /= 10; } LL ans = 0; int last = 0; flag = false; a[len+1] = 0; for (int i = len; i &gt;= 1; --i){ ans += dp[i-1][2] * a[i]; if (flag){ans += dp[i-1][0] * a[i];} //高位位填4，低位的不管 if (!
+      <a href="http://liuxueyang.github.io/blog/2013/04/15/hdu2098-%E4%B8%8D%E8%A6%8162-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/15/hdu1202-the-calculation-of-gpa-%E6%B0%B4%E9%A2%98/">hdu1202 The calculation of GPA ——水题</a>
+      </h1>
+      <span class="post-date">Apr 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/15/hdu1202-the-calculation-of-gpa-%E6%B0%B4%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=1202 题目大意：先计算出学分和点数的乘积的和，然后在除以学分之和。 思路： 很简单。只能说这道题目比较坑……不说什么了 本来是早上起来想写道水题，练练手，结果碰见这种题目，刚才我还无聊的测试了很多次，交了N遍，发现这么个坑的问题，感觉这种题目很没有意思……
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;hdu1202.in&quot;, &quot;r&quot;, stdin); #endif int t; while (~scanf(&quot;%d&quot;, &amp;t)){ double cnt = 0, cnt1 = 0; double s, p; for (int i = 0; i &lt; t; ++i){ cin &gt;&gt; s &gt;&gt; p; cnt += s; if (p&gt;=90 &amp;&amp; p &lt;= 100) cnt1 += 4.
+      <a href="http://liuxueyang.github.io/blog/2013/04/15/hdu1202-the-calculation-of-gpa-%E6%B0%B4%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/15/uestc1307-windy%E6%95%B0-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/">uestc1307 windy数 ——数位DP入门题</a>
+      </h1>
+      <span class="post-date">Apr 15, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/15/uestc1307-windy%E6%95%B0-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.uestc.edu.cn/problem.php?pid=1307  题目大意： 不含前导零且相邻两个数字之差至少为2的正整数被称为windy数。windy想知道，在A和B之间，包括A和B，总共有多少个windy数？ 思路： 具体解释代码中有。看的这个人的代码：http://blog.csdn.net/acm_cxlove/article/details/7819907# 然后自己又分析了一下，终于明白了。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int dp[15][10], a[15]; // 这个函数求的是区间（0，n）内的个数 LL solve(int n){ int len = 0; LL ans = 0; while (n){ a[++len] = n % 10; n /= 10; }int i, j; a[len+1] = 0; // 长度为1~len-1 for (i = 1; i &lt;= len-1; ++i) for (j = 1; j &lt;= 9; ++j) // 注意j从1开始，因为最高位不能是0！ ans += dp[i][j]; // debug了好久！！！ // 长度为len，但是最高位是a[len] - 1 for (i = 1; i &lt;= a[len] - 1; ++i) ans += dp[len][i]; // 长度为len，但是最高位是a[len] for (i = len - 1; i &gt;= 1; --i){ for (j = 0; j &lt; a[i]; ++j) if (abs(a[i+1] - j) &gt;= 2) ans += dp[i][j]; if (abs(a[i] - a[i+1]) &lt; 2) break; } return ans; } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;uestcoj1307.
+      <a href="http://liuxueyang.github.io/blog/2013/04/15/uestc1307-windy%E6%95%B0-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/14/hdu3555-bomb-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/">hdu3555 Bomb ——数位DP入门题</a>
+      </h1>
+      <span class="post-date">Apr 14, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/14/hdu3555-bomb-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=3555 题目大意： 给一个数字n,范围在1~2^63-1，求1~n之间含有49的数字有多少个。 思路： 经典的数位DP，学习了一下，看的别人的代码：http://www.cnblogs.com/luyi0619/archive/2011/04/29/2033117.html 状态转移： dp[i][0]代表长度为 i 并且不含有49的数字的个数； dp[i][1]代表长度为 i 并且不含有49，但是最高位是9的数字的个数； dp[i][2]代表长度为 i 并且含有49的数字的个数。 数组 a[i] 从低位到高位存储 n 的每一位数字。 则：dp[i][0] = dp[i-1][0] * a[i] - dp[i-1][1]; 表示长度为 i 的不含有49的数字的个数等于长度为 i - 1 的不含有49的数字的个数*当前的数字，因为这个位置可以填0~a[i] - 1，然后再减去长度为 i - 1 的最高位是9的数字的个数，因为如果长度为 i - 1 的最高位是9的话，那么高一位就不能填4了，否则就组成了49。 dp[i][1] = dp[i-1][0]; 表示长度为 i 的并且不含有49同时最高位是9的数字的个数等于，长度为 i - 1 的不含有49的数字的个数，因为只要在它的高一位加上一个9就可以了。 dp[i][2] = dp[i-1][2] * a[i] + dp[i-1][1]; 表示长度为 i 的含有49的数字的个数等于，长度为 i - 1 的数字的个数*当前的数字，再加上长度为 i - 1 的并且不含有49同时最高位是9的数字的个数，因为这个时候，只要在高一位加上一个4就可以了，这样在最高的两位就组成了一个49。 做法是从数字的高位向低位扫描，对于第 i 位， 其实这个题目还有一个地方不懂，就是为什么要在输入 n 后，要把 n 加1。想了一下特例，比如输入49，按照上面的做法，在第3步，并不会把符合条件的数字加上，因为4不是严格大于4，最后的执行结果就是0，但是如果加上1之后，n就变成了50，这样第3步恰好可以执行，结果就是正确的了。但是对于一般的情况，还是不知道为什么要把n加1……o(╯□╰)o 这题还是卡了很久，照着别人的代码敲的，死活过不了，然后又找了一份代码：http://blog.
+      <a href="http://liuxueyang.github.io/blog/2013/04/14/hdu3555-bomb-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/13/2013%E5%B9%B44%E6%9C%8812%E6%97%A5-%E6%99%B4/">2013年4月12日 晴</a>
+      </h1>
+      <span class="post-date">Apr 13, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/13/2013%E5%B9%B44%E6%9C%8812%E6%97%A5-%E6%99%B4/#disqus_thread">Comments</a>
+      </span>
+      
+      休息了两天，今天本来想好好跑一下，结果还没有出公寓就岔气了……后来全程都不爽，一直岔气，想起一句话：比赛中的错误往往是在起跑后的两分钟内犯下的，甚至是在第一分钟内。后来跑得还算好吧，但是没有了节奏感，明天希望状态好一点儿~
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/13/zoj2913-bus-pass-bfs%E5%85%A5%E9%97%A8%E9%A2%98/">zoj2913 Bus Pass ——BFS入门题</a>
+      </h1>
+      <span class="post-date">Apr 13, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/13/zoj2913-bus-pass-bfs%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1912 题目大意： 有很多个地区，有几条公交线经过一些地区，求出一个地区，满足，使这个地区到这些公交线上的所有公交站的距离中的最大值，最小。（这里的距离指的是两点之间的边数） 思路： 对于这些公交站中的每一个点，BFS，求出出当前点外，其他所有点到这个点的最小距离，然后对于公交站上的其他点，也进行同样地操作，不断更新所有点到公交站上的当前点的最小距离的较大值，然后遍历所有点，求出距离最小的一个点。用res1数组存储。res数组的作用是对于公交线上的每个点，BFS其他点的时候，临时存放其他点到这个公交站的最小距离，然后在与res1数组进行比较，用来更新res1数组。 注意： visited数组，标记这个是不是被访问过，并且标记的顺序要想清楚！把这个点入队的时候就要标记它被访问了，而不是它出队的时候再标记！这是因为，如果两天点同时和一个点相邻，如果等点出队的时候在标记的话，就会产生这个点被访问两次的情况，这个问题让我纠结了一个星期……我去……
+比如这种情况，Ｃ和Ａ，Ｂ同时相邻，假如：先访问Ａ，ｒｅｓ［Ｂ］　＝　ｒｅｓ［Ｃ］　＝　２，把Ａ标记，然后出队；再访问Ｂ，ｒｅｓ［Ｃ］　＝　３，Ｃ的值显然是不对的，所以，当把Ｂ，Ｃ两个点入队的时候，就把他们标记为已经访问，就可以了…… 做这个题目感触挺大的，首先，写代码要全神贯注，不能有一点儿疏忽，否则很容易犯那种超级难找出来的隐蔽的错误，一定要考虑明白再写；然后就是数组的下标什么的，养成好习惯，到底什么时候该从０开始，什么时候该从１开始，我觉得从１开始比较保险，因为有的时候会用到编号，比如这道题目，点的标号从１开始；最后就是思考这种题目应该如何存储题目给的信息，这个东西是看的书上的思想； 自己写代码比看着人家的代码写感觉和收获是完全不一样的。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 10000+10; int edge[MAX][11], res[MAX], res1[MAX], ve, pa, mz[MAX]; bool visited[MAX]; queue&lt;int&gt; qt; void bfs(int id){ res[id] = 1; qt.
+      <a href="http://liuxueyang.github.io/blog/2013/04/13/zoj2913-bus-pass-bfs%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/12/%E4%B8%80%E4%B8%AAbug%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/">一个bug，持续更新……</a>
+      </h1>
+      <span class="post-date">Apr 12, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/12/%E4%B8%80%E4%B8%AAbug%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/#disqus_thread">Comments</a>
+      </span>
+      
+       scanf(&ldquo;%d%d&rdquo;, &amp;n, &amp;mz[n]); 这样的写法是不对的…… 全局变量不要和局部变量命名成相同的名字，尤其是循环变量不要设置成全局的，很危险。 数组要初始化，尤其是多case的时候 写代码的时候要全神贯注，千万不要因为一时的疏忽，出现一个最难发现的最弱智的bug…… 还有，memset(a, 1, sizeof(a));貌似有错……慎用。注：这货只能用4个字节都相同的整数！比如，0x7f7f7f7f 或者 0x3f3f3f3f 有一点最受不了的就是：为什么最近输入老是忘了写取地址符？果然是敲代码敲得少了么…… 输入格式，要用%lld还是%I64d，也可以用cin,cout如果输入量比较少的话。 D = 3；1 &lt;&lt; D - 1 的结果是什么？注意优先级！有位运算的需要加上括号！ ==不要写成=，以前以为自己肯定不会犯这种错误，谁知道……唉 初始化技术变量，尤其是多case的时候 当多个case运行不对的时候，尝试一下只输入一个case，因为可能是多case的过程中，变量没有初始化 尤其是开数组的时候，千万不能把大小写错了，或者，当出现运行都出现系统错误的时候，可能是数组越界了，看一下开数组的时候是不是开小了，或者是数字打错了。 代码错了，自己想办法出数据测试，其实是一种十分重要的能力。 写线段树的时候，计算中点的时候，int M = L + (R-L)&gt;&gt;1；这么写是不对的。。至于为什么，我也不知道。。反正因为这货卡了好久== 直接这么写就行：int M = L+(R-L)/2；  
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/10/2013%E5%B9%B44%E6%9C%889%E6%97%A5-%E9%98%B4%E8%BD%AC%E5%B0%8F%E9%9B%A8/">2013年4月9日 阴转小雨</a>
+      </h1>
+      <span class="post-date">Apr 10, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/10/2013%E5%B9%B44%E6%9C%889%E6%97%A5-%E9%98%B4%E8%BD%AC%E5%B0%8F%E9%9B%A8/#disqus_thread">Comments</a>
+      </span>
+      
+      下午下雨，晚上去跑步，半路上下小雨点，开始犹豫要不要继续往前跑，最后到一半路程的时候就往回走了，结果又不下雨了，长沙的鬼天气，跑着一点儿也不爽，状态很不好，可能是该休息一两天了，后期的时候干脆就当散步了，走回来了…… 不过雨后的湘江边确实空气也挺好，一边走边思考问题，也是一种不错的享受～
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/04/09/2013%E5%B9%B44%E6%9C%888%E6%97%A5-%E6%99%B4/">2013年4月8日 晴</a>
       </h1>
       <span class="post-date">Apr 9, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/09/2013%E5%B9%B44%E6%9C%888%E6%97%A5-%E6%99%B4/#disqus_thread">Comments</a>
@@ -99,108 +200,6 @@
       题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=649 题意： 给一个字符矩阵，‘#’代表墙壁，&rsquo;.&lsquo;代表空格，‘x’代表有警察的空格，&rsquo;r&rsquo;和&rsquo;a&rsquo;分别代表一屌丝，并且&rsquo;r&rsquo;要到&rsquo;a&rsquo;那里去串门儿，r走一个空格花费单位时间1，走一个有警察的空格需要先干掉警察，话费单位时间1，然后再走过去，也就是共花费时间2，请问屌丝r到屌丝a那里去最少花费的时间。 思路： 首先要搞明白一个问题：就是路径最短的路不一定花费时间最少。这是可以理解的，比如，一条很短但是有很多警察，另一条路很长，但是没有警察，很有可能是第二条路花费时间少。用深搜？貌似不太合适，因为你一条路径访问过一个点后，另一条路径很可能也会访问这个点，并且时间较少。关键是深搜找到的接不一定是最优的。所以，考虑用广搜解。这道题最朴素的广搜显然不行，也就是说，仅仅求步数最少的不可行，需要加上访问时间这个附加条件。 用一个结构体数组存储每个点的信息，包括坐标，到达这个点所需要的最短时间，从起点开始搜，先访问起点，然后把起点出队，如果从一个点A到达下一个点B的当前所需时间比这个点现在标记的时间少，则把这个点入队，然后判断点A的另一个方向上的下一个点。这样，总有一天队列会为空，这是因为，某个点不可能被访问无数次，也就是说，某个点不可能无数次入队，因为到达某个点所需要的时间一定是有个最小值的，所以BFS一定可以结束，并且最后找到的点‘a’的信息一定是最优解。输出就可以了，如果无解，因为初始化到达所有点所需时间都是MAXN，所以，如果点‘a’的时间信息如果等于MAXN，那么说明无解。 第一次做深搜，这道题开始不知道怎么做，看了书上的思路，坚持没看代码，自己又想了想，就试着开始写，好神奇，竟然1A了！！！
 #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MINN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; typedef struct point{ int a, b, t; }point; point p[220][220], st, en; char s[220][220]; int n, m, T, si, sj, di, dj; queue&lt;point&gt; qt; void bfs(){ qt.
       <a href="http://liuxueyang.github.io/blog/2013/04/08/zoj-1649-rescue-bfs%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/08/2013%E5%B9%B44%E6%9C%887%E6%97%A5-%E6%99%B4/">2013年4月7日 晴</a>
-      </h1>
-      <span class="post-date">Apr 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/08/2013%E5%B9%B44%E6%9C%887%E6%97%A5-%E6%99%B4/#disqus_thread">Comments</a>
-      </span>
-      
-      昨天补概率论作业，没时间写，补上~ 今天天气很好，但是下午最后一节有课，所以打算晚上9点钟去跑步。 不得不说，晚上的湘江边很美，尤其是天气很好的晚上，春天，也许是最适合跑步的季节，不冷不热，微风习习，一路上还看见不少跑步的男男女女，有的是为了锻炼身体，有的是为了减肥，有的单纯是因为爱好。 今天跑步状态不错，很稳，时间，速度都控制得很准，正好半小时。然后在湘江边做了一下拉伸，稍微休息了一下，欣赏了一下美景，就心满意足地回来了。 其实，晚上去跑步也别有一种感觉。以后，下午最后一节有课就晚上去跑，否则就下午。 附上一段代码：
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;.in&quot;, &quot;r&quot;, stdin); #endif int day = 当前寿命; while (1){ if (!
-      <a href="http://liuxueyang.github.io/blog/2013/04/08/2013%E5%B9%B44%E6%9C%887%E6%97%A5-%E6%99%B4/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/07/speedcells-spfa/">speedcell&#39;s SPFA</a>
-      </h1>
-      <span class="post-date">Apr 7, 2013 &middot; 5 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/07/speedcells-spfa/#disqus_thread">Comments</a>
-      </span>
-      
-      版权永久属于speedcell，神代码，给跪了……yr酱V5…… 这东西虽然还没有学，先收藏起来~ 多谢yr酱……O(∩_∩)O哈哈~
-/* Author : Speedcell Update : 2013-03-24 Version : soppYcell 2.1(a) */ #include &lt;algorithm&gt; #include &lt;iostream&gt; #include &lt;fstream&gt; #include &lt;sstream&gt; #include &lt;iomanip&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;list&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;vector&gt; #include &lt;string&gt; #include &lt;bitset&gt; #include &lt;memory&gt; #include &lt;complex&gt; #include &lt;numeric&gt; #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;string.h&gt; #include &lt;math.h&gt; #include &lt;time.h&gt; #include &lt;ctype.h&gt; #include &lt;locale.h&gt; using namespace std; #pragma pack(4) #ifndef __CONSTANT__ #define __CONSTANT__ typedef long long LONG; const double pi = acos(-1.
-      <a href="http://liuxueyang.github.io/blog/2013/04/07/speedcells-spfa/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-2165-red-and-black-bfs%E5%85%A5%E9%97%A8%E9%A2%98/">zoj 2165 Red and Black ——BFS入门题</a>
-      </h1>
-      <span class="post-date">Apr 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-2165-red-and-black-bfs%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1165 题意： 给一个字符矩阵，“.”代表黑色格子，“#”代表红色格子，有一个起点“@”，它属于黑色格子，一个人从起点出发，只能走黑色格子，并且只能上下左右走，不能对角线走，问这个人能走到的黑色格子有多少个。输出个数。输入W，H，代表有W列，H行，然后输入一个字符矩阵，输出能走到的最多的黑色格子的个数，包括起点。 思路： 这个题目很简单，和zoj 2110 类似，但是这道题目比那道简单多了，不用剪枝，不用恢复现场，直接深搜就可以。首先找到起点，然后从起点出发，判断这个点是不是被访问过，如果被访问过，就return；否则判断这个格子是不是黑色格子或者是起点，如果是，就cnt++，然后标记这个格子已经被访问过，如果不是，return; 如果没有return，就在这个点的四个方向继续深搜。思路很清晰。1A。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; int w, h, cnt = 0; char s[22][22]; bool flag[22][22]; int dir[4][2] = {{0,1},{1,0},{-1,0},{0,-1}}; void dfs(int i, int j){ if (i &lt;= 0 || j &lt;= 0 || i &gt; h || j &gt; w) return; if (flag[i][j]) return; if (s[i][j] == '.
-      <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-2165-red-and-black-bfs%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-2412-farm-irrigation-dfs%E5%85%A5%E9%97%A8%E9%A2%98/">zoj 2412 Farm Irrigation ——DFS入门题</a>
-      </h1>
-      <span class="post-date">Apr 7, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-2412-farm-irrigation-dfs%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1412 题意： 有11种正方形，每种正方形里面对应一种形状的水管，不同的的正方形一用A到K表示，给一个矩阵，问至少需要多少个水源可以使矩形中所有的地方都可以被灌溉，如果两个相邻的正方形的水管正好对口，那么这两个正方形可以共用一个水源。 思路： 开始感觉很复杂，明显可以DFS做，但是感觉比较麻烦，关键是怎么处理题目中的条件。 首先，处理11种不同的水管，分4个方向，1表示有接口，0表示没有接口。用一个二维数组存所有种类的水管。 然后，把输入的字符转化成数字，可以再输入的时候边输入边处理，用字符减去字符“A”就可以了，对应的上面给11中不同水管中的一种。以上这两个处理方法要注意，学习一下，稍微看了一下别人的代码才想到的。这种看似比较简单的处理，往往给解题带来比较大的方便。 最后，就是如何深搜了。这个要考虑清楚。用一个flag二维数组表示是否访问过这个方格。深搜的时候，如果访问到它时，先判断它是否被访问过，然后立刻标记为已访问。然后就是判断当前方格的四个方向是不是有接口，如果某个方向有接口的话，就判断这个方向上的下一个方格中，和当前方格相邻的边是不是有接口，如果有接口，则继续深搜这个相邻的点。这里有个处理：（k+2）%4，意味着，比如：当前方格如果右边有接口，则判断右边的方格的左边的边是不是有接口，其它情况一样。然后就是主函数里面的dfs外面的for循环，思想和以前做过的zoj 1709是一样的，就是搜到某个点的时候，用一个mrk标记一下，把和它有关系的点都搜完，如果有符合条件的，mrk会改变，然后就cnt++用来计数，这种题目是相似的，都是要求符合条件的点相邻。 有一个细节，就是矩阵的数组还是从1开始吧，数组稍微开大一点儿，这样在深搜下一个方向的时候，就不会因为数组越界出错了。这个问题以前没有注意到。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; int grid[11][4] = {{0,0,1,1},{1,0,0,1},{0,1,1,0},{1,1,0,0},{0,1,0,1}, {1,0,1,0},{1,0,1,1},{0,1,1,1},{1,1,1,0},{1,1,0,1},{1,1,1,1}}; int dir[4][2] = {{0,1},{1,0},{0,-1},{-1,0}}; bool flag[55][55]; int s[55][55]; bool mrk = false; int n, m; void dfs(int i, int j){ if (i &lt;= 0 || i &gt; m || j &lt;= 0 || j &gt; n) return; if (flag[i][j]) return; mrk = true; flag[i][j] = true; for (int k = 0; k &lt; 4; ++k){ if (grid[s[i][j]][k] &amp;&amp; grid[s[i+dir[k][0]][j+dir[k][1]]][(k+2)%4]){ dfs(i+dir[k][0], j+dir[k][1]); } } return; } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;zoj2412.
-      <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-2412-farm-irrigation-dfs%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/07/2013%E5%B9%B44%E6%9C%886%E6%97%A5%E5%9B%9B%E6%A0%A1%E8%81%94%E8%B5%9B%E6%80%BB%E7%BB%93/">2013年4月6日四校联赛总结</a>
-      </h1>
-      <span class="post-date">Apr 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/07/2013%E5%B9%B44%E6%9C%886%E6%97%A5%E5%9B%9B%E6%A0%A1%E8%81%94%E8%B5%9B%E6%80%BB%E7%BB%93/#disqus_thread">Comments</a>
-      </span>
-      
-      昨天的四校联赛比赛很失败，整场比赛我似乎都没有做题，也没有几乎敲键盘，差点儿爆零……最后还是队友过了一道，很对不起队友，糗……最近都在看课本，敲键盘不多，都没有感觉了，水题也想不到该怎么做…… 最大的问题是没有准确分析复杂度，两道题目明显可以暴力的，可是就是没有想到，开始也分析了一下复杂度，但是貌似觉得很大，就没有往下去想，以后不能想当然，准确分析复杂度后再想解决办法。 yr说的对，最重要的是学会如何在逆境中最大化地利用有限资源的那种能力。也许现在学的东西还不多，但是，你把学过的东西真正掌握了嘛？你是不是在比赛的时候真正把学过的东西最大化地用上了？你是不是发挥出了平时训练出来的能力？ yr给的建议：学知识的顺序还是按照白书的顺序来吧。书太多了，自己竟然把白书给忘了……先把例题切掉，打一下基础。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/07/2013%E5%B9%B44%E6%9C%886%E6%97%A5--%E6%99%B4/">2013年4月6日  晴</a>
-      </h1>
-      <span class="post-date">Apr 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/07/2013%E5%B9%B44%E6%9C%886%E6%97%A5--%E6%99%B4/#disqus_thread">Comments</a>
-      </span>
-      
-      比赛完去跑步，今天天气很好，有温和的阳光，还有微微的风，跑步正合适，开始还是跑得有点儿快……中途前面还有骑直行车的，然后动力就来了，速度加快了，紧跟着自行车，跑得比较爽，也不感觉特别累，明显比前两天跑得快，路程比以前长，但是还是比平常快了整整五分钟！唉，先慢慢来吧，先不追求速度，关键是跑得高兴。^_^ 阳春三月，江边有很多放风筝的，哈哈，突然发现春天真的来了。 所有的不愉快，都随风而去……温和的阳光里，跑步结束，望着天上各种各样的风筝，变得豁达起来。周围的三五成群的人们，都在享受这春光，多美好的境界。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-1709-oil-deposits-dfs%E5%85%A5%E9%97%A8%E9%A2%98/">zoj 1709 Oil Deposits ——DFS入门题</a>
-      </h1>
-      <span class="post-date">Apr 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-1709-oil-deposits-dfs%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=709 题目大意： 给一个矩阵，*代表空地，@代表油田，并且@如果水平，竖直，对角线相邻的话就认为是一块油田，问有多少块油田。 思路就是DFS，从第一个字符开始搜，找到一个@就标记一下，cnt++，然后看它的八个方向上是不是有@，如果有，全部标记为*，不需要恢复现场。然后输出cnt的值就行了。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; char s[110][110]; bool flag; int cnt, n, m; int dir[8][2] = {{0,1},{0,-1},{-1,0},{1,0},{1,1},{-1,1},{1,-1},{-1,-1}}; void dfs(int i, int j){ if (i &lt; 0 || j &lt; 0 || i &gt; m || j &gt; n) return; if (s[i][j] == '*') return; if (s[i][j] == '@') flag = true; s[i][j] = '*'; for (int k = 0; k &lt; 8; ++k){ if (s[i+dir[k][0]][j+dir[k][1]] == '@'){ dfs(i+dir[k][0], j+dir[k][1]); } } } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;zoj1709.
-      <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-1709-oil-deposits-dfs%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/06/zoj-2110-tempter-of-the-bone-dfs-%E5%89%AA%E6%9E%9D/">zoj 2110 Tempter of the Bone ——DFS&#43;剪枝</a>
-      </h1>
-      <span class="post-date">Apr 6, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/06/zoj-2110-tempter-of-the-bone-dfs-%E5%89%AA%E6%9E%9D/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1110 题意： 给一个矩阵，‘X’代表墙壁，‘.’代表空格，‘S’代表起始位置，‘D’代表终点。从起点开始，每个空格只许经过一次，求在规定的时间t的时候，能否正好到达终点。每走一个花费1个单位时间。输入n,m,t，分别代表矩阵的行，列，规定的时间。 思路： 深度优先搜索，从起点开始，按照四个方向搜索，判断某个方向的下一个方格如果不是墙壁的话，就把它标为墙壁，然后从这个点继续往下搜索，如果从这个点往下搜索失败后，就要把这个点标记回原来的空格符号：‘.’。然后尝试下一个方向。直到i == di, j == dj, t == T的时候，表示搜索成功，flag = true; return; 其中si sj 是起点位置，di dj是终点位置，T是当前所花费的时间。 然后还有几处剪枝：如果这个矩阵的空格的数目小于等于时间t，那么不可能成功。这在主函数里面可以剪枝。在dfs的过程中，如果发现剩余的时间小于当前位置到终点的最小距离，可以直接判断搜索失败；如果剩余的时间和当前位置到终点的最小时间的差值是奇数的话，可以判断搜索一定失败，可以剪枝，如果是偶数的话，则可能成功。 今天突然发现，以前写的解题报告太搓了……向kedebug的博客学习，O(∩_∩)O哈哈~加油
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; bool flag; char s[9][9]; int t, n, m, si, sj, di, dj; int dir[4][4] = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}}; void dfs(int i, int j, int T){ if (i == di &amp;&amp; j == dj &amp;&amp; T == t){ flag = true; return; } if (i &lt;= 0 || j &lt;= 0 || i &gt; n || j &gt; m) return; int temp = t - T - abs(i-di) - abs(j-dj); if (temp &lt; 0 || temp&amp;1)return; for (int k = 0; k &lt; 4; ++k){ if (s[i+dir[k][0]][j+dir[k][1]] !
-      <a href="http://liuxueyang.github.io/blog/2013/04/06/zoj-2110-tempter-of-the-bone-dfs-%E5%89%AA%E6%9E%9D/">Read On &rarr;</a>
       
     </div>
     

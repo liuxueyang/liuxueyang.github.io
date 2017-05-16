@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Checking Whether Any Intersection in a City is Reachable from Any Other &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="求有向图的强连通分量的个数">
+  <meta name="keywords" content="Algorithm,Graph">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+        <img src="https://www.gravatar.com/avatar/2e3a2be066049f38f7a3f80eff0a5400?s=200"
+             alt="gravatar" title="liuxueyang">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Checking Whether Any Intersection in a City is Reachable from Any Other</h1>
+    <span class="post-date">May 16, 2017 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/05/16/checking-whether-any-intersection-in-a-city-is-reachable-from-any-other/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://liuxueyang.github.io/categories/algorithm">Algorithm</a><a class="label" href="http://liuxueyang.github.io/categories/graph">Graph</a>
+    </span>
+    <p>题目链接：<a href="https://gitlab.com/liuxueyang/algorithms-on-graph-exercise/blob/master/week2/decomposition-of-graphs.pdf">pdf</a></p>
+
+<p>题目给出一个有向图，要求输出图中强连通分量的个数。</p>
+
+<p>我把这样的强连通分量叫做一个sink：不存在一个边从这个强连通分量中的任意
+一个点连接到其它连通分量。也就是说如果把这个强连通分量缩成一个点的话，
+它的出度为0。</p>
+
+<p>我把和一个图的所有边都反向的图叫做反向图。貌似没有这样的术语。不知道
+reverse graph应该怎么翻译。</p>
+
+<p>思路大概是这样的：</p>
+
+<ol>
+<li>如果我们知道一个有向图的sink中的一个点，那么我们就可以求出这个强连
+通分量的所有点，因为强连通分量中的任意两个点都相互可达。</li>
+<li>如何求有相同的sink？我们知道反向图的强连通分量的个数和原图的强连通
+分量一定是一样的，只是方向不同。并且，原图的sink对应于反向图的
+source strong connected component，所以我们可以通过求反向图的source
+SCC，来求原图的sink。</li>
+<li>求一个图的source SCC的思路和用DFS求拓扑排序的思路是一样的，我们可以
+按照所有点的DFS回退的时刻降序排序，这样DFS最晚回退的点就是反向图的
+source SCC，也就是原图的sink，我们可以第二次DFS得到这个sink中的所有
+点并且从原图中去掉，继续求下一个sink，同时计数。</li>
+</ol>
+
+<p>实现的过程中出现了非常难以发现的bug：一个vector，我在dfs里面加入元素，
+然后在调用dfs的外层循环中循环这个vector。所以对于小数据并没有显现出错
+误，对于10000的数据就出现段错误了。调试了很久，不过xhe也教了我好多调试
+的方法，比如gdb，valgrind，libsigseg库，strace等。不过gdb调试的时候查
+看STL数据结构里面的数据的时候还是有点小麻烦，这个时候IDE的调试工具就好
+用很多了。</p>
+
+<p>另外，gdb设置端点竟然支持条件表达式，这个功能非常有用。</p>
+
+<pre><code class="language-cpp">// Sat May 13 09:28:34 CST 2017
+// Sat May 13 10:46:30 CST 2017
+
+// 求一个有向图的强连通分量的个数。。。
+
+/*
+1. 建reverse graph
+2. 降序排序post
+3. 在原图中依次求强连通分量，并且从图中去掉
+ */
+
+#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;utility&gt;
+
+using namespace std;
+typedef vector&lt;int&gt; VI;
+typedef pair&lt;int, int&gt; PII;
+int cnt;
+vector&lt;PII&gt; post;		// index, post
+
+void dfs(vector&lt;VI&gt; &amp;adj, vector&lt;bool&gt; &amp;used, int x, bool get_post)
+{
+  used[x] = true;
+  
+  for (auto &amp;v1 : adj[x]) {
+    if (!used[v1]) {
+      dfs(adj, used, v1, get_post);
+    }
+  }
+
+  if (get_post) {
+    cnt++;
+    post.push_back(make_pair(x, cnt));
+  }
+}
+
+int number_of_strongly_connected_components(vector&lt;VI&gt; &amp;adj) {
+  int result = 0;
+  vector&lt;VI&gt; rev_adj(adj.size(), VI());
+  vector&lt;bool&gt; used(adj.size(), false);
+  vector&lt;bool&gt; visit(adj.size(), false);
+
+  for (size_t i = 0; i &lt; adj.size(); ++i) {
+    for (auto &amp;v2 : adj[i]) {
+      rev_adj[v2].push_back(i);
+    }
+  }
+
+  // 求reverse graph的post，得到原图的sink Strong Connected Component
+  for (size_t i = 0; i &lt; rev_adj.size(); ++i) {
+    if (!used[i]) {
+      dfs(rev_adj, used, i, true);
+    }
+  }
+
+  sort(post.begin(), post.end(),
+       [](const PII &amp;a, const PII &amp;b) -&gt; bool { return a.second &gt; b.second; });
+
+  // 靠。。。我知道了！！！我真傻。。。竟然一边在dfs里面修改post，一边
+  // 循环post。。所以SIGSEGV错误应该是无穷递归的原因。。。或者栈溢出？
+  
+  // 从原图的sink SCC开始求所有的SCC的个数。。
+  for (auto &amp;p : post) {
+    if (!visit[p.first]) {
+      result++;
+      dfs(adj, visit, p.first, false);
+    }
+  }
+
+  return result;
+}
+
+int main() {
+  size_t n, m;
+
+  while (std::cin &gt;&gt; n &gt;&gt; m) {
+    cnt = 1;
+
+    vector&lt;vector&lt;int&gt; &gt; adj(n, VI());
+    post.clear();
+
+    for (size_t i = 0; i &lt; m; i++) {
+      int x, y;
+      std::cin &gt;&gt; x &gt;&gt; y;
+      adj[x - 1].push_back(y - 1);
+    }
+    std::cout &lt;&lt; number_of_strongly_connected_components(adj) &lt;&lt; endl;
+  }
+  
+  return 0;
+}
+
+</code></pre>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

@@ -79,6 +79,146 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/06/10/problem-when-configuring-vim-taglist-plugin/">problem when configuring vim taglist plugin</a>
+      </h1>
+      <span class="post-date">Jun 10, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/06/10/problem-when-configuring-vim-taglist-plugin/#disqus_thread">Comments</a>
+      </span>
+      
+      最开始，用这个插件的时候出现了类似
+ctags unrecognized option '--format=2'^@^itry
+这样的问题。
+然后我看了一下ctags的man page，发现，确实没有这个选项。这……是为啥。
+然后去看taglist插件的manual和它的首页，发现，它里面说的是exuberant ctags，然后 我看了一下这个对比了一下Linux里面的系 统的ctags的man page，发现确实不一样。然后我在常用的PATH里面找了一下exuberant， 很快就找到了/usr/bin/ctags-exuberant，然后根据taglist的文档，设置一个变量就好 了。
+在openSUSE Linux上面，需要在vimrc里面加一句这个：
+let Tlist_Ctags_Cmd = &quot;/usr/bin/ctags-exuberant&quot;  系统自带的ctags，
+❯ which ctags /usr/bin/ctags  并非是taglist这个插件所指的ctags，这个问题，我也是，醉了。 :joy: 搞了51min才 搞定…… :smile: 这个插件里面的ctags指的是ctags-exuberant
+貌似在Mac OS X上面，也需要设置一下，比如这 里不过我记得貌似我的以前在Mac OS X里面 可以用。不知道是不是也像这样设置了。
+这是效果截图：
+taglist的窗口通过C-a快捷键打开，再次按C-a快捷键，taglist窗口关闭。这个插件尤其是 在读程序的时候比较有用。或者写程序的时候也会用到。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/06/04/fish-shell-tutorial/">fish shell tutorial</a>
+      </h1>
+      <span class="post-date">Jun 4, 2016 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/06/04/fish-shell-tutorial/#disqus_thread">Comments</a>
+      </span>
+      
+      在fish里面，相邻的列表或者字符串会按照笛卡尔积来展开。比如：
+liu@lisp /p/tmp&gt; echo {good,bad}&quot; apples&quot; good apples bad apples liu@lisp /p/tmp&gt; set -l a x y z liu@lisp /p/tmp&gt; echo $a x y z liu@lisp /p/tmp&gt; set -l b 1 2 3 liu@lisp /p/tmp&gt; echo $a$b x1 y1 z1 x2 y2 z2 x3 y3 z3 liu@lisp /p/tmp&gt; echo $a&quot;-&quot;$b x-1 y-1 z-1 x-2 y-2 z-2 x-3 y-3 z-3 liu@lisp /p/tmp&gt; echo {x,y,z}$b x1 y1 z1 x2 y2 z2 x3 y3 z3 liu@lisp /p/tmp&gt; echo {$b}word 1word 2word 3word liu@lisp /p/tmp&gt; echo &quot;$b&quot;word 1 2 3word  上面用到了括号扩展的功能：在一个大括号里面以逗号分隔的几个字符串会被扩展成列表里 面的每个元素被当作一个新的变量。比如：
+      <a href="http://liuxueyang.github.io/blog/2016/06/04/fish-shell-tutorial/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/05/31/codeforces-round-#353-div.-2-c.-money-transfers/">Codeforces Round #353 (Div. 2) C. Money Transfers</a>
+      </h1>
+      <span class="post-date">May 31, 2016 &middot; 4 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/05/31/codeforces-round-#353-div.-2-c.-money-transfers/#disqus_thread">Comments</a>
+      </span>
+      
+      There are n banks in the city where Vasya lives, they are located in a circle, such that any two banks are neighbouring if their indices differ by no more than 1. Also, bank 1 and bank n are neighbours if n &gt; 1. No bank is a neighbour of itself.
+Vasya has an account in each bank. Its balance may be negative, meaning Vasya owes some money to this bank.
+      <a href="http://liuxueyang.github.io/blog/2016/05/31/codeforces-round-#353-div.-2-c.-money-transfers/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/05/30/codeforces-round-#354-div.-2-c.-vasya-and-string/">Codeforces Round #354 (Div. 2) C. Vasya and String</a>
+      </h1>
+      <span class="post-date">May 30, 2016 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/05/30/codeforces-round-#354-div.-2-c.-vasya-and-string/#disqus_thread">Comments</a>
+      </span>
+      
+      High school student Vasya got a string of length n as a birthday present. This string consists of letters &lsquo;a&rsquo; and &lsquo;b&rsquo; only. Vasya denotes beauty of the string as the maximum length of a substring (consecutive subsequence) consisting of equal letters.
+Vasya can change no more than k characters of the original string. What is the maximum beauty of the string he can achieve?
+Input The first line of the input contains two integers n and k (1 ≤ n ≤ 100 000, 0 ≤ k ≤ n) — the length of the string and the maximum number of characters to change.
+      <a href="http://liuxueyang.github.io/blog/2016/05/30/codeforces-round-#354-div.-2-c.-vasya-and-string/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/05/29/2016%E5%B9%B45%E6%9C%8829%E6%97%A5/">2016年5月29日</a>
+      </h1>
+      <span class="post-date">May 29, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/05/29/2016%E5%B9%B45%E6%9C%8829%E6%97%A5/#disqus_thread">Comments</a>
+      </span>
+      
+      前几天花了大量的时间整理我的各个平台的浏览器书签，最后终于不得不承认，要想一次性 把那么杂乱的书签整理好、去重然后找一个好的插件保持各个浏览器同步是一件很困难的 事情……
+所以我想把杂乱的旧书签备份一下，然后重新开始。:joy:我还发现，其实我之前保存书签 的方法一点都不科学。。有的东西其实更适合保存在Evernote里面。Evernote的浏览器插件 其实是一个非常好用的东西。只是我一直没有好好利用。保存到Evernote的好处还有就是即 使原先的链接失效了也丝毫不影响我的笔记内容。并且Evernote各个平台都有比较好的客户 端，也可以很方便地整理和复习。
+所以就要比较合理地管理Evernote了，建立笔记本、笔记本组、标签什么的，自己慢慢摸索 吧。感觉分类就是有点麻烦。
+另外，最近看书的时候我开始用Evernote作笔记了，发现Evernote真的是变好了很多，对书 页拍照什么的也变得智能了。:+1:如果我慢慢地免费版本不能满足我的需求了之后，我会买 付费版的，这个真是值得。:smile:
+至于浏览器书签的功能，我觉得，书签越少越好，经常访问的网站要放在书签里面，像那种想要 留着以后看的内容应该放在Evernote或者Pocket里面而不是浏览器书签里面。
+其实我发现我以前几乎很少或者从来不整理，最近开始觉得这件事情很值得经常定期做。 最近有时间，我在整理移动硬盘和浏览器书签的时候才慢慢意识到这个问题。其实道理 我都懂，然而当重新发现这个道理的时候，才算是进一步理解了这个道理的含义。:joy::joy:
+所以我又整理了一下我的杂乱的iCloud里面的照片和没用的数据什么的，然后又清理了一下 iPad Air，然后发现多出来了4G的空间，清爽多了。
+以前我的Kindle PaperWhite里面塞满了各种乱七八糟的书，我最近也清理了一下，尽量保 持书的数目在列表视图下不超过一页，事实上，这并不会让你读书的时间减少……:smile:
+微信公众号关注得多了，经常没有时间看，也懒得打开微信抱着手机看，所以发送到Kindle 是一种比较好的做法，在Kindle上面很容易就看完了。
+另外还有手机里面的照片也导出并且清理了……棒棒哒
+今天跑步5km 跑跑步挺好的 :joy::joy::joy:
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/05/28/%E6%8E%A8%E8%8D%90now-then-pro/">推荐Now Then Pro</a>
+      </h1>
+      <span class="post-date">May 28, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/05/28/%E6%8E%A8%E8%8D%90now-then-pro/#disqus_thread">Comments</a>
+      </span>
+      
+       最近我一直在使用一个APP：Now Then Pro。这 是我使用的最好用的一个时间类APP了。
+我一般用它来跟踪我的时间，流程是这样的：
+ 做事情之前首先新建一个任务 点击开始计时 把事情完成，再次点击任务，停止计时 切换到其它任务，当前任务自动停止，新任务开始计时  这样我一整天的每一个小时都可以被记录下来，睡前翻看一下回想一下当前做了什么事情是 一件很有成就感的事情。它有统计功能，柱状图或者饼状图很直观地显示我的时间分配是怎 样的。
+使用了一段时间，很值得推荐。:+1::+1::+1:
+今天跑步3.27km 
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/05/27/%E6%8E%A8%E8%8D%90-kde-connect/">推荐 KDE Connect</a>
+      </h1>
+      <span class="post-date">May 27, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/05/27/%E6%8E%A8%E8%8D%90-kde-connect/#disqus_thread">Comments</a>
+      </span>
+      
+       这是Linux里面的一个超级好用的工具。我之前都用AirDroid，但是也有缺点，就是在Linux 里面只能在浏览器里面使用，也只是勉强能够使用而已。
+然而，这个就不一样了，它有Android版。真的是超级好用啊！下面是我经常使用的功能：
+ 同步剪切板，比如在手机上面复制了一段文字，然后就立刻可以在我的Linux里面用快捷 键C-v把刚才复制的内容粘贴到电脑上面。 比如电脑上面正在播放音乐或者视频，然而我再手机上面就可以控制媒体播放，比如快 进、暂停或者播放。这个可以在一个场景使用到：我把笔记本和显示器或者电视机连接起 来，然后我就可以用我的android来作为遥控器了。 图片或者文件互相发送。  截图以后再补上吧。
+最近我在整理我的硬盘里面的乱七八糟的文档啊之类的。很久之前就想做的事情，只不过 一直没有开始做。:joy::joy:
+Tips
+ls -tlh 这个命令里面的t选项经常被我忽略，其实它还是挺有用的，尤其是我想看某 个文件夹里面昨天我新增了那些文件的时候。这个选项可以按照时间顺序列出文件。
+今天跑步3.42km :joy::joy: 
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/05/23/2016%E5%B9%B45%E6%9C%8823%E6%97%A5/">2016年5月23日</a>
+      </h1>
+      <span class="post-date">May 23, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/05/23/2016%E5%B9%B45%E6%9C%8823%E6%97%A5/#disqus_thread">Comments</a>
+      </span>
+      
+      今天我发现时间越来越紧迫了起来。
+突然想到要整理一下我的浏览器收藏夹，因为我在用三种浏览器，Safari，Chrome 和Firefox，在Mac OS X上面用Safari和Chrome，在旧电脑的Linux上面用Firefox，因为开 Chrome实在是，太卡。。:joy::joy::joy:所以同步收藏夹就成了一个问题。一直以来，我 都没有整理过我的收藏夹，并且不知道什么时候手贱，在Safari里面点了导入Chrome的收藏 夹，然后又在Safari里面导入Firefox的收藏夹，然后在Chrome里面导入Safari的收藏夹， 然后在Firefox里面导入Chrome的收藏夹……然后各种同步。。不知道为啥反正就是各种乱， 很多重复的，也没办法简单地删除，因为都有后来自己添加的收藏并且没有同步或者导入的 别的浏览器的。尝试过各种乱七八糟的去掉收藏夹里面重复网页的浏览器插件，Chrome和 Firefox里面的都试过，下午在Linux里面的Firefox里面又试了一下：
+可以看到有13593个重复的收藏被检测到，然而这个插件并不能简单的一次性去重……然后 尝试另外一个：
+这个倒是可以，然而点了按钮之后，等了十几分钟，还没结束，觉得这也太慢了。。然后就 这样了：
+Google了半天也没找到别的比较好的方法。。:sob::sob::sob:
+然后突然想到一个办法：我自己手动去重吧。。然而并不会写浏览器插件，也并不会前端的 乱七八糟的东西。所以想了个歪路子：（针对Firefox）
+ 把收藏夹导出成html文件，然后用awk之类的工具去重。。 删除浏览器的所有收藏夹。 导入处理之后的html文件到收藏夹。  开始不知道怎么想到，一开始就想用awk处理，写的时候发现，然而在awk里面用正则的反向 引用并不是那么方便的样子:question::question:额……我为什么不用 Perl:exclamation::exclamation::anger:所以，很愉快地用Perl写完了。。
+my %seen; while(&lt;&gt;) { if (/&lt;A HREF=&quot;http([^\&quot;]+)&quot;/) { unless ($seen{$1}) { $seen{$1}++; print; } } else { print; } } # 14595 -&gt; 991 ;-( exit 0;  处理了之后，可以发现，收藏总数从14595减少到了991:scream::scream:棒棒哒！这个去重 貌似不彻底诶，然而已经减少了大部分了，再用之前使用的插件搞一下，发现需要手动删除 的只有几个而已了，把浏览器里面的全部收藏删除之后，再导入处理之后的html文件。收工:bangbang:
+之后就是寻找一种方法可以各个浏览器之间同步的方法吧？貌似可能有插件可以搞定？随后 再找找。。
+哦，对了，我发现把KDE Plasma 5里面的各种特效什么的都关掉，还是可以用的，用得挺流 畅，在我的旧电脑上面并不卡。如果追求绝对稳定，当然还是Xfce4靠谱:smiley_cat:
+还有，前两天我又折腾了一下我的树莓派，它支持AirPlay了，最近我发现Real好用，iPad Air上面放的腾讯视频可以很愉快地在电视上面看，并且可以用我的Android手机作为遥控 器，甚至不接显示器的时候，也可以把手机上的音乐AirPlay到树莓派上面播放:smile::smile: 哦，Android里面的QQ音乐和虾米音乐都支持AirPlay，网易云音乐不支持，有点可惜。 这两天它主要承担了给我妈播放电视剧的艰巨任务。。。:joy::joy:另外就是作为我的IRC 的一个Bouncer，其实树莓派，还是蛮有用的嘛。:yum:
+      <a href="http://liuxueyang.github.io/blog/2016/05/23/2016%E5%B9%B45%E6%9C%8823%E6%97%A5/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2016/05/22/2016%E5%B9%B45%E6%9C%8822%E6%97%A5/">2016年5月22日</a>
       </h1>
       <span class="post-date">May 22, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/05/22/2016%E5%B9%B45%E6%9C%8822%E6%97%A5/#disqus_thread">Comments</a>
@@ -111,129 +251,6 @@
 然而，最简单的做法还是这样：）
 $\ = $/; while (&lt;&gt;) { $n = $_; $h-&gt;{$_}++ for split ' ', &lt;&gt;; print $n - (sort {$b &lt;=&gt; $a} values %{$h})[0]; }  其实画图有局限性，从另一个角度想，把数列分成尽可能长的严格递增（或者只含有一个元素）的子序列，那么每一组一定会含有在整个序列中出现次数最多的那个数字X，如果某个子序列不含有数字X，那么它不足够长。如果某个子序列含有两个数字X，那么它不是严格递增。设整个序列长度为N，在序列中出现次数最多的数字X出现的次数为P，那么就可以分成P个子序列。整个序列中，相邻两个数字递增的pair最多为N-1，分成P个子序列之后，相邻两个数字递增的pair减少了P-1个，所以答案就是 (N - 1) - (P - 1) = N - P，也就是整个序列的长度减去出现次数最多的数字出现的次数……
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/03/13/2016%E5%B9%B4%E6%98%A5/">2016年春</a>
-      </h1>
-      <span class="post-date">Mar 13, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/03/13/2016%E5%B9%B4%E6%98%A5/#disqus_thread">Comments</a>
-      </span>
-      
-      这几天人机大战，李世乭0:3，看得心疼……今天终于、终于赢了！
-这几天很多阴谋论，很多打脸，很多嘲讽，没关系，它们都会随风而去。然而，李世乭的今 天会被载入史册。
-新的一年，过得很快啊！转眼间，现在已经是3月13日了。这几天学习进度其实略慢。要看 的东西比较多：数值分析、高等数学、英语单词、Perl、具体数学、算法、计算机网络。
-一点一点来吧～
-反正就是成天瞎折腾……最近才开始用Tmux，还可以，解放了在一个窗口里面开很多个终端 Tab的问题，比较好用的是Session的功能，我可以把不同的窗口分类放到不同的Session里。 另外，平常的编辑还是用Vim吧，我的Emacs用来写Lisp系的语言还可以。毕竟再怎么说它还 是不如Vim轻量。哦，对了，前天一个偶然的机会发现了Vim也有一个Mark的功能，我以前只 知道在一个文件里面可以设置Bookmark，然而我没有想到这个Bookmark是全局的，也就是你 可以用:marks命令来浏览最近设置的标签，即使你在别的目录里面的别的文件里面编辑。 这就很方便……并且比Emacs里面原装的Bookmark功能更方便更快……Vim的乐趣就是即使用了很 长时间，然而总是能够发现新的东西。比如我现在用的Vim配置文件是2013年配的，一直用 到现在没出过问题。尽量保持配置文件简单并且Github同步，Emacs的配置也尽量这样。所 以我的Emacs配置里只同步一个init.el文件，只针对Emacs24版本以上的，Emacs23就不行了， 不过对我来说没关系，我只使用24版的。;-)
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2015/12/24/%E5%92%B3/">咳……</a>
-      </h1>
-      <span class="post-date">Dec 24, 2015 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2015/12/24/%E5%92%B3/#disqus_thread">Comments</a>
-      </span>
-      
-      == 时间过得 好快…… 刚才无意来到这里。。原来都过去这么久了啊。现在是2015年的12月24日，上次来这里是2014年上半年。。
-哎。
-不过回头看一看， 还是蛮欢乐的呐^_^
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2015/04/16/ruby-implementation-of-2048-game/">Ruby implementation of 2048 game</a>
-      </h1>
-      <span class="post-date">Apr 16, 2015 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2015/04/16/ruby-implementation-of-2048-game/#disqus_thread">Comments</a>
-      </span>
-      
-      Ruby Implementation of 2048 game
- Played in terminal. Control with arrow keys or vim-keybindings.  #!/usr/bin/ruby require &quot;io/console&quot; mar = Array.new(16, 0) # sheet value array $score = 0 $target = 2048 $pieces = 0 def operate(mar, ran, gap) mark = false ran.each { |index| ar = index.step(index + 3 * gap, gap).collect { |ind| ind} tm_ar = ar.collect{|ie| mar[ie]} pre_tm_ar = tm_ar.clone tm_ar.delete_if{|item| item == 0} (0..(tm_ar.size-1)).each {|ie| if tm_ar[ie] == tm_ar[ie+1] tm_ar[ie] *= 2 $score += tm_ar[ie] tm_ar[ie+1] = 0 end } tm_ar.
-      <a href="http://liuxueyang.github.io/blog/2015/04/16/ruby-implementation-of-2048-game/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2015/04/15/rename-files-in-ruby/">rename files in ruby</a>
-      </h1>
-      <span class="post-date">Apr 15, 2015 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2015/04/15/rename-files-in-ruby/#disqus_thread">Comments</a>
-      </span>
-      
-      我有下面的文件：
-/home/aries/Music/LuoJi/罗辑思维第三季第7期：统一是怎样炼成的_鸿新网www.hhxin.com整理.mp3 /home/aries/Music/LuoJi/罗辑思维第三季第4期：谁绑架了团结_鸿新网www.hhxin.com整理.mp3 /home/aries/Music/LuoJi/罗辑思维第三季第2期：大清帝国的生死时速_鸿新网www.hhxin.com整理.mp3 /home/aries/Music/LuoJi/罗辑思维第三季第6期：人类灭绝的一种可能_鸿新网www.hhxin.com整理.mp3 /home/aries/Music/LuoJi/罗辑思维第三季第3期：坏国王的遗产_鸿新网www.hhxin.com整理.mp3 /home/aries/Music/LuoJi/罗辑思维第三季第5期：秦始皇在隐瞒什么_鸿新网www.hhxin.com整理.mp3 /home/aries/Music/LuoJi/罗辑思维第三季第1期：大门口的野蛮人_鸿新网www.hhxin.com整理.mp3  我想要重命名这些文件，使文件名更明了，更方便在我的MP3上查看，所以，我写了如下简单的ruby脚本：
-#!/usr/bin/ruby require &quot;fileutils&quot; def ren(path) Dir.glob(&quot;#{path}/*.mp3&quot;).each do |name| process_file(name) end end def process_file(name) filename = File.basename(name) filename =~ /(.*)(\d.*)_.*(\.mp3)/ FileUtils.mv(name, File.join(File.dirname(name), $2 + $3)) end ren(&quot;/home/aries/Music/LuoJi&quot;)  下面是重命名之后的结果：
-/home/aries/Music/LuoJi/3期：坏国王的遗产.mp3 /home/aries/Music/LuoJi/4期：谁绑架了团结.mp3 /home/aries/Music/LuoJi/1期：大门口的野蛮人.mp3 /home/aries/Music/LuoJi/2期：大清帝国的生死时速.mp3 /home/aries/Music/LuoJi/7期：统一是怎样炼成的.mp3 /home/aries/Music/LuoJi/5期：秦始皇在隐瞒什么.mp3 /home/aries/Music/LuoJi/6期：人类灭绝的一种可能.mp3  
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2015/04/12/block-example-in-ruby/">block example in Ruby</a>
-      </h1>
-      <span class="post-date">Apr 12, 2015 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2015/04/12/block-example-in-ruby/#disqus_thread">Comments</a>
-      </span>
-      
-      这几天看Ruby，挺有意思的，比如Block的用法：
-#!/usr/bin/ruby def total2(from, to, &amp;block) result = 0 from.upto(to) do |num| if block result += block.call(num) else result += num end end return result end p total2(1, 10) p total2(1, 10) {|num| num * 2} p total2(1, 10) {|num| num ** 2}  上面的三个输出分别是
-55 110 385  函数total2中的第三个传递块的参数叫做Proc参数
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2015/03/08/2015-new-year/">2015 New Year</a>
-      </h1>
-      <span class="post-date">Mar 8, 2015 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2015/03/08/2015-new-year/#disqus_thread">Comments</a>
-      </span>
-      
-      时间说过得快其实也挺快的。。转眼一看这个可怜的博客，上一篇文章是2014-11-14,今天是2015-03-08,差不多四个月啊。回头想想我都做了些什么：
-2014 2014年11、12月：正在找工作，投简历，参加各种宣讲会。
-2015 2015年1月：有了几个可怜的「offer」后，开始看书，意识到其实我没什么擅长的东西。。看了一些common lisp的书，把Common LISP: A Gentle Introduction to Symbolic Computation这本英文版的书看完了。另外占时间比较多的事情就是毕业设计的开题报告。然后就是抱着kindle看乱七八糟的书了……这段时间，自从用上了LAMY，开始喜欢用这货写字儿了，经常去上自习的时候，无聊了就拿出日记本开始胡乱写……然后就差不多写完了整整一个本子，不禁惊讶于积累的力量，一件小小的事情，持续做一段时间，往往能达到自己都意识不到的效果。所以我就觉得还不如在纸上写东西比较好，干脆就忘掉博客了……当然有代码的话，博客更好，但是……貌似我也没什么可以值得贴出来的代码。直接扔在 github里面多好，自己查着也方便。
-2015年2月：2月3日回家。这一整个月嘛。
- 折腾了一下gentoo，有点小收获，然后接着是debian，最后还是回到了openSUSE了，因为我觉得，适合自己就好嘛，能帮助自己方便的完成自己的目标就可以了。
- 然后就是寒假做的一些杂事儿了（事实上，经常是处于无聊的状态，干扰源太多……无法集中一段时间做事情[借口]）
-  寒假(2015/02/03 — 2015/03/08(今天)) 2015寒假，背回来一本lisp的书，没看；倒是看了一半的pdf版英文的ansi common lisp；三章的中文版on lisp；最后三章的英文a gentle introduction to symbolic computation；四章中文kindle版失控；昨晚看了硬盘里放了很久的一部电影，北京遇上西雅图；背了二百个单词；玩孢子，从细胞阶段到银河阶段；玩braid；玩红警；教会了我妈玩粘粘世界；玩了几天滑板；听了几集播客，狗熊，朴素，有的聊，科脱，罗胖；折腾了一下gentoo，debian，还是回到opensuse；想整理一下音乐也没完成；放了一次差不多十年没碰过的风筝；lamy的笔尖好像出了点问题，但还能用；日记没写几篇；偶尔看电视看了一集纪录片，宇宙的奇迹—命运，人类的一生终将是毁灭和死亡，甚至整个宇宙经历难以体会的时间之后，也会一个原子都不剩，地球的出现本来就是偶然，进化到人类也是极小概率事件，但灭亡似乎是必然的，那么人活着的意义是什么？为了某种价值？或者是ridiculous的意义？或是更加虚无和无意义的东西？所有这一切其实都微不足道。。。。（这就是语无伦次？）
-就这样，后天滚蛋。
-今天下午（2015/03/08）有件特别有意思的事情，下午出去玩滑板，碰见两个小朋友玩轮滑，男孩上一年级，女孩上两年级，然后两个小孩子让我教他们玩滑板……有个细节特别让我惊讶:玩的时候，小女孩告诉我：你踩死了一只蜘蛛，我低头一看，那已经不能分辨出是一只蜘蛛了，被我碾成粉儿了。。我好奇的是，她是怎么注意到那只蜘蛛的？还有一次，他俩告诉我，你脚下有一只七星瓢虫，低头一看，它早已经死的并且变干了。但我从没注意过这些，因为小孩子才会注意到这些生命吗？想想小时候，我也会大夏天顶着大太阳盯着院子里的蚂蚁看一中午，不知道什么时候开始，我从来不会注意这些了。就像spore里面的史诗生物连看都不看一眼地踩死你一样，我也一不小心就踩死那些以前对我来说很新奇的生物。
-有一次我问小男孩：一百加二等于多少啊？小男孩自信满满地回答：一百二！莫名戳中笑点啊！小女孩纠正之后，我再问男孩：一百加七等于多少啊？小男孩坚定地回答：一百七！哈哈哈哈哈，难道是我笑点低？好萌啊！我估计是小男孩不会读102、107这种数字而已……可是小女孩纠正之后，再问男孩：一百加五等于多少啊？小男孩回答：一百零五！哈，终于答对了。
-女孩说，我家有一只大狼狗，会吃人哦！小男孩：我家有一只熊狗！我问：熊狗是什么啊？小男孩严肃地说：熊做成的狗。我：……这怎么想到的啊？！这个想法真是……突然觉得，小朋友好萌啊！（以前我很讨厌小朋友的……经常弄坏东西。）
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2014/11/14/c-is-interesting/">C is Interesting</a>
-      </h1>
-      <span class="post-date">Nov 14, 2014 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/11/14/c-is-interesting/#disqus_thread">Comments</a>
-      </span>
-      
-      最近偶尔看C语言，看了一点有意思的东西。
- C语言里函数声明有一个很有意思的现象：  如果一个函数没有float, short, 或者char类型的参数，在函数生命中完全可以省略 参数类型的说明（但是函数定义中不可以省略）。
-也就是说有一个函数定义：
-double double(double a) { return a * a; }  那么这个函数可以声明为：
-double square();  这个规则好像是为了兼容旧版本的C吧。
- 一个例子：  /* * ===================================================================================== * Filename : type_scanf.c * Description : This program outputs differently on different systems. * Version : * Created : 11/12/14 22:45 * Author : Liu Xue Yang (LXY), liuxueyang457@163.com * Motto : Suicide is Painless * ===================================================================================== */ #include &lt;stdio.
-      <a href="http://liuxueyang.github.io/blog/2014/11/14/c-is-interesting/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2014/10/23/create-print-insert-delete-and-reverse-list/">create, print, insert, delete and reverse list</a>
-      </h1>
-      <span class="post-date">Oct 23, 2014 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/10/23/create-print-insert-delete-and-reverse-list/#disqus_thread">Comments</a>
-      </span>
-      
-      /* * ===================================================================================== * Filename : list.c * Created : 10/21/14 16:12 * Description : create list. insert a value in a list. delete a value in a list. * reverse list. print list. * Author : Liu Xue Yang (LXY), liuxueyang457@163.com * Motto : Suicide is Painless * ===================================================================================== */ #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; typedef struct Node { int n; struct Node *next; }Node; typedef Node * pNode; /* * argument n is the number of nodes to create */ Node * create(int n) { pNode Head, p_tmp, q; int tmp; Head = (Node*)malloc(sizeof(Node)); Head-&gt;n = -1; Head-&gt;next = NULL; q = Head; while (n--) { scanf ( &quot;%d&quot;, &amp;tmp ); p_tmp = (Node*)malloc(sizeof(Node)); p_tmp-&gt;n = tmp; p_tmp-&gt;next = NULL; q-&gt;next = p_tmp; q = p_tmp; } return Head; } /* * pos starts from position 0 * n is the value */ int delete(Node *h, int pos) { Node* p; Node* n_p; p = h; while (pos--) { if (!
-      <a href="http://liuxueyang.github.io/blog/2014/10/23/create-print-insert-delete-and-reverse-list/">Read On &rarr;</a>
       
     </div>
     

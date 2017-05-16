@@ -79,6 +79,148 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/02/17/%E5%AD%A6%E4%B9%A0org-mode/">学习org-mode</a>
+      </h1>
+      <span class="post-date">Feb 17, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/02/17/%E5%AD%A6%E4%B9%A0org-mode/#disqus_thread">Comments</a>
+      </span>
+      
+      今天我花了非常多的时间来学习org-mode，以前主要用它来记录每天的工作和学习日志，仅仅记录学习时间，几乎只用到了Clock in, Clock out之类的功能。这两天我发现我非常有必要对学过的东西做一个总结或者笔记，供以后查看，不然每次捡起很久之前看的东西还是有点困难。比如前几周学的PL课程，分三部分，学完第一部分觉得还可以，第二部分就比较难了，有些比较新的概念虽然没有完全理解，但是照葫芦画瓢做作业还是可以的。然后到了第三部分，也能够顺利把作业完成。然而到了最后的考试的时候考到第二部分的知识和概念，我竟然几乎完全记不起来了！说实话我还是挺惊讶的。所以我决定以后要经常作笔记，没有完全理解的概念和原理应该经常回顾，反复消化。所以我决定认真学习一下org-mode，用它来管理我的笔记。
+本来我把笔记放在了 Dropbox 里面同步，后来想了想，我可能还是会拷贝一份在这里。以后查阅可能会方便很多。随后我会陆续把关于org-mode的笔记贴到下面。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/02/16/%E8%A7%A3%E5%86%B3konsole%E4%B8%8Bemacs-org-mode%E5%BF%AB%E6%8D%B7%E9%94%AE%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/">解决Konsole下Emacs org-mode快捷键不能使用的问题</a>
+      </h1>
+      <span class="post-date">Feb 16, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/02/16/%E8%A7%A3%E5%86%B3konsole%E4%B8%8Bemacs-org-mode%E5%BF%AB%E6%8D%B7%E9%94%AE%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      如果想在终端里面使用Emacs的话，org-mode的有些快捷键可能会失效，比如M-LEFT，这个问题在这里有一个解决方案：Stack Overflow。然而我还是觉得挺麻烦的。
+今天瞎玩的时候，一个非常偶然的机会，发现这个问题在KDE 4里面的原生的Konsole里面可以非常容易地被解决，只需要在Profile的设置里面的Keyboard标签里面的Key Bindings设置成Default (Xfree 4)，如图：
+然后在org-mode里面就可以使用类似于M-LEFT之类的快捷键了。虽然GUI版本的Emacs可能会比较好看，不过还是终端下用Emacs更方便一点。另外，说到终端，以前经常用Terminator，不过在KDE 4里面其实原生的Konsole体验更好。顺便说一句：Slackware是我用过的最好用的发行版。KDE 4非常好用，当作主力机使用了两个多月了，没有出现过问题。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/02/14/%E5%AF%B9%E6%8A%98%E8%85%BE%E7%BC%96%E8%BE%91%E5%99%A8%E9%85%8D%E7%BD%AE%E7%9A%84%E6%83%B3%E6%B3%95/">对折腾编辑器配置的想法</a>
+      </h1>
+      <span class="post-date">Feb 14, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/02/14/%E5%AF%B9%E6%8A%98%E8%85%BE%E7%BC%96%E8%BE%91%E5%99%A8%E9%85%8D%E7%BD%AE%E7%9A%84%E6%83%B3%E6%B3%95/#disqus_thread">Comments</a>
+      </span>
+      
+      我是先接触的Vim，用了很长一段时间，去年才开始使用Emacs。两种编辑器我觉得都挺不错，有的时候使用Emacs，有的时候使用Vim。当然，我也喜欢使用各种IDE。对于我来说，使用Vim和Emacs最大的乐趣就是可以定制各种各样奇怪的东西，虽然只是找别人开发分享的插件，但还是充满了乐趣。有的时候发现了某个非常厉害的插件会特别特别兴奋，这种情况遇到过两次：一次是abo-abo这个俄罗斯人开发的Emacs插件，一次是junegunn这个韩国人开发的Vim插件。
+有机会也学着写写怎么写插件吧。配置编辑器其实挺花时间并且会上瘾，看来也没有什么意义，因为使用再好的编辑器，也没法阻止你写出丑陋的程序，也没法提高工作和学习效率。所以听过一句话，大意大概是这样：如果世界上的程序员能够把折腾编辑器的一般精力花在「更有价值」的事情上面的话，工作效率也许会提升不止一倍。
+我配置过很多次Vim和Emacs，也因为这样或者那样的原因推翻过很多次。也使用过一些类似于Spacemacs的这种称为「世界级配置」的Emacs。然而我还是喜欢自己从头开始配置，因为别人的需求和我个人的需求不可能完全一致，使用别人的非常全面的配置反而会给我引来更多没法预料的问题，太臃肿的配置也让可移植性变差，比如版本问题，比如想要引入一个插件的时候，和原来的配置的冲突问题等等。
+慢慢的我还是比较喜欢非常轻量级的、能够恰好满足我的个人需求的配置。我可以根据需要来手动加载当前需要的配置和插件，而不是当启动的时候一次性一次性全部加载进来。还有，如果不是特别需要，就不要加入新的插件，尽量保持配置文件的清晰和简洁，能够轻易移植。所以我打算慢慢地开始重新配置我的编辑器，要遵守的原则是：尽量保持简洁、轻量。不要强行解决「次要」问题，不适合使用编辑器做的事情就不要强行来实现。
+其实，Emacs本身的初始配置对于一些场景来说，就已经够用了。
+另外，这两种编辑器，如果非要做一个比较的话，我更喜欢Emacs，但是类似于临时修改个系统配置文件之类的事情，使用Vim快速解决。对于日常工作：写程序、记笔记等，我全部在Emacs里面做。
+ 唉……如果老是依赖某种东西的话，毕竟不算是真正的勇气。——风间彻
+ 2016/02/17 01:16:57AM 更新 昨晚又折腾了很久的Emacs，该完成的任务又没有完成。其实仔细想想，折腾编辑器确实耽误了我非常非常多的时间，带来的回报却很少。所以决定不再自己折腾和配置编辑器了。刚才又适用了一下 Spacemacs，其实感觉还不错。至于到底是不是完全适合自己，倒不是最重要的，重要的是能用，能够比较方便地实现日常的编辑工作，如果有些小的瑕疵或者违反我个人的习惯的话，那就慢慢适应吧。我不得不承认，我自己再怎么配置也不可能有 Spacemacs 的配置全面可靠。所以我决定以后就用 Spacemacs 了。花很多时间折腾编辑器甚至舍本逐末对目前的我来说是一件非常不明智的事情。
+如果要使用 Spacemacs 的话唯一需要做的事情就是，找时间认真看一下它的文档：http://spacemacs.org/doc/DOCUMENTATION.html。遇到问题最先应该找的就是官方文档，可能你遇到的问题官方文档里面没有特别拿一节或者一章来说明，但是很可能在其它某个小结里面做了说明，这个时候就体现出浏览一遍文档的重要性了。
+目前，我在 Spacemacs 里面只做了很少的配置：
+ 加了lispy插件 更换了插件源 如果状态栏里面的Unicode符号显示乱码的话，把dotspacemacs-mode-line-unicode-symbols这个变量设置成nil  另外特别需要注意的是：不要强行解决不重要的问题。有些问题其实并没有那么重要，花很多时间去解决无关紧要的问题就是浪费时间。要做到这一点还是需要有自制力，克服所谓的「洁癖」或者「强迫症」。
+[2017-02-17 Fri 09:59] 更新 在使用 Spacemacs 的过程中，还是应该保持一个.org文件，来专门记录遇到的快捷键，以便以后需要的时候能够方便查阅。这么多快捷键肯定是一下记不住的。今天一整天都在使用 Spacemacs，说实话，体验非常好。对我来说简直完美：有一些美化，能够实现我需要的功能。虽然可能有些解决方案不如abo-abo的插件体验那么好，或者好像也没有加入 multicursors 的功能，但还是让我满意的。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/02/14/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8raspbian/">开始使用Raspbian</a>
+      </h1>
+      <span class="post-date">Feb 14, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/02/14/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8raspbian/#disqus_thread">Comments</a>
+      </span>
+      
+      这两天折腾了一下树莓派，因为我的树莓派里面的Arch Linux不能启动了。开机的时候，ACT LED并没有闪烁，查了一下wiki才知道这表示pi没有读取SD卡。试了很多次，开始以为接触问题，擦了擦卡然后开机的时候用力按着，还是不行。在IRC里问了一下，后来猜测可能是/boot分区出问题了，或者firmware在系统更新的时候出问题了，或者是pi的硬件的问题，或者是SD卡的问题。
+之前的手机里还有一个SD卡，只有2GB。然后备份数据之后，刷了Raspbian Lite，插入树莓派顺利进入系统了。能正常用。所以只能是SD卡里的系统问题了。
+花了点时间把树莓派里面的数据备份了一下，然后刷了Raspbian jessie，稍微配置了一下。意外地好用。我还是挺满意这个系统的。如果只是在树莓派里写写程序的话，用起来还是挺舒服的。本机用VNC连接到树莓派的桌面，然后就可以像另外一台配置比较低的电脑一样使用了。以前我以为VNC什么的速度可能很慢，画面也不清晰，这两天一直在用，发现其实体验非常好。可以根据主机屏幕的大小来设置树莓派的分辨率，我记得好像是设置一下/boot/config.txt文件里面的framebuffer_width和framebuffer_height这两个变量就好了。然后在VNC的设置里面再设置成同样的分辨率。完美。
+在树莓派里写程序的时候，好像除了一些非常轻量级的IDE能用之外，别的只能用Emacs或者Vim了。JetBrains家的IDE估计是没法用。:P
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/02/14/use-hexo/">Use Hexo</a>
+      </h1>
+      <span class="post-date">Feb 14, 2017 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/02/14/use-hexo/#disqus_thread">Comments</a>
+      </span>
+      
+      Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick Start Create a new post $ hexo new &quot;My New Post&quot;  More info: Writing
+Run server $ hexo server  More info: Server
+Generate static files $ hexo generate  More info: Generating
+      <a href="http://liuxueyang.github.io/blog/2017/02/14/use-hexo/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/01/02/%E6%8A%98%E8%85%BEemacs%E5%92%8Cfcitx%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/">折腾Emacs和Fcitx的兼容问题</a>
+      </h1>
+      <span class="post-date">Jan 2, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/01/02/%E6%8A%98%E8%85%BEemacs%E5%92%8Cfcitx%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a>
+      
+      <br/>
+      
+      </span>
+      
+      在Emacs时而不能使用Fcitx中文输入法。
+我只是把这件事记录在这里，我并没有搞定这个问题。
+ 把下面的程序放到~/.xprofile文件里。未果。  export LANG=zh_CN.UTF8 export LC_CTYPE=en_US.UTF-8 export XMODIFIERS='@im=fcitx' export GTK_IM_MODULE=fcitx export QT_IM_MODULE=fcitx export GTK3_IM_MODULE=fcitx   放到~/.bashrc或者~/.zshrc、~/.profile里。未果。 试试XEmacs。未果。 卸载Fcitx之后重新安装，未果。 卸载Fcitx这后安装ibus输入法，也不能在Emacs里面使用ibus。 把上面的设置改成ibus，未果。 重新手动编译ibus，未果。 元旦结束，放弃。 元旦第二天，继续。 编译安装ibus-wubi，未果。 一天加半天过去，觉悟。放弃解决这个问题。  
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/12/30/slackware-dolphin%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%BE%E7%A4%BA%E4%B9%B1%E7%A0%81/">Slackware Dolphin中文文件夹显示乱码</a>
+      </h1>
+      <span class="post-date">Dec 30, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/12/30/slackware-dolphin%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%BE%E7%A4%BA%E4%B9%B1%E7%A0%81/#disqus_thread">Comments</a>
+      
+      <br/>
+      
+      </span>
+      
+      在Slackware里面的KDE 4的默认文件夹管理器Dolphin里面，中文文件夹的名称显示是一堆问号。这个问题是我前两天遇到的，还是记在这里吧。问题描述如下。
+Dolphin的侧边栏可以显示中文，如图：
+如果我想要建立一个中文名称的文件夹的话：
+就会成为这样：
+我的locale是这样的：
+我的解决方法是这样的：
+在/etc/profile.d/lang.sh这个文件里面，有这样一句话：
+# en_US is the Slackware default locale: export LANG=en_US  把它改成这样就可以了：
+export LANG=zh_CN.utf-8  重新登录如果不行，那就重启，问题应该就解决了。比如：
+顺便说一句，在这两天我整理文件的过程中发现，最好用最方便的文件管理器是：KDE的Dolphin，因为我可以这样：
+其次是macOS的Finder，它也有类似的文件夹显示方式。其它的比如Xfce里面的默认文件夹管理器，删除文件夹的时候没有提示，我严重怀疑有一次整理文件夹的时候误删了一些东西，因为我只发现了一次，并且从回收站里找到了，八成还有别的，我没发现……所以那些简洁的文件管理器也就日常用用还可以。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/12/29/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8slackware/">开始使用Slackware</a>
+      </h1>
+      <span class="post-date">Dec 29, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/12/29/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8slackware/#disqus_thread">Comments</a>
+      
+      <br/>
+      
+      </span>
+      
+      前两天，我在整理我的硬盘，顺便整理了一下我的openSUSE Leap里面的资料，同样也是十分的混乱。花了很长时间整理，全部移动到移动硬盘里。过程中发现openSUSE Leap的官方源连不上了，正常情况下官方源应该会选择国内速度最快的镜像的，然而有的时候就是蜜汁连不上……去年我也遇到过这种情况，然后我就放弃这个发行版了（后来又回来了……）。这次我决定替换掉openSUSE Leap 42.2，理由：
+ 官方源有的时候连不上； 早上开机，一直使用到晚上，有的时候即使使用Xfce4也会变得卡； Plasma 5的BUG太多，出问题的次数太多； 跨版本升级的时候有点麻烦； 其实忍它很久了。  好吧，其实都是借口，我只是想试一试Slackware了。看了一下官方的文档，地址在这里：Document，这个文档挺不错的。粗略看完了。安装过程原来挺简单的，我还以为有多复杂。其中有一点挺人性化：安装过程中会提示你要不要制作一个启动盘，这样在系统出现问题无法启动的时候，利用启动盘就可以直接启动系统，然后我就制作了一个。没想到，很快我就用上了。Slackware使用的是LILO，而不是GRUB，Slackware不是那么激进，开发过程比较慢也比较保守，这一点我还是比较喜欢的，不用经常更新。是这样的：安装完之后，我发现LILO的第一个启动项是Windows而不是Slackware，我想把第一个换成Linux。然后在LILO的高级设置里面只选择了Windows，然后保存重启，发现启动项里只有Windows了……原来高级设置里的启动项目需要自己一个一个添加。没法进Slackware了，所以之前的启动盘就有用了，顺利进入Slackware，重新设置LILO，顺利解决。
+桌面环境我选择的KDE，安装完毕之后，干净清爽，KDE 4竟然非常流畅，完全不想Plasma 5在我的老电脑上面会经常卡顿。KDE 4一点也不卡，这点让我还是有点惊喜的。然后是中文一系列的配置：
+ KeepassX fcitx中文双拼输入法 zsh, fish修改默认shell，oh-my-zsh, fisherman Terminator安装了，不过我现在还是用的默认的Konsole，干净好用，分割其实我也用到少，不如Tab方便 Shadowsocks的GUI版本我遇到点问题，但是命令行版本能用 Dropbox同步Emacs配置，个人文档 Jetbrains全家桶，顺利安装 Android Studio，顺利安装  哦，值得一提的是，系统默认提供了clisp。哈哈。这两天使用的过程中，我还是非常满意的。这么好的发行版，不知道为什么用户那么少。可能是因为安装软件比较麻烦？没有好用的软件包管理器？这个对于我来说不是什么问题。反而是好事，我可不想用zypper install, pacman -S或者apt install安装一堆我可能永远用不到的软件。有的软件需要自己编译，自己解决依赖，有的可以找到二进制包，总的来说还是挺方便的。比如，我要安装VLC这个播放器，过程是这样的：
+ 在slackbuilds里面下载VLC的SlackBuild包：vlc.tar.gz到$HOME/Downloads，并解压缩：  wget https://slackbuilds.org/slackbuilds/14.2/multimedia/vlc.tar.gz ~/Downloads	tar -xvzf vlc.tar.gz   看一下vlc.info  cd vlc cat ./vlc.info  可以看到它有很多依赖，然后它的源代码的包在DOWNLOAD这个变量里面（一般情况下都是这个变量，只不过有的时候64位和32位是分开的，变量名字可能会不同，所以要注意一下。）
+ 下载源代码  source ./vlc.info wget $DOWNLOAD   编译：  sudo ./vlc.SlackBuild 编译的过程中出错了：  checking for libavutil variant&hellip; none checking for GST_APP&hellip; yes checking for GST_VIDEO&hellip; yes checking for AVCODEC&hellip; no configure: error: No package &lsquo;libavcodec&rsquo; found No package &lsquo;libavutil&rsquo; found.
+      <a href="http://liuxueyang.github.io/blog/2016/12/29/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8slackware/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2016/12/26/%E4%BD%BF%E7%94%A8time-machine%E5%A4%87%E4%BB%BD%E7%B3%BB%E7%BB%9F%E6%97%B6%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/">使用Time Machine备份系统时磁盘空间不足的问题</a>
       </h1>
       <span class="post-date">Dec 26, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/12/26/%E4%BD%BF%E7%94%A8time-machine%E5%A4%87%E4%BB%BD%E7%B3%BB%E7%BB%9F%E6%97%B6%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a>
@@ -113,143 +255,6 @@
 好像跑题了。做事情还是应该至少有一个计划，先完成每天的重要的目标，次要或者不重要的等到最后做或者不做。这样工作效率会高一点。而不是忙了很久，却收效甚微。所以还是要克制住自己「跑题」的欲望，把大多数时间投入到重要的事情上面。
 「写这篇博客用时36分钟。」
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/12/23/%E5%85%BB%E6%88%90%E6%95%B4%E7%90%86%E7%9A%84%E4%B9%A0%E6%83%AF/">养成整理的习惯</a>
-      </h1>
-      <span class="post-date">Dec 23, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/12/23/%E5%85%BB%E6%88%90%E6%95%B4%E7%90%86%E7%9A%84%E4%B9%A0%E6%83%AF/#disqus_thread">Comments</a>
-      
-      <br/>
-      
-      </span>
-      
-      我的电脑空间不够用了。整理的时候我才发现，我的目录是多么混乱。很多可能用到的、再也用不到的、以前用过的、很久都没有用的各种各样的文档，塞在各种各样的目录下面。有一些照片，很久没有看过，也没有想过要备份一下。很多软件，即使一年也没有用过，也还是在那里。不知道何年何月才有机会打开。很多截图，用过了即使知道以后再也不用了也没想过要删除。网络上下载的图片，没有收藏价值的也从来没有想过要删除。网络上下载的各种文档，没有想过要按照主题分类管理一下。写过的测试程序，有的时候懒得同步到Gitlab、Github或者各种网盘上，就临时放在了本地，从来没有整理过。
-当然，移动硬盘里的情况更是惨不忍睹。很多备份，没有分类，还有很多奇怪的重复。
-在电脑里面，之前因为想要一个新的环境，就新建了几个用户。现在看来是错误的选择。这更加重了电脑的混乱。我的几个旧电脑都是这样的情况，尤其是Linux系统，更是混乱。
-是时候花一些时间来开始整理了。我的想法是这样的：
- 把一些不大的文档，全部分类，保存到DropBox里面。最好建立一个索引。  按照使用频率把文档分类，分别放到多个帐号里面，好处是，如果更换平台或者系统的话，我只需要同步最常用的那个帐号里面的文件就好了，同步速度会快一些。其实，DropBox有选择性同步的功能，可是我还是想要保持目录结构的尽量清晰和简洁，这就需要分类，目录尽量少。  把所有的程序相关的东西（别人的程序、自己写的程序），同步到Github、GitLab里面。 多个系统里面的目录结构尽量相同，如果有同步的必要就要同步。并且如果有更新的话，要及时检查更改是不是更新到了网盘里。尽量少出现同步冲突的情况。比如这两天我发现macOS里的DropBox很奇怪地没有同步一个文件，导致出现了冲突，合并两个文件并不是特别好合并（它是特定格式的）。 每个电脑或者系统，可以建立多个用户，但是只有一个主用户，其它用户仅仅在极特殊的情况下使用。  事实上，我每天使用的东西，或者我这一生能够使用的东西是非常有限的。只是我太贪婪，占有了很多根本用不到的东西，除了心理安慰，别的没有什么用。所以，养成每天都整理的习惯，更有条理一点。其实对于我来说啊，还是不要太贪心，能够做好一些事情就已经很不错了。
-比如，使用浏览器，不要同时打开五个标签。一个桌面，不要同时打开三个窗口。如果必要的话，使用多个桌面，每个桌面做不同的事情。闲下来或者休息的时候不要顺手就开始刷论坛或者社交网络，休息就好好休息，或者可以出去散散步，因为坐在电脑前面的生活并不是全部，还是要平衡一点。做到有条理其实不困难，可是我从来没有想过去做。
-我打算把我之前写过的博客也整理一下，尽量全部迁移到这里来。我发现我还是很喜欢使用这个简单的主题的。很久以前使用过Hexo，尝试过各种各样的主题，反而忘记了最重要的事情。所以我以后也不尝试别的主题了，就长期使用这个默认的主题。经常性地写一些东西，给自己回顾。算起来，我也尝试过很多博客平台了。总是一段时间就放弃了，可能是因为各种各样的原因。这次，希望，不会像以前那样了。
-2016年12月26日更新 费了很大力气找到了之前的博客备份。发现以前写的东西真是，看不下去啊。所以咧，就不迁移到这里了。在这个博客里面好好写就是了。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/12/23/%E4%B8%AA%E4%BA%BA%E5%8A%AA%E5%8A%9B%E8%9C%A1%E7%AC%94%E5%B0%8F%E6%96%B0/">个人努力、蜡笔小新</a>
-      </h1>
-      <span class="post-date">Dec 23, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/12/23/%E4%B8%AA%E4%BA%BA%E5%8A%AA%E5%8A%9B%E8%9C%A1%E7%AC%94%E5%B0%8F%E6%96%B0/#disqus_thread">Comments</a>
-      
-      <br/>
-      
-      </span>
-      
-      人啊，还是依靠个人努力。至于是不是要考虑到历史的进程，对于我来说，倒不是那么重要，毕竟，「我」只有一个，在另外的历史进程里的「我」是什么样子，我不知道。所以我还是过好自己的生活就可以了。
-最近，「蜡笔小新」的视频在哔哩哔哩上因为版权原因全部被删除了，唯一的乐趣没有了。不过还好，有良心UP主在直播间里24小时播放蜡笔小新。缺点是不能自己选集看了，优点是至少还有的看。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/10/07/2016/">2016</a>
-      </h1>
-      <span class="post-date">Oct 7, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/10/07/2016/#disqus_thread">Comments</a>
-      </span>
-      
-      玩过 游戏 i wanna 之前看散人优瓦夏玩i wanna游戏挺欢乐。可惜我手残，玩不了这种游戏。最近发现，也许这种游戏是一种比较好的培养耐心的方式吧？今天下午玩了一个多小时，最后手指酸疼。比较神奇的是，我竟然还感觉挺有意思的。过程中完全没想过一定要通关怎么怎么样，只是沉浸在其中，明显感觉到一次比一次好。从开始玩到某一关，总共死了500+次。后来又从开始玩了一遍，到同样的关卡只死了80+次。进步这么明显，我还是蛮惊讶的。当我开始怀疑人生的时候，不妨玩玩i wanna吧。;-)
-Besiege 这个游戏在Steam上买了，可惜没怎么玩，看到B站上的大神们玩出各种花样，看着比较过瘾，然而自己还是算了吧。
-孢子 很久以前玩过。一开始玩的时候，总是走军事路线，当然是选的简单。今年年初又玩了一次，改成经济路线了，同样也能称霸星球啊哈哈。宇宙阶段没有怎么深入玩。
-编辑器 Vim 大学的时候入的Vim坑，给我带来了很多方便，同时，也花费了我极多的时间。我也很难衡量到底值不值得花那么多时间在它上面。不过，确实挺好玩的。它也成了我各种平台的通用编辑器，ssh到树莓派上编辑个什么系统文件啊什么的，首选Vim，我的配置在GitHub上同步。
-Emacs 算是今年入的坑。打开了新世界的大门。同样，花费了我极多的时间，我觉得，还是得不偿失的。不过，当配置好之后，还是很方便的。它现在是我日常用的编辑器。只要电脑开着，Emacs就处于打开状态。用LaTeX写日记，写LISP、C/CPP、ML程序之类，还是非常方便的。有些大牛说，一开始学习Emacs就要用大牛们的配置，我倒是不以为然。这个还是因人而异吧。我愿意花时间弄一套自己的配置，优点是，编辑器的插件的每个方面、快捷键之类的自己最清楚，出错了也知道哪里错了。缺点是比较花时间。用别人的配置就不同了，比如Spacemacs它集成了太多东西，有些我根本不需要，绑定的快捷键可能和我的习惯冲突等等。现在我的配置对于我自己来说处于一个比较好的状态，我把它同步到GitLab的私人仓库里面。
-RIME 好用的输入法。我用小鹤双拼语句流。打字行云流水。我在Linux，macOS上面都用它。我还把词库和配置文件放到了GitLab的私人仓库里面同步。我没有在Windows 10上面用，因为它和UWP类的应用不兼容，会出现问题，比如让Windows的开始菜单不可用。
-操作系统 Windows 10 把家里的旧台式机和新台式机都装上了Windows 10，先安装的盗版Windows 7，然后洗白。使用Windows面向残障人士的升级软件来洗白的。微软官方网站可以下载。Windows 10还是挺好用的。
-macOS 把MacBook Air升级到了macOS Sierra，多了Siri的功能，还有别的，比如类似于移动端的画中画的功能。直接升级的，没备份，升级成功。不过Homebrew和MacPorts还需要迁移一下，挺麻烦的。还有一些软件和新版系统不兼容了。。
-Linux Arch Linux 我的树莓派上面用的系统，一年多了，没挂过。很稳定。
-openSUSE 一台旧电脑用的系统，很稳定，当时也感觉有点臃肿。
-Manjaro 挺漂亮的系统，Arch Linux的衍生版，今年第一次尝试它，还是被它给惊艳到了。
-Linux Mint 18 Ubuntu的衍生版，优点是，易用。
-所有的Linux的桌面环境我都用Xfce，稳如狗哈哈。
-路由器 家里的路由器距离我卧室比较远，还隔着墙。所以我用我以前的两个路由器和家里的路由器WPS桥接。效果还不错。需要注意的一点是：只有主路由器需要打开DHCP服务，两个副路由器都不用。我是让一个副路由器B桥接主路由器A，然后让另一个副路由器C桥接到副路由器B。为什么使用C呢，因为我的USB无线网卡的驱动不支持最新版本的Windows 10（某次更新系统之后就连不上网了），所以我把C放到主机旁边，用网线连接电脑。
-这大概就是我今年玩过的东西吧。时间过得很快。
-很久不来博客园，增加了markdown的功能？不过怎么没有预览功能啊哈哈。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/08/14/spoj-math-cpcrc1c---sum-of-digits/">Spoj, math: CPCRC1C - Sum of Digits</a>
-      </h1>
-      <span class="post-date">Aug 14, 2016 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/08/14/spoj-math-cpcrc1c---sum-of-digits/#disqus_thread">Comments</a>
-      </span>
-      
-      Primary Problem 题目大意：
-给两个数字a和b，求从a到b所有数字的每一位的和。比如1到3就是：1+2+3=6, 10到12 就是：1+0 + 1+1 + 1+2=6，范围是10^9  为了表示方便，用[n]表示从1到n的所有数字的每一位的和。要求从a到b，只需要计算[b] - [a]就可以。
-[9] = 45; [19] = [9] + [9] + 10 * 1 = [9] * 2 + 10 * 1 [99] = [9] + ([9] + 10 * 1) + ([9] + 10 * 2) + ... + ([9] + 10 * 9) = = [9] * 10 + 10 * [9] [999] = [99] + ([99] + 100 * 1) + ([99] + 100 * 2) + ([99] + 100 * 3) + .
-      <a href="http://liuxueyang.github.io/blog/2016/08/14/spoj-math-cpcrc1c---sum-of-digits/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/08/14/spoj-anarc09a---seinfeld/">Spoj: ANARC09A - Seinfeld</a>
-      </h1>
-      <span class="post-date">Aug 14, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/08/14/spoj-anarc09a---seinfeld/#disqus_thread">Comments</a>
-      </span>
-      
-      题目意思：
-一个字符串由`{`和`}`组成，长度最多位2000，求最少修改多少次可以使得这个字符串合法。  如果把合法的字符串都消去的话，那么最后留下不合法的括号，一定是这样的}*{*其中 *代表0个或者多个。题目规定字符串长度是偶数，所以不合法的括号的长度也一定是偶数， 假设它是len。
-1. 如果只有左括号或者右括号，那么答案是`len/2`； 2. 如果左右括号都有，那么答案是左括号的个数/2 + 右括号的个数 / 2，如果左括号 或者右括号的个数是奇数，那么答案增加一。比如这个例子：`}}}{{{`  所以复杂度是O(n)。
-/* * ===================================================================================== * * Filename: main.cpp * * Description: http://www.spoj.com/problems/ANARC09A/ * * Version: 1.0 * Created: 2016年08月14日 14时01分45秒 * Compiler: g++ * * Author: Sabastian (liuxueyang.github.io), read3valprintloop@gmail.com * * ===================================================================================== */ #include &lt;bits/stdc++.h&gt; using namespace std; #define _ ios_base::sync_with_stdio(0);cin.tie(0); #define rep(i, a, n) for (int i = a; i &lt; n; ++i) #define per(i, a, n) for (int i = n-1; i &gt;= a; --i) #define pb push_back #define mp make_pair #define all(x) (x).
-      <a href="http://liuxueyang.github.io/blog/2016/08/14/spoj-anarc09a---seinfeld/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/08/14/spoj-dynamic-programming-assign---assignments/">Spoj, dynamic-programming: ASSIGN - Assignments</a>
-      </h1>
-      <span class="post-date">Aug 14, 2016 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/08/14/spoj-dynamic-programming-assign---assignments/#disqus_thread">Comments</a>
-      </span>
-      
-      题目意思：
-有n个学生和n个任务，每个学生有喜欢的任务，输入一个矩阵，第i行第j列表示第i个 学生喜欢第j个任务。把任务分配给所有学生，使得每个学生得到的任务都是他喜欢的。 输出有多少种分配方法。n的最大值是20。  用一个数字的一个位表示这个任务是否已经被分配，如果任务全部被分配，那么这个数字就 是(1&lt;&lt;n)-1。可以想到这样的递归方法：solve(i,mask) 表示对i..n这些人分配任务的 方法的数目，mask代表此时对1..i-1这些人已经分配了任务，也就是说mask的二进制表示里 面有i-1个1。对当前的人，如果他喜欢第j个任务，并且mask的第j位是0，那么就可以把这 个任务分配给他，继续考虑下一个人。
-/* * ===================================================================================== * * Filename: main1.cpp * * Description: http://www.spoj.com/problems/ASSIGN/ * * Version: 2.0 * Created: 08/13/2016 14:13:42 * Compiler: g++ * * Author: Sabastian (liuxueyang.github.io), read3valprintloop@gmail.com * * ===================================================================================== */ #include &lt;bits/stdc++.h&gt; using namespace std; #define _ ios_base::sync_with_stdio(0);cin.tie(0); #define rep(i, a, n) for (int i = a; i &lt; n; ++i) #define per(i, a, n) for (int i = n-1; i &gt;= a; --i) #define pb push_back #define mp make_pair #define all(x) (x).
-      <a href="http://liuxueyang.github.io/blog/2016/08/14/spoj-dynamic-programming-assign---assignments/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-aibohp---aibohphobia/">Spoj, dynamic-programming: AIBOHP - Aibohphobia</a>
-      </h1>
-      <span class="post-date">Aug 12, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-aibohp---aibohphobia/#disqus_thread">Comments</a>
-      </span>
-      
-      给一个字符串，求最少插入多少个字符，可以使得这个字符串是回文的。
-可以这样想：我们假设它已经是回文的，那么把这个字符串逆序，如果它是回文的，那么对 应的每个字符应该相等。可以它不是回文的，那么就需要尽量少地加一些字符，加多少呢？ 那么需要知道当前的最长连续公共子序列的长度len，把不相等的那些字符串加进去就成为 了回文的。加进去的字符的最少个数 = 字符串长度 - 原先的字符串和它的逆序字符串的最 长连续公共子序列的长度。
-问题就转化为求两个序列的最长公共子序列。这个就简单了。
-因为懒并且想省时间，所以就用了一些宏，这让程序变得不易读，还好程序比较简单，不太 影响吧。反正以后也不会再读。。了解思路就可以了。
-/* * ===================================================================================== * * Filename: main.cpp * * Description: http://www.spoj.com/problems/AIBOHP/ * * Version: 1.0 * Created: 08/12/2016 18:27:30 * Compiler: g++ * * Author: Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com * * ===================================================================================== */ #include &lt;bits/stdc++.h&gt; using namespace std; #define _ ios_base::sync_with_stdio(0);cin.tie(0); #define rep(i, a, n) for (int i = a; i &lt; n; ++i) #define per(i, a, n) for (int i = n-1; i &gt; a; --i) #define pb push_back #define mp make_pair #define all(x) (x).
-      <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-aibohp---aibohphobia/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-bytesm2---philosophers-stone/">Spoj, dynamic-programming: BYTESM2 - Philosophers Stone</a>
-      </h1>
-      <span class="post-date">Aug 12, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-bytesm2---philosophers-stone/#disqus_thread">Comments</a>
-      </span>
-      
-      在矩阵里面捡石头，求最大值。和常见的直角三角形那样的问题是一样的。
-/* * ===================================================================================== * * Filename: main.cpp * * Description: http://www.spoj.com/problems/BYTESM2/ * * Version: 1.0 * Created: 08/12/2016 18:49:12 * Compiler: g++ * * Author: Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com * * ===================================================================================== */ #include &lt;bits/stdc++.h&gt; using namespace std; #define _ ios_base::sync_with_stdio(0);cin.tie(0); #define rep(i, a, n) for (int i = a; i &lt; n; ++i) #define per(i, a, n) for (int i = n-1; i &gt;= a; --i) #define pb push_back #define mp make_pair #define all(x) (x).
-      <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-bytesm2---philosophers-stone/">Read On &rarr;</a>
       
     </div>
     
