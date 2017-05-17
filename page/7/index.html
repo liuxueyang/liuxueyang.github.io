@@ -79,6 +79,35 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/06/27/fenwick-tree/">Fenwick Tree</a>
+      </h1>
+      <span class="post-date">Jun 27, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/06/27/fenwick-tree/#disqus_thread">Comments</a>
+      </span>
+      
+      Fenwick Tree的原理是，把一个前缀和划分成多个子序列的和，子序列的个数是当前前缀和元素个数的数字二进制表示中的1的个数。
+Perl实现：
+#!/usr/bin/env perl -n #=============================================================================== # FILE: fenwick_tree.pl # AUTHOR: Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com # ORGANIZATION: Hunan University # CREATED: 2016/06/26 23时27分06秒 #=============================================================================== use strict; use warnings; use utf8; use 5.014; chomp; my @fenwick; my @array = split; unshift @array, 0; unshift @fenwick, 0; sub lowbit { $_[0] &amp; -$_[0]; } sub build_fenwick_tree { for (1..$#array) { for my $j ($_-lowbit($_)+1..$_) { $fenwick[$_] += $array[$j] } } } sub modify_fenwick_tree { # two arguments # 1.
+      <a href="http://liuxueyang.github.io/blog/2016/06/27/fenwick-tree/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/06/17/%E6%8E%A8%E8%8D%90rime%E5%B0%8F%E9%B9%A4%E5%8F%8C%E6%8B%BC%E8%BE%93%E5%85%A5%E6%B3%95/">推荐Rime小鹤双拼输入法</a>
+      </h1>
+      <span class="post-date">Jun 17, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/06/17/%E6%8E%A8%E8%8D%90rime%E5%B0%8F%E9%B9%A4%E5%8F%8C%E6%8B%BC%E8%BE%93%E5%85%A5%E6%B3%95/#disqus_thread">Comments</a>
+      </span>
+      
+      之前一直没有时间配置我的OS X上的Rime输入法。所以我最近认真配置了一下。首先，推荐 一篇博客： 安装及配置 Mac 上的 Rime 输入法——鼠鬚管 (Squirrel) 这是一篇好博客。然而复制配置文件的时候，还是不能直接复制到编辑器里面，一定要注意 格式！因为这篇博客，我发现了小鹤双拼输入法，然后随便找了一篇关于小鹤双拼的文章： 做少数派中的少数派：双拼输入快速入门 看了一下里面的键位映射图，大概理解了一下，就马上开始用了。也没怎么刻意记忆，不知 道哪个键就看一下那个图，和朋友聊了几句，就可以打字了，虽然很慢，但是可以接受。前 天晚上开始接触，昨天上午就可以愉快地打字了。到现在大概用了一天半的时间，我就可以 用双拼愉快地写这篇博客了。
+愚笨如我也能够这么快地接受这个输入法，所以它的学习成本还真的是挺低的。然而打字效 率比原来的全拼却好很多。每个汉字拼音分成声母和韵母，每个声母和韵母只需要一次按键， 不得不说，很适合用汉语拼音打汉字。哈哈，用词根输入英语可能就没这么方便了？:joy: :joy:
+另外，我也可以同步Rime的用户资料了。然后再同步到Gitlab的私人仓库里面，完美！另外， 那篇博客也介绍了如何配置小鹤双拼・语句流输入法，这样就可以中英混输并且还带emoji 了！简直Perfect流畅。
+时间好快，麦子熟了。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2016/06/15/karabiner--%E8%87%AA%E5%AE%9A%E4%B9%89macbook-air%E9%94%AE%E7%9B%98/">Karabiner —— 自定义MacBook Air键盘</a>
       </h1>
       <span class="post-date">Jun 15, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/06/15/karabiner--%E8%87%AA%E5%AE%9A%E4%B9%89macbook-air%E9%94%AE%E7%9B%98/#disqus_thread">Comments</a>
@@ -206,46 +235,6 @@ Input The first line of the input contains two integers n and k (1 ≤ n �
 使用了一段时间，很值得推荐。:+1::+1::+1:
 今天跑步3.27km 
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/05/27/%E6%8E%A8%E8%8D%90-kde-connect/">推荐 KDE Connect</a>
-      </h1>
-      <span class="post-date">May 27, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/05/27/%E6%8E%A8%E8%8D%90-kde-connect/#disqus_thread">Comments</a>
-      </span>
-      
-       这是Linux里面的一个超级好用的工具。我之前都用AirDroid，但是也有缺点，就是在Linux 里面只能在浏览器里面使用，也只是勉强能够使用而已。
-然而，这个就不一样了，它有Android版。真的是超级好用啊！下面是我经常使用的功能：
- 同步剪切板，比如在手机上面复制了一段文字，然后就立刻可以在我的Linux里面用快捷 键C-v把刚才复制的内容粘贴到电脑上面。 比如电脑上面正在播放音乐或者视频，然而我再手机上面就可以控制媒体播放，比如快 进、暂停或者播放。这个可以在一个场景使用到：我把笔记本和显示器或者电视机连接起 来，然后我就可以用我的android来作为遥控器了。 图片或者文件互相发送。  截图以后再补上吧。
-最近我在整理我的硬盘里面的乱七八糟的文档啊之类的。很久之前就想做的事情，只不过 一直没有开始做。:joy::joy:
-Tips
-ls -tlh 这个命令里面的t选项经常被我忽略，其实它还是挺有用的，尤其是我想看某 个文件夹里面昨天我新增了那些文件的时候。这个选项可以按照时间顺序列出文件。
-今天跑步3.42km :joy::joy: 
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/05/23/2016%E5%B9%B45%E6%9C%8823%E6%97%A5/">2016年5月23日</a>
-      </h1>
-      <span class="post-date">May 23, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/05/23/2016%E5%B9%B45%E6%9C%8823%E6%97%A5/#disqus_thread">Comments</a>
-      </span>
-      
-      今天我发现时间越来越紧迫了起来。
-突然想到要整理一下我的浏览器收藏夹，因为我在用三种浏览器，Safari，Chrome 和Firefox，在Mac OS X上面用Safari和Chrome，在旧电脑的Linux上面用Firefox，因为开 Chrome实在是，太卡。。:joy::joy::joy:所以同步收藏夹就成了一个问题。一直以来，我 都没有整理过我的收藏夹，并且不知道什么时候手贱，在Safari里面点了导入Chrome的收藏 夹，然后又在Safari里面导入Firefox的收藏夹，然后在Chrome里面导入Safari的收藏夹， 然后在Firefox里面导入Chrome的收藏夹……然后各种同步。。不知道为啥反正就是各种乱， 很多重复的，也没办法简单地删除，因为都有后来自己添加的收藏并且没有同步或者导入的 别的浏览器的。尝试过各种乱七八糟的去掉收藏夹里面重复网页的浏览器插件，Chrome和 Firefox里面的都试过，下午在Linux里面的Firefox里面又试了一下：
-可以看到有13593个重复的收藏被检测到，然而这个插件并不能简单的一次性去重……然后 尝试另外一个：
-这个倒是可以，然而点了按钮之后，等了十几分钟，还没结束，觉得这也太慢了。。然后就 这样了：
-Google了半天也没找到别的比较好的方法。。:sob::sob::sob:
-然后突然想到一个办法：我自己手动去重吧。。然而并不会写浏览器插件，也并不会前端的 乱七八糟的东西。所以想了个歪路子：（针对Firefox）
- 把收藏夹导出成html文件，然后用awk之类的工具去重。。 删除浏览器的所有收藏夹。 导入处理之后的html文件到收藏夹。  开始不知道怎么想到，一开始就想用awk处理，写的时候发现，然而在awk里面用正则的反向 引用并不是那么方便的样子:question::question:额……我为什么不用 Perl:exclamation::exclamation::anger:所以，很愉快地用Perl写完了。。
-my %seen; while(&lt;&gt;) { if (/&lt;A HREF=&quot;http([^\&quot;]+)&quot;/) { unless ($seen{$1}) { $seen{$1}++; print; } } else { print; } } # 14595 -&gt; 991 ;-( exit 0;  处理了之后，可以发现，收藏总数从14595减少到了991:scream::scream:棒棒哒！这个去重 貌似不彻底诶，然而已经减少了大部分了，再用之前使用的插件搞一下，发现需要手动删除 的只有几个而已了，把浏览器里面的全部收藏删除之后，再导入处理之后的html文件。收工:bangbang:
-之后就是寻找一种方法可以各个浏览器之间同步的方法吧？貌似可能有插件可以搞定？随后 再找找。。
-哦，对了，我发现把KDE Plasma 5里面的各种特效什么的都关掉，还是可以用的，用得挺流 畅，在我的旧电脑上面并不卡。如果追求绝对稳定，当然还是Xfce4靠谱:smiley_cat:
-还有，前两天我又折腾了一下我的树莓派，它支持AirPlay了，最近我发现Real好用，iPad Air上面放的腾讯视频可以很愉快地在电视上面看，并且可以用我的Android手机作为遥控 器，甚至不接显示器的时候，也可以把手机上的音乐AirPlay到树莓派上面播放:smile::smile: 哦，Android里面的QQ音乐和虾米音乐都支持AirPlay，网易云音乐不支持，有点可惜。 这两天它主要承担了给我妈播放电视剧的艰巨任务。。。:joy::joy:另外就是作为我的IRC 的一个Bouncer，其实树莓派，还是蛮有用的嘛。:yum:
-      <a href="http://liuxueyang.github.io/blog/2016/05/23/2016%E5%B9%B45%E6%9C%8823%E6%97%A5/">Read On &rarr;</a>
       
     </div>
     

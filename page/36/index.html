@@ -79,6 +79,32 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-1709-oil-deposits-dfs%E5%85%A5%E9%97%A8%E9%A2%98/">zoj 1709 Oil Deposits ——DFS入门题</a>
+      </h1>
+      <span class="post-date">Apr 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-1709-oil-deposits-dfs%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=709 题目大意： 给一个矩阵，*代表空地，@代表油田，并且@如果水平，竖直，对角线相邻的话就认为是一块油田，问有多少块油田。 思路就是DFS，从第一个字符开始搜，找到一个@就标记一下，cnt++，然后看它的八个方向上是不是有@，如果有，全部标记为*，不需要恢复现场。然后输出cnt的值就行了。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; char s[110][110]; bool flag; int cnt, n, m; int dir[8][2] = {{0,1},{0,-1},{-1,0},{1,0},{1,1},{-1,1},{1,-1},{-1,-1}}; void dfs(int i, int j){ if (i &lt; 0 || j &lt; 0 || i &gt; m || j &gt; n) return; if (s[i][j] == '*') return; if (s[i][j] == '@') flag = true; s[i][j] = '*'; for (int k = 0; k &lt; 8; ++k){ if (s[i+dir[k][0]][j+dir[k][1]] == '@'){ dfs(i+dir[k][0], j+dir[k][1]); } } } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;zoj1709.
+      <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-1709-oil-deposits-dfs%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/06/zoj-2110-tempter-of-the-bone-dfs-%E5%89%AA%E6%9E%9D/">zoj 2110 Tempter of the Bone ——DFS&#43;剪枝</a>
+      </h1>
+      <span class="post-date">Apr 6, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/06/zoj-2110-tempter-of-the-bone-dfs-%E5%89%AA%E6%9E%9D/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1110 题意： 给一个矩阵，‘X’代表墙壁，‘.’代表空格，‘S’代表起始位置，‘D’代表终点。从起点开始，每个空格只许经过一次，求在规定的时间t的时候，能否正好到达终点。每走一个花费1个单位时间。输入n,m,t，分别代表矩阵的行，列，规定的时间。 思路： 深度优先搜索，从起点开始，按照四个方向搜索，判断某个方向的下一个方格如果不是墙壁的话，就把它标为墙壁，然后从这个点继续往下搜索，如果从这个点往下搜索失败后，就要把这个点标记回原来的空格符号：‘.’。然后尝试下一个方向。直到i == di, j == dj, t == T的时候，表示搜索成功，flag = true; return; 其中si sj 是起点位置，di dj是终点位置，T是当前所花费的时间。 然后还有几处剪枝：如果这个矩阵的空格的数目小于等于时间t，那么不可能成功。这在主函数里面可以剪枝。在dfs的过程中，如果发现剩余的时间小于当前位置到终点的最小距离，可以直接判断搜索失败；如果剩余的时间和当前位置到终点的最小时间的差值是奇数的话，可以判断搜索一定失败，可以剪枝，如果是偶数的话，则可能成功。 今天突然发现，以前写的解题报告太搓了……向kedebug的博客学习，O(∩_∩)O哈哈~加油
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; bool flag; char s[9][9]; int t, n, m, si, sj, di, dj; int dir[4][4] = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}}; void dfs(int i, int j, int T){ if (i == di &amp;&amp; j == dj &amp;&amp; T == t){ flag = true; return; } if (i &lt;= 0 || j &lt;= 0 || i &gt; n || j &gt; m) return; int temp = t - T - abs(i-di) - abs(j-dj); if (temp &lt; 0 || temp&amp;1)return; for (int k = 0; k &lt; 4; ++k){ if (s[i+dir[k][0]][j+dir[k][1]] !
+      <a href="http://liuxueyang.github.io/blog/2013/04/06/zoj-2110-tempter-of-the-bone-dfs-%E5%89%AA%E6%9E%9D/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/04/06/2013%E5%B9%B44%E6%9C%885%E6%97%A5--%E9%9B%A8%E9%98%B4/">2013年4月5日  雨，阴</a>
       </h1>
       <span class="post-date">Apr 6, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/06/2013%E5%B9%B44%E6%9C%885%E6%97%A5--%E9%9B%A8%E9%98%B4/#disqus_thread">Comments</a>
@@ -173,30 +199,6 @@ Problem Description Marsha and Bill own a collection of marbles. They want to sp
       
       The summer training of ZJU ICPC in July is about to end. To celebrate this great and happy day, the coaches of ZJU ICPC Team Navi and Fancy decided to BG everyone! Beside the two coaches, there are N participants. Those participants are divided into four groups to make problems for other groups. After a brief discussion, they decided to go to Lou Wai Lou and have a great lunch. The cost for each person to have a meal in Lou Wai Lou is W yuan.
       <a href="http://liuxueyang.github.io/blog/2013/03/31/zoj-3693-happy-great-bg/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/31/hdu-2035-%E4%BA%BA%E8%A7%81%E4%BA%BA%E7%88%B1ab-%E5%90%8C%E4%BD%99%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%A7%E8%B4%A8/">hdu 2035 人见人爱A^B ——同余的简单性质</a>
-      </h1>
-      <span class="post-date">Mar 31, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/31/hdu-2035-%E4%BA%BA%E8%A7%81%E4%BA%BA%E7%88%B1ab-%E5%90%8C%E4%BD%99%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%A7%E8%B4%A8/#disqus_thread">Comments</a>
-      </span>
-      
-      Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others)Total Submission(s): 15572 Accepted Submission(s): 11012 
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/31/hdu-1021-fibonacci-again---%E5%90%8C%E4%BD%99%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%A7%E8%B4%A8/">hdu 1021 Fibonacci Again   ——同余的简单性质</a>
-      </h1>
-      <span class="post-date">Mar 31, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/31/hdu-1021-fibonacci-again---%E5%90%8C%E4%BD%99%E7%9A%84%E7%AE%80%E5%8D%95%E6%80%A7%E8%B4%A8/#disqus_thread">Comments</a>
-      </span>
-      
-      Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others)Total Submission(s): 26755 Accepted Submission(s): 12950 
-      
       
     </div>
     

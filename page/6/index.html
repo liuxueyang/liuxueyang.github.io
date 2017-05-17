@@ -79,6 +79,37 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-gss1---can-you-answer-these-queries-i/">spoj, segment tree: GSS1 - Can you answer these queries I</a>
+      </h1>
+      <span class="post-date">Jul 25, 2016 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-gss1---can-you-answer-these-queries-i/#disqus_thread">Comments</a>
+      </span>
+      
+      Problem Link
+max sum of a sequence can be from one of the three:
+1. left half of the sequence 2. right half of the sequence 3. left half + right half  segment tree range query
+#include &lt;iostream&gt; using namespace std; struct SegmentTreeNode { int pre, suf, sub, total; void assignLeaf(int value) { pre = suf = sub = total = value; } void merge(SegmentTreeNode &amp;left, SegmentTreeNode &amp;right) { pre = max(left.
+      <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-gss1---can-you-answer-these-queries-i/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-brckts---brackets/">spoj, segment tree: BRCKTS - Brackets</a>
+      </h1>
+      <span class="post-date">Jul 25, 2016 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-brckts---brackets/#disqus_thread">Comments</a>
+      </span>
+      
+      Problem Link
+开始没有读懂题目，合法括号的意思其实就是常识情况下的括号合法：整个序列的左括号数目和右括号的数目相同，但是也不能出现这样的：)))(((，所以还要保证在任意一点，左括号的数目大于等于右括号的数目。
+这就需要，在序列里面任意一点，左边的不匹配的左括号的数目一定等于右边的不匹配右括号的数目。
+平常的线段树的点更新和区间查询
+#include &lt;iostream&gt; using namespace std; struct SegmentTreeNode { int unmatchedLeft, unmatchedRight; void assignLeaf(char value) { if (value == '(') { unmatchedLeft = 1; unmatchedRight = 0; } else { unmatchedLeft = 0; unmatchedRight = 1; } } void merge(SegmentTreeNode &amp;left, SegmentTreeNode &amp;right) { int L_unl = left.unmatchedLeft, L_unr = left.unmatchedRight, R_unl = right.unmatchedLeft, R_unr = right.unmatchedRight; int matched = min(L_unl, R_unr); unmatchedLeft = L_unl + R_unl - matched; unmatchedRight = L_unr + R_unr - matched; return; } bool getValue() { return unmatchedRight == 0 &amp;&amp; unmatchedLeft == 0; } }; template &lt;class T, class V&gt; class SegmentTree { SegmentTreeNode *nodes; int N; public: SegmentTree(T arr[], int N) { this-&gt;N = N; nodes = new SegmentTreeNode[getSegmentTreeSize(N)]; buildTree(arr, 1, 0, N - 1); } ~SegmentTree() { delete[] nodes; } V getValue(int lo, int hi) { SegmentTreeNode result = getValue(1, 0, N - 1, lo, hi); return result.
+      <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-brckts---brackets/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-akvqld03---how-to-handle-the-fans/">spoj, segment tree: AKVQLD03 - How to Handle the Fans</a>
       </h1>
       <span class="post-date">Jul 25, 2016 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-akvqld03---how-to-handle-the-fans/#disqus_thread">Comments</a>
@@ -187,35 +218,6 @@ C++ #include &lt;bits/stdc++.h&gt; using namespace std; struct segment { int x, 
 Time complexity O(n), Space complexity O(n)
 C: #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; // Find lowest common ancestor in binary tree. We assume the // values in the tree are unique and the two values are always in // the tree. // Time complexity O(n) // Space complexity O(n) typedef struct Node { int key; struct Node *left, *right; } Node; Node* createNode(int key) { Node * tmp = (Node*)malloc(sizeof(Node)); tmp-&gt;key = key; tmp-&gt;left = tmp-&gt;right = NULL; return tmp; } Node* findLCA(Node* root, int n1, int n2) { if (root == NULL) { return NULL; } if (n1 == root-&gt;key || n2 == root-&gt;key) { return root; } Node* left = findLCA(root-&gt;left, n1, n2); Node* right = findLCA(root-&gt;right, n1, n2); if (left &amp;&amp; right) { return root; } return left ?
       <a href="http://liuxueyang.github.io/blog/2016/06/27/lowest-common-ancestor-in-binary-tree-perl-c-and-common-lisp-implementation/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/06/27/fenwick-tree/">Fenwick Tree</a>
-      </h1>
-      <span class="post-date">Jun 27, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/06/27/fenwick-tree/#disqus_thread">Comments</a>
-      </span>
-      
-      Fenwick Tree的原理是，把一个前缀和划分成多个子序列的和，子序列的个数是当前前缀和元素个数的数字二进制表示中的1的个数。
-Perl实现：
-#!/usr/bin/env perl -n #=============================================================================== # FILE: fenwick_tree.pl # AUTHOR: Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com # ORGANIZATION: Hunan University # CREATED: 2016/06/26 23时27分06秒 #=============================================================================== use strict; use warnings; use utf8; use 5.014; chomp; my @fenwick; my @array = split; unshift @array, 0; unshift @fenwick, 0; sub lowbit { $_[0] &amp; -$_[0]; } sub build_fenwick_tree { for (1..$#array) { for my $j ($_-lowbit($_)+1..$_) { $fenwick[$_] += $array[$j] } } } sub modify_fenwick_tree { # two arguments # 1.
-      <a href="http://liuxueyang.github.io/blog/2016/06/27/fenwick-tree/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/06/17/%E6%8E%A8%E8%8D%90rime%E5%B0%8F%E9%B9%A4%E5%8F%8C%E6%8B%BC%E8%BE%93%E5%85%A5%E6%B3%95/">推荐Rime小鹤双拼输入法</a>
-      </h1>
-      <span class="post-date">Jun 17, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/06/17/%E6%8E%A8%E8%8D%90rime%E5%B0%8F%E9%B9%A4%E5%8F%8C%E6%8B%BC%E8%BE%93%E5%85%A5%E6%B3%95/#disqus_thread">Comments</a>
-      </span>
-      
-      之前一直没有时间配置我的OS X上的Rime输入法。所以我最近认真配置了一下。首先，推荐 一篇博客： 安装及配置 Mac 上的 Rime 输入法——鼠鬚管 (Squirrel) 这是一篇好博客。然而复制配置文件的时候，还是不能直接复制到编辑器里面，一定要注意 格式！因为这篇博客，我发现了小鹤双拼输入法，然后随便找了一篇关于小鹤双拼的文章： 做少数派中的少数派：双拼输入快速入门 看了一下里面的键位映射图，大概理解了一下，就马上开始用了。也没怎么刻意记忆，不知 道哪个键就看一下那个图，和朋友聊了几句，就可以打字了，虽然很慢，但是可以接受。前 天晚上开始接触，昨天上午就可以愉快地打字了。到现在大概用了一天半的时间，我就可以 用双拼愉快地写这篇博客了。
-愚笨如我也能够这么快地接受这个输入法，所以它的学习成本还真的是挺低的。然而打字效 率比原来的全拼却好很多。每个汉字拼音分成声母和韵母，每个声母和韵母只需要一次按键， 不得不说，很适合用汉语拼音打汉字。哈哈，用词根输入英语可能就没这么方便了？:joy: :joy:
-另外，我也可以同步Rime的用户资料了。然后再同步到Gitlab的私人仓库里面，完美！另外， 那篇博客也介绍了如何配置小鹤双拼・语句流输入法，这样就可以中英混输并且还带emoji 了！简直Perfect流畅。
-时间好快，麦子熟了。
-      
       
     </div>
     

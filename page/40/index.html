@@ -79,6 +79,34 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/12/hdu-1039-easier-done-than-said/">hdu 1039 Easier Done Than Said?</a>
+      </h1>
+      <span class="post-date">Mar 12, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/12/hdu-1039-easier-done-than-said/#disqus_thread">Comments</a>
+      </span>
+      
+      Easier Done Than Said?
+Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 5021 Accepted Submission(s): 2535
+Problem Description Password security is a tricky thing. Users prefer simple passwords that are easy to remember (like buddy), but such passwords are often insecure. Some sites use random computer-generated passwords (like xvtpzyo), but users have a hard time remembering them and sometimes leave them written on notes stuck to their computer.
+      <a href="http://liuxueyang.github.io/blog/2013/03/12/hdu-1039-easier-done-than-said/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/12/hdu-1113-word-amalgamation/">hdu 1113 Word Amalgamation</a>
+      </h1>
+      <span class="post-date">Mar 12, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/12/hdu-1113-word-amalgamation/#disqus_thread">Comments</a>
+      </span>
+      
+      Word Amalgamation
+Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 1834 Accepted Submission(s): 854
+Problem Description In millions of newspapers across the United States there is a word game called Jumble. The object of this game is to solve a riddle, but in order to find the letters that appear in the answer it is necessary to unscramble four words. Your task is to write a program that can unscramble words.
+      <a href="http://liuxueyang.github.io/blog/2013/03/12/hdu-1113-word-amalgamation/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/03/11/cf-281a-word-capitalization/">CF 281A Word Capitalization</a>
       </h1>
       <span class="post-date">Mar 11, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/11/cf-281a-word-capitalization/#disqus_thread">Comments</a>
@@ -181,34 +209,6 @@ One day three best friends Petya, Vasya and Tonya decided to form a team and tak
       Description Input Output Sample Input Sample Output
 #include &lt;cstdio&gt; #include &lt;cstring&gt; using namespace std; int ww[22][22][22]; int w(int a, int b, int c){ if (a &lt;= 0 || b &lt;= 0 || c &lt;= 0) return 1; if (a &gt; 20 || b &gt; 20 || c &gt; 20) return w(20, 20, 20); if (ww[a][b][c] &gt; 0) return ww[a][b][c]; if (a &lt; b &amp;&amp; b &lt; c) return ww[a][b][c] = w(a, b, c-1) + w(a, b-1, c-1) - w(a, b-1, c); else return ww[a][b][c] = w(a-1, b, c) + w(a-1, b-1, c) + w(a-1, b, c-1) - w(a-1, b-1, c-1); } int main(void){ int a, b, c; #ifndef ONLINE_JUDGE freopen(&quot;poj1759.
       <a href="http://liuxueyang.github.io/blog/2013/03/08/poj1579-function-run-fun/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/05/poj-2528-mayors-posters/">poj 2528 Mayor&#39;s posters</a>
-      </h1>
-      <span class="post-date">Mar 5, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/05/poj-2528-mayors-posters/#disqus_thread">Comments</a>
-      </span>
-      
-      Description Input Output Sample Input Sample Output
-#include &lt;cstdio&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; using namespace std; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 const int maxn = 111111; int li[maxn], ri[maxn], x[maxn*3], col[maxn&lt;&lt;4], cnt; bool hash[maxn]; void PushDown(int rt){ if (col[rt] != -1){ col[rt&lt;&lt;1] = col[rt&lt;&lt;1|1] = col[rt]; col[rt] = -1; } } void update(int L,int R, int c, int l, int r, int rt){ if (L &lt;= l &amp;&amp; R &gt;= r){col[rt] = c; return;} PushDown(rt); int m = (l + r) &gt;&gt; 1; if (L &lt;= m) update(L, R, c, lson); if (R &gt; m) update(L, R, c, rson); } void query(int l, int r, int rt){ if (col[rt] !
-      <a href="http://liuxueyang.github.io/blog/2013/03/05/poj-2528-mayors-posters/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/04/poj-3468-a-simple-problem-with-integers/">poj 3468 A Simple Problem with Integers</a>
-      </h1>
-      <span class="post-date">Mar 4, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/04/poj-3468-a-simple-problem-with-integers/#disqus_thread">Comments</a>
-      </span>
-      
-      A Simple Problem with Integers Time Limit: 5000MS Memory Limit: 131072K Total Submissions:40260 Accepted: 11693 Case Time Limit: 2000MS
-Description
-You have N integers, A1, A2, &hellip; , AN. You need to deal with two kinds of operations. One type of operation is to add some given number to each number in a given interval. The other is to ask for the sum of numbers in a given interval.
-Input
-      <a href="http://liuxueyang.github.io/blog/2013/03/04/poj-3468-a-simple-problem-with-integers/">Read On &rarr;</a>
       
     </div>
     

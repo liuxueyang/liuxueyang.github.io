@@ -79,6 +79,47 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/23/2009%E5%B9%B4%E5%88%B02013%E5%B9%B4%E7%94%B2%E5%AD%90%E5%9B%ADed/">2009年到2013年甲子园ED</a>
+      </h1>
+      <span class="post-date">Aug 23, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/23/2009%E5%B9%B4%E5%88%B02013%E5%B9%B4%E7%94%B2%E5%AD%90%E5%9B%ADed/#disqus_thread">Comments</a>
+      </span>
+      
+      2009年
+http://v.youku.com/v_show/id_XMTY3MTM4NjQw.html
+2010年 最喜欢的一个！看过N遍
+http://v.youku.com/v_show/id_XMjAwMzEwMDI4.html
+2011年
+http://v.youku.com/v_show/id_XMjk3NTQ4OTky.html
+也不错！
+2012年 超级好听啊~^_^比10年的还好，看过N+1遍……o(╯□╰)o
+http://v.youku.com/v_show/id_XMzY5OTM3Mzg4.html
+2013年春季甲子园
+http://v.youku.com/v_show/id_XNTYzODI0NTA4.html
+印象最深的是2011年打进甲子园的至学馆。
+http://v.youku.com/v_show/id_XMjkxOTcwNjI0.html
+这是至学馆校歌《追梦人》
+这是11年一支甲子园参赛队，名为至学馆，他们的故事犹如真人版的TOUCH，为了实现打入甲子园的梦想而努力，但王牌投手桐林史树 却遭遇车祸，不幸丧生，不仅如此，球队二号投手
+麻王健之郎 因为练习过重，导致手臂受伤，只能终止投手生涯，虽然前往甲子园的路上有无数强大的敌手，但他们最终击败了所有对手，打入了11年甲子园！以上是他们在取得甲子园入场券后唱校歌的场景，其中那个看台上的照片就是桐林史树。
+嗨，中村。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/08/22/%E4%BD%BF%E7%94%A8stl%E7%A6%BB%E6%95%A3%E5%8C%96/">使用STL离散化</a>
+      </h1>
+      <span class="post-date">Aug 22, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/22/%E4%BD%BF%E7%94%A8stl%E7%A6%BB%E6%95%A3%E5%8C%96/#disqus_thread">Comments</a>
+      </span>
+      
+      把原来的数组a复制一份拷贝b 用sort先把数组a排序 用unique消除a里面重复的元素 对于b中的每一个元素，用lower_bound找到它在a中的位置，也就是离散化之后的编号。 没了。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int main(void) { int a[6] = {15, 14, 11, 20, 13, 13}, b[111]; for (int i=0; i &lt; 6; ++i) b[i] = a[i]; sort(a, a+6); int len = unique(a, a+6) - a; for (int i = 0;i &lt; 6; ++i) b[i] = lower_bound(a, a+len, b[i]) - a + 1; for (int i = 0; i &lt; 6; ++i) printf(&quot;%d &quot;, b[i]); printf(&quot;\n&quot;); return 0; }  嗨！中村。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/08/22/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02/">读书笔记2</a>
       </h1>
       <span class="post-date">Aug 22, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/22/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02/#disqus_thread">Comments</a>
@@ -260,39 +301,6 @@
 小学的时候就看过这本书，大一的时候看过一遍英文版的，上午读完了一遍，每一次读都有不同的感受，尤其是在不同的阶段，不同的心境下。很美丽的一个童话。
 昨晚看一然酱的kindle，好吧，好多技术方面的书啊，linux,python,Haskell各种啊，我的里面从汉书到韩寒到漫画都有啊，一本学习的书都没有啊，这就是传说中的茶具么？好吧，其实即使有学习的书，我想按照我这个阅读的优先级，我也是永远也不会看的o(╯□╰)o其实kindle除了看小说，看散文漫画什么的超级方便以外，看技术的书确实也不方便啊，尤其是需要翻来翻去的那种书。
 一天之中最宁静的时光，就是深夜躺在楼顶，伴着月光，静静地看书，困了就昏睡过去，凌晨醒来，一边欣赏着美丽的朝霞，一边继续懒散地看书，然后一天又开始了。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/18/codeforces105d-bag-of-mice-%E6%A6%82%E7%8E%87dp/">codeforces105d Bag of mice ——概率DP</a>
-      </h1>
-      <span class="post-date">Aug 18, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/18/codeforces105d-bag-of-mice-%E6%A6%82%E7%8E%87dp/#disqus_thread">Comments</a>
-      </span>
-      
-      Link:
-http://codeforces.com/problemset/problem/148/D
-Refer to:
-http://www.cnblogs.com/kuangbin/archive/2012/10/04/2711184.html
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; double a[1111][1111]; int main(void) { int w,b; #ifndef ONLINE_JUDGE freopen(&quot;in.
-      <a href="http://liuxueyang.github.io/blog/2013/08/18/codeforces105d-bag-of-mice-%E6%A6%82%E7%8E%87dp/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/18/zoj3551-bloodsucker-%E6%A6%82%E7%8E%87dp/">zoj3551 Bloodsucker ——概率DP</a>
-      </h1>
-      <span class="post-date">Aug 18, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/18/zoj3551-bloodsucker-%E6%A6%82%E7%8E%87dp/#disqus_thread">Comments</a>
-      </span>
-      
-      Link: http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=4530
-A[i]数组表示当吸血鬼有 I 个的时候，还需要的天数。可以列出方程：
-A[i] = p1(a[i+1]+1) + (1-p1)(a[i]+1) p1=(i*(n-i))p / (n(n-1)/2)
-这道题目错了很多次，原因就是强制类型转换的时候，有一个细节，
-(double)(n(n-1))/2.0 是错的，应该写成：(double)n(n-1)/2.0。这个小细节以后注意吧
-# include&lt;stdio.h&gt; # include&lt;string.h&gt; # include&lt;stdlib.h&gt; int main(void) { // freopen(&quot;in.txt&quot;, &quot;r&quot;,stdin ); int t; scanf(&quot;%d&quot;,&amp;t); while (t--) { int n; double p; scanf(&quot;%d%lf&quot;,&amp;n,&amp;p); double sad=0.0,dw=(double)n*(n-1)/2.0; for(int i=n-1;i&gt;=1;--i) { double lxy=i; lxy*=(n-i); lxy*=p; lxy=lxy/dw; sad+=1.0/lxy; } printf(&quot;%.3f\n&quot;,sad); } return 0; }  O(╯□╰)o
       
       
     </div>

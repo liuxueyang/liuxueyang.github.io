@@ -79,6 +79,42 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/05/16/finding-an-exit-from-a-maze/">Finding an Exit from a Maze</a>
+      </h1>
+      <span class="post-date">May 16, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/05/16/finding-an-exit-from-a-maze/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="http://liuxueyang.github.io/categories/algorithm">Algorithm</a><a class="label" href="http://liuxueyang.github.io/categories/dfs">DFS</a>
+      </span>
+      
+      <p>判断无向图中的两个点之间是否有一条路径</p>
+      <a href="http://liuxueyang.github.io/blog/2017/05/16/finding-an-exit-from-a-maze/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/04/19/typeclass-in-haskell%E7%AD%86%E8%A8%98/">Typeclass in Haskell筆記</a>
+      </h1>
+      <span class="post-date">Apr 19, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/04/19/typeclass-in-haskell%E7%AD%86%E8%A8%98/#disqus_thread">Comments</a>
+      
+      <br/>
+      <a class="label" href="http://liuxueyang.github.io/categories/haskell">Haskell</a>
+      </span>
+      
+      代數數據類型 這樣定義一個類型：
+data Name = Name String String  Name既是類型名，也是一個Value Constructor，一個類型通常有多個Value Constructor，不過按照習慣，如果一個類型僅僅有一個Value Constructor，那麼它的名字通常和類型名同名。
+Value Constructor事實上只是一個函數，這也就決定了，不同的類型不能夠擁有相同名字的Value Constructor。
+創建一個對象：
+λ&gt; Name &quot;aries&quot; &quot;abel&quot; Name &quot;aries&quot; &quot;abel&quot; :: Name  有多個Value Constructor的例子：
+data Shape = Rectangle Point Point | Circle Point Float data Point = Point Float Float  創建一個Circle對象：
+λ&gt; Point 3 4 Point 3 4 :: Point λ&gt; Circle (Point 3 4) 3 Circle (Point 3 4) 3 :: Shape  Record 在代數類型裏面每個field所代表的意義不明確，並且如果需要得到某個field的值只能用模式匹配，非常繁瑣，所以這個時候Record就有用了：
+      <a href="http://liuxueyang.github.io/blog/2017/04/19/typeclass-in-haskell%E7%AD%86%E8%A8%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2017/04/18/foldl%E5%92%8Cfoldr%E7%9A%84%E4%B8%8D%E5%90%8C%E9%BB%9E/">foldl和foldr的不同點</a>
       </h1>
       <span class="post-date">Apr 18, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/04/18/foldl%E5%92%8Cfoldr%E7%9A%84%E4%B8%8D%E5%90%8C%E9%BB%9E/#disqus_thread">Comments</a>
@@ -213,33 +249,6 @@ if x &gt; 50 then x else x * 3  和SML基本一样。同样，else部分不能�
 然后看了一下之前写的Perl程序，竟然，看不太懂了。。。T_T，然而还好，最后还是搞定了：
 #!/usr/bin/perl # Date : 2017/03/16 19:14:35 # Finish: 2017/03/16 22:04:07 # NOTE: There MUST NOT be any non-ascii character in the path!!!!!!!!!! use strict; use warnings; use 5.014; use Cwd; use JSON qw(); use open ':std', ':encoding(UTF-8)'; use File::Copy; my $cur_dir = '/home/repl/Videos/Bilibili/Fanju/TOUCH/s_2425'; opendir(DIR, $cur_dir) or dir $!; while (my $file = readdir(DIR)) { next if ($file =~ /^\./); # get index_title my $json_file = $cur_dir .
       <a href="http://liuxueyang.github.io/blog/2017/03/16/%E6%95%B4%E7%90%86bilibili%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%BC%93%E5%AD%98%E7%9A%84%E8%A7%86%E9%A2%91/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2017/03/06/%E5%A4%8D%E4%B9%A0c--/">复习C&#43;&#43;</a>
-      </h1>
-      <span class="post-date">Mar 6, 2017 &middot; 8 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/03/06/%E5%A4%8D%E4%B9%A0c--/#disqus_thread">Comments</a>
-      </span>
-      
-      今天复习了一下C++。很久很久不碰这门语言，早上看到一段代码竟然感觉十分陌生。this，const pointer，引用之类的，有点忘了。其实也不是忘，就是感觉很陌生。比如this别的语言里面也有，只是不是指针，比较容易混淆。所以就大概查了一下C++ Primer，然后做了几道题目。放在这里。
-题目一 给CMyString类写一个方法，使它能够支持赋值=操作。CMyString类已经给出。
-#include &lt;bits/stdc++.h&gt; // implement a operator `=` on class CMyString using namespace std; class CMyString { public: CMyString(char * pData = NULL); CMyString(const CMyString &amp; str); CMyString &amp; operator =(const CMyString &amp;); void print(); ~CMyString(void); private: char * m_pData; }; CMyString &amp; CMyString::operator =(const CMyString &amp; str) { // if (this == &amp;str) return *this; // delete [] m_pData; // m_pData = NULL; // m_pData = new char[strlen(str.
-      <a href="http://liuxueyang.github.io/blog/2017/03/06/%E5%A4%8D%E4%B9%A0c--/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2017/03/06/const-member-function-in-cpp/">const member function in cpp</a>
-      </h1>
-      <span class="post-date">Mar 6, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/03/06/const-member-function-in-cpp/#disqus_thread">Comments</a>
-      </span>
-      
-      默认情况下，this是一个const pointer to the nonconst version of the class type。比如有一个类A，那么在类里面，this的类型是A * const。因为不能把一个const对象的地址赋值给一个指向nonconst对象的指针，因此不能把this绑定到一个const对象上。这就导致，不能在const对象上调用一个nonconst member function。
-解决方法就是，把this声明为const。可是this是隐性的变量，所以C++的解决方法就是在参数列表后面指定const。这样的函数就是const member function。它的语义是：this是一个const pointer to a const object of the class type。这样，const对象和nonconst对象都可以调用这个函数。
-      
       
     </div>
     

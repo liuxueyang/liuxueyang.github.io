@@ -79,6 +79,30 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/12/%E4%B8%80%E4%B8%AAbug%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/">一个bug，持续更新……</a>
+      </h1>
+      <span class="post-date">Apr 12, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/12/%E4%B8%80%E4%B8%AAbug%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/#disqus_thread">Comments</a>
+      </span>
+      
+       scanf(&ldquo;%d%d&rdquo;, &amp;n, &amp;mz[n]); 这样的写法是不对的…… 全局变量不要和局部变量命名成相同的名字，尤其是循环变量不要设置成全局的，很危险。 数组要初始化，尤其是多case的时候 写代码的时候要全神贯注，千万不要因为一时的疏忽，出现一个最难发现的最弱智的bug…… 还有，memset(a, 1, sizeof(a));貌似有错……慎用。注：这货只能用4个字节都相同的整数！比如，0x7f7f7f7f 或者 0x3f3f3f3f 有一点最受不了的就是：为什么最近输入老是忘了写取地址符？果然是敲代码敲得少了么…… 输入格式，要用%lld还是%I64d，也可以用cin,cout如果输入量比较少的话。 D = 3；1 &lt;&lt; D - 1 的结果是什么？注意优先级！有位运算的需要加上括号！ ==不要写成=，以前以为自己肯定不会犯这种错误，谁知道……唉 初始化技术变量，尤其是多case的时候 当多个case运行不对的时候，尝试一下只输入一个case，因为可能是多case的过程中，变量没有初始化 尤其是开数组的时候，千万不能把大小写错了，或者，当出现运行都出现系统错误的时候，可能是数组越界了，看一下开数组的时候是不是开小了，或者是数字打错了。 代码错了，自己想办法出数据测试，其实是一种十分重要的能力。 写线段树的时候，计算中点的时候，int M = L + (R-L)&gt;&gt;1；这么写是不对的。。至于为什么，我也不知道。。反正因为这货卡了好久== 直接这么写就行：int M = L+(R-L)/2；  
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/10/2013%E5%B9%B44%E6%9C%889%E6%97%A5-%E9%98%B4%E8%BD%AC%E5%B0%8F%E9%9B%A8/">2013年4月9日 阴转小雨</a>
+      </h1>
+      <span class="post-date">Apr 10, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/10/2013%E5%B9%B44%E6%9C%889%E6%97%A5-%E9%98%B4%E8%BD%AC%E5%B0%8F%E9%9B%A8/#disqus_thread">Comments</a>
+      </span>
+      
+      下午下雨，晚上去跑步，半路上下小雨点，开始犹豫要不要继续往前跑，最后到一半路程的时候就往回走了，结果又不下雨了，长沙的鬼天气，跑着一点儿也不爽，状态很不好，可能是该休息一两天了，后期的时候干脆就当散步了，走回来了…… 不过雨后的湘江边确实空气也挺好，一边走边思考问题，也是一种不错的享受～
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/04/09/2013%E5%B9%B44%E6%9C%888%E6%97%A5-%E6%99%B4/">2013年4月8日 晴</a>
       </h1>
       <span class="post-date">Apr 9, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/09/2013%E5%B9%B44%E6%9C%888%E6%97%A5-%E6%99%B4/#disqus_thread">Comments</a>
@@ -175,32 +199,6 @@
       
       比赛完去跑步，今天天气很好，有温和的阳光，还有微微的风，跑步正合适，开始还是跑得有点儿快……中途前面还有骑直行车的，然后动力就来了，速度加快了，紧跟着自行车，跑得比较爽，也不感觉特别累，明显比前两天跑得快，路程比以前长，但是还是比平常快了整整五分钟！唉，先慢慢来吧，先不追求速度，关键是跑得高兴。^_^ 阳春三月，江边有很多放风筝的，哈哈，突然发现春天真的来了。 所有的不愉快，都随风而去……温和的阳光里，跑步结束，望着天上各种各样的风筝，变得豁达起来。周围的三五成群的人们，都在享受这春光，多美好的境界。
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-1709-oil-deposits-dfs%E5%85%A5%E9%97%A8%E9%A2%98/">zoj 1709 Oil Deposits ——DFS入门题</a>
-      </h1>
-      <span class="post-date">Apr 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-1709-oil-deposits-dfs%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=709 题目大意： 给一个矩阵，*代表空地，@代表油田，并且@如果水平，竖直，对角线相邻的话就认为是一块油田，问有多少块油田。 思路就是DFS，从第一个字符开始搜，找到一个@就标记一下，cnt++，然后看它的八个方向上是不是有@，如果有，全部标记为*，不需要恢复现场。然后输出cnt的值就行了。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; char s[110][110]; bool flag; int cnt, n, m; int dir[8][2] = {{0,1},{0,-1},{-1,0},{1,0},{1,1},{-1,1},{1,-1},{-1,-1}}; void dfs(int i, int j){ if (i &lt; 0 || j &lt; 0 || i &gt; m || j &gt; n) return; if (s[i][j] == '*') return; if (s[i][j] == '@') flag = true; s[i][j] = '*'; for (int k = 0; k &lt; 8; ++k){ if (s[i+dir[k][0]][j+dir[k][1]] == '@'){ dfs(i+dir[k][0], j+dir[k][1]); } } } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;zoj1709.
-      <a href="http://liuxueyang.github.io/blog/2013/04/07/zoj-1709-oil-deposits-dfs%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/06/zoj-2110-tempter-of-the-bone-dfs-%E5%89%AA%E6%9E%9D/">zoj 2110 Tempter of the Bone ——DFS&#43;剪枝</a>
-      </h1>
-      <span class="post-date">Apr 6, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/06/zoj-2110-tempter-of-the-bone-dfs-%E5%89%AA%E6%9E%9D/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1110 题意： 给一个矩阵，‘X’代表墙壁，‘.’代表空格，‘S’代表起始位置，‘D’代表终点。从起点开始，每个空格只许经过一次，求在规定的时间t的时候，能否正好到达终点。每走一个花费1个单位时间。输入n,m,t，分别代表矩阵的行，列，规定的时间。 思路： 深度优先搜索，从起点开始，按照四个方向搜索，判断某个方向的下一个方格如果不是墙壁的话，就把它标为墙壁，然后从这个点继续往下搜索，如果从这个点往下搜索失败后，就要把这个点标记回原来的空格符号：‘.’。然后尝试下一个方向。直到i == di, j == dj, t == T的时候，表示搜索成功，flag = true; return; 其中si sj 是起点位置，di dj是终点位置，T是当前所花费的时间。 然后还有几处剪枝：如果这个矩阵的空格的数目小于等于时间t，那么不可能成功。这在主函数里面可以剪枝。在dfs的过程中，如果发现剩余的时间小于当前位置到终点的最小距离，可以直接判断搜索失败；如果剩余的时间和当前位置到终点的最小时间的差值是奇数的话，可以判断搜索一定失败，可以剪枝，如果是偶数的话，则可能成功。 今天突然发现，以前写的解题报告太搓了……向kedebug的博客学习，O(∩_∩)O哈哈~加油
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; bool flag; char s[9][9]; int t, n, m, si, sj, di, dj; int dir[4][4] = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}}; void dfs(int i, int j, int T){ if (i == di &amp;&amp; j == dj &amp;&amp; T == t){ flag = true; return; } if (i &lt;= 0 || j &lt;= 0 || i &gt; n || j &gt; m) return; int temp = t - T - abs(i-di) - abs(j-dj); if (temp &lt; 0 || temp&amp;1)return; for (int k = 0; k &lt; 4; ++k){ if (s[i+dir[k][0]][j+dir[k][1]] !
-      <a href="http://liuxueyang.github.io/blog/2013/04/06/zoj-2110-tempter-of-the-bone-dfs-%E5%89%AA%E6%9E%9D/">Read On &rarr;</a>
       
     </div>
     

@@ -79,6 +79,51 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/12/30/slackware-dolphin%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%BE%E7%A4%BA%E4%B9%B1%E7%A0%81/">Slackware Dolphin中文文件夹显示乱码</a>
+      </h1>
+      <span class="post-date">Dec 30, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/12/30/slackware-dolphin%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%BE%E7%A4%BA%E4%B9%B1%E7%A0%81/#disqus_thread">Comments</a>
+      
+      <br/>
+      
+      </span>
+      
+      在Slackware里面的KDE 4的默认文件夹管理器Dolphin里面，中文文件夹的名称显示是一堆问号。这个问题是我前两天遇到的，还是记在这里吧。问题描述如下。
+Dolphin的侧边栏可以显示中文，如图：
+如果我想要建立一个中文名称的文件夹的话：
+就会成为这样：
+我的locale是这样的：
+我的解决方法是这样的：
+在/etc/profile.d/lang.sh这个文件里面，有这样一句话：
+# en_US is the Slackware default locale: export LANG=en_US  把它改成这样就可以了：
+export LANG=zh_CN.utf-8  重新登录如果不行，那就重启，问题应该就解决了。比如：
+顺便说一句，在这两天我整理文件的过程中发现，最好用最方便的文件管理器是：KDE的Dolphin，因为我可以这样：
+其次是macOS的Finder，它也有类似的文件夹显示方式。其它的比如Xfce里面的默认文件夹管理器，删除文件夹的时候没有提示，我严重怀疑有一次整理文件夹的时候误删了一些东西，因为我只发现了一次，并且从回收站里找到了，八成还有别的，我没发现……所以那些简洁的文件管理器也就日常用用还可以。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/12/29/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8slackware/">开始使用Slackware</a>
+      </h1>
+      <span class="post-date">Dec 29, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/12/29/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8slackware/#disqus_thread">Comments</a>
+      
+      <br/>
+      
+      </span>
+      
+      前两天，我在整理我的硬盘，顺便整理了一下我的openSUSE Leap里面的资料，同样也是十分的混乱。花了很长时间整理，全部移动到移动硬盘里。过程中发现openSUSE Leap的官方源连不上了，正常情况下官方源应该会选择国内速度最快的镜像的，然而有的时候就是蜜汁连不上……去年我也遇到过这种情况，然后我就放弃这个发行版了（后来又回来了……）。这次我决定替换掉openSUSE Leap 42.2，理由：
+ 官方源有的时候连不上； 早上开机，一直使用到晚上，有的时候即使使用Xfce4也会变得卡； Plasma 5的BUG太多，出问题的次数太多； 跨版本升级的时候有点麻烦； 其实忍它很久了。  好吧，其实都是借口，我只是想试一试Slackware了。看了一下官方的文档，地址在这里：Document，这个文档挺不错的。粗略看完了。安装过程原来挺简单的，我还以为有多复杂。其中有一点挺人性化：安装过程中会提示你要不要制作一个启动盘，这样在系统出现问题无法启动的时候，利用启动盘就可以直接启动系统，然后我就制作了一个。没想到，很快我就用上了。Slackware使用的是LILO，而不是GRUB，Slackware不是那么激进，开发过程比较慢也比较保守，这一点我还是比较喜欢的，不用经常更新。是这样的：安装完之后，我发现LILO的第一个启动项是Windows而不是Slackware，我想把第一个换成Linux。然后在LILO的高级设置里面只选择了Windows，然后保存重启，发现启动项里只有Windows了……原来高级设置里的启动项目需要自己一个一个添加。没法进Slackware了，所以之前的启动盘就有用了，顺利进入Slackware，重新设置LILO，顺利解决。
+桌面环境我选择的KDE，安装完毕之后，干净清爽，KDE 4竟然非常流畅，完全不想Plasma 5在我的老电脑上面会经常卡顿。KDE 4一点也不卡，这点让我还是有点惊喜的。然后是中文一系列的配置：
+ KeepassX fcitx中文双拼输入法 zsh, fish修改默认shell，oh-my-zsh, fisherman Terminator安装了，不过我现在还是用的默认的Konsole，干净好用，分割其实我也用到少，不如Tab方便 Shadowsocks的GUI版本我遇到点问题，但是命令行版本能用 Dropbox同步Emacs配置，个人文档 Jetbrains全家桶，顺利安装 Android Studio，顺利安装  哦，值得一提的是，系统默认提供了clisp。哈哈。这两天使用的过程中，我还是非常满意的。这么好的发行版，不知道为什么用户那么少。可能是因为安装软件比较麻烦？没有好用的软件包管理器？这个对于我来说不是什么问题。反而是好事，我可不想用zypper install, pacman -S或者apt install安装一堆我可能永远用不到的软件。有的软件需要自己编译，自己解决依赖，有的可以找到二进制包，总的来说还是挺方便的。比如，我要安装VLC这个播放器，过程是这样的：
+ 在slackbuilds里面下载VLC的SlackBuild包：vlc.tar.gz到$HOME/Downloads，并解压缩：  wget https://slackbuilds.org/slackbuilds/14.2/multimedia/vlc.tar.gz ~/Downloads	tar -xvzf vlc.tar.gz   看一下vlc.info  cd vlc cat ./vlc.info  可以看到它有很多依赖，然后它的源代码的包在DOWNLOAD这个变量里面（一般情况下都是这个变量，只不过有的时候64位和32位是分开的，变量名字可能会不同，所以要注意一下。）
+ 下载源代码  source ./vlc.info wget $DOWNLOAD   编译：  sudo ./vlc.SlackBuild 编译的过程中出错了：  checking for libavutil variant&hellip; none checking for GST_APP&hellip; yes checking for GST_VIDEO&hellip; yes checking for AVCODEC&hellip; no configure: error: No package &lsquo;libavcodec&rsquo; found No package &lsquo;libavutil&rsquo; found.
+      <a href="http://liuxueyang.github.io/blog/2016/12/29/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8slackware/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2016/12/26/%E4%BD%BF%E7%94%A8time-machine%E5%A4%87%E4%BB%BD%E7%B3%BB%E7%BB%9F%E6%97%B6%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/">使用Time Machine备份系统时磁盘空间不足的问题</a>
       </h1>
       <span class="post-date">Dec 26, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/12/26/%E4%BD%BF%E7%94%A8time-machine%E5%A4%87%E4%BB%BD%E7%B3%BB%E7%BB%9F%E6%97%B6%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a>
@@ -221,35 +266,6 @@ Linux Mint 18 Ubuntu的衍生版，优点是，易用。
 有n个学生和n个任务，每个学生有喜欢的任务，输入一个矩阵，第i行第j列表示第i个 学生喜欢第j个任务。把任务分配给所有学生，使得每个学生得到的任务都是他喜欢的。 输出有多少种分配方法。n的最大值是20。  用一个数字的一个位表示这个任务是否已经被分配，如果任务全部被分配，那么这个数字就 是(1&lt;&lt;n)-1。可以想到这样的递归方法：solve(i,mask) 表示对i..n这些人分配任务的 方法的数目，mask代表此时对1..i-1这些人已经分配了任务，也就是说mask的二进制表示里 面有i-1个1。对当前的人，如果他喜欢第j个任务，并且mask的第j位是0，那么就可以把这 个任务分配给他，继续考虑下一个人。
 /* * ===================================================================================== * * Filename: main1.cpp * * Description: http://www.spoj.com/problems/ASSIGN/ * * Version: 2.0 * Created: 08/13/2016 14:13:42 * Compiler: g++ * * Author: Sabastian (liuxueyang.github.io), read3valprintloop@gmail.com * * ===================================================================================== */ #include &lt;bits/stdc++.h&gt; using namespace std; #define _ ios_base::sync_with_stdio(0);cin.tie(0); #define rep(i, a, n) for (int i = a; i &lt; n; ++i) #define per(i, a, n) for (int i = n-1; i &gt;= a; --i) #define pb push_back #define mp make_pair #define all(x) (x).
       <a href="http://liuxueyang.github.io/blog/2016/08/14/spoj-dynamic-programming-assign---assignments/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-aibohp---aibohphobia/">Spoj, dynamic-programming: AIBOHP - Aibohphobia</a>
-      </h1>
-      <span class="post-date">Aug 12, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-aibohp---aibohphobia/#disqus_thread">Comments</a>
-      </span>
-      
-      给一个字符串，求最少插入多少个字符，可以使得这个字符串是回文的。
-可以这样想：我们假设它已经是回文的，那么把这个字符串逆序，如果它是回文的，那么对 应的每个字符应该相等。可以它不是回文的，那么就需要尽量少地加一些字符，加多少呢？ 那么需要知道当前的最长连续公共子序列的长度len，把不相等的那些字符串加进去就成为 了回文的。加进去的字符的最少个数 = 字符串长度 - 原先的字符串和它的逆序字符串的最 长连续公共子序列的长度。
-问题就转化为求两个序列的最长公共子序列。这个就简单了。
-因为懒并且想省时间，所以就用了一些宏，这让程序变得不易读，还好程序比较简单，不太 影响吧。反正以后也不会再读。。了解思路就可以了。
-/* * ===================================================================================== * * Filename: main.cpp * * Description: http://www.spoj.com/problems/AIBOHP/ * * Version: 1.0 * Created: 08/12/2016 18:27:30 * Compiler: g++ * * Author: Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com * * ===================================================================================== */ #include &lt;bits/stdc++.h&gt; using namespace std; #define _ ios_base::sync_with_stdio(0);cin.tie(0); #define rep(i, a, n) for (int i = a; i &lt; n; ++i) #define per(i, a, n) for (int i = n-1; i &gt; a; --i) #define pb push_back #define mp make_pair #define all(x) (x).
-      <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-aibohp---aibohphobia/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-bytesm2---philosophers-stone/">Spoj, dynamic-programming: BYTESM2 - Philosophers Stone</a>
-      </h1>
-      <span class="post-date">Aug 12, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-bytesm2---philosophers-stone/#disqus_thread">Comments</a>
-      </span>
-      
-      在矩阵里面捡石头，求最大值。和常见的直角三角形那样的问题是一样的。
-/* * ===================================================================================== * * Filename: main.cpp * * Description: http://www.spoj.com/problems/BYTESM2/ * * Version: 1.0 * Created: 08/12/2016 18:49:12 * Compiler: g++ * * Author: Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com * * ===================================================================================== */ #include &lt;bits/stdc++.h&gt; using namespace std; #define _ ios_base::sync_with_stdio(0);cin.tie(0); #define rep(i, a, n) for (int i = a; i &lt; n; ++i) #define per(i, a, n) for (int i = n-1; i &gt;= a; --i) #define pb push_back #define mp make_pair #define all(x) (x).
-      <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-bytesm2---philosophers-stone/">Read On &rarr;</a>
       
     </div>
     

@@ -79,6 +79,32 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/13/poj-3225-help-with-intervals/">poj 3225 Help with Intervals</a>
+      </h1>
+      <span class="post-date">Mar 13, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/13/poj-3225-help-with-intervals/#disqus_thread">Comments</a>
+      </span>
+      
+      Description Input Output Sample Input Sample Output #include &lt;cstdio&gt; using namespace std; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 const int maxn = 65535*2+10; int cover[maxn&lt;&lt;2],xorm[maxn&lt;&lt;2]; bool hash[maxn+10]; void fxor(int rt){ if (cover[rt] != -1) cover[rt] ^= 1; else xorm[rt] ^= 1; } void PushDown(int rt){ if (cover[rt] != -1){ cover[rt&lt;&lt;1] = cover[rt&lt;&lt;1|1] = cover[rt]; xorm[rt&lt;&lt;1] = xorm[rt&lt;&lt;1|1] = 0; cover[rt] = -1; // there has been a BUG.
+      <a href="http://liuxueyang.github.io/blog/2013/03/13/poj-3225-help-with-intervals/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/13/hdu-1040-as-easy-as-a-b/">hdu 1040 As Easy As A&#43;B</a>
+      </h1>
+      <span class="post-date">Mar 13, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/13/hdu-1040-as-easy-as-a-b/#disqus_thread">Comments</a>
+      </span>
+      
+      As Easy As A+B
+Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 26401 Accepted Submission(s): 11218
+Problem Description These days, I am thinking about a question, how can I get a problem as easy as A+B? It is fairly difficulty to do such a thing. Of course, I got it after many waking nights. Give you some integers, your task is to sort these number ascending (升序).
+      <a href="http://liuxueyang.github.io/blog/2013/03/13/hdu-1040-as-easy-as-a-b/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/03/13/hdu-1018-big-number/">hdu 1018 Big Number</a>
       </h1>
       <span class="post-date">Mar 13, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/13/hdu-1018-big-number/#disqus_thread">Comments</a>
@@ -197,34 +223,6 @@ Sample Input 10 14
 Sample Output 70
 #include &lt;iostream&gt; #include &lt;cmath&gt; #include &lt;cstdio&gt; #include &lt;cstring&gt; #include &lt;cstdlib&gt; using namespace std; int gcd(int a, int b){ return b == 0 ? a : gcd(b, a%b); } int main(void){ int a, b; #ifndef ONLINE_JUDGE freopen(&quot;1108.in&quot;, &quot;r&quot;, stdin); #endif while (~scanf(&quot;%d%d&quot;, &amp;a, &amp;b)){ printf(&quot;%d\n&quot;, a * b / gcd(a, b)); } return 0; }  基础的数学题……
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/12/hdu-1039-easier-done-than-said/">hdu 1039 Easier Done Than Said?</a>
-      </h1>
-      <span class="post-date">Mar 12, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/12/hdu-1039-easier-done-than-said/#disqus_thread">Comments</a>
-      </span>
-      
-      Easier Done Than Said?
-Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 5021 Accepted Submission(s): 2535
-Problem Description Password security is a tricky thing. Users prefer simple passwords that are easy to remember (like buddy), but such passwords are often insecure. Some sites use random computer-generated passwords (like xvtpzyo), but users have a hard time remembering them and sometimes leave them written on notes stuck to their computer.
-      <a href="http://liuxueyang.github.io/blog/2013/03/12/hdu-1039-easier-done-than-said/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/03/12/hdu-1113-word-amalgamation/">hdu 1113 Word Amalgamation</a>
-      </h1>
-      <span class="post-date">Mar 12, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/12/hdu-1113-word-amalgamation/#disqus_thread">Comments</a>
-      </span>
-      
-      Word Amalgamation
-Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 1834 Accepted Submission(s): 854
-Problem Description In millions of newspapers across the United States there is a word game called Jumble. The object of this game is to solve a riddle, but in order to find the letters that appear in the answer it is necessary to unscramble four words. Your task is to write a program that can unscramble words.
-      <a href="http://liuxueyang.github.io/blog/2013/03/12/hdu-1113-word-amalgamation/">Read On &rarr;</a>
       
     </div>
     

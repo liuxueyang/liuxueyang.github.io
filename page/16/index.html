@@ -79,6 +79,41 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/09/15/hdu4737-a-bit-fun-on%E5%81%9A%E6%B3%95%E9%94%99%E8%AF%AF%E7%9A%84%E5%81%9A%E6%B3%95---%E6%AD%A3%E7%A1%AE%E5%81%9A%E6%B3%95/">hdu4737 A Bit Fun ——O(n)做法、错误的做法 &#43; 正确做法</a>
+      </h1>
+      <span class="post-date">Sep 15, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/09/15/hdu4737-a-bit-fun-on%E5%81%9A%E6%B3%95%E9%94%99%E8%AF%AF%E7%9A%84%E5%81%9A%E6%B3%95---%E6%AD%A3%E7%A1%AE%E5%81%9A%E6%B3%95/#disqus_thread">Comments</a>
+      </span>
+      
+      囧== 下面的做法是错误的。下午在路上突然明白了==
+哎，到现在还是只知道暴力的做法，囧爆了：http://www.cnblogs.com/liuxueyang/p/3322197.html
+类似于前序和的那种思想。
+b数组代表前序或，c数组代表后序或。
+O(N)预处理出数组b和数组c
+在从前往后扫一遍O(N)的复杂度，求出ans
+如图：
+可以发现c[Head] &amp; b[Tail] 就可以求出任意区间内的f(Head, Tail)，可以知道，整个数组里面每个元素进入区间一次，出去一次，所以是O(N)的复杂度。
+就这么欢乐地解决了==
+#include &lt;cstdio&gt; #include &lt;cstring&gt; const int N = 100000+4; int a[N], b[N], c[N]; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); #endif // ONLINE_JUDGE int t; scanf(&quot;%d&quot;, &amp;t); for (int i = 1; i &lt;= t; ++i) { printf(&quot;Case #%d: &quot;, i); int j, n, m; scanf(&quot;%d%d&quot;, &amp;n, &amp;m); memset(b, 0, sizeof(b)); memset(c, 0, sizeof(c)); long long ans = 0; for (j = 1; j &lt;= n; ++j) { scanf(&quot;%d&quot;, a+j); b[j] = b[j-1] | a[j]; } for (j = n; j &gt;= 1; --j) { c[j] = c[j+1] | a[j]; } int Head = 1, Tail = 1; while (Head &lt;= n &amp;&amp; Tail &lt;= n) { int tmp = c[Head] &amp; b[Tail]; while (tmp &lt; m &amp;&amp; Tail &lt;= n) { ans++; tmp = c[Head] &amp; b[++Tail]; } ++Head; Tail = Head; } printf(&quot;%I64d\n&quot;, ans); } return 0; }  其实正确的做法应该是这样的：
+      <a href="http://liuxueyang.github.io/blog/2013/09/15/hdu4737-a-bit-fun-on%E5%81%9A%E6%B3%95%E9%94%99%E8%AF%AF%E7%9A%84%E5%81%9A%E6%B3%95---%E6%AD%A3%E7%A1%AE%E5%81%9A%E6%B3%95/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/09/15/hdu4737-a-bit-fun/">hdu4737 A Bit Fun</a>
+      </h1>
+      <span class="post-date">Sep 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/09/15/hdu4737-a-bit-fun/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://acm.hdu.edu.cn/showproblem.php?pid=4737
+暴力可以过啊。O(N^2)的复杂度。
+#include &lt;cstdio&gt; int a[100001]; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); #endif int t; scanf(&quot;%d&quot;, &amp;t); long long int ans; for (int i = 1; i &lt;= t; ++i) { ans = 0; printf(&quot;Case #%d: &quot;, i); int m; int n, j, k; scanf(&quot;%d%d&quot;, &amp;n, &amp;m); for (j = 0; j &lt; n; scanf(&quot;%d&quot;, a+j++)); int tmp; for (j = 0; j &lt; n; ++j) { tmp = a[j]; for (k = j; k &lt; n; ++k) { tmp = tmp | a[k]; if (tmp &lt; m) ans++; else break; } } printf(&quot;%lld\n&quot;, ans); } return 0; }  数据出的不好吧==
+      <a href="http://liuxueyang.github.io/blog/2013/09/15/hdu4737-a-bit-fun/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/09/12/codeforces-199a/">codeforces 199a</a>
       </h1>
       <span class="post-date">Sep 12, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/09/12/codeforces-199a/#disqus_thread">Comments</a>
@@ -233,47 +268,6 @@ t1 t1 0 有3种
 找所有数字循环节的最小公倍数。
 /* ID: zypz4571 LANG: C++ TASK: permutations.cpp */ #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int a[1111]; bool flag[1111]; int gcd(int x, int y) { return y == 0 ?
       <a href="http://liuxueyang.github.io/blog/2013/08/24/poj2369-permutations-%E7%BD%AE%E6%8D%A2%E7%BE%A4/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/23/2009%E5%B9%B4%E5%88%B02013%E5%B9%B4%E7%94%B2%E5%AD%90%E5%9B%ADed/">2009年到2013年甲子园ED</a>
-      </h1>
-      <span class="post-date">Aug 23, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/23/2009%E5%B9%B4%E5%88%B02013%E5%B9%B4%E7%94%B2%E5%AD%90%E5%9B%ADed/#disqus_thread">Comments</a>
-      </span>
-      
-      2009年
-http://v.youku.com/v_show/id_XMTY3MTM4NjQw.html
-2010年 最喜欢的一个！看过N遍
-http://v.youku.com/v_show/id_XMjAwMzEwMDI4.html
-2011年
-http://v.youku.com/v_show/id_XMjk3NTQ4OTky.html
-也不错！
-2012年 超级好听啊~^_^比10年的还好，看过N+1遍……o(╯□╰)o
-http://v.youku.com/v_show/id_XMzY5OTM3Mzg4.html
-2013年春季甲子园
-http://v.youku.com/v_show/id_XNTYzODI0NTA4.html
-印象最深的是2011年打进甲子园的至学馆。
-http://v.youku.com/v_show/id_XMjkxOTcwNjI0.html
-这是至学馆校歌《追梦人》
-这是11年一支甲子园参赛队，名为至学馆，他们的故事犹如真人版的TOUCH，为了实现打入甲子园的梦想而努力，但王牌投手桐林史树 却遭遇车祸，不幸丧生，不仅如此，球队二号投手
-麻王健之郎 因为练习过重，导致手臂受伤，只能终止投手生涯，虽然前往甲子园的路上有无数强大的敌手，但他们最终击败了所有对手，打入了11年甲子园！以上是他们在取得甲子园入场券后唱校歌的场景，其中那个看台上的照片就是桐林史树。
-嗨，中村。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/08/22/%E4%BD%BF%E7%94%A8stl%E7%A6%BB%E6%95%A3%E5%8C%96/">使用STL离散化</a>
-      </h1>
-      <span class="post-date">Aug 22, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/08/22/%E4%BD%BF%E7%94%A8stl%E7%A6%BB%E6%95%A3%E5%8C%96/#disqus_thread">Comments</a>
-      </span>
-      
-      把原来的数组a复制一份拷贝b 用sort先把数组a排序 用unique消除a里面重复的元素 对于b中的每一个元素，用lower_bound找到它在a中的位置，也就是离散化之后的编号。 没了。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int main(void) { int a[6] = {15, 14, 11, 20, 13, 13}, b[111]; for (int i=0; i &lt; 6; ++i) b[i] = a[i]; sort(a, a+6); int len = unique(a, a+6) - a; for (int i = 0;i &lt; 6; ++i) b[i] = lower_bound(a, a+len, b[i]) - a + 1; for (int i = 0; i &lt; 6; ++i) printf(&quot;%d &quot;, b[i]); printf(&quot;\n&quot;); return 0; }  嗨！中村。
-      
       
     </div>
     

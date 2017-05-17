@@ -79,6 +79,32 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/07/tyvj1012-p1012---%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F--%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/">tyvj1012 P1012 - 火柴棒等式  ——暴力枚举</a>
+      </h1>
+      <span class="post-date">Jul 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/07/tyvj1012-p1012---%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F--%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1012 可以发现：最大的数字绝对不超过999，只要枚举出0～999所有数字需要的火柴数，然后再枚举C和A，得到B＝C-A，看看三个数字的火柴数目是否等于n就可以了。
+#include &lt;cstdio&gt; int a[10] = {6,2,5,5,4,5,6,3,7,6},b[1000],n,cnt; int main(void) { freopen(&quot;in1.txt&quot;,&quot;r&quot;,stdin); cnt=0; scanf(&quot;%d&quot;,&amp;n),n-=4;for(int i=0;i&lt;10;++i)b[i]=a[i]; for(int i=10;i&lt;=999;++i) b[i]=b[i/10]+b[i%10]; for(int i=0;i&lt;=999;++i)if(b[i]&lt;n) for(int j=0;j&lt;=i;++j)if(b[i]+b[j]+b[i-j]==n)cnt++; printf(&quot;%d\n&quot;,cnt); return 0; }  还有一个比较快的思路，因为n最大是24，所以可以用上面的程序，把这24个数字都算出来，就是一个大小为24个数组，直接输出就可以。 写给自己看的。。=_=
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/07/tyvj1011---%E4%BC%A0%E7%BA%B8%E6%9D%A1--dp/">tyvj1011 - 传纸条  ——DP</a>
+      </h1>
+      <span class="post-date">Jul 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/07/tyvj1011---%E4%BC%A0%E7%BA%B8%E6%9D%A1--dp/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1011 状态转移方程： f[k,x1,x2] = max(f[k-1,x1,x2],f[k-1,x1-1,x2],f[k-1,x1-1,x2-1],f[k-1,x1,x2-1]) + a[y1,x1] + a[y2,x2]; f[k,x1,x2]表示，第K步的时候，一条路的横坐标是x1,另一条路的横坐标是x2的时候所得到的最优解。另外，还要考虑一下，当x1==x2的时候的情况，这个时候，只能允许一条路走到那个位置。
+#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;algorithm&gt; #include &lt;cstring&gt; using namespace std; int a[51][51],f[100][51][51]; int main(void) { freopen(&quot;in1.txt&quot;,&quot;r&quot;,stdin); int N,M; scanf(&quot;%d%d&quot;, &amp;M, &amp;N);for(int i=1;i&lt;=M;++i)for(int j=1;j&lt;=N;++j)scanf(&quot;%d&quot;,&amp;a[i][j]); for(int k=1;k&lt;=M+N-3;++k)for(int x1=1;x1&lt;=min(N,k+1);++x1)for(int x2=1;x2&lt;=min(N,k+1);++x2) { f[k][x1][x2]=max(max(f[k-1][x1][x2],f[k-1][x1-1][x2]),max(f[k-1][x1][x2-1],f[k-1][x1-1][x2-1])); if (x1==x2)f[k][x1][x2]+=a[k-x1+2][x1]; else f[k][x1][x2]+=(a[k-x1+2][x1]+a[k-x2+2][x2]); } printf(&quot;%d\n&quot;,f[M+N-3][N][N-1]); return 0; }  昨天看了一篇文章，才发现，其实，题解是写给自己看的-_-#
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/07/06/tyvj1004-%E6%BB%91%E9%9B%AA/">tyvj1004 滑雪</a>
       </h1>
       <span class="post-date">Jul 6, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/06/tyvj1004-%E6%BB%91%E9%9B%AA/#disqus_thread">Comments</a>
@@ -178,31 +204,6 @@ sudo fdisk -l  找到 id 是83的那行，可惜我的有两个：/dev/sda3 和 
 mount /dev/sdaX /media/tempdir grub-install --root-directory=/media/tempdir /dev/sda   第三步：重启，可能会进入到 grub rescue 界面。 输入set，查看相应的设置。然后修改：
 set prefix=(hd0,msdos3)/boot/grub set root=hd0,msdos3 insmod normal normal   然后就发现进入原来的grub启动界面了。进入Ubunt系统 第四步：打开终端， 重启，收工。
 sudo update-grub sudo grub-install /dev/sda   注：参考网站 http://forum.ubuntu.org.cn/viewtopic.php?f=139&amp;t=348503 http://hi.baidu.com/radio585/item/87462cf98bc70f1ae3e3bdab http://www.linuxidc.com/Linux/2012-06/61983p2.htm http://forum.ubuntu.org.cn/viewtopic.php?t=297514 为了以后方便，我这些网页里的内容做成文件的格式留在这里，省的以后再搞。。=_= http://s.yunio.com/Ee6n8z  为了上传方便，这货是.rar格式的。可以先把文件在win下解压，拷到U盘里面，然后用LiveCD进入Ubuntu再看，文件时图片和.pdf，Ubuntu兼容。 上面那个链接貌似失效了……囧。追加一个百度网盘：http://pan.baidu.com/share/link?shareid=1185935304&amp;uk=322048121
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/06/15/%E7%82%B9%E5%A4%B41010-%E5%8F%AA%E5%8C%85%E5%90%AB%E5%9B%A0%E5%AD%902-3-5%E7%9A%84%E6%95%B0/">点头1010 只包含因子2 3 5的数</a>
-      </h1>
-      <span class="post-date">Jun 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/06/15/%E7%82%B9%E5%A4%B41010-%E5%8F%AA%E5%8C%85%E5%90%AB%E5%9B%A0%E5%AD%902-3-5%E7%9A%84%E6%95%B0/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1010 题目思路： 想想怎么打表吧，还有，只需要存下满足要求的数字，要求的数字可以表示为：(2^x*3^y*5^z)，然后可以发现：2^60&gt;10^18，所以，枚举的上限是60*60*60，大约是216000，实际上，只有1万多。枚举的方法就是以前做过的题目了：http://poj.org/problem?id=1338 然后就是二分查找，边界比较纠结。
-#include &lt;cstdio&gt; #include &lt;cstring&gt; #include &lt;cstdlib&gt; #define LL long long #define MAXN 216000+10 #define min(a,b) ((a)&lt;(b)?(a):(b)) LL a[MAXN]; int main(void) { int i, j, k, p; i = j = k = 0; a[0] = 1; for (p = 1; p &lt;= 12690; ++p) { a[p] = min(a[i]*2, min(a[j]*3, a[k]*5)); if (a[p] == a[i] * 2) ++i; if (a[p] == a[j] * 3) ++j; if (a[p] == a[k] * 5) ++k; } int T; scanf(&quot;%d&quot;,&amp;T); while (T--) { LL n; scanf(&quot;%I64d&quot;, &amp;n); int low = 1, high = 12690, mid, last; LL goal; goal = n; while (low &lt; high) { mid = low + (high - low) / 2; if (a[mid] &lt; goal) low = mid + 1; else if (a[mid] &gt; goal) high = mid - 1; else {last = mid; break;} } if (high == low) { last = high; } else if (low &gt; high) last = low; if (goal == 1) last = 1; if (a[last] &lt; goal) last++; printf(&quot;%I64d\n&quot;, a[last]); } return 0; }  输入输出原来要用%I64d，这个WA了两次……A了之后竟然是第一名，呵呵，可能大家都没有手写二分，都用的STL吧。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/06/08/%E5%87%86%E5%A4%87%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95-%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%9B%B4%E4%BA%86/">准备期末考试 博客不更了</a>
-      </h1>
-      <span class="post-date">Jun 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/06/08/%E5%87%86%E5%A4%87%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95-%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%9B%B4%E4%BA%86/#disqus_thread">Comments</a>
-      </span>
-      
-      今天高考结束了……大家都考得挺好的吧，祝福他们。 高考结束后，马上又将会有这么一群孩子，迫不及待的扔下书包，去聚餐，通宵上网，旅行，KTV，闲逛，狂欢……认为自己终于解放了……殊不知，你们离开的，就是天堂。 认真准备期末考试，虽然还是有的时候忍不住会写代码，囧。昨天CF做得真的挫了。这就是一周不写程序的后果，呵呵。坚决不写程序了，准备考试！实在无聊看看python，haskell什么的……
       
       
     </div>

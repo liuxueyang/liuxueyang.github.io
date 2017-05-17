@@ -79,6 +79,46 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/10/03/cpu%E7%9A%84%E6%A0%88%E6%9C%BA%E5%88%B6%E7%9A%84%E4%B8%80%E4%B8%AA%E5%B0%8F%E9%97%AE%E9%A2%98/">CPU的栈机制的一个小问题</a>
+      </h1>
+      <span class="post-date">Oct 3, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/03/cpu%E7%9A%84%E6%A0%88%E6%9C%BA%E5%88%B6%E7%9A%84%E4%B8%80%E4%B8%AA%E5%B0%8F%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      比如要实现下面这个功能。
+我们如果要在10000H处写入自行数据2266H，不能用“mov 内存单元， 寄存器”这类指令。怎么做？
+代码：
+mov ax, 1000h mov ss, ax mov sp, 2 mov ax, 2266h push ax  这段代码，如果是初学，看起来挺对的，一点也没错。
+可是，用debug跟踪一下，发现，这段代码不能得到正确结果，会发现，在push ax这条指令执行之前，debug自动退出了。
+反正这个问题，我大一的时候，纠结了好久，到处问，好几天也没搞定，记得当初我还以为是自己电脑系统的问题，还重装了系统……⊙﹏⊙b汗
+终于，后来，才明白。这个可能是因为栈溢出的问题？具体因为什么，现在还不太懂。但是知道怎么解决。
+只需要把栈的段址设置小一点就可以了。比如比最大的段址小10h。所以，上面的代码可以改成：
+mov ax, ff0h mov ss, ax mov sp, 102 mov ax, 2266h push ax  然后用debug跟踪一下，就没有问题了。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/10/02/codeforces-simple-molecules/">codeforces Simple Molecules</a>
+      </h1>
+      <span class="post-date">Oct 2, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/02/codeforces-simple-molecules/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://codeforces.com/contest/344/problem/B
+刚开始想复杂了。一开始就想当然地以为可以有多个点，其实，人家题目要求只有3个点啊！
+然后题目就简单了。
+A、B、C代表原子的化合价
+x、y、z代表原子之间的化学键
+首先x+y+z一定为偶数，否则不可能有解。
+那么可以列出一个三元一次的方程组，由3个方程组成，可以求出唯一解。
+判断有解的唯一限制条件是：不能出现负数。
+#include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;cmath&gt; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); #endif // ONLINE_JUDGE int a, b, c; int x, y, z; while (~scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c)) { int sum = a + b + c; if (sum &amp; 1) { printf(&quot;Impossible\n&quot;); continue; } int tmp = b - a + c; if (tmp &amp; 1) { printf(&quot;Impossible\n&quot;); continue; } y = tmp &gt;&gt; 1; z = c - y; x = a - z; if (x &lt; 0 || y &lt; 0 || z &lt; 0) { printf(&quot;Impossible\n&quot;); continue; } printf(&quot;%d %d %d\n&quot;, x, y, z); } return 0; }  看题要认真。不把问题复杂化。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/10/02/codeforces-magnets/">codeforces Magnets</a>
       </h1>
       <span class="post-date">Oct 2, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/02/codeforces-magnets/#disqus_thread">Comments</a>
@@ -200,41 +240,6 @@ auto break case char const continue default do double else enum extern float for
       
       Do It Wrong, Get It Right Time Limit: 5000ms, Special Time Limit:12500ms, Memory Limit:65536KB Total submit users: 7, Accepted users: 6 Problem 12627 : No special judgement Problem description In elementary school, students learn to subtract fractions by first getting a common denominator and then subtracting the numerators. However, sometimes a student will work the problem incorrectly and still arrive at the correct answer. For example, for the problem 5 9 4 12
       <a href="http://liuxueyang.github.io/blog/2013/09/18/do-it-wrong-get-it-right/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/09/15/hdu4737-a-bit-fun-on%E5%81%9A%E6%B3%95%E9%94%99%E8%AF%AF%E7%9A%84%E5%81%9A%E6%B3%95---%E6%AD%A3%E7%A1%AE%E5%81%9A%E6%B3%95/">hdu4737 A Bit Fun ——O(n)做法、错误的做法 &#43; 正确做法</a>
-      </h1>
-      <span class="post-date">Sep 15, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/09/15/hdu4737-a-bit-fun-on%E5%81%9A%E6%B3%95%E9%94%99%E8%AF%AF%E7%9A%84%E5%81%9A%E6%B3%95---%E6%AD%A3%E7%A1%AE%E5%81%9A%E6%B3%95/#disqus_thread">Comments</a>
-      </span>
-      
-      囧== 下面的做法是错误的。下午在路上突然明白了==
-哎，到现在还是只知道暴力的做法，囧爆了：http://www.cnblogs.com/liuxueyang/p/3322197.html
-类似于前序和的那种思想。
-b数组代表前序或，c数组代表后序或。
-O(N)预处理出数组b和数组c
-在从前往后扫一遍O(N)的复杂度，求出ans
-如图：
-可以发现c[Head] &amp; b[Tail] 就可以求出任意区间内的f(Head, Tail)，可以知道，整个数组里面每个元素进入区间一次，出去一次，所以是O(N)的复杂度。
-就这么欢乐地解决了==
-#include &lt;cstdio&gt; #include &lt;cstring&gt; const int N = 100000+4; int a[N], b[N], c[N]; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); #endif // ONLINE_JUDGE int t; scanf(&quot;%d&quot;, &amp;t); for (int i = 1; i &lt;= t; ++i) { printf(&quot;Case #%d: &quot;, i); int j, n, m; scanf(&quot;%d%d&quot;, &amp;n, &amp;m); memset(b, 0, sizeof(b)); memset(c, 0, sizeof(c)); long long ans = 0; for (j = 1; j &lt;= n; ++j) { scanf(&quot;%d&quot;, a+j); b[j] = b[j-1] | a[j]; } for (j = n; j &gt;= 1; --j) { c[j] = c[j+1] | a[j]; } int Head = 1, Tail = 1; while (Head &lt;= n &amp;&amp; Tail &lt;= n) { int tmp = c[Head] &amp; b[Tail]; while (tmp &lt; m &amp;&amp; Tail &lt;= n) { ans++; tmp = c[Head] &amp; b[++Tail]; } ++Head; Tail = Head; } printf(&quot;%I64d\n&quot;, ans); } return 0; }  其实正确的做法应该是这样的：
-      <a href="http://liuxueyang.github.io/blog/2013/09/15/hdu4737-a-bit-fun-on%E5%81%9A%E6%B3%95%E9%94%99%E8%AF%AF%E7%9A%84%E5%81%9A%E6%B3%95---%E6%AD%A3%E7%A1%AE%E5%81%9A%E6%B3%95/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/09/15/hdu4737-a-bit-fun/">hdu4737 A Bit Fun</a>
-      </h1>
-      <span class="post-date">Sep 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/09/15/hdu4737-a-bit-fun/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://acm.hdu.edu.cn/showproblem.php?pid=4737
-暴力可以过啊。O(N^2)的复杂度。
-#include &lt;cstdio&gt; int a[100001]; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); #endif int t; scanf(&quot;%d&quot;, &amp;t); long long int ans; for (int i = 1; i &lt;= t; ++i) { ans = 0; printf(&quot;Case #%d: &quot;, i); int m; int n, j, k; scanf(&quot;%d%d&quot;, &amp;n, &amp;m); for (j = 0; j &lt; n; scanf(&quot;%d&quot;, a+j++)); int tmp; for (j = 0; j &lt; n; ++j) { tmp = a[j]; for (k = j; k &lt; n; ++k) { tmp = tmp | a[k]; if (tmp &lt; m) ans++; else break; } } printf(&quot;%lld\n&quot;, ans); } return 0; }  数据出的不好吧==
-      <a href="http://liuxueyang.github.io/blog/2013/09/15/hdu4737-a-bit-fun/">Read On &rarr;</a>
       
     </div>
     

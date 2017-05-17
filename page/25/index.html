@@ -79,6 +79,31 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/06/15/%E7%82%B9%E5%A4%B41010-%E5%8F%AA%E5%8C%85%E5%90%AB%E5%9B%A0%E5%AD%902-3-5%E7%9A%84%E6%95%B0/">点头1010 只包含因子2 3 5的数</a>
+      </h1>
+      <span class="post-date">Jun 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/06/15/%E7%82%B9%E5%A4%B41010-%E5%8F%AA%E5%8C%85%E5%90%AB%E5%9B%A0%E5%AD%902-3-5%E7%9A%84%E6%95%B0/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1010 题目思路： 想想怎么打表吧，还有，只需要存下满足要求的数字，要求的数字可以表示为：(2^x*3^y*5^z)，然后可以发现：2^60&gt;10^18，所以，枚举的上限是60*60*60，大约是216000，实际上，只有1万多。枚举的方法就是以前做过的题目了：http://poj.org/problem?id=1338 然后就是二分查找，边界比较纠结。
+#include &lt;cstdio&gt; #include &lt;cstring&gt; #include &lt;cstdlib&gt; #define LL long long #define MAXN 216000+10 #define min(a,b) ((a)&lt;(b)?(a):(b)) LL a[MAXN]; int main(void) { int i, j, k, p; i = j = k = 0; a[0] = 1; for (p = 1; p &lt;= 12690; ++p) { a[p] = min(a[i]*2, min(a[j]*3, a[k]*5)); if (a[p] == a[i] * 2) ++i; if (a[p] == a[j] * 3) ++j; if (a[p] == a[k] * 5) ++k; } int T; scanf(&quot;%d&quot;,&amp;T); while (T--) { LL n; scanf(&quot;%I64d&quot;, &amp;n); int low = 1, high = 12690, mid, last; LL goal; goal = n; while (low &lt; high) { mid = low + (high - low) / 2; if (a[mid] &lt; goal) low = mid + 1; else if (a[mid] &gt; goal) high = mid - 1; else {last = mid; break;} } if (high == low) { last = high; } else if (low &gt; high) last = low; if (goal == 1) last = 1; if (a[last] &lt; goal) last++; printf(&quot;%I64d\n&quot;, a[last]); } return 0; }  输入输出原来要用%I64d，这个WA了两次……A了之后竟然是第一名，呵呵，可能大家都没有手写二分，都用的STL吧。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/06/08/%E5%87%86%E5%A4%87%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95-%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%9B%B4%E4%BA%86/">准备期末考试 博客不更了</a>
+      </h1>
+      <span class="post-date">Jun 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/06/08/%E5%87%86%E5%A4%87%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95-%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%9B%B4%E4%BA%86/#disqus_thread">Comments</a>
+      </span>
+      
+      今天高考结束了……大家都考得挺好的吧，祝福他们。 高考结束后，马上又将会有这么一群孩子，迫不及待的扔下书包，去聚餐，通宵上网，旅行，KTV，闲逛，狂欢……认为自己终于解放了……殊不知，你们离开的，就是天堂。 认真准备期末考试，虽然还是有的时候忍不住会写代码，囧。昨天CF做得真的挫了。这就是一周不写程序的后果，呵呵。坚决不写程序了，准备考试！实在无聊看看python，haskell什么的……
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-b.-sereja-and-array/">Codeforces Round #187 (Div. 2) B. Sereja and Array</a>
       </h1>
       <span class="post-date">Jun 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-b.-sereja-and-array/#disqus_thread">Comments</a>
@@ -175,32 +200,6 @@
       
       题目链接：http://codeforces.com/problemset/problem/313/C 题目大意： 还是看原题吧，意思不难懂。 题目思路： 开始一直没有想法，后来听一然酱讲了才好不容易搞懂，赶脚好神奇。 构造的思路应该算贪心，先把前4大的数字排列到最先划分的4个方格里面，然后再依次把后面比较大的数字依次填充到这四个方格里空着的小格子里面，直到所有的格子填满为止，为什么这个思路是正确的呢？还是模拟一下4*4的格子就差不多理解了吧。 但是关键是怎么算出递归得到的结果？一然酱的思路很巧妙，先把数字逆序排列，再把前序和算出来，目的是方便后面的求和，然后从递归的最底层开始考虑。最底层肯定是所有的数字都包括，也就是前N个数字的和，再往上走，就是前N/4个数字的和，直到N&lt;1为止。碉堡了…… #include &lt;iostream&gt; #include &lt;algorithm&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; using namespace std; #define LL long long int const int MAX = 1000000*2+10; LL a[MAX], ans, n; bool cmp2(LL a, LL b) { return a &gt; b; } int main(void) { while (~scanf(&quot;%I64d&quot;, &amp;n)) { int i; for (i = 0; i &lt; n; ++i) scanf(&quot;%I64d&quot;, a+i); sort(a, a+n, cmp2); for (i = 1; i &lt; n; ++i) a[i] += a[i-1]; ans = 0; while (n &gt;= 1) { ans += a[n-1]; n = n &gt;&gt; 2; } printf(&quot;%I64d\n&quot;, ans); } return 0 ; }   然后就是注意一下类型用LL…… 这回跟一然酱去网吧做CF，感触颇深，看人家神牛怎么做比赛的，给跪……谢谢一然酱~ 
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/05/30/codeforces-round-#185-div.-1-a.-the-closest-pair/">Codeforces Round #185 (Div. 1) A. The Closest Pair</a>
-      </h1>
-      <span class="post-date">May 30, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/30/codeforces-round-#185-div.-1-a.-the-closest-pair/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://codeforces.com/problemset/problem/311/A 题目大意： 题目很短，不解释了。^_^ 题目思路： 开始感觉很难，没思路。看了解题报告，发现原来是道水题嘛。程序里面有个break语句，要让循环次数达到最大，并且循环次数容易计算，只需要让这个break;永远不会执行就可以了。也就是说，可以让p[j].x - p[i].x &gt;= d 永远不成立，只需要让p[j].x - p[i].x总等于0就可以了！因为题目让生成任意一组符合条件的数据嘛，所以，可以让产生的所有的点的横坐标都是一样的就可以了。
-#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;iostream&gt; #include &lt;cmath&gt; using namespace std; #define LL long long int main(void) { #ifndef ONLINE_JUDGE //freopen(&quot;185_c.in1&quot;, &quot;r&quot;, stdin); #endif LL n, k; scanf(&quot;%I64d%I64d&quot;, &amp;n, &amp;k); if (n*(n-1)/2 &lt;= k){ printf(&quot;no solution\n&quot;); } else { for (int i = 0; i &lt; n; ++i) { printf(&quot;1 %d\n&quot;, i); } } return 0; }  很简单的思路，当初为什么没有想到？
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/05/26/the-unique-mst-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7/">The Unique MST ——最小生成树的唯一性</a>
-      </h1>
-      <span class="post-date">May 26, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/26/the-unique-mst-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://acm.hust.edu.cn/vjudge/contest/view.action?cid=24534#problem/C 题目大意： 判断最小生成树是否唯一。 题目思路： 对于如果有一条边A在最小生成树里面，并且存在和这条边权值一样的另外一条边B，那么再次求最小生成树的时候，把A去掉，看看求出的最小生成树是不是和原来的最小生成树权值一样。如果一样，就是不唯一，否则就刚才去掉的加进来，然后再找下一条这样的边。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; using namespace std; #define MAXN 110 #define MAXM 5009 typedef struct edge { int u, v, w, used, del, equal; bool operator &lt; (const edge &amp;other) const { return w &lt; other.w; } }edge; edge edges[MAXM]; int parent[MAXN]; bool first; int n, m, i, j; void init() { for (i = 1; i &lt;= n; ++i) parent[i] = -1; } int find(int x) { int s; for (s = x; parent[s] &gt;= 0; s = parent[s]) ; while (s !
-      <a href="http://liuxueyang.github.io/blog/2013/05/26/the-unique-mst-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7/">Read On &rarr;</a>
       
     </div>
     

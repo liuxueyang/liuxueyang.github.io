@@ -79,6 +79,32 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/05/03/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F_prim%E7%AE%97%E6%B3%95/">最小生成树示例程序_Prim算法</a>
+      </h1>
+      <span class="post-date">May 3, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/03/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F_prim%E7%AE%97%E6%B3%95/#disqus_thread">Comments</a>
+      </span>
+      
+      输入：顶点个数n和边数m，然后是m条边的数据。u v w 分别代表两个顶点和权值。顶点从1开始记起。 输出：一次选择的各条边和最小生成树的权。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 100; int n, m, lowcost[MAX], nearvex[MAX], edge[MAX][MAX]; void prim(int u0) { int i, j, sum = 0; for (i = 1; i &lt;= n; ++i) { lowcost[i] = edge[u0][i]; nearvex[i] = u0; } nearvex[u0] = -1; for (i = 1; i &lt; n; ++i) { int min = MAXN, v = -1; for (j = 1; j &lt;= n; ++j) { if (nearvex[j] !
+      <a href="http://liuxueyang.github.io/blog/2013/05/03/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F_prim%E7%AE%97%E6%B3%95/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/05/02/poj2421-constructing-roads-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/">poj2421 Constructing Roads ——最小生成树入门题_Kruscal算法</a>
+      </h1>
+      <span class="post-date">May 2, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/02/poj2421-constructing-roads-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://poj.org/problem?id=2421 题目大意： 给定一个矩阵，第 i 行第 j 列表示点 i 和点 j　的距离是ｓ［ｉ］［ｊ］。然后输入Ｑ，下面Ｑ行，每行两个数字ａ，ｂ表示点ａ和点ｂ已经有路相连。求需要至少再修多长的路，可以构成一棵生成树。输出需要在修的路的总长度。 题目思路： 转化为最小生成树求解。有两种思路： １）把已经相连的两个点的权值设置为０，这样，就可以直接求最小生成树了。因为kruscal的过程中，一定会选择到已经相连的这些点，因为它们的权值是0嘛，同时，即使把它们的权值加上，也不会影响结果。这个方法我好不容易想出来了，可是还有一个问题，就是：输入a b 后，如何定位到相应的边，并把这个边的权值设置为0？开始的时候，是暴力找，超时了，然后自己想各种方法，还求出来个公式，用a,b,N,表示出边的编号。最后还是超时了。。看网上别人恰好有人也是这么个思路，但是他是怎么定位边，并把边的权值设置为0的，没仔细看，不知道为什么人家就用这种方法过了…… 2）第二种思路，如果a b 已经相连，很简单，只要它俩的根节点不同，就把它两个合并不就可以了么，这样，kruscal的过程中，就不会再加入这些已经存在的边的权值了。剩下的就是纯的kruscal问题。这个方法很好！看的别人的想法。然后自己写了一下，RE了一次，原因是，合并a b 的时候，没有判断他们的根节点是否不同。。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; typedef struct Edge { int u, v, w; bool operator &lt; (const Edge &amp;o) const { return w &lt; o.
+      <a href="http://liuxueyang.github.io/blog/2013/05/02/poj2421-constructing-roads-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/05/01/hoj12616-median-tree-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/">hoj12616 Median Tree ——最小生成树入门题&amp;&amp;比赛残留题_Kruscal算法</a>
       </h1>
       <span class="post-date">May 1, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/01/hoj12616-median-tree-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/#disqus_thread">Comments</a>
@@ -176,31 +202,6 @@
       
       输入：顶点个数n，边数m，然后是m行，表示每条边的起点和终点u, v 表示从顶点u到顶点v的一条有向边。输入0 0 表示结束。 输出：如果不存在有向环，则输出一个拓扑有序序列；否则，输出“Netword has a cycle!” #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int n, m, Count[100], i, j, top, out[100]; struct ArcNode{ int to; struct ArcNode *next; }; ArcNode *List[100]; void topsort() { ArcNode *temp; top = -1; int k, len = 0; bool flag = true; for (i = 0; i &lt; n; ++i) { if (Count[i] == 0) { Count[i] = top; top = i; } } for (i = 0; i &lt; n; ++i) { k = top; if (k == -1) { flag = false; break; } top = Count[k]; temp = List[k]; out[len++] = k + 1; while (temp !
       <a href="http://liuxueyang.github.io/blog/2013/04/28/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/27/%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/">邻接表示例程序</a>
-      </h1>
-      <span class="post-date">Apr 27, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/27/%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/#disqus_thread">Comments</a>
-      </span>
-      
-      输入：n，m代表顶点数目和边数。然后m行，代表每个边的起点和终点。0 0 表示结束。 输出：第一行为n个正整数，表示每个点的出度；第二行为n个正整数，表示每个点的入度。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 100; struct ArcNode{ // 边节点 int adjvex; ArcNode *nextarc; }; struct VNode{ // 顶点 int data; ArcNode *head1; // 出边表表头指针 ArcNode *head2; // 入边表表头指针 }; struct LGraph{ // 临界表结构体 VNode vertexs[MAX]; // 顶点数组 int vexnum, arcnum; }; LGraph lg; void CreateLG() { int i = 0; ArcNode *pi; int v1, v2; //scanf(&quot;%d%d&quot;, &amp;lg.
-      <a href="http://liuxueyang.github.io/blog/2013/04/27/%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/26/2013%E5%B9%B44%E6%9C%8826%E6%97%A5-%E6%99%B4/">2013年4月26日 晴</a>
-      </h1>
-      <span class="post-date">Apr 26, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/26/2013%E5%B9%B44%E6%9C%8826%E6%97%A5-%E6%99%B4/#disqus_thread">Comments</a>
-      </span>
-      
-      25日 晚上去图书馆还书，没去跑步。开始读TAOCP，^_^ 26日 都起跑了才发现脚貌似有点儿受伤，大脚趾有些疼的感觉。乖乖回来了o(╯□╰)o 看来得休息几天了。 今天晚上自习的时候开始考虑要不要考研，以前的想法都是坚决不考研的，但是现在，唉……我也不知道该怎么办，总之，不想这些了，现在还是好好学习数学，英语，还有专业课，到时候想考就拼一下。目前最重要的是认真做比赛，还要努力把数学英语搞好，这货哪里都用得到。把自己的基础打好，各种技术都要自己去学，不管以后是去考研还是去找工作，都有好处，具体怎么样，以后的事情以后再说，现在想这些都没用。 纯粹胡思乱想…… 人生貌似有些迷茫了又。。迟早要面对，所谓选择和机会，都是留给认真准备的人的。什么都不会，感觉无路可走…… 看到一句话：当你倒了一杯热水，准备去喝的时候，发现水已经凉了，那么恭喜你，你已经进入状态了。
-      
       
     </div>
     

@@ -79,6 +79,32 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/05/20/nyoj16-%E7%9F%A9%E5%BD%A2%E5%B5%8C%E5%A5%97-dp%E5%85%A5%E9%97%A8%E9%A2%98/">NYOJ16 矩形嵌套 ——DP入门题</a>
+      </h1>
+      <span class="post-date">May 20, 2013 &middot; 4 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/20/nyoj16-%E7%9F%A9%E5%BD%A2%E5%B5%8C%E5%A5%97-dp%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.nyist.net/JudgeOnline/problem.php?pid=16 题目大意： 中文题…… 题目思路： 方法一： 先按照长和宽进行二级排序，然后转化成最长上升子序列求解。时间复杂度O(N^2)，数据范围1000.
+#include &lt;iostream&gt; #include &lt;algorithm&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cstring&gt; using namespace std; const int MAX = 1000+10; typedef struct node { int x, y; bool operator &lt; (const node &amp;other) const { if (x != other.x) { return x &lt; other.x; } else return y &lt; other.y; } }node; node ma[MAX]; int n, maxlen[MAX]; void init() { int i, a, b; scanf(&quot;%d&quot;, &amp;n); for (i = 0; i &lt; n; ++i) { scanf(&quot;%d%d&quot;, &amp;a, &amp;b); if (a &gt; b) swap(a,b); ma[i].
+      <a href="http://liuxueyang.github.io/blog/2013/05/20/nyoj16-%E7%9F%A9%E5%BD%A2%E5%B5%8C%E5%A5%97-dp%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/05/20/poj1163-the-triangle-dp%E5%85%A5%E9%97%A8%E9%A2%98/">poj1163 The Triangle ——DP入门题</a>
+      </h1>
+      <span class="post-date">May 20, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/20/poj1163-the-triangle-dp%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://poj.org/problem?id=1163 题目思路： 从三角形的底部开始考虑
+#include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; #include &lt;cstdio&gt; using namespace std; const int MAX = 100; int a[MAX][MAX], dp[MAX][MAX]; int main(void) { //freopen(&quot;1163.in&quot;, &quot;r&quot;, stdin); int n,i,j; scanf(&quot;%d&quot;,&amp;n); for (i = 0; i &lt; n; ++i) { for (j = 0; j &lt; i+1; ++j) { scanf(&quot;%d&quot;, &amp;a[i][j]); } } memset(dp, 0, sizeof(dp)); for (i = 0; i &lt; n; ++i) dp[n-1][i] = a[n-1][i]; for (i = n - 2; i &gt;= 0; --i) { for (j = 0; j &lt; n - 1; ++j) { dp[i][j] = max(dp[i+1][j], dp[i+1][j+1]) + a[i][j]; } } printf(&quot;%d\n&quot;, dp[0][0]); return 0; }  还是从最简单的开始做起吧 另外一种写法： #include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; #include &lt;cstdio&gt; using namespace std; const int MAX = 100; int a[MAX][MAX], dp[MAX][MAX], n; int f(int i, int j) { if (dp[i][j] &gt;= 0) return dp[i][j]; else { if (i == n-1) dp[i][j] = a[i][j]; else dp[i][j] = a[i][j] + max(dp[i+1][j], dp[i+1][j+1]); return dp[i][j]; } } int main(void) { int i,j; scanf(&quot;%d&quot;,&amp;n); for (i = 0; i &lt; n; ++i) { for (j = 0; j &lt; i+1; ++j) { scanf(&quot;%d&quot;, &amp;a[i][j]); } } memset(dp, -1, sizeof(dp)); for (i = 0; i &lt; n; ++i) dp[n-1][i] = a[n-1][i]; for (i = n-1; i &gt;= 0; --i) for (j = 0; j &lt; i+1; ++j) f(i, j); printf(&quot;%d\n&quot;, dp[0][0]); return 0; }   这就是所谓的记忆化搜索 
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/05/19/csu1290-random-integers-dp%E5%85%A5%E9%97%A8%E9%A2%98%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/">csu1290 Random Integers ——DP入门题&amp;&amp;比赛残留题</a>
       </h1>
       <span class="post-date">May 19, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/19/csu1290-random-integers-dp%E5%85%A5%E9%97%A8%E9%A2%98%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/#disqus_thread">Comments</a>
@@ -176,32 +202,6 @@
       题目链接：http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=103&amp;page=show_problem&amp;problem=63 题目大意：神牛讲的很清楚~http://blog.csdn.net/camelwombat/article/details/5949508 感觉还是首先要读懂题目意思，这个也是有难度的 题目思路： 用数组模拟链表，考的是代码能力，关键是逻辑关系搞清楚，然后再敲，再就是细节问题，代码有一点小错就需要调很久。 参考这位神牛的思路写的……http://blog.csdn.net/goomaple/article/details/7802686
 #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x7fffffff; const int MINN = -0x7fffffff; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; typedef struct node{ int len; char rank[54], suit[54]; }node; node card[54]; void eachmove(int pos, int step) { int Len = card[pos-step].
       <a href="http://liuxueyang.github.io/blog/2013/05/13/uva127-accordian-patience-%E9%93%BE%E8%A1%A8%E6%A8%A1%E6%8B%9F%E9%A2%98/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/05/13/2013%E5%B9%B45%E6%9C%8813%E6%97%A5-%E6%99%B4/">2013年5月13日 晴</a>
-      </h1>
-      <span class="post-date">May 13, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/13/2013%E5%B9%B45%E6%9C%8813%E6%97%A5-%E6%99%B4/#disqus_thread">Comments</a>
-      </span>
-      
-      今天，，，好吧……是昨天。。。西班牙语课很有收获啊，慢慢入门了~ 上完课急急忙忙地去做了一下所谓的校赛，发现如果没有书，单凭自己做，还是有很多基础的东西敲不出来啊，呵呵，知道为什么这么弱了。 晚上去跑步了，状态还不错，至少跑完全程了，5km不多不少。回公寓的时候，见识到了传说中猛于虎的城管，跟卖夜宵的小贩打起来了，同样的情景见过无数次了，就在公寓门口，唉，这些社会的阴暗面…………谁都不容易，不说了。 洗洗睡吧，明天有课。好好奋斗。 很久之前就很喜欢的一个视频：
-　Tell me why
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/05/13/poj1272-%E6%A3%8B%E7%9B%98%E9%97%AE%E9%A2%98-dfs%E5%85%A5%E9%97%A8%E9%A2%98/">poj1272 棋盘问题 ——DFS入门题</a>
-      </h1>
-      <span class="post-date">May 13, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/13/poj1272-%E6%A3%8B%E7%9B%98%E9%97%AE%E9%A2%98-dfs%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://poj.org/problem?id=1321 题目大意： 中文题，省了…… 题目思路： 感觉搜索题目还是要多做，很多东西都是开始看起来很复杂，其实根本就没有那么复杂，比如说这道，实际上就比较基础，可是，自己还是做不出来……o(╯□╰)o 这道题目需要注意的一点就是：先DFS一行，然后要注意，要考虑当前行不放，直接DFS下一行！这个情况赶脚还是比较不容易想到的，虽然做完之后感觉也挺自然啊，可是……当初为毛想不到。。。就是思维的问题吧……代码看的是这位仁兄的：http://fuliang.iteye.com/blog/398700ＴＨＸ……＾＿＾
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x7fffffff; const int MINN = -0x7fffffff; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 10; char m[MAX][MAX];int cnt, n, k, sum; bool p[MAX]; bool judge(int i, int j) { if (p[j] == false &amp;&amp; m[i][j] == '#') return true; else return false; } void dfs(int x) { if (sum == k) {cnt++; return;} if (x &gt;= n) return; int i; for (i = 0; i &lt; n; ++i) { if (judge(x, i)) { p[i] = true; sum++; dfs(x+1); p[i] = false; sum--; } } dfs(x + 1); } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;poj1321.
-      <a href="http://liuxueyang.github.io/blog/2013/05/13/poj1272-%E6%A3%8B%E7%9B%98%E9%97%AE%E9%A2%98-dfs%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
       
     </div>
     

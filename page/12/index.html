@@ -79,6 +79,45 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2014/03/30/codeforces-239a.-triangle/">CodeForces 239A. Triangle</a>
+      </h1>
+      <span class="post-date">Mar 30, 2014 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/03/30/codeforces-239a.-triangle/#disqus_thread">Comments</a>
+      </span>
+      
+      Link: http://codeforces.com/contest/407/problem/A
+给定直角三角形的2个直角边a，b。求在直角坐标系中，是否存在对应的直角三角形，使得三个定点都在整点上，并且三边都不和坐标轴平行。
+如果存在，输出YES，和三个点的坐标。否则输出NO
+很显然，为了方便，可以把原点作为 一个顶点。
+这道题目做的时候少考虑了很多情况。
+比如：
+如何使得边不和坐标轴平行？ 要保证要求的另外两个点的横坐标或者纵坐标不能相等。
+如何保证三角形是直角三角形？ 只需要保证，另外两个点和坐标轴围成的三角形相似。
+因为范围是1000,所以可以暴力求解。复杂度O（10^6）
+/* * ===================================================================================== * Filename : triangle.cpp * Description : triangle * Version : 0.1 * Created : 03/30/14 15:57 * Author : Liu Xue Yang (LXY), liuxueyang457@163.com * Motto : How about today? * ===================================================================================== */ #include &lt;cmath&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;iostream&gt; using namespace std; /* * === FUNCTION ====================================================================== * Name: gcd * Description: gcd * ===================================================================================== */ int gcd ( int a, int b ) { return b == 0 ?
+      <a href="http://liuxueyang.github.io/blog/2014/03/30/codeforces-239a.-triangle/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2014/03/22/longest-increasing-subsequence/">Longest Increasing Subsequence</a>
+      </h1>
+      <span class="post-date">Mar 22, 2014 &middot; 5 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/03/22/longest-increasing-subsequence/#disqus_thread">Comments</a>
+      </span>
+      
+      很久不写算法了== 写个东西练练手
+最长上升子序列
+输入n，然后是数组a[ ]的n个元素
+输出最长上升子序列的长度
+一、最简单的方法复杂度O(n * n)
+DP[ i ] 是以a[ i ] 为结尾的最长上升子序列的长度。 DP[ i ] = max{DP[ j ] + 1 | j &lt; i &amp;&amp; a[ j ] &lt; a[ i ]}  代码：
+/* * ===================================================================================== * Filename : LongestIncrSub1.cpp * Description : O(n^2) * Version : a better Algorithm of O(n^2) * Created : 03/22/14 22:03 * Author : Liu Xue Yang (LXY), liuxueyang457@163.
+      <a href="http://liuxueyang.github.io/blog/2014/03/22/longest-increasing-subsequence/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2014/03/04/vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86/">Vim插件管理</a>
       </h1>
       <span class="post-date">Mar 4, 2014 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/03/04/vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86/#disqus_thread">Comments</a>
@@ -230,34 +269,6 @@ c++版：
       中断的安装程序：
 assume cs:code code segment start: mov ax, cs mov ds, ax mov si, offset chstr mov ax, 0 mov es, ax mov di, 200h mov cx, offset chstrend - offset chstr cld rep movsb mov ax, 0 mov es, ax mov word ptr es:[7ch * 4 + 0], 200h mov word ptr es:[7ch * 4 + 2], 0 mov ax, 4c00h int 21h chstr: mov si, 0 lh: mov cx, 0 mov cl, [si] jcxz ok and byte ptr [si], 11011111b inc si jmp lh ok: iret chstrend: nop code ends end start  测试程序：
       <a href="http://liuxueyang.github.io/blog/2013/10/17/%E7%BC%96%E5%86%99%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%AD7ch%E7%9A%84%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B%E5%B0%86%E4%B8%80%E4%B8%AA%E4%BB%A50%E7%BB%93%E5%B0%BE%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E5%8C%96%E4%B8%BA%E5%A4%A7%E5%86%99/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/10/17/%E7%BC%96%E5%86%99%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B7ch%E8%AE%A1%E7%AE%97word%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%B9%B3%E6%96%B9/">编写中断例程7ch：计算word型数据的平方</a>
-      </h1>
-      <span class="post-date">Oct 17, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/17/%E7%BC%96%E5%86%99%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B7ch%E8%AE%A1%E7%AE%97word%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%B9%B3%E6%96%B9/#disqus_thread">Comments</a>
-      </span>
-      
-      实现计算一个word型数据的平方。
-这是安装程序。
-assume cs:code code segment start: mov ax, cs mov ds, ax mov si, offset sqr mov ax, 0 mov es, ax mov di, 200h mov cx, offset sqrend - offset sqr cld rep movsb mov ax, 0 mov es, ax mov word ptr es:[7ch * 4+0], 200h mov word ptr es:[7ch * 4 + 2], 0 mov ax, 4c00h int 21h sqr: mul ax iret sqrend: nop code ends end start  这是应用程序。
-      <a href="http://liuxueyang.github.io/blog/2013/10/17/%E7%BC%96%E5%86%99%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B7ch%E8%AE%A1%E7%AE%97word%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%B9%B3%E6%96%B9/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/10/17/%E7%BC%96%E5%86%990%E5%8F%B7%E4%B8%AD%E6%96%AD%E7%9A%84%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F%E5%A4%84%E7%90%86%E9%99%A4%E6%B3%95%E6%BA%A2%E5%87%BA/">编写0号中断的处理程序：处理除法溢出</a>
-      </h1>
-      <span class="post-date">Oct 17, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/17/%E7%BC%96%E5%86%990%E5%8F%B7%E4%B8%AD%E6%96%AD%E7%9A%84%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F%E5%A4%84%E7%90%86%E9%99%A4%E6%B3%95%E6%BA%A2%E5%87%BA/#disqus_thread">Comments</a>
-      </span>
-      
-      在除法溢出的时候，在屏幕中间显示字符串“divide error!”
-安装程序：
-assume cs:code code segment start: mov ax, cs mov ds, ax mov si, offset do0 mov ax, 0 mov es, ax mov di, 200h mov cx, offset do0end - offset do0 cld rep movsb mov ax, 0 mov ds, ax mov word ptr ds:[0*4], 200h mov word ptr ds:[0*4 + 2], 0 do0: jmp do0start db &quot;divide error!&quot; do0start: mov ax, cs mov ds, ax mov si, 202h mov ax, 0b800h mov es, ax mov di, 12*160+36*2 mov cx, 13 s: mov al, [si] mov es:[di], al mov byte ptr es:[di+1], 01001001b inc si add di, 2 loop s mov ax, 4c00h int 21h do0end: nop mov ax, 4c00h int 21h code ends end start  测试程序：
-      <a href="http://liuxueyang.github.io/blog/2013/10/17/%E7%BC%96%E5%86%990%E5%8F%B7%E4%B8%AD%E6%96%AD%E7%9A%84%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F%E5%A4%84%E7%90%86%E9%99%A4%E6%B3%95%E6%BA%A2%E5%87%BA/">Read On &rarr;</a>
       
     </div>
     

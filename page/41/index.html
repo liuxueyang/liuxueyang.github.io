@@ -79,6 +79,34 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/05/poj-2528-mayors-posters/">poj 2528 Mayor&#39;s posters</a>
+      </h1>
+      <span class="post-date">Mar 5, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/05/poj-2528-mayors-posters/#disqus_thread">Comments</a>
+      </span>
+      
+      Description Input Output Sample Input Sample Output
+#include &lt;cstdio&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; using namespace std; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 const int maxn = 111111; int li[maxn], ri[maxn], x[maxn*3], col[maxn&lt;&lt;4], cnt; bool hash[maxn]; void PushDown(int rt){ if (col[rt] != -1){ col[rt&lt;&lt;1] = col[rt&lt;&lt;1|1] = col[rt]; col[rt] = -1; } } void update(int L,int R, int c, int l, int r, int rt){ if (L &lt;= l &amp;&amp; R &gt;= r){col[rt] = c; return;} PushDown(rt); int m = (l + r) &gt;&gt; 1; if (L &lt;= m) update(L, R, c, lson); if (R &gt; m) update(L, R, c, rson); } void query(int l, int r, int rt){ if (col[rt] !
+      <a href="http://liuxueyang.github.io/blog/2013/03/05/poj-2528-mayors-posters/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/04/poj-3468-a-simple-problem-with-integers/">poj 3468 A Simple Problem with Integers</a>
+      </h1>
+      <span class="post-date">Mar 4, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/04/poj-3468-a-simple-problem-with-integers/#disqus_thread">Comments</a>
+      </span>
+      
+      A Simple Problem with Integers Time Limit: 5000MS Memory Limit: 131072K Total Submissions:40260 Accepted: 11693 Case Time Limit: 2000MS
+Description
+You have N integers, A1, A2, &hellip; , AN. You need to deal with two kinds of operations. One type of operation is to add some given number to each number in a given interval. The other is to ask for the sum of numbers in a given interval.
+Input
+      <a href="http://liuxueyang.github.io/blog/2013/03/04/poj-3468-a-simple-problem-with-integers/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/03/04/hdu-1698-just-a-hook/">hdu 1698 Just a Hook</a>
       </h1>
       <span class="post-date">Mar 4, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/04/hdu-1698-just-a-hook/#disqus_thread">Comments</a>
@@ -185,33 +213,6 @@ Input Input consists of up to 100,000 dictionary entries, followed by a blank li
       
       #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; using namespace std; char a[1000+10][25]; const int sonnum = 26, base = 'a'; struct Trie { int num; bool terminal; struct Trie *son[sonnum]; }; Trie *NewTrie() { Trie *temp = new Trie; temp-&gt;num = 1; temp-&gt;terminal = false; for (int i = 0; i &lt; sonnum; ++i) temp-&gt;son[i] = NULL; return temp; } void Insert(Trie *pnt, char *s, int len) { Trie *temp = pnt; for (int i = 0; i &lt; len; ++i) { if (temp-&gt;son[s[i]-base] == NULL) temp-&gt;son[s[i]-base] = NewTrie(); else temp-&gt;son[s[i]-base]-&gt;num++; temp = temp-&gt;son[s[i]-base]; } temp-&gt;terminal = true; } Trie *Find(Trie *pnt, char *s, int len) { Trie *temp = pnt; for (int i = 0; i &lt; len; ++i) { if (temp-&gt;son[s[i]-base]-&gt;num == 1) { printf(&quot;%c&quot;, s[i]); return temp; } printf(&quot;%c&quot;, s[i]); temp = temp-&gt;son[s[i]-base]; } return temp; } int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;poj2001.
       <a href="http://liuxueyang.github.io/blog/2013/02/26/poj-2001-shortest-prefixes-%E5%AD%97%E5%85%B8%E6%A0%91%E5%85%A5%E9%97%A8/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-c.-secret/">CF271 C. Secret</a>
-      </h1>
-      <span class="post-date">Feb 15, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-c.-secret/#disqus_thread">Comments</a>
-      </span>
-      
-      C. Secret time limit per test 2 seconds memory limit per test 256 megabytes input standard input output standard output
-The Greatest Secret Ever consists of n words, indexed by positive integers from 1 to n. The secret needs dividing between k Keepers (let&rsquo;s index them by positive integers from 1 to k), the i-th Keeper gets a non-empty set of words with numbers from the set Ui = (ui, 1, ui, 2, &hellip;, ui, |Ui|).
-      <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-c.-secret/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-a.-beautiful-year/">CF271 A. Beautiful Year</a>
-      </h1>
-      <span class="post-date">Feb 15, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-a.-beautiful-year/#disqus_thread">Comments</a>
-      </span>
-      
-      A. Beautiful Year time limit per test 2 seconds memory limit per test 256 megabytes input standard input output standard output
-It seems like the year of 2013 came only yesterday. Do you know a curious fact? The year of 2013 is the first year after the old 1987 with only distinct digits.
-Now you are suggested to solve the following problem: given a year number, find the minimum year number which is strictly larger than the given one and has only distinct digits.
-      <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-a.-beautiful-year/">Read On &rarr;</a>
       
     </div>
     

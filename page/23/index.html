@@ -79,6 +79,32 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/08/tyvj1022---%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2-%E8%BF%9B%E5%88%B6%E4%B8%BA%E8%B4%9F%E6%95%B0/">tyvj1022 - 进制转换 ——进制为负数</a>
+      </h1>
+      <span class="post-date">Jul 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/08/tyvj1022---%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2-%E8%BF%9B%E5%88%B6%E4%B8%BA%E8%B4%9F%E6%95%B0/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1022
+#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cmath&gt; long long int n, k, r; int a[100]; int main(void) { scanf(&quot;%lld&quot;,&amp;n); int j=0; if(!n){printf(&quot;0\n&quot;);return 0;} while(n) {k=n/(-2); r=n-(-2)*k; if(r==-1) n=k+1,r=1; else n=k; a[j++]=r; } for(int k=j-1;k&gt;=0;--k)printf(&quot;%d&quot;,a[k]);printf(&quot;\n&quot;); return 0; }  =_=
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/08/tyvj1023---%E5%A5%B6%E7%89%9B%E7%9A%84%E9%94%BB%E7%82%BC-dp/">tyvj1023 - 奶牛的锻炼 ——DP</a>
+      </h1>
+      <span class="post-date">Jul 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/08/tyvj1023---%E5%A5%B6%E7%89%9B%E7%9A%84%E9%94%BB%E7%82%BC-dp/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1023
+#include &lt;cstdio&gt; #include &lt;algorithm&gt; #include &lt;cstdlib&gt; using namespace std; int a[2002],f[2002][502]; int main(void) { //freopen(&quot;in1.txt&quot;,&quot;r&quot;,stdin); int n, m; scanf(&quot;%d%d&quot;,&amp;n,&amp;m); for(int i=1;i&lt;=n;scanf(&quot;%d&quot;,a+i++)); f[0][0]=0,f[1][1]=a[1]; for(int i=1;i&lt;=n;++i) for(int j=0;j&lt;=m;++j) { if(!j) for(int k=1;k&lt;=i;++k) f[i][0]=max(max(f[i-1][0],f[i-k][k]),f[i][0]); else f[i][j]=f[i-1][j-1]+a[i]; //printf(&quot;%d &quot;,f[i][j]); } printf(&quot;\n%d\n&quot;,f[n][0]); return 0; }  =_=
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/07/07/tyvj1018---%E9%98%B6%E4%B9%98%E7%BB%9F%E8%AE%A1-%E6%9A%B4%E5%8A%9B/">tyvj1018 - 阶乘统计 ——暴力</a>
       </h1>
       <span class="post-date">Jul 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/07/tyvj1018---%E9%98%B6%E4%B9%98%E7%BB%9F%E8%AE%A1-%E6%9A%B4%E5%8A%9B/#disqus_thread">Comments</a>
@@ -174,32 +200,6 @@
       
       题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1013 好吧，这题没节操=_= 状态f[u,v,i]表示：消费u的人民币和v的人品同时泡到i个mm所需要的最少时间。
 #include &lt;cstdio&gt; #include &lt;cstring&gt; #include &lt;cstdlib&gt; #include &lt;algorithm&gt; using namespace std; int f[101][101][101], r[101], rp[101], t[101], rmb, RP, n, INF=0x7f7f7f7f; int main(void) { freopen(&quot;in1.txt&quot;,&quot;r&quot;,stdin); scanf(&quot;%d&quot;,&amp;n);for(int i=1;i&lt;=n;scanf(&quot;%d%d%d&quot;,r+i,rp+i,t+i),++i) ;scanf(&quot;%d%d&quot;,&amp;rmb,&amp;RP); for(int i=0;i&lt;=rmb;++i)for(int j=0;j&lt;=RP;++j)for(int k=1;k&lt;=n;++k)f[i][j][k]=INF; for(int i=1;i&lt;=n;++i)for(int u=rmb;u&gt;=r[i];--u)for(int v=RP;v&gt;=rp[i];--v)for(int j=1;j&lt;=i;++j) if(f[u][v][j-1]!=INF) f[u][v][j]=min(f[u][v][j],f[u-r[i]][v-rp[i]][j-1]+t[i]); for(int i=n;i&gt;=0;--i)if(f[rmb][RP][i]!=INF){printf(&quot;%d\n&quot;,f[rmb][RP][i]);break;} return 0; }  为了使泡到的mm尽量多，所以要从后往前找合法的解，只要找到就输出，然后break; =_=
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/07/07/tyvj1012-p1012---%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F--%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/">tyvj1012 P1012 - 火柴棒等式  ——暴力枚举</a>
-      </h1>
-      <span class="post-date">Jul 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/07/tyvj1012-p1012---%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F--%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1012 可以发现：最大的数字绝对不超过999，只要枚举出0～999所有数字需要的火柴数，然后再枚举C和A，得到B＝C-A，看看三个数字的火柴数目是否等于n就可以了。
-#include &lt;cstdio&gt; int a[10] = {6,2,5,5,4,5,6,3,7,6},b[1000],n,cnt; int main(void) { freopen(&quot;in1.txt&quot;,&quot;r&quot;,stdin); cnt=0; scanf(&quot;%d&quot;,&amp;n),n-=4;for(int i=0;i&lt;10;++i)b[i]=a[i]; for(int i=10;i&lt;=999;++i) b[i]=b[i/10]+b[i%10]; for(int i=0;i&lt;=999;++i)if(b[i]&lt;n) for(int j=0;j&lt;=i;++j)if(b[i]+b[j]+b[i-j]==n)cnt++; printf(&quot;%d\n&quot;,cnt); return 0; }  还有一个比较快的思路，因为n最大是24，所以可以用上面的程序，把这24个数字都算出来，就是一个大小为24个数组，直接输出就可以。 写给自己看的。。=_=
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/07/07/tyvj1011---%E4%BC%A0%E7%BA%B8%E6%9D%A1--dp/">tyvj1011 - 传纸条  ——DP</a>
-      </h1>
-      <span class="post-date">Jul 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/07/tyvj1011---%E4%BC%A0%E7%BA%B8%E6%9D%A1--dp/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1011 状态转移方程： f[k,x1,x2] = max(f[k-1,x1,x2],f[k-1,x1-1,x2],f[k-1,x1-1,x2-1],f[k-1,x1,x2-1]) + a[y1,x1] + a[y2,x2]; f[k,x1,x2]表示，第K步的时候，一条路的横坐标是x1,另一条路的横坐标是x2的时候所得到的最优解。另外，还要考虑一下，当x1==x2的时候的情况，这个时候，只能允许一条路走到那个位置。
-#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;algorithm&gt; #include &lt;cstring&gt; using namespace std; int a[51][51],f[100][51][51]; int main(void) { freopen(&quot;in1.txt&quot;,&quot;r&quot;,stdin); int N,M; scanf(&quot;%d%d&quot;, &amp;M, &amp;N);for(int i=1;i&lt;=M;++i)for(int j=1;j&lt;=N;++j)scanf(&quot;%d&quot;,&amp;a[i][j]); for(int k=1;k&lt;=M+N-3;++k)for(int x1=1;x1&lt;=min(N,k+1);++x1)for(int x2=1;x2&lt;=min(N,k+1);++x2) { f[k][x1][x2]=max(max(f[k-1][x1][x2],f[k-1][x1-1][x2]),max(f[k-1][x1][x2-1],f[k-1][x1-1][x2-1])); if (x1==x2)f[k][x1][x2]+=a[k-x1+2][x1]; else f[k][x1][x2]+=(a[k-x1+2][x1]+a[k-x2+2][x2]); } printf(&quot;%d\n&quot;,f[M+N-3][N][N-1]); return 0; }  昨天看了一篇文章，才发现，其实，题解是写给自己看的-_-#
       
       
     </div>

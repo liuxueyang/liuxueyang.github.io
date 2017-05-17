@@ -79,6 +79,33 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/19/testing-round-#8--a.-iq-test---%E6%B0%B4%E9%A2%98/">Testing Round #8  A. IQ Test   水题</a>
+      </h1>
+      <span class="post-date">Jul 19, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/19/testing-round-#8--a.-iq-test---%E6%B0%B4%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://codeforces.com/problemset/problem/328/A 这道题目wa了一次，注意这句话：
+You should also print 42 if the next element of progression is not integer. So answer is always integer.  然后就可以了。
+/* ID: zypz4571 LANG: C++ TASK: iqtest.cpp */ #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;set&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #define INF 0x3f3f3f3f #define mid int m=(l+r)/2 using namespace std; int main ( int argc, char *argv[] ) { #ifndef ONLINE_JUDGE freopen(&quot;in.
+      <a href="http://liuxueyang.github.io/blog/2013/07/19/testing-round-#8--a.-iq-test---%E6%B0%B4%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/07/18/codeforces-testing-round-#8-b.-sheldon-and-ice-pieces-%E6%B0%B4%E9%A2%98/">Codeforces Testing Round #8 B. Sheldon and Ice Pieces 水题</a>
+      </h1>
+      <span class="post-date">Jul 18, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/18/codeforces-testing-round-#8-b.-sheldon-and-ice-pieces-%E6%B0%B4%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://codeforces.com/problemset/problem/328/B 水题~
+#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; char n[10], a[202]; int b[13], c[13]; int main(void) { //freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); scanf(&quot;%s%s&quot;, n, a); int len1 = strlen(n), len2 = strlen(a); memset(b, 0, sizeof(b)); memset(c, 0, sizeof(c)); for (int i = 0; i &lt; len1; ++i) b[n[i]-'0']++; for (int i = 0; i &lt; len2; ++i) c[a[i]-'0']++; b[2]+=b[5], b[5]=0, c[2]+=c[5], c[5]=0, b[6]+=b[9], b[9]=0, c[6]+=c[9], c[9]=0; int cnt=0, Max=100000; for (int i = 0; i &lt; 10; ++i){ if (b[i]){ cnt = c[i]/b[i]; if (cnt &lt; Max) Max = cnt; } } printf(&quot;%d\n&quot;, Max); return 0; }  =_=
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/07/18/sgu548-dragons-and-princesses%E8%B4%AA%E5%BF%83%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/">sgu548 Dragons and Princesses　　　贪心＋优先队列</a>
       </h1>
       <span class="post-date">Jul 18, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/18/sgu548-dragons-and-princesses%E8%B4%AA%E5%BF%83%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/#disqus_thread">Comments</a>
@@ -177,32 +204,6 @@
       
       输入线性方程组的维数，然后随即生成一定有解的线性方程组的增广矩阵，求出解，然后输出时间和方程组的解，以及和标准解的误差（其实就是和标准解的方差）。 #include &lt;cstdio&gt; #include &lt;algorithm&gt; #include &lt;cstdlib&gt; #include &lt;iostream&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;ctime&gt; using namespace std; const double eps=1e-9; const int MAX=20000; double ans[MAX]; int n; double **inputdata; double *result; /* 输出标准解 */ void printresult() { for(int i=0;i&lt;n;i++) printf(&quot;%.4lf &quot;,result[i]); printf(&quot;\n&quot;); } /* 打印出生成的的增广矩阵 */ void printb() { for(int i=0;i&lt;n;i++) printf(&quot;%.4lf &quot;,inputdata[i][n]); printf(&quot;\n&quot;); } /* 随机生成增广矩阵 */ void pro_inputdata() { int i,j,k; double res=0; printf(&quot;please input the number of the element:\n&quot;); scanf(&quot;%d&quot;,&amp;n); srand(time(0)); result=(double*)malloc(n*sizeof(double)); inputdata=(double**)malloc(n*sizeof(double)); for(i=0;i&lt;n;i++) result[i]=(double)(rand()%10000)/1000.
       <a href="http://liuxueyang.github.io/blog/2013/07/11/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/07/08/tyvj1022---%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2-%E8%BF%9B%E5%88%B6%E4%B8%BA%E8%B4%9F%E6%95%B0/">tyvj1022 - 进制转换 ——进制为负数</a>
-      </h1>
-      <span class="post-date">Jul 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/08/tyvj1022---%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2-%E8%BF%9B%E5%88%B6%E4%B8%BA%E8%B4%9F%E6%95%B0/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1022
-#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cmath&gt; long long int n, k, r; int a[100]; int main(void) { scanf(&quot;%lld&quot;,&amp;n); int j=0; if(!n){printf(&quot;0\n&quot;);return 0;} while(n) {k=n/(-2); r=n-(-2)*k; if(r==-1) n=k+1,r=1; else n=k; a[j++]=r; } for(int k=j-1;k&gt;=0;--k)printf(&quot;%d&quot;,a[k]);printf(&quot;\n&quot;); return 0; }  =_=
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/07/08/tyvj1023---%E5%A5%B6%E7%89%9B%E7%9A%84%E9%94%BB%E7%82%BC-dp/">tyvj1023 - 奶牛的锻炼 ——DP</a>
-      </h1>
-      <span class="post-date">Jul 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/07/08/tyvj1023---%E5%A5%B6%E7%89%9B%E7%9A%84%E9%94%BB%E7%82%BC-dp/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1023
-#include &lt;cstdio&gt; #include &lt;algorithm&gt; #include &lt;cstdlib&gt; using namespace std; int a[2002],f[2002][502]; int main(void) { //freopen(&quot;in1.txt&quot;,&quot;r&quot;,stdin); int n, m; scanf(&quot;%d%d&quot;,&amp;n,&amp;m); for(int i=1;i&lt;=n;scanf(&quot;%d&quot;,a+i++)); f[0][0]=0,f[1][1]=a[1]; for(int i=1;i&lt;=n;++i) for(int j=0;j&lt;=m;++j) { if(!j) for(int k=1;k&lt;=i;++k) f[i][0]=max(max(f[i-1][0],f[i-k][k]),f[i][0]); else f[i][j]=f[i-1][j-1]+a[i]; //printf(&quot;%d &quot;,f[i][j]); } printf(&quot;\n%d\n&quot;,f[n][0]); return 0; }  =_=
-      
       
     </div>
     

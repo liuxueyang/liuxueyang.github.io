@@ -79,6 +79,32 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/05/30/codeforces-round-#185-div.-1-a.-the-closest-pair/">Codeforces Round #185 (Div. 1) A. The Closest Pair</a>
+      </h1>
+      <span class="post-date">May 30, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/30/codeforces-round-#185-div.-1-a.-the-closest-pair/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://codeforces.com/problemset/problem/311/A 题目大意： 题目很短，不解释了。^_^ 题目思路： 开始感觉很难，没思路。看了解题报告，发现原来是道水题嘛。程序里面有个break语句，要让循环次数达到最大，并且循环次数容易计算，只需要让这个break;永远不会执行就可以了。也就是说，可以让p[j].x - p[i].x &gt;= d 永远不成立，只需要让p[j].x - p[i].x总等于0就可以了！因为题目让生成任意一组符合条件的数据嘛，所以，可以让产生的所有的点的横坐标都是一样的就可以了。
+#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;iostream&gt; #include &lt;cmath&gt; using namespace std; #define LL long long int main(void) { #ifndef ONLINE_JUDGE //freopen(&quot;185_c.in1&quot;, &quot;r&quot;, stdin); #endif LL n, k; scanf(&quot;%I64d%I64d&quot;, &amp;n, &amp;k); if (n*(n-1)/2 &lt;= k){ printf(&quot;no solution\n&quot;); } else { for (int i = 0; i &lt; n; ++i) { printf(&quot;1 %d\n&quot;, i); } } return 0; }  很简单的思路，当初为什么没有想到？
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/05/26/the-unique-mst-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7/">The Unique MST ——最小生成树的唯一性</a>
+      </h1>
+      <span class="post-date">May 26, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/26/the-unique-mst-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.hust.edu.cn/vjudge/contest/view.action?cid=24534#problem/C 题目大意： 判断最小生成树是否唯一。 题目思路： 对于如果有一条边A在最小生成树里面，并且存在和这条边权值一样的另外一条边B，那么再次求最小生成树的时候，把A去掉，看看求出的最小生成树是不是和原来的最小生成树权值一样。如果一样，就是不唯一，否则就刚才去掉的加进来，然后再找下一条这样的边。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; using namespace std; #define MAXN 110 #define MAXM 5009 typedef struct edge { int u, v, w, used, del, equal; bool operator &lt; (const edge &amp;other) const { return w &lt; other.w; } }edge; edge edges[MAXM]; int parent[MAXN]; bool first; int n, m, i, j; void init() { for (i = 1; i &lt;= n; ++i) parent[i] = -1; } int find(int x) { int s; for (s = x; parent[s] &gt;= 0; s = parent[s]) ; while (s !
+      <a href="http://liuxueyang.github.io/blog/2013/05/26/the-unique-mst-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/05/26/constructing-roads-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">Constructing Roads ——最小生成树</a>
       </h1>
       <span class="post-date">May 26, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/26/constructing-roads-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/#disqus_thread">Comments</a>
@@ -174,30 +200,6 @@
       
       题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=1398 题目大意： 给一个数字，不大于300，求有多少种用完全平方数表示这个数字的方法 题目思路： 方法跟hdu1283一样一样的……只需要把那道题目的代码稍微改一下就可以过了 #include &lt;cstdio&gt; #include &lt;cmath&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; const int MAX = 32768+10; long long d[MAX]; void solve() { int n, i, j; while (~scanf(&quot;%d&quot;, &amp;n) &amp;&amp; n) { memset(d, 0, sizeof(d)); d[0] = 1; for (i = 1; i &lt;= floor(sqrt(n)); ++i) { for (j = i*i; j &lt;= n; ++j) { d[j] += d[j-i*i]; } } printf(&quot;%lld\n&quot;, d[n]); } } int main(void) { solve(); return 0; }   因为题目的范围很小嘛，只有300。 
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/05/23/hdu1284-%E9%92%B1%E5%B8%81%E5%85%91%E6%8D%A2%E9%97%AE%E9%A2%98-dp/">hdu1284 钱币兑换问题 ——DP</a>
-      </h1>
-      <span class="post-date">May 23, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/23/hdu1284-%E9%92%B1%E5%B8%81%E5%85%91%E6%8D%A2%E9%97%AE%E9%A2%98-dp/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=1284 题目大意： 中文题…… 题目思路： 只有3个硬币，范围是32768，可以一个一个枚举硬币，如果只放价值为1的硬币，从d[1]递推到d[n]；如果再加上价值为2的硬币，那么就从d[2]递推到d[n]；在加上价值为3的硬币，就从d[3]递推到d[n].递推公式是d[j] = d[j] + d[j-i]； d[j]表示j有几种只用1，2, 3这三个数字的拆分方法，i 就是硬币的价值。 #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; const int MAX = 32768+10; long long d[MAX]; void solve() { int n, i, j; while (~scanf(&quot;%d&quot;, &amp;n)) { memset(d, 0, sizeof(d)); d[0] = 1; for (i = 1; i &lt;= 3; ++i) { for (j = i; j &lt;= n; ++j) { d[j] += d[j-i]; } } printf(&quot;%lld\n&quot;, d[n]); } } int main(void) { solve(); return 0; }   参考博客：http://www.
-      <a href="http://liuxueyang.github.io/blog/2013/05/23/hdu1284-%E9%92%B1%E5%B8%81%E5%85%91%E6%8D%A2%E9%97%AE%E9%A2%98-dp/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/05/23/hdu1028-ignatius-and-the-princess-iii-dp/">hdu1028 Ignatius and the Princess III ——DP</a>
-      </h1>
-      <span class="post-date">May 23, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/23/hdu1028-ignatius-and-the-princess-iii-dp/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=1028 题目大意：　整数拆分，给一个整数n,求它有多少种拆分方法。 题目思路： 做法一： d[i][j]表示把整数 i 拆成最多 j 个数字所具有的方法数。那么 if (i &gt;ｊ)　d[i][j] = d[i-j][j] + d[i][j-1]; 意思就是如果i&gt;j，那么有两种方式：一种是先把i里面分理处j个1，然后再把i-j拆成最多i-j个数字；另一种是把i拆分成最多j-1个数字。 if (i &lt; j) d[i][j] = d[i][i]; 意思就是如果i&lt;j，那么这种情况和把数字i最多拆成i个数字的是一样的。 if (i == j) d[i][j] = d[i][j-1] + 1; 意思就是如果i==j，那么可以把数字i拆分成j-1个数字，也可以把数字i拆分成i个1（这个就是那个1的意义） #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; using namespace std; #define LL long long int d[140][140], n; void init() { while (~scanf(&quot;%d&quot;, &amp;n)) { int i, j; memset(d, 0, sizeof(d)); for (i = 0; i &lt;= n; ++i) d[i][1] = d[1][i] = 1; for (i = 2; i &lt;= n; ++i) { for (j = 1; j &lt;= n; ++j) { if (i &gt; j) d[i][j] = d[i-j][j] + d[i][j-1]; else if (i == j) d[i][j] = 1 + d[i][j-1]; else d[i][j] = d[i][i]; } } cout &lt;&lt; d[n][n] &lt;&lt; endl; } } int main(void) { init(); return 0 ; }   剩下的就是考虑一下边界，比如当 i 或者 j 等于1的时候，显然都是只有一种拆分情况。 做法二： 借用hdu1284这道题的方法，也可以做这道题目，因为n的范围是120嘛,两个算法的复杂度都是O(n^2)的，当然可以了。只需要把hdu1284的代码里面把3改成n，这题就过了…… #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; const int MAX = 32768+10; long long d[MAX]; void solve() { int n, i, j; while (~scanf(&quot;%d&quot;, &amp;n)) { memset(d, 0, sizeof(d)); d[0] = 1; for (i = 1; i &lt;= n; ++i) { for (j = i; j &lt;= n; ++j) { d[j] += d[j-i]; } } printf(&quot;%lld\n&quot;, d[n]); } } int main(void) { solve(); return 0; }   优化到了一维数组，这个方法碉堡了…… 参考博客：http://www.
-      <a href="http://liuxueyang.github.io/blog/2013/05/23/hdu1028-ignatius-and-the-princess-iii-dp/">Read On &rarr;</a>
       
     </div>
     

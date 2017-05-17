@@ -79,6 +79,39 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2014/06/01/a-text-adventure-game-by-commonlisp/">A Text Adventure Game by CommonLISP</a>
+      </h1>
+      <span class="post-date">Jun 1, 2014 &middot; 6 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/06/01/a-text-adventure-game-by-commonlisp/#disqus_thread">Comments</a>
+      </span>
+      
+      Today, I read the book Land of Lisp. It is interesting to write a text adventure game.
+First, there are some basic and useful functions.
+##some useful functions 1. mapcar
+This function takes another function and a list, and then applies this function to every member of a list.This is an example: ```lisp (mapcar #'sqrt '(1 2 3 4 5)) ``` It will output a list contains the square root of each element.
+      <a href="http://liuxueyang.github.io/blog/2014/06/01/a-text-adventure-game-by-commonlisp/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2014/05/31/my-previous-blog/">My Previous Blog</a>
+      </h1>
+      <span class="post-date">May 31, 2014 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/05/31/my-previous-blog/#disqus_thread">Comments</a>
+      </span>
+      
+      My Previous Blog is Desert Guard.
+This is whay I migrate my blog here.
+Now start my new journey happily. :)
+##Some common lisp simple syntax Here is some common lisp syntaxes.
+define local variables:
+(let ((a 5) (b 6)) (+ a b))  define local functions:
+(flet ((f (n) (+ n 1)) (g (n) (+ n 2))) (g (f 3)))  To make function names available in defined functions, we can use the labels command.
+      <a href="http://liuxueyang.github.io/blog/2014/05/31/my-previous-blog/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2014/05/30/editor/">Editor</a>
       </h1>
       <span class="post-date">May 30, 2014 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/05/30/editor/#disqus_thread">Comments</a>
@@ -199,45 +232,6 @@ A. The Great Game
 所以，dp[ i ] 表示从i 房间到 i +1 房间需要经过的出口数。
 还有一个特点：如果人第一次到房间 i ，那么他必定下一步到达房间p[ i ], 然后再考虑从房间p [ i ] 出发到达 p[ i +1] 房间。如果要到达i + 1房间。那么需要经过的出口数目就是：2 + dp[ p[i], p[i] + 1, &hellip; , i - 1 ] .其中的2 就是从房间 i 到房间p[ i ] 和从房间 i 到房间 i + 1的两步。另外一部分也就是从房间p[ i ] 到房间p[ i ] +1 ，从房间p[ i ] + 1 到房间 p[ i ] + 2等等。
       <a href="http://liuxueyang.github.io/blog/2014/03/31/codeforces-239-long-path/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2014/03/30/codeforces-239a.-triangle/">CodeForces 239A. Triangle</a>
-      </h1>
-      <span class="post-date">Mar 30, 2014 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/03/30/codeforces-239a.-triangle/#disqus_thread">Comments</a>
-      </span>
-      
-      Link: http://codeforces.com/contest/407/problem/A
-给定直角三角形的2个直角边a，b。求在直角坐标系中，是否存在对应的直角三角形，使得三个定点都在整点上，并且三边都不和坐标轴平行。
-如果存在，输出YES，和三个点的坐标。否则输出NO
-很显然，为了方便，可以把原点作为 一个顶点。
-这道题目做的时候少考虑了很多情况。
-比如：
-如何使得边不和坐标轴平行？ 要保证要求的另外两个点的横坐标或者纵坐标不能相等。
-如何保证三角形是直角三角形？ 只需要保证，另外两个点和坐标轴围成的三角形相似。
-因为范围是1000,所以可以暴力求解。复杂度O（10^6）
-/* * ===================================================================================== * Filename : triangle.cpp * Description : triangle * Version : 0.1 * Created : 03/30/14 15:57 * Author : Liu Xue Yang (LXY), liuxueyang457@163.com * Motto : How about today? * ===================================================================================== */ #include &lt;cmath&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;iostream&gt; using namespace std; /* * === FUNCTION ====================================================================== * Name: gcd * Description: gcd * ===================================================================================== */ int gcd ( int a, int b ) { return b == 0 ?
-      <a href="http://liuxueyang.github.io/blog/2014/03/30/codeforces-239a.-triangle/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2014/03/22/longest-increasing-subsequence/">Longest Increasing Subsequence</a>
-      </h1>
-      <span class="post-date">Mar 22, 2014 &middot; 5 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/03/22/longest-increasing-subsequence/#disqus_thread">Comments</a>
-      </span>
-      
-      很久不写算法了== 写个东西练练手
-最长上升子序列
-输入n，然后是数组a[ ]的n个元素
-输出最长上升子序列的长度
-一、最简单的方法复杂度O(n * n)
-DP[ i ] 是以a[ i ] 为结尾的最长上升子序列的长度。 DP[ i ] = max{DP[ j ] + 1 | j &lt; i &amp;&amp; a[ j ] &lt; a[ i ]}  代码：
-/* * ===================================================================================== * Filename : LongestIncrSub1.cpp * Description : O(n^2) * Version : a better Algorithm of O(n^2) * Created : 03/22/14 22:03 * Author : Liu Xue Yang (LXY), liuxueyang457@163.
-      <a href="http://liuxueyang.github.io/blog/2014/03/22/longest-increasing-subsequence/">Read On &rarr;</a>
       
     </div>
     

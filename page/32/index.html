@@ -79,6 +79,31 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/27/%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/">邻接表示例程序</a>
+      </h1>
+      <span class="post-date">Apr 27, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/27/%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/#disqus_thread">Comments</a>
+      </span>
+      
+      输入：n，m代表顶点数目和边数。然后m行，代表每个边的起点和终点。0 0 表示结束。 输出：第一行为n个正整数，表示每个点的出度；第二行为n个正整数，表示每个点的入度。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 100; struct ArcNode{ // 边节点 int adjvex; ArcNode *nextarc; }; struct VNode{ // 顶点 int data; ArcNode *head1; // 出边表表头指针 ArcNode *head2; // 入边表表头指针 }; struct LGraph{ // 临界表结构体 VNode vertexs[MAX]; // 顶点数组 int vexnum, arcnum; }; LGraph lg; void CreateLG() { int i = 0; ArcNode *pi; int v1, v2; //scanf(&quot;%d%d&quot;, &amp;lg.
+      <a href="http://liuxueyang.github.io/blog/2013/04/27/%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/26/2013%E5%B9%B44%E6%9C%8826%E6%97%A5-%E6%99%B4/">2013年4月26日 晴</a>
+      </h1>
+      <span class="post-date">Apr 26, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/26/2013%E5%B9%B44%E6%9C%8826%E6%97%A5-%E6%99%B4/#disqus_thread">Comments</a>
+      </span>
+      
+      25日 晚上去图书馆还书，没去跑步。开始读TAOCP，^_^ 26日 都起跑了才发现脚貌似有点儿受伤，大脚趾有些疼的感觉。乖乖回来了o(╯□╰)o 看来得休息几天了。 今天晚上自习的时候开始考虑要不要考研，以前的想法都是坚决不考研的，但是现在，唉……我也不知道该怎么办，总之，不想这些了，现在还是好好学习数学，英语，还有专业课，到时候想考就拼一下。目前最重要的是认真做比赛，还要努力把数学英语搞好，这货哪里都用得到。把自己的基础打好，各种技术都要自己去学，不管以后是去考研还是去找工作，都有好处，具体怎么样，以后的事情以后再说，现在想这些都没用。 纯粹胡思乱想…… 人生貌似有些迷茫了又。。迟早要面对，所谓选择和机会，都是留给认真准备的人的。什么都不会，感觉无路可走…… 看到一句话：当你倒了一杯热水，准备去喝的时候，发现水已经凉了，那么恭喜你，你已经进入状态了。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/04/25/2013%E5%B9%B44%E6%9C%8824%E6%97%A5-%E9%98%B4%E8%BD%AC%E6%99%B4/">2013年4月24日 阴转晴</a>
       </h1>
       <span class="post-date">Apr 25, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/25/2013%E5%B9%B44%E6%9C%8824%E6%97%A5-%E9%98%B4%E8%BD%AC%E6%99%B4/#disqus_thread">Comments</a>
@@ -174,31 +199,6 @@
       
       题目链接：http://poj.org/problem?id=2480 题目大意： 给定一个数字N，求∑gcd(i, N) 1&lt;=i &lt;=N 的值。 题目思路： x是一个数字，m与n互素，则gcd(x,m*n) = gcd(x, m) * gcd(x, n) 令g(y) = gcd(x, y) 那么g(y)是一个积性函数。令f(N) = ∑gcd(i, N) 满足gcd(x, n) = 1 的个数是欧拉函数φ(n)，那么可以知道，满足gcd(x, n) = p 的个数可以这么求：x 和 n 同时除以 p ，那么gcd(x/p, n/p) = 1 ，那么个数就是φ(n/p)。 分解N = p1^a1 * p2^a2 * …… *pn^an ，则f(N) = f(p1^a1 * p2^a2 * …… *pn^an) = f(p1^a1) * f(p2^a2) * …… * f(pn^an)； 可以枚举pi^ai的因数，对于f(pi^ai) = 1 * φ(pi^ai) + pi * φ(pi^(ai-1)) + pi^2 * φ(pi^(ai-2)) + …… + pi^(ai-1) * φ(pi) + pi^ai * φ(1)； 根据φ(pi^ai) = pi^ai - pi^(ai-1)，那么可以化简上面的式子：f(pi^ai) = ai * pi^ai + ai * pi^(ai-1) + pi^ai = pi^ai * (ai + ai/pi + 1)； 所以，f(N) = N * (a1 + a1/p1 + 1) * (a2 + a2/p2 + 1) * …… * (an + an/pn + 1)。 这题当然不是自己想出来的，但是学习了一下积性函数，看的神牛的解题代码：http://hi.
       <a href="http://liuxueyang.github.io/blog/2013/04/21/poj2480-longges-problem-%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/21/2013%E5%B9%B44%E6%9C%8821%E6%97%A5-%E9%98%B4/">2013年4月21日 阴</a>
-      </h1>
-      <span class="post-date">Apr 21, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/21/2013%E5%B9%B44%E6%9C%8821%E6%97%A5-%E9%98%B4/#disqus_thread">Comments</a>
-      </span>
-      
-      19日 晚上挑战赛，输了，回宿舍很晚了，没去跑步。 20日 今天状态不是很好，中途P3还没电了……虽然跑得很慢，但还是跑完全程了~ 21日 晚上校队讨论，回去10点多了，没去跑步。今天上午上西班牙语选修课，很有意思~中南赛没能去，唉。以后挑战赛坚决不能输！
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/20/uestc1824-judgment-day-%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/">uestc1824 Judgment Day ——比赛残留题</a>
-      </h1>
-      <span class="post-date">Apr 20, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/20/uestc1824-judgment-day-%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://www.acm.uestc.edu.cn/problem.php?pid=1824 题目大意： 给一个大的字符串，给一个数字n，然后给出n个小的字符串，在大的字符串里面每个字母只能选一次，问最多可以组成多少个小的字符串。小的字符串最多有10个，每个小字符串和大字符串长度最多10000。 题目思路： 因为最多有10个小的字符串，从10个里面选，最多有1024种选法。因为字符串只包含26个小写字母，可以统计每个小字符串里面的每个小写字母的个数，这样，复杂度大约在10×26×1024,是10^5的范围，可以枚举。 比如对于n个字符串，最多有1&lt;&lt;n种，用 x 从1枚举到1&lt;&lt;n - 1，然后用 j 从 0 枚举到n-1，用 1 &lt;&lt; j 和 x 相与，如果为1,则 j +1 表示第 j + 1 个人被选上了，判断它是不是能被选上，如果能被选上，那么 cnt++，再和max相比较，最后得到max。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int L = 100000+10; char s[L], a[15][L]; int t, nn, cnt[29], ca[15][29], cc[29]; int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;j.
-      <a href="http://liuxueyang.github.io/blog/2013/04/20/uestc1824-judgment-day-%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/">Read On &rarr;</a>
       
     </div>
     

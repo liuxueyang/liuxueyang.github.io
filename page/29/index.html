@@ -79,6 +79,32 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/05/13/2013%E5%B9%B45%E6%9C%8813%E6%97%A5-%E6%99%B4/">2013年5月13日 晴</a>
+      </h1>
+      <span class="post-date">May 13, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/13/2013%E5%B9%B45%E6%9C%8813%E6%97%A5-%E6%99%B4/#disqus_thread">Comments</a>
+      </span>
+      
+      今天，，，好吧……是昨天。。。西班牙语课很有收获啊，慢慢入门了~ 上完课急急忙忙地去做了一下所谓的校赛，发现如果没有书，单凭自己做，还是有很多基础的东西敲不出来啊，呵呵，知道为什么这么弱了。 晚上去跑步了，状态还不错，至少跑完全程了，5km不多不少。回公寓的时候，见识到了传说中猛于虎的城管，跟卖夜宵的小贩打起来了，同样的情景见过无数次了，就在公寓门口，唉，这些社会的阴暗面…………谁都不容易，不说了。 洗洗睡吧，明天有课。好好奋斗。 很久之前就很喜欢的一个视频：
+　Tell me why
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/05/13/poj1272-%E6%A3%8B%E7%9B%98%E9%97%AE%E9%A2%98-dfs%E5%85%A5%E9%97%A8%E9%A2%98/">poj1272 棋盘问题 ——DFS入门题</a>
+      </h1>
+      <span class="post-date">May 13, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/13/poj1272-%E6%A3%8B%E7%9B%98%E9%97%AE%E9%A2%98-dfs%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://poj.org/problem?id=1321 题目大意： 中文题，省了…… 题目思路： 感觉搜索题目还是要多做，很多东西都是开始看起来很复杂，其实根本就没有那么复杂，比如说这道，实际上就比较基础，可是，自己还是做不出来……o(╯□╰)o 这道题目需要注意的一点就是：先DFS一行，然后要注意，要考虑当前行不放，直接DFS下一行！这个情况赶脚还是比较不容易想到的，虽然做完之后感觉也挺自然啊，可是……当初为毛想不到。。。就是思维的问题吧……代码看的是这位仁兄的：http://fuliang.iteye.com/blog/398700ＴＨＸ……＾＿＾
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x7fffffff; const int MINN = -0x7fffffff; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 10; char m[MAX][MAX];int cnt, n, k, sum; bool p[MAX]; bool judge(int i, int j) { if (p[j] == false &amp;&amp; m[i][j] == '#') return true; else return false; } void dfs(int x) { if (sum == k) {cnt++; return;} if (x &gt;= n) return; int i; for (i = 0; i &lt; n; ++i) { if (judge(x, i)) { p[i] = true; sum++; dfs(x+1); p[i] = false; sum--; } } dfs(x + 1); } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;poj1321.
+      <a href="http://liuxueyang.github.io/blog/2013/05/13/poj1272-%E6%A3%8B%E7%9B%98%E9%97%AE%E9%A2%98-dfs%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/05/12/hdu1272-%E5%B0%8F%E5%B8%8C%E7%9A%84%E8%BF%B7%E5%AE%AB-%E5%B9%B6%E6%9F%A5%E9%9B%86%E6%97%A0%E5%90%91%E5%9B%BE%E5%88%A4%E7%8E%AF/">hdu1272 小希的迷宫 ——并查集无向图判环</a>
       </h1>
       <span class="post-date">May 12, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/12/hdu1272-%E5%B0%8F%E5%B8%8C%E7%9A%84%E8%BF%B7%E5%AE%AB-%E5%B9%B6%E6%9F%A5%E9%9B%86%E6%97%A0%E5%90%91%E5%9B%BE%E5%88%A4%E7%8E%AF/#disqus_thread">Comments</a>
@@ -176,32 +202,6 @@
       题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=3702 题目大意： 给一个数列，第一项是1，给第 i 项，这个数列满足斐波那契数列的那种性质。问是不是存在，如果存在输出第 j 项，否则输出 -1 题目思路： 找规律，这个数列每一项和原来的斐波那契数列的差值是原来的斐波那契数列的倍数。
 #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; using namespace std; #define LL long long int LL f[30], g[30]; int main(void){ int i , j , k; f[0] = f[1] = 1; for (i = 2; i &lt; 23; ++i) { f[i] = f[i-2] + f[i-1]; } LL I, J, GI; int t; scanf(&quot;%d&quot;, &amp;t); while (t--) { cin &gt;&gt; I &gt;&gt; GI &gt;&gt; J; LL d = GI - f[I]; if (d &lt; 0 || d % f[I-1] !
       <a href="http://liuxueyang.github.io/blog/2013/05/07/zoj3702-gibonacci-number-%E6%89%BE%E8%A7%84%E5%BE%8B/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/05/07/zoj3696--aliens-organ-%E6%A6%82%E7%8E%87%E9%A2%98/">zoj3696  Alien&#39;s Organ ——概率题</a>
-      </h1>
-      <span class="post-date">May 7, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/07/zoj3696--aliens-organ-%E6%A6%82%E7%8E%87%E9%A2%98/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=3696 题目大意： 就是一个东西，随机产生器官，一天产生的数量的期望是x,求一天内产生个数小于等于N的概率 题目思路： 泊松分布。概率论得好好学。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;math.h&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x7fffffff; const int MINN = -0x7fffffff; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; double la; double cal(double k) { double l = 1; for (int i = 1; i &lt;= k; ++i) { l = l * i; } double re = pow(la, k) / l * exp(-la); return re; } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;a.
-      <a href="http://liuxueyang.github.io/blog/2013/05/07/zoj3696--aliens-organ-%E6%A6%82%E7%8E%87%E9%A2%98/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/05/06/poj1122zoj1053-fdny-to-the-rescue-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%85%A5%E9%97%A8%E9%A2%98_dijkstra%E7%AE%97%E6%B3%95/">poj1122&amp;&amp;zoj1053 FDNY to the Rescue! ——最短路入门题_Dijkstra算法</a>
-      </h1>
-      <span class="post-date">May 6, 2013 &middot; 4 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/06/poj1122zoj1053-fdny-to-the-rescue-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%85%A5%E9%97%A8%E9%A2%98_dijkstra%E7%AE%97%E6%B3%95/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://poj.org/problem?id=1122　http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=53 题目大意： 给定一个有向图，一个终点S，求多个点到这个点S的最短距离和对应的路径，把最短路排序后输出。 题目思路： 点的范围是20.可以一个一个用Dijkstra。。唯一的新意就是有多个点还需要按照路径长度排序，同时还要输出对应的路径，考的就是代码能力。用结构体存就可以。注意是有向图，开始就以为是无向图，怎么算最短路都不对。。赶脚这题不难，没什么思维难度，但是做OJ上这题的人却比较少，可能有一个原因，题目比较长，然后读完题目之后觉得没什么意思就不做了。。很简单的一个东西搞这么长的题目，也许就是考的读题吧。。貌似如果不是看的书上的翻译，我也没耐心读题。。。唉，读题确实是关键的一关。 然后这道题目，Poj上是单case，比较好过，然后数据也貌似比较弱，因为是单case，所以有一个输入的细节就特别好处理。开始Poj一下就过了，还沾沾自喜，结果把单case换成多case的时候，在zoj上交就Segmentation Fault……原来我最初处理输入个数不确定的数字的时候用了 while(~scanf())这种方法，很显然，这货只适用于单case。然后就想，该怎么处理这种输入数字个数不确定的输入呢？看了网上的一个思路，http://blog.csdn.net/yzldw333/article/details/7858172 哈哈，原来这么简单，就是以前做过的么，按照字符串处理就行了，，，好吧，，原来自己就是怕麻烦，这种方法想都没想。。然后就改了，，还是Segmentation Fault……继续调试，查错。。忍不住看了一下别人的代码，http://www.cnblogs.com/372465774y/archive/2012/11/19/2777552.html 一个注释提示了我，“这题给的字符真的是：t &lsquo; &rsquo;”好吧……我还真没注意到，虽然读题的时候注意到了，但是写代码的时候就想当然地只考虑空格，，像以前那样……思维定式啊。。然后就过了。。 Segmentation Fault的原因是访问了非法内存，在新的OJ上如果用的是Linux的话，归在Runtime Error一类里面。多谢zsl！ Poj代码：
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x7fffffff; const int MINN = -0x7fffffff; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 20; int edge[MAX][MAX], n, dist[MAX], path[MAX], end; bool S[MAX]; typedef struct Fire { int street[MAX], len, start, E; bool operator &lt; (const Fire &amp;other) const { return len &lt; other.
-      <a href="http://liuxueyang.github.io/blog/2013/05/06/poj1122zoj1053-fdny-to-the-rescue-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%85%A5%E9%97%A8%E9%A2%98_dijkstra%E7%AE%97%E6%B3%95/">Read On &rarr;</a>
       
     </div>
     

@@ -79,6 +79,30 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/12/15/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.3.3-%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%94%9F%E6%88%90%E5%AD%90%E9%9B%86/">入门经典 第七章 7.3.3 二进制生成子集</a>
+      </h1>
+      <span class="post-date">Dec 15, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/15/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.3.3-%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%94%9F%E6%88%90%E5%AD%90%E9%9B%86/#disqus_thread">Comments</a>
+      </span>
+      
+      多简洁的位运算！
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/12/15/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.3.2-%E4%BD%8D%E5%90%91%E9%87%8F%E7%94%9F%E6%88%90%E5%AD%90%E9%9B%86/">入门经典 第七章 7.3.2 位向量生成子集</a>
+      </h1>
+      <span class="post-date">Dec 15, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/15/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.3.2-%E4%BD%8D%E5%90%91%E9%87%8F%E7%94%9F%E6%88%90%E5%AD%90%E9%9B%86/#disqus_thread">Comments</a>
+      </span>
+      
+      比增量构造要复杂，但是想法简洁
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2012/12/15/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.3.1-%E5%A2%9E%E9%87%8F%E6%9E%84%E9%80%A0%E7%94%9F%E6%88%90%E5%AD%90%E9%9B%86/">入门经典 第七章 7.3.1 增量构造生成子集</a>
       </h1>
       <span class="post-date">Dec 15, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/15/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.3.1-%E5%A2%9E%E9%87%8F%E6%9E%84%E9%80%A0%E7%94%9F%E6%88%90%E5%AD%90%E9%9B%86/#disqus_thread">Comments</a>
@@ -175,31 +199,6 @@
       这道题目还是卡了很久，原因是要考虑0是不是出现过，要标记。
 #include &lt;stdio.h&gt; #include &lt;ctype.h&gt; #include &lt;string.h&gt; #include &lt;stdlib.h&gt; #include &lt;math.h&gt; void f(int a[], int n) { a[n%10] = 1; n/=10; while (n) { a[n%10] = 1; n/=10; } return; } int main(void) { int n, i, a[11], k, temp; freopen(&quot;in&quot;, &quot;r&quot;, stdin); while (~scanf(&quot;%d&quot;, &amp;n)) { for (i = 100; i &lt; 50000; ++i) { k = i * n; memset(a, 0, sizeof(a)); temp = k; if (temp/100000!=0) continue; f(a, temp); f(a, i); a[temp/10000] = a[i/10000] = 1; int mrk=1; for (int s = 0; s &lt; 10; ++s) { if(!
       <a href="http://liuxueyang.github.io/blog/2012/12/14/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.7.1-%E9%99%A4%E6%B3%95/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/12/14/gdb%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E7%AE%80%E8%A6%81%E6%80%BB%E7%BB%93/">gdb调试方法简要总结</a>
-      </h1>
-      <span class="post-date">Dec 14, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/14/gdb%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E7%AE%80%E8%A6%81%E6%80%BB%E7%BB%93/#disqus_thread">Comments</a>
-      </span>
-      
-      在编译的时候加上 -g 选项，如： g++ -Wall -g test.cpp -o test 开始调试： gdb test 基本命令： l 显示代码，是list的简写 b 插入断点，是break的简写 n 下一步，是next的简写 s 单步运行，是stepinto的简写，可以进入函数内部 p 打印，是print的简写，可以打印变量 disp 在每一步运行中显示要求的变量，是display的简写 d disp 编号 删除指定编号的display，d是delete的简写 dis disp 编号 禁止指定编号的display，dis是disable的简写 en disp 编号 恢复指定编号的display，en是enable的简写 u 行号 运行到指定行号
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/12/14/%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6--%E5%AE%9E%E7%8E%B0%E5%AF%BB%E6%89%BE%E6%95%B0%E7%BB%84%E7%9A%84%E7%AC%ACk%E5%A4%A7%E7%9A%84%E5%85%83%E7%B4%A0/">重载运算符 [] 实现寻找数组的第K大的元素</a>
-      </h1>
-      <span class="post-date">Dec 14, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/12/14/%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6--%E5%AE%9E%E7%8E%B0%E5%AF%BB%E6%89%BE%E6%95%B0%E7%BB%84%E7%9A%84%E7%AC%ACk%E5%A4%A7%E7%9A%84%E5%85%83%E7%B4%A0/#disqus_thread">Comments</a>
-      </span>
-      
-      方法是利用快排的想法，效率O(N)
-/* * use the method of quicksort. The time efficiency is * O(N). * * */ #include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;iomanip&gt; using namespace std; class Array { public: friend istream &amp; operator &gt;&gt; (istream &amp; input, Array &amp; a); friend ostream &amp; operator &lt;&lt; (ostream &amp; outpu, Array &amp; a); int operator [] (int p); void exchange(int &amp;s, int &amp;t); int partition(int *p, int l, int r); int k_element(int *p, int l, int r, int k); int getlen(){return len;} private: int *a; int len; }; int Array::operator [] (int p) { return k_element(a, 0, len-1, p); } int Array::k_element(int *p, int l, int r, int k) { if (l &lt; r) { int q = partition(p, l, r); if (q + 1 == k) return p[q]; else if (q + 1 &gt; k) return k_element(p, l, q-1, k); else return k_element(p, q+1, r, k); //这个地方尤其要注意，应该还是k，而不是k-q-1！ } else return p[l]; } ostream &amp; operator &lt;&lt; (ostream &amp; output, Array &amp; array) { for (int i = 0; i &lt; array.
-      <a href="http://liuxueyang.github.io/blog/2012/12/14/%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6--%E5%AE%9E%E7%8E%B0%E5%AF%BB%E6%89%BE%E6%95%B0%E7%BB%84%E7%9A%84%E7%AC%ACk%E5%A4%A7%E7%9A%84%E5%85%83%E7%B4%A0/">Read On &rarr;</a>
       
     </div>
     

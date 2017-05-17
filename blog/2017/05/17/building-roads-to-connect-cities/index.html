@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Building Roads to Connect Cities &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="Kruskal求最小生成树">
+  <meta name="keywords" content="Algorithm,Graph,Kruskal">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+        <img src="https://www.gravatar.com/avatar/2e3a2be066049f38f7a3f80eff0a5400?s=200"
+             alt="gravatar" title="liuxueyang">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Building Roads to Connect Cities</h1>
+    <span class="post-date">May 17, 2017 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/05/17/building-roads-to-connect-cities/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://liuxueyang.github.io/categories/algorithm">Algorithm</a><a class="label" href="http://liuxueyang.github.io/categories/graph">Graph</a><a class="label" href="http://liuxueyang.github.io/categories/kruskal">Kruskal</a>
+    </span>
+    <p>题目链接：<a href="https://gitlab.com/liuxueyang/algorithms-on-graph-exercise/blob/master/week5/spanning_trees_problems.pdf">pdf</a></p>
+
+<p>给出平面上的一些点，任意两点之间可以相连，求最小生成树的总权值。</p>
+
+<p>用Kruskal：把所有边按照边长度升序排序，循环所有边，每次加入一个边之前要判断这个边的两个点是不是在一个集合中，如果是那么跳过，如果不是那么把这个边的两个点合并到一个集合中。集合操作用带路径压缩的并查集。循环边的过程中累加边的权值。</p>
+
+<pre><code class="language-cpp">// Tue May 16 17:02:04 2017
+// Tue May 16 20:42:10 2017
+
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+struct edge {
+  int from, to;
+  double cost;
+};
+
+inline double p_distance(int x1, int y1, int x2, int y2) {
+  return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+}
+
+int p_find(int x, vector&lt;int&gt; &amp;parent) {
+  int p = x;
+  
+  while (p != parent[p]) {
+    p = parent[p];
+  }
+  return parent[x] = p;
+}
+
+void p_union(int x, int y, vector&lt;int&gt; &amp;parent, vector&lt;int&gt; &amp;p_size) {
+  int p_x = p_find(x, parent), p_y = p_find(y, parent), ps_x = p_size[p_x],
+    ps_y = p_size[p_y];
+  
+  if (ps_x &gt; ps_y) {
+    parent[p_y] = p_x;
+    p_size[p_x] += ps_y;
+  }
+  else {
+    parent[p_x] = p_y;
+    p_size[p_y] += ps_x;
+  }
+}					       
+
+double minimum_distance(vector&lt;int&gt; x, vector&lt;int&gt; y) {
+  double result = 0.;
+  vector&lt;edge&gt; edges;
+
+  for (size_t i = 0; i &lt; x.size(); ++i) {
+    for (size_t j = i + 1; j &lt; x.size(); ++j) {
+      edge e; e.from = i; e.to = j; e.cost = p_distance(x[i], y[i], x[j], y[j]);
+      edges.push_back(e);
+    }
+  }
+
+  sort(edges.begin(), edges.end(),
+       [](const edge &amp;a, const edge &amp;b) -&gt; bool { return a.cost &lt; b.cost; });
+  vector&lt;int&gt; parent(x.size()), p_size(x.size());
+
+  for (size_t i = 0; i &lt; parent.size(); ++i) {
+    parent[i] = i;
+    p_size[i] = 1;
+  }
+
+  for (auto &amp;e : edges) {
+    if (p_find(e.from, parent) != p_find(e.to, parent)) {
+      p_union(e.from, e.to, parent, p_size);
+      result += e.cost;
+    }
+  }
+
+  return result;
+} 
+
+int main() {
+  
+#ifdef DEBUG
+  freopen(&quot;in&quot;, &quot;r&quot;, stdin);
+#endif
+  
+  size_t n;
+  
+  while(cin &gt;&gt; n) {
+    vector&lt;int&gt; x(n), y(n);
+    
+    for (size_t i = 0; i &lt; n; i++) {
+      std::cin &gt;&gt; x[i] &gt;&gt; y[i];
+    }
+    
+    std::cout &lt;&lt; std::setprecision(10) &lt;&lt; minimum_distance(x, y) &lt;&lt; std::endl;
+  }
+}
+
+</code></pre>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

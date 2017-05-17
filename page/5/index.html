@@ -79,6 +79,35 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-aibohp---aibohphobia/">Spoj, dynamic-programming: AIBOHP - Aibohphobia</a>
+      </h1>
+      <span class="post-date">Aug 12, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-aibohp---aibohphobia/#disqus_thread">Comments</a>
+      </span>
+      
+      给一个字符串，求最少插入多少个字符，可以使得这个字符串是回文的。
+可以这样想：我们假设它已经是回文的，那么把这个字符串逆序，如果它是回文的，那么对 应的每个字符应该相等。可以它不是回文的，那么就需要尽量少地加一些字符，加多少呢？ 那么需要知道当前的最长连续公共子序列的长度len，把不相等的那些字符串加进去就成为 了回文的。加进去的字符的最少个数 = 字符串长度 - 原先的字符串和它的逆序字符串的最 长连续公共子序列的长度。
+问题就转化为求两个序列的最长公共子序列。这个就简单了。
+因为懒并且想省时间，所以就用了一些宏，这让程序变得不易读，还好程序比较简单，不太 影响吧。反正以后也不会再读。。了解思路就可以了。
+/* * ===================================================================================== * * Filename: main.cpp * * Description: http://www.spoj.com/problems/AIBOHP/ * * Version: 1.0 * Created: 08/12/2016 18:27:30 * Compiler: g++ * * Author: Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com * * ===================================================================================== */ #include &lt;bits/stdc++.h&gt; using namespace std; #define _ ios_base::sync_with_stdio(0);cin.tie(0); #define rep(i, a, n) for (int i = a; i &lt; n; ++i) #define per(i, a, n) for (int i = n-1; i &gt; a; --i) #define pb push_back #define mp make_pair #define all(x) (x).
+      <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-aibohp---aibohphobia/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-bytesm2---philosophers-stone/">Spoj, dynamic-programming: BYTESM2 - Philosophers Stone</a>
+      </h1>
+      <span class="post-date">Aug 12, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-bytesm2---philosophers-stone/#disqus_thread">Comments</a>
+      </span>
+      
+      在矩阵里面捡石头，求最大值。和常见的直角三角形那样的问题是一样的。
+/* * ===================================================================================== * * Filename: main.cpp * * Description: http://www.spoj.com/problems/BYTESM2/ * * Version: 1.0 * Created: 08/12/2016 18:49:12 * Compiler: g++ * * Author: Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com * * ===================================================================================== */ #include &lt;bits/stdc++.h&gt; using namespace std; #define _ ios_base::sync_with_stdio(0);cin.tie(0); #define rep(i, a, n) for (int i = a; i &lt; n; ++i) #define per(i, a, n) for (int i = n-1; i &gt;= a; --i) #define pb push_back #define mp make_pair #define all(x) (x).
+      <a href="http://liuxueyang.github.io/blog/2016/08/12/spoj-dynamic-programming-bytesm2---philosophers-stone/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2016/08/12/dynamic-programming-spoj-diehard---die-hard/">Dynamic-programming: Spoj DIEHARD - DIE HARD</a>
       </h1>
       <span class="post-date">Aug 12, 2016 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/08/12/dynamic-programming-spoj-diehard---die-hard/#disqus_thread">Comments</a>
@@ -197,37 +226,6 @@ TeXmacs其实对于英文文档的书写来说，蛮不错的，写公式、创�
 similar to GSS1 in addition to point update in segment tree.
 #include &lt;iostream&gt; using namespace std; struct SegmentTreeNode { int pre, suf, sub, total; void assignLeaf(int value) { pre = suf = sub = total = value; } void merge(SegmentTreeNode &amp;left, SegmentTreeNode &amp;right) { pre = max(left.pre, left.total + right.pre); suf = max(left.suf + right.total, right.suf); sub = max(left.sub, max(right.sub, left.suf + right.pre)); total = left.total + right.total; return; } int getValue() { return sub; } }; template &lt;class T, class V&gt; class SegmentTree { SegmentTreeNode *nodes; int N; public: SegmentTree(T arr[], int N) { this-&gt;N = N; nodes = new SegmentTreeNode[getSegmentTreeSize(N)]; buildTree(arr, 1, 0, N - 1); } ~SegmentTree() { delete[] nodes; } V getValue(int lo, int hi) { SegmentTreeNode result = getValue(1, 0, N - 1, lo, hi); return result.
       <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-gss3---can-you-answer-these-queries-iii/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-gss1---can-you-answer-these-queries-i/">spoj, segment tree: GSS1 - Can you answer these queries I</a>
-      </h1>
-      <span class="post-date">Jul 25, 2016 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-gss1---can-you-answer-these-queries-i/#disqus_thread">Comments</a>
-      </span>
-      
-      Problem Link
-max sum of a sequence can be from one of the three:
-1. left half of the sequence 2. right half of the sequence 3. left half + right half  segment tree range query
-#include &lt;iostream&gt; using namespace std; struct SegmentTreeNode { int pre, suf, sub, total; void assignLeaf(int value) { pre = suf = sub = total = value; } void merge(SegmentTreeNode &amp;left, SegmentTreeNode &amp;right) { pre = max(left.
-      <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-gss1---can-you-answer-these-queries-i/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-brckts---brackets/">spoj, segment tree: BRCKTS - Brackets</a>
-      </h1>
-      <span class="post-date">Jul 25, 2016 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-brckts---brackets/#disqus_thread">Comments</a>
-      </span>
-      
-      Problem Link
-开始没有读懂题目，合法括号的意思其实就是常识情况下的括号合法：整个序列的左括号数目和右括号的数目相同，但是也不能出现这样的：)))(((，所以还要保证在任意一点，左括号的数目大于等于右括号的数目。
-这就需要，在序列里面任意一点，左边的不匹配的左括号的数目一定等于右边的不匹配右括号的数目。
-平常的线段树的点更新和区间查询
-#include &lt;iostream&gt; using namespace std; struct SegmentTreeNode { int unmatchedLeft, unmatchedRight; void assignLeaf(char value) { if (value == '(') { unmatchedLeft = 1; unmatchedRight = 0; } else { unmatchedLeft = 0; unmatchedRight = 1; } } void merge(SegmentTreeNode &amp;left, SegmentTreeNode &amp;right) { int L_unl = left.unmatchedLeft, L_unr = left.unmatchedRight, R_unl = right.unmatchedLeft, R_unr = right.unmatchedRight; int matched = min(L_unl, R_unr); unmatchedLeft = L_unl + R_unl - matched; unmatchedRight = L_unr + R_unr - matched; return; } bool getValue() { return unmatchedRight == 0 &amp;&amp; unmatchedLeft == 0; } }; template &lt;class T, class V&gt; class SegmentTree { SegmentTreeNode *nodes; int N; public: SegmentTree(T arr[], int N) { this-&gt;N = N; nodes = new SegmentTreeNode[getSegmentTreeSize(N)]; buildTree(arr, 1, 0, N - 1); } ~SegmentTree() { delete[] nodes; } V getValue(int lo, int hi) { SegmentTreeNode result = getValue(1, 0, N - 1, lo, hi); return result.
-      <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-brckts---brackets/">Read On &rarr;</a>
       
     </div>
     
