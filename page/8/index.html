@@ -79,6 +79,43 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/05/22/2016%E5%B9%B45%E6%9C%8822%E6%97%A5/">2016年5月22日</a>
+      </h1>
+      <span class="post-date">May 22, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/05/22/2016%E5%B9%B45%E6%9C%8822%E6%97%A5/#disqus_thread">Comments</a>
+      </span>
+      
+      一天天的，过得飞快。。从现在开始，做事情就好好做，憋半途而废，看书就好好看，憋看 到一半就扔了。。写东西就好好写，憋写到一半就废掉了。。我发现我最近经常做这种事情， 惭愧。做事情认真一点，专注一点。
+哦，最近我还迷上了学画画，也觉得挺有意思的，尤其是进入一个新的世界，虽然还不会画， 但是挺有趣。最近有点放纵，看电影、逛B站、看视频什么的。好好读书啊！
+另外，好好活着，不好么。:joy::joy::joy:
+哦，我的Emacs支持Emoji了。哈哈。棒棒哒！:+1:
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/03/18/codeforces-round-#345-div.-2-problem-b/">Codeforces Round #345 (Div. 2) Problem B</a>
+      </h1>
+      <span class="post-date">Mar 18, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/03/18/codeforces-round-#345-div.-2-problem-b/#disqus_thread">Comments</a>
+      </span>
+      
+      题意 给一个整数序列，长度小于1000，每个元素元素小于1000大于1，把这个序列任意排序，使得相邻的两个数字满足$a[$i] &lt; $a[$i+1]的pair的个数最大。只需要输出最大的pair个数。
+其实画图可以很形象地说明问题。这些图都是用Emacs画的，挺有意思。
+首先统计出每个数字的个数。接下来：
+第一种思考角度如下图：
+从小到大比较相邻组的大小，把较小的那一组的大小累加起来，然而要不要累加较大的这一组的大小那就要看是不是有别的组的大小比它还要大。从下面的图的第2列和地5列可以看到这样的情况。因此还要记录一个最大值。
+这个角度从图里面看是从左往右。a -&gt; b -&gt; c -&gt; d这样的顺序。
+第二种思考方式如下图：
+第一种是从左往右，那么就可以从下往上。其实这样也是合理的。每次从一组里面取出最下面的一个，累加起来。a -&gt; b的顺序。
+不过这个方法实现的时候需要一点技巧。
+然而，最简单的做法还是这样：）
+$\ = $/; while (&lt;&gt;) { $n = $_; $h-&gt;{$_}++ for split ' ', &lt;&gt;; print $n - (sort {$b &lt;=&gt; $a} values %{$h})[0]; }  其实画图有局限性，从另一个角度想，把数列分成尽可能长的严格递增（或者只含有一个元素）的子序列，那么每一组一定会含有在整个序列中出现次数最多的那个数字X，如果某个子序列不含有数字X，那么它不足够长。如果某个子序列含有两个数字X，那么它不是严格递增。设整个序列长度为N，在序列中出现次数最多的数字X出现的次数为P，那么就可以分成P个子序列。整个序列中，相邻两个数字递增的pair最多为N-1，分成P个子序列之后，相邻两个数字递增的pair减少了P-1个，所以答案就是 (N - 1) - (P - 1) = N - P，也就是整个序列的长度减去出现次数最多的数字出现的次数……
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2016/03/13/2016%E5%B9%B4%E6%98%A5/">2016年春</a>
       </h1>
       <span class="post-date">Mar 13, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/03/13/2016%E5%B9%B4%E6%98%A5/#disqus_thread">Comments</a>
@@ -197,34 +234,6 @@ double square();  这个规则好像是为了兼容旧版本的C吧。
       
       /* * ===================================================================================== * Filename : list.c * Created : 10/21/14 16:12 * Description : create list. insert a value in a list. delete a value in a list. * reverse list. print list. * Author : Liu Xue Yang (LXY), liuxueyang457@163.com * Motto : Suicide is Painless * ===================================================================================== */ #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; typedef struct Node { int n; struct Node *next; }Node; typedef Node * pNode; /* * argument n is the number of nodes to create */ Node * create(int n) { pNode Head, p_tmp, q; int tmp; Head = (Node*)malloc(sizeof(Node)); Head-&gt;n = -1; Head-&gt;next = NULL; q = Head; while (n--) { scanf ( &quot;%d&quot;, &amp;tmp ); p_tmp = (Node*)malloc(sizeof(Node)); p_tmp-&gt;n = tmp; p_tmp-&gt;next = NULL; q-&gt;next = p_tmp; q = p_tmp; } return Head; } /* * pos starts from position 0 * n is the value */ int delete(Node *h, int pos) { Node* p; Node* n_p; p = h; while (pos--) { if (!
       <a href="http://liuxueyang.github.io/blog/2014/10/23/create-print-insert-delete-and-reverse-list/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2014/10/09/some-sort-algorithms/">some sort algorithms</a>
-      </h1>
-      <span class="post-date">Oct 9, 2014 &middot; 9 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/10/09/some-sort-algorithms/#disqus_thread">Comments</a>
-      </span>
-      
-      In order to know whether a sort algorithm is stable, we need to know how it works.
-SelectionSort /* * ===================================================================================== * Filename : SelectionSort.cpp * Description : SelectionSort * Version : 0.1 * Created : 10/04/14 14:54 * Author : Liu Xue Yang (LXY), liuxueyang457@163.com * Motto : Suicide is Painless * ===================================================================================== */ #include &lt;bits/stdc++.h&gt; using namespace std; int main ( int argc, char *argv[] ) { // 1, 2, 3, 4, 5, 6, 7, 8 const int N = 8; int a[8] = { 7, 6, 3, 2, 1, 4, 5, 8 }; cout &lt;&lt; &quot;original array:&quot; &lt;&lt; endl; for ( int i = 0; i &lt; 8; ++i ) { cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; } cout &lt;&lt; endl; int min_index; for ( int i = 0; i &lt; N; ++i ) { min_index = i; for ( int j = i + 1; j &lt; N; ++j ) { if ( a[j] &lt; a[min_index] ) { min_index = j; } } swap(a[i], a[min_index]); } //output cout &lt;&lt; &quot;\n\nsorted array:&quot; &lt;&lt; endl; for ( int i = 0; i &lt; 8; ++i ) { cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;; } cout &lt;&lt; endl; return EXIT_SUCCESS; }	/* ---------- end of function main ---------- */ /* * Is it stable?
-      <a href="http://liuxueyang.github.io/blog/2014/10/09/some-sort-algorithms/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2014/10/09/process-filenames-with-spaces/">process filenames with spaces</a>
-      </h1>
-      <span class="post-date">Oct 9, 2014 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/10/09/process-filenames-with-spaces/#disqus_thread">Comments</a>
-      </span>
-      
-      I have some files whose filenames are like this:
-[some thing there]Sed &amp; awk, 2nd Edition[some thing there].mobi [some thing there]Erlang Programming[some thing there].mobi [some thing there]Hacking Vim7.2[some thing there].mobi [some thing there]Learning the vi and Vim Editors[some thing there].mobi  I want to rename them and delete the spaces in the filename.
-so… I wrote a script in perl.
-#!/usr/bin/env perl #=============================================================================== # FILE: filename.pl # AUTHOR: Phoenix Ikki (liuxueyang.
-      <a href="http://liuxueyang.github.io/blog/2014/10/09/process-filenames-with-spaces/">Read On &rarr;</a>
       
     </div>
     
@@ -383,12 +392,15 @@ so… I wrote a script in perl.
         ><a href="/page/47/">47</a></li>
         
         <li
+        ><a href="/page/48/">48</a></li>
+        
+        <li
         >
         <a href="/page/9/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/48/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

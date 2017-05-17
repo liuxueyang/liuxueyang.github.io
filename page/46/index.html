@@ -79,6 +79,36 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu-1166-%E6%95%8C%E5%85%B5%E5%B8%83%E9%98%B5/">hdu 1166 敌兵布阵</a>
+      </h1>
+      <span class="post-date">Nov 23, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu-1166-%E6%95%8C%E5%85%B5%E5%B8%83%E9%98%B5/#disqus_thread">Comments</a>
+      </span>
+      
+      敌兵布阵
+Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 22041 Accepted Submission(s): 9654
+Problem Description C国的死对头A国这段时间正在进行军事演习，所以C国间谍头子Derek和他手下Tidy又开始忙乎了。A国在海岸线沿直线布置了N个工兵营地,Derek和Tidy的任务就是要监视这些工兵营地的活动情况。由于采取了某种先进的监测手段，所以每个工兵营地的人数C国都掌握的一清二楚,每个工兵营地的人数都有可能发生变动，可能增加或减少若干人手,但这些都逃不过C国的监视。 中央情报局要研究敌人究竟演习什么战术,所以Tidy要随时向Derek汇报某一段连续的工兵营地一共有多少人,例如Derek问:“Tidy,马上汇报第3个营地到第10个营地共有多少人!”Tidy就要马上开始计算这一段的总人数并汇报。但敌兵营地的人数经常变动，而Derek每次询问的段都不一样，所以Tidy不得不每次都一个一个营地的去数，很快就精疲力尽了，Derek对Tidy的计算速度越来越不满:&ldquo;你个死肥仔，算得这么慢，我炒你鱿鱼!”Tidy想：“你自己来算算看，这可真是一项累人的工作!我恨不得你炒我鱿鱼呢!”无奈之下，Tidy只好打电话向计算机专家Windbreaker求救,Windbreaker说：“死肥仔，叫你平时做多点acm题和看多点算法书，现在尝到苦果了吧!”Tidy说：&rdquo;我知错了。。。&rdquo;但Windbreaker已经挂掉电话了。Tidy很苦恼，这么算他真的会崩溃的，聪明的读者，你能写个程序帮他完成这项工作吗？不过如果你的程序效率不够高的话，Tidy还是会受到Derek的责骂的.
+Input 第一行一个整数T，表示有T组数据。 每组数据第一行一个正整数N（N&lt;=50000）,表示敌人有N个工兵营地，接下来有N个正整数,第i个正整数ai代表第i个工兵营地里开始时有ai个人（1&lt;=ai&lt;=50）。 接下来每行有一条命令，命令有4种形式： (1) Add i j,i和j为正整数,表示第i个营地增加j个人（j不超过30） (2)Sub i j ,i和j为正整数,表示第i个营地减少j个人（j不超过30）; (3)Query i j ,i和j为正整数,i&lt;=j，表示询问第i到第j个营地的总人数; (4)End 表示结束，这条命令在每组数据最后出现; 每组数据最多有40000条命令
+Output 对第i组数据,首先输出“Case i:”和回车, 对于每个Query询问，输出一个整数并回车,表示询问的段中的总人数,这个数保持在int以内。
+Sample Input 1 10 1 2 3 4 5 6 7 8 9 10 Query 1 3 Add 3 6 Query 2 7 Sub 10 2 Add 6 3 Query 3 10 End
+      <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu-1166-%E6%95%8C%E5%85%B5%E5%B8%83%E9%98%B5/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu1754-i-hate-it-%E7%BA%BF%E6%AE%B5%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/">hdu1754 I Hate It ——线段数入门题</a>
+      </h1>
+      <span class="post-date">Nov 23, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu1754-i-hate-it-%E7%BA%BF%E6%AE%B5%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=1754
+#include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;algorithm&gt; #define maxn 200000&lt;&lt;2 //#define max(a,b) ((a)&gt;(b)?(a):(b)) #define lson l,m,rt&lt;&lt;1 #define rson m+1,r,rt&lt;&lt;1|1 int Max[maxn]; using namespace std; void pushup(int rt) { Max[rt] = max(Max[rt&lt;&lt;1],Max[rt&lt;&lt;1|1]); } void build(int l, int r, int rt) { if(l==r) {scanf(&quot;%d&quot;, &amp;Max[rt]); return;} int m=l+((r-l)&gt;&gt;1); build(lson);build(rson); pushup(rt); } void update(int p, int ck, int l, int r, int rt) { if (l==r) {Max[rt] = ck; return;} int m=l+((r-l)&gt;&gt;1); if (p &lt;= m) update(p, ck, lson); else update(p, ck, rson); pushup(rt); } int query(int L, int R, int l, int r, int rt) { if (L &lt;= l &amp;&amp; R &gt;= r) {return Max[rt];} int m=l+((r-l)&gt;&gt;1); int ret = 0; if (L&lt;=m) ret = max(query(L,R,lson),ret); if (R&gt;m) ret = max(query(L,R,rson),ret); return ret; } int main(void) { int N, M; #ifndef ONLINE_JUDGE freopen(&quot;in.
+      <a href="http://liuxueyang.github.io/blog/2012/11/23/hdu1754-i-hate-it-%E7%BA%BF%E6%AE%B5%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2012/11/20/ubuntu-12.04-%E5%AE%89%E8%A3%85%E4%B9%8B%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/">ubuntu 12.04 安装之后的配置问题</a>
       </h1>
       <span class="post-date">Nov 20, 2012 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/20/ubuntu-12.04-%E5%AE%89%E8%A3%85%E4%B9%8B%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a>
@@ -178,32 +208,6 @@ sudo apt-get install libjpeg62
       
       Current work in cryptography involves (among other things) large prime numbers and computing powers of numbers modulo functions of these primes. Work in this area has resulted in the practical use of results from number theory and other branches of mathematics once considered to be of only theoretical interest. This problem involves the efficient computation of integer roots of numbers. Given an integer and an integer you are to write a program that determines , the positive root of p.
       <a href="http://liuxueyang.github.io/blog/2012/11/08/uva-113---power-of-cryptography/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-621---secret-research/">uva 621 - Secret Research</a>
-      </h1>
-      <span class="post-date">Nov 7, 2012 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-621---secret-research/#disqus_thread">Comments</a>
-      </span>
-      
-      At a certain laboratory results of secret research are thoroughly encrypted. A result of a single experiment is stored as an information of its completion: positive result', negative result&rsquo;, experiment failed' or experiment not completed&rsquo;
- The encrypted result constitutes a string of digits S, which may take one of the following forms:
- (A sample result S35 means that if we add digits 35 from the right hand side to a digit sequence then we shall get the digit sequence corresponding to a failed experiment) You are to write a program which decrypts given sequences of digits.
-      <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-621---secret-research/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-107---the-cat-in-the-hat/">uva 107 - The Cat in the Hat</a>
-      </h1>
-      <span class="post-date">Nov 7, 2012 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-107---the-cat-in-the-hat/#disqus_thread">Comments</a>
-      </span>
-      
-      (An homage to Theodore Seuss Geisel) The Cat in the Hat is a nasty creature,But the striped hat he is wearing has a rather nifty feature. With one flick of his wrist he pops his top off. Do you know what&rsquo;s inside that Cat&rsquo;s hat?A bunch of small cats, each with its own striped hat. Each little cat does the same as line three,All except the littlest ones, who just say ``Why me?
-      <a href="http://liuxueyang.github.io/blog/2012/11/07/uva-107---the-cat-in-the-hat/">Read On &rarr;</a>
       
     </div>
     
@@ -362,12 +366,15 @@ sudo apt-get install libjpeg62
         ><a href="/page/47/">47</a></li>
         
         <li
+        ><a href="/page/48/">48</a></li>
+        
+        <li
         >
         <a href="/page/47/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/48/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

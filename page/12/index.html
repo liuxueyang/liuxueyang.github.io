@@ -79,6 +79,47 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2014/03/04/vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86/">Vim插件管理</a>
+      </h1>
+      <span class="post-date">Mar 4, 2014 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/03/04/vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86/#disqus_thread">Comments</a>
+      </span>
+      
+      话说，用Git和pathogen管理Vim插件再方便不过了！真是神器啊，以后再也不用因为换电脑或者系统重新配置Vim了！
+首先得学会用Git
+安装Git
+sudo apt-get install git  基本设置
+$ git config --global user.name &quot;Your Name&quot; $ git config --global user.email &quot;email@example.com&quot;  建立一个目录 mkdir tmp
+git init touch foo.txt git add foo.txt git commit -m 'for test'  在 http://github.com 注册帐号
+建立远程仓库，仓库名字是TMP
+输入命令
+$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;  在~/.ssh 目录中找到 文件 id_rsa.pub ，在网站的帐号管理SSH Keys中添加 id_rsa.pub 中的内容
+$ git remote add origin https://github.com/yourname/TMP.git $ git push -u origin master  这样，当前目录下的foo.
+      <a href="http://liuxueyang.github.io/blog/2014/03/04/vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2014/02/27/pe%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0ing/">PE文件格式 持续更新ing</a>
+      </h1>
+      <span class="post-date">Feb 27, 2014 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/02/27/pe%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0ing/#disqus_thread">Comments</a>
+      </span>
+      
+      PE文件就是exe文件和dll文件，前者是可执行文件，后者是动态连接库文件。两者的区别仅仅是字面上的，唯一的区别就是内部的一个字段标识这个文件是exe文件还是dll文件。
+对于PE文件格式，举一个例子来说明比较清楚：
+　比如我打开一个.exe文件，gvim.exe 也就是gvim的安装程序
+　首先就是DOS头：前两个字节，5A4Dh 表示MZ，这只是一个DOS可执行文件标记，表示这个文件是一个可执行文件。
+　DOS头的最后一个Double word 在地址3ch处，可以发现它的值是：0000 00D8 h 它指向真正的PE头。
+　找到对应的PE头，第一个 Double word 是 0000 4550 h 代表的是PE.. 那么IMAGE_OPTIONAL_HEADER32的起始地址就是 D8h + 18h = F0h
+　在IMAGE_OPTIONAL_HEADER32的基础上 F0h + 20h = 110h 就得到了SectionAlignment 这个字段，可以发现，它的值是：0000 1000 h，这是程序被装入内存的时候区块对齐大小，默认值是目标CPU的页尺寸，紧接着下一个字段是：FileAlignment 这个字段，它的值是：0000 0200 h，它是磁盘上PE文件内的区块对齐大小。
+　PE头D8h + 78 h 就得到了DataDirectory 这个字段，它是一个16个元素的数组，数据类型是IMAGE_DATA_DIRECTORY，这个结构体有两个成员：第一个成员是数据块的起始RVA，第二个成员是数据块的长度。数组的第一个元素是Export Table，发现都是0，说明没有输出表；第二个元素是输入表，地址是0000 73A4 h 大小是 0000 00B4h 。
+　用PE Editor 这个程序打开gvim.exe 文件，得到如下的结果，发现结果和上面是一样的，我还发现了刚才犯的一个错误，SectionAlignment 的值应该是1000h 也就是CPU页大小是4kB，刚才写成了100h……汗
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2014/02/04/poj1298-the-hardest-problem-ever-%E7%AE%80%E5%8D%95%E9%A2%98/">poj1298 The Hardest Problem Ever 简单题</a>
       </h1>
       <span class="post-date">Feb 4, 2014 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2014/02/04/poj1298-the-hardest-problem-ever-%E7%AE%80%E5%8D%95%E9%A2%98/#disqus_thread">Comments</a>
@@ -217,34 +258,6 @@ assume cs:code code segment start: mov ax, cs mov ds, ax mov si, offset sqr mov 
 安装程序：
 assume cs:code code segment start: mov ax, cs mov ds, ax mov si, offset do0 mov ax, 0 mov es, ax mov di, 200h mov cx, offset do0end - offset do0 cld rep movsb mov ax, 0 mov ds, ax mov word ptr ds:[0*4], 200h mov word ptr ds:[0*4 + 2], 0 do0: jmp do0start db &quot;divide error!&quot; do0start: mov ax, cs mov ds, ax mov si, 202h mov ax, 0b800h mov es, ax mov di, 12*160+36*2 mov cx, 13 s: mov al, [si] mov es:[di], al mov byte ptr es:[di+1], 01001001b inc si add di, 2 loop s mov ax, 4c00h int 21h do0end: nop mov ax, 4c00h int 21h code ends end start  测试程序：
       <a href="http://liuxueyang.github.io/blog/2013/10/17/%E7%BC%96%E5%86%990%E5%8F%B7%E4%B8%AD%E6%96%AD%E7%9A%84%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F%E5%A4%84%E7%90%86%E9%99%A4%E6%B3%95%E6%BA%A2%E5%87%BA/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/10/15/%E5%AE%9E%E9%AA%8C%E5%8D%81%E4%B8%80%E7%BC%96%E5%86%99%E5%AD%90%E7%A8%8B%E5%BA%8F/">实验十一：编写子程序</a>
-      </h1>
-      <span class="post-date">Oct 15, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/15/%E5%AE%9E%E9%AA%8C%E5%8D%81%E4%B8%80%E7%BC%96%E5%86%99%E5%AD%90%E7%A8%8B%E5%BA%8F/#disqus_thread">Comments</a>
-      </span>
-      
-      将一个0结尾的字符串中的小写字母转化成大写字母
-assume cs:code, ds:data data segment db &quot;Beginner's All-purpose Symbolic Instruction Code.&quot;, 0 data ends code segment start: mov ax, data mov ds, ax mov si, 0 call letterc mov ax, 4c00h int 21h letterc: mov cx, 0 sad: mov cl, [si] jcxz llh cmp cl, 7ah ja next cmp cl, 61h jb next and cl, 11011111b mov [si], cl next: inc si jmp sad llh: ret code ends end start  这货并不复杂……=_= 都是基本的应用
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/10/11/%E8%AF%95%E9%AA%8C%E5%8D%81-3.%E6%95%B0%E5%80%BC%E6%98%BE%E7%A4%BA/">试验十 3.数值显示</a>
-      </h1>
-      <span class="post-date">Oct 11, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/11/%E8%AF%95%E9%AA%8C%E5%8D%81-3.%E6%95%B0%E5%80%BC%E6%98%BE%E7%A4%BA/#disqus_thread">Comments</a>
-      </span>
-      
-      题目的意思是：
-　把一个16进制的数字转化成十进制，然后在屏幕的第3行，第8列，用绿色输出。
-这货倒是不太难，就是学会调用之前写过的函数就行了==
-assume cs:code, ds:data, ss:stack data segment db 10 dup(0) data ends stack segment dw 10 dup(0) stack ends code segment start: mov ax, 12666 mov dx, 0 mov bx, data mov ds, bx mov si, 0 call dtoc mov dh, 8 mov dl, 3 mov cl, 2 call show_str mov ax, 4c00h int 21h dtoc: push si mov bx, 10 mov cx, ax mov di, 0 sad: div bx add dx, 30h push dx mov dx, 0 inc di mov cx, ax add cx, 1 loop sad mov bp, 0 mov cx, di ago: pop dx mov al, dl mov ds:[bp], al inc bp loop ago mov ds:[bp], 0 pop si ret show_str: push dx push cx ;row dec dh mov al, 0a0h mul dh push ax ;col dec dl mov al, 2h mul dl pop bx add ax, bx mov di, 0b800h mov es, di mov bp, ax mov bl, cl change: mov cl, [si] mov ch, 0 jcxz ok mov di, si add di, di mov al, ds:[si] mov byte ptr es:[bp+di], al mov byte ptr es:[bp+di+1], bl inc si jmp short change ok: pop cx pop dx ret code ends end start  虽然很长……看起来好腻害的样子=_=
-      <a href="http://liuxueyang.github.io/blog/2013/10/11/%E8%AF%95%E9%AA%8C%E5%8D%81-3.%E6%95%B0%E5%80%BC%E6%98%BE%E7%A4%BA/">Read On &rarr;</a>
       
     </div>
     
@@ -403,12 +416,15 @@ assume cs:code, ds:data, ss:stack data segment db 10 dup(0) data ends stack segm
         ><a href="/page/47/">47</a></li>
         
         <li
+        ><a href="/page/48/">48</a></li>
+        
+        <li
         >
         <a href="/page/13/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/48/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

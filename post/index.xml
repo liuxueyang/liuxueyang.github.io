@@ -6,10 +6,43 @@
     <description>Recent content in Posts on 黑历史</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 17 May 2017 00:06:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 17 May 2017 15:01:28 +0800</lastBuildDate>
     
 	<atom:link href="http://liuxueyang.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Detecting Anomalies in Currency Exchange Rates</title>
+      <link>http://liuxueyang.github.io/blog/2017/05/17/detecting-anomalies-in-currency-exchange-rates/</link>
+      <pubDate>Wed, 17 May 2017 15:01:28 +0800</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2017/05/17/detecting-anomalies-in-currency-exchange-rates/</guid>
+      <description>题目链接：pdf
+题目给一个有向图，判定这个有向图是不是存在负环。
+思路：
+对这个图进行Bellman-Ford算法：不断对所有边进行松弛操作，循环进行V次，如果第V次仍然有边被松弛，那么说明存在负环。
+相反，如果第V次没有边被松弛，那么说明没有负环。
+在讨论Dijkstra算法的时候，最开始的V*E的算法其实就是Bellman-Ford算法。
+初始化的时候把dist数组初始化为0。为什么呢？因为我们找的是负环，所以我们可以假设所有点到对源点的距离都是0。如果有负环，那么一定有负边，在第V次松弛所有边的时候，这个环中一定有一个点的最短路为负值。
+// Mon May 15 14:13:09 CST 2017 // Mon May 15 15:09:41 CST 2017 // 一个有向图是不是存在负环 #include &amp;lt;iostream&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;utility&amp;gt; using namespace std; typedef pair&amp;lt;int, int&amp;gt; PII;	// from, to struct edge { int from; int to; int w; }; int negative_cycle(vector&amp;lt;vector&amp;lt;int&amp;gt; &amp;gt; &amp;amp;adj, vector&amp;lt;vector&amp;lt;int&amp;gt; &amp;gt; &amp;amp;cost) { vector&amp;lt;int&amp;gt; dist(adj.size(), 0); vector&amp;lt;edge&amp;gt; edges; for (size_t i = 0; i &amp;lt; adj.size(); ++i) { for (size_t j = 0; j &amp;lt; adj[i].</description>
+    </item>
+    
+    <item>
+      <title>Computing the Minimum Cost of a Flight</title>
+      <link>http://liuxueyang.github.io/blog/2017/05/17/computing-the-minimum-cost-of-a-flight/</link>
+      <pubDate>Wed, 17 May 2017 08:37:01 +0800</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2017/05/17/computing-the-minimum-cost-of-a-flight/</guid>
+      <description>题目链接：pdf
+题目给出一个有向图，边的权值非负，求起点到终点的最短路。
+用Dijkstra，基本思想是这样的：如果一个有向图权值非负，那么两点之间的最 短路有最优子结构的性质。两点之间的最短路上的任意两点之间的路径也是最优 的。
+设S -&amp;gt; ... -&amp;gt; u -&amp;gt; ... -&amp;gt; v -&amp;gt; ... -&amp;gt; t是从S到t的一条最短路，那么这条路径 上从u到v的部分也是u到v的最短路。反证：假设从u到v存在一条更短的路径L， 那么用L替换S到t中从u到v的部分，就可以得到一条从S到v的更短的路径，由于 我们假设原来的路径是从S对v的最短路，得出矛盾。
+这样，设d(S, t)是S -&amp;gt; ... -&amp;gt; u -&amp;gt; t是S到t的最短路。则：
+d(S, t) = d(S, u) + w(u, t)  所以我们可以不断地对所有边的进行松弛操作，直到没有边可以松弛。这个时候就可以得到单源最短路。这样的循环最多进行V次，每次最多进行E次松弛操作，因此复杂度是V*E。
+显然我们不必每次都对所有边进行松弛。我们可以记录下以后不需要松弛的点，也就是最短路已经确定的点，所以我们可以把所有点分成两个集合，一个集合表示这些点到源点的最短路已经确定，另一个集合表示最短路还不确定。
+也就是说每次松弛的循环中，我们可以把松弛过的点放到一个优先队列中，然后从中选择到源点距离最小的出队，它就是最短距离已经确定的点。继续从这个开始松弛操作，一直循环到队列为空。每个点入队一次，出队一次。总共循环V次，每次循环中要出队最小元素（VlogV），对这个点相连的所有边进行松弛并且入队(ElogV)。总共是(E+V)logV。
+// Mon May 15 10:45:45 CST 2017 // Mon May 15 11:29:58 CST 2017 /* 最简单的Dijkstra */ #include &amp;lt;iostream&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;climits&amp;gt; using namespace std; typedef pair&amp;lt;int, int&amp;gt; PII; class Comp { public: bool operator() (const PII &amp;amp;a, const PII &amp;amp;b) { return a.</description>
+    </item>
     
     <item>
       <title>Checking whether a Graph is Bipartite</title>

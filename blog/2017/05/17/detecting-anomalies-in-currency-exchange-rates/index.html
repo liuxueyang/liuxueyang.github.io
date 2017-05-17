@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>Finding an Exit from a Maze &middot; liuxueyang</title>
+  <title>Detecting Anomalies in Currency Exchange Rates &middot; liuxueyang</title>
 
   
   <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
@@ -29,8 +29,8 @@
   
   
 
-  <meta name="description" content="判断无向图中的两个点之间是否有一条路径">
-  <meta name="keywords" content="Algorithm,DFS">
+  <meta name="description" content="判断有向图是不是存在负环">
+  <meta name="keywords" content="Algorithm,Graph">
   
 </head>
 <body class="theme-base-08">
@@ -74,68 +74,96 @@
 
 <div class="content container">
   <div class="post">
-    <h1 class="post-title">Finding an Exit from a Maze</h1>
-    <span class="post-date">May 16, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/05/16/finding-an-exit-from-a-maze/#disqus_thread">Comments</a>
+    <h1 class="post-title">Detecting Anomalies in Currency Exchange Rates</h1>
+    <span class="post-date">May 17, 2017 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/05/17/detecting-anomalies-in-currency-exchange-rates/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://liuxueyang.github.io/categories/algorithm">Algorithm</a><a class="label" href="http://liuxueyang.github.io/categories/dfs">DFS</a>
+    <a class="label" href="http://liuxueyang.github.io/categories/algorithm">Algorithm</a><a class="label" href="http://liuxueyang.github.io/categories/graph">Graph</a>
     </span>
-    <p>题目链接：<a href="https://gitlab.com/liuxueyang/algorithms-on-graph-exercise/blob/master/week1/09_graph_decomposition_problems_1.pdf">pdf</a></p>
+    <p>题目链接：<a href="https://gitlab.com/liuxueyang/algorithms-on-graph-exercise/blob/master/week4/paths_in_graphs_problems_2.pdf">pdf</a></p>
 
-<p>这道题目给出一个无向图，一个起点，一个终点，判断从起点是否能够到达终点。
-显然就是从起点开始做一次DFS就可以了。</p>
+<p>题目给一个有向图，判定这个有向图是不是存在负环。</p>
 
-<pre><code class="language-cpp">// 2017/05/12 19:35:19
+<p>思路：</p>
 
-// 判断两个点是否连通。。。
+<p>对这个图进行Bellman-Ford算法：不断对所有边进行松弛操作，循环进行V次，如果第V次仍然有边被松弛，那么说明存在负环。</p>
+
+<p>相反，如果第V次没有边被松弛，那么说明没有负环。</p>
+
+<p>在讨论Dijkstra算法的时候，最开始的V*E的算法其实就是Bellman-Ford算法。</p>
+
+<p>初始化的时候把dist数组初始化为0。为什么呢？因为我们找的是负环，所以我们可以假设所有点到对源点的距离都是0。如果有负环，那么一定有负边，在第V次松弛所有边的时候，这个环中一定有一个点的最短路为负值。</p>
+
+<pre><code class="language-cpp">// Mon May 15 14:13:09 CST 2017
+// Mon May 15 15:09:41 CST 2017
+
+
+// 一个有向图是不是存在负环
 
 #include &lt;iostream&gt;
 #include &lt;vector&gt;
+#include &lt;utility&gt;
 
 using namespace std;
+typedef pair&lt;int, int&gt; PII;	// from, to
+struct edge {
+  int from;
+  int to;
+  int w;
+};
 
-void
-dfs(vector&lt;vector&lt;int&gt; &gt; &amp;adj, int x, int y, vector&lt;bool&gt; &amp;visit)
-{
-  visit[x] = true;
-  if (visit[y]) return;
+int negative_cycle(vector&lt;vector&lt;int&gt; &gt; &amp;adj, vector&lt;vector&lt;int&gt; &gt; &amp;cost) {
+  vector&lt;int&gt; dist(adj.size(), 0);
+  vector&lt;edge&gt; edges;
 
-  for (size_t i = 0; i &lt; adj[x].size(); ++i) {
-    if (!visit[adj[x][i]]) {
-      dfs(adj, adj[x][i], y, visit);
+  for (size_t i = 0; i &lt; adj.size(); ++i) {
+    for (size_t j = 0; j &lt; adj[i].size(); ++j) {
+      edge e;
+      e.from = i;
+      e.to = adj[i][j];
+      e.w = cost[i][j];
+      edges.push_back(e);
     }
   }
 
-}
+  for (size_t i = 0; i &lt; adj.size(); ++i) {
+    for (auto &amp;e : edges) {
+      int tmp = dist[e.from] + e.w;
 
-int reach(vector&lt;vector&lt;int&gt; &gt; &amp;adj, int x, int y, int n) {
-  vector&lt;bool&gt; visit(n, false);
+      if (dist[e.to] &gt; tmp) {
+	dist[e.to] = tmp;
+	if (i == adj.size() - 1) {
+	  return 1;
+	}
+      }
+    }
+  }
 
-  dfs(adj, x, y, visit);
-  
-  return (visit[y] ? 1 : 0);
+  return 0;
 }
 
 int main() {
-  size_t n, m;
+  int n, m;
 
   cin &gt;&gt; n &gt;&gt; m;
+  
+  // using this will fail on test19. I don't know why!
   // while(std::cin &gt;&gt; n &gt;&gt; m) {
-  vector&lt;vector&lt;int&gt; &gt; adj(n, vector&lt;int&gt;());
-  
-  for (size_t i = 0; i &lt; m; i++) {
-    int x, y;
-    std::cin &gt;&gt; x &gt;&gt; y;
-    adj[x - 1].push_back(y - 1);
-    adj[y - 1].push_back(x - 1);
-  }
-  
-  int x, y;
-  std::cin &gt;&gt; x &gt;&gt; y;
-  std::cout &lt;&lt; reach(adj, x - 1, y - 1, n) &lt;&lt; endl;
+    vector&lt;vector&lt;int&gt; &gt; adj(n, vector&lt;int&gt;());
+    vector&lt;vector&lt;int&gt; &gt; cost(n, vector&lt;int&gt;());
+    
+    for (int i = 0; i &lt; m; i++) {
+      int x, y, w;
+      std::cin &gt;&gt; x &gt;&gt; y &gt;&gt; w;
+      adj[x - 1].push_back(y - 1);
+      cost[x - 1].push_back(w);
+    }
+    std::cout &lt;&lt; negative_cycle(adj, cost) &lt;&lt; &quot;\n&quot;;
   // }
+
   return 0;
 }
+
 </code></pre>
 
   </div>

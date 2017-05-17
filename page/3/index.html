@@ -79,6 +79,37 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/03/06/const-pointer-and-pointer-to-const-in-cpp/">const pointer and pointer to const in Cpp</a>
+      </h1>
+      <span class="post-date">Mar 6, 2017 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/03/06/const-pointer-and-pointer-to-const-in-cpp/#disqus_thread">Comments</a>
+      </span>
+      
+      中文翻译好像有常量指针和指针常量这两种说法。然而翻译过来让我更加费解。还是英文更加直白。
+pointer to const const int b = 30; const int * bptr = &amp;b;  bptr是一个指针，它指向的是一个类型为const int的对象。可以对bptr本身的内容（保存的地址）进行修改，但是不能对它指向的对象进行修改：
+const int c = 31; bptr = &amp;c;  这样，bptr就指向了另外一个const对象。
+有个例外：可以让pointer to const指向一个nonconst对象。
+int d = 32; bptr = &amp;d;  需要注意的是，即使d变量是nonconst，仍然不能通过bptr这个指针对b进行修改：
+// *bptr = 33; // error!  总之，
+ 我可以指向const对象，也可以指向nonconst对象，你也可以修改我。但是，你不能修改我指向的*对象*。 &mdash; pointer to const
+ const pointer int a = 3; int * const aptr = &amp;a;  aptr是一个常量，同时是一个指针。不能对aptr里面保存的地址进行修改。但是可以对aptr所指向的对象进行修改：
+      <a href="http://liuxueyang.github.io/blog/2017/03/06/const-pointer-and-pointer-to-const-in-cpp/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2017/03/06/learn-c--/">Learn C&#43;&#43;</a>
+      </h1>
+      <span class="post-date">Mar 6, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/03/06/learn-c--/#disqus_thread">Comments</a>
+      </span>
+      
+      我已经很久没有碰过C++这门语言了。重新看到C++程序的时候竟然有些陌生，很多语法都模糊了。所以我打算复习一下。
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2017/02/17/%E5%AD%A6%E4%B9%A0org-mode/">学习org-mode</a>
       </h1>
       <span class="post-date">Feb 17, 2017 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/02/17/%E5%AD%A6%E4%B9%A0org-mode/#disqus_thread">Comments</a>
@@ -216,45 +247,6 @@ export LANG=zh_CN.utf-8  重新登录如果不行，那就重启，问题应该�
  在slackbuilds里面下载VLC的SlackBuild包：vlc.tar.gz到$HOME/Downloads，并解压缩：  wget https://slackbuilds.org/slackbuilds/14.2/multimedia/vlc.tar.gz ~/Downloads	tar -xvzf vlc.tar.gz   看一下vlc.info  cd vlc cat ./vlc.info  可以看到它有很多依赖，然后它的源代码的包在DOWNLOAD这个变量里面（一般情况下都是这个变量，只不过有的时候64位和32位是分开的，变量名字可能会不同，所以要注意一下。）
  下载源代码  source ./vlc.info wget $DOWNLOAD   编译：  sudo ./vlc.SlackBuild 编译的过程中出错了：  checking for libavutil variant&hellip; none checking for GST_APP&hellip; yes checking for GST_VIDEO&hellip; yes checking for AVCODEC&hellip; no configure: error: No package &lsquo;libavcodec&rsquo; found No package &lsquo;libavutil&rsquo; found.
       <a href="http://liuxueyang.github.io/blog/2016/12/29/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8slackware/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/12/26/%E4%BD%BF%E7%94%A8time-machine%E5%A4%87%E4%BB%BD%E7%B3%BB%E7%BB%9F%E6%97%B6%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/">使用Time Machine备份系统时磁盘空间不足的问题</a>
-      </h1>
-      <span class="post-date">Dec 26, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/12/26/%E4%BD%BF%E7%94%A8time-machine%E5%A4%87%E4%BB%BD%E7%B3%BB%E7%BB%9F%E6%97%B6%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3%E7%9A%84%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a>
-      
-      <br/>
-      
-      </span>
-      
-      Time Machine这个功能我只在当初刚买了MacBook Air之后不久才用过一次。后来就再也没有管它。当初在移动硬盘里面分出125GB的空间作为Time Machine的分区。那次备份的时间是2014年8月24日。距离现在已经两年多了。
-之前我用这个Time Machine把电脑恢复到了2014年8月24日的状态。挺好用的。没有遇到问题。方法如下：
-1. 关机，插入移动硬盘 2. 在电脑开机的时候，按住cmd + R键 3. 选择`Restore From Time Machine Backup`  等一段时间就好了。还原完毕之后，记得在系统设置的Security &amp; Privacy里面打开FileVault，然后把recovery key备份到一个安全的地方。然后我找回了我要的比较重要的文件。更新、升级系统。还是比较顺利的。
-我的SSD大小是120GB。然后我想在把更新后的系统备份到Time Machine里面。系统提示磁盘空间不足，也就是我的移动硬盘里面的Time Machine里面空间不足了，这就比较麻烦了，手上也没有足够空间的移动硬盘了。事实上，合适的Time Machine的空间应该是电脑硬盘空间的两倍，当初我并不知道，所以只分配了一倍。玩手机的时候无意中在国外的一个论坛的不知名的角落里发现一个人七八年之前的回复，说可以在备份的时候剔除某些目录，比如/Users/这个目录。备份完之后，再把被剔除的目录加进来，再备份一次。因为的的Time Machine的剩余空间只有30GB，所以我剔除了/Users/和/Applications这两个目录。成功备份。然后再加入/Users/目录，再备份一次。最后再加入/Applications/目录。继续备份。这个时候即使/Applications/目录的大小大于我的Time Machine的剩余空间，它也没有提示磁盘空间不足，而是会自动删除最老的备份，然后正常备份。挺神奇。为什么最开始的时候它不会自动删除最老的备份呢？
-另外，我发现它把2014年的整个备份删除了。没关系，反正我已经把所有的文件分类导出来了。
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/12/25/%E5%81%9A%E4%BA%8B%E6%83%85%E5%88%86%E6%B8%85%E4%B8%BB%E6%AC%A1/">做事情分清主次</a>
-      </h1>
-      <span class="post-date">Dec 25, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/12/25/%E5%81%9A%E4%BA%8B%E6%83%85%E5%88%86%E6%B8%85%E4%B8%BB%E6%AC%A1/#disqus_thread">Comments</a>
-      
-      <br/>
-      
-      </span>
-      
-      我花了很长时间在整理移动硬盘里面的文件上面，并且发现工作量十分巨大。一直到晚上，好像还有很多，没办法估计。因为太乱了。在这件优先级不是特别高的事情上，我似乎花了太多的时间，这是不值得的。
-所以我打算目前先放弃着手这件事情，我打算平时每天拿出二十分钟来整理硬盘，这样应该会让我觉得工作量小一点，因为这件事情并不是特别紧急，所以可以慢慢来。只是需要坚持下去就是了。
-我本来还想折腾一下Slackware这个Linux发行版，不知道为什么，每隔一段时间，总想折腾一点什么，似乎有一点强迫症。刚才我的老电脑上面的Windows 10又出现了奇怪的问题：不能关机。命名按下了关机的按钮，屏幕也黑了。过了一会儿还没有完全关闭，再按一下回车键，就有回到了登录界面。在登录界面直接关机，也是一样的效果。只能强制关机。这种情况对于我这种有点「强迫症」的人来说有点难受啊。不过，还是凑合一下吧，不能完全取代掉Windows，不得不承认，有时候它还是会给我帮上一些忙的。
-说来有点惭愧，我以前，是非常地讨厌Java和Android，要说原因，我也说不上来，反正就是不想看一行的Java程序。现在想想，当初为什么会那样呢？可能还是因为见得少吧，实践得少，经验少，所以才会像个井底之蛙。类似的情况还有，以前特别讨厌Windows、特别喜欢Linux、特别喜欢使用Vim编辑器、特别讨厌使用Emacs编辑器、特别讨厌使用IDE等等。这些都是我以前有过的想法。而现在，我使用Vim也使用Emacs，同时也会使用IDE。对于开发工作，如果有条件能够方便地使用IDE的话，我就会使用IDE；对于日常学习的时候写的小程序或者做日常的笔记，我会使用Emacs；如果要在终端里面临时修改配置文件的话，我会使用Vim；虽然Windows有的时候会出现一些小问题，但是我平时还是会使用它，我甚至还尝试着学过一些C#语言。虽然以前经常性地忍不住折腾不同发行版的Linux，现在也会理性地克制住，稳定下来。所以，人啊，还是要保持一种比较开放的心态，活得也舒服一点。逛一些技术向的论坛的时候，经常看到一些和我以前的想法类似的人，搞得气氛有点奇怪，所以慢慢我也不喜欢逛论坛或者不喜欢看类似类型的帖子了。
-好像跑题了。做事情还是应该至少有一个计划，先完成每天的重要的目标，次要或者不重要的等到最后做或者不做。这样工作效率会高一点。而不是忙了很久，却收效甚微。所以还是要克制住自己「跑题」的欲望，把大多数时间投入到重要的事情上面。
-「写这篇博客用时36分钟。」
-      
       
     </div>
     
@@ -413,12 +405,15 @@ export LANG=zh_CN.utf-8  重新登录如果不行，那就重启，问题应该�
         ><a href="/page/47/">47</a></li>
         
         <li
+        ><a href="/page/48/">48</a></li>
+        
+        <li
         >
         <a href="/page/4/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/48/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

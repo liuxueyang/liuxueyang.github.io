@@ -79,6 +79,30 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/16/2013%E5%B9%B44%E6%9C%8815%E6%97%A5-%E6%99%B4/">2013年4月15日 晴</a>
+      </h1>
+      <span class="post-date">Apr 16, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/16/2013%E5%B9%B44%E6%9C%8815%E6%97%A5-%E6%99%B4/#disqus_thread">Comments</a>
+      </span>
+      
+      13日 晴 那天去中南比赛，回来比较累，下午睡了一觉，晚上去跑步，然后喝了一口水，我去……跑的过程中各种纠结，，唉，全程不舒服，走走停停，很不爽。 14日 晴 天气比较好，可惜，晚上校队有讨论，回到宿舍已经10点半了，这个时候的湘江边几乎没什么人了，貌似还有点儿害怕~长沙这种，地方嘛，^_^ 跑一半路程就回来了，一点儿也没意思，o(╯□╰)o 后来权当散步了。。。。 最近几天貌似状态不好啊。 15日 晴，小雨 晚上去跑步，开始有一哥们儿在我后面跑，赶脚好有动力，O(∩_∩)O哈哈~所以开始速度比较快，跑到后期那哥们儿从另一条路走了，每个人的路线都不一样啊，后来一直自己跑，回来的路上，突然下起了雨，悲剧了，还是雨点儿特别大的那种，然后继续跑，最担心的是手机和P3进水了……o(╯□╰)o不过还好，不到几分钟，雨就停了，后来觉得没什么意思，走走停停地回来了…… 今天为yr酱他当初每天做几道题，不算水题，答曰：10+。我……难道这就是境界的差别么？唉，不可同日而语 难道大神们都是这么练出来的么？好吧，ORZ……加油吧，显然是做的太慢了。。 妈妈说，在ACM界有三种人可以生存下来：1. 天赋异禀 2. 勤奋过人 3. 媳妇熬成婆 照个进度下去，要是还不努力，我估计最多属于第三种。。o(╯□╰)o 不扯了，赶紧刷题去！
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/15/uva10591---happy-number-%E6%B0%B4%E9%A2%98/">uva10591 - Happy Number ——水题</a>
+      </h1>
+      <span class="post-date">Apr 15, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/15/uva10591---happy-number-%E6%B0%B4%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1532 题目大意： 给一个数字，各位数字的平方和相加，依次循环，如果最后得到1，那么这个数字就是happy number，如果不能，就是unhappy number。 思路： 因为题目范围只有10^9，所以可以暴力求解，数字的平方和最大是9*9*9=729，可以用一个数组标记这个数字是否被访问过。 #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int visit[1000]; int solve(int n){ int m = 0; while (n){ m += (n%10)*(n%10); n /= 10; } return m; } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;uva10591.
+      <a href="http://liuxueyang.github.io/blog/2013/04/15/uva10591---happy-number-%E6%B0%B4%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/04/15/hdu2098-%E4%B8%8D%E8%A6%8162-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/">hdu2098 不要62 ——数位DP入门题</a>
       </h1>
       <span class="post-date">Apr 15, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/15/hdu2098-%E4%B8%8D%E8%A6%8162-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
@@ -175,31 +199,6 @@
       
       下午下雨，晚上去跑步，半路上下小雨点，开始犹豫要不要继续往前跑，最后到一半路程的时候就往回走了，结果又不下雨了，长沙的鬼天气，跑着一点儿也不爽，状态很不好，可能是该休息一两天了，后期的时候干脆就当散步了，走回来了…… 不过雨后的湘江边确实空气也挺好，一边走边思考问题，也是一种不错的享受～
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/09/2013%E5%B9%B44%E6%9C%888%E6%97%A5-%E6%99%B4/">2013年4月8日 晴</a>
-      </h1>
-      <span class="post-date">Apr 9, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/09/2013%E5%B9%B44%E6%9C%888%E6%97%A5-%E6%99%B4/#disqus_thread">Comments</a>
-      </span>
-      
-      今天跑步很悲剧，遇到极点了，中途各种不想跑，各种累，但还是坚持下来了，嗯，跑步嘛，总会有这种时候，尤其是今天下午也比较热，这种时候，最重要的就是两个字：坚持。不管怎么样，千万不能停下来，如果一停下来，基本就跑步不起来了…… 加油~
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/08/zoj-1649-rescue-bfs%E5%85%A5%E9%97%A8%E9%A2%98/">zoj 1649 Rescue ——BFS入门题</a>
-      </h1>
-      <span class="post-date">Apr 8, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/08/zoj-1649-rescue-bfs%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=649 题意： 给一个字符矩阵，‘#’代表墙壁，&rsquo;.&lsquo;代表空格，‘x’代表有警察的空格，&rsquo;r&rsquo;和&rsquo;a&rsquo;分别代表一屌丝，并且&rsquo;r&rsquo;要到&rsquo;a&rsquo;那里去串门儿，r走一个空格花费单位时间1，走一个有警察的空格需要先干掉警察，话费单位时间1，然后再走过去，也就是共花费时间2，请问屌丝r到屌丝a那里去最少花费的时间。 思路： 首先要搞明白一个问题：就是路径最短的路不一定花费时间最少。这是可以理解的，比如，一条很短但是有很多警察，另一条路很长，但是没有警察，很有可能是第二条路花费时间少。用深搜？貌似不太合适，因为你一条路径访问过一个点后，另一条路径很可能也会访问这个点，并且时间较少。关键是深搜找到的接不一定是最优的。所以，考虑用广搜解。这道题最朴素的广搜显然不行，也就是说，仅仅求步数最少的不可行，需要加上访问时间这个附加条件。 用一个结构体数组存储每个点的信息，包括坐标，到达这个点所需要的最短时间，从起点开始搜，先访问起点，然后把起点出队，如果从一个点A到达下一个点B的当前所需时间比这个点现在标记的时间少，则把这个点入队，然后判断点A的另一个方向上的下一个点。这样，总有一天队列会为空，这是因为，某个点不可能被访问无数次，也就是说，某个点不可能无数次入队，因为到达某个点所需要的时间一定是有个最小值的，所以BFS一定可以结束，并且最后找到的点‘a’的信息一定是最优解。输出就可以了，如果无解，因为初始化到达所有点所需时间都是MAXN，所以，如果点‘a’的时间信息如果等于MAXN，那么说明无解。 第一次做深搜，这道题开始不知道怎么做，看了书上的思路，坚持没看代码，自己又想了想，就试着开始写，好神奇，竟然1A了！！！
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MINN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; typedef struct point{ int a, b, t; }point; point p[220][220], st, en; char s[220][220]; int n, m, T, si, sj, di, dj; queue&lt;point&gt; qt; void bfs(){ qt.
-      <a href="http://liuxueyang.github.io/blog/2013/04/08/zoj-1649-rescue-bfs%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
       
     </div>
     
@@ -358,12 +357,15 @@
         ><a href="/page/47/">47</a></li>
         
         <li
+        ><a href="/page/48/">48</a></li>
+        
+        <li
         >
         <a href="/page/35/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/48/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

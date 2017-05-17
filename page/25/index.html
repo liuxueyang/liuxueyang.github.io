@@ -79,6 +79,32 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-b.-sereja-and-array/">Codeforces Round #187 (Div. 2) B. Sereja and Array</a>
+      </h1>
+      <span class="post-date">Jun 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-b.-sereja-and-array/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://codeforces.com/contest/315/problem/B 开始以为线段树，汗……原来是道水题
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cmath&gt; #include &lt;cstring&gt; #include &lt;vector&gt; #include &lt;stack&gt; #include &lt;map&gt; #include &lt;queue&gt; using namespace std; typedef struct Po { int d, a; }Po; Po p[100000+10]; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;187b.in&quot;, &quot;r&quot;, stdin); #endif int n, m; scanf(&quot;%d%d&quot;, &amp;n, &amp;m); for (int i = 1; i &lt;= n; ++i) { scanf(&quot;%d&quot;, &amp;p[i].a); p[i].d = 0; } int D = 0, t, s; for (int i = 0; i &lt; m; ++i) { scanf(&quot;%d&quot;, &amp;t); if (t == 1) { int st, en; scanf(&quot;%d%d&quot;, &amp;st, &amp;en); p[st].
+      <a href="http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-b.-sereja-and-array/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-a.-sereja-and-bottles/">Codeforces Round #187 (Div. 2) A. Sereja and Bottles</a>
+      </h1>
+      <span class="post-date">Jun 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-a.-sereja-and-bottles/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://codeforces.com/contest/315/problem/A 这到题目比赛的时候过了，赛后WA了……虽然很简单，但是还是没想太清楚
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; using namespace std; #define MAX 103 int a[MAX], b[MAX]; int main(void) { int n; #ifndef ONLINE_JUDGE freopen(&quot;187a.in&quot;, &quot;r&quot;, stdin); #endif while (~scanf(&quot;%d&quot;, &amp;n)) { for (int i = 0; i &lt; n; ++i) scanf(&quot;%d%d&quot;, a+i, b+i); int cnt = 0; for (int i = 0; i &lt; n; ++i) { bool flag = false; for (int j = 0; j &lt; n; ++j) { if (i!
+      <a href="http://liuxueyang.github.io/blog/2013/06/08/codeforces-round-#187-div.-2-a.-sereja-and-bottles/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/06/03/nyoj5-binary-string-matching-kmp/">NYOJ5 Binary String Matching ——KMP</a>
       </h1>
       <span class="post-date">Jun 3, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/06/03/nyoj5-binary-string-matching-kmp/#disqus_thread">Comments</a>
@@ -175,32 +201,6 @@
       题目链接：http://acm.hust.edu.cn/vjudge/contest/view.action?cid=24534#problem/C 题目大意： 判断最小生成树是否唯一。 题目思路： 对于如果有一条边A在最小生成树里面，并且存在和这条边权值一样的另外一条边B，那么再次求最小生成树的时候，把A去掉，看看求出的最小生成树是不是和原来的最小生成树权值一样。如果一样，就是不唯一，否则就刚才去掉的加进来，然后再找下一条这样的边。
 #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; using namespace std; #define MAXN 110 #define MAXM 5009 typedef struct edge { int u, v, w, used, del, equal; bool operator &lt; (const edge &amp;other) const { return w &lt; other.w; } }edge; edge edges[MAXM]; int parent[MAXN]; bool first; int n, m, i, j; void init() { for (i = 1; i &lt;= n; ++i) parent[i] = -1; } int find(int x) { int s; for (s = x; parent[s] &gt;= 0; s = parent[s]) ; while (s !
       <a href="http://liuxueyang.github.io/blog/2013/05/26/the-unique-mst-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/05/26/constructing-roads-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">Constructing Roads ——最小生成树</a>
-      </h1>
-      <span class="post-date">May 26, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/26/constructing-roads-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://acm.hust.edu.cn/vjudge/contest/view.action?cid=24534#problem/B 题目大意： 给邻接矩阵，和已经建立好的几条边。求最小生成树权值。 题目思路： 方法就是把已将建立好的边的权值赋值为0即可。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; using namespace std; #define MAXN 110 #define MAXM 5009 typedef struct edge { int u, v, w; bool operator &lt; (const edge &amp;other) const { return w &lt; other.w; } }edge; edge edges[MAXM]; int parent[MAXN]; int n, m, i, j; void init() { for (i = 1; i &lt;= n; ++i) parent[i] = -1; } int find(int x) { int s; for (s = x; parent[s] &gt;= 0; s = parent[s]) ; while (s !
-      <a href="http://liuxueyang.github.io/blog/2013/05/26/constructing-roads-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/05/26/agri-net-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">Agri-Net ——最小生成树</a>
-      </h1>
-      <span class="post-date">May 26, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/05/26/agri-net-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://acm.hust.edu.cn/vjudge/contest/view.action?cid=24534#problem/A 题目大意： 给定无向图，邻接矩阵。求最小生成树权值。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; using namespace std; #define MAXN 110 #define MAXM 5009 typedef struct edge { int u, v, w; bool operator &lt; (const edge &amp;other) const { return w &lt; other.w; } }edge; edge edges[MAXM]; int parent[MAXN]; int n, m, i, j; void init() { for (i = 1; i &lt;= n; ++i) parent[i] = -1; } int find(int x) { int s; for (s = x; parent[s] &gt;= 0; s = parent[s]) ; while (s !
-      <a href="http://liuxueyang.github.io/blog/2013/05/26/agri-net-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">Read On &rarr;</a>
       
     </div>
     
@@ -359,12 +359,15 @@
         ><a href="/page/47/">47</a></li>
         
         <li
+        ><a href="/page/48/">48</a></li>
+        
+        <li
         >
         <a href="/page/26/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/48/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

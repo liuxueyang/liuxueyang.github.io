@@ -79,6 +79,35 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/04/hdu-1698-just-a-hook/">hdu 1698 Just a Hook</a>
+      </h1>
+      <span class="post-date">Mar 4, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/04/hdu-1698-just-a-hook/#disqus_thread">Comments</a>
+      </span>
+      
+      Just a Hook
+Time Limit: 4000&frasl;2000 MS (Java/Others) Memory Limit: 32768&frasl;32768 K (Java/Others) Total Submission(s): 10792 Accepted Submission(s): 5328
+Problem Description In the game of DotA, Pudge’s meat hook is actually the most horrible thing for most of the heroes. The hook is made up of several consecutive metallic sticks which are of the same length.
+Now Pudge wants to do some operations on the hook.
+Let us number the consecutive metallic sticks of the hook from 1 to N.
+      <a href="http://liuxueyang.github.io/blog/2013/03/04/hdu-1698-just-a-hook/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/03/02/poj-2828-buy-tickets/">poj 2828 Buy Tickets</a>
+      </h1>
+      <span class="post-date">Mar 2, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/02/poj-2828-buy-tickets/#disqus_thread">Comments</a>
+      </span>
+      
+      Description Input Output Sample Input Sample Output 这道题目想法很重要，先建树，每个节点表示这个区间内的空的位置的数量，然后，从后往前读，Pos的值表示这个人前面有多少个空位，之所以从后往前读，是因为这样每个人的位置是确定的，以后就不用移动了，以后直接在树里面查找空位就可以了。 具体实现见代码：
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; using namespace std; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 const int maxn = 222222; int tree[maxn&lt;&lt;2], val[maxn], pos[maxn], ans[maxn]; int id; void build(int l, int r, int rt){ tree[rt] = r - l + 1; if (l == r) {return;} int m = (l + r) &gt;&gt; 1; build(lson); build(rson); } void update(int p, int l, int r, int rt){ tree[rt]--; if (l == r){id = l-1; return;} int m = (l + r) &gt;&gt; 1; if (tree[rt&lt;&lt;1] &gt;= p) update(p, lson); else {p -= tree[rt&lt;&lt;1]; update(p, rson);} } int main(void){ int n; #ifndef ONLINE_JUDGE freopen(&quot;poj2828.
+      <a href="http://liuxueyang.github.io/blog/2013/03/02/poj-2828-buy-tickets/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/03/02/hdu-2795-billboard/">hdu 2795 Billboard</a>
       </h1>
       <span class="post-date">Mar 2, 2013 &middot; 4 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/03/02/hdu-2795-billboard/#disqus_thread">Comments</a>
@@ -183,32 +212,6 @@ The Greatest Secret Ever consists of n words, indexed by positive integers from 
 It seems like the year of 2013 came only yesterday. Do you know a curious fact? The year of 2013 is the first year after the old 1987 with only distinct digits.
 Now you are suggested to solve the following problem: given a year number, find the minimum year number which is strictly larger than the given one and has only distinct digits.
       <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-a.-beautiful-year/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-b.-prime-matrix/">CF271 B. Prime Matrix</a>
-      </h1>
-      <span class="post-date">Feb 15, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-b.-prime-matrix/#disqus_thread">Comments</a>
-      </span>
-      
-      B. Prime Matrix time limit per test 2 seconds memory limit per test 256 megabytes input standard input output standard output
-You&rsquo;ve got an n × m matrix. The matrix consists of integers. In one move, you can apply a single transformation to the matrix: choose an arbitrary element of the matrix and increase it by 1. Each element can be increased an arbitrary number of times.
-You are really curious about prime numbers.
-      <a href="http://liuxueyang.github.io/blog/2013/02/15/cf271-b.-prime-matrix/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/01/30/poj-2752/">poj 2752</a>
-      </h1>
-      <span class="post-date">Jan 30, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/01/30/poj-2752/#disqus_thread">Comments</a>
-      </span>
-      
-      题目链接：http://poj.org/problem?id=2752 #include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;cstring&gt; #define N 400000 using namespace std; char s[N]; int next[N], a[N]; void getnext(char *p, int *next) { int i = 0, j = -1, len = strlen(p); next[0] = -1; while (i &lt; len) { if (j == -1 || p[j] == p[i]) { i++; j++; next[i] = j; } else j = next[j]; } } int main(void) { freopen(&quot;poj2752.in&quot;, &quot;r&quot;, stdin); while (~scanf(&quot;%s&quot;, s)) { getnext(s, next); int len = strlen(s), i, k = 0; i = len; a[0] = len; while (next[i] &gt; 0) { i = next[i]; a[++k] = i; } for (int j = k; j &gt;= 0; --j) { printf(&quot;%d&quot;, a[j]); if (j) printf(&quot; &quot;); } printf(&quot;\n&quot;); } return 0; }  这道题目要求既是前缀字符串又是后缀字符串的所有可能的长度，正好运用了KMP算法里面next数组的意义，要保证结果是针对整个字符串的，所以在next数组中从后往前扫描即可，因为，next数组中，越往后，数字就越大，并且表示的是后缀和前缀相同的最大长度，所以所得到的结果顺序是反的，要求从小到大输出，逆序输出就可以了。
-      
       
     </div>
     
@@ -367,12 +370,15 @@ You are really curious about prime numbers.
         ><a href="/page/47/">47</a></li>
         
         <li
+        ><a href="/page/48/">48</a></li>
+        
+        <li
         >
         <a href="/page/42/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/48/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

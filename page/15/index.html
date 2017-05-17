@@ -79,6 +79,40 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/10/02/codeforces-magnets/">codeforces Magnets</a>
+      </h1>
+      <span class="post-date">Oct 2, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/02/codeforces-magnets/#disqus_thread">Comments</a>
+      </span>
+      
+      link: http://codeforces.com/contest/344/problem/A
+这道题目很简单。
+把输入的01 和10 当做整数，如果相邻两个数字相等的话，那么就属于同一组，否则，就新增加了一组。
+#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; using namespace std; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); #endif // ONLINE_JUDGE int n; while (~scanf(&quot;%d&quot;, &amp;n)) { int tmp; int pre = -1; int cnt = 0; while (n--) { scanf(&quot;%02d&quot;, &amp;tmp); if (tmp != pre) cnt++; pre = tmp; } printf(&quot;%d\n&quot;, cnt); } return 0; }  ==
+其实，现在想那么多没用。其实……也想读研的，但是，又觉得没什么用……所以，很痛苦。
+路在何方呢？在脚下？
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/10/02/codeforces-expecting-trouble/">codeforces Expecting Trouble</a>
+      </h1>
+      <span class="post-date">Oct 2, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/02/codeforces-expecting-trouble/#disqus_thread">Comments</a>
+      </span>
+      
+      link:http://codeforces.com/contest/345/problem/A
+写完这道题目才发现这场比赛只能用Ada语言提交==
+好吧，逗我玩呢
+考的是数学期望公式，二项分布的期望E=np
+C++代码：（我可不会Ada……=_=）
+#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;iostream&gt; #include &lt;cstring&gt; using namespace std; int main(void) { char a[51]; double p; #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); #endif // ONLINE_JUDGE while (~scanf(&quot;%s%lf&quot;, a, &amp;p)) { int len = strlen(a); int cnt = 0; int cnt1 = 0; for (int i = 0; i &lt; len; ++i) { if (a[i] == '1') cnt++; else if (a[i] == '?') cnt1++; } double Cnt = (double)cnt + p * (double)cnt1; printf(&quot;%.
+      <a href="http://liuxueyang.github.io/blog/2013/10/02/codeforces-expecting-trouble/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/10/02/%E7%A9%BA%E7%BB%93%E6%9E%84%E4%BD%93%E5%A4%A7%E5%B0%8F%E6%98%AF%E5%A4%9A%E5%B0%91/">空结构体大小是多少？</a>
       </h1>
       <span class="post-date">Oct 2, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/10/02/%E7%A9%BA%E7%BB%93%E6%9E%84%E4%BD%93%E5%A4%A7%E5%B0%8F%E6%98%AF%E5%A4%9A%E5%B0%91/#disqus_thread">Comments</a>
@@ -201,37 +235,6 @@ O(N)预处理出数组b和数组c
 暴力可以过啊。O(N^2)的复杂度。
 #include &lt;cstdio&gt; int a[100001]; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); #endif int t; scanf(&quot;%d&quot;, &amp;t); long long int ans; for (int i = 1; i &lt;= t; ++i) { ans = 0; printf(&quot;Case #%d: &quot;, i); int m; int n, j, k; scanf(&quot;%d%d&quot;, &amp;n, &amp;m); for (j = 0; j &lt; n; scanf(&quot;%d&quot;, a+j++)); int tmp; for (j = 0; j &lt; n; ++j) { tmp = a[j]; for (k = j; k &lt; n; ++k) { tmp = tmp | a[k]; if (tmp &lt; m) ans++; else break; } } printf(&quot;%lld\n&quot;, ans); } return 0; }  数据出的不好吧==
       <a href="http://liuxueyang.github.io/blog/2013/09/15/hdu4737-a-bit-fun/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/09/12/codeforces-199a/">codeforces 199a</a>
-      </h1>
-      <span class="post-date">Sep 12, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/09/12/codeforces-199a/#disqus_thread">Comments</a>
-      </span>
-      
-      link:http://codeforces.com/contest/342/problem/A
-恩恩，读错题了。人家是at most 7，我理解成了at lease 7。好欢乐~
-#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; using namespace std; int cnt[8]; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin); #endif int n, i, j, tmp; bool flag; while (~scanf(&quot;%d&quot;, &amp;n)) { flag = true; memset(cnt, 0, sizeof(cnt)); for (i = 0; i &lt; n; ++i) { scanf(&quot;%d&quot;, &amp;tmp); cnt[tmp]++; } int sum = cnt[5] + cnt[7]; if (sum &gt; 0) { printf(&quot;-1\n&quot;); continue; } int c136 = 0, c126 = 0, c124 = 0; if (cnt[1] &gt;= cnt[3] &amp;&amp; cnt[6] &gt;= cnt[3]) {cnt[1] -= cnt[3]; cnt[6] -= cnt[3]; c136 = cnt[3];} else flag = false; if (cnt[1] &gt;= cnt[6] &amp;&amp; cnt[2] &gt;= cnt[6]) {cnt[1] -= cnt[6]; cnt[2] -= cnt[6]; c126 = cnt[6];} else flag = false; if (cnt[1] &gt;= cnt[4] &amp;&amp; cnt[2] &gt;= cnt[4]) { c124 = cnt[4]; cnt[1] -= cnt[4]; cnt[2] -= cnt[4];} else flag = false; if (cnt[1]+cnt[2] &gt; 0) flag = false; if (flag) { for (i = 0; i &lt; c136; ++i) printf(&quot;1 3 6\n&quot;); for (j = 0; j &lt; c126; ++j) printf(&quot;1 2 6\n&quot;); for (i = 0; i &lt; c124; ++i) printf(&quot;1 2 4\n&quot;); } else printf(&quot;-1\n&quot;); } return 0; }  闲的没事儿干，没事儿做做题=_=
-      <a href="http://liuxueyang.github.io/blog/2013/09/12/codeforces-199a/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/09/05/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B04/">读书笔记4</a>
-      </h1>
-      <span class="post-date">Sep 5, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/09/05/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B04/#disqus_thread">Comments</a>
-      </span>
-      
-      今天一天看完一本推理小说w_w
-《预知梦》 作者：东野圭吾 ——推理小说
-讲了5个故事：
-预知梦：一个男子童年时梦到一个女孩是她将来的妻子。17年后，竟然相同名字的女孩出现了。跟踪+骚扰之。真相，女孩的妈妈A在17年前出轨，那个男子B有一个小女孩，后来这个女孩死了，之前A对这个小女孩很好，送给了她一个布娃娃，小女孩给布娃娃取了一个名字，叫礼美。女孩死后，布娃娃送给了那个小男孩，之前小男孩经常和小女孩一起玩，也许这就留下了心理阴影。之后，A生了个女孩，起了个名字叫礼美，可能是无意识的，也可能是有意识的。A意识到男孩的出现，必然会让17年前的事情暴露，所以诱导男孩晚上闯入女孩房间，自己拿步枪杀之，未遂。 见到幽魂：爱摄影的女子A不巧拍到了车祸，勒索。最后被肇事者情侣陷害，为了伪造完美的不在场证明，女方扮成A的样子出现在一个地方，同时男方在A的房间内杀之。 骚灵：所谓骚灵不过是房子和下水管道的共振现象。凶手为了老太太的巨额一场把老太太杀死，被经常看老太太的男子A发现，接着A被杀死，在屋子里挖了一个坑，把尸体藏在里面。最后比较令人感动的是，老太太生前把自己的卡式银行保险箱钥匙给了素不相识但是经常去看望她照顾她的男子A，保险箱里面有巨额存折+遗书，明确写着遗产全部赠与男子A，只可惜…… 鬼火之谜：工厂主人为了挽救工厂前一个月内投了好几份保险，然后自己伪装成他杀的自杀，目的是得到保险金，他没跟妻子说，知道妻子肯定不会同意的，更悲剧的是，妻子察觉到了，暗中协助之，并且让警方开始把目标锁定自己，然后自己再拿出完美的不在场证明。唉，只能说，可能是被逼的没办法了吧。至少，厂主是值得尊敬的，为了别人献出了自己宝贵的生命。就像天才侦探+物理学家汤川说的那句：我倒是希望他们拿到那份保险金呢。也许他们不会把真想说出去吧。因为一年之内的自杀不能得到保险赔偿。所谓鬼火，就是厂长试验自杀方法的时候的火苗，方式很复杂，用两根弓箭线+通电+安眠药。好吧，天才的手段。 少女篇：很复杂。觉得没意思。两对夫妻，涉及到两个出轨。⊙﹏⊙b汗 大概就是一个女子以死威胁，假装自杀，结果真的“自杀”了，当然，其实是被谋杀了。所谓少女，就是10岁的女孩在晚上恰好看到了女子之前试验自杀方式的样子，结果后来真的发生了。为什么被谋杀呢？动机：假装自杀一定不会成功，那么女子就成了最大的威胁。  这本书写的还不错w_w
-00:22:56
-嗨，中村。
-      
       
     </div>
     
@@ -390,12 +393,15 @@ O(N)预处理出数组b和数组c
         ><a href="/page/47/">47</a></li>
         
         <li
+        ><a href="/page/48/">48</a></li>
+        
+        <li
         >
         <a href="/page/16/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/48/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

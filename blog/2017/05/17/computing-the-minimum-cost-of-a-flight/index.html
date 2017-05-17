@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Computing the Minimum Cost of a Flight &middot; liuxueyang</title>
+
+  
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="http://liuxueyang.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://liuxueyang.github.io/touch-icon-144-precomposed.png">
+  <link href="http://liuxueyang.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="求无负权有向图的单源最短路">
+  <meta name="keywords" content="Algorithm,Dijkstra,Graph">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+        <img src="https://www.gravatar.com/avatar/2e3a2be066049f38f7a3f80eff0a5400?s=200"
+             alt="gravatar" title="liuxueyang">
+      
+      <h1>liuxueyang</h1>
+      <p class="lead">THE LAST ONE.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://liuxueyang.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/liuxueyang"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://liuxueyang.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Computing the Minimum Cost of a Flight</h1>
+    <span class="post-date">May 17, 2017 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2017/05/17/computing-the-minimum-cost-of-a-flight/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://liuxueyang.github.io/categories/algorithm">Algorithm</a><a class="label" href="http://liuxueyang.github.io/categories/dijkstra">Dijkstra</a><a class="label" href="http://liuxueyang.github.io/categories/graph">Graph</a>
+    </span>
+    <p>题目链接：<a href="https://gitlab.com/liuxueyang/algorithms-on-graph-exercise/blob/master/week4/paths_in_graphs_problems_2.pdf">pdf</a></p>
+
+<p>题目给出一个有向图，边的权值非负，求起点到终点的最短路。</p>
+
+<p>用Dijkstra，基本思想是这样的：如果一个有向图权值非负，那么两点之间的最
+短路有最优子结构的性质。两点之间的最短路上的任意两点之间的路径也是最优
+的。</p>
+
+<p>设<code>S -&gt; ... -&gt; u -&gt; ... -&gt; v -&gt; ... -&gt; t</code>是从S到t的一条最短路，那么这条路径
+上从u到v的部分也是u到v的最短路。反证：假设从u到v存在一条更短的路径L，
+那么用L替换S到t中从u到v的部分，就可以得到一条从S到v的更短的路径，由于
+我们假设原来的路径是从S对v的最短路，得出矛盾。</p>
+
+<p>这样，设d(S, t)是<code>S -&gt; ... -&gt; u -&gt; t</code>是S到t的最短路。则：</p>
+
+<pre><code>d(S, t) = d(S, u) + w(u, t)
+</code></pre>
+
+<p>所以我们可以不断地对所有边的进行松弛操作，直到没有边可以松弛。这个时候就可以得到单源最短路。这样的循环最多进行V次，每次最多进行E次松弛操作，因此复杂度是V*E。</p>
+
+<p>显然我们不必每次都对所有边进行松弛。我们可以记录下以后不需要松弛的点，也就是最短路已经确定的点，所以我们可以把所有点分成两个集合，一个集合表示这些点到源点的最短路已经确定，另一个集合表示最短路还不确定。</p>
+
+<p>也就是说每次松弛的循环中，我们可以把松弛过的点放到一个优先队列中，然后从中选择到源点距离最小的出队，它就是最短距离已经确定的点。继续从这个开始松弛操作，一直循环到队列为空。每个点入队一次，出队一次。总共循环V次，每次循环中要出队最小元素（VlogV），对这个点相连的所有边进行松弛并且入队(ElogV)。总共是(E+V)logV。</p>
+
+<pre><code class="language-cpp">// Mon May 15 10:45:45 CST 2017
+// Mon May 15 11:29:58 CST 2017
+
+/*
+最简单的Dijkstra
+ */
+
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;climits&gt;
+
+using namespace std;
+typedef pair&lt;int, int&gt; PII;
+
+class Comp {
+public:
+  bool operator() (const PII &amp;a, const PII &amp;b) {
+    return a.first &gt; b.first;
+  }
+};
+
+int distance(vector&lt;vector&lt;int&gt; &gt; &amp;adj, vector&lt;vector&lt;int&gt; &gt; &amp;cost, int s, int t) {
+  vector&lt;int&gt; visited(adj.size(), false);
+  priority_queue&lt;PII, vector&lt;PII&gt;, Comp &gt; que;
+  vector&lt;int&gt; dist(adj.size(), INT_MAX);
+
+  visited[s] = true;
+  dist[s] = 0;
+  que.push(make_pair(dist[s], s));
+
+  while (!que.empty()) {
+    int top = que.top().second;
+    que.pop();
+
+    for (size_t i = 0; i &lt; adj[top].size(); ++i) {
+      int tmp = dist[top] + cost[top][i];
+
+      if (dist[adj[top][i]] &gt; tmp) {
+	dist[adj[top][i]] = tmp;
+	que.push(make_pair(tmp, adj[top][i]));
+      }
+    }
+
+  }
+
+  return (dist[t] == INT_MAX ? -1 : dist[t]);
+}
+
+int main() {
+  int n, m;
+  while(std::cin &gt;&gt; n &gt;&gt; m) {
+    vector&lt;vector&lt;int&gt; &gt; adj(n, vector&lt;int&gt;());
+    vector&lt;vector&lt;int&gt; &gt; cost(n, vector&lt;int&gt;());
+    for (int i = 0; i &lt; m; i++) {
+      int x, y, w;
+      std::cin &gt;&gt; x &gt;&gt; y &gt;&gt; w;
+      adj[x - 1].push_back(y - 1);
+      cost[x - 1].push_back(w);
+    }
+    int s, t;
+    std::cin &gt;&gt; s &gt;&gt; t;
+    s--, t--;
+    std::cout &lt;&lt; distance(adj, cost, s, t) &lt;&lt; &quot;\n&quot;;
+  }
+}
+</code></pre>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "abeliu";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "abeliu";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://liuxueyang.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

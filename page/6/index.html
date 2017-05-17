@@ -79,6 +79,34 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-akvqld03---how-to-handle-the-fans/">spoj, segment tree: AKVQLD03 - How to Handle the Fans</a>
+      </h1>
+      <span class="post-date">Jul 25, 2016 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-akvqld03---how-to-handle-the-fans/#disqus_thread">Comments</a>
+      </span>
+      
+      Problem Link
+平常的线段树点更新和区间查询
+#include &lt;iostream&gt; #include &lt;string.h&gt; using namespace std; struct SegmentTreeNode { // fields on the node long long sum; void assignLeaf(int value) { sum = value; } void merge(SegmentTreeNode &amp;left, SegmentTreeNode &amp;right) { sum = left.sum + right.sum; } long long getValue() { return sum; } }; template &lt;class T, class V&gt; class SegmentTree { SegmentTreeNode *nodes; int N; public: SegmentTree(T arr[], int N) { this-&gt;N = N; nodes = new SegmentTreeNode[getSegmentTreeSize(N)]; buildTree(arr, 1, 0, N - 1); } ~SegmentTree() { delete[] nodes; } V getValue(int lo, int hi) { SegmentTreeNode result = getValue(1, 0, N - 1, lo, hi); return result.
+      <a href="http://liuxueyang.github.io/blog/2016/07/25/spoj-segment-tree-akvqld03---how-to-handle-the-fans/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2016/07/25/segment-tree-lazy-propagation-codechef-flipping-coins/">segment tree, lazy propagation, codechef: Flipping Coins</a>
+      </h1>
+      <span class="post-date">Jul 25, 2016 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/07/25/segment-tree-lazy-propagation-codechef-flipping-coins/#disqus_thread">Comments</a>
+      </span>
+      
+      Problem Link
+平常的线段树区间更新、区间查询加上懒惰更新
+// 2016/07/24 22:01:19 PM // Sabastian #include &lt;iostream&gt; #include &lt;math.h&gt; #include &lt;stdio.h&gt; #include &lt;string.h&gt; using namespace std; typedef long long ll; typedef struct TreeNode { int start, end; ll total; bool lazy; TreeNode() : total(0), lazy(false) {} void merge(TreeNode &amp; left, TreeNode &amp; right) { total = (left.lazy ? left.end - left.start + 1 - left.total : left.total) + (right.lazy ? right.end - right.start + 1 - right.
+      <a href="http://liuxueyang.github.io/blog/2016/07/25/segment-tree-lazy-propagation-codechef-flipping-coins/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2016/07/11/iterm2-%E6%9F%A5%E7%9C%8B%E5%9B%BE%E7%89%87/">iTerm2 查看图片</a>
       </h1>
       <span class="post-date">Jul 11, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/07/11/iterm2-%E6%9F%A5%E7%9C%8B%E5%9B%BE%E7%89%87/#disqus_thread">Comments</a>
@@ -188,38 +216,6 @@ Perl实现：
 另外，我也可以同步Rime的用户资料了。然后再同步到Gitlab的私人仓库里面，完美！另外， 那篇博客也介绍了如何配置小鹤双拼・语句流输入法，这样就可以中英混输并且还带emoji 了！简直Perfect流畅。
 时间好快，麦子熟了。
       
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/06/15/karabiner--%E8%87%AA%E5%AE%9A%E4%B9%89macbook-air%E9%94%AE%E7%9B%98/">Karabiner —— 自定义MacBook Air键盘</a>
-      </h1>
-      <span class="post-date">Jun 15, 2016 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/06/15/karabiner--%E8%87%AA%E5%AE%9A%E4%B9%89macbook-air%E9%94%AE%E7%9B%98/#disqus_thread">Comments</a>
-      </span>
-      
-      一直以来，我的MacBook Air的键盘有几个键总是莫名其妙不灵。。换了一次键盘，然而问 题依旧，并且，问题不好重现，仿佛它不高兴了就不灵了。。这给打字带来了极大的不爽。。 所以我的解决办法是外接键盘。。或者外接USB键盘，或者外接蓝牙键盘。然而，这便携性 就没有了。。还要经常担心我那个蓝牙键盘的支脚是不是压倒了原装键盘的某个功能键什么 的。。。所以就很蛋疼。。
-所以为了解决蓝牙键盘经常压到Air的原装键盘的问题，我就在原装键盘上面垫上一本小书， 一定程度上解决了这个问题。。然后我就去淘宝搜有没有买专用的板子的啊。。:joy: :joy: 原来我的思路也蛮开阔的。。并没有，随手在Bing搜了一下，看到了V2EX的一个帖子 说如何关闭MacBook Air自带的键盘，诶？这倒是一个办法。然后我就开始折腾了：
-下载了Karabiner这个软件。然后就开 始找怎么把某个组合键映射到经常失灵的U键。打开Karabiner的Preferences，看了一下 Change Key那个标签并没有什么头绪。然后看到Misc &amp; Uninstall这个标签里面有一个 Custom Setting：
-绝壁八成是这个了。。然后在Karabiner的官网里面的Documents里面找到了这个文档： private.xml Reference Manual照着加 了下面的配置：
- &lt;item&gt; &lt;name&gt;Change 'u' key to fn+v&lt;/name&gt; &lt;identifier&gt;private.make_u_work&lt;/identifier&gt; &lt;autogen&gt;__KeyToKey__ KeyCode::V, ModifierFlag::FN, KeyCode::U &lt;/autogen&gt; &lt;/item&gt;  然后在Karabiner Preferences的Change Key里面就就可以看到我刚才加的选项了，选择 它，点Reload XML，然后就可以用fn+v的组合键代替u这个键了。（因为V和 U长得比较像。。。 :joy: :joy: ) 完美！
-另外一个经常不灵的键就是(这个键，它的位置就是9所在的键。因为6和9比较像……所以 我就把fn+6映射成了9。。同样的做法。:smile: :smiley:
- &lt;item&gt; &lt;name&gt;Change '9' key to fn+6&lt;/name&gt; &lt;identifier&gt;private.make_9_work&lt;/identifier&gt; &lt;autogen&gt;__KeyToKey__ KeyCode::6, ModifierFlag::FN, KeyCode::9 &lt;/autogen&gt; &lt;/item&gt;  哦，对了，上面的配置里面的autogen里面的KeyCode可以在这里 KeyCode 找到。
-      <a href="http://liuxueyang.github.io/blog/2016/06/15/karabiner--%E8%87%AA%E5%AE%9A%E4%B9%89macbook-air%E9%94%AE%E7%9B%98/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2016/06/11/codeforces-round-#356-div.-2-c.-bear-and-prime-100/">Codeforces Round #356 (Div. 2) C. Bear and Prime 100</a>
-      </h1>
-      <span class="post-date">Jun 11, 2016 &middot; 6 minute read &middot; <a href="http://liuxueyang.github.io/blog/2016/06/11/codeforces-round-#356-div.-2-c.-bear-and-prime-100/#disqus_thread">Comments</a>
-      </span>
-      
-      C. Bear and Prime 100 This is an interactive problem. In the output section below you will see the information about flushing the output.
-Bear Limak thinks of some hidden number — an integer from interval [2, 100]. Your task is to say if the hidden number is prime or composite.
-Integer x &gt; 1 is called prime if it has exactly two distinct divisors, 1 and x. If integer x &gt; 1 is not prime, it&rsquo;s called composite.
-      <a href="http://liuxueyang.github.io/blog/2016/06/11/codeforces-round-#356-div.-2-c.-bear-and-prime-100/">Read On &rarr;</a>
       
     </div>
     
@@ -378,12 +374,15 @@ Integer x &gt; 1 is called prime if it has exactly two distinct divisors, 1 
         ><a href="/page/47/">47</a></li>
         
         <li
+        ><a href="/page/48/">48</a></li>
+        
+        <li
         >
         <a href="/page/7/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/48/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>

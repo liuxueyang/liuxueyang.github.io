@@ -79,6 +79,31 @@
     
     <div class="post">
       <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/09/2013%E5%B9%B44%E6%9C%888%E6%97%A5-%E6%99%B4/">2013年4月8日 晴</a>
+      </h1>
+      <span class="post-date">Apr 9, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/09/2013%E5%B9%B44%E6%9C%888%E6%97%A5-%E6%99%B4/#disqus_thread">Comments</a>
+      </span>
+      
+      今天跑步很悲剧，遇到极点了，中途各种不想跑，各种累，但还是坚持下来了，嗯，跑步嘛，总会有这种时候，尤其是今天下午也比较热，这种时候，最重要的就是两个字：坚持。不管怎么样，千万不能停下来，如果一停下来，基本就跑步不起来了…… 加油~
+      
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
+        <a href="http://liuxueyang.github.io/blog/2013/04/08/zoj-1649-rescue-bfs%E5%85%A5%E9%97%A8%E9%A2%98/">zoj 1649 Rescue ——BFS入门题</a>
+      </h1>
+      <span class="post-date">Apr 8, 2013 &middot; 2 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/08/zoj-1649-rescue-bfs%E5%85%A5%E9%97%A8%E9%A2%98/#disqus_thread">Comments</a>
+      </span>
+      
+      题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=649 题意： 给一个字符矩阵，‘#’代表墙壁，&rsquo;.&lsquo;代表空格，‘x’代表有警察的空格，&rsquo;r&rsquo;和&rsquo;a&rsquo;分别代表一屌丝，并且&rsquo;r&rsquo;要到&rsquo;a&rsquo;那里去串门儿，r走一个空格花费单位时间1，走一个有警察的空格需要先干掉警察，话费单位时间1，然后再走过去，也就是共花费时间2，请问屌丝r到屌丝a那里去最少花费的时间。 思路： 首先要搞明白一个问题：就是路径最短的路不一定花费时间最少。这是可以理解的，比如，一条很短但是有很多警察，另一条路很长，但是没有警察，很有可能是第二条路花费时间少。用深搜？貌似不太合适，因为你一条路径访问过一个点后，另一条路径很可能也会访问这个点，并且时间较少。关键是深搜找到的接不一定是最优的。所以，考虑用广搜解。这道题最朴素的广搜显然不行，也就是说，仅仅求步数最少的不可行，需要加上访问时间这个附加条件。 用一个结构体数组存储每个点的信息，包括坐标，到达这个点所需要的最短时间，从起点开始搜，先访问起点，然后把起点出队，如果从一个点A到达下一个点B的当前所需时间比这个点现在标记的时间少，则把这个点入队，然后判断点A的另一个方向上的下一个点。这样，总有一天队列会为空，这是因为，某个点不可能被访问无数次，也就是说，某个点不可能无数次入队，因为到达某个点所需要的时间一定是有个最小值的，所以BFS一定可以结束，并且最后找到的点‘a’的信息一定是最优解。输出就可以了，如果无解，因为初始化到达所有点所需时间都是MAXN，所以，如果点‘a’的时间信息如果等于MAXN，那么说明无解。 第一次做深搜，这道题开始不知道怎么做，看了书上的思路，坚持没看代码，自己又想了想，就试着开始写，好神奇，竟然1A了！！！
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MINN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; typedef struct point{ int a, b, t; }point; point p[220][220], st, en; char s[220][220]; int n, m, T, si, sj, di, dj; queue&lt;point&gt; qt; void bfs(){ qt.
+      <a href="http://liuxueyang.github.io/blog/2013/04/08/zoj-1649-rescue-bfs%E5%85%A5%E9%97%A8%E9%A2%98/">Read On &rarr;</a>
+      
+    </div>
+    
+    <div class="post">
+      <h1 class="post-title">
         <a href="http://liuxueyang.github.io/blog/2013/04/08/2013%E5%B9%B44%E6%9C%887%E6%97%A5-%E6%99%B4/">2013年4月7日 晴</a>
       </h1>
       <span class="post-date">Apr 8, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/08/2013%E5%B9%B44%E6%9C%887%E6%97%A5-%E6%99%B4/#disqus_thread">Comments</a>
@@ -176,32 +201,6 @@
       题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1110 题意： 给一个矩阵，‘X’代表墙壁，‘.’代表空格，‘S’代表起始位置，‘D’代表终点。从起点开始，每个空格只许经过一次，求在规定的时间t的时候，能否正好到达终点。每走一个花费1个单位时间。输入n,m,t，分别代表矩阵的行，列，规定的时间。 思路： 深度优先搜索，从起点开始，按照四个方向搜索，判断某个方向的下一个方格如果不是墙壁的话，就把它标为墙壁，然后从这个点继续往下搜索，如果从这个点往下搜索失败后，就要把这个点标记回原来的空格符号：‘.’。然后尝试下一个方向。直到i == di, j == dj, t == T的时候，表示搜索成功，flag = true; return; 其中si sj 是起点位置，di dj是终点位置，T是当前所花费的时间。 然后还有几处剪枝：如果这个矩阵的空格的数目小于等于时间t，那么不可能成功。这在主函数里面可以剪枝。在dfs的过程中，如果发现剩余的时间小于当前位置到终点的最小距离，可以直接判断搜索失败；如果剩余的时间和当前位置到终点的最小时间的差值是奇数的话，可以判断搜索一定失败，可以剪枝，如果是偶数的话，则可能成功。 今天突然发现，以前写的解题报告太搓了……向kedebug的博客学习，O(∩_∩)O哈哈~加油
 #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; bool flag; char s[9][9]; int t, n, m, si, sj, di, dj; int dir[4][4] = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}}; void dfs(int i, int j, int T){ if (i == di &amp;&amp; j == dj &amp;&amp; T == t){ flag = true; return; } if (i &lt;= 0 || j &lt;= 0 || i &gt; n || j &gt; m) return; int temp = t - T - abs(i-di) - abs(j-dj); if (temp &lt; 0 || temp&amp;1)return; for (int k = 0; k &lt; 4; ++k){ if (s[i+dir[k][0]][j+dir[k][1]] !
       <a href="http://liuxueyang.github.io/blog/2013/04/06/zoj-2110-tempter-of-the-bone-dfs-%E5%89%AA%E6%9E%9D/">Read On &rarr;</a>
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/06/2013%E5%B9%B44%E6%9C%885%E6%97%A5--%E9%9B%A8%E9%98%B4/">2013年4月5日  雨，阴</a>
-      </h1>
-      <span class="post-date">Apr 6, 2013 &middot; 1 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/06/2013%E5%B9%B44%E6%9C%885%E6%97%A5--%E9%9B%A8%E9%98%B4/#disqus_thread">Comments</a>
-      </span>
-      
-      上午下雨，还好下午下得不那么大了，4点半的时候正好去跑步，还飘着小雨点儿，不过不影响跑步，还是前天一样，开始的时候跑得过快了，有点儿吃不消的感觉，今天跑的比较多，虽然实跑时间也是整整半小时，但明显比前天跑得远，Google告诉我大概有7000米的样子，现在不追求速度，跑得高兴就行啦。 跑步的过程中，今天感觉不错，尤其是后半段，整个人完全处于那种比较好的状态，脑袋里什么也不想，只注意着自己的呼吸，耳边只有音乐，眼前只有远方的风景，天气还下着小雨，湘江上烟雨迷蒙，好有诗意~还刮着风，开始是逆风，回来虽然顺风，但一点儿感觉也没有，还不如逆风跑舒服。 跑完之后做了一下拉伸，在江边休息了一下，雨还在下着，身上的外套早已湿透了，南方的雨就是这样，斜风细雨不须归…… 今天跑步的时候听《时光》有一种特殊的感觉。 时光 ——许巍　在阳光温暖的春天走在这城市的人群中在不知不觉的一瞬间又想 起你&hellip;&hellip;你是记忆中最美的春天是我难以再回去的昨天你像鲜花那样地绽放让我 心动&hellip;&hellip;We~sayWe~say~~We~say~~We~say~~在阳光温暖的春天走在这城市的人群中在不知不觉的一瞬间又想 起你&hellip;&hellip;也许就在这一瞬间你的笑容依然如晚霞般在川流不息的时光中神采 飞扬&hellip;&hellip; We~say~~We~say~~We~say~~We~say~~~~
-      
-      
-    </div>
-    
-    <div class="post">
-      <h1 class="post-title">
-        <a href="http://liuxueyang.github.io/blog/2013/04/05/hdu-1059-dividing-%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85%E5%A4%8D%E4%B9%A0/">hdu 1059 Dividing ——多重背包复习</a>
-      </h1>
-      <span class="post-date">Apr 5, 2013 &middot; 3 minute read &middot; <a href="http://liuxueyang.github.io/blog/2013/04/05/hdu-1059-dividing-%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85%E5%A4%8D%E4%B9%A0/#disqus_thread">Comments</a>
-      </span>
-      
-      Dividing
-Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (Java/Others) Total Submission(s): 11367 Accepted Submission(s): 3168
-Problem Description Marsha and Bill own a collection of marbles. They want to split the collection among themselves so that both receive an equal share of the marbles. This would be easy if all the marbles had the same value, because then they could just split the collection in half. But unfortunately, some of the marbles are larger, or more beautiful than others.
-      <a href="http://liuxueyang.github.io/blog/2013/04/05/hdu-1059-dividing-%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85%E5%A4%8D%E4%B9%A0/">Read On &rarr;</a>
       
     </div>
     
@@ -360,12 +359,15 @@ Problem Description Marsha and Bill own a collection of marbles. They want to sp
         ><a href="/page/47/">47</a></li>
         
         <li
+        ><a href="/page/48/">48</a></li>
+        
+        <li
         >
         <a href="/page/36/" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
         </li>
         
         <li>
-            <a href="/page/47/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+            <a href="/page/48/" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
         </li>
         
     </ul>
