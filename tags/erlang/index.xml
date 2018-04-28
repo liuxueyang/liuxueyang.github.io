@@ -6,6 +6,9 @@
     <description>Recent content in Erlang on LXY Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <managingEditor>your@email.com (Aos Dabbagh)</managingEditor>
+    <webMaster>your@email.com (Aos Dabbagh)</webMaster>
+    <copyright>(c) 2008 - 2014</copyright>
     <lastBuildDate>Tue, 27 Nov 2012 15:45:00 +0000</lastBuildDate>
     
 	<atom:link href="http://liuxueyang.github.io/tags/erlang/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +18,7 @@
       <title>Erlang_3</title>
       <link>http://liuxueyang.github.io/posts/erlang_3/</link>
       <pubDate>Tue, 27 Nov 2012 15:45:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/erlang_3/</guid>
       <description>计算阶乘两种写法：
 -module(continue). -export([factor/1]). factor(0) -&amp;gt; 1; factor(N) -&amp;gt; N * factor(N - 1). %factor(N) when N &amp;gt; 0 -&amp;gt; % N * factor(N - 1); %factor(0) -&amp;gt; 1.  这里注意，第一种写法，如果输入的值是负数，那么函数进入死循环，内存溢出，第二种写法输入负数，函数会不执行。 内置函数： hd/1 返回列表第一个元素 tl/1 返回删除第一个元素后的其余部分 length/1 返回列表的长度 tuple_size/1 返回元组的数目 element/2 返回元组的第n个元素 setlement(2, Tuple). setelement/3 替换元组的第一个元素，并返回新的元组 setelement(3, Tuple, Three). erlang:appedn_element/2 向元组添加一个元素作为最后的元素 erlang:append_element(Tuple, 6).</description>
@@ -25,7 +28,7 @@
       <title>Erlang_2</title>
       <link>http://liuxueyang.github.io/posts/erlang_2/</link>
       <pubDate>Tue, 27 Nov 2012 15:35:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/erlang_2/</guid>
       <description>1.函数 举个例子：判断一个数字是奇数还是偶数
 -module(rev). -export([even/1]). even(Value) -&amp;gt; if Value rem 2 == 1 -&amp;gt; odd; Value rem 2 == 0 -&amp;gt; even end.  文件名和模块名要相同。在终端中引用函数的时候，先编译，c(rev). 然后引用函数 rev:even(N). 其中N是一个已经赋值的变量。 上面的函数的另一种写法： -module(rev). -export([even/1]). even(Value) -&amp;gt; case Value rem 2 of 1 -&amp;gt; odd; 0 -&amp;gt; even end.  </description>
@@ -35,7 +38,7 @@
       <title>Erlang_1</title>
       <link>http://liuxueyang.github.io/posts/erlang_1/</link>
       <pubDate>Sat, 24 Nov 2012 19:56:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/erlang_1/</guid>
       <description>1.在终端运行的时候末尾要输入 . 号 2.数学运算符： + 加法 正号 - 减法 负号 * 乘法 / 浮点除法 div 整数除法 rem 整数取余 3.基元表示文字常量 4.布尔类型 没有单独表示布尔类型的布尔值或字符 and 与 andalso 第一个参数为假，返回假则第二个参数不需计算 or 或 orelse 第一个参数是真，返回真，不计算第二个参数 xor 异或 不同为真，相同为假 not 非 5.元组 {a, b, c, d} 元组中的数据元素不一定是相同的类型</description>
     </item>

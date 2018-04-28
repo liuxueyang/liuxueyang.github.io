@@ -6,6 +6,9 @@
     <description>Recent content in C on LXY Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <managingEditor>your@email.com (Aos Dabbagh)</managingEditor>
+    <webMaster>your@email.com (Aos Dabbagh)</webMaster>
+    <copyright>(c) 2008 - 2014</copyright>
     <lastBuildDate>Fri, 14 Nov 2014 15:39:20 +0000</lastBuildDate>
     
 	<atom:link href="http://liuxueyang.github.io/tags/c/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +18,7 @@
       <title>C is Interesting</title>
       <link>http://liuxueyang.github.io/posts/c-is-interesting/</link>
       <pubDate>Fri, 14 Nov 2014 15:39:20 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/c-is-interesting/</guid>
       <description>最近偶尔看C语言，看了一点有意思的东西。
  C语言里函数声明有一个很有意思的现象：  如果一个函数没有float, short, 或者char类型的参数，在函数生命中完全可以省略 参数类型的说明（但是函数定义中不可以省略）。
@@ -29,7 +32,7 @@ double square();  这个规则好像是为了兼容旧版本的C吧。
       <title>空结构体大小是多少？</title>
       <link>http://liuxueyang.github.io/posts/%E7%A9%BA%E7%BB%93%E6%9E%84%E4%BD%93%E5%A4%A7%E5%B0%8F%E6%98%AF%E5%A4%9A%E5%B0%91/</link>
       <pubDate>Wed, 02 Oct 2013 19:00:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/%E7%A9%BA%E7%BB%93%E6%9E%84%E4%BD%93%E5%A4%A7%E5%B0%8F%E6%98%AF%E5%A4%9A%E5%B0%91/</guid>
       <description>/* 在VC中，空结构体大小是1。 在gcc中，空结构体大小是0。 */ #include &amp;lt;cstdio&amp;gt; struct student { }stu; int main(void) { printf(&amp;quot;%d\n&amp;quot;, sizeof stu); return 0; }  不同的平台不一样。
 还有一点。
@@ -43,7 +46,7 @@ auto break case char const continue default do double else enum extern float for
       <title>strncpy基本用法</title>
       <link>http://liuxueyang.github.io/posts/strncpy%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</link>
       <pubDate>Wed, 02 Oct 2013 09:50:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/strncpy%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</guid>
       <description>见百度百科。
 注意这句话：
@@ -56,7 +59,7 @@ auto break case char const continue default do double else enum extern float for
       <title>数组名和指针相同吗？</title>
       <link>http://liuxueyang.github.io/posts/%E6%95%B0%E7%BB%84%E5%90%8D%E5%92%8C%E6%8C%87%E9%92%88%E7%9B%B8%E5%90%8C%E5%90%97/</link>
       <pubDate>Tue, 04 Dec 2012 19:13:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/%E6%95%B0%E7%BB%84%E5%90%8D%E5%92%8C%E6%8C%87%E9%92%88%E7%9B%B8%E5%90%8C%E5%90%97/</guid>
       <description>/* 数组名和指针相同吗？ */ #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstdio&amp;gt; using namespace std; int a[][3] = {{1, 2, 3}, {1, 2, 3}, {4, 5, 6}, {3, 4, 5}}; int sizef(int b[][3]) { cout &amp;lt;&amp;lt; sizeof(b) &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; sizeof(b[0]) &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; sizeof(b)/sizeof(b[0]) &amp;lt;&amp;lt; endl; } int main(void) { // int a[][3] = {{1, 2, 3}, {1, 2, 3}, {4, 5, 6}, {3, 4, 5}}; cout &amp;lt;&amp;lt; sizeof(a) &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; sizeof(a[0]) &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; sizeof(a)/sizeof(a[0]) &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;quot;***********&amp;quot; &amp;lt;&amp;lt; endl; sizef(a); // cout &amp;lt;&amp;lt; sizef(a) &amp;lt;&amp;lt; endl; system(&amp;quot;pause&amp;quot;); return 0; }  上面的程序的结果是： 48 12 4</description>
     </item>

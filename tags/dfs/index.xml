@@ -6,6 +6,9 @@
     <description>Recent content in Dfs on LXY Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <managingEditor>your@email.com (Aos Dabbagh)</managingEditor>
+    <webMaster>your@email.com (Aos Dabbagh)</webMaster>
+    <copyright>(c) 2008 - 2014</copyright>
     <lastBuildDate>Mon, 22 Jul 2013 02:58:00 +0000</lastBuildDate>
     
 	<atom:link href="http://liuxueyang.github.io/tags/dfs/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +18,7 @@
       <title>codeforces 192 D</title>
       <link>http://liuxueyang.github.io/posts/codeforces-192-d/</link>
       <pubDate>Mon, 22 Jul 2013 02:58:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/codeforces-192-d/</guid>
       <description>link: http://codeforces.com/contest/330/problem/D The discription looks so long, but the problem is simple if you can grasp the problem quickly.
 /* ID: zypz4571 LANG: C++ TASK: 192d.cpp */ #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;deque&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;list&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;utility&amp;gt; #include &amp;lt;functional&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;iomanip&amp;gt; #include &amp;lt;sstream&amp;gt; #include &amp;lt;numeric&amp;gt; #include &amp;lt;cassert&amp;gt; #include &amp;lt;ctime&amp;gt; #define INF 0x3f3f3f3f #define REP(i, n) for(int i=0;i&amp;lt;int(n);++i) #define FOR(i, a, b) for(int i=int(a);i&amp;lt;int(b);++i) #define DWN(i, b, a) for(int i=int(b-1);i&amp;gt;=int(a);--i) #define REP_1(i, n) for(int i=1;i&amp;lt;=int(n);++i) #define mid int m=(l+r)/2 using namespace std; int dir[4][2] = {{0,-1}, {0, 1}, {-1, 0}, {1, 0}}; char mat[1003][1003]; struct Node { int x, y, time; }; Node start, end; int ans, matime[1003][1003], n, m; bool vis[1003][1003]; void bfs(Node end) { queue&amp;lt;Node&amp;gt; q; q.</description>
@@ -25,7 +28,7 @@
       <title>poj1272 棋盘问题 ——DFS入门题</title>
       <link>http://liuxueyang.github.io/posts/poj1272-%E6%A3%8B%E7%9B%98%E9%97%AE%E9%A2%98-dfs%E5%85%A5%E9%97%A8%E9%A2%98/</link>
       <pubDate>Mon, 13 May 2013 01:52:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/poj1272-%E6%A3%8B%E7%9B%98%E9%97%AE%E9%A2%98-dfs%E5%85%A5%E9%97%A8%E9%A2%98/</guid>
       <description>题目链接：http://poj.org/problem?id=1321 题目大意： 中文题，省了…… 题目思路： 感觉搜索题目还是要多做，很多东西都是开始看起来很复杂，其实根本就没有那么复杂，比如说这道，实际上就比较基础，可是，自己还是做不出来……o(╯□╰)o 这道题目需要注意的一点就是：先DFS一行，然后要注意，要考虑当前行不放，直接DFS下一行！这个情况赶脚还是比较不容易想到的，虽然做完之后感觉也挺自然啊，可是……当初为毛想不到。。。就是思维的问题吧……代码看的是这位仁兄的：http://fuliang.iteye.com/blog/398700ＴＨＸ……＾＿＾
 #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;stack&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;deque&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;algorithm&amp;gt; #define lson l, m, rt&amp;lt;&amp;lt;1 #define rson m+1, r, rt&amp;lt;&amp;lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x7fffffff; const int MINN = -0x7fffffff; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 10; char m[MAX][MAX];int cnt, n, k, sum; bool p[MAX]; bool judge(int i, int j) { if (p[j] == false &amp;amp;&amp;amp; m[i][j] == &#39;#&#39;) return true; else return false; } void dfs(int x) { if (sum == k) {cnt++; return;} if (x &amp;gt;= n) return; int i; for (i = 0; i &amp;lt; n; ++i) { if (judge(x, i)) { p[i] = true; sum++; dfs(x+1); p[i] = false; sum--; } } dfs(x + 1); } int main(void){ #ifndef ONLINE_JUDGE freopen(&amp;quot;poj1321.</description>
@@ -35,7 +38,7 @@
       <title>zoj 2412 Farm Irrigation ——DFS入门题</title>
       <link>http://liuxueyang.github.io/posts/zoj-2412-farm-irrigation-dfs%E5%85%A5%E9%97%A8%E9%A2%98/</link>
       <pubDate>Sun, 07 Apr 2013 12:48:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/zoj-2412-farm-irrigation-dfs%E5%85%A5%E9%97%A8%E9%A2%98/</guid>
       <description>题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1412 题意： 有11种正方形，每种正方形里面对应一种形状的水管，不同的的正方形一用A到K表示，给一个矩阵，问至少需要多少个水源可以使矩形中所有的地方都可以被灌溉，如果两个相邻的正方形的水管正好对口，那么这两个正方形可以共用一个水源。 思路： 开始感觉很复杂，明显可以DFS做，但是感觉比较麻烦，关键是怎么处理题目中的条件。 首先，处理11种不同的水管，分4个方向，1表示有接口，0表示没有接口。用一个二维数组存所有种类的水管。 然后，把输入的字符转化成数字，可以再输入的时候边输入边处理，用字符减去字符“A”就可以了，对应的上面给11中不同水管中的一种。以上这两个处理方法要注意，学习一下，稍微看了一下别人的代码才想到的。这种看似比较简单的处理，往往给解题带来比较大的方便。 最后，就是如何深搜了。这个要考虑清楚。用一个flag二维数组表示是否访问过这个方格。深搜的时候，如果访问到它时，先判断它是否被访问过，然后立刻标记为已访问。然后就是判断当前方格的四个方向是不是有接口，如果某个方向有接口的话，就判断这个方向上的下一个方格中，和当前方格相邻的边是不是有接口，如果有接口，则继续深搜这个相邻的点。这里有个处理：（k+2）%4，意味着，比如：当前方格如果右边有接口，则判断右边的方格的左边的边是不是有接口，其它情况一样。然后就是主函数里面的dfs外面的for循环，思想和以前做过的zoj 1709是一样的，就是搜到某个点的时候，用一个mrk标记一下，把和它有关系的点都搜完，如果有符合条件的，mrk会改变，然后就cnt++用来计数，这种题目是相似的，都是要求符合条件的点相邻。 有一个细节，就是矩阵的数组还是从1开始吧，数组稍微开大一点儿，这样在深搜下一个方向的时候，就不会因为数组越界出错了。这个问题以前没有注意到。
 #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;stack&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;algorithm&amp;gt; #define lson l, m, rt&amp;lt;&amp;lt;1 #define rson m+1, r, rt&amp;lt;&amp;lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; int grid[11][4] = {{0,0,1,1},{1,0,0,1},{0,1,1,0},{1,1,0,0},{0,1,0,1}, {1,0,1,0},{1,0,1,1},{0,1,1,1},{1,1,1,0},{1,1,0,1},{1,1,1,1}}; int dir[4][2] = {{0,1},{1,0},{0,-1},{-1,0}}; bool flag[55][55]; int s[55][55]; bool mrk = false; int n, m; void dfs(int i, int j){ if (i &amp;lt;= 0 || i &amp;gt; m || j &amp;lt;= 0 || j &amp;gt; n) return; if (flag[i][j]) return; mrk = true; flag[i][j] = true; for (int k = 0; k &amp;lt; 4; ++k){ if (grid[s[i][j]][k] &amp;amp;&amp;amp; grid[s[i+dir[k][0]][j+dir[k][1]]][(k+2)%4]){ dfs(i+dir[k][0], j+dir[k][1]); } } return; } int main(void){ #ifndef ONLINE_JUDGE freopen(&amp;quot;zoj2412.</description>
@@ -45,7 +48,7 @@
       <title>zoj 1709 Oil Deposits ——DFS入门题</title>
       <link>http://liuxueyang.github.io/posts/zoj-1709-oil-deposits-dfs%E5%85%A5%E9%97%A8%E9%A2%98/</link>
       <pubDate>Sun, 07 Apr 2013 00:23:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/zoj-1709-oil-deposits-dfs%E5%85%A5%E9%97%A8%E9%A2%98/</guid>
       <description>题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=709 题目大意： 给一个矩阵，*代表空地，@代表油田，并且@如果水平，竖直，对角线相邻的话就认为是一块油田，问有多少块油田。 思路就是DFS，从第一个字符开始搜，找到一个@就标记一下，cnt++，然后看它的八个方向上是不是有@，如果有，全部标记为*，不需要恢复现场。然后输出cnt的值就行了。
 #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;stack&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;algorithm&amp;gt; #define lson l, m, rt&amp;lt;&amp;lt;1 #define rson m+1, r, rt&amp;lt;&amp;lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; char s[110][110]; bool flag; int cnt, n, m; int dir[8][2] = {{0,1},{0,-1},{-1,0},{1,0},{1,1},{-1,1},{1,-1},{-1,-1}}; void dfs(int i, int j){ if (i &amp;lt; 0 || j &amp;lt; 0 || i &amp;gt; m || j &amp;gt; n) return; if (s[i][j] == &#39;*&#39;) return; if (s[i][j] == &#39;@&#39;) flag = true; s[i][j] = &#39;*&#39;; for (int k = 0; k &amp;lt; 8; ++k){ if (s[i+dir[k][0]][j+dir[k][1]] == &#39;@&#39;){ dfs(i+dir[k][0], j+dir[k][1]); } } } int main(void){ #ifndef ONLINE_JUDGE freopen(&amp;quot;zoj1709.</description>
@@ -55,7 +58,7 @@
       <title>zoj 2110 Tempter of the Bone ——DFS&#43;剪枝</title>
       <link>http://liuxueyang.github.io/posts/zoj-2110-tempter-of-the-bone-dfs&#43;%E5%89%AA%E6%9E%9D/</link>
       <pubDate>Sat, 06 Apr 2013 23:20:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/zoj-2110-tempter-of-the-bone-dfs&#43;%E5%89%AA%E6%9E%9D/</guid>
       <description>题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1110 题意： 给一个矩阵，‘X’代表墙壁，‘.’代表空格，‘S’代表起始位置，‘D’代表终点。从起点开始，每个空格只许经过一次，求在规定的时间t的时候，能否正好到达终点。每走一个花费1个单位时间。输入n,m,t，分别代表矩阵的行，列，规定的时间。 思路： 深度优先搜索，从起点开始，按照四个方向搜索，判断某个方向的下一个方格如果不是墙壁的话，就把它标为墙壁，然后从这个点继续往下搜索，如果从这个点往下搜索失败后，就要把这个点标记回原来的空格符号：‘.’。然后尝试下一个方向。直到i == di, j == dj, t == T的时候，表示搜索成功，flag = true; return; 其中si sj 是起点位置，di dj是终点位置，T是当前所花费的时间。 然后还有几处剪枝：如果这个矩阵的空格的数目小于等于时间t，那么不可能成功。这在主函数里面可以剪枝。在dfs的过程中，如果发现剩余的时间小于当前位置到终点的最小距离，可以直接判断搜索失败；如果剩余的时间和当前位置到终点的最小时间的差值是奇数的话，可以判断搜索一定失败，可以剪枝，如果是偶数的话，则可能成功。 今天突然发现，以前写的解题报告太搓了……向kedebug的博客学习，O(∩_∩)O哈哈~加油
 #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;stack&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;algorithm&amp;gt; #define lson l, m, rt&amp;lt;&amp;lt;1 #define rson m+1, r, rt&amp;lt;&amp;lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; bool flag; char s[9][9]; int t, n, m, si, sj, di, dj; int dir[4][4] = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}}; void dfs(int i, int j, int T){ if (i == di &amp;amp;&amp;amp; j == dj &amp;amp;&amp;amp; T == t){ flag = true; return; } if (i &amp;lt;= 0 || j &amp;lt;= 0 || i &amp;gt; n || j &amp;gt; m) return; int temp = t - T - abs(i-di) - abs(j-dj); if (temp &amp;lt; 0 || temp&amp;amp;1)return; for (int k = 0; k &amp;lt; 4; ++k){ if (s[i+dir[k][0]][j+dir[k][1]] !</description>

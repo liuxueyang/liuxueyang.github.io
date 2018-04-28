@@ -6,6 +6,9 @@
     <description>Recent content in Tyvj on LXY Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <managingEditor>your@email.com (Aos Dabbagh)</managingEditor>
+    <webMaster>your@email.com (Aos Dabbagh)</webMaster>
+    <copyright>(c) 2008 - 2014</copyright>
     <lastBuildDate>Mon, 08 Jul 2013 23:33:00 +0000</lastBuildDate>
     
 	<atom:link href="http://liuxueyang.github.io/tags/tyvj/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +18,7 @@
       <title>tyvj1022 - 进制转换 ——进制为负数</title>
       <link>http://liuxueyang.github.io/posts/tyvj1022---%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2-%E8%BF%9B%E5%88%B6%E4%B8%BA%E8%B4%9F%E6%95%B0/</link>
       <pubDate>Mon, 08 Jul 2013 23:33:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/tyvj1022---%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2-%E8%BF%9B%E5%88%B6%E4%B8%BA%E8%B4%9F%E6%95%B0/</guid>
       <description>题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1022
 #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cmath&amp;gt; long long int n, k, r; int a[100]; int main(void) { scanf(&amp;quot;%lld&amp;quot;,&amp;amp;n); int j=0; if(!n){printf(&amp;quot;0\n&amp;quot;);return 0;} while(n) {k=n/(-2); r=n-(-2)*k; if(r==-1) n=k+1,r=1; else n=k; a[j++]=r; } for(int k=j-1;k&amp;gt;=0;--k)printf(&amp;quot;%d&amp;quot;,a[k]);printf(&amp;quot;\n&amp;quot;); return 0; }  =_=</description>
@@ -25,7 +28,7 @@
       <title>tyvj1023 - 奶牛的锻炼 ——DP</title>
       <link>http://liuxueyang.github.io/posts/tyvj1023---%E5%A5%B6%E7%89%9B%E7%9A%84%E9%94%BB%E7%82%BC-dp/</link>
       <pubDate>Mon, 08 Jul 2013 23:31:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/tyvj1023---%E5%A5%B6%E7%89%9B%E7%9A%84%E9%94%BB%E7%82%BC-dp/</guid>
       <description>题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1023
 #include &amp;lt;cstdio&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;cstdlib&amp;gt; using namespace std; int a[2002],f[2002][502]; int main(void) { //freopen(&amp;quot;in1.txt&amp;quot;,&amp;quot;r&amp;quot;,stdin); int n, m; scanf(&amp;quot;%d%d&amp;quot;,&amp;amp;n,&amp;amp;m); for(int i=1;i&amp;lt;=n;scanf(&amp;quot;%d&amp;quot;,a+i++)); f[0][0]=0,f[1][1]=a[1]; for(int i=1;i&amp;lt;=n;++i) for(int j=0;j&amp;lt;=m;++j) { if(!j) for(int k=1;k&amp;lt;=i;++k) f[i][0]=max(max(f[i-1][0],f[i-k][k]),f[i][0]); else f[i][j]=f[i-1][j-1]+a[i]; //printf(&amp;quot;%d &amp;quot;,f[i][j]); } printf(&amp;quot;\n%d\n&amp;quot;,f[n][0]); return 0; }  =_=</description>
@@ -35,7 +38,7 @@
       <title>tyvj1018 - 阶乘统计 ——暴力</title>
       <link>http://liuxueyang.github.io/posts/tyvj1018---%E9%98%B6%E4%B9%98%E7%BB%9F%E8%AE%A1-%E6%9A%B4%E5%8A%9B/</link>
       <pubDate>Sun, 07 Jul 2013 23:46:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/tyvj1018---%E9%98%B6%E4%B9%98%E7%BB%9F%E8%AE%A1-%E6%9A%B4%E5%8A%9B/</guid>
       <description>题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1018 范围只有20，在long long Int范围内。
 #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cmath&amp;gt; using namespace std; int main(void) { freopen(&amp;quot;in1.txt&amp;quot;, &amp;quot;r&amp;quot;, stdin); int n, k, h, a[10]; long long int s=1; scanf(&amp;quot;%d%d&amp;quot;,&amp;amp;n,&amp;amp;k); h=k; for(int i=1;i&amp;lt;=n;++i)s*=i; while (s%10==0) s/=10; while (k--) if(s) a[k]=s%10,s/=10; else break; for (int i=k+1;i&amp;lt;=h-1;++i)printf(&amp;quot;%d&amp;quot;,a[i]);printf(&amp;quot;\n&amp;quot;); return 0; }  =_=</description>
@@ -45,7 +48,7 @@
       <title>tyvj1017 - 冗余关系 ——并查集</title>
       <link>http://liuxueyang.github.io/posts/tyvj1017---%E5%86%97%E4%BD%99%E5%85%B3%E7%B3%BB-%E5%B9%B6%E6%9F%A5%E9%9B%86/</link>
       <pubDate>Sun, 07 Jul 2013 23:22:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/tyvj1017---%E5%86%97%E4%BD%99%E5%85%B3%E7%B3%BB-%E5%B9%B6%E6%9F%A5%E9%9B%86/</guid>
       <description>题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1017 并查集
 #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; using namespace std; int parent[1001],n,m; void init() {for(int i=1;i&amp;lt;=m;++i)parent[i]=-1; } int Find(int x) {int s; for(s=x;parent[s]&amp;gt;=0;s=parent[s]);while (s!=x) {int tmp=parent[x];parent[x]=s;x=tmp; }return s; } void Union(int R1,int R2) { int r1=Find(R1),r2=Find(R2),tmp=parent[r1]+parent[r2]; if (parent[r1]&amp;lt;parent[r2]) parent[r2]=r1,parent[r1]=tmp; else parent[r1]=r2,parent[r2]=tmp; } int main(void) { freopen(&amp;quot;in1.txt&amp;quot;,&amp;quot;r&amp;quot;,stdin); int cnt=0;scanf(&amp;quot;%d%d&amp;quot;,&amp;amp;n,&amp;amp;m); init(); while (n--) { int a,b; scanf(&amp;quot;%d%d&amp;quot;,&amp;amp;a,&amp;amp;b); if(Find(a)==Find(b)) cnt++; else Union(a,b); } printf(&amp;quot;%d\n&amp;quot;,cnt); return 0; }  =_=</description>
@@ -55,7 +58,7 @@
       <title>tyvj1015 - 公路乘车  ——完全背包</title>
       <link>http://liuxueyang.github.io/posts/tyvj1015---%E5%85%AC%E8%B7%AF%E4%B9%98%E8%BD%A6--%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/</link>
       <pubDate>Sun, 07 Jul 2013 21:14:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/tyvj1015---%E5%85%AC%E8%B7%AF%E4%B9%98%E8%BD%A6--%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/</guid>
       <description>题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1015 完全背包
 #include &amp;lt;cstdio&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;cstring&amp;gt; using namespace std; int c[11],f[101]; int main(void) { freopen(&amp;quot;in1.txt&amp;quot;,&amp;quot;r&amp;quot;,stdin); int n,i,j;for(i=1;i&amp;lt;=10;scanf(&amp;quot;%d&amp;quot;,c+i++)) ;scanf(&amp;quot;%d&amp;quot;,&amp;amp;n); for(i=1;i&amp;lt;=n;f[i++]=100000) ; for(i=1;i&amp;lt;=10;++i)for(j=i;j&amp;lt;=n;++j)f[j]=min(f[j],f[j-i]+c[i]); printf(&amp;quot;%d\n&amp;quot;,f[n]); return 0; }  0x3f3f3f3f可以memset-_-#</description>
@@ -65,7 +68,7 @@
       <title>tyvj1014 - 乘法游戏  ——记忆化搜索DP</title>
       <link>http://liuxueyang.github.io/posts/tyvj1014---%E4%B9%98%E6%B3%95%E6%B8%B8%E6%88%8F--%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2dp/</link>
       <pubDate>Sun, 07 Jul 2013 17:28:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/tyvj1014---%E4%B9%98%E6%B3%95%E6%B8%B8%E6%88%8F--%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2dp/</guid>
       <description>题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1014 f[i][j]表示区间［i，j］所得到的最小值。 不断地划分区间，把结果保存起来。
 #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;algorithm&amp;gt; using namespace std; long long int f[101][101];int a[101], i, j, n, INF=0x7f7f7f7f; void dfs(int l, int r) { if(r-l&amp;lt;=1) {f[l][r]=0; return;} if(f[l][r]!=INF) return; for(int i=l+1;i&amp;lt;=r-1;++i) dfs(1,i),dfs(i,r),f[l][r]=min(f[l][r],f[l][i]+f[i][r]+a[i]*a[l]*a[r]); } int main(void) { freopen(&amp;quot;in1.txt&amp;quot;,&amp;quot;r&amp;quot;,stdin); scanf(&amp;quot;%d&amp;quot;,&amp;amp;n);for(i=1;i&amp;lt;=n;scanf(&amp;quot;%d&amp;quot;,a+i++)) ;for(i=0;i&amp;lt;=n;++i)for(j=0;j&amp;lt;=n;++j)f[i][j]=INF;dfs(1,n);printf(&amp;quot;%lld\n&amp;quot;,f[1][n]); return 0; }  =_=</description>
@@ -75,7 +78,7 @@
       <title>tyvj1013 - 找啊找啊找GF  ——二维背包变种</title>
       <link>http://liuxueyang.github.io/posts/tyvj1013---%E6%89%BE%E5%95%8A%E6%89%BE%E5%95%8A%E6%89%BEgf--%E4%BA%8C%E7%BB%B4%E8%83%8C%E5%8C%85%E5%8F%98%E7%A7%8D/</link>
       <pubDate>Sun, 07 Jul 2013 16:51:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/tyvj1013---%E6%89%BE%E5%95%8A%E6%89%BE%E5%95%8A%E6%89%BEgf--%E4%BA%8C%E7%BB%B4%E8%83%8C%E5%8C%85%E5%8F%98%E7%A7%8D/</guid>
       <description>题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1013 好吧，这题没节操=_= 状态f[u,v,i]表示：消费u的人民币和v的人品同时泡到i个mm所需要的最少时间。
 #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;algorithm&amp;gt; using namespace std; int f[101][101][101], r[101], rp[101], t[101], rmb, RP, n, INF=0x7f7f7f7f; int main(void) { freopen(&amp;quot;in1.txt&amp;quot;,&amp;quot;r&amp;quot;,stdin); scanf(&amp;quot;%d&amp;quot;,&amp;amp;n);for(int i=1;i&amp;lt;=n;scanf(&amp;quot;%d%d%d&amp;quot;,r+i,rp+i,t+i),++i) ;scanf(&amp;quot;%d%d&amp;quot;,&amp;amp;rmb,&amp;amp;RP); for(int i=0;i&amp;lt;=rmb;++i)for(int j=0;j&amp;lt;=RP;++j)for(int k=1;k&amp;lt;=n;++k)f[i][j][k]=INF; for(int i=1;i&amp;lt;=n;++i)for(int u=rmb;u&amp;gt;=r[i];--u)for(int v=RP;v&amp;gt;=rp[i];--v)for(int j=1;j&amp;lt;=i;++j) if(f[u][v][j-1]!=INF) f[u][v][j]=min(f[u][v][j],f[u-r[i]][v-rp[i]][j-1]+t[i]); for(int i=n;i&amp;gt;=0;--i)if(f[rmb][RP][i]!=INF){printf(&amp;quot;%d\n&amp;quot;,f[rmb][RP][i]);break;} return 0; }  为了使泡到的mm尽量多，所以要从后往前找合法的解，只要找到就输出，然后break; =_=</description>
@@ -85,7 +88,7 @@
       <title>tyvj1012 P1012 - 火柴棒等式  ——暴力枚举</title>
       <link>http://liuxueyang.github.io/posts/tyvj1012-p1012---%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F--%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/</link>
       <pubDate>Sun, 07 Jul 2013 11:37:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/tyvj1012-p1012---%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F--%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/</guid>
       <description>题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1012 可以发现：最大的数字绝对不超过999，只要枚举出0～999所有数字需要的火柴数，然后再枚举C和A，得到B＝C-A，看看三个数字的火柴数目是否等于n就可以了。
 #include &amp;lt;cstdio&amp;gt; int a[10] = {6,2,5,5,4,5,6,3,7,6},b[1000],n,cnt; int main(void) { freopen(&amp;quot;in1.txt&amp;quot;,&amp;quot;r&amp;quot;,stdin); cnt=0; scanf(&amp;quot;%d&amp;quot;,&amp;amp;n),n-=4;for(int i=0;i&amp;lt;10;++i)b[i]=a[i]; for(int i=10;i&amp;lt;=999;++i) b[i]=b[i/10]+b[i%10]; for(int i=0;i&amp;lt;=999;++i)if(b[i]&amp;lt;n) for(int j=0;j&amp;lt;=i;++j)if(b[i]+b[j]+b[i-j]==n)cnt++; printf(&amp;quot;%d\n&amp;quot;,cnt); return 0; }  还有一个比较快的思路，因为n最大是24，所以可以用上面的程序，把这24个数字都算出来，就是一个大小为24个数组，直接输出就可以。 写给自己看的。。=_=</description>
@@ -95,7 +98,7 @@
       <title>tyvj1011 - 传纸条  ——DP</title>
       <link>http://liuxueyang.github.io/posts/tyvj1011---%E4%BC%A0%E7%BA%B8%E6%9D%A1--dp/</link>
       <pubDate>Sun, 07 Jul 2013 11:32:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/tyvj1011---%E4%BC%A0%E7%BA%B8%E6%9D%A1--dp/</guid>
       <description>题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1011 状态转移方程： f[k,x1,x2] = max(f[k-1,x1,x2],f[k-1,x1-1,x2],f[k-1,x1-1,x2-1],f[k-1,x1,x2-1]) + a[y1,x1] + a[y2,x2]; f[k,x1,x2]表示，第K步的时候，一条路的横坐标是x1,另一条路的横坐标是x2的时候所得到的最优解。另外，还要考虑一下，当x1==x2的时候的情况，这个时候，只能允许一条路走到那个位置。
 #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;cstring&amp;gt; using namespace std; int a[51][51],f[100][51][51]; int main(void) { freopen(&amp;quot;in1.txt&amp;quot;,&amp;quot;r&amp;quot;,stdin); int N,M; scanf(&amp;quot;%d%d&amp;quot;, &amp;amp;M, &amp;amp;N);for(int i=1;i&amp;lt;=M;++i)for(int j=1;j&amp;lt;=N;++j)scanf(&amp;quot;%d&amp;quot;,&amp;amp;a[i][j]); for(int k=1;k&amp;lt;=M+N-3;++k)for(int x1=1;x1&amp;lt;=min(N,k+1);++x1)for(int x2=1;x2&amp;lt;=min(N,k+1);++x2) { f[k][x1][x2]=max(max(f[k-1][x1][x2],f[k-1][x1-1][x2]),max(f[k-1][x1][x2-1],f[k-1][x1-1][x2-1])); if (x1==x2)f[k][x1][x2]+=a[k-x1+2][x1]; else f[k][x1][x2]+=(a[k-x1+2][x1]+a[k-x2+2][x2]); } printf(&amp;quot;%d\n&amp;quot;,f[M+N-3][N][N-1]); return 0; }  昨天看了一篇文章，才发现，其实，题解是写给自己看的-_-#</description>
@@ -105,7 +108,7 @@
       <title>tyvj1004 滑雪</title>
       <link>http://liuxueyang.github.io/posts/tyvj1004-%E6%BB%91%E9%9B%AA/</link>
       <pubDate>Sat, 06 Jul 2013 15:06:00 +0000</pubDate>
-      
+      <author>your@email.com (Aos Dabbagh)</author>
       <guid>http://liuxueyang.github.io/posts/tyvj1004-%E6%BB%91%E9%9B%AA/</guid>
       <description>题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1004 记忆化搜索
 #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;cstring&amp;gt; using namespace std; int m[102][102], dp[102][102], r, C; int dfs(int x, int y) { if (dp[x][y] &amp;gt; 0) return dp[x][y]; dp[x][y]=1; int a,b,c,d; a=b=c=d=0; if (x-1&amp;gt;=1 &amp;amp;&amp;amp; m[x-1][y] &amp;lt; m[x][y]) a = dfs(x-1,y); if (x+1&amp;lt;=r &amp;amp;&amp;amp; m[x+1][y] &amp;lt; m[x][y]) b = dfs(x+1,y); if (y-1&amp;gt;=1 &amp;amp;&amp;amp; m[x][y-1] &amp;lt; m[x][y]) c = dfs(x,y-1); if (y+1&amp;lt;=C &amp;amp;&amp;amp; m[x][y+1] &amp;lt; m[x][y]) d = dfs(x,y+1); dp[x][y] = max(max(a,b),max(c,d))+1; return dp[x][y]; } int main(void) { int Max; freopen(&amp;quot;in.</description>
