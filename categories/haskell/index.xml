@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Haskell on 黑历史</title>
+    <link>http://liuxueyang.github.io/categories/haskell/</link>
+    <description>Recent content in Haskell on 黑历史</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 19 Apr 2017 09:29:24 +0800</lastBuildDate>
+    
+	<atom:link href="http://liuxueyang.github.io/categories/haskell/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Typeclass in Haskell筆記</title>
+      <link>http://liuxueyang.github.io/blog/2017/04/19/typeclass-in-haskell%E7%AD%86%E8%A8%98/</link>
+      <pubDate>Wed, 19 Apr 2017 09:29:24 +0800</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2017/04/19/typeclass-in-haskell%E7%AD%86%E8%A8%98/</guid>
+      <description>代數數據類型 這樣定義一個類型：
+data Name = Name String String  Name既是類型名，也是一個Value Constructor，一個類型通常有多個Value Constructor，不過按照習慣，如果一個類型僅僅有一個Value Constructor，那麼它的名字通常和類型名同名。
+Value Constructor事實上只是一個函數，這也就決定了，不同的類型不能夠擁有相同名字的Value Constructor。
+創建一個對象：
+λ&amp;gt; Name &amp;quot;aries&amp;quot; &amp;quot;abel&amp;quot; Name &amp;quot;aries&amp;quot; &amp;quot;abel&amp;quot; :: Name  有多個Value Constructor的例子：
+data Shape = Rectangle Point Point | Circle Point Float data Point = Point Float Float  創建一個Circle對象：
+λ&amp;gt; Point 3 4 Point 3 4 :: Point λ&amp;gt; Circle (Point 3 4) 3 Circle (Point 3 4) 3 :: Shape  Record 在代數類型裏面每個field所代表的意義不明確，並且如果需要得到某個field的值只能用模式匹配，非常繁瑣，所以這個時候Record就有用了：</description>
+    </item>
+    
+    <item>
+      <title>foldl和foldr的不同點</title>
+      <link>http://liuxueyang.github.io/blog/2017/04/18/foldl%E5%92%8Cfoldr%E7%9A%84%E4%B8%8D%E5%90%8C%E9%BB%9E/</link>
+      <pubDate>Tue, 18 Apr 2017 16:37:32 +0800</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2017/04/18/foldl%E5%92%8Cfoldr%E7%9A%84%E4%B8%8D%E5%90%8C%E9%BB%9E/</guid>
+      <description>foldl foldl這個函數的類型是：
+(a -&amp;gt; b -&amp;gt; a) -&amp;gt; a -&amp;gt; [b] -&amp;gt; b  它接收一個函數、一個起始值、一個列表。它的作用相當于：
+foldl f z [x_1, x_2, ..., x_n] == (... ((z `f` x_1) `f` x_2) `f` ...) `f` x_n  也就是它把起始值作爲f的*左參數*，從左邊迭代列表。
+可以這樣實現這個函數：
+mfoldl&#39; :: (a -&amp;gt; b -&amp;gt; a) -&amp;gt; a -&amp;gt; [b] -&amp;gt; a mfoldl&#39; f accu [] = accu mfoldl&#39; f accu (x : xs) = mfoldl&#39; f (accu `f` x) xs  λ&amp;gt; mfoldl&#39; (-) 0 [1.</description>
+    </item>
+    
+    <item>
+      <title>Haskel筆記 10</title>
+      <link>http://liuxueyang.github.io/blog/2017/04/18/haskel%E7%AD%86%E8%A8%98-10/</link>
+      <pubDate>Tue, 18 Apr 2017 15:03:07 +0800</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2017/04/18/haskel%E7%AD%86%E8%A8%98-10/</guid>
+      <description>這是Functionally Solving Problems一章的筆記。
+Reverse Polish notation calculator polish :: (Num a, Read a) =&amp;gt; String -&amp;gt; a polish = head . foldl folder [] . words where folder (x : y : xs) &amp;quot;+&amp;quot; = (y + x) : xs folder (x : y : xs) &amp;quot;*&amp;quot; = (y * x) : xs folder (x : y : xs) &amp;quot;-&amp;quot; = (y - x) : xs folder accu x = read x : accu  求解逆波蘭算數表達式。</description>
+    </item>
+    
+    <item>
+      <title>Haskell 笔记9</title>
+      <link>http://liuxueyang.github.io/blog/2017/04/13/haskell-%E7%AC%94%E8%AE%B09/</link>
+      <pubDate>Thu, 13 Apr 2017 08:01:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2017/04/13/haskell-%E7%AC%94%E8%AE%B09/</guid>
+      <description>这是第九章的笔记
+Hello, world! Files and streams getContents：从标准输入读数据，返回IO Action，一直到文件末尾。
+-- print lines whose length is less than 10 main = do lines &amp;lt;- getContents putStr . shortLines $ lines shortLines :: String -&amp;gt; String shortLines = unlines . filter ((&amp;lt; 10) . length) . lines -- Function composition简直好用  interact：接收一个类型为String -&amp;gt; String的函数作为参数，返回一个IO Action，这个IO Action接收一个输入，用之前的String -&amp;gt; String函数处理之后，然后返回一个IO Action，这个IO Action执行的时候会输出处理之后的字符串。
+main = interact shortLines shortLines = unlines . filter ((&amp;lt;5) . length) .</description>
+    </item>
+    
+    <item>
+      <title>Haskell 笔记7</title>
+      <link>http://liuxueyang.github.io/blog/2017/04/12/haskell-%E7%AC%94%E8%AE%B07/</link>
+      <pubDate>Wed, 12 Apr 2017 11:16:43 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2017/04/12/haskell-%E7%AC%94%E8%AE%B07/</guid>
+      <description>这是一些阅读Learn You a Haskell for Great Good!的时候的笔记，之前用Latex写的，放在Dropbox里面，现在想把它们整理一下，放在博客里。这是第七章 Modules的笔记。
+Loading modules 之前用TeXmacs虽然挺方便，但还是感觉有点不舒服。所以还是换回来吧。
+在默认的Prelude模块里面，已经默认引入了一些Data.List中的函数。另外，引入Data.List模块的时候不需要使用带限定符的方法，因为Prelude里面的函数除了默认引入的Data.List的部分函数以外，不会和Data.List里面的其它函数命名冲突。然而，如果再引用其它模块的时候就不一定了。一般情况下只需要用一般的引入模块的方法就够了：import Data.List
+Data.List group这个函数，它接收一个列表，把列表中相邻并且相等的元素合成一个子列表，对于相等但是不相邻的元素，它会分别合成独立的子列表，也就是说，它并不会排序。比如：
+λ&amp;gt; group [1, 2, 2, 2, 3, 4, 2, 2, 2, 5, 6] [[1],[2,2,2],[3],[4],[2,2,2],[5],[6]]  如果想要一个列表中的某个元素的个数，可以这样做：
+λ&amp;gt; map (\ xs@(x : xs&#39;) -&amp;gt; (x, length xs)) $ group . sort $ [1, 2, 2, 2, 3, 4, 2, 2, 2, 5, 6] [(1,1),(2,6),(3,1),(4,1),(5,1),(6,1)]  这里我用到了function composition(.)、function application($)、lambda表达式、lambda表达式中的模式匹配、用@符号来捕获整个模式（注意它的用法，用@符号来把整个模式和部分模式分隔开）。
+init函数的意思是得到列表的前n - 1个元素，inits的意思是依次得到列表的前0, 1, 2 ... n个元素组成一个嵌套列表。</description>
+    </item>
+    
+    <item>
+      <title>Haskell 笔记1</title>
+      <link>http://liuxueyang.github.io/blog/2017/04/12/haskell-%E7%AC%94%E8%AE%B01/</link>
+      <pubDate>Wed, 12 Apr 2017 10:35:34 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2017/04/12/haskell-%E7%AC%94%E8%AE%B01/</guid>
+      <description>这是一些阅读Learn You a Haskell for Great Good!的时候的笔记，之前用Latex写的，放在Dropbox里面，现在想把它们整理一下，放在博客里。这是第二章 Starting Out的笔记。
+Baby&amp;rsquo;s first functions 2017/03/15 10:32:18
+function call的优先级最高。
+定义函数这样：
+doubleMe x = x * 2  和SML基本一样。
+doubleUs x y = doubleMe x + doubleMe y doubleUs1(x, y) = doubleMe x + doubleMe y  这两个的区别？
+第一个是curried function，第二个函数接收一个参数，这个参数是一个含有两个元素的tuple，也叫做pair。
+函数调用格式：
+doubleUs 3 4 doubleUs1(3, 4)  if else格式：
+if x &amp;gt; 50 then x else x * 3  和SML基本一样。同样，else部分不能省略。因为这是一个「表达式」，表达式必须有一个值，所以，不管条件是否满足，一定要有一部分被求值，并且当作这个表达式的值。并且，这两部分的表达式的返回值的类型必须一样。
+不能在ghci里面像在文件里面那样定义函数。有几种解决方法：defun function in ghci</description>
+    </item>
+    
+  </channel>
+</rss>

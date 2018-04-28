@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubuntu on 黑历史</title>
+    <link>http://liuxueyang.github.io/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on 黑历史</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 27 Jun 2013 20:39:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://liuxueyang.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ubuntu12.04 修复Grub2</title>
+      <link>http://liuxueyang.github.io/blog/2013/06/27/ubuntu12.04-%E4%BF%AE%E5%A4%8Dgrub2/</link>
+      <pubDate>Thu, 27 Jun 2013 20:39:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/06/27/ubuntu12.04-%E4%BF%AE%E5%A4%8Dgrub2/</guid>
+      <description>电脑双系统，但是把win7重装了之后，会发现grub坏了，只能进入win7。 遇到过好几次，虽然每次都成功解决问题了，但是都花费了不少时间。 所以，总结一下，基本是从网上找到的方法，有的行不通，有的可以。就我的尝试，总结了一下对我的电脑来说，比较有效的方法。 首先说明：我的boot分区没有单独分区！ 第一步： 用光盘进入Ubuntu LiveCD，打开终端，
+sudo fdisk -l  找到 id 是83的那行，可惜我的有两个：/dev/sda3 和 /dev/sda8 。一般的应该有一行的……囧，可能是装系统的时候没搞好o(╯□╰)o 后来尝试发现，用 /dev/sda3 才是正确的。记住这个号码，考虑到一般性，这里记为/dev/sdaX 第二步：sudo -i 获得root权限 mkdir /media/tempdir   挂载：
+mount /dev/sdaX /media/tempdir grub-install --root-directory=/media/tempdir /dev/sda   第三步：重启，可能会进入到 grub rescue 界面。 输入set，查看相应的设置。然后修改：
+set prefix=(hd0,msdos3)/boot/grub set root=hd0,msdos3 insmod normal normal   然后就发现进入原来的grub启动界面了。进入Ubunt系统 第四步：打开终端， 重启，收工。
+sudo update-grub sudo grub-install /dev/sda   注：参考网站 http://forum.ubuntu.org.cn/viewtopic.php?f=139&amp;amp;t=348503 http://hi.baidu.com/radio585/item/87462cf98bc70f1ae3e3bdab http://www.linuxidc.com/Linux/2012-06/61983p2.htm http://forum.ubuntu.org.cn/viewtopic.php?t=297514 为了以后方便，我这些网页里的内容做成文件的格式留在这里，省的以后再搞。。=_= http://s.yunio.com/Ee6n8z  为了上传方便，这货是.rar格式的。可以先把文件在win下解压，拷到U盘里面，然后用LiveCD进入Ubuntu再看，文件时图片和.pdf，Ubuntu兼容。 上面那个链接貌似失效了……囧。追加一个百度网盘：http://pan.baidu.com/share/link?shareid=1185935304&amp;amp;uk=322048121</description>
+    </item>
+    
+    <item>
+      <title>WPS for Ubuntu!</title>
+      <link>http://liuxueyang.github.io/blog/2013/05/18/wps-for-ubuntu/</link>
+      <pubDate>Sat, 18 May 2013 19:28:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/05/18/wps-for-ubuntu/</guid>
+      <description>好兴奋！终于可以在Ubunt下面看word和ppt了～ 虽然WPS for Linux貌似还不那么稳定，但是刚安装好感觉还不错，目前感觉很爽！ 下载地址：http://community.wps.cn/download/ 下载的时候下载deb包，然后用软件中心安装就ＯＫ 然后安装好后，发现少字体，只需要安装上那些字体就行了，地址：http://bbs.wps.cn/thread-22355435-1-1.html wps的论坛，看9楼神贴。金山快盘里面的下载地址http://www.kuaipan.cn/file/id_19418406138675408.htm 依然是用软件中心安装字体，好兴奋～</description>
+    </item>
+    
+    <item>
+      <title>ubuntu下歌词显示软件</title>
+      <link>http://liuxueyang.github.io/blog/2013/05/18/ubuntu%E4%B8%8B%E6%AD%8C%E8%AF%8D%E6%98%BE%E7%A4%BA%E8%BD%AF%E4%BB%B6/</link>
+      <pubDate>Sat, 18 May 2013 18:56:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/05/18/ubuntu%E4%B8%8B%E6%AD%8C%E8%AF%8D%E6%98%BE%E7%A4%BA%E8%BD%AF%E4%BB%B6/</guid>
+      <description>软件的名字是：osd-lyrics https://code.google.com/p/osd-lyrics/ 感觉很不错，支持ＶＬＣ 安装方法：https://code.google.com/p/osd-lyrics/wiki/InstallUbuntu</description>
+    </item>
+    
+    <item>
+      <title>ubuntu 12.04 安装之后的配置问题</title>
+      <link>http://liuxueyang.github.io/blog/2012/11/20/ubuntu-12.04-%E5%AE%89%E8%A3%85%E4%B9%8B%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Tue, 20 Nov 2012 12:07:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2012/11/20/ubuntu-12.04-%E5%AE%89%E8%A3%85%E4%B9%8B%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/</guid>
+      <description> 首先换软件源。 如果安装vim的时候出现问题，比如： Reading package lists&amp;hellip; DoneBuilding dependency tree Reading state information&amp;hellip; DonePackage vim is not available, but is referred to by another package.This may mean that the package is missing, has been obsoleted, oris only available from another source E: Package &amp;lsquo;vim&amp;rsquo; has no installation candidate 执行 sudo apt-get update 就可以了 如果刚刚安装上系统，没有中文输入法，也没有输入法的切换面板，执行： killall ibus-daemon ibus-daemon -d 然后就出现了输入法切换面板，点击，找到 preferences 选项，在 inputmethod 里面添加中文输入法就可以了。 设置允许root 登录 ： vi /etc/lightdm/lightdm.conf. 在这个文件末尾加上下面两行代码 greeter-show-manual-login=trueallow-guest=false 保存退出。然后 sudo passwd root 设置root登录密码就可以了。  </description>
+    </item>
+    
+    <item>
+      <title>ubuntu12.04 iNodeClient 连校园网</title>
+      <link>http://liuxueyang.github.io/blog/2012/11/12/ubuntu12.04-inodeclient-%E8%BF%9E%E6%A0%A1%E5%9B%AD%E7%BD%91/</link>
+      <pubDate>Mon, 12 Nov 2012 22:46:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2012/11/12/ubuntu12.04-inodeclient-%E8%BF%9E%E6%A0%A1%E5%9B%AD%E7%BD%91/</guid>
+      <description>百度文库里面有一个文档，叫做”ubuntu_12.04_安装_iNodeClient_教程“，按照那个做，安装上之后然后发现能通过身份验证，但是连不上网，继续执行下面的操作。 sudo chmod -R 777 /home/suruibin/iNodeClient（后面这个路径改成你自己的安装目录）
+进入目录 cd iNodeClient 安装：sudo ./install.sh
+sudo ln -s /usr/lib/i386-linux-gnu/libtiff.so.4 /usr/lib/i386-linux-gnu/libtiff.so.3
+sudo apt-get install libjpeg62
+从网上找到libtiff.so.4这个文件，执行 sudo cp libtiff.so.4 /usr/lib
+到此iNodeClient安装好了，输入用户名，密码什么的就可以了。
+2012-11-12 22:45:04
+这个方法以前一直可以，但是最近貌似不行了……囧，后来找各种方法，http://hi.baidu.com/shen1000shen/item/c935a9383b615542033edcf9 这位神牛总结的很好，佩服！终于连上网了，Ubuntu爽到爆～</description>
+    </item>
+    
+  </channel>
+</rss>

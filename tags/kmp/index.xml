@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kmp on 黑历史</title>
+    <link>http://liuxueyang.github.io/tags/kmp/</link>
+    <description>Recent content in Kmp on 黑历史</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 03 Jun 2013 01:38:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://liuxueyang.github.io/tags/kmp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>NYOJ5 Binary String Matching ——KMP</title>
+      <link>http://liuxueyang.github.io/blog/2013/06/03/nyoj5-binary-string-matching-kmp/</link>
+      <pubDate>Mon, 03 Jun 2013 01:38:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/06/03/nyoj5-binary-string-matching-kmp/</guid>
+      <description>题目链接：http://acm.nyist.net/JudgeOnline/problem.php?pid=5 题目思路： 典型的KMP，关键就是修改一下，找到了模式串p之后，继续从大的串s里面模式串开始的位置的下一个位置开始找下一个。
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; using namespace std; char p[1000], s[1000]; int next[1000]; void getnext() { int i = 0, j = -1, len = strlen(p); next[0] = -1; while (i &amp;lt; len - 1) { if (j == -1 || p[j] == p[i]) { j++; i++; next[i] = j; } else j = next[j]; } } int kmp() { int i = -1, j = -1, lenp = strlen(p), lens = strlen(s); getnext(); int num = 0; while (i &amp;lt; lens) { if (j == -1 || s[i] == p[j]) {++i; ++j;} else j = next[j]; if (j == lenp) {i-=j; j = -1; num++;} } return num; } int main(void) { int n; while (~scanf(&amp;quot;%d&amp;quot;, &amp;amp;n)) while (n--){ scanf(&amp;quot;%s%s&amp;quot;, p, s); printf(&amp;quot;%d\n&amp;quot;, kmp()); } return 0; }  复习了一下KMP，很有意思~ 看到了一个STL的方法，碉堡了…… #include &amp;lt;cstdio&amp;gt; #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;cstring&amp;gt; using namespace std; string s, p; int main(void) { int n; while (~scanf(&amp;quot;%d&amp;quot;, &amp;amp;n)) { while (n--) { cin &amp;gt;&amp;gt; p &amp;gt;&amp;gt; s; int num = 0; unsigned ans = 0; ans = s.</description>
+    </item>
+    
+    <item>
+      <title>KMP示例程序</title>
+      <link>http://liuxueyang.github.io/blog/2013/06/03/kmp%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/</link>
+      <pubDate>Mon, 03 Jun 2013 01:28:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/06/03/kmp%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/</guid>
+      <description>输入： 数字N，然后是N组数据，每一组数据第一行是模式串p，第二行是一个大的字符创s，如果在s里面出现了p，那么输出p第一次出现的位置，否则输出No #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; using namespace std; char p[1000], s[1000]; int next[1000]; void getnext() { int i = 0, j = -1, len = strlen(p); next[0] = -1; while (i &amp;lt; len - 1) { if (j == -1 || p[j] == p[i]) { j++; i++; next[i] = j; } else j = next[j]; } } int kmp() { int i = -1, j = -1, lenp = strlen(p), lens = strlen(s); getnext(); while (j !</description>
+    </item>
+    
+    <item>
+      <title>poj 2752</title>
+      <link>http://liuxueyang.github.io/blog/2013/01/30/poj-2752/</link>
+      <pubDate>Wed, 30 Jan 2013 20:51:00 +0000</pubDate>
+      
+      <guid>http://liuxueyang.github.io/blog/2013/01/30/poj-2752/</guid>
+      <description>题目链接：http://poj.org/problem?id=2752 #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstring&amp;gt; #define N 400000 using namespace std; char s[N]; int next[N], a[N]; void getnext(char *p, int *next) { int i = 0, j = -1, len = strlen(p); next[0] = -1; while (i &amp;lt; len) { if (j == -1 || p[j] == p[i]) { i++; j++; next[i] = j; } else j = next[j]; } } int main(void) { freopen(&amp;quot;poj2752.in&amp;quot;, &amp;quot;r&amp;quot;, stdin); while (~scanf(&amp;quot;%s&amp;quot;, s)) { getnext(s, next); int len = strlen(s), i, k = 0; i = len; a[0] = len; while (next[i] &amp;gt; 0) { i = next[i]; a[++k] = i; } for (int j = k; j &amp;gt;= 0; --j) { printf(&amp;quot;%d&amp;quot;, a[j]); if (j) printf(&amp;quot; &amp;quot;); } printf(&amp;quot;\n&amp;quot;); } return 0; }  这道题目要求既是前缀字符串又是后缀字符串的所有可能的长度，正好运用了KMP算法里面next数组的意义，要保证结果是针对整个字符串的，所以在next数组中从后往前扫描即可，因为，next数组中，越往后，数字就越大，并且表示的是后缀和前缀相同的最大长度，所以所得到的结果顺序是反的，要求从小到大输出，逆序输出就可以了。</description>
+    </item>
+    
+  </channel>
+</rss>
