@@ -1,0 +1,190 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Checking whether a Graph is Bipartite</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2017-05-17T00:06:00&#43;08:00">May 17, 2017</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="/categories/algorithm/">Algorithm</a>
+                
+                    , 
+                    <a href="/categories/bfs/">BFS</a>
+                
+                    , 
+                    <a href="/categories/bipartite/">bipartite</a>
+                
+            </em>
+        </li>
+        
+
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="https://gitlab.com/liuxueyang/algorithms-on-graph-exercise/blob/master/week3/paths_in_graphs_problems.pdf">pdf</a></p>
+
+<p>题目给一个无向图，判定这个图是否是二分图。</p>
+
+<p>所谓二分图就是，用可以两种颜色给这个图的所有节点染色，并且满足相邻两个点颜色不同。</p>
+
+<p>思路：</p>
+
+<p>模拟染色过程，遍历所有点，如果这个点没有被染色，那么用BFS从这个点开始染色，当出现两个点颜色相同，说明这个图不是二分图。如果这个点已经被染色过，那么判断一下和这个点直接相连的点和它的颜色是否相同。</p>
+
+<pre><code class="language-cpp">// Sun May 14 21:24:26 CST 2017
+// Sun May 14 21:43:44 CST 2017
+
+
+/*
+  二分图判定
+*/
+
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+
+using std::vector;
+using std::queue;
+
+int bipartite(vector&lt;vector&lt;int&gt; &gt; &amp;adj) {
+  int result = 1;
+  vector&lt;int&gt; color(adj.size(), -1);
+  queue&lt;int&gt; que;
+
+  for (size_t i = 0; i &lt; adj.size(); ++i) {
+    if (-1 == color[i]) {
+      color[i] =1;
+      que.push(i);
+
+      while (!que.empty()) {
+	int cur = que.front();
+	que.pop();
+
+	for (auto v : adj[cur]) {
+	  if (-1 == color[v]) {
+	    color[v] = 1 - color[cur];
+	  }
+	  else if (color[v] == color[cur]) {
+	    return 0;
+	  }
+	}
+      }
+    }
+    else {
+      for (auto v : adj[i]) {
+	if (color[v] == color[i]) {
+	  return 0;
+	}
+      }
+    }
+  }
+  
+  return result;
+}
+
+int main() {
+  int n, m;
+  while (std::cin &gt;&gt; n &gt;&gt; m) {
+    vector&lt;vector&lt;int&gt; &gt; adj(n, vector&lt;int&gt;());
+    for (int i = 0; i &lt; m; i++) {
+      int x, y;
+      std::cin &gt;&gt; x &gt;&gt; y;
+      adj[x - 1].push_back(y - 1);
+      adj[y - 1].push_back(x - 1);
+    }
+    std::cout &lt;&lt; bipartite(adj) &lt;&lt; &quot;\n&quot;;
+  }
+}
+
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/computing-minimum-number-of-flight-segments/"><i class="fa fa-chevron-circle-left"></i> Computing the Minimum Number of Flight Segments</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/computing-minimum-cost-of-a-flight/">Computing the Minimum Cost of a Flight <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

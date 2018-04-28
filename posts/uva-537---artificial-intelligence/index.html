@@ -1,0 +1,243 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>uva 537 - Artificial Intelligence?</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2012-11-09T23:42:00Z">Nov 9, 2012</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/uva/">#Uva</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Physics teachers in high school often think that problems given as text are more demanding than pure computations. After all, the pupils have to read and understand the problem first!
+So they don&rsquo;t state a problem like <code>U=10V, I=5A, P=?&quot; but rather like</code>You have an electrical circuit that contains a battery with a voltage of U=10V and a light-bulb. There&rsquo;s an electrical current of I=5A through the bulb. Which power is generated in the bulb?&ldquo;.
+However, half of the pupils just don&rsquo;t pay attention to the text anyway. They just extract from the text what is given: U=10V, I=5A. Then they think: ``Which formulae do I know? Ah yes, P=U*I. Therefore P=10V*5A=500W. Finished.&rdquo;
+OK, this doesn&rsquo;t always work, so these pupils are usually not the top scorers in physics tests. But at least this simple algorithm is usually good enough to pass the class. (Sad but true.)
+Today we will check if a computer can pass a high school physics test. We will concentrate on the P-U-I type problems first. That means, problems in which two of power, voltage and current are given and the third is wanted.
+ 
+Your job is to write a program that reads such a text problem and solves it according to the simple algorithm given above.
+ </p>
+
+<p>The first line of the input file will contain the number of test cases.
+Each test case will consist of one line containing exactly two data fields and some additional arbitrary words. A data field will be of the formI=xA, U=xV or P=xW, where x is a real number.
+Directly before the unit (A, V or W) one of the prefixes m (milli), k (kilo) and M (Mega) may also occur. To summarize it: Data fields adhere to the following grammar:
+ 
+Additional assertions:
+ 
+ 
+For each test case, print three lines:
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+其实你看到下面的代码后不要害怕，有30多行是重复的……
+想法是 先找到等号，判断一下等号前面的字符，接着输入等号后面的浮点数，在得到数字后面的单位的前缀，就是 m k M 。
+然后再找下一个等号，进行上述操作，对于后面的字符，用 gets() 放进一个大的数组里面就可以了，没什么作用。
+WA了一次，原因是在最后一个case后面没有输出空行，题目要求是在每一个case后面输出空行，并不是在case之间输出空行，哎，又是错在了这里，以后要注意。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+char s[1000];
+
+int main(void)
+{
+    int t, i;
+    double I, U, P;
+
+    cin &gt;&gt; t;
+    for (i = 1; i &lt; t + 1; i++)
+    {
+        char c, ch, cc;
+        I = U = P = 0;
+        cout&lt;&lt;&quot;Problem #&quot;&lt;&lt;i&lt;&lt;endl;
+        getchar();
+        while ((c = getchar()))
+        {
+            if (c == '=')
+            {
+                if (ch=='I')
+                {
+                    cin &gt;&gt; I;
+                    cc = getchar();
+                    if (cc=='m') I*=0.001;
+                    else if (cc=='k') I*=1000;
+                    else if (cc=='M') I*=1000000;
+                    else ;
+                }
+                else if (ch=='U')
+                {
+                    cin &gt;&gt; U;
+                    cc = getchar();
+                    if (cc=='m') U*=0.001;
+                    else if (cc=='k') U*=1000;
+                    else if (cc=='M') U*=1000000;
+                    else ;
+                }
+                else if (ch=='P')
+                {
+                    cin &gt;&gt; P;
+                    cc = getchar();
+                    if (cc=='m') P*=0.001;
+                    else if (cc=='k') P*=1000;
+                    else if (cc=='M') P*=1000000;
+                    else ;
+                }
+                break;
+            }
+            ch = c;
+        }
+        while ((c = getchar()))
+        {
+            if (c == '=')
+            {
+                if (ch=='I')
+                {
+                    cin &gt;&gt; I;
+                    cc = getchar();
+                    if (cc=='m') I*=0.001;
+                    else if (cc=='k') I*=1000;
+                    else if (cc=='M') I*=1000000;
+                    else ;
+                }
+                else if (ch=='U')
+                {
+                    cin &gt;&gt; U;
+                    cc = getchar();
+                    if (cc=='m') U*=0.001;
+                    else if (cc=='k') U*=1000;
+                    else if (cc=='M') U*=1000000;
+                    else ;
+                }
+                else if (ch=='P')
+                {
+                    cin &gt;&gt; P;
+                    cc = getchar();
+                    if (cc=='m') P*=0.001;
+                    else if (cc=='k') P*=1000;
+                    else if (cc=='M') P*=1000000;
+                    else ;
+                }
+                break;
+            }
+            ch = c;
+        }
+        gets(s);
+        cout &lt;&lt; setprecision(2)&lt;&lt; fixed;
+        if (P!=0&amp;&amp;U!=0)    cout&lt;&lt;&quot;I=&quot;&lt;&lt;P/U&lt;&lt;'A'&lt;&lt;endl;
+        else if (P!=0&amp;&amp;I!=0)    cout&lt;&lt;&quot;U=&quot;&lt;&lt;P/I&lt;&lt;'V'&lt;&lt;endl;
+        else if (I!=0&amp;&amp;U!=0)    cout&lt;&lt;&quot;P=&quot;&lt;&lt;I*U&lt;&lt;'W'&lt;&lt;endl;
+        cout &lt;&lt; endl;
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+<p> 
+ </p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/vim-%E9%85%8D%E7%BD%AE-%E8%BD%AC%E8%BD%BD/"><i class="fa fa-chevron-circle-left"></i> vim 配置 转载</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/ubuntu12.04-inodeclient-%E8%BF%9E%E6%A0%A1%E5%9B%AD%E7%BD%91/">ubuntu12.04 iNodeClient 连校园网 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

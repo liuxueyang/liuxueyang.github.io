@@ -1,0 +1,241 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>const pointer and pointer to const in Cpp</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2017-03-06T10:03:28Z">Mar 6, 2017</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/c&#43;&#43;/">#C&#43;&#43;</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    
+
+<p>中文翻译好像有常量指针和指针常量这两种说法。然而翻译过来让我更加费解。还是英文更加直白。</p>
+
+<h2 id="pointer-to-const">pointer to const</h2>
+
+<pre><code class="language-cpp">const int b = 30;
+const int * bptr = &amp;b;
+</code></pre>
+
+<p><code>bptr</code>是一个指针，它指向的是一个类型为<code>const int</code>的对象。可以对<code>bptr</code>本身的内容（保存的地址）进行修改，但是不能对它指向的对象进行修改：</p>
+
+<pre><code class="language-cpp">const int c = 31;
+bptr = &amp;c;
+</code></pre>
+
+<p>这样，<code>bptr</code>就指向了另外一个const对象。</p>
+
+<p>有个例外：可以让pointer to const指向一个nonconst对象。</p>
+
+<pre><code class="language-cpp">int d = 32;
+bptr = &amp;d;
+</code></pre>
+
+<p>需要注意的是，即使<code>d</code>变量是nonconst，仍然不能通过<code>bptr</code>这个指针对<code>b</code>进行修改：</p>
+
+<pre><code class="language-cpp">// *bptr = 33; // error!
+</code></pre>
+
+<p>总之，</p>
+
+<blockquote>
+<p>我可以指向const对象，也可以指向nonconst对象，你也可以修改我。但是，你不能修改我指向的*对象*。
+&mdash; pointer to const</p>
+</blockquote>
+
+<h2 id="const-pointer">const pointer</h2>
+
+<pre><code class="language-cpp">int a = 3;
+int * const aptr = &amp;a;
+</code></pre>
+
+<p><code>aptr</code>是一个常量，同时是一个指针。不能对<code>aptr</code>里面保存的地址进行修改。但是可以对<code>aptr</code>所指向的对象进行修改：</p>
+
+<pre><code class="language-cpp">*aptr = 4;
+</code></pre>
+
+<h2 id="const-reference">const reference</h2>
+
+<p>一个例子：</p>
+
+<pre><code class="language-cpp">const int i = 42;
+const int &amp;ri = i;
+</code></pre>
+
+<p>例外：const reference 可以引用一个nonconst对象：</p>
+
+<pre><code class="language-cpp">int j = 10;
+const int &amp;rj = &amp;j;
+</code></pre>
+
+<p>这样做唯一的作用就是，不能够通过<code>rj</code>这个引用来改变<code>j</code>变量的值。这里和<code>pointer to const</code>是一样的。</p>
+
+<p>但是不能让一个nonconst reference引用一个const对象：</p>
+
+<pre><code>const int k = 30;
+// int &amp;rk = &amp;k; // error!
+</code></pre>
+
+<p>总之指向const的指针或者引用可以指向（引用）nonconst对象。但是指向nonconst的指针或者引用不可以指向（const）对象。</p>
+
+<hr />
+
+<p>这个问题以前就遇到过也弄明白了，然而过了很长时间又忘了。所以记在这里。</p>
+
+<p>一段完整的测试程序：</p>
+
+<pre><code class="language-cpp">// 2017/03/06 08:57:48
+
+/*
+const: const.cpp
+	g++ -Wall -std=gnu++11 const.cpp -o const
+*/
+
+#include &lt;bits/stdc++.h&gt;
+
+// Pointers and const
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+  // we may store the address of a const object ONLY in a pointer to const
+  const double pi = 3.14;
+  // double *ptr = &amp;pi;            // error!
+  const double *cptr = &amp;pi;
+  // *cptr = 10;                   // error: cannot assign to *cptr
+
+  // But there are two exceptions to the rule that the type of a pointer
+  // and the object to which it points must match:
+  // 1) we can use a pointer to const to point to a nonconst object:
+  double a = 2.17;
+  cptr = &amp;a;                    // we can not change a through cptr
+  // pointer to const: I think I point to a const though I am not sure. T_T
+  // Maybe it is nonconst. But I won't (cannot) change its value. ^_^ Besides,
+  // You can change myself, but you can not change the OBJECT I point to.
+
+  int b = 0;
+  int *const bptr = &amp;b;         // bptr will ALWAYS point to b
+  // but you can change the object it points if that is not a const object:
+  *bptr = 1;
+
+  const double * const ppi = &amp;pi; // ppi is a const pointer to const object
+
+  // //////////////////////////////
+  // References
+  const int c = 8;
+  const int &amp; cc = c;
+  // int &amp; c1 = c;                 // error! we cannot assign directly to c,
+  // we also should not be able to use a reference to change c.
+
+  // But there is an exception: a reference to const may refer to an object
+  // that is not const
+  int i = 42;
+  const int &amp;r1 = i;
+  int &amp;r2 = i;
+  r2 = 43;
+  // r1 = 44;                      // error: can not change i through r1
+
+  // c++ programmers tend to abbreviate `reference to const` as `const reference`. There are non const references. A reference is not an object, so we cannot make a reference itself const. Because there is no way to make a reference refer to a different object, in some sense all references are const.
+
+  return 0;
+}
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/learn-c/"><i class="fa fa-chevron-circle-left"></i> Learn C&#43;&#43;</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/const-member-function-in-cpp/">const member function in cpp <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

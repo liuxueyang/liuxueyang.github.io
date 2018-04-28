@@ -1,0 +1,177 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>codeforces magic five －－快速幂模</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-07-19T16:29:00Z">Jul 19, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/codeforces/">#CodeForces</a>
+                
+                    , 
+                    <a href="/tags/math/">#Math</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://codeforces.com/contest/327/problem/C">http://codeforces.com/contest/327/problem/C</a>
+首先先算出一个周期里面的值，保存在ans里面，就是平常的快速幂模m做法．
+然后要计算一个公式，比如有k个部分，那么对于没一个位置i, 都有2^i + 2^(i+n) + &hellip; + 2^(i+(k-1)*n) = 2^i(1 + 2^n + &hellip; + 2^((k-1)*n)) = 2^i * (1-2^(n*k))/(1-2^n)
+所以结果就是ans * (1-2^(n*k))/(1-2^n) % MOD;
+然后就是关键计算(1-2^(n*k))/(1-2^n) % MOD；
+用到费马小定理a^(p-1)同余于1(mod 1)．p是一个质数，那么a^(p-2) * a 同余于１(mod 1) ，所以a  的逆元就是 a^(p-2)
+MOD是一个质数,所以(1-2^(n*k))/(1-2^n) % MOD = (2^(n*k)-1)/(2^n-1) % MOD = (2^(n*k)-1)%MOD * ((2^n-1)^(MOD-2))%MOD</p>
+
+<pre><code class="language-cpp">
+/*
+ * =====================================================================================
+ *       Filename:  magic.cpp
+ *        Created:  19/07/2013 12:27:18
+ *         Author:  liuxueyang (lxy), 1459917536@qq.com
+ *   Organization:  Hunan University
+ *
+ * =====================================================================================
+ */
+
+/*
+ID: zypz4571
+LANG: C++
+TASK: magic
+*/
+#include &lt;cstdlib&gt;
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+#include &lt;set&gt;
+#include &lt;stack&gt;
+#include &lt;map&gt;
+#include &lt;list&gt;
+using namespace std;
+#define INF 0x3f3f3f3f
+const double eps=1e-9;
+char a[100010];
+const int MOD=1000000007;
+#define LL long long
+int k;
+LL quick(LL a, LL b) {
+    LL ans=1;
+    while (b) {
+        if(b&amp;1) ans=(ans*a)%MOD; b/=2; a*=a; a%=MOD;
+    }
+    return ans;
+}
+int main ( int argc, char *argv[] )
+{
+#ifndef ONLINE_JUDGE
+    freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+#endif
+    int k; string s; cin&gt;&gt;s&gt;&gt;k; LL n=s.size();
+    LL a=quick(2,n*k)-1+MOD; a=(a+MOD)%MOD;
+    LL b=quick((quick(2,n)-1+MOD)%MOD,MOD-2); b=(b+MOD)%MOD;
+    LL ans=0;
+    for(size_t i = 0; i &lt; n; ++i) if (s[i]=='0'||s[i]=='5') ans=(ans+quick(2,i))%MOD;
+    cout&lt;&lt;a*b%MOD*ans%MOD&lt;&lt;endl;
+    return EXIT_SUCCESS;
+}                /* ----------  end of function main  ---------- */
+
+</code></pre>
+
+<p>搞定，收工</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-hungry-sequence--%E6%B0%B4%E9%A2%98/"><i class="fa fa-chevron-circle-left"></i> codeforces hungry sequence  水题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-192-d/">codeforces 192 D <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

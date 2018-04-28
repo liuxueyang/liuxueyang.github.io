@@ -1,0 +1,142 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>show and hide dot files in Finder of OS X El Capitan</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-08-04T10:39:01Z">Aug 4, 2016</time>
+        </li>
+        
+        
+
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    
+
+<h2 id="fish">Fish</h2>
+
+<p>Run the following code in fish shell. Then it works as a charm. :-)</p>
+
+<pre><code class="language-fish">function showFiles
+        defaults write com.apple.finder AppleShowAllFiles YES
+        killall Finder /System/Library/CoreServices/Finder.app
+end
+
+funcsave showFiles
+
+function hideFiles
+        defaults write com.apple.finder AppleShowAllFiles NO
+        killall Finder /System/Library/CoreServices/Finder.app
+end
+    
+funcsave hideFiles
+</code></pre>
+
+<p>:joy:</p>
+
+<h2 id="zsh">zsh</h2>
+
+<p>Add the following code to <code>~/.zshrc</code></p>
+
+<pre><code class="language-zsh">alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+</code></pre>
+
+<p>then run <code>source ~/.zshrc</code></p>
+
+<h2 id="bash">bash</h2>
+
+<p>Add the code the same as <code>zsh</code> above to <code>~/.bashrc</code>. Then run <code>source ~/.bashrc</code></p>
+
+<hr />
+
+<dl>
+<dt>Then, if you want to show hidden files in Finder, just execute <code>showFiles</code> in Terminal. If you want to hide hidden files, use <code>hideFiles</code> instead.</dt>
+</dl>
+
+<p>:joy:</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/text-adventure-game-in-land-of-lisp/"><i class="fa fa-chevron-circle-left"></i> Text Adventure Game in Land of Lisp</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/dynamic-programming-spoj-diehard-die-hard/">Dynamic-programming: Spoj DIEHARD - DIE HARD <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

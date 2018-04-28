@@ -1,0 +1,473 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>A Text Adventure Game by CommonLISP</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2014-06-01T20:23:29Z">Jun 1, 2014</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/common-lisp/">#Common Lisp</a>
+                
+            </em>
+        </li>
+        
+
+        <li>6 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Today, I read the book Land of Lisp.
+It is interesting to write a text adventure game.</p>
+
+<hr />
+
+<p>First, there are some basic and useful functions.</p>
+
+<p>##some useful functions
+1. <code>mapcar</code></p>
+
+<pre><code>This function takes another function and a list, and then applies this function to every member of a list.This is an example:
+
+```lisp
+ (mapcar #'sqrt '(1 2 3 4 5))
+```
+
+It will output a list contains the square root of each element. Besides, the code above is the same as:
+
+```lisp
+(mapcar (function car) '(1 2 3 4 5))
+```
+
+Furthermore, there is a namespace problem here. For example:
+
+```lisp
+(let ((car &quot;liuxueyang&quot;))
+    (mapcar #'car '((foo bar) (fo ba))))
+```
+
+It will output (foo ba) as expected. Here are two 'car's. Because we prepended the second 'car' with #', there is no confusion about which car we are talking about.
+
+Common Lisp tracks function names differently from variable names. It has multiple namespaces, including one for variables and one for functions. However, in Scheme, there is only namespace for functions and variables.
+</code></pre>
+
+<ol>
+<li><p><code>append</code></p>
+
+<p>this function can join several lists into one big list:</p>
+
+<pre><code class="language-lisp">(append '(liu) '(xue) '(yang))
+</code></pre>
+
+<p>It will output:</p>
+
+<blockquote>
+<p>(liu xue yang)</p>
+</blockquote></li>
+
+<li><p><code>apply</code></p>
+
+<p>Sometimes, I will confuse this function with the <code>mapcar</code>. You pass the <code>apply</code> a function and a list of objects, and it pretends that the items in the list are separate objects and passes them to the given function as such.</p>
+
+<pre><code class="language-lisp">(apply #'append '((are) (you) (sad)))
+</code></pre>
+
+<p>This will output:</p>
+
+<blockquote>
+<p>(are you sad)</p>
+</blockquote></li>
+
+<li><p><code>assoc</code></p>
+
+<pre><code class="language-lisp">(defparameter *letter-list*
+    '((a (This is letter a))
+        (b (This is letter b))
+        (a (This is the second letter a))))
+(assoc 'a *letter-list*)
+</code></pre>
+
+<p>This wil output:</p>
+
+<blockquote>
+<p>(a (This is letter a))</p>
+</blockquote>
+
+<p>Notice that it will <strong>ONLY</strong> returns the first item it finds in a list. This is very useful in future. (such as when we push two objects into one list, we will only get the newer one as if we replace the old one with the newer one.)</p></li>
+
+<li><p><code>push</code></p>
+
+<p>the <code>push</code> command simply adds a new item to the front of a list variable&rsquo;s list. For example:</p>
+
+<pre><code class="language-lisp">(defparameter *foo* '(1 2 3))
+(push 73 *foo*)
+</code></pre>
+
+<p>It will output:</p>
+
+<blockquote>
+<p>(73 1 2 3)</p>
+</blockquote></li>
+
+<li><p><code>find</code></p>
+
+<p>this function searches a list for an item, then return that found item. For example:</p>
+
+<pre><code class="language-lisp">(find 1 '(4 5 1))
+</code></pre>
+
+<p>It will output:</p>
+
+<blockquote>
+<p>1</p>
+</blockquote>
+
+<p>Besides, in Common Lisp, many functions have built-in freatures that can be accessed by passing in special parameters at the end of the function call. For example:</p>
+
+<pre><code class="language-lisp">(find 'y '((1 x) (2 y) (3 n)) :key #'cadr)
+</code></pre>
+
+<p>It will output:</p>
+
+<blockquote>
+<p>(2 Y)</p>
+</blockquote></li>
+</ol>
+
+<p>##main program</p>
+
+<p>This is the complete program.</p>
+
+<pre><code class="language-lisp">
+; this is a text adventory game.
+; by Conrad Barski, M.D.
+
+; describe these locations of the game
+(defparameter *nodes*
+  '((living-room (you are in the living-room.
+                      a wizard is snoring loudly on the couch.))
+    (garden (you are in a beautiful garden.
+                 there is a well in front of you.))
+    (attic (you are in the attic.
+                there is a giant welding torch in the corner.))))
+
+;describe each location and the paths of each of them
+(defparameter *edges* '((living-room (garden west door)
+                                    (attic upstair ladder))
+                       (garden (living-room east door))
+                       (attic (living-room downstairs ladder))))
+
+; a function to describe current location
+(defun describe-location (location nodes)
+  (cadr (assoc location nodes)))
+
+; describe the path of a location
+(defun describe-path (edge)
+  `(there is a ,(caddr edge) goting ,(cadr edge) from here.))
+
+; describe multipal paths of a location
+(defun describe-paths (location edges)
+  (apply #'append (mapcar #'describe-path (cdr (assoc location edges)))))
+
+; describe objects
+(defparameter *objects* '(whiskey bucket frog chain))
+
+; describe locations of objects
+(defparameter *object-locations*
+       '((whiskey living-room)
+         (bucket living-room)
+         (chain garden)
+         (frog garden)))
+
+; list the object visible from a given location
+(defun objects-at (loc objs obj-locs)
+  (labels ((at-loc-p (obj) (eq loc (cadr (assoc obj obj-locs)))))
+    (remove-if-not #'at-loc-p objs)))
+
+; describe objects visible at a given location
+(defun describe-objects (loc objs obj-locs)
+  (labels ((describe-obj (obj)
+             `(there is a ,obj on the floor.)))
+    (apply #'append (mapcar #'describe-obj (objects-at loc objs obj-locs)))))
+
+; define current location
+(defparameter *location* 'living-room)
+
+; start to look around
+(defun look ()
+  (append (describe-location *location* *nodes*)
+          (describe-paths *location* *edges*)
+          (describe-objects *location* *objects* *object-locations*)))
+
+; this function takes a direction and let me walk there
+(defun walk (direction)
+  (let ((next (find direction (cdr (assoc *location* *edges*)) :key #'cadr)))
+    (if next
+      (progn (setf *location* (car next))
+        (look))
+      '(you can not go that way.))))
+
+; pick up a object
+(defun pickup (object)
+  (cond ((member object (objects-at *location* *objects* *object-locations*))
+         (push (list object 'body) *object-locations*)
+         `(you are now carrying the ,object))
+        (t '(you cannot get that.))))
+
+;see an inventory of objects I carry
+(defun inventory ()
+  (cons 'items- (objects-at 'body *objects* *object-locations*)))
+
+; this function add parentheses and quotes to what we input
+(defun game-read ()
+  (let ((cmd (read-from-string (concatenate 'string &quot;(&quot; (read-line) &quot;)&quot;))))
+    (flet ((quote-it (x)
+             (list 'quote x)))
+             (cons (car cmd) (mapcar #'quote-it (cdr cmd))))))
+
+; define allowed commands
+(defparameter *allowed-commands* '(look walk pickup inventory))
+
+;call some function
+(defun game-eval (sexp)
+  (if (member (car sexp) *allowed-commands*)
+    (eval sexp)
+    '(I do not know that command.)))
+</code></pre>
+
+<hr />
+
+<p>##play the game</p>
+
+<ol>
+<li>function <code>look</code> describe where are you, the paths you can go and the objects around you.</li>
+<li>function <code>walk</code> take a direction with a single quote as an argument. It will allows you go somewhere and print some error if there is no way in the direction.</li>
+<li>function <code>pickup</code> will allow you to pick up some object.</li>
+<li>function <code>inventory</code> will list those objects you have.</li>
+</ol>
+
+<p>This is an example:</p>
+
+<pre><code>(look)
+
+(YOU ARE IN THE LIVING-ROOM. A WIZARD IS SNORING LOUDLY ON THE COUCH. THERE IS A DOOR GOTING WEST FROM HERE. THERE IS A LADDER GOTING UPSTAIR FROM HERE. THERE IS A WHISKEY ON THE FLOOR. THERE IS A BUCKET ON THE FLOOR.)
+
+(walk 'west)
+
+(YOU ARE IN A BEAUTIFUL GARDEN. THERE IS A WELL IN FRONT OF YOU. THERE IS A DOOR GOTING EAST FROM HERE. THERE IS A FROG ON THE FLOOR. THERE IS A CHAIN ON THE FLOOR.)
+
+(pickup 'frog)
+
+(YOU ARE NOW CARRYING THE FROG)
+
+(inventory)
+
+(ITEMS- FROG)
+
+</code></pre>
+
+<hr />
+
+<p>I will try to add a custom text game interface which will make the game play more seamless for the player.</p>
+
+<hr />
+
+<p>##Add a Custom Interface to Our Game</p>
+
+<p>###Some Functions about print and read</p>
+
+<ol>
+<li><p><code>print</code></p>
+
+<p>This function uses to print something. For Example:</p>
+
+<pre><code class="language-lisp">(print '3')
+(print 'foo')
+(print '&quot;foo&quot;)
+(print '#\a)
+</code></pre>
+
+<p>It will output:</p>
+
+<blockquote>
+<p>3
+FOO
+&ldquo;FOO&rdquo;
+&lsquo;#&rsquo;\A  (does not include single quote.)</p>
+</blockquote>
+
+<p>Note that this function will place a space character at the end of the printed value and start a new line before print another value.</p></li>
+
+<li><p><code>princ</code></p>
+
+<p>This function does less than <code>print</code>. It will print value as it was. For example:</p>
+
+<pre><code class="language-lisp">(progn (prin1 &quot;This&quot;)
+    (prin1 &quot;is&quot;)
+    (prin1 &quot;a&quot;)
+    (prin1 &quot;test&quot;))
+</code></pre>
+
+<p>It will output:</p>
+
+<blockquote>
+<p>&ldquo;This&rdquo;&ldquo;is&rdquo;&ldquo;a&rdquo;&ldquo;test&rdquo;</p>
+</blockquote></li>
+
+<li><p><code>read</code></p>
+
+<p>read something from input. eg:</p>
+
+<pre><code class="language-lisp">(defun add-one ()
+    (print &quot;Enter a value&quot;)
+    (let ((num (read)))
+        (print &quot;When I add one I get&quot;)
+        (print (+ num 1))))
+</code></pre>
+
+<p>When we run this function:</p>
+
+<blockquote>
+<p>(add-one)
+&ldquo;Enter a value&rdquo;
+3
+&ldquo;When I add one I get&rdquo;
+4</p>
+</blockquote></li>
+
+<li><p><code>read-line</code></p>
+
+<p>This command captures and returns all the text entered until the ENTER key is pessed, without any fuss.</p></li>
+
+<li><p><code>eval</code></p>
+
+<p>This command can execute some data as if it were a piece  of code. eg:</p>
+
+<pre><code class="language-lisp">(defparameter *foo* '(+ 4 5))
+(eval *foo*)
+</code></pre>
+
+<p>It will output:</p>
+
+<blockquote>
+<p>9</p>
+</blockquote></li>
+
+<li><p><code>concatenate</code></p>
+
+<p>It can be used for concatenating strings together. eg:</p>
+
+<pre><code class="language-lisp">(concatenate 'string &quot;(&quot; (read-ling) &quot;)&quot;)
+</code></pre>
+
+<p>To run it:</p>
+
+<blockquote>
+<p>liu
+&ldquo;(liu)&rdquo;</p>
+</blockquote></li>
+
+<li><p><code>read-from-string</code></p>
+
+<p>It let us read a syntax expression from a string instead of from the console. eg:</p>
+
+<pre><code class="language-lisp">(let ((cmd (read-from-string &quot;(liu)&quot;)))
+    (princ cmd))
+</code></pre>
+
+<p>To run it:</p>
+
+<blockquote>
+<p>(LIU)</p>
+</blockquote></li>
+</ol>
+
+<p>I add game-read and game-eval functions to the original code.</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/my-previous-blog/"><i class="fa fa-chevron-circle-left"></i> My Previous Blog</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/run-1/">Run-1 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

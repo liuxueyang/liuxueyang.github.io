@@ -1,0 +1,138 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>CPU的栈机制的一个小问题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-10-03T16:10:00Z">Oct 3, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/masm/">#masm</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>比如要实现下面这个功能。</p>
+
+<p>我们如果要在10000H处写入自行数据2266H，不能用“mov 内存单元， 寄存器”这类指令。怎么做？</p>
+
+<p>代码：</p>
+
+<pre><code>mov ax, 1000h
+mov ss, ax
+mov sp, 2
+mov ax, 2266h
+push ax
+</code></pre>
+
+<p>这段代码，如果是初学，看起来挺对的，一点也没错。</p>
+
+<p>可是，用debug跟踪一下，发现，这段代码不能得到正确结果，会发现，在push ax这条指令执行之前，debug自动退出了。</p>
+
+<p>反正这个问题，我大一的时候，纠结了好久，到处问，好几天也没搞定，记得当初我还以为是自己电脑系统的问题，还重装了系统……⊙﹏⊙b汗</p>
+
+<p>终于，后来，才明白。这个可能是因为栈溢出的问题？具体因为什么，现在还不太懂。但是知道怎么解决。</p>
+
+<p>只需要把栈的段址设置小一点就可以了。比如比最大的段址小10h。所以，上面的代码可以改成：</p>
+
+<pre><code>mov ax, ff0h
+mov ss, ax
+mov sp, 102
+mov ax, 2266h
+push ax
+</code></pre>
+
+<p>然后用debug跟踪一下，就没有问题了。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-simple-molecules/"><i class="fa fa-chevron-circle-left"></i> codeforces Simple Molecules</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E6%A0%88%E6%AE%B5-%E6%BB%A1%E6%98%AF%E7%96%91%E9%97%AE/">栈段 ——满是疑问== <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

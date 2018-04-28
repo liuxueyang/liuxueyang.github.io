@@ -1,0 +1,188 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>uva133 The Dole Queue 循环队列模拟</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-05-14T11:01:00Z">May 14, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/uva/">#Uva</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=69">http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=69</a>
+题目大意：
+　　1到n按照逆时针的顺序围成一个环，一个人逆时针从1开始数k个数字，另一个人顺时针从n开始数m个数字，每次两个人最终数到的数字输出，并且把他们从原来的环里面删除，如果两个人数到的数字不同，输出一对，如果相同，输出这个数字。不管重复上面的做法，直到n个数字全部被删除。
+题目思路：
+　　模拟题，代码弱，写了很久，写不出来，就是感觉比较麻烦，看了人家的代码，做法很好！<a href="http://blog.csdn.net/actoy/article/details/8747826">http://blog.csdn.net/actoy/article/details/8747826</a></p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;deque&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x7fffffff;
+const int  MINN =  -0x7fffffff;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;uva133.in&quot;, &quot;r&quot;, stdin);
+#endif
+  int n, k, m, i, j, pos, pos1, cnt, f[30], tmp;
+  map&lt;int, bool&gt; mymap;
+  while (~scanf(&quot;%d%d%d&quot;, &amp;n, &amp;k, &amp;m)) {
+    if (n+k+m==0) break;
+    memset(f, 0, sizeof(f));
+    for (i = 1; i &lt;= n; ++i) f[i] = i;
+    pos = 0; pos1 = n + 1; cnt = 0;
+    while (cnt &lt; n) {
+      tmp = 0;
+      while (1) {
+        if (f[pos] != 0) tmp++;
+        if (pos &gt; n) pos = 0;
+        if (tmp == k) {
+          printf(&quot;%3d&quot;, f[pos]);
+          cnt++; break;
+        }
+        pos++;
+      }
+      tmp = 0;
+      while (1) {
+        if (f[pos1] != 0) tmp++;
+        if (pos1 &lt;= 0) pos1 = n + 1;
+        if (tmp == m) {
+          if (f[pos] != f[pos1]) {
+            printf(&quot;%3d&quot;, f[pos1]);
+            cnt++;
+          }
+          break;
+        }
+        pos1--;
+      }
+      f[pos] = f[pos1] = 0;
+      if (cnt &lt; n) printf(&quot;,&quot;);
+    }
+    printf(&quot;\n&quot;);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>这种题目，就是考的代码和问题实现的方式，方法不对可能实现起来超级麻烦……
+ 
+《夜莺》貌似第一次听这首曲子是4年前……</p>
+
+<p>很好听~</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uva127-accordian-patience-%E9%93%BE%E8%A1%A8%E6%A8%A1%E6%8B%9F%E9%A2%98/"><i class="fa fa-chevron-circle-left"></i> uva127 ``Accordian&#39;&#39; Patience ——链表模拟题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/ural1057-amount-of-degrees-%E6%95%B0%E4%BD%8Ddp/">ural1057 Amount of Degrees ——数位DP <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

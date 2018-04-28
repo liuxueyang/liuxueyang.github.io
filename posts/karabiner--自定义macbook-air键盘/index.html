@@ -1,0 +1,227 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Karabiner —— 自定义MacBook Air键盘</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-06-15T11:25:11Z">Jun 15, 2016</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/tools/">#Tools</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>一直以来，我的MacBook Air的键盘有几个键总是莫名其妙不灵。。换了一次键盘，然而问
+题依旧，并且，问题不好重现，仿佛它不高兴了就不灵了。。这给打字带来了极大的不爽。。
+所以我的解决办法是外接键盘。。或者外接USB键盘，或者外接蓝牙键盘。然而，这便携性
+就没有了。。还要经常担心我那个蓝牙键盘的支脚是不是压倒了原装键盘的某个功能键什么
+的。。。所以就很蛋疼。。</p>
+
+<p>所以为了解决蓝牙键盘经常压到Air的原装键盘的问题，我就在原装键盘上面垫上一本小书，
+一定程度上解决了这个问题。。然后我就去淘宝搜有没有买专用的板子的啊。。:joy:
+:joy: 原来我的思路也蛮开阔的。。并没有，随手在Bing搜了一下，看到了V2EX的一个帖子
+说如何关闭MacBook Air自带的键盘，诶？这倒是一个办法。然后我就开始折腾了：</p>
+
+<p>下载了<a href="https://pqrs.org/osx/karabiner/index.html.en">Karabiner</a>这个软件。然后就开
+始找怎么把某个组合键映射到经常失灵的<code>U</code>键。打开Karabiner的Preferences，看了一下
+<code>Change Key</code>那个标签并没有什么头绪。然后看到<code>Misc &amp; Uninstall</code>这个标签里面有一个
+<code>Custom Setting</code>：</p>
+
+<p><img src="/img/karabiner_preferences.png" alt="Karabiner Preferences" /></p>
+
+<p>绝壁八成是这个了。。然后在Karabiner的官网里面的Documents里面找到了这个文档：
+<a href="https://pqrs.org/osx/karabiner/xml.html.en">private.xml Reference Manual</a>照着加
+了下面的配置：</p>
+
+<pre><code>  &lt;item&gt;
+    &lt;name&gt;Change 'u' key to fn+v&lt;/name&gt;
+    &lt;identifier&gt;private.make_u_work&lt;/identifier&gt;
+    &lt;autogen&gt;__KeyToKey__ 
+      KeyCode::V, ModifierFlag::FN,
+      KeyCode::U
+    &lt;/autogen&gt;
+  &lt;/item&gt;
+</code></pre>
+
+<p>然后在Karabiner Preferences的<code>Change Key</code>里面就就可以看到我刚才加的选项了，选择
+它，点<code>Reload XML</code>，然后就可以用<code>fn</code>+<code>v</code>的组合键代替<code>u</code>这个键了。（因为<code>V</code>和
+<code>U</code>长得比较像。。。 :joy: :joy: ) 完美！</p>
+
+<p>另外一个经常不灵的键就是<code>(</code>这个键，它的位置就是<code>9</code>所在的键。因为6和9比较像……所以
+我就把<code>fn</code>+<code>6</code>映射成了9。。同样的做法。:smile: :smiley:</p>
+
+<pre><code>  &lt;item&gt;
+    &lt;name&gt;Change '9' key to fn+6&lt;/name&gt;
+    &lt;identifier&gt;private.make_9_work&lt;/identifier&gt;
+    &lt;autogen&gt;__KeyToKey__ 
+      KeyCode::6, ModifierFlag::FN,
+      KeyCode::9
+    &lt;/autogen&gt;
+  &lt;/item&gt;
+</code></pre>
+
+<p>哦，对了，上面的配置里面的autogen里面的<code>KeyCode</code>可以在这里
+<a href="https://github.com/tekezo/Karabiner/blob/version_10.19.0/src/bridge/generator/keycode/data/KeyCode.data">KeyCode</a>
+找到。</p>
+
+<p>终于可以摆脱外接键盘了。。尤其不在桌子前面的时候。。 :joy: :joy:</p>
+
+<p>搞定，收工。 :expressionless:</p>
+
+<hr />
+
+<p>我发现上面的配置在输入左右小括号的时候并不方便，所以。我就把
+<code>fn</code>+<code>[</code>映射成<code>9</code>，把<code>fn</code>+<code>[</code>映射成<code>0</code>。这样就方便多了。</p>
+
+<pre><code>  &lt;item&gt;
+    &lt;name&gt;Change '(' key to fn+BRACKET_LEFT&lt;/name&gt;
+    &lt;identifier&gt;private.brace_left&lt;/identifier&gt;
+    &lt;autogen&gt;__KeyToKey__ 
+      KeyCode::BRACKET_LEFT, ModifierFlag::FN,
+      KeyCode::9
+    &lt;/autogen&gt;
+  &lt;/item&gt;
+
+  &lt;item&gt;
+    &lt;name&gt;Change ')' key to fn+BRACKET_RIGHT&lt;/name&gt;
+    &lt;identifier&gt;private.brace_right&lt;/identifier&gt;
+    &lt;autogen&gt;__KeyToKey__ 
+      KeyCode::BRACKET_RIGHT, ModifierFlag::FN,
+      KeyCode::0
+    &lt;/autogen&gt;
+  &lt;/item&gt;
+</code></pre>
+
+<p>然而这样还是不够方便，因为我如果想要输入<code>(</code>或者<code>)</code>，那么我就要按下3个键，这，显然很不爽。所以我
+就稍微改进了一下：</p>
+
+<pre><code>  &lt;item&gt;
+    &lt;name&gt;Change '(' key to fn+BRACKET_LEFT&lt;/name&gt;
+    &lt;identifier&gt;private.brace_left&lt;/identifier&gt;
+    &lt;autogen&gt;__KeyToKey__ 
+      KeyCode::BRACKET_LEFT, ModifierFlag::FN,
+      KeyCode::9, ModifierFlag::SHIFT_L
+    &lt;/autogen&gt;
+  &lt;/item&gt;
+
+  &lt;item&gt;
+    &lt;name&gt;Change ')' key to fn+BRACKET_RIGHT&lt;/name&gt;
+    &lt;identifier&gt;private.brace_right&lt;/identifier&gt;
+    &lt;autogen&gt;__KeyToKey__ 
+      KeyCode::BRACKET_RIGHT, ModifierFlag::FN,
+      KeyCode::0, ModifierFlag::SHIFT_L
+    &lt;/autogen&gt;
+  &lt;/item&gt;
+</code></pre>
+
+<p>这样，我就可以只按两个键，和原来的<code>Shift + 9</code>和<code>Shift + 0</code>就没什么区别了：我现在把<code>fn+[</code>设置
+成了输入<code>(</code>，把<code>fn+]</code>设置成了输入<code>)</code>。</p>
+
+<p>另外，我原来把<code>fn+6</code>设置成输入<code>9</code>，然而输入的时候其实并不那么方便。所以，我就又
+修改了一下：</p>
+
+<pre><code>  &lt;item&gt;
+    &lt;name&gt;Change '9' key to fn+F9&lt;/name&gt;
+    &lt;identifier&gt;private.make_9_work_by_F9&lt;/identifier&gt;
+    &lt;autogen&gt;__KeyToKey__ 
+      KeyCode::F9, ModifierFlag::FN,
+      KeyCode::9
+    &lt;/autogen&gt;
+  &lt;/item&gt;
+</code></pre>
+
+<p>因为<code>F9</code>距离<code>9</code>比较近，所以我就把<code>fn+F9</code>设置成了输入<code>9</code>，这样就方便多了 :joy:</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-round-356-div-2-c-bear-and-prime-100/"><i class="fa fa-chevron-circle-left"></i> Codeforces Round #356 (Div. 2) C. Bear and Prime 100</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E6%8E%A8%E8%8D%90rime%E5%B0%8F%E9%B9%A4%E5%8F%8C%E6%8B%BC%E8%BE%93%E5%85%A5%E6%B3%95/">推荐Rime小鹤双拼输入法 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

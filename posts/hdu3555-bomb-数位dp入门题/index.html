@@ -1,0 +1,188 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu3555 Bomb ——数位DP入门题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-04-14T11:23:00Z">Apr 14, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#hdu</a>
+                
+                    , 
+                    <a href="/tags/dp/">#DP</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=3555">http://acm.hdu.edu.cn/showproblem.php?pid=3555</a>
+题目大意：
+　　给一个数字n,范围在1~2^63-1，求1~n之间含有49的数字有多少个。
+思路：
+　　经典的数位DP，学习了一下，看的别人的代码：<a href="http://www.cnblogs.com/luyi0619/archive/2011/04/29/2033117.html">http://www.cnblogs.com/luyi0619/archive/2011/04/29/2033117.html</a>
+　　状态转移：
+　　dp[i][0]代表长度为 i 并且不含有49的数字的个数；
+　　dp[i][1]代表长度为 i 并且不含有49，但是最高位是9的数字的个数；
+　　dp[i][2]代表长度为 i 并且含有49的数字的个数。
+　　数组 a[i] 从低位到高位存储 n 的每一位数字。
+　　则：dp[i][0] = dp[i-1][0] * a[i] - dp[i-1][1];  表示长度为 i 的不含有49的数字的个数等于长度为 i - 1 的不含有49的数字的个数*当前的数字，因为这个位置可以填0~a[i] - 1，然后再减去长度为 i - 1 的最高位是9的数字的个数，因为如果长度为 i - 1 的最高位是9的话，那么高一位就不能填4了，否则就组成了49。
+　　　　dp[i][1] = dp[i-1][0]; 表示长度为 i 的并且不含有49同时最高位是9的数字的个数等于，长度为 i - 1 的不含有49的数字的个数，因为只要在它的高一位加上一个9就可以了。
+　　　　dp[i][2] = dp[i-1][2] * a[i] + dp[i-1][1]; 表示长度为 i 的含有49的数字的个数等于，长度为 i - 1 的数字的个数*当前的数字，再加上长度为 i - 1 的并且不含有49同时最高位是9的数字的个数，因为这个时候，只要在高一位加上一个4就可以了，这样在最高的两位就组成了一个49。
+　　做法是从数字的高位向低位扫描，对于第 i 位，
+　　其实这个题目还有一个地方不懂，就是为什么要在输入 n 后，要把 n 加1。想了一下特例，比如输入49，按照上面的做法，在第3步，并不会把符合条件的数字加上，因为4不是严格大于4，最后的执行结果就是0，但是如果加上1之后，n就变成了50，这样第3步恰好可以执行，结果就是正确的了。但是对于一般的情况，还是不知道为什么要把n加1……o(╯□╰)o
+　　这题还是卡了很久，照着别人的代码敲的，死活过不了，然后又找了一份代码：<a href="http://blog.csdn.net/acm_cxlove/article/details/7819907 才发现输入输出要用%I64d，这不是坑么……原来hdu要用%I64d，囧……">http://blog.csdn.net/acm_cxlove/article/details/7819907 才发现输入输出要用%I64d，这不是坑么……原来hdu要用%I64d，囧……</a>
+　　所以，有时候的bug不是算法或者代码有错误，看看你的输入输出吧！还有，类似的情况，比如，输入文件写错了……更悲剧了。。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+LL dp[21][3]; unsigned long long int n; int a[25];
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;hdu3555.in&quot;, &quot;r&quot;, stdin);
+#endif
+  int t; scanf(&quot;%d&quot;, &amp;t);
+  memset(dp, 0, sizeof(dp));
+  dp[0][0] = 1;
+  for (int i = 1; i &lt; 21; ++i){
+    dp[i][0] = dp[i-1][0] * 10 - dp[i-1][1];
+    dp[i][1] = dp[i-1][0];
+    dp[i][2] = dp[i-1][2] * 10 + dp[i-1][1];
+  }
+  while (t--){
+    //cin &gt;&gt; n;
+    scanf(&quot;%I64d&quot;, &amp;n);
+    int len = 0; memset(a, 0, sizeof(a));
+    n++;
+    while (n){
+      a[++len] = n % 10; n /= 10;
+    } LL ans = 0; int last = 0; bool flag = false;
+    for (int i = len; i &gt;= 1; --i){
+      ans += (dp[i-1][2] * a[i]);
+      if (flag) ans += dp[i-1][0] * a[i];
+      if (!flag &amp;&amp; a[i] &gt; 4) {ans += dp[i-1][1];}
+      if (last == 4 &amp;&amp; a[i] == 9) {flag = true;}
+      last = a[i];
+    }
+    //cout &lt;&lt; ans &lt;&lt; endl;
+    printf(&quot;%I64d\n&quot;, ans);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>　　就为了输入输出，纠结好久……所以有的时候还是用cin，cout当输入量不大的时候……
+　　还是不懂为什么要把 n 加 1，继续想想，，神牛路过明白的解释一下撒~感激不尽……
+　　貌似有点儿想明白了……也许加 1 的目的就是处理 n 末两位是49的这种特殊情况，如果最后两位不是49，也不影响结果。比如，如果n是149，变成150，结果是1+1 = 2；如果n是123,变成124，结果依然是1；可是，如果要找的是65这种的呢？需要加5么？如果要统计的是一个三位数呢？比如找1~n里面含有123的数字的个数……该怎么做……
+　　做了后面几道题目，明白了为什么要n++，因为后面的for循环求的是(0,n)的开区间的符合条件的数字的数目，题目要求[1,n]这个区间内的符合条件的数字的数目，所以要把区间的右端点加1。这样的处理方式比较方便，就不用判断这个端点是不是如何条件的数字了。膜拜神牛的想法……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%8812%E6%97%A5-%E6%99%B4/"><i class="fa fa-chevron-circle-left"></i> 2013年4月12日 晴</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uestc1307-windy%E6%95%B0-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/">uestc1307 windy数 ——数位DP入门题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

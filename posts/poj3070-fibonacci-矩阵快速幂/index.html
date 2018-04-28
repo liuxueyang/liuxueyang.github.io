@@ -1,0 +1,184 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj3070 Fibonacci ——矩阵快速幂</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-05-19T01:38:00Z">May 19, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+                    , 
+                    <a href="/tags/math/">#Math</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://poj.org/problem?id=3070">http://poj.org/problem?id=3070</a>
+题目大意：
+　　求第N项的Fibonacci数的后四位。
+题目思路：
+　　根据公式：
+　　　　　　
+　　用矩阵快速幂就OK，模板题……但还是TLE了一次，原因是题目要求输入-1结束，我没看到……o(╯□╰)o</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;cmath&gt;
+using namespace std;
+const int MAX = 2;
+const int M = 10000;
+typedef struct {
+  int m[MAX][MAX];
+}Matrix;
+Matrix a, per;
+int n;
+void init() {
+  int i , j;
+  for (i = 0; i &lt; n; ++i) {
+    for (j = 0; j &lt; n; ++j) {
+      per.m[i][j] = (i == j);
+    }
+  }
+  a.m[0][0] = a.m[0][1] = a.m[1][0] = 1; a.m[1][1] = 0;
+}
+Matrix multi(Matrix a, Matrix b) {
+  Matrix c;
+  int k, i, j;
+  for ( i = 0; i &lt; n; ++i) {
+    for (j = 0; j &lt; n; ++j) {
+      c.m[i][j] = 0;
+      for (k = 0; k &lt; n; ++k) {
+        c.m[i][j] += a.m[i][k] * b.m[k][j];
+      }
+      c.m[i][j] %= M;
+    }
+  }
+  return c;
+}
+Matrix power(int k) {
+  Matrix p, ans = per;
+  p = a;
+  while (k) {
+    if (k &amp; 1) {
+      ans = multi(ans, p); k--;
+    }
+    else {
+      k /= 2; p = multi(p, p);
+    }
+  }
+  return ans;
+}
+
+int main(void) {
+  Matrix ans; int k; n = 2;
+  init();
+  while (~scanf(&quot;%d&quot;, &amp;k)) {
+    if (k == -1) break;
+    init();
+    ans = power(k);
+    printf(&quot;%d\n&quot;, ans.m[1][0]);
+  }
+  return 0;
+}
+
+</code></pre>
+
+<p>其实就是完完全全的模板……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/wps-for-ubuntu/"><i class="fa fa-chevron-circle-left"></i> WPS for Ubuntu!</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/csu1290-random-integers-dp%E5%85%A5%E9%97%A8%E9%A2%98%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/">csu1290 Random Integers ——DP入门题&amp;&amp;比赛残留题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

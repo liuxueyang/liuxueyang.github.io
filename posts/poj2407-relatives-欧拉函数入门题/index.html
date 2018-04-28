@@ -1,0 +1,166 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj2407 Relatives ——欧拉函数入门题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-04-22T08:36:00Z">Apr 22, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+                    , 
+                    <a href="/tags/math/">#Math</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://poj.org/problem?id=2407">http://poj.org/problem?id=2407</a>
+题目大意：
+　　这个题目就是欧拉函数的定义，求一个数字的欧拉函数。
+题目思路：
+　　用公式：φ(n) = n * (1-1/p1) * (1-1/p2) * ……  * (1-1/pk)。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;poj2407.in&quot;, &quot;r&quot;, stdin);
+#endif
+  LL n;
+  while (~scanf(&quot;%lld&quot;, &amp;n)){
+    if (!n) break;
+    LL ans = n;
+    for (LL i = 2; i * i &lt;= n; ++i){
+      if (!(n%i)){
+        ans = ans - ans / i;
+        while (!(n%i)){
+          n /= i;
+        }
+      }
+    }
+    if (n &gt; 1) { ans = ans - ans / n; }
+    printf(&quot;%lld\n&quot;, ans);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>　　写代码要规范，优先级什么的，比如刚开始就写成了 !n%i这是不对的，优先级搞错了，应该加括号。
+ </p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj2480-longges-problem-%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/"><i class="fa fa-chevron-circle-left"></i> poj2480 Longge&#39;s problem ——积性函数入门题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj2478-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/">poj2478 ——欧拉函数入门题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

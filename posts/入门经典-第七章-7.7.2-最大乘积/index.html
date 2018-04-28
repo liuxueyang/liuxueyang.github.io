@@ -1,0 +1,146 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>入门经典 第七章 7.7.2 最大乘积</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2012-12-14T19:40:00Z">Dec 14, 2012</time>
+        </li>
+        
+        
+
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>因为范围只有18个数字，所以可以枚举起点和终点。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cmath&gt;
+
+using namespace std;
+
+long long int f(int a[], int start, int end) 
+{
+    long long int sum = 1;
+    for (int i = start; i &lt; end + 1; ++i)
+    {
+        sum *= a[i];
+    }
+    return sum;
+}
+
+int main(void)
+{
+    int n, a[20];
+#ifndef ONLINE_JUDGE
+    freopen(&quot;in&quot;, &quot;r&quot;, stdin);
+#endif
+    while (~scanf(&quot;%d&quot;, &amp;n))
+    {
+        for (int i = 0; i &lt; n; ++i)
+            scanf(&quot;%d&quot;, &amp;a[i]);
+        long long int sum=-1;
+        for (int i = 0; i &lt; n; ++i)
+        {
+            for (int j = i; j &lt; n; ++j)
+            {
+                if (f(a, i, j) &gt; sum)
+                    sum = f(a, i, j);
+            }
+        }
+        printf(&quot;%lld\n&quot;, sum);
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+<p>根据数据范围，估算一下能不能暴力</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.7.1-%E9%99%A4%E6%B3%95/"><i class="fa fa-chevron-circle-left"></i> 入门经典 第七章 7.7.1 除法</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.7.3-%E5%88%86%E6%95%B0%E6%8B%86%E5%88%86/">入门经典 第七章 7.7.3 分数拆分 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

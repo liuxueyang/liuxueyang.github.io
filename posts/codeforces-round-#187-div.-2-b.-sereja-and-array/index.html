@@ -1,0 +1,162 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Codeforces Round #187 (Div. 2) B. Sereja and Array</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-06-08T18:38:00Z">Jun 8, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/codeforces/">#CodeForces</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://codeforces.com/contest/315/problem/B">http://codeforces.com/contest/315/problem/B</a>
+开始以为线段树，汗……原来是道水题</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cmath&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;stack&gt;
+#include &lt;map&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+typedef struct Po {
+    int d, a;
+}Po;
+Po p[100000+10];
+int main(void) {
+#ifndef ONLINE_JUDGE
+    freopen(&quot;187b.in&quot;, &quot;r&quot;, stdin);
+#endif
+    int n, m;
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    for (int i = 1; i &lt;= n; ++i) {
+        scanf(&quot;%d&quot;, &amp;p[i].a);
+        p[i].d = 0;
+    }
+    int D = 0, t, s;
+    for (int i = 0; i &lt; m; ++i) {
+        scanf(&quot;%d&quot;, &amp;t);
+        if (t == 1) {
+            int st, en;
+            scanf(&quot;%d%d&quot;, &amp;st, &amp;en);
+            p[st].a = en;
+            p[st].d = D;
+        }
+        else {
+            scanf(&quot;%d&quot;, &amp;s);
+            if (t == 3) {
+                printf(&quot;%d\n&quot;, p[s].a + D - p[s].d);
+            }
+            else if (t == 2) {
+                D += s;
+            }
+        }
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+<p>也是纠结了好久才做出来的，果然是反应太慢了啊……比赛结果出来就过了这一道……又掉rating了。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-round-#187-div.-2-a.-sereja-and-bottles/"><i class="fa fa-chevron-circle-left"></i> Codeforces Round #187 (Div. 2) A. Sereja and Bottles</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E5%87%86%E5%A4%87%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95-%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%9B%B4%E4%BA%86/">准备期末考试 博客不更了 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

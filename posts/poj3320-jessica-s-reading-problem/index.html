@@ -1,0 +1,182 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>POJ3320 Jessica&#39;s Reading Problem</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-07-03T19:00:24Z">Jul 3, 2016</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    
+
+<h2 id="problem">Problem</h2>
+
+<p><a href="http://poj.org/problem?id=3320">Jessica&rsquo;s Reading Problem</a></p>
+
+<h2 id="solution">Solution</h2>
+
+<p>方法和<a href="http://liuxueyang.github.io/2016/07/02/Poj3061-Subsequence/">Subsequence</a>一样，只是增加一个计数的步骤。</p>
+
+<h2 id="code">Code</h2>
+
+<h4 id="c">C++</h4>
+
+<pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+
+using namespace std;
+
+const int MAX_N = 100 * 10000 + 1;
+int a[MAX_N], n;
+set&lt;int&gt; idea;
+map&lt;int, int&gt; num_idea;
+
+void solve() {
+  idea.clear();
+  num_idea.clear();
+
+  for (int i = 0; i &lt; n; ++i) {
+    idea.insert(a[i]);
+  }
+
+  int all_ideas = (int)idea.size();
+  int s = 0, t = 0, cnt = 0, ans = n + 1;
+
+  while (true) {
+    while (t &lt; n &amp;&amp; cnt &lt; all_ideas) {
+      if (num_idea[a[t]] == 0) {
+        cnt++;
+      }
+      num_idea[a[t]]++;
+      ++t;
+    }
+    if (cnt &lt; all_ideas) {
+      break;
+    }
+    ans = min(ans, t - s);
+    num_idea[a[s]]--;
+    if (num_idea[a[s]] == 0) {
+      num_idea.erase(a[s]);
+      --cnt; // REMEMBER THIS. CAUSE WE USE IT IN NEXT LOOP
+    }
+    ++s;
+  }
+
+  printf(&quot;%d\n&quot;, ans);
+
+  return;
+}
+
+int main(void) {
+#ifndef ONLINE_JUDGE
+  freopen(&quot;3320.txt&quot;, &quot;r&quot;, stdin);
+#endif
+  scanf(&quot;%d&quot;, &amp;n);
+  for (int i = 0; i &lt; n; ++i) {
+    scanf(&quot;%d&quot;, a + i);
+  }
+  solve();
+
+  return 0;
+}
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj3061-subsequence/"><i class="fa fa-chevron-circle-left"></i> Poj3061 Subsequence</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/iterm2-%E6%9F%A5%E7%9C%8B%E5%9B%BE%E7%89%87/">iTerm2 查看图片 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

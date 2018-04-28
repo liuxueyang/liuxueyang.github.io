@@ -1,0 +1,240 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu 2795 Billboard</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-03-02T19:25:00Z">Mar 2, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+                    , 
+                    <a href="/tags/data-structure/">#Data Structure</a>
+                
+            </em>
+        </li>
+        
+
+        <li>4 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Billboard</p>
+
+<p>Time Limit: <sup>20000</sup>&frasl;<sub>8000</sub> MS (Java/Others)    Memory Limit: <sup>32768</sup>&frasl;<sub>32768</sub> K (Java/Others)
+Total Submission(s): 5912    Accepted Submission(s): 2682</p>
+
+<p>Problem Description
+At the entrance to the university, there is a huge rectangular billboard of size h*w (h is its height and w is its width). The board is the place where all possible announcements are posted: nearest programming competitions, changes in the dining room menu, and other important information.</p>
+
+<p>On September 1, the billboard was empty. One by one, the announcements started being put on the billboard.</p>
+
+<p>Each announcement is a stripe of paper of unit height. More specifically, the i-th announcement is a rectangle of size 1 * wi.</p>
+
+<p>When someone puts a new announcement on the billboard, she would always choose the topmost possible position for the announcement. Among all possible topmost positions she would always choose the leftmost one.</p>
+
+<p>If there is no valid location for a new announcement, it is not put on the billboard (that&rsquo;s why some programming contests have no participants from this university).</p>
+
+<p>Given the sizes of the billboard and the announcements, your task is to find the numbers of rows in which the announcements are placed.</p>
+
+<p>Input
+There are multiple cases (no more than 40 cases).</p>
+
+<p>The first line of the input file contains three integer numbers, h, w, and n (1 &lt;= h,w &lt;= 10^9; 1 &lt;= n &lt;= 200,000) - the dimensions of the billboard and the number of announcements.</p>
+
+<p>Each of the next n lines contains an integer number wi (1 &lt;= wi &lt;= 10^9) - the width of i-th announcement.</p>
+
+<p>Output
+For each announcement (in the order they are given in the input file) output one number - the number of the row in which this announcement is placed. Rows are numbered from 1 to h, starting with the top row. If an announcement can&rsquo;t be put on the billboard, output &ldquo;-1&rdquo; for this announcement.</p>
+
+<p>Sample Input
+3 5 5 2 4 3 3 3</p>
+
+<p>Sample Output
+1 2 1 3 -1</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+const int maxn = 222222;
+int MAX[maxn&lt;&lt;2];
+int h, w, n;
+void PushUP(int rt){
+  MAX[rt] = max(MAX[rt&lt;&lt;1], MAX[rt&lt;&lt;1|1]);
+}
+void build(int l, int r, int rt){
+  MAX[rt] = w;
+  if (l == r) return;
+  int m = (l + r) &gt;&gt; 1; build(lson); build(rson);
+}
+int query(int x, int l, int r, int rt){
+  if (l == r){MAX[rt] -= x; return l;}
+  int m = (l + r) &gt;&gt; 1;
+  int ret = (MAX[rt&lt;&lt;1] &gt;= x) ? query(x, lson) : query(x, rson);
+  PushUP(rt);
+  return ret;
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;hdu2795.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while(~scanf(&quot;%d%d%d&quot;, &amp;h, &amp;w, &amp;n)){
+    if (h &gt; n) h = n;
+    build(1, h, 1);
+    while (n--){
+      int x; scanf(&quot;%d&quot;, &amp;x);
+      if (MAX[1] &lt; x) printf(&quot;-1\n&quot;);
+      else {printf(&quot;%d\n&quot;, query(x, 1, h, 1));}
+    }
+  }
+  return 0;
+}
+</code></pre>
+
+<p>树状数组，这个题目要注意，更新的时候，要先找到要更新的点，在query中实现……</p>
+
+<p>也可以在写一个update，发现其实和query的代码很相似，如下：</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+const int maxn = 222222;
+int MAX[maxn&lt;&lt;2];
+int h, w, n;
+void PushUP(int rt){
+  MAX[rt] = max(MAX[rt&lt;&lt;1], MAX[rt&lt;&lt;1|1]);
+}
+void build(int l, int r, int rt){
+  MAX[rt] = w;
+  if (l == r) return;
+  int m = (l + r) &gt;&gt; 1; build(lson); build(rson);
+}
+void update(int x, int l, int r, int rt){
+  if (l == r) {MAX[rt] -= x; return;}
+  int m = (l + r) &gt;&gt; 1;
+  if (x &lt;= MAX[rt&lt;&lt;1]) update(x, lson); else update(x, rson);
+  PushUP(rt);
+}
+int query(int x, int l, int r, int rt){
+  if (l == r){return l;}
+  int m = (l + r) &gt;&gt; 1;
+  int ret = (MAX[rt&lt;&lt;1] &gt;= x) ? query(x, lson) : query(x, rson);
+  return ret;
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;hdu2795.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while(~scanf(&quot;%d%d%d&quot;, &amp;h, &amp;w, &amp;n)){
+    if (h &gt; n) h = n;
+    build(1, h, 1);
+    while (n--){
+      int x; scanf(&quot;%d&quot;, &amp;x);
+      if (MAX[1] &lt; x) printf(&quot;-1\n&quot;);
+      else {printf(&quot;%d\n&quot;, query(x, 1, h, 1));update(x, 1, h, 1);}
+    }
+  }
+  return 0;
+}
+</code></pre>
+
+<p>理解思想就可以了。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1394-minimum-inversion-number/"><i class="fa fa-chevron-circle-left"></i> hdu 1394 Minimum Inversion Number</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj-2828-buy-tickets/">poj 2828 Buy Tickets <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

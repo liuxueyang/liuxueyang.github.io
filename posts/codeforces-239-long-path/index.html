@@ -1,0 +1,181 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>CodeForces 239 Long Path</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2014-03-31T12:11:01Z">Mar 31, 2014</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/dp-codeforce/">#DP CodeForce</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>每个房间有两个单向出口，就是只能进不能出，这个开始理解错了。</p>
+
+<p>进入房间的时候，首先要在屋顶画一个叉叉，如果画完之后叉叉的个数是奇数的话：那么就从第二条出口出去，会到达ｐ[ i ]房间；如果叉叉的个数是偶数的话，那么就到下一个房间。</p>
+
+<p>问从1到ｎ+1房间一共走了多少个这样的单项出口。</p>
+
+<p>有一个条件：1 &lt;= p[ i ] &lt;= i 这个开始也没有注意到==。这是个很重要的条件。</p>
+
+<p>说明人只能通过第二个出口向后退，而不能向前跳跃。如果人要向前走，只能一步一步的通过第一条出口。</p>
+
+<p>所以，dp[ i ] 表示从i 房间到 i +1 房间需要经过的出口数。</p>
+
+<p>还有一个特点：如果人第一次到房间 i ，那么他必定下一步到达房间p[ i ], 然后再考虑从房间p [ i ] 出发到达 p[ i +1] 房间。如果要到达i + 1房间。那么需要经过的出口数目就是：2 + dp[ p[i], p[i] + 1, &hellip; , i - 1 ] .其中的2 就是从房间 i 到房间p[ i ] 和从房间 i 到房间 i + 1的两步。另外一部分也就是从房间p[ i ] 到房间p[ i ] +1 ，从房间p[ i ] + 1 到房间 p[ i ] + 2等等。</p>
+
+<p>代码：</p>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *       Filename : LongPath.cpp
+ *    Description : dp
+ *    Version     : 0.1
+ *        Created : 03/31/14 11:45
+ *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com
+ *         Motto  : How about today?
+ * =====================================================================================
+ */
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name: main
+ * =====================================================================================
+ */
+int dp[1001], p[1001];
+int MOD = 1000000000+7;
+    int
+main ( int argc, char *argv[] )
+{
+    int n;
+    scanf ( &quot;%d&quot;, &amp;n );
+//    printf ( &quot;n = %d\n&quot;, n );
+    for ( int i = 1; i &lt; n + 1; ++i ) {
+        scanf ( &quot;%d&quot;, &amp;p[i] );
+//        printf ( &quot;%d\n&quot;, p[i] );
+    }
+    fill(dp, dp + n + 1, 0);
+    dp[1] = 2;
+    for ( int i = 2; i &lt; n + 1; ++i ) {
+        dp[i] = 2;
+        for ( int j = p[i]; j &lt; i; ++j ) {
+            dp[i] += dp[j];
+            if ( dp[i] &gt;= MOD ) {
+                dp[i] -= MOD;
+            }
+        }
+    }
+    int sum = 0;
+    for ( int i = 1; i &lt; n + 1; ++i ) {
+        sum += dp[i];
+        if ( sum &gt;= MOD ) {
+            sum -= MOD;
+        }
+    }
+    printf ( &quot;%d\n&quot;, sum );
+
+        return EXIT_SUCCESS;
+}                /* ----------  end of function main  ---------- */
+</code></pre>
+
+<p>看的tourist的代码</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-239a-triangle/"><i class="fa fa-chevron-circle-left"></i> CodeForces 239A. Triangle</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E6%8C%87%E9%92%88%E7%9A%84%E9%97%AE%E9%A2%98/">指针的问题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

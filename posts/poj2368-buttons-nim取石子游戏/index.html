@@ -1,0 +1,125 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj2368 Buttons Nim取石子游戏</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2014-02-03T23:50:07Z">Feb 3, 2014</time>
+        </li>
+        
+        
+
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>链接：<a href="http://poj.org/problem?id=2368">http://poj.org/problem?id=2368</a></p>
+
+<p><img src="http://wstaw.org/m/2017/04/10/032347448629119.png" alt="rank" /></p>
+
+<p>和前面差距还是很大啊囧</p>
+
+<p>代码：</p>
+
+<pre><code class="language-cpp">k,a;main(i){for(scanf(&quot;%d&quot;,&amp;k),a=k-1,i=3;i&lt;=k/2&amp;&amp;k%i;++i);k%i||(a=i-1);printf(&quot;%d\n&quot;,a);}
+</code></pre>
+
+<p>短码之美那本书上面的这道题目的代码思路是对的，可是会TLE的。</p>
+
+<p>可是ozy的代码还是那么短得可怕😨</p>
+
+<p>那个，又省掉了一个特别脑残的变量。。</p>
+
+<p>代码：</p>
+
+<pre><code class="language-cpp">k;main(i){for(scanf(&quot;%d&quot;,&amp;k),i=3;i&lt;=k/2&amp;&amp;k%i;++i);printf(&quot;%d\n&quot;,k%i?k-1:i-1);}
+</code></pre>
+
+<p>78字节。</p>
+
+<p><img src="http://wstaw.org/m/2017/04/10/040001126595533_1.png" alt="rank" /></p>
+
+<p>第二名了，，虽然和第一名还差好多=_=</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2014%E6%96%B0%E5%B9%B4/"><i class="fa fa-chevron-circle-left"></i> 2014新年</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj1298-the-hardest-problem-ever-%E7%AE%80%E5%8D%95%E9%A2%98/">poj1298 The Hardest Problem Ever 简单题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

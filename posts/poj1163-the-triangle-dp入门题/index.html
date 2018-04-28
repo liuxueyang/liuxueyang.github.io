@@ -1,0 +1,186 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj1163 The Triangle ——DP入门题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-05-20T16:42:00Z">May 20, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+                    , 
+                    <a href="/tags/dp/">#DP</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://poj.org/problem?id=1163">http://poj.org/problem?id=1163</a>
+题目思路：
+　　从三角形的底部开始考虑</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+const int MAX = 100;
+int a[MAX][MAX], dp[MAX][MAX];
+int main(void) {
+  //freopen(&quot;1163.in&quot;, &quot;r&quot;, stdin);
+  int n,i,j; scanf(&quot;%d&quot;,&amp;n);
+  for (i = 0; i &lt; n; ++i) {
+    for (j = 0; j &lt; i+1; ++j) {
+      scanf(&quot;%d&quot;, &amp;a[i][j]);
+    }
+  }
+  memset(dp, 0, sizeof(dp));
+  for (i = 0; i &lt; n; ++i) dp[n-1][i] = a[n-1][i];
+  for (i = n - 2; i &gt;= 0; --i) {
+    for (j = 0; j &lt; n - 1; ++j) {
+      dp[i][j] = max(dp[i+1][j], dp[i+1][j+1]) + a[i][j];
+    }
+  }
+  printf(&quot;%d\n&quot;, dp[0][0]);
+  return 0;
+}
+
+</code></pre>
+
+<p>还是从最简单的开始做起吧
+另外一种写法：
+ </p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+const int MAX = 100;
+int a[MAX][MAX], dp[MAX][MAX], n;
+int f(int i, int j) {
+  if (dp[i][j] &gt;= 0) return dp[i][j];
+  else {
+    if (i == n-1) dp[i][j] = a[i][j];
+    else dp[i][j] = a[i][j] + max(dp[i+1][j], dp[i+1][j+1]);
+    return dp[i][j];
+  }
+}
+int main(void) {
+  int i,j; scanf(&quot;%d&quot;,&amp;n);
+  for (i = 0; i &lt; n; ++i) {
+    for (j = 0; j &lt; i+1; ++j) {
+      scanf(&quot;%d&quot;, &amp;a[i][j]);
+    }
+  }
+  memset(dp, -1, sizeof(dp));
+  for (i = 0; i &lt; n; ++i) dp[n-1][i] = a[n-1][i];
+  for (i = n-1; i &gt;= 0; --i)
+    for (j = 0; j &lt; i+1; ++j)
+      f(i, j);
+  printf(&quot;%d\n&quot;, dp[0][0]);
+  return 0;
+}
+
+</code></pre>
+
+<p> 
+这就是所谓的记忆化搜索
+ </p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/csu1290-random-integers-dp%E5%85%A5%E9%97%A8%E9%A2%98%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/"><i class="fa fa-chevron-circle-left"></i> csu1290 Random Integers ——DP入门题&amp;&amp;比赛残留题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/nyoj16-%E7%9F%A9%E5%BD%A2%E5%B5%8C%E5%A5%97-dp%E5%85%A5%E9%97%A8%E9%A2%98/">NYOJ16 矩形嵌套 ——DP入门题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

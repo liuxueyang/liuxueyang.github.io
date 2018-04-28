@@ -1,0 +1,209 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Building Roads to Connect Cities</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2017-05-17T15:24:43&#43;08:00">May 17, 2017</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="/categories/algorithm/">Algorithm</a>
+                
+                    , 
+                    <a href="/categories/graph/">Graph</a>
+                
+                    , 
+                    <a href="/categories/kruskal/">Kruskal</a>
+                
+            </em>
+        </li>
+        
+
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="https://gitlab.com/liuxueyang/algorithms-on-graph-exercise/blob/master/week5/spanning_trees_problems.pdf">pdf</a></p>
+
+<p>给出平面上的一些点，任意两点之间可以相连，求最小生成树的总权值。</p>
+
+<p>用Kruskal：把所有边按照边长度升序排序，循环所有边，每次加入一个边之前要判断这个边的两个点是不是在一个集合中，如果是那么跳过，如果不是那么把这个边的两个点合并到一个集合中。集合操作用带路径压缩的并查集。循环边的过程中累加边的权值。</p>
+
+<pre><code class="language-cpp">// Tue May 16 17:02:04 2017
+// Tue May 16 20:42:10 2017
+
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+struct edge {
+  int from, to;
+  double cost;
+};
+
+inline double p_distance(int x1, int y1, int x2, int y2) {
+  return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+}
+
+int p_find(int x, vector&lt;int&gt; &amp;parent) {
+  int p = x;
+  
+  while (p != parent[p]) {
+    p = parent[p];
+  }
+  return parent[x] = p;
+}
+
+void p_union(int x, int y, vector&lt;int&gt; &amp;parent, vector&lt;int&gt; &amp;p_size) {
+  int p_x = p_find(x, parent), p_y = p_find(y, parent), ps_x = p_size[p_x],
+    ps_y = p_size[p_y];
+  
+  if (ps_x &gt; ps_y) {
+    parent[p_y] = p_x;
+    p_size[p_x] += ps_y;
+  }
+  else {
+    parent[p_x] = p_y;
+    p_size[p_y] += ps_x;
+  }
+}					       
+
+double minimum_distance(vector&lt;int&gt; x, vector&lt;int&gt; y) {
+  double result = 0.;
+  vector&lt;edge&gt; edges;
+
+  for (size_t i = 0; i &lt; x.size(); ++i) {
+    for (size_t j = i + 1; j &lt; x.size(); ++j) {
+      edge e; e.from = i; e.to = j; e.cost = p_distance(x[i], y[i], x[j], y[j]);
+      edges.push_back(e);
+    }
+  }
+
+  sort(edges.begin(), edges.end(),
+       [](const edge &amp;a, const edge &amp;b) -&gt; bool { return a.cost &lt; b.cost; });
+  vector&lt;int&gt; parent(x.size()), p_size(x.size());
+
+  for (size_t i = 0; i &lt; parent.size(); ++i) {
+    parent[i] = i;
+    p_size[i] = 1;
+  }
+
+  for (auto &amp;e : edges) {
+    if (p_find(e.from, parent) != p_find(e.to, parent)) {
+      p_union(e.from, e.to, parent, p_size);
+      result += e.cost;
+    }
+  }
+
+  return result;
+} 
+
+int main() {
+  
+#ifdef DEBUG
+  freopen(&quot;in&quot;, &quot;r&quot;, stdin);
+#endif
+  
+  size_t n;
+  
+  while(cin &gt;&gt; n) {
+    vector&lt;int&gt; x(n), y(n);
+    
+    for (size_t i = 0; i &lt; n; i++) {
+      std::cin &gt;&gt; x[i] &gt;&gt; y[i];
+    }
+    
+    std::cout &lt;&lt; std::setprecision(10) &lt;&lt; minimum_distance(x, y) &lt;&lt; std::endl;
+  }
+}
+
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/"><i class="fa fa-chevron-circle-left"></i> Detecting Anomalies in Currency Exchange Rates</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/clustering/">Clustering <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

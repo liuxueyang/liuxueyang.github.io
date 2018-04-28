@@ -1,0 +1,146 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu1284 钱币兑换问题 ——DP</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-05-23T20:39:00Z">May 23, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+                    , 
+                    <a href="/tags/dp/">#DP</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1284">http://acm.hdu.edu.cn/showproblem.php?pid=1284</a>
+题目大意：
+　　中文题……
+题目思路：
+　　只有3个硬币，范围是32768，可以一个一个枚举硬币，如果只放价值为1的硬币，从d[1]递推到d[n]；如果再加上价值为2的硬币，那么就从d[2]递推到d[n]；在加上价值为3的硬币，就从d[3]递推到d[n].递推公式是d[j] = d[j] + d[j-i]； d[j]表示j有几种只用1，2, 3这三个数字的拆分方法，i 就是硬币的价值。
+ </p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+const int MAX = 32768+10;
+long long d[MAX];
+void solve() {
+  int n, i, j;
+  while (~scanf(&quot;%d&quot;, &amp;n)) {
+    memset(d, 0, sizeof(d));
+    d[0] = 1;
+    for (i = 1; i &lt;= 3; ++i) {
+      for (j = i; j &lt;= n; ++j) {
+        d[j] += d[j-i];
+      }
+    }
+    printf(&quot;%lld\n&quot;, d[n]);
+  }
+}
+int main(void) {
+  solve();
+  return 0;
+}
+
+</code></pre>
+
+<p> 
+参考博客：<a href="http://www.cnblogs.com/qiufeihai/archive/2012/09/11/2680840.html">http://www.cnblogs.com/qiufeihai/archive/2012/09/11/2680840.html</a>
+ </p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu1028-ignatius-and-the-princess-iii-dp/"><i class="fa fa-chevron-circle-left"></i> hdu1028 Ignatius and the Princess III ——DP</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu1398-square-coins-dp/">hdu1398 Square Coins ——DP <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

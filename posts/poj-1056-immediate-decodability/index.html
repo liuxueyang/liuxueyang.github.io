@@ -1,0 +1,186 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj 1056 IMMEDIATE DECODABILITY</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-02-27T19:05:00Z">Feb 27, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+                    , 
+                    <a href="/tags/data-structure/">#Data Structure</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Description
+Input
+Output
+Sample Input
+Sample Output</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+
+const int sonnum = 2, base = '0';
+struct Trie 
+{
+  int num; bool terminal;
+ Trie *son[sonnum];
+};
+Trie *NewTrie()
+{
+  Trie *temp = new Trie;
+  temp-&gt;num = 1; temp-&gt;terminal = false;
+  for (int i = 0; i &lt; sonnum; ++i) temp-&gt;son[i] = NULL;
+  return temp; 
+}
+bool Insert(Trie *pnt, char *s, int len)
+{
+  Trie *temp = pnt;
+  bool mrk = true;
+  for (int i = 0; i &lt; len; ++i)
+  {
+    if (temp-&gt;son[s[i]-base] == NULL) temp-&gt;son[s[i]-base] = NewTrie();
+    else 
+    {
+      temp-&gt;son[s[i]-base]-&gt;num++;
+      if (temp-&gt;son[s[i]-base]-&gt;terminal == true)
+        mrk = false;
+    }
+    temp = temp-&gt;son[s[i]-base];
+  }
+  temp-&gt;terminal = true;
+  return mrk;
+}
+
+int main(void)
+{
+  Trie *tree;
+  char a[20]; int cnt = 1;
+#ifndef ONLINE_JUDGE
+  freopen(&quot;poj2056.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (~scanf(&quot;%s&quot;, a))
+  {
+    tree = NewTrie();
+    bool flag = true;
+    Insert(tree, a, strlen(a));
+  while (~scanf(&quot;%s&quot;, a))
+    {
+      if (a[0] == '9') break;
+      if (false == Insert(tree, a, strlen(a)))
+        flag = false;
+    }
+//    if (a[0] == '9') continue;
+    if (flag == false) printf(&quot;Set %d is not immediately decodable\n&quot;, cnt);
+    else printf(&quot;Set %d is immediately decodable\n&quot;, cnt);
+    cnt++;
+}
+
+  return 0;
+}
+
+</code></pre>
+
+<p>又练习了一遍字典树，标记即可没有什么技术含量，代码还可以优化，习惯这么写了……虽然有点儿麻烦，至少是对的。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj-2503-babelfish/"><i class="fa fa-chevron-circle-left"></i> poj 2503 Babelfish</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj-2945-find-the-clones/">poj 2945 Find the Clones <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

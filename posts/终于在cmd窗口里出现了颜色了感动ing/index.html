@@ -1,0 +1,182 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>终于在cmd窗口里出现了颜色了！！！感动ing……</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-10-06T15:31:00Z">Oct 6, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/masm/">#masm</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>在窗口的中央打印三行字。</p>
+
+<p>要求：　</p>
+
+<p>　　　　第一行绿色字</p>
+
+<p>　　　　第二行绿底红色</p>
+
+<p>　　　　第三行白底蓝色</p>
+
+<pre><code>assume cs:code, ds:data
+
+data segment
+    db 'welcome to masm!'
+data ends
+
+code segment
+start:
+    mov ax, data
+    mov ds, ax
+    mov ax, 0b800h
+    mov es, ax
+    mov di, 780h
+    mov si, 0
+    mov cx, 10h
+s:
+    mov bp, si
+    add bp, bp
+    mov al, ds:[si]
+    mov es:[di+bp+40h], al
+    mov al, 24h
+    mov es:[di+bp+41h], al
+    inc si
+    loop s
+
+
+    mov di, 6e0h
+    mov si, 0
+    mov cx, 10h
+s0:
+    mov bp, si
+    add bp, bp
+    mov al, ds:[si]
+    mov es:[di+bp+40h], al
+    mov al, 2h
+    mov es:[di+bp+41h], al
+    inc si
+    loop s0
+
+
+    mov di, 820h
+    mov si, 0
+    mov cx, 10h
+s1:
+    mov bp, si
+    add bp, bp
+    mov al, ds:[si]
+    mov es:[di+bp+40h], al
+    mov al, 71h
+    mov es:[di+bp+41h], al
+    inc si
+    loop s1
+    
+    mov ax, 4c00h
+    int 21h
+code ends
+
+end start
+</code></pre>
+
+<p>截图记录下这历史性的一刻=_=</p>
+
+<p><img src="http://wstaw.org/m/2017/04/10/06153206-6628adf620104ace9cc6398fe4d18a25.png" alt="snapshot" /></p>
+
+<p>O(∩_∩)O哈哈~</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E4%B8%80%E4%B8%AA%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F-%E5%85%B6%E5%AE%9E%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AA%E6%A0%B9%E6%8D%AE%E4%BD%8D%E7%A7%BB%E8%BF%9B%E8%A1%8C%E8%BD%AC%E7%A7%BB%E7%9A%84%E5%BA%94%E7%94%A8/"><i class="fa fa-chevron-circle-left"></i> 一个有意思的汇编程序 ——其实就是一个根据位移进行转移的应用=_=</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-b-fixed-points/">codeforces B.Fixed Points <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

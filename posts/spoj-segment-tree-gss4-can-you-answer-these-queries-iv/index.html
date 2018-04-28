@@ -1,0 +1,276 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>spoj, segment tree: GSS4 - Can you answer these queries IV</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-07-25T23:19:05Z">Jul 25, 2016</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/spoj/">#spoj</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p><a href="http://www.spoj.com/problems/GSS4/">Problem Link</a></p>
+
+<p>这道题目并没有用到懒惰更新，只是有一个优化：当一个区间的和等于区间长度的时候，那么他就没有必要更新了。</p>
+
+<p>平常的线段树区间更新和区间查询</p>
+
+<p>另外注意，题目中并没有说X和Y的大小关系。。</p>
+
+<pre><code class="language-cpp">// 2016/07/22 19:58:12 PM
+// Sabastian
+
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;math.h&gt;
+
+using namespace std;
+
+typedef long long ll;
+
+typedef struct TreeNode {
+  int start, end;
+  ll total;
+} TreeNode;
+
+TreeNode tree[4 * 100000 + 10];
+ll a[4 * 100000 + 10];
+
+void update(int stIndex, int start, int end);
+
+void printNode(int stIndex) {
+  TreeNode &amp;t = tree[stIndex];
+  printf(&quot;%d (%d, %d), total=%lld\n&quot;,
+         stIndex, t.start, t.end, t.total);
+}
+
+void build(int stIndex, int start, int end) {
+  tree[stIndex].start = start;
+  tree[stIndex].end = end;
+
+  if (start == end) {
+    tree[stIndex].total = a[start];
+    return;
+  }
+
+  int mid = (start + end) / 2, leftChildIndex = stIndex * 2,
+    rightChildIndex = leftChildIndex + 1;
+  build(leftChildIndex, start, mid);
+  build(rightChildIndex, mid + 1, end);
+  tree[stIndex].total = tree[leftChildIndex].total +
+    tree[rightChildIndex].total;
+}
+
+bool NecessaryUpdate(int stIndex) {
+  TreeNode &amp; t = tree[stIndex];
+  return t.total &gt; (t.end - t.start + 1);
+}
+
+void UpdateNode(int stIndex) {
+  TreeNode &amp; t = tree[stIndex];
+  bool isLeaf = (t.start == t.end);
+
+  if (NecessaryUpdate(stIndex)) {
+    if (isLeaf) {
+      tree[stIndex].total = floor(sqrt(tree[stIndex].total));
+    }
+    else {
+      int leftChildIndex = stIndex * 2,
+        rightChildIndex = leftChildIndex + 1;
+
+      UpdateNode(leftChildIndex);
+      UpdateNode(rightChildIndex);
+      tree[stIndex].total = tree[leftChildIndex].total +
+        tree[rightChildIndex].total;
+    }
+  }
+}
+
+void update(int stIndex, int start, int end) {
+
+  TreeNode &amp; t = tree[stIndex];
+
+  if (start == t.start &amp;&amp; end == t.end) {
+    UpdateNode(stIndex);
+    return;
+  }
+
+  // node contain is contained in [start..end]
+  int leftChildIndex = stIndex * 2, rightChildIndex = leftChildIndex + 1,
+    mid = (t.start + t.end) / 2;
+
+  if (start &gt; mid) {
+    update(rightChildIndex, start, end);
+  }
+  else if (end &lt;= mid) {
+    update(leftChildIndex, start, end);
+  }
+  else {
+    update(leftChildIndex, start, mid);
+    update(rightChildIndex, mid + 1, end);
+  }
+
+  t.total = tree[leftChildIndex].total + tree[rightChildIndex].total;
+
+  return;
+}
+
+ll query(int stIndex, int start, int end) {
+  TreeNode &amp; t = tree[stIndex];
+
+  if (start == t.start &amp;&amp; end == t.end) {
+    return t.total;
+  }
+
+  // node contain is contained in [start..end]
+  int leftChildIndex = stIndex * 2, rightChildIndex = leftChildIndex + 1,
+    mid = (t.start + t.end) / 2;
+
+  if (start &gt; mid) {
+    return query(rightChildIndex, start, end);
+  }
+  else if (end &lt;= mid) {
+    return query(leftChildIndex, start, end);
+  }
+  else {
+    return query(leftChildIndex, start, mid) +
+      query(rightChildIndex, mid + 1, end);
+  }
+}
+
+int main(void) {
+  #ifdef DEBUG
+  freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);
+  #endif
+
+  int N, M;
+
+  int c = 1;
+  while (~scanf(&quot;%d&quot;, &amp;N)) {
+    printf(&quot;Case #%d:\n&quot;, c);
+    ++c;
+    for (int i = 0; i &lt; N; ++i) {
+      scanf(&quot;%lld&quot;, &amp;a[i]);
+    }
+
+    build(1, 0, N - 1);
+    scanf(&quot;%d&quot;, &amp;M);
+    for (int m = 1; m &lt;= M; ++m) {
+      int i, x, y;
+      scanf(&quot;%d%d%d&quot;, &amp;i, &amp;x, &amp;y);
+
+      if (x &gt; y) {
+        swap(x, y);
+      }
+
+      x--; y--;
+      if (i) {
+        printf(&quot;%lld\n&quot;, query(1, x, y));
+      }
+      else {
+        update(1, x, y);
+      }
+    }
+    printf(&quot;\n&quot;);
+  }
+  return 0;
+}
+
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/spoj-segment-tree-gss3-can-you-answer-these-queries-iii/"><i class="fa fa-chevron-circle-left"></i> spoj, segment tree: GSS3 - Can you answer these queries III</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/spoj-segment-tree-horrible-horrible-queries/">spoj, segment tree: HORRIBLE - Horrible Queries <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

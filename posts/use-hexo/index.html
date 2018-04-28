@@ -1,0 +1,233 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Use Hexo</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2017-02-14T00:00:00Z">Feb 14, 2017</time>
+        </li>
+        
+        
+
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    
+
+<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+
+<h2 id="quick-start">Quick Start</h2>
+
+<h3 id="create-a-new-post">Create a new post</h3>
+
+<pre><code class="language-bash">$ hexo new &quot;My New Post&quot;
+</code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+
+<h3 id="run-server">Run server</h3>
+
+<pre><code class="language-bash">$ hexo server
+</code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+
+<h3 id="generate-static-files">Generate static files</h3>
+
+<pre><code class="language-bash">$ hexo generate
+</code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+
+<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
+
+<pre><code class="language-bash">$ hexo deploy
+</code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+
+<h3 id="一些测试">一些测试</h3>
+
+<h4 id="插入图片">插入图片</h4>
+
+<p>插入图片链接，这是我现在的桌面：</p>
+
+<p><img src="http://wstaw.org/m/2017/02/14/plasma-desktopL28693.png" alt="Slackware KDE4 desktop" /></p>
+
+<h4 id="插入程序块">插入程序块</h4>
+
+<p>这是一段Racket程序：</p>
+
+<pre><code class="language-scheme">;; lookup a variable in an environment
+;; Do NOT change this function
+(define (envlookup env str)
+  (cond [(null? env) (error &quot;unbound variable during evaluation&quot; str)]
+        [(equal? (car (car env)) str) (cdr (car env))]
+        [#t (envlookup (cdr env) str)]))
+</code></pre>
+
+<p>这是一段Ruby程序：</p>
+
+<pre><code class="language-ruby">class Let &lt; GeometryExpression
+  # *add* methods to this class -- do *not* change given code and do not
+  # override any methods
+  # Note: Look at Var to guide how you implement Let
+  def initialize(s,e1,e2)
+    @s = s
+    @e1 = e1
+    @e2 = e2
+  end
+
+  def eval_prog env
+    @e2.eval_prog([[@s, @e1.eval_prog(env)]].concat(env))
+  end
+
+  # I didn't add this function before!!
+  def preprocess_prog
+    Let.new(@s, @e1.preprocess_prog, @e2.preprocess_prog)
+  end
+end
+
+</code></pre>
+
+<p>这是一段SML程序：</p>
+
+<pre><code class="language-sml">(* Didn't understand the problem's meaning first.
+I fix it after I saw the error message of the autograder.
+ *)
+fun preprocess_prog exp =
+  case exp of
+      LineSegment(x1, y1, x2, y2) =&gt;
+      if real_close(x1, x2) then
+	  (if real_close(y1, y2) then Point(x1, y1)
+	   else if y1 &gt; y2 then LineSegment(x2, y2, x1, y1)
+	   else exp)
+      else if x1 &gt; x2 then LineSegment(x2, y2, x1, y1)
+      else exp
+    | Intersect(e1, e2) =&gt; Intersect(preprocess_prog e1,
+				    preprocess_prog e2)
+    | Let(s, e1, e2) =&gt; Let(s, preprocess_prog e1, preprocess_prog e2)
+    | Shift(dx, dy, e) =&gt; Shift(dx, dy, preprocess_prog e)
+    | _ =&gt; exp;
+
+</code></pre>
+
+<p>只是测试一下有没有代码语法高亮。</p>
+
+<p>发现racket没有语法高亮，那就试一试改成scheme看看。另外，如果插入的图片是外部的链接，可能网页会加载的很慢，尤其是大图片。文字和图片链接之间最好有空行，这样生成的网页美观一点。</p>
+
+<p>发现scheme也没有语法高亮。那试一试lisp程序：</p>
+
+<pre><code class="language-lisp">(defun next-prime (n)
+  &quot;return the first prime number which is greater than n&quot;
+  (loop for i from (1+ n) when (primep i)
+     return i))
+
+;; NOTE: Don't write as: `(,x ,(gensym)) because of the macro expansion time should be later.
+(defmacro with-gensyms ((&amp;rest rest) &amp;body body)
+  `(let ,(loop for x in rest
+	    collect `(,x (gensym)))
+     ,@body))
+</code></pre>
+
+<p>发现lisp程序也没有高亮，可能需要插件吧。目前就这样吧。能用就行。</p>
+
+<p>刚才看到markdown的文档里讲到插入代码块的方式是缩进四个空格。那么试一试吧，这是一段Ruby程序：</p>
+
+<pre><code># some helper methods that may be generally useful
+def real_close(r1,r2)
+  (r1 - r2).abs &lt; GeometryExpression::Epsilon
+end
+</code></pre>
+
+<p>好像并不可以。不知道hexo里面的markdown和标准的markdown有什么区别。有时间写一个支持lisp程序代码高亮的插件吧。</p>
+
+<h4 id="其它">其它</h4>
+
+<p>本来想试一试在Gitlab上面部署这个博客的，然而折腾了半天，遇到了一些陷阱（官方文档里和现在的情况不符合，官方文档并没更新），最好弄好了发现还有CSS没有加载的问题。另外还「恰好」遇到了Gitlab服务器挂掉的情况（不过很快就好了）。在这件事情上面，和Github相比，还是Github Pages方便多了，基本不需要什么设置，很快就弄好了。其实搭建个这样的博客看起来挺简单，其实还是挺花时间的，修改主题，修改设置等等。</p>
+
+<p>电脑旧了，刚才竟然过热关机了。果然还是不能同时开太多东西。CPU负担不能太大，所以我打算把部分工作放到树莓派上面来做。比如写不需要使用IDE的程序、看书看文档。一般情况下本地就打开一个浏览器查东西就够了。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2017-01-02-emacs-fcitx-thought/"><i class="fa fa-chevron-circle-left"></i> 折腾Emacs和Fcitx的兼容问题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8raspbian/">开始使用Raspbian <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

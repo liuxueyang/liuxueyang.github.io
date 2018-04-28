@@ -1,0 +1,764 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Haskell 笔记9</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2017-04-13T08:01:00Z">Apr 13, 2017</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="/categories/haskell/">Haskell</a>
+                
+            </em>
+        </li>
+        
+
+        
+
+        <li>8 min read</li>
+    </ul>
+</aside>
+    
+
+    
+
+<p>这是<a href="http://learnyouahaskell.com/input-and-output">第九章</a>的笔记</p>
+
+<h2 id="hello-world">Hello, world!</h2>
+
+<h2 id="files-and-streams">Files and streams</h2>
+
+<p>getContents：从标准输入读数据，返回IO Action，一直到文件末尾。</p>
+
+<pre><code class="language-haskell">-- print lines whose length is less than 10
+
+main = do
+  lines &lt;- getContents
+  putStr . shortLines $ lines
+
+shortLines :: String -&gt; String
+shortLines =
+  unlines . filter ((&lt; 10) . length) . lines
+  -- Function composition简直好用
+</code></pre>
+
+<p>interact：接收一个类型为<code>String -&gt; String</code>的函数作为参数，返回一个IO Action，这个IO Action接收一个输入，用之前的<code>String -&gt; String</code>函数处理之后，然后返回一个IO Action，这个IO Action执行的时候会输出处理之后的字符串。</p>
+
+<pre><code class="language-haskell">main = interact shortLines
+
+shortLines = unlines . filter ((&lt;5) . length) . lines
+</code></pre>
+
+<p>甚至可以写成一行：</p>
+
+<pre><code class="language-haskell">main = interact $ unlines . filter ((&lt;5) . length) . lines
+</code></pre>
+
+<p>从标准输入读入一个字符串，判断这个是字符串是否是回文：</p>
+
+<pre><code class="language-haskell">main = interact palindrome
+
+palindrome :: String -&gt; String
+palindrome =
+  unlines . map (\ str -&gt;
+				   if str == reverse str then &quot;Yes&quot;
+				   else &quot;No&quot;) . lines
+</code></pre>
+
+<p>虽然我们写的程序是把一个字符串处理成了另外一个字符串，但是运行的时候，它的表现却是：读入一个字符串，输出结果，然后读入下一个字符串，输出结果，一直到文件结尾。这是因为Haskell的懒惰性质。</p>
+
+<p>读文件并且输出文件内容：</p>
+
+<pre><code class="language-haskell">import System.IO
+
+main =
+  withFile &quot;girlfriend.txt&quot; ReadMode ( \ h -&gt; do
+										 lines &lt;- hGetContents h
+										 putStr lines)
+</code></pre>
+
+<p><code>FilePath</code>类型是String的一个别名：</p>
+
+<pre><code class="language-haskell">λ&gt; :info FilePath
+type FilePath = String 	-- Defined in ‘GHC.IO’
+</code></pre>
+
+<p><code>openFile</code>函数的类型是：</p>
+
+<pre><code class="language-haskell">λ&gt; :t openFile
+openFile :: FilePath -&gt; IOMode -&gt; IO Handle
+</code></pre>
+
+<p>它接收一个文件路径和IOMode，返回一个IO Action，这个IO Action会用指定的模式打开文件，然后把Handle封装到返回的IO Action里。</p>
+
+<p><code>hClose</code>的类型；</p>
+
+<pre><code class="language-haskell">λ&gt; :t hClose
+hClose :: Handle -&gt; IO ()
+</code></pre>
+
+<p>它用来关闭文件，接收一个文件句柄作为参数。</p>
+
+<p>IOMode类型的定义：</p>
+
+<pre><code class="language-haskell">λ&gt; :info IOMode
+data IOMode = ReadMode | WriteMode | AppendMode | ReadWriteMode
+  	-- Defined in ‘GHC.IO.IOMode’
+instance Enum IOMode -- Defined in ‘GHC.IO.IOMode’
+instance Eq IOMode -- Defined in ‘GHC.IO.IOMode’
+instance Ord IOMode -- Defined in ‘GHC.IO.IOMode’
+instance Read IOMode -- Defined in ‘GHC.IO.IOMode’
+instance Show IOMode -- Defined in ‘GHC.IO.IOMode’
+</code></pre>
+
+<p>所以它是一个枚举类型。</p>
+
+<p>hGetContents函数的类型：</p>
+
+<pre><code class="language-haskell">λ&gt; :t hGetContents
+hGetContents :: Handle -&gt; IO String
+</code></pre>
+
+<p>它接收一个<code>Handle</code>，比如<code>openFile</code>的返回值包装的类型。它和<code>getContents</code>函数类似。类似的还有<code>hGetLine</code>、<code>hPutStr</code>、<code>hPutStrLn</code>、<code>hGetChar</code>等。</p>
+
+<p><code>readFile</code>的类型是：</p>
+
+<pre><code class="language-haskell">λ&gt; :t readFile
+readFile :: FilePath -&gt; IO String
+</code></pre>
+
+<p>它用来读文件，比<code>openFile</code>、<code>hGetContents</code>的组合或者<code>withFile</code>方便一点。比如上面的例子可以写成：</p>
+
+<pre><code class="language-haskell">import System.IO
+
+main = do
+  lines &lt;- readFile &quot;girlfriend.txt&quot;
+  putStr lines
+</code></pre>
+
+<p>用这个函数的时候，Haskell会自动关闭打开的文件。</p>
+
+<p><code>writeFile</code>的类型：</p>
+
+<pre><code class="language-haskell">λ&gt; :t writeFile
+writeFile :: FilePath -&gt; String -&gt; IO ()
+</code></pre>
+
+<p>这个函数用来写文件，如果要写入的文件已经存在则会覆盖：</p>
+
+<pre><code class="language-haskell">import System.IO
+import Data.Char
+
+main = do
+  lines &lt;- readFile &quot;girlfriend.txt&quot;
+  writeFile &quot;girlfriendcaps.txt&quot; . map toUpper $ lines
+</code></pre>
+
+<p><code>appendFile</code>这个函数和<code>writeFile</code>类似，只不过它是追加文件：</p>
+
+<pre><code class="language-haskell">import System.IO
+
+main = do
+  putStrLn &quot;Add a TODO: &quot;
+  todo &lt;- getLine
+  appendFile &quot;todo.txt&quot; $ todo ++ &quot;\n&quot;
+  putStrLn &quot;All of TODOs:&quot;
+  lines &lt;- readFile &quot;todo.txt&quot;
+  putStr lines
+</code></pre>
+
+<p><code>getLine</code>读入的字符串不包括换行符，所有要追加一个。</p>
+
+<p><code>hSetBuffering</code>这个函数的类型：</p>
+
+<pre><code class="language-haskell">λ&gt; :t hSetBuffering
+hSetBuffering :: Handle -&gt; BufferMode -&gt; IO ()
+</code></pre>
+
+<p>它用来设置buffer的模式，BufferMode的定义：</p>
+
+<pre><code class="language-haskell">λ&gt; :info BufferMode
+data BufferMode
+  = NoBuffering | LineBuffering | BlockBuffering (Maybe Int)
+</code></pre>
+
+<p><code>NoBuffering</code>表示一次读一个字符，<code>LineBuffering</code>一次读一行，对于文本文件这是默认行为，对于二进制文件，默认的是<code>BlockBuffering Nothing</code>也就是按照操作系统的chunk读取，也可以用<code>BlockBuffering (Just 1024)</code>来指定块的大小。</p>
+
+<p><code>hFluch</code>可以刷新buffer，它的类型：</p>
+
+<pre><code class="language-haskell">λ&gt; :t hFlush
+hFlush :: Handle -&gt; IO ()
+</code></pre>
+
+<p><code>openTempFile</code>的类型：</p>
+
+<pre><code class="language-haskell">λ&gt; :t openTempFile
+openTempFile :: FilePath -&gt; String -&gt; IO (FilePath, Handle)
+</code></pre>
+
+<p>它接收一个目录路径作为存放临时文件的位置，然后是一个文件名字，作为临时文件的文件名的模板，比如&rdquo;temp&rdquo;代表临时文件的文件名是&rdquo;temp_&ldquo;加上一些随机字符。返回一个IO Action，包含一个pair：临时文件的文件名和文件句柄。</p>
+
+<p>在todo里面删除一个条目：</p>
+
+<pre><code class="language-haskell">import System.IO
+import System.Directory
+import Data.List
+
+main = do
+  handle &lt;- openFile &quot;todo.txt&quot; ReadMode
+  (tempName, tempHandle) &lt;- openTempFile &quot;/tmp&quot; &quot;todo&quot;
+
+  contents &lt;- hGetContents handle
+  let oldTasks = lines contents
+	  oldTasksNumber = zipWith
+		(\n line -&gt; show n ++ &quot; - &quot; ++ line) [1..] oldTasks
+
+  putStrLn . unlines $ oldTasksNumber
+  putStrLn &quot;Enter the item number you want to delete:&quot;
+
+  input &lt;- getLine
+  let pos = read input
+	  newTasks = delete (oldTasks !! (pos - 1)) oldTasks
+
+  hPutStr tempHandle . unlines $ newTasks
+  hClose handle
+  hClose tempHandle
+  
+  renameFile tempName &quot;todo.txt&quot;
+
+  putStrLn &quot;New Todo list:&quot;
+  contents &lt;- readFile &quot;todo.txt&quot;
+  putStrLn contents
+</code></pre>
+
+<p><code>renameFile</code>函数的类型：</p>
+
+<pre><code class="language-haskell">λ&gt; :t renameFile
+renameFile :: FilePath -&gt; FilePath -&gt; IO ()
+</code></pre>
+
+<p>接收两个<code>FilePath</code>，第一个是就文件名，第二个是新文件名。这个函数来自System.Directory模块。</p>
+
+<h2 id="command-line-arguments">Command line arguments</h2>
+
+<p><code>System.Environment</code>模块包含两个IO Action用来处理命令行参数：<code>getArgs</code>和<code>getProgName</code>。</p>
+
+<p><code>getArgs</code>的类型：</p>
+
+<pre><code class="language-haskell">λ&gt; :t getArgs
+getArgs :: IO [String]
+</code></pre>
+
+<p>它包含程序运行的时候用户提供的命令行参数。</p>
+
+<p><code>getProgName</code>的类型：</p>
+
+<pre><code class="language-haskell">λ&gt; :t getProgName
+getProgName :: IO String
+</code></pre>
+
+<p>它包含当前运行的程序的名字。</p>
+
+<p>用命令行参数来重写上面的程序：</p>
+
+<pre><code class="language-haskell">import System.IO
+import System.Directory
+import System.Environment
+import Data.List
+
+dispatch :: [(String, [String] -&gt; IO ())]
+dispatch = [ (&quot;add&quot;, add)
+		   , (&quot;view&quot;, view)
+		   , (&quot;remove&quot;, remove)]
+
+main = do
+  (command : args) &lt;- getArgs
+  let (Just action) = lookup command dispatch
+  action args
+
+add :: [String] -&gt; IO ()
+add [fileName, todoItem] = appendFile fileName $ todoItem ++ &quot;\n&quot;
+
+view :: [String] -&gt; IO ()
+view [fileName] = do
+  contents &lt;- readFile fileName
+  mapM_ putStrLn .
+	zipWith (\n line -&gt; show n ++ &quot; - &quot; ++ line) [0..] .
+	lines $ contents
+
+remove :: [String] -&gt; IO ()
+remove [filename, pos] = do
+  (tempFile, tempHandle) &lt;- openTempFile &quot;/tmp&quot; &quot;TODO&quot;
+  content &lt;- readFile filename
+  let oldTasks = lines content
+	  index = read pos
+	  targetItem = oldTasks !! index
+	  newTasks = delete targetItem oldTasks
+
+  putStrLn $ &quot;The Item you have removed: &quot; ++ targetItem
+  hPutStr tempHandle $ unlines newTasks
+  hClose tempHandle
+  renameFile tempFile filename
+</code></pre>
+
+<p>运行效果：</p>
+
+<pre><code class="language-bash">$ ./todo add TODO 红昭愿
+$ ./todo add TODO 九九八十一
+$ ./todo add TODO 东京不太热
+$ ./todo view TODO
+0 - Slackware
+1 - Emacs
+2 - 红昭愿
+3 - 九九八十一
+4 - 东京不太热
+$ ./todo remove 3
+todo: todo.hs:(27,1)-(38,30): Non-exhaustive patterns in function remove
+
+$ ./todo remove TODO 3
+The Item you have removed: 九九八十一
+$ ./todo view TODO
+0 - Slackware
+1 - Emacs
+2 - 红昭愿
+3 - 东京不太热
+</code></pre>
+
+<p>在这个程序里我们把提供的命令行参数用一个关联表映射到不同的函数。这种实现方法的优势是：如果要添加功能，要做的事情很简单，在<code>dispatch</code>里面加一个entry，然后实现对应的函数就行了。比如，添加一个<code>bump</code>函数，它用来把一个项目放到TODO的顶部：</p>
+
+<pre><code class="language-haskell">dispatch :: [(String, [String] -&gt; IO ())]
+dispatch = [ (&quot;add&quot;, add)
+		   , (&quot;view&quot;, view)
+		   , (&quot;remove&quot;, remove)
+		   , (&quot;bump&quot;, bump)]
+
+bump :: [String] -&gt; IO ()
+bump [fileName, pos] = do
+  (tempFile, tempHandle) &lt;- openTempFile &quot;/tmp&quot; &quot;TODO&quot;
+  content &lt;- readFile fileName
+  let oldTasks = lines content
+	  index = read pos
+	  targetItem = oldTasks !! index
+	  newTasks = targetItem : (delete targetItem oldTasks)
+
+  putStrLn $ &quot;You have bumpped: &quot; ++ targetItem
+  hPutStr tempHandle . unlines $ newTasks
+  hClose tempHandle
+  renameFile tempFile fileName
+</code></pre>
+
+<p>运行效果：</p>
+
+<pre><code class="language-bash">
+$ ./todo view TODO
+0 - Slackware
+1 - Emacs
+2 - 红昭愿
+3 - 东京不太热
+$ ./todo bump 2
+todo: todo.hs:(42,1)-(53,30): Non-exhaustive patterns in function bump
+
+$ ./todo bump TODO 2
+You have bumpped: 红昭愿
+$ ./todo view TODO
+0 - 红昭愿
+1 - Slackware
+2 - Emacs
+3 - 东京不太热
+</code></pre>
+
+<h2 id="randomness">Randomness</h2>
+
+<p><code>System.Random</code>这个模块用来产生随机数。</p>
+
+<p><code>random</code>这个函数的类型是：</p>
+
+<pre><code class="language-haskell">λ&gt; :t random
+random :: (RandomGen g, Random a) =&gt; g -&gt; (a, g)
+</code></pre>
+
+<p>这里有两个typeclass constraint，一个是<code>RandomGen</code>，一个是<code>Random</code>。<code>RandomGen</code>这个typeclass是为能够作为随机值来源的类型提供的。<code>Random</code>这个typeclass是为能够产生随机值的类型提供的，比如<code>Int</code>、<code>Bool</code>、<code>Double</code>等等。所以要产生一个随机数，必须要有RandomGen的一个实例。</p>
+
+<p>可以在Ghci里面输入<code>:info Random</code>来看那些类型是Random的实例：</p>
+
+<pre><code class="language-haskell">λ&gt; :info Random
+class Random a where
+  randomR :: RandomGen g =&gt; (a, a) -&gt; g -&gt; (a, g)
+  random :: RandomGen g =&gt; g -&gt; (a, g)
+  randomRs :: RandomGen g =&gt; (a, a) -&gt; g -&gt; [a]
+  randoms :: RandomGen g =&gt; g -&gt; [a]
+  randomRIO :: (a, a) -&gt; IO a
+  randomIO :: IO a
+  	-- Defined in ‘System.Random’
+instance Random Word -- Defined in ‘System.Random’
+instance Random Integer -- Defined in ‘System.Random’
+instance Random Int -- Defined in ‘System.Random’
+instance Random Float -- Defined in ‘System.Random’
+instance Random Double -- Defined in ‘System.Random’
+instance Random Char -- Defined in ‘System.Random’
+instance Random Bool -- Defined in ‘System.Random’
+</code></pre>
+
+<p><code>System.Random</code>模块里面有一个类型：<code>StdGen</code>，它是<code>RandomGen</code>typeclass的一个实例。要产生一个random generator，可以用<code>mkStdGen</code>这个函数，它的类型是：</p>
+
+<pre><code class="language-haskell">λ&gt; :t mkStdGen
+mkStdGen :: Int -&gt; StdGen
+</code></pre>
+
+<p>它接收一个整数，返回一个<code>StdGen</code>类型的数据。可以这样产生随机数：</p>
+
+<pre><code class="language-haskell">λ&gt; random (mkStdGen 10) :: (Int, StdGen)
+(-2774747785423059091,1925364037 2103410263)
+</code></pre>
+
+<p>返回的tuple，里面第一个数字是我们需要的随机数，第二个是另外一个新的random generator。如果再次运行上面这句话的话，会产生同样的结果。可以给<code>mkStdGen</code>提供不同的参数来产生不同的随机数据。注意这里我们必须指定<code>random</code>函数的返回类型，因为<code>random</code>函数有两个typeclass constraint，第二个typeclass constraint是<code>Random a</code>，也就是说，必须要指定属于<code>Random</code>这个typeclass的某个Type。</p>
+
+<pre><code class="language-haskell">λ&gt; random (mkStdGen 20) :: (Double, StdGen)
+(0.9003264271598876,356856746 2103410263)
+</code></pre>
+
+<p>模拟抛硬币三次：</p>
+
+<pre><code class="language-haskell">import System.Random
+
+threeCoins :: StdGen -&gt; (Bool, Bool, Bool)
+threeCoins gen =
+  let (firstCoin, newGen) = random gen
+	  (secondCoin, newGen') = random newGen
+	  (thirdCoin, _) = random newGen'
+  in (firstCoin, secondCoin, thirdCoin)
+
+
+main = do
+  mapM_ putStrLn . map (show . threeCoins . mkStdGen) $ [1..10]
+</code></pre>
+
+<p>运行结果：</p>
+
+<pre><code class="language-haskell">./threeCoins 
+(True,False,True)
+(True,True,False)
+(True,True,False)
+(True,False,False)
+(True,True,True)
+(True,False,True)
+(True,False,True)
+(True,True,False)
+(True,False,False)
+(True,True,True)
+</code></pre>
+
+<p><code>randoms</code>这个函数接收一个generator，返回一个无限列表：</p>
+
+<pre><code class="language-haskell">λ&gt; :t randoms
+randoms :: (RandomGen g, Random a) =&gt; g -&gt; [a]
+λ&gt; take 5 $ randoms (mkStdGen 10) :: [Bool]
+[True,True,True,False,True]
+λ&gt; take 5 $ randoms (mkStdGen 10) :: [Int]
+[-2774747785423059091,-5364865979222864935,5005192715100199576,-2238708107678760508,-1609484772912886991]
+</code></pre>
+
+<p><code>randomR</code>这个函数可以接收一个tuple和一个random generator，tuple用来指定产生的随机数的范围：</p>
+
+<pre><code class="language-haskell">λ&gt; randomR (1, 10) (mkStdGen 101)
+(6,4081428 40692)
+λ&gt; randomR (7, 10) (mkStdGen 101)
+(10,4081428 40692)
+</code></pre>
+
+<p><code>randomRs</code>接收和<code>randomR</code>同样的参数，但是它产生一个无限列表：</p>
+
+<pre><code class="language-haskell">λ&gt; take 10 $ randomRs (7, 10) (mkStdGen 101)
+[10,8,10,8,7,8,7,7,8,10]
+</code></pre>
+
+<p>可以，这些随机数和IO Action又什么关系呢？到现在位置，我们都是手动输入参数给<code>mkStdGen</code>函数，每次产生的随机数都是一样的，这并没有什么用。所以，<code>System.Random</code>这个模块提供了一个<code>getStdGen</code>IO Action，它的类型是<code>IO StdGen</code>，当程序运行的时候，它会像操作系统请求一个generator，然后存放在一个全局变量里面，<code>getStdGen</code>这个函数可以取得那个全局变量里面的generator：</p>
+
+<pre><code class="language-haskell">import System.Random
+
+main = do
+  gen &lt;- getStdGen
+  putStrLn $ take 20 $ randomRs ('a', 'z') gen
+</code></pre>
+
+<p>这样程序每次运行的时候，结果是不一样的：</p>
+
+<pre><code class="language-haskell">./random_string 
+xacniwkagyijqdnvktsr
+./random_string 
+zqonszmyizygzgtstzar
+</code></pre>
+
+<p>可以用<code>netStdGen</code>这个IO StdGen来更新全局的generator。</p>
+
+<p>一个让用户猜数的程序：</p>
+
+<pre><code class="language-haskell">import System.Random
+import Control.Monad (when)
+
+main = do
+  gen &lt;- getStdGen
+  askForNumber gen
+
+askForNumber :: StdGen -&gt; IO ()
+askForNumber gen = do
+  let (randNumber, newGen) = randomR (1, 10) gen :: (Int, StdGen)
+  putStrLn &quot;Which number in the range from 1 to 10 am I thinking of? &quot;
+  numberString &lt;- getLine
+  when (not $ null numberString) $ do
+	let number = read numberString
+	if number == randNumber
+	  then putStrLn &quot;You are correct!&quot;
+	  else putStrLn $ &quot;Sorry, it was &quot; ++ show randNumber
+	askForNumber newGen
+</code></pre>
+
+<p>这个程序生成一个数字，然后用户只允许猜一次，然后重新生成一个新数字。</p>
+
+<h2 id="bytestrings">ByteStrings</h2>
+
+<p><code>Data.ByteString</code>模块里面的函数没有懒惰的属性，功能和<code>Data.List</code>里面对应的函数基本一样。</p>
+
+<p><code>Data.ByteStringLazy</code>模块里面的函数有懒惰的属性，但是读取单位是以chunk为单位的，chunk的大小是64kb。</p>
+
+<p>因为这两个模块里面的函数和<code>Data.List</code>里面的函数名字会冲突，所以一般用带有限定符的方式导入模块：</p>
+
+<pre><code class="language-haskell">import qualified Data.ByteStringLazy as B
+import qualified Data.ByteString as S
+</code></pre>
+
+<p><code>pack</code>函数的类型：</p>
+
+<pre><code class="language-haskell">λ&gt; :t B.pack
+B.pack :: [GHC.Word.Word8] -&gt; B.ByteString
+</code></pre>
+
+<p><code>pack</code>这个函数接收一个<code>word8</code>的列表，返回一个<code>ByteString</code>对象。</p>
+
+<p><code>Word8</code>类型是一个只有8位的整数。</p>
+
+<p><code>unpack</code>这个函数的作用相反，接收一个<code>ByteString</code>对象，返回一个<code>word8</code>列表。</p>
+
+<pre><code class="language-haskell">
+Prelude BS BSL&gt; :t BS.unpack 
+
+BS.unpack :: BS.ByteString -&gt; [GHC.Word.Word8] 
+
+</code></pre>
+
+<p><code>fromChunks</code>这个函数接收一个<code>ByteString</code>列表，然后返回一个lazy bytestring。</p>
+
+<pre><code class="language-haskell">
+Prelude BS BSL&gt; :t BSL.fromChunks 
+
+BSL.fromChunks :: [BS.ByteString] -&gt; BSL.ByteString 
+
+Prelude BS BSL&gt; BSL.fromChunks [BS.pack[97, 98]] 
+
+&quot;ab&quot; 
+
+Prelude BS BSL&gt; :t BSL.fromChunks [BS.pack[97, 98]] 
+
+BSL.fromChunks [BS.pack[97, 98]] :: BSL.ByteString 
+
+</code></pre>
+
+<p>这个函数的行为和我预期的相反，我感觉这个函数名字不恰当。其实从另外一个角度想的话，也能够说得通：把一个<code>ByteString</code>的列表（可以想象成chunks）转化成一个lazy bytestring。也就是说它接收一些strict bytestrings（也就是chunks），然後組成一個lazy bytestring。</p>
+
+<p><code>toChunks</code>這個函數和<code>fromChunks</code>相反。</p>
+
+<p><code>cons</code>和<code>cons'</code>類似于<code>Data.List</code>中的<code>(:)</code>，它們在ByteString的前面追加一個值，不過<code>cons</code>是lazy的，也就是說，即使第一個<code>chunk</code>沒有滿，也會自動追加一個新的chunk。這種時候<code>'cons</code>就很有用了，它對<code>strict ByteString</code>進行操作。</p>
+
+<p>對於文件的操作，也有<code>ByteString</code>的版本：</p>
+
+<pre><code class="language-haskell">import System.Environment 
+
+import qualified Data.ByteString.Lazy as BSL 
+
+
+main = do 
+  (fileSrc : fileDst : _) &lt;- getArgs 
+  copyFile fileSrc fileDst 
+  
+
+copyFile :: FilePath -&gt; FilePath -&gt; IO () 
+copyFile src dst = do 
+  contents &lt;- BSL.readFile src 
+  BSL.writeFile dst contents 
+</code></pre>
+
+<h2 id="exceptions">Exceptions</h2>
+
+<p>輸出一個文本文件有多少行：</p>
+
+<pre><code class="language-haskll">
+import System.Environment 
+import System.IO 
+  
+
+main = do 
+  (fileName : _) &lt;- getArgs 
+  contents &lt;- readFile fileName 
+  putStrLn $ &quot;The file has &quot; ++ (show . length . lines $ contents) ++ &quot; lines.&quot; 
+</code></pre>
+
+<p>可以預先判斷文件是否存在：</p>
+
+<pre><code class="language-haskell">
+import System.Environment 
+import System.IO 
+import System.Directory 
+  
+
+main = do 
+
+  (fileName : _) &lt;- getArgs 
+  fileExist &lt;- doesFileExist fileName 
+
+  if fileExist 
+	then do 
+	contents &lt;- readFile fileName 
+	putStrLn $ &quot;The file has &quot; ++ (show . length . lines $ contents) ++ &quot; lines.&quot; 
+	else do 
+	putStrLn &quot;file does not exist&quot; 
+</code></pre>
+
+<p>也可以加入異常處理：</p>
+
+<pre><code class="language-haskell">
+import System.Environment 
+import System.IO 
+import System.IO.Error 
+import Control.Exception 
+
+main = do 
+  toTry `catch` handler 
+
+toTry :: IO () 
+
+toTry = do 
+  (fileName : _) &lt;- getArgs 
+  contents &lt;- readFile fileName 
+  putStrLn $ &quot;The file has &quot; ++ (show . length . lines $ contents) ++ &quot; lines.&quot; 
+
+handler :: IOError -&gt; IO () 
+
+handler e = do putStrLn &quot;we have some trouble.&quot; 
+
+</code></pre>
+
+<p><code>Learn you a Haskell</code>裏面的程序過時了，<code>catch</code>這個函數不存在于<code>System.IO.Error</code>這個模塊裏面了，而是存在于<code>Control.Exception</code>裏。</p>
+
+<p><code>catch</code>這個函數接收兩個參數，第一個是IO Action，表示想要執行的動作，第二個是handler，表示如果在第一個IO Action裏面出現了異常，那麼就由這個<code>handler</code>函數來捕捉並處理這個異常。</p>
+
+<p>也可以捕捉特定的異常：</p>
+
+<pre><code class="language-haskell">
+handler :: IOError -&gt; IO () 
+handler e 
+  | isDoesNotExistError e = putStrLn &quot;The file doesn't exist!&quot; 
+  | otherwise = ioError e 
+</code></pre>
+
+<p>這個函數裏面，用到了兩個函數<code>isDoesNotExistError</code>，它接收一個IOError對象，返回一個Bool對象，如果IOError對象是一個文件不存在異常的話返回真。ioError接收一個IOError對象，返回一個IO Action，它會繼續拋出這個異常。</p>
+
+<p>可以從異常對象中得到一些信息，比如文件名：</p>
+
+<pre><code class="language-haskell">
+handler :: IOError -&gt; IO () 
+handler e 
+  | isDoesNotExistError e = 
+case ioeGetFileName e of 
+        Just path -&gt; putStrLn $ &quot;The file &quot; ++ path ++ &quot; doesn't exist!&quot; 
+        Nothing -&gt; putStrLn &quot;Whoops!&quot; 
+  | otherwise = ioError e 
+
+</code></pre>
+
+<p><code>ioeGetFileName</code>函數接收一個IOError對象，返回一個maybe String，也就是文件路徑。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E5%87%A0%E7%A7%8D%E4%B8%AA%E4%BA%BA%E6%96%87%E6%A1%A3%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88/"><i class="fa fa-chevron-circle-left"></i> 几种个人文档同步方案</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/haskell-%E7%AC%94%E8%AE%B010/">Haskel筆記 10 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>uva 11995 - I Can Guess the Data Structure!</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-03-16T14:30:00Z">Mar 16, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/uva/">#Uva</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>There is a bag-like data structure, supporting two operations:
+Throw an element x into the bag.
+Take out an element from the bag.
+Given a sequence of operations with return values, you&rsquo;re going to guess the data structure. It is a stack (Last-In, First-Out), a queue (First-In, First-Out), a priority-queue (Always take out larger elements first) or something else that you can hardly imagine!
+There are several test cases. Each test case begins with a line containing a single integer n (1&lt;=n&lt;=1000). Each of the next n lines is either a type-1 command, or an integer 2 followed by an integer x. That means after executing a type-2 command, we get an element x without error. The value of x is always a positive integer not larger than 100. The input is terminated by end-of-file (EOF). The size of input file does not exceed 1MB.
+For each test case, output one of the following:
+It&rsquo;s definitely a stack.
+It&rsquo;s definitely a queue.
+It&rsquo;s definitely a priority queue.
+It can&rsquo;t be a stack, a queue or a priority queue.
+It can be more than one of the three data structures mentioned above.</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;iostream&gt;
+using namespace std;
+struct data{
+  int v; int k; 
+  friend bool operator &lt; (data a, data b){
+    return a.v &lt; b.v;
+  }
+}s[1000+10];
+int n;
+int cstack(){
+  stack&lt;int&gt; qq;
+  for (int i = 0; i &lt; n; ++i){
+    if (s[i].k == 1) qq.push(s[i].v);
+    if (s[i].k == 2) {
+      if (qq.empty() == 1) return 0;
+      if (qq.top() == s[i].v) {
+        qq.pop(); continue;
+      }
+      else return 0;
+    }
+  }
+  return 1;
+}
+int cqueue(){
+  queue&lt;int&gt; qq;
+  for (int i = 0; i &lt; n; ++i){
+    if (s[i].k == 1) qq.push(s[i].v);
+    if (s[i].k == 2){
+      if (qq.empty() == 1) return 0;
+      if (qq.front() == s[i].v) {
+        qq.pop(); continue;
+      }
+      else return 0;
+    }
+  }
+  return 1;
+}
+int cpriqueue(){
+  priority_queue&lt;data&gt; qq;
+  for (int i = 0; i &lt; n; ++i){
+    if (s[i].k == 1) qq.push(s[i]);
+    if (s[i].k == 2) {
+      if (qq.empty() == 1) return 0;
+      if (qq.top().v == s[i].v) {
+        qq.pop(); continue;
+      }
+      else return 0;
+    }
+  }
+  return 1;
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;11995.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (~scanf(&quot;%d&quot;, &amp;n)){
+    for (int i = 0; i &lt; n; ++i){
+      scanf(&quot;%d%d&quot;, &amp;s[i].k, &amp;s[i].v);
+    }
+    int st = cstack(), qu = cqueue(), pri = cpriqueue();
+    if (st + qu + pri &gt; 1) printf(&quot;not sure\n&quot;);
+    else if (st) printf(&quot;stack\n&quot;);
+    else if (qu) printf(&quot;queue\n&quot;);
+    else if (pri) printf(&quot;priority queue\n&quot;);
+    else printf(&quot;impossible\n&quot;);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>关键是学会ＳＴＬ的使用，然后，还有结构体里面的友元函数，用来优先队列实现里面判断大小，注意，参数列表不能用 data &amp;a, data &amp;b会报错，看来Ｃ＋＋语法还得复习一下啊……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1065-i-think-i-need-a-houseboat/"><i class="fa fa-chevron-circle-left"></i> hdu 1065 I Think I Need a Houseboat</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uva-11991---easy-problem-from-rujia-liu/">uva 11991 - Easy Problem from Rujia Liu? <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

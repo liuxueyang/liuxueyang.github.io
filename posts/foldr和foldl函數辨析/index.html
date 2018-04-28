@@ -1,0 +1,167 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>foldl和foldr的不同點</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2017-04-18T16:37:32&#43;08:00">Apr 18, 2017</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="/categories/haskell/">Haskell</a>
+                
+            </em>
+        </li>
+        
+
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    
+
+<h3 id="foldl">foldl</h3>
+
+<p><code>foldl</code>這個函數的類型是：</p>
+
+<pre><code class="language-haskell">(a -&gt; b -&gt; a) -&gt; a -&gt; [b] -&gt; b
+</code></pre>
+
+<p>它接收一個函數、一個起始值、一個列表。它的作用相當于：</p>
+
+<pre><code class="language-haskell">foldl f z [x_1, x_2, ..., x_n] ==
+(... ((z `f` x_1) `f` x_2) `f` ...) `f` x_n
+</code></pre>
+
+<p>也就是它把起始值作爲<code>f</code>的*左參數*，從左邊迭代列表。</p>
+
+<p>可以這樣實現這個函數：</p>
+
+<pre><code class="language-haskell">mfoldl' :: (a -&gt; b -&gt; a) -&gt; a -&gt; [b] -&gt; a
+mfoldl' f accu [] = accu
+mfoldl' f accu (x : xs) =
+  mfoldl' f (accu `f` x) xs
+</code></pre>
+
+<pre><code class="language-haskell">λ&gt; mfoldl' (-) 0 [1..3]
+-6
+</code></pre>
+
+<h3 id="foldr">foldr</h3>
+
+<p><code>foldr</code>這個函數的類型是：</p>
+
+<pre><code class="language-haskell">(a -&gt; b -&gt; b) -&gt; b -&gt; [a] -&gt; b
+</code></pre>
+
+<p>它的作用相當于：</p>
+
+<pre><code class="language-haskell">foldr f z [x_1, x_2, ..., x_n] == 
+(x_1 `f` (x_2 `f` (... (x_n `f` z)...)))
+</code></pre>
+
+<p>它把起始值作爲<code>f</code>的*右參數*，從右邊開始迭代列表。</p>
+
+<p>這樣實現這個函數：</p>
+
+<pre><code class="language-haskell">mfoldr' :: (a -&gt; b -&gt; b) -&gt; b -&gt; [a] -&gt; b
+mfoldr' f accu [] = accu
+mfoldr' f accu (x : xs) =
+  x `f` (mfoldr' f accu xs)
+</code></pre>
+
+<pre><code class="language-haskell">λ&gt; mfoldr' (-) 0 [1..3]
+2
+</code></pre>
+
+<hr />
+
+<p>其實單單從函數的類型上就能夠得到很多信息。這也是強類型語言的一個優點吧。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/haskell-%E7%AC%94%E8%AE%B010/"><i class="fa fa-chevron-circle-left"></i> Haskel筆記 10</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/typeclass-in-haskell%E7%AD%86%E8%A8%98/">Typeclass in Haskell筆記 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

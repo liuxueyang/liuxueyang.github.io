@@ -1,0 +1,165 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Spoj, dynamic-programming: BYTESM2 - Philosophers Stone</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-08-12T21:32:26Z">Aug 12, 2016</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/spoj/">#spoj</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>在矩阵里面捡石头，求最大值。和常见的直角三角形那样的问题是一样的。</p>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *
+ *       Filename:  main.cpp
+ *
+ *    Description:  http://www.spoj.com/problems/BYTESM2/
+ *
+ *        Version:  1.0
+ *        Created:  08/12/2016 18:49:12
+ *       Compiler:  g++
+ *
+ *         Author:  Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com
+ *
+ * =====================================================================================
+ */
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+#define _ ios_base::sync_with_stdio(0);cin.tie(0);
+#define rep(i, a, n) for (int i = a; i &lt; n; ++i)
+#define per(i, a, n) for (int i = n-1; i &gt;= a; --i)
+#define pb push_back
+#define mp make_pair
+#define all(x) (x).begin(),(x).end()
+#define fi first
+#define se second
+#define SZ(x) ((int)(x).size())
+typedef vector&lt;int&gt; VI;
+typedef map&lt;int,int&gt; MI;
+typedef long long ll;
+typedef pair&lt;int,int&gt; PII;
+const ll MOD=1000000007;
+const int N=120;
+int a[N][N],result;
+  int
+main ( void )
+{
+#ifndef  ONLINE_JUDGE
+  freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);
+#endif     /* -----  ONLINE_JUDGE  ----- */
+  int T;cin&gt;&gt;T;while(T--){
+    memset(a,0,sizeof(a));
+    int r,c;cin&gt;&gt;r&gt;&gt;c;rep(i,1,r+1)rep(j,1,c+1)cin&gt;&gt;a[i][j];
+    rep(i,2,r+1)rep(j,1,c+1){
+      int tmp=0;
+      tmp=max(a[i-1][j],tmp);
+      if(j&gt;=2)tmp=max(tmp,a[i-1][j-1]);
+      if(j&lt;=c-1)tmp=max(tmp,a[i-1][j+1]);
+      a[i][j]+=tmp;
+    }
+    result=0;rep(j,1,c+1)result=max(result,a[r][j]);
+    cout&lt;&lt;result&lt;&lt;endl;
+  }
+
+  return EXIT_SUCCESS;
+}				/* ----------  end of function main  ---------- */
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/dynamic-programming-spoj-diehard-die-hard/"><i class="fa fa-chevron-circle-left"></i> Dynamic-programming: Spoj DIEHARD - DIE HARD</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/spoj-dynamic-programming-aibohp-aibohphobia/">Spoj, dynamic-programming: AIBOHP - Aibohphobia <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>uva 10790 - How Many Points of Intersection?</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2012-11-07T00:12:00Z">Nov 7, 2012</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/uva/">#Uva</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>We have two rows. There are a dots on the top row and b dots on the bottom row. We draw line segments connecting every dot on the top row with every dot on the bottom row. The dots are arranged in such a way that the number of internal intersections among the line segments is maximized. To achieve this goal we must not allow more than two line segments to intersect in a point. The intersection points on the top row and the bottom are not included in our count; we can allow more than two line segments to intersect on those two rows. Given the value of a andb, your task is to compute P(a, b), the number of intersections in between the two rows. For example, in the following figure a = 2 and b = 3. This figure illustrates that P(2, 3) = 3.
+ 
+ 
+Each line in the input will contain two positive integers a ( 0 &lt; a20000) and b ( 0 &lt; b20000). Input is terminated by a line where both aand b are zero. This case should not be processed. You will need to process at most 1200 sets of inputs.
+ 
+For each line of input, print in a line the serial of output followed by the value of P(a, b). Look at the output for sample input for details. You can assume that the output for the test cases will fit in 64-bit signed integers.
+ 
+ 
+ 
+ 
+ 
+ 
+这道题目我也没做出来，看了别人的做法才想明白。方法是找规律：
+设上面一行为A，有a个点，下面一行为B,有b个点。
+A行的第1个点与B行的第b个点相连，这条线上有(a - 1) * (b - 1)个点；
+A行的第1个点与B行的第b - 1个点相连，这条线上有(a - 1) * (b - 2)个点；
+A行的第1个点与B行的第b - 2个点相连，这条线上有(a - 1) * (b - 3)个点；
+………………………………………………
+A行的第1个点与B行的第2个点相连，这条线上有(a - 1) * (1)个点；
+共(a - 1) * (b - 1) * b / 2个点；
+同理，
+A行的第2个点与B行的第b个点相连，这条线上有(a - 2) * (b - 1)个点；
+A行的第2个点与B行的第b - 1个点相连，这条线上有(a - 2) * (b - 2)个点；
+………………………………………………
+共(a - 2) * (b - 1) * b / 2个点；
+以此类推，
+A行的第a - 1个点与B行的第b个点相连，这条线上有(1) * (b - 1)个点；
+A行的第a - 1个点与B行的第b - 1个点相连，这条线上有(1) * (b - 2)个点；
+………………………………………………
+A行的第a - 1个点与B行的第2个点相连，这条线上有(1) * (1)个点；
+共1 * (b - 1) * b / 2个点；
+累加，提取公因式(b - 1) * b / 2, 得到总和：(a - 1) * a * (b - 1) * b / 2.</p>
+
+<pre><code class="language-cpp">拙劣的代码
+
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+
+using namespace std;
+
+int main(void)
+{
+    long long int a, b, t;
+
+    t = 1;
+    while (cin &gt;&gt; a &gt;&gt; b)
+    {
+        if (!a &amp;&amp; !b)    break;
+        cout &lt;&lt; &quot;Case &quot; &lt;&lt; t &lt;&lt; &quot;: &quot;
+        &lt;&lt; a * b * (a - 1) * (b - 1) / 4 &lt;&lt; endl;
+        t++;
+    }
+
+    return 0;
+}
+
+
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uva-11044-searching-for-nessy/"><i class="fa fa-chevron-circle-left"></i> uva 11044 Searching for Nessy</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uva-107---the-cat-in-the-hat/">uva 107 - The Cat in the Hat <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

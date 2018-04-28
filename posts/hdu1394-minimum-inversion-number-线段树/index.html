@@ -1,0 +1,172 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu1394 Minimum Inversion Number ——线段树</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-05-23T18:25:00Z">May 23, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+                    , 
+                    <a href="/tags/data-structure/">#Data Structure</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1394">http://acm.hdu.edu.cn/showproblem.php?pid=1394</a>
+题目大意：
+　　给定一个0到ｎ-1的数字组成的序列，它的逆序数，然后把第一个数字放到末尾，得到一个新的序列，再求逆序数，再把新序列的第一个数字放到末尾，一直这样做，求所有这些序列的逆序数的最小值。
+题目思路：
+　　可以先求出起初的序列的逆序数。然后根据逆序数的定义，把一个数字从开头移动到末尾，逆序数的改变量是什么？求出这个改变量，然后剩下的所有序列的逆序数就都求出来了。
+　　这样考虑：一个数字 ｂ[i] 在开头，比它大的数字有 ｂ[i] 个，也就是说和这个数字组成了 ｂ[i] 个逆序，把它放到最后，这个数字可以组成 n-1-ｂ[i] 个逆序，所以逆序数的增量是 n - 1 - ｂ[i] - ｂ[i] ，这样就可以根据原来的序列的逆序数求出剩下的所有序列的逆序数了～</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+using namespace std;
+const int MAX = 5000+10;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+int a[MAX&lt;&lt;2], b[MAX], n;
+void pushup(int rt) {
+  a[rt] = a[rt&lt;&lt;1] + a[rt&lt;&lt;1|1];
+}
+void build(int l, int r, int rt) {
+  if (l == r) {a[rt] = 0; return;}
+  int m = (l + r) &gt;&gt; 1; build(lson); build(rson); pushup(rt);
+}
+void update(int p, int l, int r, int rt) {
+  if (l == r) {a[rt]++; return;}
+  int m = (l + r) &gt;&gt; 1;
+  if (p &lt;= m) update(p, lson); else update(p, rson);
+  pushup(rt);
+}
+int query(int L, int R,int l, int r, int rt) {
+  if (L &lt;= l &amp;&amp; R &gt;= r) {return a[rt];}
+  int m = (l + r) &gt;&gt; 1, ret = 0; 
+  if (L &lt;= m) ret += query(L, R, lson);
+  if (R &gt; m) ret += query(L, R, rson);
+  return ret;
+}
+void init() {
+  while (~scanf(&quot;%d&quot;, &amp;n)) {
+    int i, sum = 0, ans;
+    build(0, n - 1, 1);
+    for (i = 0; i &lt; n; ++i) {
+      scanf(&quot;%d&quot;, b+i);
+      sum += query(b[i]+1, n-1, 0, n-1, 1);
+      update(b[i], 0, n-1, 1);
+    }
+    ans = sum;
+    for (i = 0; i &lt; n; ++i) {
+      sum += (n-1-2*b[i]);
+      if (sum &lt; ans) ans = sum;
+    }
+    printf(&quot;%d\n&quot;, ans);
+  }
+}
+int main(void) {
+  init();
+  return 0;
+}
+
+</code></pre>
+
+<p>这题是线段树的单点更新</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj2299-ultra-quicksort-%E7%BA%BF%E6%AE%B5%E6%A0%91/"><i class="fa fa-chevron-circle-left"></i> poj2299 Ultra-QuickSort ——线段树</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu1028-ignatius-and-the-princess-iii-dp/">hdu1028 Ignatius and the Princess III ——DP <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

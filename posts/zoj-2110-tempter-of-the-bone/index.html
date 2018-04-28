@@ -1,0 +1,227 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>zoj 2110 Tempter of the Bone</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2012-11-29T14:10:00Z">Nov 29, 2012</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/zoj/">#zoj</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>The doggie found a bone in an ancient maze, which fascinated him a lot. However, when he picked it up, the maze began to shake, and the doggie could feel the ground sinking. He realized that the bone was a trap, and he tried desperately to get out of this maze.</p>
+
+<p>The maze was a rectangle with sizes N by M. There was a door in the maze. At
+  the beginning, the door was closed and it would open at the T-th second for
+  a short period of time (less than 1 second). Therefore the doggie had to arrive
+  at the door on exactly the T-th second. In every second, he could move one block
+  to one of the upper, lower, left and right neighboring blocks. Once he entered
+  a block, the ground of this block would start to sink and disappear in the next
+  second. He could not stay at one block for more than one second, nor could he
+  move into a visited block. Can the poor doggie survive? Please help him.</p>
+
+<p>Input</p>
+
+<p>The input consists of multiple test cases. The first line of each test case
+  contains three integers N, M, and T (1 &lt; N, M &lt; 7; 0 &lt; T &lt; 50),
+  which denote the sizes of the maze and the time at which the door will open,
+  respectively. The next N lines give the maze layout, with each line containing
+  M characters. A character is one of the following:</p>
+
+<p>&lsquo;X&rsquo;: a block of wall, which the doggie cannot enter;
+  &rsquo;S&rsquo;: the start point of the doggie;
+  &rsquo;D&rsquo;: the Door; or
+  &lsquo;.&rsquo;: an empty block.</p>
+
+<p>The input is terminated with three 0&rsquo;s. This test case is not to be processed.</p>
+
+<p>Output</p>
+
+<p>For each test case, print in one line &ldquo;YES&rdquo; if the doggie can survive,
+  or &ldquo;NO&rdquo; otherwise.</p>
+
+<p>Sample Input</p>
+
+<p>4 4 5
+  S.X.
+  ..X.
+  ..XD
+  &hellip;.
+  3 4 5
+  S.X.
+  ..X.
+  &hellip;D
+  0 0 0</p>
+
+<p>Sample Output</p>
+
+<p>NO
+  YES</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cmath&gt;
+
+using namespace std;
+
+char map[8][8];
+bool escape;
+int di, dj, m, n, t;
+int dir[4][2] = {{0, -1}, {0, 1}, {1,0},{-1,0}};
+
+void dfs(int si, int sj, int cnt)
+{
+    int i, temp;
+    if (si &gt; n || sj &gt; m || si &lt;= 0 || sj &lt;= 0) return;
+    if (si == di &amp;&amp; sj == dj &amp;&amp; cnt == t){escape = 1; return;}
+    temp = (t-cnt) - (fabs(si-di) + fabs(sj-dj));
+    if (temp&lt;0 || temp%2) return;
+    for (i = 0; i &lt; 4; ++i)
+    {
+        if (map[si+dir[i][0]][sj+dir[i][1]] != 'X')
+        {
+            map[si+dir[i][0]][sj+dir[i][1]] = 'X';
+            dfs(si+dir[i][0], sj+dir[i][1], cnt+1);
+            if (escape) return;
+            map[si+dir[i][0]][sj+dir[i][1]] = '.';
+        }
+    }
+    return;
+}
+
+int main(void)
+{
+    int i, j, si, sj;
+#ifndef ONLINE_JUDGE
+    freopen(&quot;in&quot;, &quot;r&quot;, stdin);
+#endif
+    while (~scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;t))
+    {
+        if (!n &amp;&amp; !m &amp;&amp; !t) break;
+        int wall = 0;
+        getchar();
+        for (i = 1; i &lt; n + 1; ++i)
+        {
+            for (j = 1; j &lt; m + 1; ++j)
+            {
+                scanf(&quot;%c&quot;, &amp;map[i][j]);
+                if (map[i][j] == 'S') si=i,sj=j;
+                else if (map[i][j] == 'D') di=i,dj=j;
+                else if (map[i][j]=='X') wall++;
+            }
+            getchar();
+        }
+        if (n*m - wall &lt;= t){printf(&quot;NO\n&quot;); continue;}
+        escape = 0;
+        map[si][sj] = 'X';
+        dfs(si, sj, 0);
+        if (escape) printf(&quot;YES\n&quot;);
+        else printf(&quot;NO\n&quot;);
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+<p>入门做的第一道搜索题，注意两个地方的剪枝。其实上面的代码是抄的书上的，还好，看懂了，以后自己写。
+还得谢谢xrl，dfs,bfs刚开始看各种不懂，，后来xrl跟我说了这本书，又给我讲了一下，我才知道代码怎么写。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/erlang_3/"><i class="fa fa-chevron-circle-left"></i> Erlang_3</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E6%95%B0%E7%BB%84%E5%90%8D%E5%92%8C%E6%8C%87%E9%92%88%E7%9B%B8%E5%90%8C%E5%90%97/">数组名和指针相同吗？ <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu 1076</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-01-22T09:24:00Z">Jan 22, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>An Easy Task</p>
+
+<p>Time Limit: <sup>2000</sup>&frasl;<sub>1000</sub> MS (Java/Others)    Memory Limit: <sup>65536</sup>&frasl;<sub>32768</sub> K (Java/Others)
+Total Submission(s): 10133    Accepted Submission(s): 6291</p>
+
+<p>Problem Description
+Ignatius was born in a leap year, so he want to know when he could hold his birthday party. Can you tell him?</p>
+
+<p>Given a positive integers Y which indicate the start year, and a positive integer N, your task is to tell the Nth leap year from year Y.</p>
+
+<p>Note: if year Y is a leap year, then the 1st leap year is year Y.</p>
+
+<p>Input
+The input contains several test cases. The first line of the input is a single integer T which is the number of test cases. T test cases follow.
+Each test case contains two positive integers Y and N(1&lt;=N&lt;=10000).</p>
+
+<p>Output
+For each test case, you should output the Nth leap year from year Y.</p>
+
+<p>Sample Input
+3 2005 25 1855 12 2004 10000</p>
+
+<p>Sample Output
+2108 1904 43236</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+
+bool leap(int n)
+{
+    if (n%400 == 0 || (n%4==0 &amp;&amp; n%100!=0))
+        return true;
+    else return false;
+}
+
+int main(void)
+{
+    int t;
+#ifndef ONLINE_JUDGE
+    freopen(&quot;1076.in&quot;, &quot;r&quot;, stdin);
+#endif
+    scanf(&quot;%d&quot;, &amp;t);
+    while (t--)
+    {
+        int n, y;
+        scanf(&quot;%d%d&quot;, &amp;y, &amp;n);
+        if (leap(y))
+        {
+            int cnt = 1, end;
+            for (int i = y+4; ; ++i)
+            {
+                if (leap(i))
+                    cnt++;
+                if (cnt == n)
+                {
+                    end = i;
+                    break;
+                }
+            }
+            printf(&quot;%d\n&quot;, end);
+        }
+        else
+        {
+            int cnt = 0, end;
+            for (int i = y; ; ++i)
+            {
+                if (leap(i))
+                    cnt++;
+                if (cnt == n)
+                {
+                    end = i;
+                    break;
+                }
+            }
+            printf(&quot;%d\n&quot;, end);
+        }
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>这题不难……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1196/"><i class="fa fa-chevron-circle-left"></i> hdu 1196</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1144/">hdu 1144 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

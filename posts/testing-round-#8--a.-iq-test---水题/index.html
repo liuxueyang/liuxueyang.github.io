@@ -1,0 +1,149 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Testing Round #8  A. IQ Test   水题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-07-19T00:58:00Z">Jul 19, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/codeforces/">#CodeForces</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://codeforces.com/problemset/problem/328/A">http://codeforces.com/problemset/problem/328/A</a>
+这道题目wa了一次，注意这句话：</p>
+
+<pre><code>You should also print 42 if the next element of progression is not integer. So answer is always integer.
+</code></pre>
+
+<p>然后就可以了。</p>
+
+<pre><code class="language-cpp">/*
+ID: zypz4571
+LANG: C++
+TASK: iqtest.cpp
+ */
+
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+#include &lt;set&gt;
+#include &lt;queue&gt;
+#include &lt;list&gt;
+#include &lt;map&gt;
+#define INF 0x3f3f3f3f
+#define mid int m=(l+r)/2
+using namespace std;
+int main ( int argc, char *argv[] )
+{
+#ifndef ONLINE_JUDGE
+    freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+#endif
+    int a, b, c, d; scanf(&quot;%d%d%d%d&quot;, &amp;a,&amp;b,&amp;c,&amp;d);
+    if(b-a==c-b&amp;&amp;c-b==d-c) printf(&quot;%d\n&quot;,2*d-c);
+    else if (b*b==a*c&amp;&amp;b*d==c*c&amp;&amp;(d*d%c==0)) printf(&quot;%d\n&quot;,d*d/c);
+    else printf(&quot;42\n&quot;);
+        return EXIT_SUCCESS;
+}                /* ----------  end of function main  ---------- */
+</code></pre>
+
+<p>==</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-testing-round-#8-b.-sheldon-and-ice-pieces-%E6%B0%B4%E9%A2%98/"><i class="fa fa-chevron-circle-left"></i> Codeforces Testing Round #8 B. Sheldon and Ice Pieces 水题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-flipping-game-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%9F%BA%E7%A1%80/">Codeforces Flipping game 动态规划基础 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

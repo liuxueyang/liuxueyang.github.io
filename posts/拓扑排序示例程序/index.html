@@ -1,0 +1,195 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>拓扑排序示例程序</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-04-28T01:51:00Z">Apr 28, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/graph/">#Graph</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>输入：顶点个数n，边数m，然后是m行，表示每条边的起点和终点u, v 表示从顶点u到顶点v的一条有向边。输入0 0 表示结束。
+输出：如果不存在有向环，则输出一个拓扑有序序列；否则，输出“Netword has a cycle!”
+ </p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+int n, m, Count[100], i, j, top, out[100];
+struct ArcNode{
+  int to; struct ArcNode *next;
+};
+ArcNode *List[100];
+void topsort()
+{
+  ArcNode *temp; top = -1; int k, len = 0; bool flag = true;
+  for (i = 0; i &lt; n; ++i) {
+    if (Count[i] == 0) {
+      Count[i] = top; top = i;
+    }
+  }
+  for (i = 0; i &lt; n; ++i) {
+    k = top; if (k == -1) { flag = false; break; }
+    top = Count[k]; temp = List[k]; out[len++] = k + 1;
+    while (temp != NULL) {
+      Count[temp-&gt;to]--;
+      if (Count[temp-&gt;to] == 0) {
+        Count[temp-&gt;to] = top; top = temp-&gt;to;
+      } temp = temp-&gt;next;
+    }
+  }
+  if (flag) {
+    for (i = 0; i &lt; len; ++i) {
+      if (!i) printf(&quot;%d&quot;, out[i]); else printf(&quot; %d&quot;, out[i]);
+    } printf(&quot;\n&quot;);
+  } else printf(&quot;Network has a cycle!\n&quot;);
+  for (i = 0; i &lt; n; ++i) {
+    temp = List[i];
+    while (temp) {
+      List[i] = temp-&gt;next; delete temp; temp = List[i];
+    }
+  }
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;topsort.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (~scanf(&quot;%d%d&quot;, &amp;n, &amp;m)){
+    if (m + n == 0) break;
+    int u, v; ArcNode *temp;
+    memset(Count, 0, sizeof(Count));
+    memset(List, 0, sizeof(List));
+    memset(out, 0, sizeof(out));
+    for (i = 0; i &lt; m; ++i){
+      scanf(&quot;%d%d&quot;, &amp;u, &amp;v); u--; v--;
+      temp = new ArcNode; temp-&gt;next = NULL; temp-&gt;to = v;
+      temp-&gt;next = List[u]; List[u] = temp; Count[v]++;
+    }
+    topsort();
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p> 
+ 
+ 
+用数组实现的链式栈 ，好神奇……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/"><i class="fa fa-chevron-circle-left"></i> 邻接表示例程序</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hoj12614-dictionary-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E6%89%BE%E7%8E%AF%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/">hoj12614 Dictionary ——拓扑排序找环&amp;&amp;比赛残留题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

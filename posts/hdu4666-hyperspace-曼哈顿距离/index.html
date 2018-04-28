@@ -1,0 +1,203 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu4666 Hyperspace ——曼哈顿距离</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-08-15T18:26:00Z">Aug 15, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>link:<a href="http://acm.hdu.edu.cn/showproblem.php?pid=4666">http://acm.hdu.edu.cn/showproblem.php?pid=4666</a>
+这题学会了怎么处理曼哈顿距离。
+比如维数是k，那么每个点有2^k个状态，求出在每个状态下，所有点的最大值，最小值，求他们的差，从中找到最大值就行。
+开始觉得不好处理的是，删除的时候怎么办。比如要删除一个点，我可以在2^k个中的每个状态里面先找到这个点在这个状态下的值，删除这个值就行了。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+#include &lt;deque&gt;
+#include &lt;queue&gt;
+#include &lt;list&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;utility&gt;
+#include &lt;functional&gt;
+#include &lt;fstream&gt;
+#include &lt;iomanip&gt;
+#include &lt;sstream&gt;
+#include &lt;numeric&gt;
+#include &lt;cassert&gt;
+#include &lt;ctime&gt;
+#include &lt;iterator&gt;
+const int INF = 0x3f3f3f3f;
+const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}};
+using namespace std;
+multiset&lt;int&gt; a[44];
+int sad[66666][10],will[66666][44];
+int main(void)
+{
+    #ifndef ONLINE_JUDGE
+    freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);
+    #endif // ONLINE_JUDGE
+    int q,k;
+    while (~scanf(&quot;%d%d&quot;,&amp;q,&amp;k))
+    {
+        int apple=1&lt;&lt;k;
+        for(int i=0;i&lt;44;++i) a[i].clear();
+        for(int i=0;i&lt;q;++i)
+        {
+            int op; scanf(&quot;%d&quot;,&amp;op);
+            if(op==0)
+            {
+                for(int j=0;j&lt;k;++j)
+                {
+                    scanf(&quot;%d&quot;,&amp;sad[i][j]);
+                }
+                for(int j=0;j&lt;apple;++j)
+                {
+                    int s=0;
+                    for(int pear=0;pear&lt;k;++pear)
+                    {
+                        if(j&amp;(1&lt;&lt;pear)) s+=sad[i][pear];
+                        else s-=sad[i][pear];
+                    }
+                    will[i][j]=s;
+                    a[j].insert(s);
+                }
+            }
+            else
+            {
+                int nu; scanf(&quot;%d&quot;,&amp;nu);
+                for(int j=0;j&lt;apple;++j)
+                {
+                    multiset&lt;int&gt;::iterator it;
+                    it=a[j].find(will[nu-1][j]);
+                    if(it!=a[j].end())
+                        a[j].erase(it);
+                }
+            }
+            int ans=0;
+            for(int j=0;j&lt;apple;++j)
+            {
+                if(a[j].size()&gt;1)
+                {
+                    int big=*(--a[j].end()),
+                    small=*(a[j].begin());
+//                    printf(&quot;big=%d small=%d\n&quot;,big,small);
+                    if(big-small&gt;ans) ans=big-small;
+                }
+            }
+            printf(&quot;%d\n&quot;,ans);
+        }
+    }
+    return 0;
+}
+
+</code></pre>
+
+<p>o(╯□╰)o</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj3181-dollar-dayz-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/"><i class="fa fa-chevron-circle-left"></i> poj3181 Dollar Dayz ——完全背包</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu4671-backup-plan-%E6%9E%84%E9%80%A0%E9%A2%98/">hdu4671 Backup Plan ——构造题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

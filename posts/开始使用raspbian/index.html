@@ -1,0 +1,114 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>开始使用Raspbian</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2017-02-14T15:30:46Z">Feb 14, 2017</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/raspberry/">#Raspberry</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>这两天折腾了一下树莓派，因为我的树莓派里面的Arch Linux不能启动了。开机的时候，ACT LED并没有闪烁，查了一下wiki才知道这表示pi没有读取SD卡。试了很多次，开始以为接触问题，擦了擦卡然后开机的时候用力按着，还是不行。在IRC里问了一下，后来猜测可能是/boot分区出问题了，或者firmware在系统更新的时候出问题了，或者是pi的硬件的问题，或者是SD卡的问题。</p>
+
+<p>之前的手机里还有一个SD卡，只有2GB。然后备份数据之后，刷了Raspbian Lite，插入树莓派顺利进入系统了。能正常用。所以只能是SD卡里的系统问题了。</p>
+
+<p>花了点时间把树莓派里面的数据备份了一下，然后刷了Raspbian jessie，稍微配置了一下。意外地好用。我还是挺满意这个系统的。如果只是在树莓派里写写程序的话，用起来还是挺舒服的。本机用VNC连接到树莓派的桌面，然后就可以像另外一台配置比较低的电脑一样使用了。以前我以为VNC什么的速度可能很慢，画面也不清晰，这两天一直在用，发现其实体验非常好。可以根据主机屏幕的大小来设置树莓派的分辨率，我记得好像是设置一下<code>/boot/config.txt</code>文件里面的<code>framebuffer_width</code>和<code>framebuffer_height</code>这两个变量就好了。然后在VNC的设置里面再设置成同样的分辨率。完美。</p>
+
+<p>在树莓派里写程序的时候，好像除了一些非常轻量级的IDE能用之外，别的只能用Emacs或者Vim了。JetBrains家的IDE估计是没法用。:P</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/use-hexo/"><i class="fa fa-chevron-circle-left"></i> Use Hexo</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E5%AF%B9%E6%8A%98%E8%85%BE%E7%BC%96%E8%BE%91%E5%99%A8%E9%85%8D%E7%BD%AE%E7%9A%84%E6%83%B3%E6%B3%95/">对折腾编辑器配置的想法 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

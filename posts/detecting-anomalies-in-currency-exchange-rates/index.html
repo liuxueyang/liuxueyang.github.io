@@ -1,0 +1,196 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Detecting Anomalies in Currency Exchange Rates</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2017-05-17T15:01:28&#43;08:00">May 17, 2017</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="/categories/algorithm/">Algorithm</a>
+                
+                    , 
+                    <a href="/categories/graph/">Graph</a>
+                
+            </em>
+        </li>
+        
+
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="https://gitlab.com/liuxueyang/algorithms-on-graph-exercise/blob/master/week4/paths_in_graphs_problems_2.pdf">pdf</a></p>
+
+<p>题目给一个有向图，判定这个有向图是不是存在负环。</p>
+
+<p>思路：</p>
+
+<p>对这个图进行Bellman-Ford算法：不断对所有边进行松弛操作，循环进行V次，如果第V次仍然有边被松弛，那么说明存在负环。</p>
+
+<p>相反，如果第V次没有边被松弛，那么说明没有负环。</p>
+
+<p>在讨论Dijkstra算法的时候，最开始的V*E的算法其实就是Bellman-Ford算法。</p>
+
+<p>初始化的时候把dist数组初始化为0。为什么呢？因为我们找的是负环，所以我们可以假设所有点到对源点的距离都是0。如果有负环，那么一定有负边，在第V次松弛所有边的时候，这个环中一定有一个点的最短路为负值。</p>
+
+<pre><code class="language-cpp">// Mon May 15 14:13:09 CST 2017
+// Mon May 15 15:09:41 CST 2017
+
+
+// 一个有向图是不是存在负环
+
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;utility&gt;
+
+using namespace std;
+typedef pair&lt;int, int&gt; PII;	// from, to
+struct edge {
+  int from;
+  int to;
+  int w;
+};
+
+int negative_cycle(vector&lt;vector&lt;int&gt; &gt; &amp;adj, vector&lt;vector&lt;int&gt; &gt; &amp;cost) {
+  vector&lt;int&gt; dist(adj.size(), 0);
+  vector&lt;edge&gt; edges;
+
+  for (size_t i = 0; i &lt; adj.size(); ++i) {
+    for (size_t j = 0; j &lt; adj[i].size(); ++j) {
+      edge e;
+      e.from = i;
+      e.to = adj[i][j];
+      e.w = cost[i][j];
+      edges.push_back(e);
+    }
+  }
+
+  for (size_t i = 0; i &lt; adj.size(); ++i) {
+    for (auto &amp;e : edges) {
+      int tmp = dist[e.from] + e.w;
+
+      if (dist[e.to] &gt; tmp) {
+	dist[e.to] = tmp;
+	if (i == adj.size() - 1) {
+	  return 1;
+	}
+      }
+    }
+  }
+
+  return 0;
+}
+
+int main() {
+  int n, m;
+
+  cin &gt;&gt; n &gt;&gt; m;
+  
+  // using this will fail on test19. I don't know why!
+  // while(std::cin &gt;&gt; n &gt;&gt; m) {
+    vector&lt;vector&lt;int&gt; &gt; adj(n, vector&lt;int&gt;());
+    vector&lt;vector&lt;int&gt; &gt; cost(n, vector&lt;int&gt;());
+    
+    for (int i = 0; i &lt; m; i++) {
+      int x, y, w;
+      std::cin &gt;&gt; x &gt;&gt; y &gt;&gt; w;
+      adj[x - 1].push_back(y - 1);
+      cost[x - 1].push_back(w);
+    }
+    std::cout &lt;&lt; negative_cycle(adj, cost) &lt;&lt; &quot;\n&quot;;
+  // }
+
+  return 0;
+}
+
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/computing-minimum-cost-of-a-flight/"><i class="fa fa-chevron-circle-left"></i> Computing the Minimum Cost of a Flight</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">Building Roads to Connect Cities <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

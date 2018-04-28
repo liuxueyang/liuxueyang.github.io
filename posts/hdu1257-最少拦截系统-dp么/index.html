@@ -1,0 +1,152 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu1257 最少拦截系统 ——DP么？</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-06-01T18:43:00Z">Jun 1, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1257">http://acm.hdu.edu.cn/showproblem.php?pid=1257</a>
+题目大意：
+　　中文的……
+题目思路：
+　　人家说是DP，求最长不升子序列的个数。好吧……我不是那么做的。
+　　我的思路是，从前往后扫一遍，访问过的标记为true，记录一下个数就ＯＫ了。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int b[1000];
+bool a[1000];
+int main(void) {
+  int n;
+#ifndef ONLINE_JUDGE
+  freopen(&quot;1257.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (~scanf(&quot;%d&quot;, &amp;n)) {
+    int i, j, cnt = 0;
+    for (i = 0; i &lt; n; ++i) scanf(&quot;%d&quot;, b+i);
+    memset(a, false, sizeof(a));
+    for (i = 0; i &lt; n; ++i) {
+      while (a[i]) ++i;
+      if (i == n) break;
+      if (!a[i]) cnt++; a[i] = true; j = i;
+      int tmp = b[j];
+      while (j &lt; n-1) {
+        if (!a[j+1] &amp;&amp; b[j+1] &lt;= tmp) {a[j+1] = true; tmp = b[j+1];}
+        ++j;
+      }
+      int k;
+      for (k = 0; k &lt; n; ++k) if (!a[k]) break;
+      if (k == n) break;
+    }
+    printf(&quot;%d\n&quot;, cnt);
+  }
+  return 0 ;
+}
+
+</code></pre>
+
+<p>写的时候还是出现了错误，最后还是发现了，幸亏自己出了一组数据，＾＿＾</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-round-#185-div.-2-b.-archer/"><i class="fa fa-chevron-circle-left"></i> Codeforces Round #185 (Div. 2) B. Archer</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu1420-prepared-for-new-acmer-%E5%BF%AB%E9%80%9F%E5%B9%82/">hdu1420 Prepared for New Acmer ——快速幂 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

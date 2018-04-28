@@ -1,0 +1,181 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj1852 Ants ——想法题、水题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-10-21T07:48:08Z">Oct 21, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/%E6%B0%B4%E9%A2%98/">#水题</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>求最短时间和最长时间。</p>
+
+<p>当两个蚂蚁相遇的时候，可以看做两个蚂蚁穿过，对结果没有影响。O（N）的复杂度</p>
+
+<p>c++版：</p>
+
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#define min(a, b) (a) &lt; (b) ? (a) : (b)
+#define max(a, b) (a) &gt; (b) ? (a) : (b)
+int main(void)
+{
+  #ifndef ONLINE_JUDGE
+  freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+  #endif // ONLINE_JUDGE
+  int Case;
+  scanf(&quot;%d&quot;, &amp;Case);
+  int n, L, Min, Max;
+  while (Case--) {
+    Min = -1; Max = -1;
+    scanf(&quot;%d%d&quot;, &amp;L, &amp;n);
+    int tmp;
+    while (n--) {
+      scanf(&quot;%d&quot;, &amp;tmp);
+      int t1 = min(tmp, L - tmp);
+      int t2 = max(tmp, L - tmp);
+      if (Min &lt; t1)
+        Min = t1;
+      if (Max &lt; t2)
+        Max = t2;
+    }
+    printf(&quot;%d %d\n&quot;, Min, Max);
+  }
+  return 0;
+}
+</code></pre>
+
+<p>Java版：</p>
+
+<pre><code class="language-java">import java.util.*;
+public class ants {
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        Scanner input = new Scanner(System.in);
+        int Case;
+        Case = input.nextInt();
+        while (Case-- != 0) {
+            int L;
+            int n;
+            L = input.nextInt();
+            n = input.nextInt();
+            int Max, Min;
+            Max = Min = 0;
+            while (n-- != 0) {
+                int tmp;
+                tmp = input.nextInt();
+                int Left = tmp, Right = L - tmp;
+                if (Left &lt; Right) {
+                    Min = (Min &lt; Left ? Left : Min);
+                    Max = (Max &lt; Right ? Right : Max);
+                }
+                else {
+                    Min = (Min &lt; Right ? Right : Min);
+                    Max = (Max &lt; Left ? Left : Max);
+                }
+            }
+            System.out.println(Min + &quot; &quot; + Max);
+        }
+    }
+
+}
+</code></pre>
+
+<p>其实Java写起来也不错的。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E7%BC%96%E5%86%99%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%AD7ch%E7%9A%84%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B%E5%B0%86%E4%B8%80%E4%B8%AA%E4%BB%A50%E7%BB%93%E5%B0%BE%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E5%8C%96%E4%B8%BA%E5%A4%A7%E5%86%99/"><i class="fa fa-chevron-circle-left"></i> 编写安装中断7ch的中断例程：将一个以0结尾的字符串，转化为大写</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E5%9D%87%E5%88%8601/">均分01 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

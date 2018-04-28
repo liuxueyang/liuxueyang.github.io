@@ -1,0 +1,190 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>NYOJ5 Binary String Matching ——KMP</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-06-03T01:38:00Z">Jun 3, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/kmp/">#KMP</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.nyist.net/JudgeOnline/problem.php?pid=5">http://acm.nyist.net/JudgeOnline/problem.php?pid=5</a>
+题目思路：
+　　典型的KMP，关键就是修改一下，找到了模式串p之后，继续从大的串s里面模式串开始的位置的下一个位置开始找下一个。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+using namespace std;
+char p[1000], s[1000];
+int next[1000];
+void getnext() {
+  int i = 0, j = -1, len = strlen(p);
+  next[0] = -1;
+  while (i &lt; len - 1) {
+    if (j == -1 || p[j] == p[i]) {
+      j++; i++; next[i] = j;
+    }
+    else j = next[j];
+  }
+}
+int kmp() {
+  int i = -1, j = -1, lenp = strlen(p), lens = strlen(s);
+  getnext();
+  int num = 0;
+  while (i &lt; lens) {
+    if (j == -1 || s[i] == p[j]) {++i; ++j;}
+    else j = next[j];
+    if (j == lenp) {i-=j; j = -1; num++;}
+  }
+  return num;
+}
+int main(void) {
+  int n;
+  while (~scanf(&quot;%d&quot;, &amp;n)) 
+  while (n--){
+    scanf(&quot;%s%s&quot;, p, s);
+    printf(&quot;%d\n&quot;, kmp());
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>复习了一下KMP，很有意思~
+看到了一个STL的方法，碉堡了……
+ </p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+using namespace std;
+string s, p;
+int main(void) {
+  int n;
+  while (~scanf(&quot;%d&quot;, &amp;n)) {
+    while (n--) {
+      cin &gt;&gt; p &gt;&gt; s;
+      int num = 0; unsigned ans = 0; 
+      ans = s.find(p, 0);
+      while (ans != string::npos) {
+        num++;
+        ans = s.find(p, ans+1);
+      }
+      printf(&quot;%d\n&quot;, num);
+    }
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p> 
+这么短的代码就搞定了……看来STL一定要好好学啊！
+<a href="http://www.cplusplus.com/reference/string/string/find/">http://www.cplusplus.com/reference/string/string/find/</a>
+ 
+ </p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/kmp%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/"><i class="fa fa-chevron-circle-left"></i> KMP示例程序</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-round-#187-div.-2-a.-sereja-and-bottles/">Codeforces Round #187 (Div. 2) A. Sereja and Bottles <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

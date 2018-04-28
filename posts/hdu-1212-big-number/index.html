@@ -1,0 +1,156 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu 1212 Big Number</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-03-12T22:01:00Z">Mar 12, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Big Number</p>
+
+<p>Time Limit: <sup>2000</sup>&frasl;<sub>1000</sub> MS (Java/Others)    Memory Limit: <sup>65536</sup>&frasl;<sub>32768</sub> K (Java/Others)
+Total Submission(s): 3386    Accepted Submission(s): 2305</p>
+
+<p>Problem Description
+As we know, Big Number is always troublesome. But it&rsquo;s really important in our ACM. And today, your task is to write a program to calculate A mod B.</p>
+
+<p>To make the problem easier, I promise that B will be smaller than 100000.</p>
+
+<p>Is it too hard? No, I work it out in 10 minutes, and my program contains less than 25 lines.</p>
+
+<p>Input
+The input contains several test cases. Each test case consists of two positive integers A and B. The length of A will not exceed 1000, and B will be smaller than 100000. Process to the end of file.</p>
+
+<p>Output
+For each test case, you have to ouput the result of A mod B.</p>
+
+<p>Sample Input
+2 3 12 7 152455856554521 3250</p>
+
+<p>Sample Output
+2 5 1521</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cmath&gt;
+#include &lt;cstring&gt;
+using namespace std;
+char a[1000+10]; int b;
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;1212.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (~scanf(&quot;%s%d&quot;, a, &amp;b)){
+    int len = strlen(a); int x = a[len-1]-'0', po = 1;
+    x = x % b; int y;
+    for (int i = len - 2; i &gt;= 0; --i){
+      y = a[i] - '0'; po = (po * 10) % b;
+      x = (x + y*po) % b;
+    }
+    printf(&quot;%d\n&quot;, x);
+  }
+  return 0;
+}
+</code></pre>
+
+<p>看了讨论版学会的，不过还是有一点儿小问题，学一下数论吧……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1164-eddys-research-i/"><i class="fa fa-chevron-circle-left"></i> hdu 1164 Eddy&#39;s research I</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1061-rightmost-digit/">hdu 1061 Rightmost Digit <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

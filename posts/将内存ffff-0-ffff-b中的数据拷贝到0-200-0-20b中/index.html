@@ -1,0 +1,137 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>将内存ffff:0~ffff:b中的数据拷贝到0:200~0:20b中</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-10-04T14:12:00Z">Oct 4, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/masm/">#masm</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>我是按照字，也就是2个字节拷贝的。</p>
+
+<p>这样就可以让循环减半==</p>
+
+<pre><code>assume cs:sad
+sad segment
+start:
+    mov ax, 0ffffh
+    mov ds, ax
+    mov bx, 0h
+    mov ax, 20h
+    mov es, ax
+    mov cx, 7h
+s:
+    mov ax, ds:[bx]
+    mov es:[bx], ax
+    add bx, 2
+    loop s
+ 
+    mov ax, 4c00h
+    int 21h
+sad ends
+end
+</code></pre>
+
+<p>刚听到句歌词：</p>
+
+<p>最初的天堂，最终的荒唐。</p>
+
+<p>好熟悉，以前猫姐QQ空间的一句话。哈哈，2年多了，都变了多少啊。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E8%AE%A1%E7%AE%97ffff-0-ffff-b%E6%95%B0%E6%8D%AE%E7%9A%84%E5%92%8C%E7%BB%93%E6%9E%9C%E5%AD%98%E5%9C%A8dx%E4%B8%AD/"><i class="fa fa-chevron-circle-left"></i> 计算ffff:0~ffff:b数据的和，结果存在dx中</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E5%90%91%E5%86%85%E5%AD%980-200-0-23f%E4%BE%9D%E6%AC%A1%E4%BC%A0%E9%80%81%E6%95%B0%E6%8D%AE0-3fh/">向内存0:200~0:23f依次传送数据0~3fh <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

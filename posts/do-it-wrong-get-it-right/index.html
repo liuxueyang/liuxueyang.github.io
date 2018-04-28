@@ -1,0 +1,170 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Do It Wrong, Get It Right</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-09-18T00:53:00Z">Sep 18, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/bruteforce/">#BruteForce</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Do It Wrong, Get It Right
+Time Limit: 5000ms, Special Time Limit:12500ms, Memory Limit:65536KB
+Total submit users: 7, Accepted users: 6
+Problem 12627 : No special judgement
+Problem description
+In elementary school, students learn to subtract fractions by first getting a common denominator and then subtracting the numerators. However, sometimes a student will work the problem incorrectly and still arrive at the correct answer. For example, for the problem
+5      9
+4     12</p>
+
+<p>one can subtract the numbers in the numerator and then subtract the numbers in the denominator, simplify and get the answer. i.e.</p>
+
+<p>For a given fraction b/n, your task is to find all of the values a and m, where a ≥ 0 and m &gt; 0, for which</p>
+
+<p>Input
+There will be several test cases in the input. Each test case will consist of a single line with two integers, b and n (1 ≤ b,n ≤ 106) separated by a single space. The input will end with a line with two 0s.</p>
+
+<p>Output
+For each case, output all of the requested fractions on a single line, sorted from smallest to largest. For equivalent fractions, print the one with the smaller numerator first. Output each fraction in the form “a/m” with no spaces immediately before or after the “/”. Output a single space between fractions. Output no extra spaces, and do not separate answers with blank lines.</p>
+
+<p>Sample Input</p>
+
+<p>9 12
+12 14
+4 12
+0 0</p>
+
+<p>Sample Output</p>
+
+<p>0/24 <sup>5</sup>&frasl;<sub>20</sub> <sup>8</sup>&frasl;<sub>16</sub> <sup>8</sup>&frasl;<sub>8</sub> <sup>5</sup>&frasl;<sub>4</sub>
+0/28 <sup>9</sup>&frasl;<sub>21</sub> <sup>9</sup>&frasl;<sub>7</sub>
+0/24 <sup>3</sup>&frasl;<sub>18</sub> <sup>3</sup>&frasl;<sub>6</sub></p>
+
+<p>Problem Source
+ACM ICPC Southeast USA Regional Programming Contest 2012</p>
+
+<p>可以枚举m或者a，如果枚举a，计算m涉及到开方操作，所以比较慢，会超时；所以只能枚举m，从2*n枚举到1就可以了。</p>
+
+<p>long long输入输出要用%I64d！一直用的是%lld，纠结了好久啊！！！！</p>
+
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cmath&gt;
+#include &lt;cstdlib&gt;
+#define LL long long
+int main(void)
+{
+  LL b, n;
+  freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+    while (~scanf(&quot;%I64d%I64d&quot;, &amp;b, &amp;n))
+//    while (~scanf(&quot;%lld%lld&quot;, &amp;b, &amp;n))
+    {
+        if (b+n==0) break;
+        printf(&quot;0/%lld&quot;, 2*n);
+        for(LL m=2*n - 1;m&gt;0;m--) {
+            if(m!=n&amp;&amp;(m*b*(2*n-m))%(n*n)==0)
+              printf(&quot; %I64d/%I64d&quot;,(m*b*(2*n-m))/(n*n),m);
+        }
+        printf(&quot;\n&quot;);
+    }
+  return 0;
+}
+</code></pre>
+
+<p>嗨，中村。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu4737-a-bit-fun-o-n-%E5%81%9A%E6%B3%95%E9%94%99%E8%AF%AF%E7%9A%84%E5%81%9A%E6%B3%95-%E6%AD%A3%E7%A1%AE%E5%81%9A%E6%B3%95/"><i class="fa fa-chevron-circle-left"></i> hdu4737 A Bit Fun ——O(n)做法、错误的做法 &#43; 正确做法</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/candy-store/">Candy Store <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

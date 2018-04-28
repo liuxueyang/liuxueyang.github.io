@@ -1,0 +1,189 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Typeclass in Haskell筆記</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2017-04-19T09:29:24&#43;08:00">Apr 19, 2017</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="/categories/haskell/">Haskell</a>
+                
+            </em>
+        </li>
+        
+
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    
+
+<h2 id="代數數據類型">代數數據類型</h2>
+
+<p>這樣定義一個類型：</p>
+
+<pre><code class="language-haskell">data Name = Name String String
+</code></pre>
+
+<p><code>Name</code>既是類型名，也是一個Value Constructor，一個類型通常有多個Value Constructor，不過按照習慣，如果一個類型僅僅有一個Value Constructor，那麼它的名字通常和類型名同名。</p>
+
+<p>Value Constructor事實上只是一個函數，這也就決定了，不同的類型不能夠擁有相同名字的Value Constructor。</p>
+
+<p>創建一個對象：</p>
+
+<pre><code class="language-haskell">λ&gt; Name &quot;aries&quot; &quot;abel&quot;
+Name &quot;aries&quot; &quot;abel&quot; :: Name
+</code></pre>
+
+<p>有多個Value Constructor的例子：</p>
+
+<pre><code class="language-haskell">data Shape = Rectangle Point Point
+           | Circle Point Float
+data Point = Point Float Float
+</code></pre>
+
+<p>創建一個<code>Circle</code>對象：</p>
+
+<pre><code class="language-haskell">λ&gt; Point 3 4
+Point 3 4 :: Point
+λ&gt; Circle (Point 3 4) 3
+Circle (Point 3 4) 3 :: Shape
+</code></pre>
+
+<h2 id="record">Record</h2>
+
+<p>在代數類型裏面每個field所代表的意義不明確，並且如果需要得到某個field的值只能用模式匹配，非常繁瑣，所以這個時候Record就有用了：</p>
+
+<pre><code class="language-haskell">data NamE = NamE { firstName :: String
+                 , lastName :: String}
+</code></pre>
+
+<p>事實上，<code>NamE</code>和<code>Name</code>的類型是一樣的：</p>
+
+<pre><code class="language-haskell">λ&gt; :t NamE
+NamE :: String -&gt; String -&gt; NamE
+λ&gt; :t Name
+Name :: String -&gt; String -&gt; Name
+</code></pre>
+
+<p>創建一個<code>Record</code>對象：</p>
+
+<pre><code class="language-haskell">λ&gt; NamE &quot;aries&quot; &quot;abel&quot;
+NamE &quot;aries&quot; &quot;abel&quot; :: NamE
+λ&gt; NamE { firstName = &quot;aries&quot;, lastName = &quot;abel&quot; }
+NamE { firstName = &quot;aries&quot;, lastName = &quot;abel&quot; } :: NamE
+</code></pre>
+
+<p>可以看到，有兩種創建方法，第一種和代數類型的方法一樣，這是field必須和Record定義field的順序一致；另外一種可以指定每個field的名字，這個時候field的順序就不重要了。</p>
+
+<p>另外，定義Record的時候，Haskell會默認生成一些accessor函數，也就是以這個Record的所有的field爲名字的函數。這樣我們就可以輕鬆取得Record的每個field。</p>
+
+<pre><code class="language-haskell">λ&gt; firstName (NamE &quot;aries&quot; &quot;abel&quot;)
+&quot;aries&quot;
+</code></pre>
+
+<p>Record同樣可以指定多個Value Constructor：</p>
+
+<pre><code class="language-haskell">data Linux = Slackware { version :: Float
+                       , desktopEnv :: String}
+           | Gentoo { version :: Float
+                    , desktopEnv :: String}
+</code></pre>
+
+<p>新建對象的方法和之前是一樣的：</p>
+
+<pre><code class="language-haskell">λ&gt; Slackware 14.2 &quot;KDE 4&quot;
+Slackware 14.2 &quot;KDE 4&quot; :: Linux
+λ&gt; Gentoo 8.0 &quot;Gnome 3&quot;
+Gentoo 8.0 &quot;Gnome 3&quot; :: Linux
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/foldr%E5%92%8Cfoldl%E5%87%BD%E6%95%B8%E8%BE%A8%E6%9E%90/"><i class="fa fa-chevron-circle-left"></i> foldl和foldr的不同點</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/finding-an-exit-from-maze/">Finding an Exit from a Maze <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

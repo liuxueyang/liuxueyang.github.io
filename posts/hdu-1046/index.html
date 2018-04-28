@@ -1,0 +1,165 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu 1046</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-01-22T09:30:00Z">Jan 22, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Gridland</p>
+
+<p>Time Limit: <sup>2000</sup>&frasl;<sub>1000</sub> MS (Java/Others)    Memory Limit: <sup>65536</sup>&frasl;<sub>32768</sub> K (Java/Others)
+Total Submission(s): 2455    Accepted Submission(s): 1168</p>
+
+<p>Problem Description
+For years, computer scientists have been trying to find efficient solutions to different computing problems. For some of them efficient algorithms are already available, these are the “easy” problems like sorting, evaluating a polynomial or finding the shortest path in a graph. For the “hard” ones only exponential-time algorithms are known. The traveling-salesman problem belongs to this latter group. Given a set of N towns and roads between these towns, the problem is to compute the shortest path allowing a salesman to visit each of the towns once and only once and return to the starting point.</p>
+
+<p>The president of Gridland has hired you to design a program that calculates the length of the shortest traveling-salesman tour for the towns in the country. In Gridland, there is one town at each of the points of a rectangular grid. Roads run from every town in the directions North, Northwest, West, Southwest, South, Southeast, East, and Northeast, provided that there is a neighbouring town in that direction. The distance between neighbouring towns in directions North–South or East–West is 1 unit. The length of the roads is measured by the Euclidean distance. For example, Figure 7 shows 2 × 3-Gridland, i.e., a rectangular grid of dimensions 2 by 3. In 2 × 3-Gridland, the shortest tour has length 6.</p>
+
+<p>Input
+The first line contains the number of scenarios.</p>
+
+<p>For each scenario, the grid dimensions m and n will be given as two integer numbers in a single line, separated by a single blank, satisfying 1 &lt; m &lt; 50 and 1 &lt; n &lt; 50.</p>
+
+<p>Output
+The output for each scenario begins with a line containing “Scenario #i:”, where i is the number of the scenario starting at 1. In the next line, print the length of the shortest traveling-salesman tour rounded to two decimal digits. The output for every scenario ends with a blank line.</p>
+
+<p>Sample Input
+2 2 2 2 3</p>
+
+<p>Sample Output
+Scenario #1: 4.00 Scenario #2: 6.00</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cmath&gt;
+
+using namespace std;
+
+int main(void)
+{
+    int n;
+#ifndef ONLINE_JUDGE
+    freopen(&quot;1046.in&quot;, &quot;r&quot;, stdin);
+#endif
+    scanf(&quot;%d&quot;, &amp;n);
+    for (int i = 1; i &lt; n + 1; ++i)
+    {
+        printf(&quot;Scenario #%d:\n&quot;, i);
+        int s, t;
+        scanf(&quot;%d%d&quot;,&amp;s,&amp;t);
+        double sum;
+        sum = s*t;
+        if ((s*t)%2)
+            printf(&quot;%.2f\n&quot;, sum+sqrt(2)-1);
+        else printf(&quot;%.2f\n&quot;, (double)sum);
+        printf(&quot;\n&quot;);
+        /*if (i != n)
+            printf(&quot;\n&quot;);*/
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>这题POJ做过的，不要怕，找规律就好</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1048/"><i class="fa fa-chevron-circle-left"></i> hdu 1048</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/cf266-a.-stones-on-the-table/">CF266 A. Stones on the Table <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

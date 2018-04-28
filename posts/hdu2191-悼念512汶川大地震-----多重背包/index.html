@@ -1,0 +1,193 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu2191 悼念512汶川大地震     ——多重背包</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-08-15T17:54:00Z">Aug 15, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+                    , 
+                    <a href="/tags/dp/">#DP</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>link:<a href="http://acm.hdu.edu.cn/showproblem.php?pid=2191">http://acm.hdu.edu.cn/showproblem.php?pid=2191</a>
+最简单的那种</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+#include &lt;deque&gt;
+#include &lt;queue&gt;
+#include &lt;list&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;utility&gt;
+#include &lt;functional&gt;
+#include &lt;fstream&gt;
+#include &lt;iomanip&gt;
+#include &lt;sstream&gt;
+#include &lt;numeric&gt;
+#include &lt;cassert&gt;
+#include &lt;ctime&gt;
+#include &lt;iterator&gt;
+const int INF = 0x3f3f3f3f;
+const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}};
+using namespace std;
+int n, V, t, f[111], c[111], w[111], m[111];
+void zeropack(int c, int w)
+{
+    for (int v=V; v&gt;=c; --v)
+    {
+        f[v]=max(f[v],f[v-c]+w);
+    }
+    return;
+}
+void completepack(int c, int w)
+{
+    for (int v=c;v&lt;=V;++v)
+        f[v]=max(f[v],f[v-c]+w);
+    return;
+}
+void multipack(int c, int w, int m)
+{
+    if (c*m &gt;= V)
+    {
+        completepack(c,w); return;
+    }
+    int k=1;
+    while (k&lt;m)
+    {
+        zeropack(c*k,w*k); m-=k; k*=2;
+    }
+    zeropack(c*m,w*m);
+    return;
+}
+int main(void)
+{
+    ios::sync_with_stdio(false);
+    #ifndef ONLINE_JUDGE
+    freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+    #endif // ONLINE_JUDGE
+    int t; cin&gt;&gt;t;
+    while (t--)
+    {
+        cin&gt;&gt;V&gt;&gt;n;
+        for (int i=0;i&lt;n;++i) cin&gt;&gt;c[i]&gt;&gt;w[i]&gt;&gt;m[i];
+        memset(f,0,sizeof(f));
+        for (int i=0;i&lt;n;++i)
+        {
+            multipack(c[i],w[i],m[i]);
+        }
+        cout&lt;&lt;f[V]&lt;&lt;endl;
+    }
+    return 0;
+}
+
+</code></pre>
+
+<p>其实这种动态规划题目还是要注意初始化，想想问什么这样初始化。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu1059-dividing-%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85/"><i class="fa fa-chevron-circle-left"></i> hdu1059 Dividing ——多重背包</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uva674-coin-change-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">uva674 Coin Change ——完全背包 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

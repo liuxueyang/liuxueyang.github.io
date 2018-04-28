@@ -1,0 +1,149 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>点头1010 只包含因子2 3 5的数</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-06-15T17:24:00Z">Jun 15, 2013</time>
+        </li>
+        
+        
+
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1010">http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1010</a>
+题目思路：
+　　想想怎么打表吧，还有，只需要存下满足要求的数字，要求的数字可以表示为：(2^x*3^y*5^z)，然后可以发现：2^60&gt;10^18，所以，枚举的上限是60*60*60，大约是216000，实际上，只有1万多。枚举的方法就是以前做过的题目了：<a href="http://poj.org/problem?id=1338">http://poj.org/problem?id=1338</a>
+　　然后就是二分查找，边界比较纠结。</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdlib&gt;
+#define LL long long 
+#define MAXN 216000+10
+#define min(a,b) ((a)&lt;(b)?(a):(b))
+LL a[MAXN];
+int main(void) {
+    int i, j, k, p;
+    i = j = k = 0; 
+    a[0] = 1;
+    for (p = 1; p &lt;= 12690; ++p) {
+        a[p] = min(a[i]*2, min(a[j]*3, a[k]*5));
+        if (a[p] == a[i] * 2) ++i;
+        if (a[p] == a[j] * 3) ++j;
+        if (a[p] == a[k] * 5) ++k;
+    }
+    int T; scanf(&quot;%d&quot;,&amp;T);
+    while (T--) {
+        LL n;
+        scanf(&quot;%I64d&quot;, &amp;n);
+        int low = 1, high = 12690, mid, last;
+        LL goal;
+        goal = n;
+        while (low &lt; high) {
+            mid = low + (high - low) / 2;
+            if (a[mid] &lt; goal) low = mid + 1;
+            else if (a[mid] &gt; goal) high = mid - 1;
+            else {last = mid; break;}
+        }
+        if (high == low) {
+            last = high;
+        }
+        else if (low &gt; high) last = low;
+        if (goal == 1) last = 1;
+        if (a[last] &lt; goal) last++;
+        printf(&quot;%I64d\n&quot;, a[last]);
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+<p>输入输出原来要用%I64d，这个WA了两次……A了之后竟然是第一名，呵呵，可能大家都没有手写二分，都用的STL吧。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E5%87%86%E5%A4%87%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95-%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%9B%B4%E4%BA%86/"><i class="fa fa-chevron-circle-left"></i> 准备期末考试 博客不更了</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/ubuntu12.04-%E4%BF%AE%E5%A4%8Dgrub2/">ubuntu12.04 修复Grub2 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

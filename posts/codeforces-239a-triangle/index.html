@@ -1,0 +1,207 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>CodeForces 239A. Triangle</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2014-03-30T20:42:29Z">Mar 30, 2014</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/codeforces/">#CodeForces</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Link: 　　<a href="http://codeforces.com/contest/407/problem/A">http://codeforces.com/contest/407/problem/A</a></p>
+
+<p>给定直角三角形的2个直角边a，b。求在直角坐标系中，是否存在对应的直角三角形，使得三个定点都在整点上，并且三边都不和坐标轴平行。</p>
+
+<p>如果存在，输出YES，和三个点的坐标。否则输出NO</p>
+
+<p>很显然，为了方便，可以把原点作为 一个顶点。</p>
+
+<p>这道题目做的时候少考虑了很多情况。</p>
+
+<p>比如：</p>
+
+<p>如何使得边不和坐标轴平行？  要保证要求的另外两个点的横坐标或者纵坐标不能相等。</p>
+
+<p>如何保证三角形是直角三角形？ 只需要保证，另外两个点和坐标轴围成的三角形相似。</p>
+
+<p>因为范围是1000,所以可以暴力求解。复杂度O（10^6）</p>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *       Filename : triangle.cpp
+ *    Description : triangle
+ *    Version     : 0.1
+ *        Created : 03/30/14 15:57
+ *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com
+ *         Motto  : How about today?
+ * =====================================================================================
+*/
+#include &lt;cmath&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  gcd
+ *  Description:  gcd
+ * =====================================================================================
+ */
+    int
+gcd ( int a, int b )
+{
+    return b == 0 ? a : gcd(b, a % b);
+}        /* -----  end of function gcd  ----- */
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  test
+ *  Description:  test
+ * =====================================================================================
+ */
+    void
+test ( int xa, int ya, int xb, int yb )
+{
+    if ( xa == xb || ya == yb ) {
+        return;
+    }
+    printf ( &quot;YES\n&quot; );
+    printf ( &quot;0 0\n&quot; );
+    printf ( &quot;%d %d\n&quot;, xa, ya );
+    printf ( &quot;%d %d\n&quot;, xb, yb );
+    exit(0);
+    return ;
+}        /* -----  end of function test  ----- */
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name: main
+ * =====================================================================================
+ */
+
+    int
+main ( int argc, char *argv[] )
+{
+    int a, b;
+    scanf ( &quot;%d%d&quot;, &amp;a, &amp;b );
+    for ( int x = 1; x &lt; a; ++x ) {
+        for ( int y = 1; y &lt; a; ++y ) {
+            if ( x * x + y * y == a * a ) {
+                int g = gcd(x, y);
+                int dx = x / g, dy = y / g, u = dx * dx + dy * dy;
+                int v = b * b, ratio = v / u, k = (int)sqrt(ratio) ;
+                if ( v % u ) {
+                    continue;
+                }
+                if ( k * k != ratio ) {
+                    continue;
+                }
+                test(x, y, dy * k, -dx * k);
+                test(x, y, -dy * k, dx * k);
+            }
+        }
+    }
+    puts(&quot;NO&quot;);
+
+        return EXIT_SUCCESS;
+}                /* ----------  end of function main  ---------- */
+</code></pre>
+
+<p>这是tourist的代码</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/longest-increasing-subsequence/"><i class="fa fa-chevron-circle-left"></i> Longest Increasing Subsequence</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-239-long-path/">CodeForces 239 Long Path <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

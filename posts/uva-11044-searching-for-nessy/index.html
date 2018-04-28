@@ -1,0 +1,158 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>uva 11044 Searching for Nessy</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2012-11-06T23:57:00Z">Nov 6, 2012</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/uva/">#Uva</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>The Loch Ness Monsteris a mysterious and unidentified animal said to inhabit Loch Ness,  a large deep freshwater loch near the city of Inverness in northern Scotland. Nessie is usually categorized as a type of lake monster. <a href="http://en.wikipedia.org/wiki/Loch_Ness_Monster">http://en.wikipedia.org/wiki/Loch_Ness_Monster</a>
+ 
+ 
+In July 2003, the BBC reported an extensive investigation of Loch Ness by a BBC team, using 600 separate sonar beams, found no trace of any ¨sea monster¨ (i.e., any large animal, known or unknown) in the loch. The BBC team concluded that Nessie does not exist. Now we want to repeat the experiment.
+ 
+ 
+Given a grid of n rows and m columns representing the loch, 6n, m10000, find the minimum number s of sonar beams you must put in the square such that we can control every position in the grid, with the following conditions:
+ 
+For example,
+ </p>
+
+<p> 
+where X represents a sonar, and the shaded cells are controlled by their sonar beams; the last figure gives us a solution.
+ 
+The first line of the input contains an integer, t, indicating the number of test cases. For each test case, there is a line with two numbers separated by blanks, 6n, m10000, that is, the size of the grid (n rows and m columns).
+ 
+For each test case, the output should consist of one line showing the minimum number of sonars that verifies the conditions above.
+ 
+ 
+ 
+ 
+ 
+貌似题目很长很难，其实很简单，稍微思考一下就可以了，没必要过多解释。这种题目要重视，千万不要被题目的长度吓住了。这种题目是纸老虎。</p>
+
+<pre><code class="language-cpp">拙劣的代码
+
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+
+using namespace std;
+
+int main(void)
+{
+    int n, m, t;
+
+    cin &gt;&gt; t;
+    while (t--)
+    {
+        cin &gt;&gt; n &gt;&gt; m;
+        n -= 2; m-= 2;
+        n = n / 3 + (n % 3 != 0);
+        m = m / 3 + (m % 3 != 0);
+        cout &lt;&lt; n * m &lt;&lt; endl;
+    }
+
+    return 0;
+}
+
+
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uva-573-the-snail/"><i class="fa fa-chevron-circle-left"></i> uva 573 The Snail</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uva-10790---how-many-points-of-intersection/">uva 10790 - How Many Points of Intersection? <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,410 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>speedcell&#39;s SPFA</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-04-07T19:21:00Z">Apr 7, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/graph/">#Graph</a>
+                
+            </em>
+        </li>
+        
+
+        <li>5 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>版权永久属于speedcell，神代码，给跪了……yr酱V5……
+这东西虽然还没有学，先收藏起来~
+多谢yr酱……O(∩_∩)O哈哈~</p>
+
+<pre><code class="language-cpp">
+/*
+ Author : Speedcell
+ Update : 2013-03-24
+Version : soppYcell 2.1(a)
+*/
+
+#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;sstream&gt;
+#include &lt;iomanip&gt;
+
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;list&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;deque&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;bitset&gt;
+#include &lt;memory&gt;
+#include &lt;complex&gt;
+#include &lt;numeric&gt;
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;math.h&gt;
+#include &lt;time.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;locale.h&gt;
+
+using namespace std;
+
+#pragma pack(4)
+
+#ifndef __CONSTANT__
+#define __CONSTANT__
+
+typedef long long LONG;
+
+const double pi = acos(-1.0);
+const int   inf = 0x7f7f7f7f;
+const LONG  INF = 0x7f7f7f7f7f7f7f7fll;
+
+const int go[8][2] = {{0,1},{0,-1},{1,0},{-1,0},{1,1},{1,-1},{-1,1},{-1,-1}};
+
+#endif // __CONSTANT__
+
+#ifndef __IO__
+#define __IO__
+
+inline bool RD(int    &amp; a) {return scanf(&quot;%d&quot;,&amp;a)!=EOF;}
+inline bool RD(char   &amp; a) {return scanf(&quot;%c&quot;,&amp;a)!=EOF;}
+inline bool RD(char   * a) {return scanf(&quot;%s&quot;, a)!=EOF;}
+inline bool RD(double &amp; a) {return scanf(&quot;%lf&quot;,&amp;a)!=EOF;}
+inline bool RD(LONG   &amp; a) {return scanf(&quot;%I64d&quot;,&amp;a)!=EOF;}
+
+template&lt;class T1&gt; inline bool
+    IN(T1 &amp; a) {return RD(a);}
+template&lt;class T1,class T2&gt; inline bool
+    IN(T1 &amp; a,T2 &amp; b) {return RD(a)&amp;&amp;RD(b);}
+template&lt;class T1,class T2,class T3&gt; inline bool
+    IN(T1 &amp; a,T2 &amp; b,T3 &amp; c) {return RD(a)&amp;&amp;RD(b)&amp;&amp;RD(c);}
+template&lt;class T1,class T2,class T3,class T4&gt; inline bool
+    IN(T1 &amp; a,T2 &amp; b,T3 &amp; c,T4 &amp; d) {return RD(a)&amp;&amp;RD(b)&amp;&amp;RD(c)&amp;&amp;RD(d);}
+template&lt;class T1,class T2,class T3,class T4,class T5&gt; inline bool
+    IN(T1 &amp; a,T2 &amp; b,T3 &amp; c,T4 &amp; d,T5 &amp; e) {return RD(a)&amp;&amp;RD(b)&amp;&amp;RD(c)&amp;&amp;RD(d)&amp;&amp;RD(e);}
+template&lt;class T1,class T2,class T3,class T4,class T5,class T6&gt; inline bool
+    IN(T1 &amp; a,T2 &amp; b,T3 &amp; c,T4 &amp; d,T5 &amp; e,T6 &amp; f) {return RD(a)&amp;&amp;RD(b)&amp;&amp;RD(c)&amp;&amp;RD(d)&amp;&amp;RD(e)&amp;&amp;RD(f);}
+template&lt;class T1,class T2,class T3,class T4,class T5,class T6,class T7&gt; inline bool
+    IN(T1 &amp; a,T2 &amp; b,T3 &amp; c,T4 &amp; d,T5 &amp; e,T6 &amp; f,T7 &amp; g) {return RD(a)&amp;&amp;RD(b)&amp;&amp;RD(c)&amp;&amp;RD(d)&amp;&amp;RD(e)&amp;&amp;RD(f)&amp;&amp;RD(g);}
+
+inline void PT(int    a) {printf(&quot;%d&quot;,a);}
+inline void PT(char   a) {printf(&quot;%c&quot;,a);}
+inline void PT(double a) {printf(&quot;%f&quot;,a);}
+inline void PT(LONG   a) {printf(&quot;%I64d&quot;,a);}
+inline void PT(string a) {printf(&quot;%s&quot;,a.begin());}
+
+template&lt;class T1&gt; inline void
+    OT(T1 a) {PT(a);}
+template&lt;class T1,class T2&gt; inline void
+    OT(T1 a,T2 b) {PT(a),PT(' '),PT(b);}
+template&lt;class T1,class T2,class T3&gt; inline void
+    OT(T1 a,T2 b,T3 c) {PT(a),PT(' '),PT(b),PT(' '),PT(c);}
+template&lt;class T1,class T2,class T3,class T4&gt; inline void
+    OT(T1 a,T2 b,T3 c,T4 d) {PT(a),PT(' '),PT(b),PT(' '),PT(c),PT(' '),PT(d);}
+template&lt;class T1,class T2,class T3,class T4,class T5&gt; inline void
+    OT(T1 a,T2 b,T3 c,T4 d,T5 e) {PT(a),PT(' '),PT(b),PT(' '),PT(c),PT(' '),PT(d),PT(' '),PT(e);}
+template&lt;class T1,class T2,class T3,class T4,class T5,class T6&gt; inline void
+    OT(T1 a,T2 b,T3 c,T4 d,T5 e,T6 f) {PT(a),PT(' '),PT(b),PT(' '),PT(c),PT(' '),PT(d),PT(' '),PT(e),PT(' '),PT(f);}
+template&lt;class T1,class T2,class T3,class T4,class T5,class T6,class T7&gt; inline void
+    OT(T1 a,T2 b,T3 c,T4 d,T5 e,T6 f,T7 g) {PT(a),PT(' '),PT(b),PT(' '),PT(c),PT(' '),PT(d),PT(' '),PT(e),PT(' '),PT(f),PT(' '),PT(g);}
+
+inline void PL(int    a) {printf(&quot;%d\n&quot;,a);}
+inline void PL(char   a) {printf(&quot;%c\n&quot;,a);}
+inline void PL(double a) {printf(&quot;%f\n&quot;,a);}
+inline void PL(LONG   a) {printf(&quot;%I64d\n&quot;,a);}
+inline void PL(string a) {printf(&quot;%s\n&quot;,a.begin());}
+
+template&lt;class T1&gt; inline void
+    OL(T1 a) {PL(a);}
+template&lt;class T1,class T2&gt; inline void
+    OL(T1 a,T2 b) {PT(a),PT(' '),PL(b);}
+template&lt;class T1,class T2,class T3&gt; inline void
+    OL(T1 a,T2 b,T3 c) {PT(a),PT(' '),PT(b),PT(' '),PL(c);}
+template&lt;class T1,class T2,class T3,class T4&gt; inline void
+    OL(T1 a,T2 b,T3 c,T4 d) {PT(a),PT(' '),PT(b),PT(' '),PT(c),PT(' '),PL(d);}
+template&lt;class T1,class T2,class T3,class T4,class T5&gt; inline void
+    OL(T1 a,T2 b,T3 c,T4 d,T5 e) {PT(a),PT(' '),PT(b),PT(' '),PT(c),PT(' '),PT(d),PT(' '),PL(e);}
+template&lt;class T1,class T2,class T3,class T4,class T5,class T6&gt; inline void
+    OL(T1 a,T2 b,T3 c,T4 d,T5 e,T6 f) {PT(a),PT(' '),PT(b),PT(' '),PT(c),PT(' '),PT(d),PT(' '),PT(e),PT(' '),PL(f);}
+template&lt;class T1,class T2,class T3,class T4,class T5,class T6,class T7&gt; inline void
+    OL(T1 a,T2 b,T3 c,T4 d,T5 e,T6 f,T7 g) {PT(a),PT(' '),PT(b),PT(' '),PT(c),PT(' '),PT(d),PT(' '),PT(e),PT(' '),PT(f),PT(' '),PL(g);}
+
+#endif // __IO__
+
+#ifndef __MACRO__
+#define __MACRO__
+
+#define ML(times) int tcase; IN(tcase); FOR(times,1,tcase)
+
+#define FOR(i,a,b) for(int i=int(a),_##i=int(b);i&lt;=_##i;i++)
+#define DWN(i,b,a) for(int i=int(b),_##i=int(a);_##i&lt;=i;i--)
+#define ECH(i,u,pre,next) for(int i=int(pre[u]);i!=-1;i=int(next[i]))
+
+#define MEM(a,v) memset(a,v,sizeof(a))
+#define CLR(a,v) FOR(_i##a,0,sizeof(a)/sizeof(a[0])-1) a[_i##a]=v
+
+#define LOOP(a,n)                                               \
+    FOR(_i##a,0,(n)-1)                                          \
+        cout&lt;&lt;a[_i##a]&lt;&lt;(_i##a!=n-1?' ':'\n')
+#define LOOP2(a,n,m)                                            \
+    FOR(_i##a,0,(n)-1) FOR(_j##a,0,(m)-1)                       \
+        cout&lt;&lt;a[_i##a][_j##a]&lt;&lt;(_j##a!=m-1?' ':'\n')
+#define LOOPG(G,n,pre,next)                                     \
+    FOR(_i##a,0,(n)-1) ECH(_j##a,_i##a,pre,next)                \
+        cout&lt;&lt;_i##a&lt;&lt;&quot; &quot;&lt;&lt;G[_j##a].v&lt;&lt;&quot; &quot;&lt;&lt;G[_j##a].w&lt;&lt;endl
+
+#endif // __MACRO__
+
+#ifndef __BIT__
+#define __BIT__
+
+template&lt;class T&gt; inline T lb(T i) {return i&amp;-i;}
+template&lt;class T&gt; inline T lc(T i) {return i&lt;&lt;T(1);}
+template&lt;class T&gt; inline T rc(T i) {return i&lt;&lt;T(1)|T(1);}
+template&lt;class T&gt; inline T at(T a,int i) {return a&amp; (T(1)&lt;&lt;i);}
+template&lt;class T&gt; inline T nt(T a,int i) {return a^ (T(1)&lt;&lt;i);}
+template&lt;class T&gt; inline T s1(T a,int i) {return a| (T(1)&lt;&lt;i);}
+template&lt;class T&gt; inline T s0(T a,int i) {return a&amp;~(T(1)&lt;&lt;i);}
+
+#endif // __BIT__
+
+#ifndef __DOUBLE__
+#define __DOUBLE__
+
+const double eps = 1e-8;
+
+inline int cmp(double a) {return fabs(a-0)&lt;eps?0:((a-0)&gt;eps?+1:-1);}
+inline int cmp(double a,double b) {return fabs(a-b)&lt;eps?0:((a-b)&gt;eps?+1:-1);}
+
+inline double fmax(double a,double b) {return cmp(a,b)&gt;0?a:b;}
+inline double fmin(double a,double b) {return cmp(a,b)&lt;0?a:b;}
+
+#endif // __DOUBLE__
+
+const int MAXV = 12000;
+const int MAXE = 24000;
+
+struct node
+{
+    int v,w;
+}G[MAXE];
+int _index,pre[MAXV],next[MAXE];
+
+void clear(void)
+{
+    _index=0;
+    MEM(pre,-1);
+}
+void add(int u,int v,int w)
+{
+    G[_index].v=v;
+    G[_index].w=w;
+    next[_index]=pre[u];
+    pre[u]=_index++;
+}
+
+class HEAP
+{
+private:
+    int use,val[MAXV],lab[MAXV],heap[MAXV];
+
+    int sel(int i,int j)
+    {
+        return val[heap[i]]&lt;val[heap[j]]?i:j;
+    }
+    void change(int i,int j)
+    {
+        swap(heap[i],heap[j]);
+        swap(lab[heap[i]],lab[heap[j]]);
+    }
+public:
+    int operator [] (int i)
+    {
+        return val[i];
+    }
+
+    bool empty(void)
+    {
+        return use==0;
+    }
+
+    void clear(void)
+    {
+        use=0;
+        MEM(val,inf);
+        MEM(lab,inf);
+    }
+
+    void update(int u,int w)
+    {
+        if(val[u]&gt;w)
+        {
+            val[u]=w;
+            if(lab[u]==inf) heap[lab[u]=++use]=u;
+
+            for(int i=lab[u];i/2&gt;=1;i=i/2)
+            {
+                if(sel(i,i/2)==i/2) break;
+                else change(i,i/2);
+            }
+        }
+    }
+
+    int peek(void)
+    {
+        change(1,use);
+        lab[heap[use--]]=inf;
+
+        for(int i=1;lc(i)&lt;=use;)
+        {
+            if(lc(i)==use)
+            {
+                if(sel(i,lc(i))==i) break;
+                else i=lc(i);
+            }
+            else
+            {
+                if(sel(i,sel(lc(i),rc(i)))==i) break;
+                else i=sel(i,sel(lc(i),rc(i)));
+            }
+            change(i,i/2);
+        }
+        return heap[use+1];
+    }
+}dis;
+
+int SPFA(int src,int des)
+{
+    dis.clear();
+    dis.update(src,0);
+
+    while(!dis.empty())
+    {
+        int u=dis.peek();
+        for(int i=pre[u];i!=-1;i=next[i])
+        {
+            dis.update(G[i].v,dis[u]+G[i].w);
+        }
+    }
+
+    return dis[des];
+}
+
+int n,m,u,v,w;
+
+int main()
+{
+    while(cin&gt;&gt;n&gt;&gt;m)
+    {
+        clear();
+        while(m--)
+        {
+            cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;
+            add(u,v,w);
+        }
+        cin&gt;&gt;u&gt;&gt;v;
+        cout&lt;&lt;SPFA(u,v)&lt;&lt;endl;
+    }
+    return 0;
+}
+
+</code></pre>
+
+<p>好腻害……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/zoj-2165-red-and-black-bfs%E5%85%A5%E9%97%A8%E9%A2%98/"><i class="fa fa-chevron-circle-left"></i> zoj 2165 Red and Black ——BFS入门题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%887%E6%97%A5-%E6%99%B4/">2013年4月7日 晴 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

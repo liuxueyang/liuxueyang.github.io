@@ -1,0 +1,177 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>编写安装中断7ch的中断例程：将一个以0结尾的字符串，转化为大写</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-10-17T21:12:57Z">Oct 17, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/masm/">#masm</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>中断的安装程序：</p>
+
+<pre><code class="language-asm">assume cs:code
+
+code segment
+start:
+    mov ax, cs
+    mov ds, ax
+    mov si, offset chstr
+
+    mov ax, 0
+    mov es, ax
+    mov di, 200h
+    mov cx, offset chstrend - offset chstr
+    cld
+    rep movsb
+
+    mov ax, 0
+    mov es, ax
+    mov word ptr es:[7ch * 4 + 0], 200h
+    mov word ptr es:[7ch * 4 + 2], 0
+
+    mov ax, 4c00h
+    int 21h
+
+chstr:
+    mov si, 0
+lh:
+    mov cx, 0
+    mov cl, [si]
+    jcxz ok
+    and byte ptr [si], 11011111b
+    inc si
+    jmp lh
+ok:
+    iret
+
+chstrend:
+    nop
+
+code ends
+
+end start
+</code></pre>
+
+<p>测试程序：</p>
+
+<pre><code class="language-asm">assume cs:code,  ds:data
+
+data segment
+    db 'conversation', 0
+data ends
+
+code segment
+start:
+    mov ax, data
+    mov ds, ax
+    mov si, 0
+    int 7ch
+    
+    mov ax, 4c00h
+    int 21h
+code ends
+
+end start
+</code></pre>
+
+<p>其实都是一个思路……</p>
+
+<p>这货不难。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E7%BC%96%E5%86%99%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B7ch%E8%AE%A1%E7%AE%97word%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%B9%B3%E6%96%B9/"><i class="fa fa-chevron-circle-left"></i> 编写中断例程7ch：计算word型数据的平方</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj1852-ants-%E6%83%B3%E6%B3%95%E9%A2%98%E6%B0%B4%E9%A2%98/">poj1852 Ants ——想法题、水题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,195 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Codeforces Round #354 (Div. 2) C. Vasya and String</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-05-30T23:21:39Z">May 30, 2016</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/codeforces/">#Codeforces</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    
+
+<p>High school student Vasya got a string of length n as a birthday present. This string consists of letters &lsquo;a&rsquo; and &lsquo;b&rsquo; only. Vasya denotes beauty of the string as the maximum length of a substring (consecutive subsequence) consisting of equal letters.</p>
+
+<p>Vasya can change no more than k characters of the original string. What is the maximum beauty of the string he can achieve?</p>
+
+<h3 id="input">Input</h3>
+
+<p>The first line of the input contains two integers n and k (1 ≤ n ≤ 100 000, 0 ≤ k ≤ n) — the length of the string and the maximum number of characters to change.</p>
+
+<p>The second line contains the string, consisting of letters &lsquo;a&rsquo; and &lsquo;b&rsquo; only.</p>
+
+<h3 id="output">Output</h3>
+
+<p>Print the only integer — the maximum beauty of the string Vasya can achieve by changing no more than k characters.</p>
+
+<p>题意很好理解，做法只是很暴力地扫描两遍，第一次只考虑把字母改变成<code>a</code>，第二次是<code>b</code>，
+取最大值。在每一次扫描的时候，保持左端点不变，尽可能增加右端点，取出最大值，然后
+递增左端点，然后再尽可能地增加右端点。如果右端点到达字符串的最右端，这一趟就结束
+了。</p>
+
+<p>程序嘛，反正过了，也没再修改……:joy: :joy: 回头有时间再改改吧。。。</p>
+
+<pre><code class="language-c++">char str[100000+10];
+int n, k;
+int solve (char ch) {
+    int i, j, max_len = 0, k1 = k, tmp_len = 0;
+    i = j = 0;
+
+    while (1) {
+      while (1) {
+        if (j &gt;= n) break;
+
+        if (str[j] != ch) {
+          if (k1 &gt; 0) k1--;
+          else break;
+        } 
+
+        tmp_len++;
+
+        if (tmp_len &gt; max_len) {
+          max_len = tmp_len;
+        }
+
+        ++j;
+      }
+
+      if (str[i] != ch) {
+        k1++;
+      }
+
+      ++i;
+      tmp_len--;
+
+      if (j &gt;= n) break;
+    }
+
+    return max_len;
+}
+  int
+main ( int argc, char *argv[] )
+{
+#ifndef  ONLINE_JUDGE
+freopen(&quot;b.in&quot;, &quot;r&quot;, stdin);
+#endif     /* -----  ONLINE_JUDGE  ----- */
+  
+
+  while ( ~scanf(&quot;%d%d&quot;, &amp;n, &amp;k) ) {
+    scanf(&quot;%s&quot;, str);
+    int res1 = solve('a');
+    int res2 = solve('b');
+    if (res1 &gt; res2) {
+      printf ( &quot;%d\n&quot;, res1 );
+    } else {
+      printf ( &quot;%d\n&quot;, res2 );
+    }
+  }
+
+    return EXIT_SUCCESS;
+}				/* ----------  end of function main  ---------- */
+</code></pre>
+
+<h3 id="今天跑步5-19km">今天跑步5.19km</h3>
+
+<p><a href="http://wap.thejoyrun.com/po_22498513_50146660.html">跑跑步也挺好的</a></p>
+
+<p>今天跑步换了一双鞋，跑到半路发现我的鞋磨脚，真是醉了……:smile: 最终还是跑完了，回
+来一看脚掌侧面磨了一个泡。。。:joy: 蛮拼的……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2016%E5%B9%B45%E6%9C%8829%E6%97%A5/"><i class="fa fa-chevron-circle-left"></i> 2016年5月29日</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-round-353-div-2-c-money-transfers/">Codeforces Round #353 (Div. 2) C. Money Transfers <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

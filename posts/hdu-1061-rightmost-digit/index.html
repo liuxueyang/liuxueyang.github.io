@@ -1,0 +1,154 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu 1061 Rightmost Digit</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-03-13T08:40:00Z">Mar 13, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Rightmost Digit</p>
+
+<p>Time Limit: <sup>2000</sup>&frasl;<sub>1000</sub> MS (Java/Others)    Memory Limit: <sup>65536</sup>&frasl;<sub>32768</sub> K (Java/Others)
+Total Submission(s): 22887    Accepted Submission(s): 8739</p>
+
+<p>Problem Description
+Given a positive integer N, you should output the most right digit of N^N.</p>
+
+<p>Input
+The input contains several test cases. The first line of the input is a single integer T which is the number of test cases. T test cases follow.
+Each test case contains a single positive integer N(1&lt;=N&lt;=1,000,000,000).</p>
+
+<p>Output
+For each test case, you should output the rightmost digit of N^N.</p>
+
+<p>Sample Input
+2 3 4</p>
+
+<p>Sample Output
+7 6
+Hint
+In the first case, 3 * 3 * 3 = 27, so the rightmost digit is 7. In the second case, 4 * 4 * 4 * 4 = 256, so the rightmost digit is 6.</p>
+
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;1061.in&quot;, &quot;r&quot;, stdin);
+#endif
+  int t; long long n; 
+  while (~scanf(&quot;%d&quot;, &amp;t))
+  while (t--){
+    scanf(&quot;%lld&quot;, &amp;n);
+    int m = n % 10, l = n % 4 + 4, s = m; 
+    for (int i = 1; i &lt; l; ++i) s *= m;
+    printf(&quot;%d\n&quot;, s%10);
+  }
+  return 0;
+}
+</code></pre>
+
+<p>这道题目还是很困惑，为什么说多test cases 还要加 while (~scanf(&ldquo;%d&rdquo;, &amp;t)) 这句话？难道是每一个test case 又有多个cases?</p>
+
+<p>因为这个原因卡了很久……次嗷……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1212-big-number/"><i class="fa fa-chevron-circle-left"></i> hdu 1212 Big Number</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1019-least-common-multiple/">hdu 1019 Least Common Multiple <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

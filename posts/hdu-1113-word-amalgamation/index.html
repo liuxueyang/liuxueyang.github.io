@@ -1,0 +1,187 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu 1113 Word Amalgamation</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-03-12T14:29:00Z">Mar 12, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Word Amalgamation</p>
+
+<p>Time Limit: <sup>2000</sup>&frasl;<sub>1000</sub> MS (Java/Others)    Memory Limit: <sup>65536</sup>&frasl;<sub>32768</sub> K (Java/Others)
+Total Submission(s): 1834    Accepted Submission(s): 854</p>
+
+<p>Problem Description
+In millions of newspapers across the United States there is a word game called Jumble. The object of this game is to solve a riddle, but in order to find the letters that appear in the answer it is necessary to unscramble four words. Your task is to write a program that can unscramble words.</p>
+
+<p>Input
+The input contains four parts:</p>
+
+<ol>
+<li>a dictionary, which consists of at least one and at most 100 words, one per line;</li>
+<li>a line containing XXXXXX, which signals the end of the dictionary;</li>
+<li>one or more scrambled `words&rsquo; that you must unscramble, each on a line by itself; and</li>
+<li>another line containing XXXXXX, which signals the end of the file.</li>
+</ol>
+
+<p>All words, including both dictionary words and scrambled words, consist only of lowercase English letters and will be at least one and at most six characters long. (Note that the sentinel XXXXXX contains uppercase X&rsquo;s.) The dictionary is not necessarily in sorted order, but each word in the dictionary is unique.</p>
+
+<p>Output
+For each scrambled word in the input, output an alphabetical list of all dictionary words that can be formed by rearranging the letters in the scrambled word. Each word in this list must appear on a line by itself. If the list is empty (because no dictionary words can be formed), output the line ``NOT A VALID WORD&rdquo; instead. In either case, output a line containing six asterisks to signal the end of the list.</p>
+
+<p>Sample Input
+tarp given score refund only trap work earn course pepper part XXXXXX resco nfudre aptr sett oresuc XXXXXX</p>
+
+<p>Sample Output
+score ****** refund ****** part tarp trap ****** NOT A VALID WORD ****** course ******</p>
+
+<p>Source
+Mid-Central USA 1998</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+using namespace std;
+char dic[100+10][20], wor[20];
+typedef struct doc{
+  int id; char a[20];
+}Doc; Doc dii[100+10];
+int cmp(const void *a, const void *b){
+  return *(char*)a - *(char *)b;
+}
+int cmp2(const void *a, const void *b){
+  return strcmp((char *)a, (char *)b);
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;1113.in&quot;, &quot;r&quot;, stdin);
+#endif
+  char tem[20]; int i = 0, n;
+  while (~scanf(&quot;%s&quot;, tem)){
+    if (tem[0] == 'X') break;
+    strcpy(dic[i], tem); i++;
+  } n = i;
+  qsort(dic, n, 20*sizeof(char), cmp2);
+  for (i = 0; i &lt; n; ++i){
+    strcpy(dii[i].a, dic[i]);
+    qsort(dii[i].a, strlen(dii[i].a), sizeof(char), cmp); 
+    dii[i].id = i;
+  }
+  while (~scanf(&quot;%s&quot;, tem)){
+    if (tem[0] == 'X') break;
+    qsort(tem, strlen(tem), sizeof(char), cmp); bool flag = false;
+    for (int i = 0; i &lt; n; ++i){
+      if (!strcmp(tem, dii[i].a)){
+        printf(&quot;%s\n&quot;, dic[dii[i].id]); flag = true;
+      }
+    }
+    if (!flag) printf(&quot;NOT A VALID WORD\n&quot;);
+    printf(&quot;******\n&quot;);
+  }
+  return 0;
+}
+</code></pre>
+
+<p>结构体排序……</p>
+
+<p>理清思路，掌握qsort的用法就ＯＫ，还是卡了很久，原因就是当初没有理清思路啊……想错了</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/cf-281a-word-capitalization/"><i class="fa fa-chevron-circle-left"></i> CF 281A Word Capitalization</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1039-easier-done-than-said/">hdu 1039 Easier Done Than Said? <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

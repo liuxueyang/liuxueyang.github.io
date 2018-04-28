@@ -1,0 +1,142 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>zoj3551 Bloodsucker ——概率DP</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-08-18T10:19:00Z">Aug 18, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/dp/">#DP</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Link: <a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=4530">http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=4530</a></p>
+
+<p>A[i]数组表示当吸血鬼有 I 个的时候，还需要的天数。可以列出方程：</p>
+
+<p>A[i] = p1<em>(a[i+1]+1) + (1-p1)</em>(a[i]+1)  p1=(i*(n-i))<em>p / (n</em>(n-1)/2)</p>
+
+<p>这道题目错了很多次，原因就是强制类型转换的时候，有一个细节，</p>
+
+<p>(double)(n<em>(n-1))/2.0 是错的，应该写成：(double)n</em>(n-1)/2.0。这个小细节以后注意吧</p>
+
+<pre><code class="language-cpp"># include&lt;stdio.h&gt;
+# include&lt;string.h&gt;
+# include&lt;stdlib.h&gt;
+int main(void)
+{
+//    freopen(&quot;in.txt&quot;, &quot;r&quot;,stdin );
+    int t; scanf(&quot;%d&quot;,&amp;t);
+    while (t--)
+    {
+        int n; double p;
+        scanf(&quot;%d%lf&quot;,&amp;n,&amp;p);
+        double sad=0.0,dw=(double)n*(n-1)/2.0;
+        for(int i=n-1;i&gt;=1;--i)
+        {
+            double lxy=i; lxy*=(n-i); lxy*=p;
+            lxy=lxy/dw;
+            sad+=1.0/lxy;
+        }
+        printf(&quot;%.3f\n&quot;,sad);
+    }
+    return 0;
+}
+</code></pre>
+
+<p>O(╯□╰)o</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces298c/"><i class="fa fa-chevron-circle-left"></i> codeforces298c</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces105d-bag-of-mice-%E6%A6%82%E7%8E%87dp/">codeforces105d Bag of mice ——概率DP <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

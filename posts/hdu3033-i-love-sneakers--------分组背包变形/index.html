@@ -1,0 +1,193 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu3033 I love sneakers!        分组背包变形</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-08-11T18:24:00Z">Aug 11, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+                    , 
+                    <a href="/tags/dp/">#DP</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>分组背包要求每一组里面只能选一个，这个题目要求每一组里面至少选一个物品。
+dp[i, j] 表示前 i 组里面在每组至少放进一个物品的情况下，当花费 j 的时候，所得到的的最大价值。这个状态可以由三个状态转移过来：
+a[i, j].b表示第 i 组第 j 个物品的花费，v表示背包容量。
+初始化：
+如果一种物品都不放，那么对应的所有的背包容量都是0，也就是：dp[0, 0~M] = 0；
+其他的情况，都初始化成-INF。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+#include &lt;deque&gt;
+#include &lt;queue&gt;
+#include &lt;list&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;utility&gt;
+#include &lt;functional&gt;
+#include &lt;fstream&gt;
+#include &lt;iomanip&gt;
+#include &lt;sstream&gt;
+#include &lt;numeric&gt;
+#include &lt;cassert&gt;
+#include &lt;ctime&gt;
+#include &lt;iterator&gt;
+const int INF = 0x3f3f3f3f;
+const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}};
+using namespace std;
+typedef struct node
+{
+    int b,v;
+}node;
+vector&lt;node&gt; a[11];
+int dp[11][10009];
+int main(void)
+{
+    #ifndef ONLINE_JUDGE
+    freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);
+    #endif // ONLINE_JUDGE
+    int n, V, k;
+    while (~scanf(&quot;%d%d%d&quot;,&amp;n,&amp;V,&amp;k))
+    {
+        for (int i=0;i&lt;k;++i) a[i+1].clear();
+        int id; node t;
+        for (int i=0;i&lt;n;++i)
+        {
+            scanf(&quot;%d&quot;,&amp;id); scanf(&quot;%d%d&quot;,&amp;t.b,&amp;t.v); a[id].push_back(t);
+        }
+        bool flag=false;
+        for (int i=0;i&lt;k;++i) if(a[i+1].size()==0) {printf(&quot;Impossible\n&quot;); flag=true; break; }
+        if(flag) {continue;}
+        memset(dp,-INF,sizeof(dp));
+        for (int i=0;i&lt;=V;++i) dp[0][i]=0;
+        for (int i=1;i&lt;=k;++i)
+        {
+            for (int j=0;j&lt;a[i].size();++j)
+            {
+                for (int v=V; v&gt;=a[i][j].b;--v)
+                {
+                    if(dp[i][v-a[i][j].b]!=-INF) dp[i][v]=max(dp[i][v],dp[i][v-a[i][j].b]+a[i][j].v);
+                    if(dp[i-1][v-a[i][j].b]!=INF) dp[i][v]=max(dp[i][v],dp[i-1][v-a[i][j].b]+a[i][j].v);
+                }
+            }
+        }
+        if(dp[k][V]==-INF) printf(&quot;Impossible\n&quot;);
+        else printf(&quot;%d\n&quot;,dp[k][V]);
+    }
+    return 0;
+}
+
+</code></pre>
+
+<p>当然不是我自己想出来的……
+参考：
+<a href="http://www.cnblogs.com/zhourongqing/archive/2012/08/21/2649972.html">http://www.cnblogs.com/zhourongqing/archive/2012/08/21/2649972.html</a>
+<a href="http://www.docin.com/p-374335925.html">http://www.docin.com/p-374335925.html</a>
+<a href="http://www.cnblogs.com/nanke/archive/2011/11/24/2261695.html">http://www.cnblogs.com/nanke/archive/2011/11/24/2261695.html</a></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu1712-acboy-needs-your-help----%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85/"><i class="fa fa-chevron-circle-left"></i> hdu1712 ACboy needs your help    分组背包</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj3249-test-for-job--%E6%8B%93%E6%89%91&#43;dp/">poj3249 Test for Job  ——拓扑&#43;DP <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

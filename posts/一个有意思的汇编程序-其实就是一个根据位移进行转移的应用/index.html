@@ -1,0 +1,173 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>一个有意思的汇编程序 ——其实就是一个根据位移进行转移的应用=_=</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-10-06T14:00:00Z">Oct 6, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/masm/">#masm</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>分析一下这个程序=_=</p>
+
+<pre><code>assume cs:code
+
+code segment
+    mov ax, 4c00h
+    int 21h
+start:
+    mov ax, 0
+s:    
+    nop
+    nop
+
+    mov di, offset s
+    mov si, offset s2
+    mov ax, cs:[si]
+    mov cs:[di], ax
+s0:
+    jmp short s
+
+s1:
+    mov ax, 0
+    int 21h
+    mov ax, 0
+
+s2:
+    jmp short s1
+    nop
+code ends
+
+end start
+</code></pre>
+
+<p>开始，一眼看去，这个程序应该会陷入死循环吧。。</p>
+
+<p>其实，认真分析之后就会发现。这个程序竟然可以正常地运行并且退出！</p>
+
+<p>首先，一定要注意jmp指令的内部运行方法！</p>
+
+<p>首先呢，为了方便，我们先记录下每个标号的偏移地址和机器码。方便以后分析。</p>
+
+<pre><code>S:  CS:8H
+
+CS:9H
+
+S0: CS:16H  EBF0 JMP 8
+
+S1:  CS:18H B80000
+
+S2:  CS:20H EBF6 JMP 18
+</code></pre>
+
+<p>之后，S处的数据发生改变：</p>
+
+<pre><code>S: CS:8H EBF6
+
+S0: CS:16H  EBF0 JMP 8
+
+S1:  CS:18H B80000
+
+S2:  CS:20H EBF6 JMP 18
+</code></pre>
+
+<p>然后，在标号S0处，代码回到S处，这里，S处已经有代码了。所以会执行机器码EBF6，这是什么意思呢？这实际上是一个jump语句，只是不是jump short s1了，因为拷贝的是机器码，而机器码记录的是位移，也就是说，还记得吗？jmp是根据位移进行转移的，F6是-10的补码形式，所以会让IP-10个字节，注意，执行这条语句的时候，IP=IP+2-10=0.这里，为什么要+2呢？因为根据位移进行转移的时候，IP是指向jmp后面的指令的，而jmp指令的大小是2个字节，所以要+2,，使得IP指向下一条指令。所以，程序又欢乐地回到开始了，正好执行mov ax, 4c00h   int 21h ，然后就结束了！</p>
+
+<p>有没有很有趣~~</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E5%AE%9E%E9%AA%8C%E4%B8%83%E7%8E%8B%E7%88%BD%E6%88%91%E5%86%99%E7%9A%84%E6%9C%80%E9%95%BF%E7%9A%84%E4%B8%80%E4%B8%AA%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F/"><i class="fa fa-chevron-circle-left"></i> 实验七——王爽…………我写的最长的一个汇编程序==</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E7%BB%88%E4%BA%8E%E5%9C%A8cmd%E7%AA%97%E5%8F%A3%E9%87%8C%E5%87%BA%E7%8E%B0%E4%BA%86%E9%A2%9C%E8%89%B2%E4%BA%86%E6%84%9F%E5%8A%A8ing/">终于在cmd窗口里出现了颜色了！！！感动ing…… <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

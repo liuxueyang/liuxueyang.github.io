@@ -1,0 +1,222 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu 1059 Dividing ——多重背包复习</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-04-05T12:29:00Z">Apr 5, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/dp/">#DP</a>
+                
+                    , 
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Dividing</p>
+
+<p>Time Limit: <sup>2000</sup>&frasl;<sub>1000</sub> MS (Java/Others)    Memory Limit: <sup>65536</sup>&frasl;<sub>32768</sub> K (Java/Others)
+Total Submission(s): 11367    Accepted Submission(s): 3168</p>
+
+<p>Problem Description
+Marsha and Bill own a collection of marbles. They want to split the collection among themselves so that both receive an equal share of the marbles. This would be easy if all the marbles had the same value, because then they could just split the collection in half. But unfortunately, some of the marbles are larger, or more beautiful than others. So, Marsha and Bill start by assigning a value, a natural number between one and six, to each marble. Now they want to divide the marbles so that each of them gets the same total value.
+Unfortunately, they realize that it might be impossible to divide the marbles in this way (even if the total value of all marbles is even). For example, if there are one marble of value 1, one of value 3 and two of value 4, then they cannot be split into sets of equal value. So, they ask you to write a program that checks whether there is a fair partition of the marbles.</p>
+
+<p>Input
+Each line in the input describes one collection of marbles to be divided. The lines consist of six non-negative integers n1, n2, &hellip;, n6, where ni is the number of marbles of value i. So, the example from above would be described by the input-line ``1 0 1 2 0 0&rdquo;. The maximum total number of marbles will be 20000.</p>
+
+<p>The last line of the input file will be ``0 0 0 0 0 0&rdquo;; do not process this line.</p>
+
+<p>Output
+For each colletcion, output <code>Collection #k:'', where k is the number of the test case, and then either</code>Can be divided.&rdquo; or ``Can&rsquo;t be divided.&ldquo;.</p>
+
+<p>Output a blank line after each test case.</p>
+
+<p>Sample Input
+1 0 1 2 0 0 1 0 0 0 1 1 0 0 0 0 0 0</p>
+
+<p>Sample Output
+Collection #1: Can&rsquo;t be divided.</p>
+
+<p>Collection #2: Can be divided.</p>
+
+<p>多重背包。
+背包九讲多重背包模板：</p>
+
+<pre><code class="language-python">def MultiplePack(F, C, W, M)
+　　if C * M &gt;= V
+　　　　CompletePack(F, C, W)
+　　　　return
+　　k = 1
+　　while (k &lt; M)
+　　　　ZeroOnePack(k * C, k * W)
+　　　　M = M - k
+　　　　k = k * 2
+　　ZeroOnePack(C * M, W * M)
+</code></pre>
+
+<p>然后就照着写的，这题以前做过，为了复习多重背包，又做了一遍……</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+
+int F[20000*6+1], V;
+void complete(int c, int w){
+  for (int v = c; v &lt;= V; ++v)
+    F[v] = max(F[v], F[v-c] + w);
+}
+void zeropack(int c, int w){
+  for (int v = V; v &gt;= c; --v)
+    F[v] = max(F[v], F[v-c] + w);
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;hdu1059.in&quot;, &quot;r&quot;, stdin);
+#endif
+  int t = 1, a[7];
+  while (~scanf(&quot;%d&quot;, a+1)){
+    int sum = a[1];
+    for (int i = 2; i &lt;= 6; ++i){
+      scanf(&quot;%d&quot;, a+i); sum += i*a[i];
+    }
+    if (!sum) break;
+//    if (t != 1) printf(&quot;\n&quot;);
+    printf(&quot;Collection #%d:\n&quot;, t); t++;
+    if (sum&amp;1){
+      printf(&quot;Can't be divided.\n\n&quot;); continue;
+    }
+    V = sum &gt;&gt; 1;
+    memset(F, MIN, sizeof(F));
+    F[0] = 0; int k;
+    for (int i = 1; i &lt;= 6; ++i){
+      if (!a[i]) continue;
+      if  (i * a[i] &gt;= V){
+        complete(i, 1); continue;
+      }
+      k = 1;
+      while (k &lt; a[i]){
+        zeropack(k * i, k * 1); a[i] -= k; k &lt;&lt;= 1;
+      }
+      zeropack(i * a[i], 1 * a[i]);
+    }
+    if (F[V] &gt;= 0){
+      printf(&quot;Can be divided.\n&quot;);
+    }
+    else printf(&quot;Can't be divided.\n&quot;);
+    printf(&quot;\n&quot;);
+  }
+
+  return 0;
+}
+</code></pre>
+
+<p>真不知道hduoj是怎么想的，有时候需要最后一个case要加一个换行，有时候却不需要……比如这题38行的注释就是最后一个case不加空行……结果PE了。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%884%E6%97%A5--%E9%9B%A8/"><i class="fa fa-chevron-circle-left"></i> 2013年4月4日  雨</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%885%E6%97%A5--%E9%9B%A8%E9%98%B4/">2013年4月5日  雨，阴 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

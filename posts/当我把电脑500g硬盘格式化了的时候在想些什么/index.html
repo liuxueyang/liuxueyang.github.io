@@ -1,0 +1,116 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>当我把电脑500G硬盘格式化了的时候，在想些什么</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-08-11T15:01:00Z">Aug 11, 2013</time>
+        </li>
+        
+        
+
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>所以我就想重新尝试一下怎么装多系统，bootloader,MBR到底是怎么回事儿。
+简要记录一下：
+　　首先，在可以作为启动盘的Ｕ盘里面，备份一份可以用的WinXP镜像+校园网客户端安装文件+驱动精灵安装文件。然后再说别的。
+　　我的硬盘初步规划是这样的：把硬盘分成4个分区，3P+1E。也就是3个主分区，1个扩展分区。每个50G。硬盘主分区最多有4个，为了以后装Linux，我分了3个主分区，一个用来装WinXP，另外两个装Ubuntu，CentOS。扩展分区再划分出几个逻辑分区：分出100G作为WinXP里面的D盘，装软件；再分出100G作为WinXP里面的E盘，存文档。足够用。剩下的100+G，分出1G作为Ubuntu的swap分区，再分出1G作为CentOS的swap分区。剩下的作为空闲分区备用。
+这样三个主分区编号分别是：/dev/sda1 /dev/sda2 /dev/sda3
+D，E两个盘的编号是：/dev/sda5 /dev/sda6
+两个swap分区的编号是：/dev/sda7 /dev/sda8
+　　先装winXP系统，找一个Ghost版的，把U盘用大白菜制作成启动盘，进入PE，还原系统就行了。
+　　然后装Ubuntu，自己有一张安装盘，12.04版的。为了省事儿+还没什么经验，所以我选择了只把Linux分成两个分区，一个根分区 / ，一个swap分区。根分区挂载在 /dev/sda2，swap分区挂载在 /dev/sda7。然后重要的一点：bootloader安装在500G硬盘的最前面！然后就没什么注意的了，直接装就行。
+　　最后装CentOS，同样，我自己有一张安装盘，CentOS 6.0。同样，也是只分两个分区，一个根分区 /，一个swap分区。根分区挂载在 /dev/sda3，swap分区挂载在 /dev/sda8。然后同样很重要的一点：bootloader安装在 /dev/sda3这个主分区里面！如果也安装在整个硬盘的最前面的话，会覆盖掉Ubuntu安装的Grub2。所以，要安装的CentOS所在的主分区的里面就行了，Ubuntu的Grub2的bootloader可以将启动权转交给这个主分区的bootloader。然后同样也没什么注意的了，直接装就行。
+　　如果装完CentOS后，发现开机之后的Grub2没有CentOS的启动选项，或者因为重复装了多次系统，把原来的系统格式化了，但是启动选项里面依然有记录。可以进入Ubuntu，打开终端更新一下Grub2：sudo update-grub2。然后重启就可以了。
+为什么要先装WinXP在装Linux呢？因为WinXP无节操，系统重装的时候会重写MBR，把Linux的启动选项覆盖掉，所以就看不到Grub界面了.
+如果你很不幸Win系统挂了，其实解决办法也不是没有，比如这篇：ubuntu12.04 修复Grub2 这种东西紧急情况下其实还是挺有用的。o(╯□╰)o
+某些细节可能写的不那么准确，就是这么理解的……
+一切弄好之后，机器启动进入Grub2界面：有Ubunt，CentOS，WinXP启动选项。
+完美~
+我是不是有点无聊……囧o(╯□╰)o
+鼠标一点，整个硬盘的资料就没了，人生似乎可以重新开始了，又可以重新做人了，但是，记忆呢，记忆能不能格式化？</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu2955-robberies-%EF%BC%90%EF%BC%91%E8%83%8C%E5%8C%85%E6%A6%82%E7%8E%87/"><i class="fa fa-chevron-circle-left"></i> hdu2955 Robberies 　０１背包＋概率</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu1712-acboy-needs-your-help----%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85/">hdu1712 ACboy needs your help    分组背包 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

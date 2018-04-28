@@ -1,0 +1,241 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Checking Whether Any Intersection in a City is Reachable from Any Other</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2017-05-16T23:24:52&#43;08:00">May 16, 2017</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="/categories/algorithm/">Algorithm</a>
+                
+                    , 
+                    <a href="/categories/graph/">Graph</a>
+                
+            </em>
+        </li>
+        
+
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="https://gitlab.com/liuxueyang/algorithms-on-graph-exercise/blob/master/week2/decomposition-of-graphs.pdf">pdf</a></p>
+
+<p>题目给出一个有向图，要求输出图中强连通分量的个数。</p>
+
+<p>我把这样的强连通分量叫做一个sink：不存在一个边从这个强连通分量中的任意
+一个点连接到其它连通分量。也就是说如果把这个强连通分量缩成一个点的话，
+它的出度为0。</p>
+
+<p>我把和一个图的所有边都反向的图叫做反向图。貌似没有这样的术语。不知道
+reverse graph应该怎么翻译。</p>
+
+<p>思路大概是这样的：</p>
+
+<ol>
+<li>如果我们知道一个有向图的sink中的一个点，那么我们就可以求出这个强连
+通分量的所有点，因为强连通分量中的任意两个点都相互可达。</li>
+<li>如何求有相同的sink？我们知道反向图的强连通分量的个数和原图的强连通
+分量一定是一样的，只是方向不同。并且，原图的sink对应于反向图的
+source strong connected component，所以我们可以通过求反向图的source
+SCC，来求原图的sink。</li>
+<li>求一个图的source SCC的思路和用DFS求拓扑排序的思路是一样的，我们可以
+按照所有点的DFS回退的时刻降序排序，这样DFS最晚回退的点就是反向图的
+source SCC，也就是原图的sink，我们可以第二次DFS得到这个sink中的所有
+点并且从原图中去掉，继续求下一个sink，同时计数。</li>
+</ol>
+
+<p>实现的过程中出现了非常难以发现的bug：一个vector，我在dfs里面加入元素，
+然后在调用dfs的外层循环中循环这个vector。所以对于小数据并没有显现出错
+误，对于10000的数据就出现段错误了。调试了很久，不过xhe也教了我好多调试
+的方法，比如gdb，valgrind，libsigseg库，strace等。不过gdb调试的时候查
+看STL数据结构里面的数据的时候还是有点小麻烦，这个时候IDE的调试工具就好
+用很多了。</p>
+
+<p>另外，gdb设置端点竟然支持条件表达式，这个功能非常有用。</p>
+
+<pre><code class="language-cpp">// Sat May 13 09:28:34 CST 2017
+// Sat May 13 10:46:30 CST 2017
+
+// 求一个有向图的强连通分量的个数。。。
+
+/*
+1. 建reverse graph
+2. 降序排序post
+3. 在原图中依次求强连通分量，并且从图中去掉
+ */
+
+#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;utility&gt;
+
+using namespace std;
+typedef vector&lt;int&gt; VI;
+typedef pair&lt;int, int&gt; PII;
+int cnt;
+vector&lt;PII&gt; post;		// index, post
+
+void dfs(vector&lt;VI&gt; &amp;adj, vector&lt;bool&gt; &amp;used, int x, bool get_post)
+{
+  used[x] = true;
+  
+  for (auto &amp;v1 : adj[x]) {
+    if (!used[v1]) {
+      dfs(adj, used, v1, get_post);
+    }
+  }
+
+  if (get_post) {
+    cnt++;
+    post.push_back(make_pair(x, cnt));
+  }
+}
+
+int number_of_strongly_connected_components(vector&lt;VI&gt; &amp;adj) {
+  int result = 0;
+  vector&lt;VI&gt; rev_adj(adj.size(), VI());
+  vector&lt;bool&gt; used(adj.size(), false);
+  vector&lt;bool&gt; visit(adj.size(), false);
+
+  for (size_t i = 0; i &lt; adj.size(); ++i) {
+    for (auto &amp;v2 : adj[i]) {
+      rev_adj[v2].push_back(i);
+    }
+  }
+
+  // 求reverse graph的post，得到原图的sink Strong Connected Component
+  for (size_t i = 0; i &lt; rev_adj.size(); ++i) {
+    if (!used[i]) {
+      dfs(rev_adj, used, i, true);
+    }
+  }
+
+  sort(post.begin(), post.end(),
+       [](const PII &amp;a, const PII &amp;b) -&gt; bool { return a.second &gt; b.second; });
+
+  // 靠。。。我知道了！！！我真傻。。。竟然一边在dfs里面修改post，一边
+  // 循环post。。所以SIGSEGV错误应该是无穷递归的原因。。。或者栈溢出？
+  
+  // 从原图的sink SCC开始求所有的SCC的个数。。
+  for (auto &amp;p : post) {
+    if (!visit[p.first]) {
+      result++;
+      dfs(adj, visit, p.first, false);
+    }
+  }
+
+  return result;
+}
+
+int main() {
+  size_t n, m;
+
+  while (std::cin &gt;&gt; n &gt;&gt; m) {
+    cnt = 1;
+
+    vector&lt;vector&lt;int&gt; &gt; adj(n, VI());
+    post.clear();
+
+    for (size_t i = 0; i &lt; m; i++) {
+      int x, y;
+      std::cin &gt;&gt; x &gt;&gt; y;
+      adj[x - 1].push_back(y - 1);
+    }
+    std::cout &lt;&lt; number_of_strongly_connected_components(adj) &lt;&lt; endl;
+  }
+  
+  return 0;
+}
+
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/determining-an-order-of-courses/"><i class="fa fa-chevron-circle-left"></i> Determining an Order of Courses</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/computing-minimum-number-of-flight-segments/">Computing the Minimum Number of Flight Segments <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

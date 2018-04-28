@@ -1,0 +1,166 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>解决除法溢出问题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-10-10T23:54:00Z">Oct 10, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/masm/">#masm</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>被除数是dword型，除数是dword型，结果是dword型。</p>
+
+<p>参数：</p>
+
+<p>　　ax=dword型数据的低16位</p>
+
+<p>　　dx=dword型数据的高16位</p>
+
+<p>　　cx=除数</p>
+
+<p>返回：</p>
+
+<p>　　dx=结果的高16位，ax=结果的低16位</p>
+
+<p>　　cx=除数</p>
+
+<pre><code>assume cs:code, ss:stack
+
+stack segment
+    dw 10h dup(0)
+stack ends
+
+code segment
+start:
+    mov ax, 4240h
+    mov dx, 0fh
+    mov cx, 0ah
+    call divdw
+
+divdw:
+    ; H=int(X/65536) L=rem(X/65536)
+    push ax
+    ; H / n
+    mov ax, dx
+    mov dx, 0
+    div cx
+    mov si, ax
+    ; (rem(H/n) * 65536 + L) / n
+    pop ax
+    div cx
+    ;remain cx gotten
+    mov cx, dx
+    mov dx, si
+    ret
+
+    mov ax, 4c00h
+    int 21h
+code ends
+
+end start
+</code></pre>
+
+<p>这个程序写了差不多两天==</p>
+
+<p>我只想说，当初我想复杂了，没有把问题i想清楚，没有分析清楚，搞的我各种分析溢出……写了差不多100行，彻底晕了=_=</p>
+
+<p>后来才想明白。注意，*65536直接左移16位，也就是一个16位寄存器。</p>
+
+<p>哎，今天心情糟糕透了……o(╯□╰)o</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E7%BC%96%E5%86%99%E5%AD%90%E7%A8%8B%E5%BA%8F%E6%98%BE%E7%A4%BA%E5%AD%97%E7%AC%A6%E4%B8%B2/"><i class="fa fa-chevron-circle-left"></i> 编写子程序，显示字符串</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E8%AF%95%E9%AA%8C%E5%8D%81-3-%E6%95%B0%E5%80%BC%E6%98%BE%E7%A4%BA/">试验十 3.数值显示 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

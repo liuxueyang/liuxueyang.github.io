@@ -1,0 +1,162 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>线段树，区间更新</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-07-03T14:08:00Z">Jul 3, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/data-structure/">#Data Structure</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>把一个区间内的值全部修改为一个确定值；
+计算某个区间内的最大值，最小值，和。</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+#define INF 0x7f7f7f7f
+#define Max 600000
+long long a[Max], setv[Max], minv[Max], maxv[Max], sumv[Max], _max, _min, _sum, v;
+int y1,y2;
+bool flagv[Max];
+inline void maintain(int o, int L, int R) {
+    if (flagv[o]) minv[o] = maxv[o] = setv[o], sumv[o] = (R-L+1)*setv[o];
+    else if (R &gt; L) minv[o] = min(minv[o*2], minv[o*2+1]), maxv[o] = max(maxv[o*2], maxv[o*2+1]),
+        sumv[o] = sumv[o*2] + sumv[o*2+1];
+}
+void build(int o, int L, int R) {
+    if (L == R) scanf(&quot;%lld&quot;, a+o), minv[o] = maxv[o] = sumv[o] = setv[o] = a[o];
+    else {int M = L + (R-L)/2; build(o&lt;&lt;1, L, M), build(o*2+1, M+1, R), maintain(o, L, R);}
+    flagv[o] = false;
+}
+inline void pushdown(int o) {
+    if (flagv[o]) setv[o&lt;&lt;1] = setv[o&lt;&lt;1|1] = setv[o], flagv[o&lt;&lt;1] = flagv[o&lt;&lt;1|1] = true, flagv[o] = false;
+}
+void update(int o, int L, int R) {
+    if (y1 &lt;= L &amp;&amp; y2 &gt;= R) setv[o] = v, flagv[o] = true;
+    else {
+        int M = L + (R-L)/2; pushdown(o); if (y1 &lt;= M) update(o&lt;&lt;1, L, M); else maintain(o&lt;&lt;1, L, M);
+        if (y2 &gt; M) update(o&lt;&lt;1|1, M+1, R); else maintain(o&lt;&lt;1|1, M+1, R);
+    }
+    maintain(o, L, R);
+}
+void query(int o, int L, int R) {
+    if (flagv[o]) _sum += setv[o]*(min(y2, R) - max(y1, L) + 1), _min = min(_min, setv[o]), 
+        _max = max(_max, setv[o]);
+    else if (y1 &lt;= L &amp;&amp; y2 &gt;= R) _sum += sumv[o], _min = min(_min, minv[o]), _max = max(_max, maxv[o]);
+    else {int M = L + (R-L)/2; if (y1 &lt;= M) query(o&lt;&lt;1, L, M); if (y2 &gt; M) query(o&lt;&lt;1|1, M+1, R);}
+}
+int main(void) {
+    freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin); freopen(&quot;output.txt&quot;, &quot;w&quot;, stdout);
+    int n, m; scanf(&quot;%d%d&quot;, &amp;n, &amp;m); build(1, 1, n);
+    while (m--) {
+        char ch; scanf(&quot;\n%c&quot;, &amp;ch);
+        if (ch == 'Q') scanf(&quot;%d%d&quot;, &amp;y1, &amp;y2), _sum = 0, _max = -INF, _min = INF, 
+            query(1, 1, n), printf(&quot;%lld %lld %lld\n&quot;, _sum, _max, _min);
+        else scanf(&quot;%d%d%lld&quot;, &amp;y1, &amp;y2, &amp;v), update(1, 1, n);
+    }
+    return 0;
+}
+
+</code></pre>
+
+<p>。。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/vim-%E8%A2%AB%E5%A2%99/"><i class="fa fa-chevron-circle-left"></i> vim 被墙</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu3308--%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/">hdu3308  线段树——区间合并 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>zoj3623 Battle Ships ——完全背包？简单DP！|| 泛化背包</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-08-15T17:43:00Z">Aug 15, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/zoj/">#ZOJ</a>
+                
+                    , 
+                    <a href="/tags/dp/">#DP</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>link:<a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=3623">http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=3623</a>
+看起来像完全背包，但是物品价值是变化的，所以很多人搞的很复杂。
+晚上的代码要么很复杂，有一个代码虽然很简洁在zoj可以过，但是是错误的。求教lyl神犇，果然思想很深刻，抓住乐问题的本质，想法比网上搜到的所有博客里面的做法都简洁。
+事实上，就是简单的DP，抓住一个技巧：让时间倒流，也就是说，把时间反过来考虑，先在将来把船造好，然后在过去用船攻击，哈哈，太巧秒了，说起来很别扭，很有意思，dp[j+time[i]]=max(dp[j]+j*time[i])；dp[j]表示在j这个时间，所造成的最大伤害。这样就可以枚举时间，在每个特定的时间内，枚举船的种类，找到最大值。最终在dp[]数组里面找到符合条件的并且时间最少的解。
+只能说，ORZ……
+后来好不容易想明白了。茶具从哪里来……</p>
+
+<pre><code class="language-cpp">
+/*
+ID: zypz4571
+LANG: C++
+TASK: battle.cpp
+ */
+
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+#include &lt;deque&gt;
+#include &lt;queue&gt;
+#include &lt;list&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;utility&gt;
+#include &lt;functional&gt;
+#include &lt;fstream&gt;
+#include &lt;iomanip&gt;
+#include &lt;sstream&gt;
+#include &lt;numeric&gt;
+#include &lt;cassert&gt;
+#include &lt;ctime&gt;
+#include &lt;iterator&gt;
+const int INF = 0x3f3f3f3f;
+const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}};
+using namespace std;
+int Time[33],dam[33], f[444];
+int main ( int argc, char *argv[] )
+{
+#ifndef ONLINE_JUDGE
+freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+#endif
+    ios::sync_with_stdio(false);
+    int n,l;
+    while (~scanf(&quot;%d%d&quot;,&amp;n,&amp;l)){
+        for (int i=1;i&lt;=n;++i) scanf(&quot;%d%d&quot;,Time+i,dam+i);
+        memset(f,0,sizeof(f)); f[0]=0;
+        for (int j=0;j&lt;=355;++j) {
+            for (int i=1;i&lt;=n;++i) {
+                f[j+Time[i]]=max(f[j+Time[i]],f[j]+j*dam[i]);
+            }
+        }
+        int ans=INF;
+        for(int i=0;i&lt;=355;++i) {
+            if(f[i]&gt;=l&amp;&amp;ans&gt;i) ans=i;
+        }
+        printf(&quot;%d\n&quot;,ans);
+    }
+        return EXIT_SUCCESS;
+}                /* ----------  end of function main  ---------- */
+
+</code></pre>
+
+<p>学算法重在理解，思考，而不是套模板什么的。理解了就不用记忆了。
+比如这道题目，一看，就很想完全背包，然后就搞的很复杂的样子……
+其实，这道题目还有一个比较聪明的解法，因为时间最多只有300+，所以我们可以枚举时间，二分答案，对每个时间判断是否合法就ＯＫ，判断的时候，按照时间正序排就行，ｌｙｌ神犇给讲的，好吧，我不会写……
+做完这道题目觉得动态规划很有意思。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj3249-test-for-job--%E6%8B%93%E6%89%91&#43;dp/"><i class="fa fa-chevron-circle-left"></i> poj3249 Test for Job  ——拓扑&#43;DP</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu1114-piggy-bank-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">hdu1114 Piggy-Bank ——完全背包 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

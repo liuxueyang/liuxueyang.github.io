@@ -1,0 +1,168 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>zoj3696  Alien&#39;s Organ ——概率题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-05-07T23:27:00Z">May 7, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/zoj/">#zoj</a>
+                
+                    , 
+                    <a href="/tags/possibility/">#Possibility</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=3696">http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=3696</a>
+题目大意：
+　　就是一个东西，随机产生器官，一天产生的数量的期望是x,求一天内产生个数小于等于N的概率
+题目思路：
+　　泊松分布。概率论得好好学。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;math.h&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x7fffffff;
+const int  MINN =  -0x7fffffff;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+double la;
+double cal(double k) {
+  double l = 1; 
+  for (int i = 1; i &lt;= k; ++i)  {
+    l = l * i;
+  }
+  double re = pow(la, k) / l * exp(-la);
+  return re;
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;a.in&quot;, &quot;r&quot;, stdin);
+#endif
+  int t; scanf(&quot;%d&quot;, &amp;t);
+  while (t--) {
+    double N; int i, j; double sum = 0;
+    cin &gt;&gt; N &gt;&gt; la;
+    for (i = 0; i &lt;= N; ++i) {
+      sum += cal(i*1.0);
+    }
+    printf(&quot;%.3lf\n&quot;, sum);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>　　比赛到最后10分钟了才写，最后3分钟过的，，代码比较挫……还是跟别人讨论的。。。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj1122zoj1053-fdny-to-the-rescue-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%85%A5%E9%97%A8%E9%A2%98_dijkstra%E7%AE%97%E6%B3%95/"><i class="fa fa-chevron-circle-left"></i> poj1122&amp;&amp;zoj1053 FDNY to the Rescue! ——最短路入门题_Dijkstra算法</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/zoj3702-gibonacci-number-%E6%89%BE%E8%A7%84%E5%BE%8B/">zoj3702 Gibonacci number ——找规律 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

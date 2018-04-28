@@ -1,0 +1,145 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>problem when configuring vim taglist plugin</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-06-10T22:44:32Z">Jun 10, 2016</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/tools/">#Tools</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>最开始，用这个插件的时候出现了类似</p>
+
+<p><code>ctags unrecognized option '--format=2'^@^itry</code></p>
+
+<p>这样的问题。</p>
+
+<p>然后我看了一下<code>ctags</code>的man page，发现，确实没有这个选项。这……是为啥。</p>
+
+<p>然后去看taglist插件的manual和它的首页，发现，它里面说的是<code>exuberant ctags</code>，然后
+我看了一下<a href="http://ctags.sourceforge.net/ctags.html">这个</a>对比了一下Linux里面的系
+统的<code>ctags</code>的man page，发现确实不一样。然后我在常用的PATH里面找了一下<code>exuberant</code>，
+很快就找到了<code>/usr/bin/ctags-exuberant</code>，然后根据taglist的文档，设置一个变量就好
+了。</p>
+
+<p>在openSUSE Linux上面，需要在<code>vimrc</code>里面加一句这个：</p>
+
+<pre><code class="language-vimrc">  let Tlist_Ctags_Cmd = &quot;/usr/bin/ctags-exuberant&quot;
+</code></pre>
+
+<p>系统自带的<code>ctags</code>，</p>
+
+<pre><code class="language-vimrc">❯ which ctags                                                                                                                                        
+/usr/bin/ctags
+</code></pre>
+
+<p>并非是<code>taglist</code>这个插件所指的<code>ctags</code>，这个问题，我也是，醉了。 :joy: 搞了51min才
+搞定…… :smile: 这个插件里面的<code>ctags</code>指的是<code>ctags-exuberant</code></p>
+
+<p>貌似在Mac OS X上面，也需要设置一下，比如<a href="https://gist.github.com/nazgob/1570678">这
+里</a>不过我记得貌似我的以前在Mac OS X里面
+可以用。不知道是不是也像这样设置了。</p>
+
+<p>这是效果截图：</p>
+
+<p><img src="/img/taglist.png" alt="Gvim on openSUSE" /></p>
+
+<p>taglist的窗口通过<code>C-a</code>快捷键打开，再次按<code>C-a</code>快捷键，taglist窗口关闭。这个插件尤其是
+在读程序的时候比较有用。或者写程序的时候也会用到。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/fish-shell-tutorial/"><i class="fa fa-chevron-circle-left"></i> fish shell tutorial</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-round-356-div-2-c-bear-and-prime-100/">Codeforces Round #356 (Div. 2) C. Bear and Prime 100 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

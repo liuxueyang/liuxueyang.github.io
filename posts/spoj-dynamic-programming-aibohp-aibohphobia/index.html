@@ -1,0 +1,183 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Spoj, dynamic-programming: AIBOHP - Aibohphobia</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-08-12T21:36:32Z">Aug 12, 2016</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/spoj/">#spoj</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>给一个字符串，求最少插入多少个字符，可以使得这个字符串是回文的。</p>
+
+<p>可以这样想：我们假设它已经是回文的，那么把这个字符串逆序，如果它是回文的，那么对
+应的每个字符应该相等。可以它不是回文的，那么就需要尽量少地加一些字符，加多少呢？
+那么需要知道当前的最长连续公共子序列的长度len，把不相等的那些字符串加进去就成为
+了回文的。加进去的字符的最少个数 = 字符串长度 - 原先的字符串和它的逆序字符串的最
+长连续公共子序列的长度。</p>
+
+<p>问题就转化为求两个序列的最长公共子序列。这个就简单了。</p>
+
+<p>因为懒并且想省时间，所以就用了一些宏，这让程序变得不易读，还好程序比较简单，不太
+影响吧。反正以后也不会再读。。了解思路就可以了。</p>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *
+ *       Filename:  main.cpp
+ *
+ *    Description:  http://www.spoj.com/problems/AIBOHP/
+ *
+ *        Version:  1.0
+ *        Created:  08/12/2016 18:27:30
+ *       Compiler:  g++
+ *
+ *         Author:  Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com
+ *
+ * =====================================================================================
+ */
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+#define _ ios_base::sync_with_stdio(0);cin.tie(0);
+#define rep(i, a, n) for (int i = a; i &lt; n; ++i)
+#define per(i, a, n) for (int i = n-1; i &gt; a; --i)
+#define pb push_back
+#define mp make_pair
+#define all(x) (x).begin(),(x).end()
+#define fi first
+#define se second
+#define SZ(x) ((int)(x).size())
+typedef vector&lt;int&gt; VI;
+typedef map&lt;int,int&gt; MI;
+typedef long long ll;
+typedef pair&lt;int,int&gt; PII;
+const ll MOD=1000000007;
+const int N=6120;
+int a[N][N];
+char s[N],t[N],str[N];
+  int
+main ( void )
+{
+#ifndef  ONLINE_JUDGE
+  freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);
+#endif     /* -----  ONLINE_JUDGE  ----- */
+
+  int T;cin&gt;&gt;T;while(T--){
+    memset(a,0,sizeof(a));
+    cin&gt;&gt;str;int len=strlen(str);
+    rep(i,0,len)s[i+1]=str[i];
+    rep(i,1,len+1)t[len+1-i]=s[i];
+    rep(i,1,len+1){
+      rep(j,1,len+1){
+        if(s[i]==t[j]){
+          a[i][j]=max(a[i][j],a[i-1][j-1]+1);
+        }
+        else {
+          int mm=max(a[i-1][j],a[i][j-1]);
+          a[i][j]=max(a[i][j],mm);
+        }
+      }
+    }
+    cout&lt;&lt;len-a[len][len]&lt;&lt;endl;
+  }
+
+  return EXIT_SUCCESS;
+}				/* ----------  end of function main  ---------- */
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/spoj-dynamic-programming-bytesm2-philosophers-stone/"><i class="fa fa-chevron-circle-left"></i> Spoj, dynamic-programming: BYTESM2 - Philosophers Stone</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/spoj-dynamic-programming-assign-assignments/">Spoj, dynamic-programming: ASSIGN - Assignments <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

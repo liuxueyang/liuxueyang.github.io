@@ -1,0 +1,153 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>usaco Milking Cows</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-07-14T18:03:00Z">Jul 14, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/usaco/">#USACO</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://cerberus.delos.com:791/usacoprob2?a=bv3dg9ejwKm&amp;S=milk2">http://cerberus.delos.com:791/usacoprob2?a=bv3dg9ejwKm&amp;S=milk2</a>
+这题目不是线段树，直接模拟</p>
+
+<pre><code class="language-cpp">
+/*
+ID: zypz4571
+LANG: C++
+TASK: milk2
+*/
+#include &lt;algorithm&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+struct Node {
+    int s, t;
+}a[5002];
+bool cmp(const Node &amp;a, const Node &amp;b)
+{
+    return a.s &lt; b.s;
+}
+int main(void)
+{
+    freopen(&quot;milk2.in&quot;, &quot;r&quot;, stdin);
+    freopen(&quot;milk2.out&quot;, &quot;w&quot;, stdout);
+    int n; scanf(&quot;%d&quot;,&amp;n);
+    for (int i = 0; i &lt; n; scanf(&quot;%d%d&quot;,&amp;a[i].s, &amp;a[i].t),++i);
+    sort(a,a+n,cmp);
+    int Maxmilk=a[0].t-a[0].s, Maxidle=0, now = a[0].t, milk=Maxmilk, idle=0;
+    for (int i = 1; i &lt; n; ++i) {
+        if (now &gt;= a[i].t) continue;
+        if (now &gt;= a[i].s) {
+            milk += (a[i].t - now), now = a[i].t, Maxmilk = max(Maxmilk, milk);
+        }
+        if (now &lt; a[i].s) {
+            idle = a[i].s - now, Maxidle = max(Maxidle, idle), milk = a[i].t - a[i].s,
+            Maxmilk = max(milk, Maxmilk), now = a[i].t;
+        }
+    }
+    printf(&quot;%d %d\n&quot;, Maxmilk, Maxidle);
+
+    return 0;
+}
+
+</code></pre>
+
+<p>=_=开始想太多……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/usaco-section1.1-broken-necklace/"><i class="fa fa-chevron-circle-left"></i> usaco Section1.1 Broken Necklace</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uestc1888-birthday-party-%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%E4%B9%98%E6%B3%95%E5%8E%9F%E7%90%86/">uestc1888 Birthday Party 　　　组合数学，乘法原理 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

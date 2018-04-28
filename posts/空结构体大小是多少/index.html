@@ -1,0 +1,143 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>空结构体大小是多少？</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-10-02T19:00:00Z">Oct 2, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/c/">#C</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <pre><code class="language-cpp">/*
+    在VC中，空结构体大小是1。
+    在gcc中，空结构体大小是0。
+*/
+#include &lt;cstdio&gt;
+struct student 
+{
+    
+}stu;
+int main(void)
+{
+    printf(&quot;%d\n&quot;, sizeof stu);
+
+    return 0;
+}
+</code></pre>
+
+<p>不同的平台不一样。</p>
+
+<p>还有一点。</p>
+
+<p>sizeof是C语言中的关键字，不是函数，所以，sizeof后面不用括号也是对的。</p>
+
+<p>另外，define并不是C语言里面的关键字！但是typedef是关键字，这个今天才发现。= =</p>
+
+<p>C语言的23个关键字：</p>
+
+<pre><code>auto break case char const continue
+default do double else enum extern
+float for goto if int long
+register return short signed sizeof static
+struct switch typedef union unsigned void
+volatile while
+</code></pre>
+
+<p>见百度百科</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/strncpy%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/"><i class="fa fa-chevron-circle-left"></i> strncpy基本用法</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-expecting-trouble/">codeforces Expecting Trouble <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

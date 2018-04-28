@@ -1,0 +1,161 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu 1049</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-01-22T09:28:00Z">Jan 22, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Climbing Worm</p>
+
+<p>Time Limit: <sup>2000</sup>&frasl;<sub>1000</sub> MS (Java/Others)    Memory Limit: <sup>65536</sup>&frasl;<sub>32768</sub> K (Java/Others)
+Total Submission(s): 8745    Accepted Submission(s): 5659</p>
+
+<p>Problem Description
+An inch worm is at the bottom of a well n inches deep. It has enough energy to climb u inches every minute, but then has to rest a minute before climbing again. During the rest, it slips down d inches. The process of climbing and resting then repeats. How long before the worm climbs out of the well? We&rsquo;ll always count a portion of a minute as a whole minute and if the worm just reaches the top of the well at the end of its climbing, we&rsquo;ll assume the worm makes it out.</p>
+
+<p>Input
+There will be multiple problem instances. Each line will contain 3 positive integers n, u and d. These give the values mentioned in the paragraph above. Furthermore, you may assume d &lt; u and n &lt; 100. A value of n = 0 indicates end of output.</p>
+
+<p>Output
+Each input instance should generate a single integer on a line, indicating the number of minutes it takes for the worm to climb out of the well.</p>
+
+<p>Sample Input
+10 2 1 20 3 1 0 0 0</p>
+
+<p>Sample Output
+17 19</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+
+int main(void)
+{
+#ifndef ONLINE_JUDGE
+    freopen(&quot;1049.in&quot;, &quot;r&quot;, stdin);
+#endif
+    int n, u, d, sum; 
+    while (scanf(&quot;%d%d%d&quot;, &amp;n, &amp;u, &amp;d), n)
+    {
+        sum = 0;
+        int len = 0;
+        while (len &lt; n)
+        {
+            sum += 1;
+            len += u;
+            if (len &gt;= n)
+                break;
+            len -= d;
+            sum += 1;
+        }
+        printf(&quot;%d\n&quot;, sum);
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>不难……理解就好</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1064/"><i class="fa fa-chevron-circle-left"></i> hdu 1064</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1048/">hdu 1048 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

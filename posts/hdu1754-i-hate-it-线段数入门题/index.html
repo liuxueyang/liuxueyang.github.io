@@ -1,0 +1,233 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu1754 I Hate It ——线段数入门题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2012-11-23T18:42:00Z">Nov 23, 2012</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+                    , 
+                    <a href="/tags/data-structure/">#Data Structure</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1754">http://acm.hdu.edu.cn/showproblem.php?pid=1754</a></p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#define maxn 200000&lt;&lt;2
+//#define max(a,b) ((a)&gt;(b)?(a):(b))
+#define lson l,m,rt&lt;&lt;1
+#define rson m+1,r,rt&lt;&lt;1|1
+int Max[maxn];
+using namespace std;
+void pushup(int rt)
+{ Max[rt] = max(Max[rt&lt;&lt;1],Max[rt&lt;&lt;1|1]); }
+void build(int l, int r, int rt)
+{
+    if(l==r) {scanf(&quot;%d&quot;, &amp;Max[rt]); return;}
+    int m=l+((r-l)&gt;&gt;1);
+    build(lson);build(rson);
+    pushup(rt);
+}
+void update(int p, int ck, int l, int r, int rt)
+{
+    if (l==r) {Max[rt] = ck; return;}
+    int m=l+((r-l)&gt;&gt;1);
+    if (p &lt;= m) update(p, ck, lson);
+    else update(p, ck, rson);
+    pushup(rt);
+}
+int query(int L, int R, int l, int r, int rt)
+{
+    if (L &lt;= l &amp;&amp; R &gt;= r) {return Max[rt];}
+    int m=l+((r-l)&gt;&gt;1);
+    int ret = 0;
+    if (L&lt;=m) ret = max(query(L,R,lson),ret);
+    if (R&gt;m) ret = max(query(L,R,rson),ret);
+    return ret;
+}
+int main(void)
+{
+    int N, M;
+#ifndef ONLINE_JUDGE
+    freopen(&quot;in.cpp&quot;,&quot;r&quot;,stdin);
+#endif
+    while (scanf(&quot;%d%d&quot;, &amp;N, &amp;M) != EOF)
+    {
+        build(1,N,1);
+        while (M--)
+        {
+            char c[3];int A,B;
+            scanf(&quot;%s%d%d&quot;, c,&amp;A,&amp;B);
+            if (c[0]=='U') update(A,B,1,N,1);
+            else printf(&quot;%d\n&quot;, query(A,B,1,N,1));
+        }
+    }
+    return 0;
+}
+</code></pre>
+
+<p>#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+#include <algorithm>
+#define maxn 200000&lt;<2
+//#define max(a,b) ((a)>(b)?(a):(b))
+#define lson l,m,rt&lt;<1
+#define rson m+1,r,rt<<1|1
+int Max[maxn];
+using namespace std;
+void pushup(int rt)
+{ Max[rt] = max(Max[rt<<1],Max[rt<<1|1]); }
+void build(int l, int r, int rt)
+{
+    if(l==r) {scanf("%d", &Max[rt]); return;}
+    int m=l+((r-l)>&gt;1);
+    build(lson);build(rson);
+    pushup(rt);
+}
+void update(int p, int ck, int l, int r, int rt)
+{
+    if (l==r) {Max[rt] = ck; return;}
+    int m=l+((r-l)&gt;&gt;1);
+    if (p &lt;= m) update(p, ck, lson);
+    else update(p, ck, rson);
+    pushup(rt);
+}
+int query(int L, int R, int l, int r, int rt)
+{
+    if (L &lt;= l &amp;&amp; R &gt;= r) {return Max[rt];}
+    int m=l+((r-l)&gt;&gt;1);
+    int ret = 0;
+    if (L&lt;=m) ret = max(query(L,R,lson),ret);
+    if (R&gt;m) ret = max(query(L,R,rson),ret);
+    return ret;
+}
+int main(void)
+{
+    int N, M;
+#ifndef ONLINE_JUDGE
+    freopen(&ldquo;in.cpp&rdquo;,&ldquo;r&rdquo;,stdin);
+#endif
+    while (scanf(&ldquo;%d%d&rdquo;, &amp;N, &amp;M) != EOF)
+    {
+        build(1,N,1);
+        while (M&ndash;)
+        {
+            char c[3];int A,B;
+            scanf(&ldquo;%s%d%d&rdquo;, c,&amp;A,&amp;B);
+            if (c[0]==&lsquo;U&rsquo;) update(A,B,1,N,1);
+            else printf(&ldquo;%d\n&rdquo;, query(A,B,1,N,1));
+        }
+    }
+    return 0;
+}
+```</p>
+
+<p>发现一个很神奇的东西：库函数中的 max() 比自己定义的效率要高，自己写的 #define max(a,b) ((a)&gt;(b)?(a):(b)) 就会超时。</p>
+
+<p>如果自己写一个 max 函数，不会超时，1093ms,但是会比用库函数(1078ms)慢一些。</p>
+
+<p>现在还不知道为什么宏定义为什么会超时。。</p>
+
+<p>第二次学习线段树，很久不做题目，有点儿手生，比如读入字符c的时候，一般要把c定义为字符数组，这样比较方便，如果定义c为字符，读入的时候可能会出现问题……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/ubuntu-12.04-%E5%AE%89%E8%A3%85%E4%B9%8B%E5%90%8E%E7%9A%84%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/"><i class="fa fa-chevron-circle-left"></i> ubuntu 12.04 安装之后的配置问题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1166-%E6%95%8C%E5%85%B5%E5%B8%83%E9%98%B5/">hdu 1166 敌兵布阵 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

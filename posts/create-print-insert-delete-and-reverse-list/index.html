@@ -1,0 +1,272 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>create, print, insert, delete and reverse list</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2014-10-23T15:45:58Z">Oct 23, 2014</time>
+        </li>
+        
+        
+
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <pre><code class="language-cpp">/*
+ * =====================================================================================
+ *       Filename : list.c
+ *        Created : 10/21/14 16:12
+ *        Description : create list. insert a value in a list. delete a value in a list.
+ *                     reverse list. print list.
+ *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com
+ *         Motto  : Suicide is Painless
+ * =====================================================================================
+ */
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+typedef struct Node
+{
+	int n;
+	struct Node *next;
+}Node;
+
+typedef Node * pNode;
+
+/*
+ * argument n is the number of nodes to create
+ */
+Node * create(int n) {
+	pNode Head, p_tmp, q;
+	int tmp;
+	Head = (Node*)malloc(sizeof(Node));
+	Head-&gt;n = -1;
+	Head-&gt;next = NULL;
+	q = Head;
+	while (n--) {
+		scanf ( &quot;%d&quot;, &amp;tmp );
+		p_tmp = (Node*)malloc(sizeof(Node));
+		p_tmp-&gt;n = tmp;
+		p_tmp-&gt;next = NULL;
+		q-&gt;next = p_tmp;
+		q = p_tmp;
+	}
+	return Head;
+}
+
+/*
+ * pos starts from position 0
+ * n is the value 
+ */
+int delete(Node *h, int pos)
+{
+	Node* p;
+	Node* n_p;
+	p = h;
+	while (pos--) {
+		if (!p) {
+			printf ( &quot;pos out of range!\n&quot; );
+			return -1;
+		}
+		p = p-&gt;next;
+	}
+	if (!p-&gt;next) {
+		printf ( &quot;pos out of range!\n&quot; );
+		return -1;
+	}
+	n_p = p-&gt;next;
+	p-&gt;next = n_p-&gt;next;
+	free(n_p);
+	n_p = NULL;
+	return 1;
+}
+
+/*
+ * pos starts from position 0
+ * insert a node at position pos
+ * is the value to insert
+ * pos is allowed to be set 0 to len (len is the length of list which 
+ * represents the next position of the last element of the list)
+ */
+int insert(Node *h, int n, int pos)
+{
+	Node* p;
+	Node* n_p;
+	p = h;
+	while (pos--) {
+		if (!p-&gt;next) {
+			printf ( &quot;pos out of range!\n&quot; );
+			return -1;
+		}
+		p = p-&gt;next;
+	}
+	n_p = (Node*)malloc(sizeof(Node));
+	n_p-&gt;n = n;
+	n_p-&gt;next = p-&gt;next;
+	p-&gt;next = n_p;
+	return 0;
+}
+
+void print(Node *h)
+{
+	Node *p = h;
+	if (!h-&gt;next) {
+		printf ( &quot;empty list!\n&quot; );
+		return;
+	}
+	p = h-&gt;next;
+	while (p) {
+		printf ( &quot;%d\t&quot;, p-&gt;n );
+		p = p-&gt;next;
+	}
+	printf ( &quot;\n&quot; );
+	return;
+}
+
+/*
+ * reverse list
+ */
+void reverse(Node **h)
+{
+	pNode s = *h, p, q;
+	s = s-&gt;next;
+	if (!s) {
+		printf ( &quot;empty list!\n&quot; );
+		return;
+	}
+	if (!s-&gt;next) {
+		printf ( &quot;Only one node.\n&quot; );
+		return;
+	}
+	p = s-&gt;next;
+	s-&gt;next = NULL;
+	while ( p ) {
+		q = p-&gt;next;
+		p-&gt;next = s;
+		s = p;
+		p = q;
+	}
+	(*h)-&gt;next = s;
+	return;
+}
+
+	int
+main ( int argc, char *argv[] )
+{
+	int n;
+	int pos;
+	int value;
+	pNode Head;
+	printf ( &quot;number of values to insert:\n&quot; );
+	scanf ( &quot;%d&quot;, &amp;n );
+	Head = create(n);
+
+	printf ( &quot;Print the list:\n&quot; );
+	print(Head);
+
+	printf ( &quot;Reverse the list:\n&quot; );
+	reverse(&amp;Head);
+
+	printf ( &quot;Print the list:\n&quot; );
+	print(Head);
+
+	printf ( &quot;Insert pos and value:\n&quot; );
+	scanf ( &quot;%d%d&quot;, &amp;pos, &amp;value ); 
+	insert(Head,value, pos);
+
+	printf ( &quot;Print the list:\n&quot; );
+	print(Head);
+
+	printf ( &quot;position to delete:\n&quot; );
+	scanf ( &quot;%d&quot;, &amp;pos );
+	delete(Head, pos);
+
+	printf ( &quot;Print the list:\n&quot; );
+	print(Head);
+		return EXIT_SUCCESS;
+}				/* ----------  end of function main  ---------- */
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/some-sort-algorithms/"><i class="fa fa-chevron-circle-left"></i> some sort algorithms</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/c-is-interesting/">C is Interesting <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

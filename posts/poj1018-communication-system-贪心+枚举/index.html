@@ -1,0 +1,210 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj1018 Communication System ——贪心&#43;枚举</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-05-25T06:16:00Z">May 25, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://poj.org/problem?id=1018">http://poj.org/problem?id=1018</a>
+题目大意：
+　　有n种设备，每种设备有mi个选择，每种设备选择一个，每个设备都有一个带宽值和价钱，要求每种设备选择一个，最终选择的n个设备里面，带宽B是这n个设备里面所有带宽的最小值吗，价钱P为这n个设备价钱的和，求B/P的最大值。
+题目思路：
+　　这题开始没读懂题意，后来搜的题意之后才明白。然后没有思路……看了人家的思路，貌似懂了……然后就开始写，写跪了……开始的方法是，求出所有这n种设备里面每种设备的带宽的最小值，依次枚举这些最小值就可以了。总是WA……
+　　昨天纠结一晚上，今天早上又想了一下，发现原来的想法是有问题的，应该一直枚举到所有n中设备里面每种带宽的最大值的最小值。第一：保证这n种设备每一种都可以选上。第二：虽然枚举的B值比原来大了，所得到的的价钱不小于我原来的做法所得到的的价钱，但是，重点来了：B也增大了啊！有木有！所以，这就是我当初没有想到的！
+ 
+ </p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+#define MAXN 0x7fffffff
+#define MINN -MAXN
+const int MAX = 100+10;
+typedef struct node {
+  int p, b, cnt;
+  bool operator &lt; (const node &amp; other ) const {
+    if (p != other.p) return p &lt; other.p;
+    else return b &lt; other.b;
+  }
+}node;
+typedef struct sys {
+  node de[MAX];
+  int Min, Max, cnt;
+  bool operator &lt; (const sys &amp;other) const {
+    return Min &lt; other.Min;
+  }
+}sys;
+sys ban[MAX];
+void solve() {
+  int n; scanf(&quot;%d&quot;, &amp;n);
+  int i, j, tMin, tMax, sump, k;
+  double ans;
+  for (i = 0; i &lt; n; ++i) {
+    scanf(&quot;%d&quot;, &amp;ban[i].cnt);
+    tMin = MAXN; tMax = MINN;
+    for (j = 0; j &lt; ban[i].cnt; ++j) {
+      scanf(&quot;%d%d&quot;, &amp;ban[i].de[j].b, &amp;ban[i].de[j].p);
+      if (tMin &gt; ban[i].de[j].b) tMin = ban[i].de[j].b;
+      if (tMax &lt; ban[i].de[j].b) tMax = ban[i].de[j].b;
+    }
+    ban[i].Min = tMin; ban[i].Max = tMax;
+    sort(ban[i].de, ban[i].de + ban[i].cnt);
+  }
+  sort(ban, ban+n);
+  int start, end; start = ban[0].Min; end = MAXN;
+  for (i = 0; i &lt; n; ++i) {
+    if (end &gt; ban[i].Max) end = ban[i].Max;
+  }
+  ans = MINN;
+  for (i = start; i &lt;= end; ++i) {
+    sump = 0;
+    for (j = 0; j &lt; n; ++j) {
+      k = 0;
+      while (ban[j].de[k].b &lt; i) ++k;
+      sump += ban[j].de[k].p;
+    }
+    double re = (double)i/(double)sump;
+    if (re &gt; ans) ans = re;
+  }
+  /*
+  for (i = 0; i &lt; n; ++i) {
+    sump = 0;
+    int tmp = ban[i].Min; 
+    bool mrk = true;
+    for (k = 0; k &lt; n; ++k) {
+      if (ban[k].Max &lt; tmp) {mrk = false; break;}
+      j = 0;
+      while (ban[k].de[j].b &lt; tmp) j++;
+      sump += ban[k].de[j].p;
+    }
+    if (!mrk) continue;
+    double re = (double)tmp/(double)sump;
+    //cout &lt;&lt; &quot;tmp = &quot; &lt;&lt; tmp &lt;&lt; endl;
+    //cout &lt;&lt; &quot;sump = &quot; &lt;&lt; sump &lt;&lt; endl;
+    if (re &gt; ans) ans = re;
+  }
+  */
+  printf(&quot;%.3f\n&quot;, ans);
+}
+void init() {
+  //freopen(&quot;1018.in&quot;, &quot;r&quot;, stdin);
+  int t; scanf(&quot;%d&quot;, &amp;t);
+  while (t--) {
+    solve();
+  }
+}
+int main(void) {
+  init();
+  return 0;
+}
+
+</code></pre>
+
+<p> 
+调试的时候的注释就不删了……都是血淋淋的教训
+好吧，我的做法是有多繁琐……人家的代码都超短o(╯□╰)o
+ </p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E8%AE%BE%E7%BD%AEzsh%E4%B8%BA%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4shell/"><i class="fa fa-chevron-circle-left"></i> 设置zsh为系统默认shell</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu1176-%E5%85%8D%E8%B4%B9%E9%A6%85%E9%A5%BC-dp/">hdu1176 免费馅饼 ——DP <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

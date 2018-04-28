@@ -1,0 +1,143 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>栈段 ——满是疑问==</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-10-03T19:14:00Z">Oct 3, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/masm/">#masm</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>遇到一个问题</p>
+
+<p>比如：</p>
+
+<p>用栈操作将10000H~1000FH中的8个字，逆序拷贝到2000H~2000FH中。</p>
+
+<p>写出以下代码：</p>
+
+<pre><code>mov ax, 2000h
+mov ds, ax
+mov ax, f00h
+mov ss, ax
+mov sp, 1000h
+pop [e]
+pop [c]
+pop [a]
+pop [8]
+pop [6]
+pop [4]
+pop [2]
+pop [0]
+</code></pre>
+
+<p>开始我还以为可能是栈空间太小，跟以前一样的问题，特意把栈的短地址缩小到f00h，可是还是结果不对，跟踪之后我发现，</p>
+
+<p>拷贝过去的内容是对的，但是10000H处的内容却被改写了。现在我还是不知道为什么，为什么这个内存地址的内容会被改变呢？</p>
+
+<p>满是疑惑……=_=</p>
+
+<p>……………………………………………………………………==………………………………………………………………………………</p>
+
+<p>刚才又遇到了类似的问题。</p>
+
+<p>貌似明白一点了。只是猜的=_=。虽然不知道为什么，但是表面上懂一点了。</p>
+
+<p>当内存中的某个段当做栈顶的时候，也就是说寄存器ss改变的时候，可能会在附近记录CS,IP,SS的值。还是没有完全明白……越来越混乱了……==</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/cpu%E7%9A%84%E6%A0%88%E6%9C%BA%E5%88%B6%E7%9A%84%E4%B8%80%E4%B8%AA%E5%B0%8F%E9%97%AE%E9%A2%98/"><i class="fa fa-chevron-circle-left"></i> CPU的栈机制的一个小问题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/debug%E4%B8%8D%E8%BF%87%E7%9A%84%E7%A8%8B%E5%BA%8F/">debug不过的程序 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

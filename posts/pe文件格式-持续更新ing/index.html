@@ -1,0 +1,115 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>PE文件格式 持续更新ing</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2014-02-27T07:17:01Z">Feb 27, 2014</time>
+        </li>
+        
+        
+
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>PE文件就是exe文件和dll文件，前者是可执行文件，后者是动态连接库文件。两者的区别仅仅是字面上的，唯一的区别就是内部的一个字段标识这个文件是exe文件还是dll文件。</p>
+
+<p>对于PE文件格式，举一个例子来说明比较清楚：</p>
+
+<p>　　比如我打开一个.exe文件，gvim.exe 也就是gvim的安装程序</p>
+
+<p>　　首先就是DOS头：前两个字节，5A4Dh 表示MZ，这只是一个DOS可执行文件标记，表示这个文件是一个可执行文件。</p>
+
+<p>　　DOS头的最后一个Double word 在地址3ch处，可以发现它的值是：0000 00D8 h 它指向真正的PE头。</p>
+
+<p>　　找到对应的PE头，第一个 Double word 是 0000 4550 h 代表的是PE.. 那么IMAGE_OPTIONAL_HEADER32的起始地址就是 D8h + 18h = F0h</p>
+
+<p>　　在IMAGE_OPTIONAL_HEADER32的基础上 F0h + 20h = 110h 就得到了SectionAlignment 这个字段，可以发现，它的值是：0000 1000 h，这是程序被装入内存的时候区块对齐大小，默认值是目标CPU的页尺寸，紧接着下一个字段是：FileAlignment 这个字段，它的值是：0000 0200 h，它是磁盘上PE文件内的区块对齐大小。</p>
+
+<p>　　PE头D8h + 78 h 就得到了DataDirectory 这个字段，它是一个16个元素的数组，数据类型是IMAGE_DATA_DIRECTORY，这个结构体有两个成员：第一个成员是数据块的起始RVA，第二个成员是数据块的长度。数组的第一个元素是Export Table，发现都是0，说明没有输出表；第二个元素是输入表，地址是0000 73A4 h 大小是 0000 00B4h 。</p>
+
+<p>　　用PE Editor 这个程序打开gvim.exe 文件，得到如下的结果，发现结果和上面是一样的，我还发现了刚才犯的一个错误，SectionAlignment 的值应该是1000h 也就是CPU页大小是4kB，刚才写成了100h……汗</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj1298-the-hardest-problem-ever-%E7%AE%80%E5%8D%95%E9%A2%98/"><i class="fa fa-chevron-circle-left"></i> poj1298 The Hardest Problem Ever 简单题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86/">Vim插件管理 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

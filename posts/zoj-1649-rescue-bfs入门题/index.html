@@ -1,0 +1,190 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>zoj 1649 Rescue ——BFS入门题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-04-08T20:21:00Z">Apr 8, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/zoj/">#zoj</a>
+                
+                    , 
+                    <a href="/tags/bfs/">#BFS</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=649">http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=649</a>
+题意：
+　　给一个字符矩阵，‘#’代表墙壁，&rsquo;.&lsquo;代表空格，‘x’代表有警察的空格，&rsquo;r&rsquo;和&rsquo;a&rsquo;分别代表一屌丝，并且&rsquo;r&rsquo;要到&rsquo;a&rsquo;那里去串门儿，r走一个空格花费单位时间1，走一个有警察的空格需要先干掉警察，话费单位时间1，然后再走过去，也就是共花费时间2，请问屌丝r到屌丝a那里去最少花费的时间。
+思路：
+　　首先要搞明白一个问题：就是路径最短的路不一定花费时间最少。这是可以理解的，比如，一条很短但是有很多警察，另一条路很长，但是没有警察，很有可能是第二条路花费时间少。用深搜？貌似不太合适，因为你一条路径访问过一个点后，另一条路径很可能也会访问这个点，并且时间较少。关键是深搜找到的接不一定是最优的。所以，考虑用广搜解。这道题最朴素的广搜显然不行，也就是说，仅仅求步数最少的不可行，需要加上访问时间这个附加条件。
+　　用一个结构体数组存储每个点的信息，包括坐标，到达这个点所需要的最短时间，从起点开始搜，先访问起点，然后把起点出队，如果从一个点A到达下一个点B的当前所需时间比这个点现在标记的时间少，则把这个点入队，然后判断点A的另一个方向上的下一个点。这样，总有一天队列会为空，这是因为，某个点不可能被访问无数次，也就是说，某个点不可能无数次入队，因为到达某个点所需要的时间一定是有个最小值的，所以BFS一定可以结束，并且最后找到的点‘a’的信息一定是最优解。输出就可以了，如果无解，因为初始化到达所有点所需时间都是MAXN，所以，如果点‘a’的时间信息如果等于MAXN，那么说明无解。
+　　第一次做深搜，这道题开始不知道怎么做，看了书上的思路，坚持没看代码，自己又想了想，就试着开始写，好神奇，竟然1A了！！！</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MINN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+
+typedef struct point{
+  int a, b, t;
+}point;
+point p[220][220], st, en;
+char s[220][220];
+int n, m, T, si, sj, di, dj; 
+queue&lt;point&gt; qt;
+void bfs(){
+  qt.push(st);
+  while (!qt.empty()){
+    point po = qt.front();
+    qt.pop();
+    for (int k = 0; k &lt; 4; ++k){
+      int nexti=po.a+dir[k][0],nextj=po.b+dir[k][1];
+      if (nexti&gt;=0&amp;&amp;nexti&lt;=n&amp;&amp;nextj&gt;=0&amp;&amp;nextj&lt;=m&amp;&amp;s[nexti][nextj]!='#'){
+        int nowt = po.t+1; if(s[nexti][nextj]=='x') nowt++;
+        if (nowt&lt;p[nexti][nextj].t){
+          p[nexti][nextj].t = nowt;
+          qt.push(p[nexti][nextj]);
+        }
+      }
+    }
+  }
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;zoj1649.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (~scanf(&quot;%d%d&quot;, &amp;n, &amp;m)){
+    getchar();
+    for (int i = 1; i &lt;= n; ++i){
+      for (int j = 1; j &lt;= m; ++j){
+        scanf(&quot;%c&quot;, &amp;s[i][j]);
+        if (s[i][j] == 'r') {si = i; sj = j;}
+        else if (s[i][j] == 'a') {di = i; dj = j;}
+        p[i][j].t = MAXN; p[i][j].a = i; p[i][j].b = j;
+      } getchar();
+    }
+    st.a = si; st.b = sj; st.t = 0;
+    bfs();
+    if (p[di][dj].t == MAXN){
+      printf(&quot;Poor ANGEL has to stay in the prison all his life.\n&quot;);
+    } else printf(&quot;%d\n&quot;, p[di][dj].t);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>虽然写的代码还是有点儿挫，但是第一次做就写对了，信心大增，做题好久没有这么爽了！
+不过仔细想想，这题确实思路也不难，一次做对是应该的，没什么可得意的……o(╯□╰)o</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%887%E6%97%A5-%E6%99%B4/"><i class="fa fa-chevron-circle-left"></i> 2013年4月7日 晴</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%888%E6%97%A5-%E6%99%B4/">2013年4月8日 晴 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

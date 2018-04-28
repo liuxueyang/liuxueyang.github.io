@@ -1,0 +1,155 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu 1097 A hard puzzle</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-03-12T16:19:00Z">Mar 12, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>A hard puzzle</p>
+
+<p>Time Limit: <sup>2000</sup>&frasl;<sub>1000</sub> MS (Java/Others)    Memory Limit: <sup>65536</sup>&frasl;<sub>32768</sub> K (Java/Others)
+Total Submission(s): 21925    Accepted Submission(s): 7696</p>
+
+<p>Problem Description
+lcy gives a hard puzzle to feng5166,lwg,JGShining and Ignatius: gave a and b,how to know the a^b.everybody objects to this BT problem,so lcy makes the problem easier than begin.
+this puzzle describes that: gave a and b,how to know the a^b&rsquo;s the last digit number.But everybody is too lazy to slove this problem,so they remit to you who is wise.</p>
+
+<p>Input
+There are mutiple test cases. Each test cases consists of two numbers a and b(0&lt;a,b&lt;=2^30)</p>
+
+<p>Output
+For each test case, you should output the a^b&rsquo;s last digit number.</p>
+
+<p>Sample Input
+7 66 8 800</p>
+
+<p>Sample Output
+9 6</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int main(void){
+  long int a, b;
+#ifndef ONLINE_JUDGE
+  freopen(&quot;1097.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (~scanf(&quot;%d%d&quot;, &amp;a, &amp;b)){
+    long int re[5];
+    re[0] = a%10;
+    for (int i = 1; i &lt; 4; ++i){
+      re[i] = ((re[i-1]%10)*(a%10)) % 10;
+    }
+    int n = b%4; if (!n) n += 3; else n -= 1;
+    printf(&quot;%ld&quot;, re[n]);
+    printf(&quot;\n&quot;);
+  }
+  return 0;
+}
+</code></pre>
+
+<p>很简单的题目，但是开始用最笨的方法做，不出所料，超时了，然后看了别人的代码，发现原来最大周期是4，所以问题就简单了，但还是卡了很久，</p>
+
+<p>后来才发现可能是两个数字相乘可能会溢出，开始也想到这个了，但是没有那样写……唉，这么简单的题目做这么长时间。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1108-%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0/"><i class="fa fa-chevron-circle-left"></i> hdu 1108 最小公倍数</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1164-eddys-research-i/">hdu 1164 Eddy&#39;s research I <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

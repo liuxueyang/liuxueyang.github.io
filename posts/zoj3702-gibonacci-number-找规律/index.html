@@ -1,0 +1,145 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>zoj3702 Gibonacci number ——找规律</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-05-07T23:31:00Z">May 7, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/zoj/">#zoj</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=3702">http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=3702</a>
+题目大意：
+　　给一个数列，第一项是1，给第 i 项，这个数列满足斐波那契数列的那种性质。问是不是存在，如果存在输出第 j 项，否则输出 -1 
+题目思路：
+　　找规律，这个数列每一项和原来的斐波那契数列的差值是原来的斐波那契数列的倍数。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+#define LL long long int
+LL f[30], g[30];
+
+int main(void){
+    int i , j , k;
+    f[0] = f[1] = 1;
+    for (i = 2; i &lt; 23; ++i) {
+        f[i] = f[i-2] + f[i-1];
+    }
+    LL I, J, GI;
+    int t;
+    scanf(&quot;%d&quot;, &amp;t);
+    while (t--) {
+        cin &gt;&gt; I &gt;&gt; GI &gt;&gt; J;
+        LL d = GI - f[I];
+        if (d &lt; 0 || d % f[I-1] != 0) {
+        printf(&quot;-1\n&quot;); continue;
+        }
+        d = d / f[I-1];
+        cout &lt;&lt; f[J-1] * d + f[J] &lt;&lt; endl;
+    }
+    return 0;
+}
+
+</code></pre>
+
+<p>　　虽然以前做过这道题，但是忘了什么规律了，想很久……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/zoj3696--aliens-organ-%E6%A6%82%E7%8E%87%E9%A2%98/"><i class="fa fa-chevron-circle-left"></i> zoj3696  Alien&#39;s Organ ——概率题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu2577-how-to-type-dp%E5%85%A5%E9%97%A8%E9%A2%98/">hdu2577 How to Type ——DP入门题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

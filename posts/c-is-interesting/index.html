@@ -1,0 +1,283 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>C is Interesting</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2014-11-14T15:39:20Z">Nov 14, 2014</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/c/">#C</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>最近偶尔看C语言，看了一点有意思的东西。</p>
+
+<ul>
+<li>C语言里函数声明有一个很有意思的现象：</li>
+</ul>
+
+<p>如果一个函数没有float, short, 或者char类型的参数，在函数生命中完全可以省略
+参数类型的说明（但是函数定义中不可以省略）。</p>
+
+<p>也就是说有一个函数定义：</p>
+
+<pre><code class="language-c">double double(double a)
+{
+	return a * a;
+}
+</code></pre>
+
+<p>那么这个函数可以声明为：</p>
+
+<pre><code class="language-c">double square();
+</code></pre>
+
+<p>这个规则好像是为了兼容旧版本的C吧。</p>
+
+<ul>
+<li>一个例子：</li>
+</ul>
+
+<pre><code class="language-c">/*
+ * =====================================================================================
+ *       Filename : type_scanf.c
+ *    Description : This program outputs differently on different systems.
+ *    Version     : 
+ *        Created : 11/12/14 22:45
+ *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com
+ *         Motto  : Suicide is Painless
+ * =====================================================================================
+ */
+#include &lt;stdio.h&gt;
+main()
+{
+	int i;
+	char c;
+
+	for ( i = 0; i &lt; 5; ++i ) {
+		scanf ( &quot;%d&quot;, &amp;c );
+		printf ( &quot;%d\n&quot;, i );
+	}
+	printf ( &quot;\n&quot; );
+}
+</code></pre>
+
+<p>这个函数的输出是什么呢？
+仔细想一想，其实一种情况的输入和输出如下：</p>
+
+<pre><code class="language-bash">c~&gt;./type_scanf 
+1
+0
+2
+0
+128
+0
+256
+1
+512
+2
+3
+4
+</code></pre>
+
+<p>从这个输出可以看出，编译器把整型i放到了char型c的后面，这个系统是小端存储。说起这个小
+端和大端，那天看到一本书这么解释，我感觉比较好：</p>
+
+<pre><code>小端存储就是小端优先，先存数值的低位，也就是小的一端；
+大端存储就是大端优先，先存数值的高位，也就是大的一段；
+</code></pre>
+
+<p>以前总是搞不清或者搞反了，这次记住了。。。另外就是，写个程序判断当前系统是小端还是大端
+其实也是很简单的。思想就是利用指针的强制类型转换。这里不写了，以后也许补上，我还要早睡。</p>
+
+<p>我自己想到一个问题：</p>
+
+<p>举出几个例子，使得体现“本来错误的程序因为某种巧合却能够工作”这一点。</p>
+
+<p>其实有很多吧，先放到这里，以后再加上。</p>
+
+<p>在某些系统中，下面的程序打印出%g，这是为什么呢？</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+main()
+{
+	printf(&quot;%g\n&quot;, sqrt(2));
+}
+</code></pre>
+
+<p>这个问题在C陷阱里面解释的很好，恍然大悟。</p>
+
+<ul>
+<li>宏定义</li>
+</ul>
+
+<p>我觉得最容易出错的一点就是，在一个宏里面，一个变量被求值超过一次，这是很危险的。举
+个简单的例子，经常看到有人这么写：</p>
+
+<pre><code class="language-c">#define max(a,b) ((a) &gt;(b) ? (a) : (b))
+</code></pre>
+
+<p>万一有个倒霉蛋类似于下面这么用，那结果就不对了咯。</p>
+
+<pre><code class="language-c">int a[10];
+int *p = a;
+int n;
+int tmp = max(*p++, n);
+</code></pre>
+
+<p>还有很多种情况，因为多次求值而出现问题的，比如，早期的库函数toupper有一种宏实现：</p>
+
+<pre><code class="language-c">#define toupper(c) \
+	((c) &gt;= 'a' &amp;&amp; (c) &lt;= 'z' ? (c) - 'a' + 'A' : (c))
+</code></pre>
+
+<p>这个也同样存在问题。</p>
+
+<p>宏另外还有一个要注意的问题是，宏定义时候的空格！比如：</p>
+
+<pre><code class="language-c">#define f (x) ((x) - 1)
+#define g(x) ((x) - 1)
+</code></pre>
+
+<p>这两个完全不一样哦！但是，调用的时候却没有这个规则，也就是说我们可以：</p>
+
+<pre><code class="language-c">int a = 1;
+g(a) == g (a)
+</code></pre>
+
+<ul>
+<li>typedef</li>
+</ul>
+
+<p>一个很早之前就知道的一件事儿是：</p>
+
+<pre><code class="language-c">#define FOO struct foo *
+typedef struct foo * PFOO;
+
+FOO a, b;
+PFOO c, d;
+</code></pre>
+
+<p>a是指针，b是结构。c，d都是指针。道理很简单。</p>
+
+<ul>
+<li><p>有符号整数的向右移位运算并不等同于除以2的某次幂。(-1)&gt;&gt;1一般不可能是0(gcc上结果是－1)，但是(-1)/2却一般都是0.</p></li>
+
+<li><p>关于取余。</p></li>
+</ul>
+
+<p>q = a / b;
+r = a % b;
+不妨假设b &gt; 0;</p>
+
+<p>我们一般希望满足三点：</p>
+
+<pre><code>1. q * b + r == a
+2. 若改变a的正负号，那么这会改变q的符号，但是q的绝对值不变
+3. 当b &gt; 0 时，r &gt;= 0 &amp;&amp; r &lt; b
+</code></pre>
+
+<p>有趣的是，这三个性质不可能同时成立。这货明天再写，今天晚了，我要早睡！23:26了。。。。</p>
+
+<p>最后两句：</p>
+
+<p>以前看书都不怎么做笔记的，偶尔拿起钢笔写字才想起来自己很久不好好写字了，干脆读书的时候写写笔记什么的吧。然后就入了两个英雄616做读书笔记，这笔确实品控差，所以入了pilot 78G和lamy Safari。没舍得入鱼水，入了百利金。</p>
+
+<p>最近校招。不想多说什么，招人不容易，求职也不容易。</p>
+
+<p>这篇博客未完，先放在这里，以后有时间再说吧。睡觉了。。。。早睡早起。身体最重要。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/create-print-insert-delete-and-reverse-list/"><i class="fa fa-chevron-circle-left"></i> create, print, insert, delete and reverse list</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2015-new-year/">2015 New Year <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

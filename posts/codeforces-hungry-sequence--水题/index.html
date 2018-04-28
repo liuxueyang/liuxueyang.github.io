@@ -1,0 +1,129 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>codeforces hungry sequence  水题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-07-19T01:07:00Z">Jul 19, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/codeforces/">#CodeForces</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://codeforces.com/problemset/problem/327/B">http://codeforces.com/problemset/problem/327/B</a>
+这道题目虽然超级简单，但是当初我还真的没有想出来做法，囧，看完别人的代码恍然大悟。</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cmath&gt;
+int main(void) {
+    int n; scanf(&quot;%d&quot;, &amp;n);
+    for (int i = n+1; i &lt;= n+n; ++i) {
+        printf(&quot;%d&quot;, i);
+        if (i != n+n) printf(&quot; &quot;);
+    }
+    printf(&quot;\n&quot;);
+
+    return 0;
+}
+
+</code></pre>
+
+<p>＝＝只需要注意到整除这个条件：至少是2倍，所以只需要从n+1一直到2*n就可以了，正好n个数字，最大的数字和最小的数字相比也不超过2.就是这么个简单的道理。
+ </p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-flipping-game-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%9F%BA%E7%A1%80/"><i class="fa fa-chevron-circle-left"></i> Codeforces Flipping game 动态规划基础</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-magic-five-%E5%BF%AB%E9%80%9F%E5%B9%82%E6%A8%A1/">codeforces magic five －－快速幂模 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

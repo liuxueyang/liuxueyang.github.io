@@ -1,0 +1,147 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu4484 Hailstone HOTPO ——水题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-03-10T16:21:00Z">Mar 10, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=4484">http://acm.hdu.edu.cn/showproblem.php?pid=4484</a>
+题目思路：
+　　直接模拟即可</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int cal(int n) {
+  int Max = n;
+  while (n!=1) {
+    if ((n&amp;1) == 0) {
+      n /= 2;
+    } else {
+      n = n * 3 + 1;
+    }
+    if (n &gt; Max) Max = n;
+  }
+  return Max;
+}
+void solve() {
+  int n; scanf(&quot;%d&quot;, &amp;n);
+  int i, t, ca;
+  for (i = 0; i &lt; n; ++i) {
+    scanf(&quot;%d%d&quot;, &amp;t, &amp;ca);
+    int ans = cal(ca);
+    printf(&quot;%d %d\n&quot;, t, ans);
+  }
+}
+int main(void) {
+  //freopen(&quot;4484.in&quot;, &quot;r&quot;, stdin);
+  solve();
+  return 0;
+}
+
+</code></pre>
+
+<p>水题……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/casting/"><i class="fa fa-chevron-circle-left"></i> Casting</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/cf-231a-team/">CF 231A Team <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

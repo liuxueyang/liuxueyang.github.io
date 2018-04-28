@@ -1,0 +1,272 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Lowest common ancestor in binary tree: perl, c and common lisp implementation</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-06-27T17:32:47Z">Jun 27, 2016</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/algorithm/">#Algorithm</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    
+
+<p>Find lowest common ancestor in binary tree. We assume the values in the tree are unique and the two values are always in the tree.</p>
+
+<p>Time complexity O(n), Space complexity O(n)</p>
+
+<h3 id="c">C:</h3>
+
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+// Find lowest common ancestor in binary tree. We assume the
+// values in the tree are unique and the two values are always in
+// the tree.
+
+// Time complexity O(n)
+// Space complexity O(n)
+
+typedef struct Node
+{
+  int key;
+  struct Node *left, *right;
+} Node;
+
+Node* createNode(int key)
+{
+  Node * tmp = (Node*)malloc(sizeof(Node));
+  tmp-&gt;key = key;
+  tmp-&gt;left = tmp-&gt;right = NULL;
+  return tmp;
+}
+
+Node* findLCA(Node* root, int n1, int n2) {
+  if (root == NULL) { return NULL; }
+  if (n1 == root-&gt;key || n2 == root-&gt;key) { return root; }
+  Node* left = findLCA(root-&gt;left, n1, n2);
+  Node* right = findLCA(root-&gt;right, n1, n2);
+  if (left &amp;&amp; right) { return root; }
+  return left ? left : right;
+}
+
+int main()
+{
+  Node* root = createNode(1);
+
+  root-&gt;left = createNode(2);
+  root-&gt;right = createNode(3);
+
+  root-&gt;left-&gt;left = createNode(4);
+  root-&gt;left-&gt;right = createNode(5);
+
+  root-&gt;right-&gt;left = createNode(6);
+  root-&gt;right-&gt;right = createNode(7);
+
+  printf(&quot;LCA(4, 5) = %d\n&quot;, findLCA(root, 4, 5)-&gt;key);
+  printf(&quot;LCA(4, 6) = %d\n&quot;, findLCA(root, 4, 6)-&gt;key);
+  printf(&quot;LCA(3, 4) = %d\n&quot;, findLCA(root, 3, 4)-&gt;key);
+  printf(&quot;LCA(2, 4) = %d\n&quot;, findLCA(root, 2, 4)-&gt;key);
+
+  return 0;
+}
+
+</code></pre>
+
+<h3 id="perl">Perl:</h3>
+
+<p>{% codeblock lang:perl %}</p>
+
+<p>#!perl</p>
+
+<p>use strict;
+use warnings;
+use utf8;
+use 5.014;</p>
+
+<p>sub createNode {
+    my $node = {};
+    $node-&gt;{VALUE} = $_[0];
+    $node-&gt;{LEFT} = $node-&gt;{RIGHT} = undef;
+    $node;
+}</p>
+
+<p>sub findLCA {
+    # accept 3 arguments:
+    # 1.node; 2. n1 value; 3. n2 value
+    my($root, $n1, $n2) = @_;
+    return undef unless ($root);
+    return $root if ($n1 == $root-&gt;{VALUE} ||
+                     $n2 == $root-&gt;{VALUE});
+    my($left, $right) =
+        (findLCA($root-&gt;{LEFT}, $n1, $n2),
+         findLCA($root-&gt;{RIGHT}, $n1, $n2));
+    return $root if ($left &amp;&amp; $right);
+    $left || $right;
+}</p>
+
+<p>my ($root, $n);
+$root = createNode(1);</p>
+
+<p>$root-&gt;{LEFT} = createNode(2);
+$root-&gt;{RIGHT} = createNode(3);</p>
+
+<p>$root-&gt;{LEFT}{LEFT} = createNode(4);
+$root-&gt;{LEFT}{RIGHT} = createNode(5);</p>
+
+<p>$root-&gt;{RIGHT}{LEFT} = createNode(6);
+$root-&gt;{RIGHT}{RIGHT} = createNode(7);</p>
+
+<p>print &ldquo;LCA(4, 5) = &ldquo;, findLCA($root, 4, 5)-&gt;{VALUE}, &ldquo;\n&rdquo;;
+print &ldquo;LCA(4, 6) = &ldquo;, findLCA($root, 4, 6)-&gt;{VALUE}, &ldquo;\n&rdquo;;
+print &ldquo;LCA(3, 4) = &ldquo;, findLCA($root, 3, 4)-&gt;{VALUE}, &ldquo;\n&rdquo;;
+print &ldquo;LCA(2, 4) = &ldquo;, findLCA($root, 2, 4)-&gt;{VALUE}, &ldquo;\n&rdquo;;</p>
+
+<p>{% endcodeblock %}</p>
+
+<h3 id="common-lisp">Common Lisp:</h3>
+
+<p>{% codeblock lang:lisp %}
+(defclass tree-node ()
+  ((value :initform nil
+          :initarg :value
+          :accessor value)
+   (left :initform nil
+         :accessor left-child)
+   (right :initform nil
+          :accessor right-child)))</p>
+
+<p>(defun create-node (value)
+  (let ((node (make-instance &lsquo;tree-node :value value)))
+    node))</p>
+
+<p>(defun find-lowest-common-ancestor (tree-node n1 n2)
+  (if (null tree-node)
+      (return-from find-lowest-common-ancestor nil))
+  (if (or (equal n1 (value tree-node))
+          (equal n2 (value tree-node)))
+      (return-from find-lowest-common-ancestor tree-node))
+  (let ((left (find-lowest-common-ancestor (left-child
+                                            tree-node) n1 n2))
+        (right (find-lowest-common-ancestor (right-child
+                                             tree-node) n1 n2)))
+    (if (and left right)
+        (return-from find-lowest-common-ancestor tree-node))
+    (or left right)))</p>
+
+<p>(defparameter root (create-node 1))</p>
+
+<p>(setf (left-child root) (create-node 2))
+(setf (right-child root) (create-node 3))</p>
+
+<p>(setf (left-child (left-child root)) (create-node 4))
+(setf (right-child (left-child root)) (create-node 5))</p>
+
+<p>(setf (left-child (right-child root)) (create-node 6))
+(setf (right-child (right-child root)) (create-node 7))</p>
+
+<p>(format t &ldquo;LCA(4, 5) = ~d~%&rdquo; (value (find-lowest-common-ancestor
+                                     root 4 5)))
+(format t &ldquo;LCA(4, 6) = ~d~%&rdquo; (value (find-lowest-common-ancestor
+                                     root 4 6)))
+(format t &ldquo;LCA(3, 4) = ~d~%&rdquo; (value (find-lowest-common-ancestor
+                                     root 3 4)))
+(format t &ldquo;LCA(2, 4) = ~d~%&rdquo; (value (find-lowest-common-ancestor
+                                     root 2 4)))
+{% endcodeblock %}</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/fenwick-tree/"><i class="fa fa-chevron-circle-left"></i> Fenwick Tree</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/binary-search-tree-perl-and-common-lisp-implementation/">Binary Search Tree: Perl and Common Lisp implementation <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

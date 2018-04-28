@@ -1,0 +1,140 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Codeforces Round #185 (Div. 1) A. The Closest Pair</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-05-30T00:05:00Z">May 30, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/codeforces/">#CodeForces</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://codeforces.com/problemset/problem/311/A">http://codeforces.com/problemset/problem/311/A</a>
+题目大意：
+　　题目很短，不解释了。^_^
+题目思路：
+　　开始感觉很难，没思路。看了解题报告，发现原来是道水题嘛。程序里面有个break语句，要让循环次数达到最大，并且循环次数容易计算，只需要让这个break;永远不会执行就可以了。也就是说，可以让p[j].x - p[i].x &gt;= d 永远不成立，只需要让p[j].x - p[i].x总等于0就可以了！因为题目让生成任意一组符合条件的数据嘛，所以，可以让产生的所有的点的横坐标都是一样的就可以了。</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+#define LL long long 
+int main(void) {
+#ifndef ONLINE_JUDGE
+  //freopen(&quot;185_c.in1&quot;, &quot;r&quot;, stdin);
+#endif
+  LL n, k; scanf(&quot;%I64d%I64d&quot;, &amp;n, &amp;k);
+  if (n*(n-1)/2 &lt;= k){
+    printf(&quot;no solution\n&quot;);
+  }
+  else {
+    for (int i = 0; i &lt; n; ++i) {
+       printf(&quot;1 %d\n&quot;, i);
+    }
+  }
+  return 0;
+}
+
+</code></pre>
+
+<p>很简单的思路，当初为什么没有想到？</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/the-unique-mst-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7/"><i class="fa fa-chevron-circle-left"></i> The Unique MST ——最小生成树的唯一性</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-round-#186-div.-2-c.-ilya-and-matrix/">Codeforces Round #186 (Div. 2) C. Ilya and Matrix <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

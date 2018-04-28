@@ -1,0 +1,173 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu 1039 Easier Done Than Said?</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-03-12T14:32:00Z">Mar 12, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Easier Done Than Said?</p>
+
+<p>Time Limit: <sup>2000</sup>&frasl;<sub>1000</sub> MS (Java/Others)    Memory Limit: <sup>65536</sup>&frasl;<sub>32768</sub> K (Java/Others)
+Total Submission(s): 5021    Accepted Submission(s): 2535</p>
+
+<p>Problem Description
+Password security is a tricky thing. Users prefer simple passwords that are easy to remember (like buddy), but such passwords are often insecure. Some sites use random computer-generated passwords (like xvtpzyo), but users have a hard time remembering them and sometimes leave them written on notes stuck to their computer. One potential solution is to generate &ldquo;pronounceable&rdquo; passwords that are relatively secure but still easy to remember.</p>
+
+<p>FnordCom is developing such a password generator. You work in the quality control department, and it&rsquo;s your job to test the generator and make sure that the passwords are acceptable. To be acceptable, a password must satisfy these three rules:</p>
+
+<p>It must contain at least one vowel.</p>
+
+<p>It cannot contain three consecutive vowels or three consecutive consonants.</p>
+
+<p>It cannot contain two consecutive occurrences of the same letter, except for &lsquo;ee&rsquo; or &lsquo;oo&rsquo;.</p>
+
+<p>(For the purposes of this problem, the vowels are &lsquo;a&rsquo;, &lsquo;e&rsquo;, &lsquo;i&rsquo;, &lsquo;o&rsquo;, and &lsquo;u&rsquo;; all other letters are consonants.) Note that these rules are not perfect; there are many common/pronounceable words that are not acceptable.</p>
+
+<p>Input
+The input consists of one or more potential passwords, one per line, followed by a line containing only the word &lsquo;end&rsquo; that signals the end of the file. Each password is at least one and at most twenty letters long and consists only of lowercase letters.</p>
+
+<p>Output
+For each password, output whether or not it is acceptable, using the precise format shown in the example.</p>
+
+<p>Sample Input
+a tv ptoui bontres zoggax wiinq eep houctuh end</p>
+
+<p>Sample Output
+<a> is acceptable. <tv> is not acceptable. <ptoui> is not acceptable. <bontres> is not acceptable. <zoggax> is not acceptable. <wiinq> is not acceptable. <eep> is acceptable. <houctuh> is acceptable.</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+bool vowel(char c){
+  if (c == 'a' || c == 'e'||c=='i'||c=='o'||c=='u')
+    return true; return false;
+}
+int main(void){
+  char a[30];
+#ifndef ONLINE_JUDGE
+  freopen(&quot;1039.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (~scanf(&quot;%s&quot;, a)){
+    if (strcmp(a,&quot;end&quot;) == 0) break;
+    int n = strlen(a), cnt = 0, vo = 0, co = 0; bool flag = true;
+    for (int i = 0; i &lt; n-1; ++i){
+      if (a[i] == a[i+1] &amp;&amp; a[i] != 'e' &amp;&amp; a[i]!= 'o'){
+        flag = false; break;
+      }
+    }
+    for (int i = 0; i &lt; n; ++i){
+      if (vowel(a[i])) {cnt++; vo++; co = 0;}
+      else {vo = 0; co++;}
+      if (co&gt;=3 || vo &gt;=3) {flag = false; break;}
+    }
+    if (!cnt) flag = false;
+    if (flag) printf(&quot;&lt;%s&gt; is acceptable.\n&quot;, a);
+    else printf(&quot;&lt;%s&gt; is not acceptable.\n&quot;, a);
+  }
+  return  0;
+}
+</code></pre>
+
+<p>这题不难，关键就是一点，连续3个原音字母或者辅音字母怎么统计，方法是标记思想……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1113-word-amalgamation/"><i class="fa fa-chevron-circle-left"></i> hdu 1113 Word Amalgamation</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1108-%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0/">hdu 1108 最小公倍数 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

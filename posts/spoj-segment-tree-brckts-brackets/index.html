@@ -1,0 +1,275 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>spoj, segment tree: BRCKTS - Brackets</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-07-25T22:56:00Z">Jul 25, 2016</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/spoj/">#spoj</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p><a href="http://www.spoj.com/problems/BRCKTS/">Problem Link</a></p>
+
+<p>开始没有读懂题目，合法括号的意思其实就是常识情况下的括号合法：整个序列的左括号数目和右括号的数目相同，但是也不能出现这样的：<code>)))(((</code>，所以还要保证在任意一点，左括号的数目大于等于右括号的数目。</p>
+
+<p>这就需要，在序列里面任意一点，左边的不匹配的左括号的数目一定等于右边的不匹配右括号的数目。</p>
+
+<p>平常的线段树的点更新和区间查询</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+struct SegmentTreeNode {
+  int unmatchedLeft, unmatchedRight;
+
+  void assignLeaf(char value) {
+    if (value == '(') {
+      unmatchedLeft = 1;
+      unmatchedRight = 0;
+    }
+    else {
+      unmatchedLeft = 0;
+      unmatchedRight = 1;
+    }
+  }
+
+  void merge(SegmentTreeNode &amp;left, SegmentTreeNode &amp;right) {
+    int L_unl = left.unmatchedLeft, L_unr = left.unmatchedRight,
+      R_unl = right.unmatchedLeft, R_unr = right.unmatchedRight;
+    int matched = min(L_unl, R_unr);
+    unmatchedLeft = L_unl + R_unl - matched;
+    unmatchedRight = L_unr + R_unr - matched;
+    return;
+  }
+
+  bool getValue() { return unmatchedRight == 0 &amp;&amp; unmatchedLeft == 0; }
+};
+
+template &lt;class T, class V&gt; class SegmentTree {
+  SegmentTreeNode *nodes;
+  int N;
+
+public:
+  SegmentTree(T arr[], int N) {
+    this-&gt;N = N;
+    nodes = new SegmentTreeNode[getSegmentTreeSize(N)];
+    buildTree(arr, 1, 0, N - 1);
+  }
+
+  ~SegmentTree() { delete[] nodes; }
+
+  V getValue(int lo, int hi) {
+    SegmentTreeNode result = getValue(1, 0, N - 1, lo, hi);
+    return result.getValue();
+  }
+
+  void update(int index, T value) { update(1, 0, N - 1, index, value); }
+
+private:
+  void buildTree(T arr[], int stIndex, int lo, int hi) {
+    if (lo == hi) {
+      nodes[stIndex].assignLeaf(arr[lo]);
+      return;
+    }
+
+    int left = 2 * stIndex, right = left + 1, mid = (lo + hi) / 2;
+
+    buildTree(arr, left, lo, mid);
+    buildTree(arr, right, mid + 1, hi);
+
+    nodes[stIndex].merge(nodes[left], nodes[right]);
+  }
+
+  SegmentTreeNode getValue(int stIndex, int left, int right, int lo, int hi) {
+    if (left == lo &amp;&amp; right == hi) {
+      return nodes[stIndex];
+    }
+
+    int mid = (left + right) / 2;
+
+    if (lo &gt; mid) {
+      return getValue(2 * stIndex + 1, mid + 1, right, lo, hi);
+    }
+    if (hi &lt; mid + 1) {
+      return getValue(2 * stIndex, left, mid, lo, hi);
+    }
+
+    SegmentTreeNode leftResult = getValue(2 * stIndex, left, mid, lo, mid);
+    SegmentTreeNode rightResult =
+        getValue(2 * stIndex + 1, mid + 1, right, mid + 1, hi);
+    SegmentTreeNode result;
+
+    result.merge(leftResult, rightResult);
+    return result;
+  }
+
+  void update(int stIndex, int lo, int hi, int index, T value) {
+    if (lo == hi) {
+      nodes[stIndex].assignLeaf(value);
+      return;
+    }
+
+    int left = 2 * stIndex, right = left + 1, mid = (lo + hi) / 2;
+
+    if (index &lt;= mid) {
+      update(left, lo, mid, index, value);
+    } else {
+      update(right, mid + 1, hi, index, value);
+    }
+
+    nodes[stIndex].merge(nodes[left], nodes[right]);
+  }
+
+  int getSegmentTreeSize(int N) {
+    int size = 1;
+    while (size &lt; N) {
+      size &lt;&lt;= 1;
+    }
+    return size &lt;&lt; 1;
+  }
+};
+
+int a[30000];
+char str[30000];
+
+int main() {
+#ifdef DEBUG
+  freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);
+#endif
+
+  int N;
+  int t = 1;
+  while (scanf(&quot;%d&quot;, &amp;N) != EOF) {
+    printf(&quot;Test %d:\n&quot;, t++);
+    scanf(&quot;%s&quot;, str);
+
+    SegmentTree&lt;char, bool&gt; st(str, N);
+
+    int M;
+    scanf(&quot;%d&quot;, &amp;M);
+
+    while (M--) {
+      int pos;
+
+      scanf(&quot;%d&quot;, &amp;pos);
+
+      if (pos) {
+        pos--;
+
+        if (str[pos] == '(') {
+          st.update(pos, ')');
+          // don't forget this, because we use it in the if above...
+          str[pos] = ')';
+        }
+        else {
+          st.update(pos, '(');
+          str[pos] = '(';
+        }
+      }
+      else {
+        printf(&quot;%s\n&quot;, st.getValue(0, N - 1) ? &quot;YES&quot; : &quot;NO&quot;);
+      }
+    }
+  }
+  return 0;
+}
+
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/spoj-segment-tree-akvqld03-how-to-handle-the-fans/"><i class="fa fa-chevron-circle-left"></i> spoj, segment tree: AKVQLD03 - How to Handle the Fans</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/spoj-segment-tree-gss1-can-you-answer-these-queries-i/">spoj, segment tree: GSS1 - Can you answer these queries I <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,295 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Ruby implementation of 2048 game</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2015-04-16T15:36:09Z">Apr 16, 2015</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/ruby/">#Ruby</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Ruby Implementation of 2048 game</p>
+
+<ul>
+<li>Played in terminal.</li>
+<li>Control with arrow keys or vim-keybindings.</li>
+</ul>
+
+<pre><code class="language-ruby">#!/usr/bin/ruby 
+
+require &quot;io/console&quot;
+
+mar = Array.new(16, 0) # sheet value array
+$score = 0
+$target = 2048
+$pieces = 0
+
+def operate(mar, ran, gap)
+  mark = false
+  ran.each { |index| 
+    ar = index.step(index + 3 * gap, gap).collect { |ind| ind}
+    tm_ar = ar.collect{|ie| mar[ie]}
+    pre_tm_ar = tm_ar.clone
+    tm_ar.delete_if{|item| item == 0}
+    (0..(tm_ar.size-1)).each {|ie|
+      if tm_ar[ie] == tm_ar[ie+1]
+        tm_ar[ie] *= 2
+        $score += tm_ar[ie]
+        tm_ar[ie+1] = 0
+      end 
+    }
+    tm_ar.delete_if{|item| item == 0}
+    (4-tm_ar.size).times {
+      tm_ar &lt;&lt; 0
+    }
+    tm_ar.size.times {|item|
+      mar[ar[item]] = tm_ar[item]
+    }
+    mark = true if tm_ar != pre_tm_ar
+  }
+  mark
+end
+
+def myloop(mar, a_pos, gap) 
+  a_pos.each{|item|
+    3.times {|i|
+      if mar[item+i*gap] == mar[item+i*gap+gap]
+        return true
+      end 
+    }
+  }
+  false
+end
+
+def judge_lose_full(mar) 
+  ro = [0, 4, 8, 12]
+  col = [0, 1, 2, 3]
+  !myloop(mar, ro, 1) &amp;&amp; !myloop(mar, col, 4)
+end
+
+def lose?(mar) 
+  cnt = mar.count(0)
+  return cnt == 0 ? judge_lose_full(mar) : false
+end
+
+def win?(mar) 
+  max_value = mar.sort[-1]
+  return max_value == 2048 ? true : false
+end
+
+def genera_num(mar) 
+  r_pos = Random.new # get pos random seed
+  ran = [2, 4] # generate random new value
+  pos = r_pos.rand(16)
+  while mar[pos] != 0 
+    r_pos = Random.new
+    pos = r_pos.rand(16)
+  end
+
+  r_val = Random.new 
+  val = r_val.rand(2)
+  mar[pos] = ran[val]
+
+end
+
+def move?(mar, ba_r) 
+  val = ba_r.collect{|i| mar[i]}
+  val.count(0) &gt; 0 ? true : false
+end
+
+def add(mar, direc)
+  mark = false;
+  case 
+  when direc == &quot;j&quot; || direc == &quot;\e[B&quot;
+    mark = (operate(mar, Array(12..15), -4) || move?(mar, Array(12..15))) #j
+  when direc == &quot;k&quot; || direc == &quot;\e[A&quot;
+    mark = (operate(mar, Array(0..3), 4) || move?(mar, Array(0..3))) #k
+  when direc == &quot;h&quot; || direc == &quot;\e[D&quot;
+    mark = (operate(mar, [0, 4, 8, 12], 1) || move?(mar, [0, 4, 8, 12])) #h
+  when direc == &quot;l&quot; || direc == &quot;\e[C&quot;
+    mark = (operate(mar, [3, 7, 11, 15], -1) || move?(mar, [3, 7 ,11, 15])) #l
+  end
+  if mark 
+    genera_num(mar)
+    $pieces += 1
+  end
+end
+
+# print sheet
+def sheet(mar) 
+  printf(&quot;%s\n&quot;, &quot;I am a vimer. So you can use vim-keybindings -.-&quot;)
+  printf(&quot;%s\n&quot;, &quot;You can also use direction keys...&quot;)
+  puts &quot;Besides, press 'q' or 'ESC' to quit.&quot;
+  printf(&quot;\n\n    target = %-4d pieces = %-4d score = %-4d\n&quot;, $target, $pieces, $score)
+  printf(&quot;\n%s%s\n&quot;, &quot; &quot; * 5, &quot;~&quot; * 35)
+  printf(&quot;%s%s\n\n&quot;, &quot; &quot; * 5, &quot;~&quot; * 35)
+
+
+  printf(&quot;%s%s%s\n%s&quot;, &quot; &quot; * 8 + &quot;/&quot;, (&quot;-&quot; * 6 + &quot;+&quot;) * 3,
+        &quot;-&quot; * 6 + &quot;\\&quot;, &quot; &quot; * 8)
+  16.times { |i|
+    if mar[i] != 0
+      printf(&quot;|%5d &quot;, mar[i])
+    else 
+      printf(&quot;|%5s &quot;, &quot; &quot;)
+    end 
+    if (i+1) % 4 == 0 
+      printf(&quot;|\n&quot;) 
+      if (i+1) != 16
+        printf(&quot;%s%s%s\n%s&quot;, &quot; &quot; * 8 + &quot;|&quot;, (&quot;-&quot; * 6 + &quot;+&quot;) * 3,
+              &quot;-&quot; * 6 + &quot;|&quot;, &quot; &quot; * 8)
+      else 
+        printf(&quot;%s%s%s\n%s&quot;, &quot; &quot; * 8 + &quot;\\&quot;, (&quot;-&quot; * 6 + &quot;+&quot;) * 3,
+              &quot;-&quot; * 6 + &quot;/&quot;, &quot; &quot; * 8)
+      end 
+    end 
+  }
+  printf(&quot;\n%s%s\n&quot;, &quot; &quot; * 5, &quot;~&quot; * 35)
+  printf(&quot;%s%s\n\n&quot;, &quot; &quot; * 5, &quot;~&quot; * 35)
+end
+
+def read_char 
+  STDIN.echo = false 
+  STDIN.raw!
+
+  input = STDIN.getc.chr 
+  if input == &quot;\e&quot; 
+    input &lt;&lt; STDIN.read_nonblock(3) rescue nil
+    input &lt;&lt; STDIN.read_nonblock(2) rescue nil
+  end 
+ensure 
+  STDIN.echo = true
+  STDIN.cooked!
+  return input
+end
+
+
+genera_num(mar)
+$pieces += 1
+system &quot;clear&quot;
+while true
+  sheet(mar)
+  direc = read_char
+  if direc == &quot;q&quot; || direc == &quot;\e&quot; || direc == &quot;\u0003&quot;
+    break 
+  end
+  add(mar, direc)
+
+  system &quot;clear&quot;
+  sheet(mar)
+
+  if win?(mar) 
+    puts &quot;Congratulations! You Win!&quot;
+    break
+  end
+
+  if lose?(mar) 
+    puts &quot;Sorry, You are a loser...&quot;
+    break
+  end
+  system &quot;clear&quot;
+end
+</code></pre>
+
+<p>This is what you will see:</p>
+
+<p><img src="http://wstaw.org/m/2017/04/11/2048.png" alt="screen" /></p>
+
+<p>Source code on <a href="https://github.com/liuxueyang/Ruby_version_2048">Github</a></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/rename-files-in-ruby/"><i class="fa fa-chevron-circle-left"></i> rename files in ruby</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/ke-none/">咳…… <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

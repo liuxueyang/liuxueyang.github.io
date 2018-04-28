@@ -1,0 +1,158 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>process filenames with spaces</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2014-10-09T15:46:59Z">Oct 9, 2014</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/perl/">#Perl</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>I have some files whose filenames are like this:</p>
+
+<pre><code>[some thing there]Sed &amp; awk, 2nd Edition[some thing there].mobi
+[some thing there]Erlang Programming[some thing there].mobi
+[some thing there]Hacking Vim7.2[some thing there].mobi
+[some thing there]Learning the vi and Vim Editors[some thing there].mobi
+</code></pre>
+
+<p>I want to rename them and delete the spaces in the filename.</p>
+
+<p>so… I wrote a script in perl.</p>
+
+<pre><code class="language-perl">#!/usr/bin/env perl 
+#===============================================================================
+#         FILE: filename.pl
+#       AUTHOR: Phoenix Ikki (liuxueyang.github.io), liuxueyang457@gmail.com
+# ORGANIZATION: Hunan University
+#      CREATED: 10/05/2014 09:10:59 AM
+#===============================================================================
+
+use strict;
+use warnings;
+use utf8;
+use 5.014;
+
+for (@ARGV) {
+	if ($_ =~ /\[.*\](.*)\[.*\].mobi/) {
+#	if ($_ =~ /(.*).zip/) {
+		my @lst = split / /, $1;
+		my $newname = join '', @lst;
+		$newname = $newname . '.mobi';
+		say &quot;newname = $newname&quot;;
+		if ( -e $newname ) {
+			warn &quot;can not rename $_ to $newname: $newname exists\n&quot;;
+		} elsif (rename $_ =&gt; $newname) {
+		} else {
+			warn &quot;rename $_ to $newname failed: $!\n&quot;;
+		}
+	}
+}
+</code></pre>
+
+<p>The results are:</p>
+
+<pre><code>Sed&amp;awk,2nd Edition.mobi
+ErlangProgramming.mobi
+HackingVim7.2.mobi
+LearningtheviandVimEditors.mobi
+</code></pre>
+
+<p>Problem Solved…</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hey-recently/"><i class="fa fa-chevron-circle-left"></i> Hey,recently</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/some-sort-algorithms/">some sort algorithms <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

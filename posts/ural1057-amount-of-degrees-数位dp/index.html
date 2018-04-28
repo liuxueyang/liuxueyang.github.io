@@ -1,0 +1,180 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>ural1057 Amount of Degrees ——数位DP</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-05-15T16:30:00Z">May 15, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/ural/">#Ural</a>
+                
+                    , 
+                    <a href="/tags/dp/">#DP</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.timus.ru/problem.aspx?space=1&amp;num=1057">http://acm.timus.ru/problem.aspx?space=1&amp;num=1057</a>
+题目大意：
+　　意思就是给一个区间[x, y]，求这个区间内有多少个恰好可以被k个b的不同次幂的数之和表示出来的数字的个数。
+题目思路：
+　　只需要求区间[0, m]内的恰好可以被k个b的不同次幂的数之和表示出来的数字的个数，定义这个函数是solve(m, k, b)。题目要求的就是：solve(y, k, b) - solve(x - 1, k, b)。
+　　思路就是，转化成二进制考虑。把这个区间内的某个数字表示成b进制，要求的数字是转化成b进制之后，每一位的数字均为0或者1，这样的数字。
+　　画一棵完全二叉树，根节点是0，左子节点是0，右子节点是1，高度从0开始记起，整棵树的根节点不用。则f[i][j]表示，高度为i的二叉树里面恰好含有j个1的数字的个数。那么就有：
+　　f[i][j] = f[i-1][j-1] + f[i-1][j] 意思就是高度为i的树包含的数字里面，符合条件的数字的数目等于左右两棵子树的和。
+当然数组f[i&hellip;n][0]都要初始化为1，因为长度为i&hellip;n的并且含有0个1的数字的个数总为1.
+参考解题报告：<a href="http://hi.baidu.com/zyz913614263/item/a0215c20efefa01f42634a12">http://hi.baidu.com/zyz913614263/item/a0215c20efefa01f42634a12</a></p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;deque&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x7fffffff;
+const int  MINN =  -0x7fffffff;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+int f[32][32];
+int solve(int n, int k, int b) {
+  int a[32], sum, cnt, i, j;
+  sum = 0; cnt = 0; i = 0;
+  while (n) {
+    a[++i] = n%b; n /= b;
+  }
+  for (j = i; j &gt;= 1 &amp;&amp; cnt &lt;= k; --j) {
+    if (a[j] &gt; 1) {
+      sum += f[j][k-cnt]; break;
+    } else if (a[j] == 1) {
+      sum += f[j-1][k-cnt]; cnt++;
+    }
+    if (j == 1 &amp;&amp; cnt == k) sum++;
+  }
+  return sum;
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;ural1057.in&quot;, &quot;r&quot;, stdin);
+#endif
+  int x, y, k, b, i, j;
+  for (i = 0; i &lt; 32; ++i) f[i][0] = 1;
+  for (i = 1; i &lt; 32; ++i) 
+    for (j = 1; j &lt;= i; ++j) 
+      f[i][j] = f[i-1][j] + f[i-1][j-1];
+  while (~scanf(&quot;%d%d%d%d&quot;, &amp;x, &amp;y, &amp;k, &amp;b)) {
+    printf(&quot;%d\n&quot;, solve(y, k, b) - solve(x - 1, k, b));
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>看起来代码挺少的，但是其中的思维量不少的。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uva133-the-dole-queue-%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E6%A8%A1%E6%8B%9F/"><i class="fa fa-chevron-circle-left"></i> uva133 The Dole Queue 循环队列模拟</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/zoj2136--poj2533-longest-ordered-subsequence-%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97%E7%BB%8F%E5%85%B8dp/">zoj2136 &amp;&amp; poj2533 Longest Ordered Subsequence ——最长上升子序列经典DP <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

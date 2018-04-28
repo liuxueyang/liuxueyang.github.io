@@ -1,0 +1,144 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Codeforces Round #187 (Div. 2) A. Sereja and Bottles</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-06-08T18:35:00Z">Jun 8, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/codeforces/">#CodeForces</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://codeforces.com/contest/315/problem/A">http://codeforces.com/contest/315/problem/A</a>
+这到题目比赛的时候过了，赛后WA了……虽然很简单，但是还是没想太清楚</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+#define MAX 103
+int a[MAX], b[MAX];
+int main(void) {
+    int n;
+#ifndef ONLINE_JUDGE
+    freopen(&quot;187a.in&quot;, &quot;r&quot;, stdin);
+#endif
+    while (~scanf(&quot;%d&quot;, &amp;n)) {
+        for (int i = 0; i &lt; n; ++i) scanf(&quot;%d%d&quot;, a+i, b+i);
+        int cnt = 0;
+        for (int i = 0; i &lt; n; ++i) {
+            bool flag = false;
+            for (int j = 0; j &lt; n; ++j) {
+                if (i!=j &amp;&amp; a[i] == b[j]) {
+                    flag = true; break;
+                }
+            }
+            if (!flag) cnt++;
+        }
+        printf(&quot;%d\n&quot;, cnt);
+
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+<p>所以，这些简单题考的是反应速度</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/nyoj5-binary-string-matching-kmp/"><i class="fa fa-chevron-circle-left"></i> NYOJ5 Binary String Matching ——KMP</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-round-#187-div.-2-b.-sereja-and-array/">Codeforces Round #187 (Div. 2) B. Sereja and Array <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

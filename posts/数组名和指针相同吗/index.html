@@ -1,0 +1,154 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>数组名和指针相同吗？</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2012-12-04T19:13:00Z">Dec 4, 2012</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/c/">#C</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <pre><code class="language-cpp">
+/*
+  数组名和指针相同吗？ 
+*/
+
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+
+using namespace std;
+int a[][3] = {{1, 2, 3}, {1, 2, 3}, {4, 5, 6}, {3, 4, 5}};
+int sizef(int b[][3])
+{
+    cout &lt;&lt; sizeof(b) &lt;&lt; endl;
+    cout &lt;&lt; sizeof(b[0]) &lt;&lt; endl;
+    cout &lt;&lt; sizeof(b)/sizeof(b[0]) &lt;&lt; endl;        
+}
+
+int main(void)
+{
+ //   int a[][3] = {{1, 2, 3}, {1, 2, 3}, {4, 5, 6}, {3, 4, 5}};
+    
+
+    cout &lt;&lt; sizeof(a) &lt;&lt; endl;
+    cout &lt;&lt; sizeof(a[0]) &lt;&lt; endl;
+    cout &lt;&lt; sizeof(a)/sizeof(a[0]) &lt;&lt; endl; 
+    cout &lt;&lt; &quot;***********&quot; &lt;&lt; endl;
+    sizef(a);   
+//    cout &lt;&lt; sizef(a) &lt;&lt; endl;
+    
+    system(&quot;pause&quot;);
+    return 0;
+ }
+ 
+
+</code></pre>
+
+<p>上面的程序的结果是：
+48
+12
+4</p>
+
+<hr />
+
+<p>4
+12
+0</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/zoj-2110-tempter-of-the-bone/"><i class="fa fa-chevron-circle-left"></i> zoj 2110 Tempter of the Bone</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/tips/">tips <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,183 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj3249 Test for Job  ——拓扑&#43;DP</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-08-15T17:29:00Z">Aug 15, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+                    , 
+                    <a href="/tags/dp/">#DP</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>link:<a href="http://poj.org/problem?id=3249">http://poj.org/problem?id=3249</a>
+在拓扑排序的过程中进行状态转移，dp[i]表示从起点到 i 这个点所得到的的最大值。比如从u点到v点，dp[v]=max(dp[v], dp[u]+a[v])   a[]数组是点的价值，最终的dp[]数组里面的最大值就是所求的。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+#include &lt;deque&gt;
+#include &lt;queue&gt;
+#include &lt;list&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;utility&gt;
+#include &lt;functional&gt;
+#include &lt;fstream&gt;
+#include &lt;iomanip&gt;
+#include &lt;sstream&gt;
+#include &lt;numeric&gt;
+#include &lt;cassert&gt;
+#include &lt;ctime&gt;
+#include &lt;iterator&gt;
+const int INF = 0x3f3f3f3f;
+const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}};
+#define N 111111
+using namespace std;
+int WO[N],NI[N],dp[N],TA[N];
+vector&lt;int&gt; V[N]; queue&lt;int&gt; QU;
+int main(void)
+{
+    #ifndef ONLINE_JUDGE
+    freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);
+    #endif // ONLINE_JUDGE
+    int n,m;
+    while (~scanf(&quot;%d%d&quot;,&amp;n,&amp;m))
+    {
+        int i,j;
+        for(i=0;i&lt;n;++i)
+        {
+            scanf(&quot;%d&quot;,TA+i); NI[i]=WO[i]=0; V[i].clear();
+            dp[i]=-INF;
+        }
+        while (m--)
+        {
+            int u,v;
+            scanf(&quot;%d%d&quot;,&amp;u,&amp;v); u--,v--;
+            NI[v]++,WO[u]++; V[u].push_back(v);
+        }
+        for(i=0;i&lt;n;++i) if(!NI[i]) QU.push(i),dp[i]=TA[i];
+        while(!QU.empty())
+        {
+            int tmp=QU.front(); QU.pop();
+            for(i=0;i&lt;V[tmp].size();++i)
+            {
+                dp[V[tmp][i]]=max(dp[V[tmp][i]],dp[tmp]+TA[V[tmp][i]]);
+                if(--NI[V[tmp][i]]==0) QU.push(V[tmp][i]);
+            }
+        }
+        int ans=-INF;
+        for(i=0;i&lt;n;++i) if(!WO[i]) ans=max(ans,dp[i]);
+        printf(&quot;%d\n&quot;,ans);
+    }
+    return 0;
+}
+
+</code></pre>
+
+<p>最近变懒了，博客都懒得写了，其实也没什么可写的，o(╯□╰)o</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu3033-i-love-sneakers--------%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85%E5%8F%98%E5%BD%A2/"><i class="fa fa-chevron-circle-left"></i> hdu3033 I love sneakers!        分组背包变形</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/zoj3623-battle-ships-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E7%AE%80%E5%8D%95dp-%E6%B3%9B%E5%8C%96%E8%83%8C%E5%8C%85/">zoj3623 Battle Ships ——完全背包？简单DP！|| 泛化背包 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

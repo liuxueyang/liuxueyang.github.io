@@ -1,0 +1,197 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu 1698 Just a Hook</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-03-04T01:36:00Z">Mar 4, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+                    , 
+                    <a href="/tags/data-structure/">#Data Structure</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Just a Hook</p>
+
+<p>Time Limit: <sup>4000</sup>&frasl;<sub>2000</sub> MS (Java/Others)    Memory Limit: <sup>32768</sup>&frasl;<sub>32768</sub> K (Java/Others)
+Total Submission(s): 10792    Accepted Submission(s): 5328</p>
+
+<p>Problem Description
+In the game of DotA, Pudge’s meat hook is actually the most horrible thing for most of the heroes. The hook is made up of several consecutive metallic sticks which are of the same length.</p>
+
+<p>Now Pudge wants to do some operations on the hook.</p>
+
+<p>Let us number the consecutive metallic sticks of the hook from 1 to N. For each operation, Pudge can change the consecutive metallic sticks, numbered from X to Y, into cupreous sticks, silver sticks or golden sticks.
+The total value of the hook is calculated as the sum of values of N metallic sticks. More precisely, the value for each kind of stick is calculated as follows:</p>
+
+<p>For each cupreous stick, the value is 1.
+For each silver stick, the value is 2.
+For each golden stick, the value is 3.</p>
+
+<p>Pudge wants to know the total value of the hook after performing the operations.
+You may consider the original hook is made up of cupreous sticks.</p>
+
+<p>Input
+The input consists of several test cases. The first line of the input is the number of the cases. There are no more than 10 cases.
+For each case, the first line contains an integer N, 1&lt;=N&lt;=100,000, which is the number of the sticks of Pudge’s meat hook and the second line contains an integer Q, 0&lt;=Q&lt;=100,000, which is the number of the operations.
+Next Q lines, each line contains three integers X, Y, 1&lt;=X&lt;=Y&lt;=N, Z, 1&lt;=Z&lt;=3, which defines an operation: change the sticks numbered from X to Y into the metal kind Z, where Z=1 represents the cupreous kind, Z=2 represents the silver kind and Z=3 represents the golden kind.</p>
+
+<p>Output
+For each case, print a number in a line representing the total value of the hook after the operations. Use the format in the example.</p>
+
+<p>Sample Input
+1 10 2 1 5 2 5 9 3</p>
+
+<p>Sample Output
+Case 1: The total value of the hook is 24.</p>
+
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+const int maxn = 111111;
+int col[maxn&lt;&lt;2], sum[maxn&lt;&lt;2];
+void PushUP(int rt){
+  sum[rt] = sum[rt&lt;&lt;1] + sum[rt&lt;&lt;1|1];
+}
+void PushDown(int rt, int m){
+  if (col[rt]){
+    col[rt&lt;&lt;1] = col[rt&lt;&lt;1|1] = col[rt];
+    sum[rt&lt;&lt;1] = col[rt] * (m - (m&gt;&gt;1));
+    sum[rt&lt;&lt;1|1] = col[rt] * (m&gt;&gt;1);
+    col[rt] = 0;
+  }
+}
+void build(int l, int r, int rt){
+  col[rt] = 0; sum[rt] = 1; if (l == r) return;
+  int m = (l + r) &gt;&gt; 1;
+  build(lson); build(rson); PushUP(rt);
+}
+void update(int L, int R, int c, int l, int r, int rt){
+  if (L &lt;= l &amp;&amp; R &gt;= r){
+    col[rt] = c; sum[rt] = c * (r - l + 1); return;
+  }
+  PushDown(rt, r - l + 1);
+  int m = (l + r) &gt;&gt; 1;
+  if (L &lt;= m) update(L, R, c, lson); if (R &gt; m) update(L, R, c, rson);
+  PushUP(rt);
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;hdu1698.in&quot;, &quot;r&quot;, stdin);
+#endif
+  int t; scanf(&quot;%d&quot;, &amp;t);
+  for (int i = 1; i &lt; t + 1; ++i){
+    int n; scanf(&quot;%d&quot;, &amp;n); int q; build(1, n, 1); scanf(&quot;%d&quot;, &amp;q);
+    while (q--){
+      int a, b, c; scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c); update(a, b, c, 1, n, 1);
+    }
+    printf(&quot;Case %d: The total value of the hook is %d.\n&quot;, i, sum[1]);
+  }
+  return 0;
+}
+</code></pre>
+
+<p>更新区间的线段树，终于弄懂思想了，再联系一下就理解深刻一点儿了。</p>
+
+<p>用到了延迟更新。</p>
+
+<p>还有，写代码的时候要认真，再认真。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj-2828-buy-tickets/"><i class="fa fa-chevron-circle-left"></i> poj 2828 Buy Tickets</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj-3468-a-simple-problem-with-integers/">poj 3468 A Simple Problem with Integers <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,189 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj1272 棋盘问题 ——DFS入门题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-05-13T01:52:00Z">May 13, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+                    , 
+                    <a href="/tags/dfs/">#DFS</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://poj.org/problem?id=1321">http://poj.org/problem?id=1321</a>
+题目大意：
+　　中文题，省了……
+题目思路：
+　　感觉搜索题目还是要多做，很多东西都是开始看起来很复杂，其实根本就没有那么复杂，比如说这道，实际上就比较基础，可是，自己还是做不出来……o(╯□╰)o
+　　这道题目需要注意的一点就是：先DFS一行，然后要注意，要考虑当前行不放，直接DFS下一行！这个情况赶脚还是比较不容易想到的，虽然做完之后感觉也挺自然啊，可是……当初为毛想不到。。。就是思维的问题吧……代码看的是这位仁兄的：<a href="http://fuliang.iteye.com/blog/398700ＴＨＸ……＾＿＾">http://fuliang.iteye.com/blog/398700ＴＨＸ……＾＿＾</a></p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;deque&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x7fffffff;
+const int  MINN =  -0x7fffffff;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+const int MAX = 10;
+char m[MAX][MAX];int cnt, n, k, sum;
+bool p[MAX];
+bool judge(int i, int j) {
+  if (p[j] == false &amp;&amp; m[i][j] == '#') return true;
+  else return false;
+}
+void dfs(int x) {
+  if (sum == k) {cnt++; return;}
+  if (x &gt;= n) return;
+  int i;
+  for (i = 0; i &lt; n; ++i) {
+    if (judge(x, i)) {
+      p[i] = true; sum++; dfs(x+1);
+      p[i] = false; sum--;
+    }
+  }
+  dfs(x + 1);
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;poj1321.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (~scanf(&quot;%d%d&quot;, &amp;n, &amp;k)) {
+    int i, j;
+    if (k == -1 &amp;&amp; n == -1) break;
+    //getchar();
+    for (i  = 0; i &lt;n ; ++i) {
+      for (j = 0; j &lt; n; ++j) {
+        //scanf(&quot;%c&quot;, &amp;m[i][j]);
+        cin&gt;&gt;m[i][j];
+      }
+      //getchar();
+    }
+    cnt = 0;
+    memset(p, false, sizeof(p));
+    sum = 0;
+    dfs(0);
+    printf(&quot;%d\n&quot;, cnt);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>还有一个地方不懂……就是注释的那三行，如果把那三行的注释符号去掉，再把cin那一行删掉，也是可以过的。
+就是不明白为什么用scanf()读入一行一行的字符串也需要用getchar()？当初纠结好久……原来连读入都没有处理好……
+还有就是，这题过了以后，为了测试一下加getchar()是不是也可以过，然后就是各种WA啊……就不明白了，为什么刚才还可以过的代码，现在就WA了……好吧……后来才发现因为开了许多窗口，交错题了ｏ（╯□╰）ｏ多么奇葩的错误……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu1272-%E5%B0%8F%E5%B8%8C%E7%9A%84%E8%BF%B7%E5%AE%AB-%E5%B9%B6%E6%9F%A5%E9%9B%86%E6%97%A0%E5%90%91%E5%9B%BE%E5%88%A4%E7%8E%AF/"><i class="fa fa-chevron-circle-left"></i> hdu1272 小希的迷宫 ——并查集无向图判环</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B45%E6%9C%8813%E6%97%A5-%E6%99%B4/">2013年5月13日 晴 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

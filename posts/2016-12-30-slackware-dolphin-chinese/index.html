@@ -1,0 +1,138 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Slackware Dolphin中文文件夹显示乱码</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-12-30T07:33:01&#43;08:00">Dec 30, 2016</time>
+        </li>
+        
+        
+
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>在Slackware里面的KDE 4的默认文件夹管理器Dolphin里面，中文文件夹的名称显示是一堆问号。这个问题是我前两天遇到的，还是记在这里吧。问题描述如下。</p>
+
+<p>Dolphin的侧边栏可以显示中文，如图：</p>
+
+<p><img src="http://wstaw.org/m/2016/12/28/dolphin-cant-display-chinese-1.png" alt="Dolphin侧边栏中文" /></p>
+
+<p>如果我想要建立一个中文名称的文件夹的话：</p>
+
+<p><img src="http://wstaw.org/m/2016/12/28/dolphin-cant-display-chinese-2.png" alt="Dolphin建立中文文件夹" /></p>
+
+<p>就会成为这样：</p>
+
+<p><img src="http://wstaw.org/m/2016/12/28/dolphin-cant-display-chinese-3.png" alt="Dolphin显示中文文件夹的名称为乱码" /></p>
+
+<p>我的<code>locale</code>是这样的：</p>
+
+<p><img src="http://wstaw.org/m/2016/12/28/dolphin-cant-display-chinese-4.png" alt="locale命令的输出" /></p>
+
+<p>我的解决方法是这样的：</p>
+
+<p>在<code>/etc/profile.d/lang.sh</code>这个文件里面，有这样一句话：</p>
+
+<pre><code class="language-bash"># en_US is the Slackware default locale:
+export LANG=en_US
+</code></pre>
+
+<p>把它改成这样就可以了：</p>
+
+<pre><code class="language-bash">export LANG=zh_CN.utf-8
+</code></pre>
+
+<p>重新登录如果不行，那就重启，问题应该就解决了。比如：</p>
+
+<p><img src="http://wstaw.org/m/2016/12/30/plasma-desktopGh1321.png" alt="Dolphin显示中文" /></p>
+
+<p>顺便说一句，在这两天我整理文件的过程中发现，最好用最方便的文件管理器是：KDE的Dolphin，因为我可以这样：</p>
+
+<p><img src="http://wstaw.org/m/2016/12/30/plasma-desktoptk1321.png" alt="Dolphin最好用" /></p>
+
+<p>其次是macOS的Finder，它也有类似的文件夹显示方式。其它的比如Xfce里面的默认文件夹管理器，删除文件夹的时候没有提示，我严重怀疑有一次整理文件夹的时候误删了一些东西，因为我只发现了一次，并且从回收站里找到了，八成还有别的，我没发现……所以那些简洁的文件管理器也就日常用用还可以。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2016-12-29-start-to-use-slackware/"><i class="fa fa-chevron-circle-left"></i> 开始使用Slackware</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2017-01-02-emacs-fcitx-thought/">折腾Emacs和Fcitx的兼容问题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

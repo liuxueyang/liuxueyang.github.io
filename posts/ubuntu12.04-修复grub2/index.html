@@ -1,0 +1,169 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>ubuntu12.04 修复Grub2</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-06-27T20:39:00Z">Jun 27, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/ubuntu/">#Ubuntu</a>
+                
+                    , 
+                    <a href="/tags/grub/">#Grub</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>电脑双系统，但是把win7重装了之后，会发现grub坏了，只能进入win7。
+遇到过好几次，虽然每次都成功解决问题了，但是都花费了不少时间。
+所以，总结一下，基本是从网上找到的方法，有的行不通，有的可以。就我的尝试，总结了一下对我的电脑来说，比较有效的方法。
+首先说明：我的boot分区没有单独分区！
+第一步： 用光盘进入Ubuntu LiveCD，打开终端，</p>
+
+<pre><code class="language-cpp">
+sudo fdisk -l 
+
+</code></pre>
+
+<p>找到 id 是83的那行，可惜我的有两个：/dev/sda3 和 /dev/sda8 。一般的应该有一行的……囧，可能是装系统的时候没搞好o(╯□╰)o 后来尝试发现，用 /dev/sda3 才是正确的。记住这个号码，考虑到一般性，这里记为/dev/sdaX
+第二步：sudo -i 获得root权限 </p>
+
+<pre><code class="language-cpp">
+mkdir /media/tempdir 
+
+</code></pre>
+
+<p> 挂载：</p>
+
+<pre><code class="language-cpp">
+mount /dev/sdaX /media/tempdir
+grub-install --root-directory=/media/tempdir /dev/sda
+
+</code></pre>
+
+<p> 第三步：重启，可能会进入到 grub rescue 界面。
+输入set，查看相应的设置。然后修改：</p>
+
+<pre><code class="language-cpp">
+set prefix=(hd0,msdos3)/boot/grub
+set root=hd0,msdos3
+insmod normal
+normal
+
+</code></pre>
+
+<p> 然后就发现进入原来的grub启动界面了。进入Ubunt系统
+第四步：打开终端，
+重启，收工。</p>
+
+<pre><code class="language-cpp">
+sudo update-grub
+sudo grub-install /dev/sda
+
+</code></pre>
+
+<p> 
+注：参考网站
+<a href="http://forum.ubuntu.org.cn/viewtopic.php?f=139&amp;t=348503">http://forum.ubuntu.org.cn/viewtopic.php?f=139&amp;t=348503</a>
+<a href="http://hi.baidu.com/radio585/item/87462cf98bc70f1ae3e3bdab">http://hi.baidu.com/radio585/item/87462cf98bc70f1ae3e3bdab</a>
+<a href="http://www.linuxidc.com/Linux/2012-06/61983p2.htm">http://www.linuxidc.com/Linux/2012-06/61983p2.htm</a>
+<a href="http://forum.ubuntu.org.cn/viewtopic.php?t=297514">http://forum.ubuntu.org.cn/viewtopic.php?t=297514</a>
+ 
+为了以后方便，我这些网页里的内容做成文件的格式留在这里，省的以后再搞。。=_=
+<a href="http://s.yunio.com/Ee6n8z ">http://s.yunio.com/Ee6n8z </a>
+为了上传方便，这货是.rar格式的。可以先把文件在win下解压，拷到U盘里面，然后用LiveCD进入Ubuntu再看，文件时图片和.pdf，Ubuntu兼容。
+上面那个链接貌似失效了……囧。追加一个百度网盘：<a href="http://pan.baidu.com/share/link?shareid=1185935304&amp;uk=322048121">http://pan.baidu.com/share/link?shareid=1185935304&amp;uk=322048121</a></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E7%82%B9%E5%A4%B41010-%E5%8F%AA%E5%8C%85%E5%90%AB%E5%9B%A0%E5%AD%902-3-5%E7%9A%84%E6%95%B0/"><i class="fa fa-chevron-circle-left"></i> 点头1010 只包含因子2 3 5的数</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/vim-%E8%A2%AB%E5%A2%99/">vim 被墙 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

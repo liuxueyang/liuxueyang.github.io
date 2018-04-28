@@ -1,0 +1,137 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Codeforces Testing Round #8 B. Sheldon and Ice Pieces 水题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-07-18T18:50:00Z">Jul 18, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/codeforces/">#CodeForces</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://codeforces.com/problemset/problem/328/B">http://codeforces.com/problemset/problem/328/B</a>
+水题~</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+char n[10], a[202]; 
+int  b[13], c[13];
+int main(void) {
+    //freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+    scanf(&quot;%s%s&quot;, n, a);
+    int len1 = strlen(n), len2 = strlen(a);
+    memset(b, 0, sizeof(b)); memset(c, 0, sizeof(c));
+    for (int i = 0; i &lt; len1; ++i) b[n[i]-'0']++;
+    for (int i = 0; i &lt; len2; ++i) c[a[i]-'0']++;
+    b[2]+=b[5], b[5]=0, c[2]+=c[5], c[5]=0, b[6]+=b[9], b[9]=0, c[6]+=c[9], c[9]=0;
+    int cnt=0, Max=100000;
+    for (int i = 0; i &lt; 10; ++i){
+        if (b[i]){
+cnt = c[i]/b[i]; if (cnt &lt; Max) Max = cnt;
+        }
+    }
+    printf(&quot;%d\n&quot;, Max);
+    return 0;
+}
+
+</code></pre>
+
+<p>=_=</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/sgu548-dragons-and-princesses%E8%B4%AA%E5%BF%83%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/"><i class="fa fa-chevron-circle-left"></i> sgu548 Dragons and Princesses　　　贪心＋优先队列</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/testing-round-#8--a.-iq-test---%E6%B0%B4%E9%A2%98/">Testing Round #8  A. IQ Test   水题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

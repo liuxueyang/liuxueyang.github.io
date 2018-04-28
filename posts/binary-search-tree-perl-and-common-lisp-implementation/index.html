@@ -1,0 +1,270 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Binary Search Tree: Perl and Common Lisp implementation</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-06-30T08:33:38Z">Jun 30, 2016</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/algorithm/">#Algorithm</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    
+
+<h3 id="perl">Perl</h3>
+
+<pre><code class="language-perl">#!perl
+
+use strict;
+use warnings;
+use utf8;
+use 5.014;
+
+# insert given value into the proper position. If no tree provided,
+# use implicit pass by reference aspect of @_ to fill one.
+sub insert {
+    my($tree, $value) = @_;
+    unless ($tree) {
+        $tree = {};
+        $tree-&gt;{VALUE} = $value;
+        $tree-&gt;{LEFT} = undef;
+        $tree-&gt;{RIGHT} = undef;
+        $_[0] = $tree; # $_[0] is reference param
+        return;
+    }
+    if ($tree-&gt;{VALUE} &gt; $value) { insert($tree-&gt;{LEFT}, $value) }
+    elsif ($tree-&gt;{VALUE} &lt; $value) { insert($tree-&gt;{RIGHT}, $value) }
+    else { warn &quot;duplicate insert of $value\n&quot; }
+}
+
+sub in_order {
+    my($tree) = @_;
+    return unless $tree;
+    in_order($tree-&gt;{LEFT});
+    print $tree-&gt;{VALUE}, &quot; &quot;;
+    in_order($tree-&gt;{RIGHT});
+}
+
+sub pre_order {
+    my($tree) = @_;
+    return unless $tree;
+    print $tree-&gt;{VALUE}, &quot; &quot;;
+    pre_order($tree-&gt;{LEFT});
+    pre_order($tree-&gt;{RIGHT});
+}
+
+sub post_order {
+    my($tree) = @_;
+    return unless $tree;
+    post_order($tree-&gt;{LEFT});
+    post_order($tree-&gt;{RIGHT});
+    print $tree-&gt;{VALUE}, &quot; &quot;;
+}
+
+sub search {
+    my($tree, $value) = @_;
+    return unless $tree;
+    return $tree if ($tree-&gt;{VALUE} == $value);
+    search ($tree-&gt;{ ($value &lt; $tree-&gt;{VALUE}) ? &quot;LEFT&quot; : &quot;RIGHT&quot; }, $value)
+}
+
+my($root, $n);
+insert($root, int(rand(100))) while ($n++ &lt; 5);
+print &quot;Pre order:  &quot;; pre_order($root); print &quot;\n&quot;;
+print &quot;In order:   &quot;; in_order($root); print &quot;\n&quot;;
+print &quot;Post order: &quot;; post_order($root); print &quot;\n&quot;;
+
+# prompt until EOF
+for (print &quot;Search? &quot;; &lt;&gt;; print &quot;Search? &quot;) {
+    chomp;
+    my $found = search($root, $_);
+    if ($found) { print &quot;Found $_ at $found, $found-&gt;{VALUE}\n&quot; }
+    else { print &quot;No $_ in the tree.\n&quot; }
+}
+
+</code></pre>
+
+<h3 id="common-lisp">Common Lisp</h3>
+
+<pre><code class="language-lisp">(defclass tree-node ()
+  ((value :initform nil
+          :initarg :value
+          :accessor value)
+   (left :initform nil
+         :accessor left-child)
+   (right :initform nil
+          :accessor right-child)))
+
+(defun create-node (value)
+  (let ((node (make-instance 'tree-node :value value)))
+    node))
+
+(defun insert-node (tree-node
+                    value)
+  (cond ((&gt; (value tree-node) value)
+         (if (null (left-child tree-node))
+             (setf (left-child tree-node)
+                   (create-node value))
+             (insert-node (left-child tree-node) value)))
+        ((&lt; (value tree-node) value)
+         (if (null (right-child tree-node))
+             (setf (right-child tree-node)
+                   (create-node value))
+             (insert-node (right-child tree-node) value)))
+        (t (format t &quot;duplicate insert of ~d~%&quot; value))))
+
+(defun in-order (tree-node)
+  (if (null tree-node) (return-from in-order))
+  (in-order (left-child tree-node))
+  (format t &quot;~d &quot; (value tree-node))
+  (in-order (right-child tree-node)))
+
+(defun pre-order (tree-node)
+  (if (null tree-node) (return-from pre-order))
+  (format t &quot;~d &quot; (value tree-node))
+  (pre-order (left-child tree-node))
+  (pre-order (right-child tree-node)))
+
+(defun post-order (tree-node)
+  (if (null tree-node) (return-from post-order))
+  (post-order (left-child tree-node))
+  (post-order (right-child tree-node))
+  (format t &quot;~d &quot; (value tree-node)))
+
+(defun search-value (tree-node
+                     value)
+  (if (null tree-node) (return-from search-value nil))
+  (if (equal value (value tree-node))
+      (return-from search-value tree-node))
+  (search-value (if (&lt; value (value tree-node))
+                    (left-child tree-node)
+                    (right-child tree-node))
+                value))
+
+(defparameter root (create-node 1))
+
+(dotimes (i 5)
+  (insert-node root (random 100)))
+
+(format t &quot;~%~%Pre-order: &quot;)
+(pre-order root)
+(format t &quot;~%&quot;)
+(format t &quot;~&amp;In--order: &quot;)
+(in-order root)
+(format t &quot;~%&quot;)
+(format t &quot;~&amp;Pos-order: &quot;)
+(post-order root)
+(format t &quot;~%&quot;)
+
+;; use C-c C-d h to read the documentation.
+;; use C-u RET to input EOF in the SLIME REPL
+
+(format t &quot;Search? &quot;)
+(loop for in = (read nil nil)
+      while in
+      do
+         (let ((found (search-value root in)))
+           (if found
+               (format t &quot;Found ~d at ~a~%&quot;
+                       (value found)
+                       found)
+               (format t &quot;No ~d in the tree.~%&quot; in))
+           (format t &quot;Search? &quot;)))
+
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/lowest-common-ancestor-in-binary-tree-perl-c-and-common-lisp-implementation/"><i class="fa fa-chevron-circle-left"></i> Lowest common ancestor in binary tree: perl, c and common lisp implementation</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/educational-codeforces-round-10-d-nested-segments-c-perl-and-common-lisp-implementation/">Educational Codeforces Round 10. D. Nested Segments: c&#43;&#43;, perl and common lisp implementation, Segment Tree <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

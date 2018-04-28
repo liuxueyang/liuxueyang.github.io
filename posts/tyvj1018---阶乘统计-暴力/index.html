@@ -1,0 +1,129 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>tyvj1018 - 阶乘统计 ——暴力</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-07-07T23:46:00Z">Jul 7, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/tyvj/">#tyvj</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="https://www.tyvj.cn/Problem_Show.aspx?id=1018">https://www.tyvj.cn/Problem_Show.aspx?id=1018</a>
+范围只有20，在long long Int范围内。</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int main(void)
+{
+    freopen(&quot;in1.txt&quot;, &quot;r&quot;, stdin);
+    int n, k, h, a[10]; long long int s=1; scanf(&quot;%d%d&quot;,&amp;n,&amp;k); h=k;
+    for(int i=1;i&lt;=n;++i)s*=i;
+    while (s%10==0) s/=10;
+    while (k--) if(s) a[k]=s%10,s/=10; else break;
+    for (int i=k+1;i&lt;=h-1;++i)printf(&quot;%d&quot;,a[i]);printf(&quot;\n&quot;);
+    return 0;
+}
+
+</code></pre>
+
+<p>=_=</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/tyvj1017---%E5%86%97%E4%BD%99%E5%85%B3%E7%B3%BB-%E5%B9%B6%E6%9F%A5%E9%9B%86/"><i class="fa fa-chevron-circle-left"></i> tyvj1017 - 冗余关系 ——并查集</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/tyvj1023---%E5%A5%B6%E7%89%9B%E7%9A%84%E9%94%BB%E7%82%BC-dp/">tyvj1023 - 奶牛的锻炼 ——DP <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

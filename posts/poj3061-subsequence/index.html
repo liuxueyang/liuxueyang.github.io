@@ -1,0 +1,296 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Poj3061 Subsequence</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-07-02T16:58:15Z">Jul 2, 2016</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    
+
+<h2 id="problem">Problem</h2>
+
+<p><a href="http://poj.org/problem?id=3061">Subsequence</a></p>
+
+<h2 id="solution">Solution</h2>
+
+<p>方法一：O(nlogn)</p>
+
+<pre><code>1. 计算前序和
+2. 定起点，二分找不小于S的最小的连续区间和
+</code></pre>
+
+<p>方法二：O(n)</p>
+
+<pre><code>1. 定起点，线性找不小于S的最小的连续区间和，得到一个终点
+2. 把起点向右移动一个单位，把终点在原来的基础上递增，线性找不小于S的最小的连
+   续区间和。如此反复。
+</code></pre>
+
+<h2 id="code">Code</h2>
+
+<p>方法一：</p>
+
+<h4 id="c">C++</h4>
+
+<pre><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+
+int N, S;
+vector&lt;int&gt; a, presum;
+
+void solve() {
+
+  cin &gt;&gt; N &gt;&gt; S;
+  presum.clear();
+  a.clear();
+
+  a.reserve(N);
+  presum.reserve(N + 1);
+
+  for (int i = 0; i &lt; N; ++i) {
+    int tmp;
+    cin &gt;&gt; tmp;
+    a.push_back(tmp);
+  }
+
+  // presum[i] means sum of [0, i) elements
+  // j &gt; i, presum[j] - presum[i] means sum of [i, j) elements
+  presum.push_back(0);
+
+  for (int i = 0; i &lt; N; ++i) {
+    presum.push_back(presum[i] + a[i]);
+  }
+
+  if (presum[N] &lt; S) {
+    cout &lt;&lt; 0 &lt;&lt; endl;
+    return;
+  }
+
+  int ans = N;
+
+  for (int i = 0; presum[N] - presum[i] &gt;= S; ++i) {
+    int len = distance(presum.begin() + i,
+                       lower_bound(presum.begin() + i,
+                                   // here can ALSO be presum + N + 1
+                                   presum.end(), presum[i] + S));
+    ans = min(ans, len);
+  }
+
+  cout &lt;&lt; ans &lt;&lt; endl;
+}
+
+int main(void) {
+#ifndef ONLINE_JUDGE
+  freopen(&quot;3061.txt&quot;, &quot;r&quot;, stdin);
+#endif
+
+  int n;
+
+  cin &gt;&gt; n;
+
+  while (n--) {
+    solve();
+  }
+}
+
+</code></pre>
+
+<p>方法二：</p>
+
+<h4 id="c-1">C</h4>
+
+<pre><code class="language-cpp">#include &lt;stdio.h&gt;
+
+int N, S;
+int a[100 * 1000 + 10];
+
+void solve() {
+  scanf(&quot;%d%d&quot;, &amp;N, &amp;S);
+  for (int i = 0; i &lt; N; ++i) {
+    scanf(&quot;%d&quot;, a + i);
+  }
+  int i = 0, j = 0, sum = 0, ans = N + 1;
+  while (1) {
+    while (sum &lt; S &amp;&amp; j &lt; N) {
+      sum += a[j];
+      ++j;
+    }
+    if (sum &lt; S) {
+      break;
+    }
+    ans = (ans &lt; j - i) ? ans : j - i;
+    sum -= a[i];
+    ++i;
+  }
+  if (ans == N + 1) {
+    ans = 0;
+  }
+  printf(&quot;%d\n&quot;, ans);
+
+  return;
+}
+
+int main(void) {
+  int n;
+  scanf(&quot;%d&quot;, &amp;n);
+  while (n--) {
+    solve();
+  }
+  return 0;
+}
+
+</code></pre>
+
+<h4 id="common-lisp">Common Lisp</h4>
+
+<pre><code class="language-lisp">(defvar *N*)
+(defvar *S*)
+(defvar *a*)
+(defvar n)
+
+(defun print-array ()
+  (loop for i from 0 to (1- (length *a*)) do
+    (format t &quot;~d &quot; (elt *a* i)))
+  (format t &quot;~%&quot;))
+
+(defun solve ()
+  (let ((sum 0)
+        (i 0)
+        (j 0)
+        (ans (+ 1 *N*)))
+    (block while
+      (loop
+        (do ()
+            ((or (&gt;= sum *S*)
+                 (&gt;= j *N*)))
+          (incf sum (aref *a* j))
+          (incf j))
+        (if (&lt; sum *S*)
+            (return-from while))
+        (setf ans (min ans (- j i)))
+        (decf sum (aref *a* i))
+        (incf i)))
+    (if (equal ans (1+ n))
+        (setf ans 0))
+    (format t &quot;~d~%&quot; ans)))
+
+(with-open-file (*standard-input*
+                 &quot;3061.txt&quot;
+                 :if-does-not-exist nil)
+  (setf n (read))
+  (dotimes (i n)
+    (setf *N* (read))
+    (setf *S* (read))
+    (setf *a* (make-array *N*
+                                  :element-type 'integer
+                                  :fill-pointer 0
+                                  :adjustable t))
+    (dotimes (j *N*)
+      (vector-push-extend (read) *a*))
+    (solve)))
+
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/educational-codeforces-round-10-d-nested-segments-c-perl-and-common-lisp-implementation/"><i class="fa fa-chevron-circle-left"></i> Educational Codeforces Round 10. D. Nested Segments: c&#43;&#43;, perl and common lisp implementation, Segment Tree</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj3320-jessica-s-reading-problem/">POJ3320 Jessica&#39;s Reading Problem <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

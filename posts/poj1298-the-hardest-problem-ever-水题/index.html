@@ -1,0 +1,211 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj1298 The Hardest Problem Ever ——水题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-04-19T14:18:00Z">Apr 19, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://poj.org/problem?id=1298">http://poj.org/problem?id=1298</a>
+题目大意：
+　　字母映射。太简单了。不说了。感脚都不好意思在博客里面写……水题一次最多切3道，再多就没意思了……也没有意义……
+题目思路：
+　　为了学习ＳＴＬ，用的ｍａｐ。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;set&gt;
+#include &lt;map&gt;
+#include &lt;vector&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+map&lt;char, char&gt; mymap;
+string a, b, c;
+char aa[10000];
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;1298.in&quot;, &quot;r&quot;, stdin);
+#endif
+  for (int i = 0; i &lt; 26; ++i){
+    if (i &lt;= 4)
+    mymap[i+'A'] = 'A' + 21 + i;
+    else mymap[i+'A'] = i +'A'-5; 
+  }
+  while (cin &gt;&gt; a){
+    if (a == &quot;ENDOFINPUT&quot;) break;
+    getchar(); gets(aa); int len = strlen(aa);
+    for (int i = 0; i &lt; len; ++i){
+      if (isalpha(aa[i])){
+        printf(&quot;%c&quot;, mymap[aa[i]]);
+      }
+      else printf(&quot;%c&quot;, aa[i]);
+    } printf(&quot;\n&quot;);
+    cin &gt;&gt; b;
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>在ＯＪ上看到了自己以前写的代码，感脚好精简～</p>
+
+<pre><code class="language-cpp">
+# include &lt;stdio.h&gt;
+# include &lt;string.h&gt;
+
+char a[201];
+
+int main(void)
+{
+   char endall[] = &quot;ENDOFINPUT&quot;; 
+   char start[10]; /* = &quot;START&quot;; */
+   char end[4];  /* = &quot;END&quot;; */
+   int n = 101;
+   int i;
+   char c;
+
+   while (n--)
+   {
+     scanf(&quot;%s&quot;, start);
+     if (strcmp(start, endall) == 0)
+       break;
+     i = 0;
+     getchar();
+     while ((c = getchar()) != '\n')
+     {
+       a[i] = c;
+       i++;
+     }
+     a[i] = '\0';
+     for (i = 0; i &lt; strlen(a); i++)
+     {
+       if (a[i] &gt;= 'A' &amp;&amp; a[i] &lt;= 'E')
+         a[i] = a[i] + 21;
+       else if (a[i] &gt;= 'F' &amp;&amp; a[i] &lt;= 'Z')
+         a[i] = a[i] - 5;
+     }
+     printf(&quot;%s\n&quot;, a);
+     scanf(&quot;%s&quot;, end);
+   }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>原来自己以前的代码风格曾经这么精悍，哈哈</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj3087-shufflem-up-%E6%B0%B4%E9%A2%98/"><i class="fa fa-chevron-circle-left"></i> poj3087 Shuffle&#39;m Up ——水题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj2001-shortest-prefixes-%E5%AD%97%E5%85%B8%E6%A0%91%E5%A4%8D%E4%B9%A0/">poj2001 Shortest Prefixes ——字典树复习 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

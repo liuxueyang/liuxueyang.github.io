@@ -1,0 +1,136 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>tyvj1017 - 冗余关系 ——并查集</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-07-07T23:22:00Z">Jul 7, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/tyvj/">#tyvj</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="https://www.tyvj.cn/Problem_Show.aspx?id=1017">https://www.tyvj.cn/Problem_Show.aspx?id=1017</a>
+并查集</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+int parent[1001],n,m;
+void init() {for(int i=1;i&lt;=m;++i)parent[i]=-1; }
+int Find(int x) {int s; for(s=x;parent[s]&gt;=0;s=parent[s]);while (s!=x) {int tmp=parent[x];parent[x]=s;x=tmp; }return s; }
+void Union(int R1,int R2)
+{
+    int r1=Find(R1),r2=Find(R2),tmp=parent[r1]+parent[r2]; if (parent[r1]&lt;parent[r2]) parent[r2]=r1,parent[r1]=tmp;
+    else parent[r1]=r2,parent[r2]=tmp;
+}
+int main(void)
+{
+    freopen(&quot;in1.txt&quot;,&quot;r&quot;,stdin);
+    int cnt=0;scanf(&quot;%d%d&quot;,&amp;n,&amp;m); init();
+    while (n--) {
+        int a,b; scanf(&quot;%d%d&quot;,&amp;a,&amp;b); if(Find(a)==Find(b)) cnt++;
+        else Union(a,b);
+    } printf(&quot;%d\n&quot;,cnt);
+    return 0;
+}
+
+</code></pre>
+
+<p>=_=</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/tyvj1015---%E5%85%AC%E8%B7%AF%E4%B9%98%E8%BD%A6--%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/"><i class="fa fa-chevron-circle-left"></i> tyvj1015 - 公路乘车  ——完全背包</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/tyvj1018---%E9%98%B6%E4%B9%98%E7%BB%9F%E8%AE%A1-%E6%9A%B4%E5%8A%9B/">tyvj1018 - 阶乘统计 ——暴力 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

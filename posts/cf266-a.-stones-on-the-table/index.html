@@ -1,0 +1,181 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>CF266 A. Stones on the Table</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-01-23T10:19:00Z">Jan 23, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/codeforces/">#CodeForces</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>A. Stones on the Table
+time limit per test
+2 seconds
+memory limit per test
+256 megabytes
+input
+standard input
+output
+standard output</p>
+
+<p>There are n stones on the table in a row, each of them can be red, green or blue. Count the minimum number of stones to take from the table so that any two neighboring stones had different colors. Stones in a row are considered neighboring if there are no other stones between them.
+Input</p>
+
+<p>The first line contains integer n (1 ≤ n ≤ 50) — the number of stones on the table.</p>
+
+<p>The next line contains string s, which represents the colors of the stones. We&rsquo;ll consider the stones in the row numbered from 1 to n from left to right. Then the i-th character s equals &ldquo;R&rdquo;, if the i-th stone is red, &ldquo;G&rdquo;, if it&rsquo;s green and &ldquo;B&rdquo;, if it&rsquo;s blue.
+Output</p>
+
+<p>Print a single integer — the answer to the problem.
+Sample test(s)
+input</p>
+
+<p>3
+RRG</p>
+
+<p>output</p>
+
+<p>1</p>
+
+<p>input</p>
+
+<p>5
+RRRRR</p>
+
+<p>output</p>
+
+<p>4</p>
+
+<p>input</p>
+
+<p>4
+BRBG</p>
+
+<p>output</p>
+
+<p>0</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+
+int main(void)
+{
+    char a[50+10];
+    //freopen(&quot;cf266.in&quot;, &quot;r&quot;, stdin);
+    int n;
+    while (~scanf(&quot;%d&quot;, &amp;n))
+    {
+        scanf(&quot;%s&quot;, a);
+        int count = 0;
+        for (int i = 0; i &lt; n-1; ++i)
+            if (a[i]==a[i+1])
+                count++;
+        printf(&quot;%d\n&quot;, count);
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>水题……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1046/"><i class="fa fa-chevron-circle-left"></i> hdu 1046</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/cf266-b.-queue-at-the-school/">CF266 B. Queue at the School <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

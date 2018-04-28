@@ -1,0 +1,114 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>一个bug，持续更新……</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-04-12T19:48:00Z">Apr 12, 2013</time>
+        </li>
+        
+        
+
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <ul>
+<li>scanf(&ldquo;%d%d&rdquo;, &amp;n, &amp;mz[n]); 这样的写法是不对的……</li>
+<li>全局变量不要和局部变量命名成相同的名字，尤其是循环变量不要设置成全局的，很危险。</li>
+<li>数组要初始化，尤其是多case的时候</li>
+<li>写代码的时候要全神贯注，千万不要因为一时的疏忽，出现一个最难发现的最弱智的bug……</li>
+<li>还有，memset(a, 1, sizeof(a));貌似有错……慎用。注：这货只能用4个字节都相同的整数！比如，0x7f7f7f7f 或者 0x3f3f3f3f</li>
+<li>有一点最受不了的就是：为什么最近输入老是忘了写取地址符？果然是敲代码敲得少了么……</li>
+<li>输入格式，要用%lld还是%I64d，也可以用cin,cout如果输入量比较少的话。</li>
+<li>D = 3；1 &lt;&lt; D - 1 的结果是什么？注意优先级！有位运算的需要加上括号！</li>
+<li>==不要写成=，以前以为自己肯定不会犯这种错误，谁知道……唉</li>
+<li>初始化技术变量，尤其是多case的时候</li>
+<li>当多个case运行不对的时候，尝试一下只输入一个case，因为可能是多case的过程中，变量没有初始化</li>
+<li>尤其是开数组的时候，千万不能把大小写错了，或者，当出现运行都出现系统错误的时候，可能是数组越界了，看一下开数组的时候是不是开小了，或者是数字打错了。</li>
+<li>代码错了，自己想办法出数据测试，其实是一种十分重要的能力。</li>
+<li>写线段树的时候，计算中点的时候，int M = L + (R-L)&gt;&gt;1；这么写是不对的。。至于为什么，我也不知道。。反正因为这货卡了好久== 直接这么写就行：int M = L+(R-L)/2；</li>
+</ul>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%889%E6%97%A5-%E9%98%B4%E8%BD%AC%E5%B0%8F%E9%9B%A8/"><i class="fa fa-chevron-circle-left"></i> 2013年4月9日 阴转小雨</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/zoj2913-bus-pass-bfs%E5%85%A5%E9%97%A8%E9%A2%98/">zoj2913 Bus Pass ——BFS入门题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

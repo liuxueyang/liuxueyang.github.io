@@ -1,0 +1,217 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj2349 Arctic Network ——最小生成树入门题_Prim算法</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-05-03T23:36:00Z">May 3, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+                    , 
+                    <a href="/tags/graph/">#Graph</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://poj.org/problem?id=2349 http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=914">http://poj.org/problem?id=2349 http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=914</a>
+题目大意：
+　　有一些炮台，如果这个炮台有卫星接收器，那么任意两个有卫星接收器的炮台可以通信，不受距离限制；否者，两个炮台之间只能通过对讲机通信，这是受距离限制的。要买一种对讲机，用在需要的炮台上，要求所有炮台两两之间可以直接或者间接通信，问要买通信距离至少为多少的对讲机可以满足要求。输入：S卫星接收器的数量，P炮台的数量，然后是P行，每行代表一个炮台的坐标。输出要求的对讲机的通信距离D。
+题目思路：
+　　题目意思比较难懂。关键是satellite channel的安放方法，注意，它是放在炮台上的，只要这个炮台上有这货，它就可以和任何也有这货的炮台通信。明白这一点，然后就简单了。有S个卫星接收器，那么就可以减少S-1个距离开销。要让D尽可能小，就让这S-1个距离开销最大，所以，想法就是，求这些点的最小生成树，然后把所选的边排序，第S大的边的权值就是所求。
+　　开始题意没搞懂。关键是“Any two outposts with a satellite channel can communicate via the satellite, regardless of their location.”这句话没有理解明白，也就是说，任何两个有卫星接收器的炮台都可通信！然后自己就把问题复杂化了……写的代码就很复杂了。。后来改了一下，就过了。。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+const int MAX  = 500+10;
+int n, s, p;
+double edge[MAX][MAX];
+double lowcost[MAX];
+int nearvex[MAX];
+
+typedef struct Point {
+  double x, y;
+}Point;
+
+typedef struct Vex {
+  int i, j; double len;
+  bool operator &lt; (const Vex &amp; other) const { // 不能写反了
+    return len &gt; other.len;
+  }
+}Vex;
+
+map&lt;int, bool&gt; visit;
+Vex vex[MAX];
+Point point[MAX];
+
+void prim(int u0) {
+  int v;  // 尼玛定义类型错了，我去……
+  int cur = 0, i, j;
+  visit.clear();
+  for (i = 1; i &lt;= p; ++i) {
+    lowcost[i] = edge[u0][i]; nearvex[i] = u0;
+  }
+  lowcost[u0] = 0; nearvex[u0] = -1;
+  for (i = 1; i &lt; p; ++i) {
+    v = -1; double min = MAXN*1.0;
+    for (j = 1; j &lt;= p; ++j) {
+      if (lowcost[j] &lt; min &amp;&amp; nearvex[j] != -1) {
+        min = lowcost[j]; v = j;
+      }
+    }
+    if (v != -1) {
+      nearvex[v] = -1;
+      vex[cur].i = v; vex[cur].j = nearvex[v]; vex[cur].len = lowcost[v];
+      cur++;
+      for (j = 1; j &lt;= p; ++j) {
+        if (lowcost[j] &gt; edge[v][j] &amp;&amp; nearvex[j] != -1) {
+          lowcost[j] = edge[v][j]; nearvex[j] = v;
+        }
+      }
+    }
+  }
+  sort(vex, vex + cur); 
+  printf(&quot;%.2f\n&quot;, vex[s-1].len); 
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;poj2349.in&quot;, &quot;r&quot;, stdin);
+#endif
+  scanf(&quot;%d&quot;, &amp;n);
+  int i, j;// k;
+  while (n--) {
+    scanf(&quot;%d%d&quot;, &amp;s, &amp;p);
+    for (i = 1; i &lt;= p; ++i) {
+      scanf(&quot;%lf%lf&quot;, &amp;point[i].x, &amp;point[i].y);
+    }
+    for (i = 1; i &lt;= p; ++i) {
+      for (j = i + 1; j &lt;= p; ++j) {
+        double x1=point[i].x,y1 =point[i].y,x2 = point[j].x, y2=point[j].y;
+        double dis = sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+        edge[i][j] = edge[j][i] = dis;
+      }
+    }
+    prim(1);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>　　唉，好复杂的代码……题意理解最重要了，这种题目应该考的就是题意……
+　　还有就是，结构体里面重载运算符的时候，貌似不能重载大于号？因为要逆序排序么，然后就把return改了一下。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj1789-truck-history-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98_prim%E7%AE%97%E6%B3%95/"><i class="fa fa-chevron-circle-left"></i> poj1789 Truck History ——最小生成树入门题_Prim算法</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj2048zoj1751-highways-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98_prim%E7%AE%97%E6%B3%95/">poj2048&amp;&amp;zoj1751 Highways ——最小生成树入门题_Prim算法 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

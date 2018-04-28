@@ -1,0 +1,150 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>sgu551 Preparing Problem</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-07-18T17:39:00Z">Jul 18, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/sgu/">#Sgu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.sgu.ru/problem.php?contest=0&amp;problem=551">http://acm.sgu.ru/problem.php?contest=0&amp;problem=551</a>
+呵呵，题目读的没错，可惜理解错了．．＝＝</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#define LL long long 
+using namespace std;
+int n, t1, t2;
+int gcd(int a, int b) {
+    return b == 0 ? a : (gcd(b, a%b));
+}
+int exg(int a, int b) {
+    return a/gcd(a,b)*b;
+}
+int main(void) {
+    //freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+    while (~scanf(&quot;%d%d%d&quot;, &amp;n, &amp;t1, &amp;t2)) {
+        int k = exg(t1, t2), s = k/t1 + k/t2, One = n/s, r = n%s, base = One*k,
+                Min = 0, cnt = 0, i, j;
+        if (t1&gt;t2) swap(t1,t2);
+        //printf(&quot;s = %d r = %d\n&quot;, s, r);
+        if (r)
+        for (i = 1, j = 1; i+j &lt;= s;) {
+            if (cnt &gt;= r) break;
+            if (i * t1 &lt; j * t2) Min=i*t1, i++, cnt++;
+            else if(i*t1 &gt; j*t2) Min=j*t2, j++, cnt++;
+            else Min=j*t2, j++, i++, cnt+=2;
+            if (cnt &gt;= r) break;
+        }
+        if ( (i-1)*t1!=(j-1)*t2 &amp;&amp; Min == (i-1) * t1) cnt++, Min = max(Min, j*t2);
+        else if ( (i-1)*t1!=(j-1)*t2 &amp;&amp; Min == (j-1) * t2) cnt++, Min = max(Min, i*t1);
+        //printf(&quot;cnt = %d\n&quot;, cnt);
+        printf(&quot;%d %d\n&quot;, cnt+s*One, base+Min);
+    }
+    return 0 ;
+}
+
+</code></pre>
+
+<p>这场比赛就栽在了这道题目上面，从开场到结束前５分钟．．．</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uestc1888-birthday-party-%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%E4%B9%98%E6%B3%95%E5%8E%9F%E7%90%86/"><i class="fa fa-chevron-circle-left"></i> uestc1888 Birthday Party 　　　组合数学，乘法原理</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/sgu546-ternary-password/">sgu546 Ternary Password <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

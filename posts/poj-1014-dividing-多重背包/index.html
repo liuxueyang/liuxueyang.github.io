@@ -1,0 +1,249 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj 1014 Dividing 多重背包</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-03-28T20:59:00Z">Mar 28, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+                    , 
+                    <a href="/tags/dp/">#DP</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Description
+Input
+Output
+Sample Input
+Sample Output</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+int f[120000+10], V;
+const int MAX = 0x3f3f3f3f;
+void zeropack(int c, int w){
+  for (int v = V; v &gt;= c; --v){
+    f[v] = max(f[v], f[v-c] + w);
+  }
+}
+void completepack(int c, int w){
+  for (int v = c; v &lt;= V; ++v){
+    f[v] = max(f[v], f[v-c] + w);
+  }
+}
+int main(void){
+  int a[7], cnt = 1;
+#ifndef ONLINE_JUDGE
+  freopen(&quot;1014.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (~scanf(&quot;%d&quot;, a)){
+    int sum = a[0]; a[1] = a[0];
+    for (int i = 2;i &lt; 7; ++i) {
+      scanf(&quot;%d&quot;, a+i); sum += a[i]*i;
+    }
+    if (sum==0) break;
+    printf(&quot;Collection #%d:\n&quot;, cnt); cnt++;
+    if (sum&amp;1){
+      printf(&quot;Can't be divided.\n\n&quot;);
+      continue;
+    }
+    V = sum/2;
+    f[0] = 0; for (int i = 1; i &lt; 120000; ++i) f[i] = -MAX;
+    for (int i = 1; i &lt;= 6; ++i){
+      if (i*a[i] &gt;= V){
+        completepack(i, 1);
+      }
+      else{
+        int k = 1; 
+        while (k &lt; a[i]){
+          zeropack(i*k, 1*k); a[i] -= k; k *= 2;
+        }
+        zeropack(i*a[i], 1*a[i]);
+      }
+    }
+    if (f[V] &lt; 0) printf(&quot;Can't be divided.\n&quot;);
+    else printf(&quot;Can be divided.\n&quot;);
+    printf(&quot;\n&quot;);
+  }
+  return 0;
+}
+
+</code></pre>
+
+<p>这题以前做过，当初抄的别人的代码，明显是人家的代码效率更高……</p>
+
+<pre><code class="language-cpp">
+# include &lt;stdio.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;string.h&gt;
+
+int dp[20000*6];
+int num[20000*6];
+
+int main(void)
+{
+    int t, a[10], i, sum, j;
+
+//    freopen(&quot;poj.in&quot;, &quot;r&quot;, stdin);
+    t = 1;
+    while (scanf(&quot;%d&quot;, &amp;a[1]) != EOF)
+    {
+        sum = a[1];
+        for (i = 2; i &lt; 7; i++)
+        {
+            scanf(&quot;%d&quot;, &amp;a[i]);
+            sum += a[i] * i;
+        }
+        if (sum == 0)
+        {
+            break;
+        }
+        printf(&quot;Collection #%d:\n&quot;, t);
+        t++;
+        if (sum % 2)
+        {
+            printf(&quot;Can't be divided.\n\n&quot;);
+            continue;
+        }
+        else
+        {
+            sum /= 2;
+            memset(dp, 0, sizeof(dp));
+            dp[0] = 1;
+            for (i = 1; i &lt; 7; i++)
+            {
+                memset(num, 0, sizeof(num));
+                for (j = i; j &lt; sum + 1; j++)
+                {
+                    if (!dp[j] &amp;&amp; dp[j-i] &amp;&amp; num[j-i] &lt; a[i])
+                    {
+                        dp[j] = 1;
+                        num[j] = num[j-i] + 1;
+                    }
+                }
+                if (dp[sum])
+                {
+                    break;
+                }
+            }
+            if (dp[sum])
+            {
+                printf(&quot;Can be divided.\n\n&quot;);
+            }
+            else
+            {
+                printf(&quot;Can't be divided.\n\n&quot;);
+            }
+        }
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+<p>没看懂有木有……显然比我的思路巧妙多了。。看到中间那几行核心代码，联想到了楼教主的男人八题里面的一道，貌似，，以后有时间看一下！这个代码再认真研究一下！
+ 
+题外话：有些事不多说了，说多了都是泪……别胡思乱想了，好好奋斗吧，哈哈。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1114-piggy-bank-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/"><i class="fa fa-chevron-circle-left"></i> hdu 1114 Piggy-Bank 完全背包</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-2159-fate-%E4%BA%8C%E7%BB%B4%E8%83%8C%E5%8C%85/">hdu 2159 FATE 二维背包 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

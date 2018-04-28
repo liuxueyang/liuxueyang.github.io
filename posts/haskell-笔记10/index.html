@@ -1,0 +1,203 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Haskel筆記 10</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2017-04-18T15:03:07&#43;08:00">Apr 18, 2017</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="/categories/haskell/">Haskell</a>
+                
+            </em>
+        </li>
+        
+
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    
+
+<p>這是<a href="http://learnyouahaskell.com/functionally-solving-problems">Functionally Solving Problems</a>一章的筆記。</p>
+
+<h2 id="reverse-polish-notation-calculator">Reverse Polish notation calculator</h2>
+
+<pre><code class="language-haskell">polish :: (Num a, Read a) =&gt; String -&gt; a
+polish =
+  head . foldl folder [] . words
+  where folder (x : y : xs) &quot;+&quot; = (y + x) : xs
+        folder (x : y : xs) &quot;*&quot; = (y * x) : xs
+        folder (x : y : xs) &quot;-&quot; = (y - x) : xs
+        folder accu x = read x : accu
+</code></pre>
+
+<p>求解逆波蘭算數表達式。</p>
+
+<pre><code class="language-haskell">solveRPN :: String -&gt; Float
+solveRPN =
+  head . foldl folder [] . words
+  where folder (x : y : xs) &quot;+&quot; = (y + x) : xs
+        folder (x : y : xs) &quot;*&quot; = (y * x) : xs
+        folder (x : y : xs) &quot;-&quot; = (y - x) : xs
+        folder (x : y : xs) &quot;/&quot; = (y / x) : xs
+        folder (x : xs) &quot;ln&quot; = (log x) : xs
+        folder (xs) &quot;sum&quot; = [sum xs]
+        folder accu x = read x : accu
+</code></pre>
+
+<p>之前的程序可以很容易的擴展，只需要加上合適的模式匹配即可。</p>
+
+<h2 id="heathrow-to-london">Heathrow to London</h2>
+
+<p>這是一個簡化的最短路的問題。</p>
+
+<p>難點就是數據結構的表示有點不太適應，和其它語言中的「面向對象」的形式不同。</p>
+
+<p>創造函數的時候，首先想想這個函數的目的，然後確定這個函數的類型，其實非常有幫助。</p>
+
+<pre><code class="language-haskell">data Section = Section { getA :: Int
+                       , getB :: Int
+                       , getC :: Int
+                       } deriving (Show)
+
+type RoadSystem = [Section]
+
+graph :: RoadSystem
+graph = [ Section 50 10 30
+        , Section 5 90 20
+        , Section 40 2 25
+        , Section 10 8 0]
+
+data Label = A | B | C
+           deriving (Show)
+
+type Path = [(Label, Int)]
+
+roadStep :: (Path, Path) -&gt; Section -&gt; (Path, Path)
+roadStep (xs, ys) (Section a b c) =
+  let costA = sum . map snd $ xs
+      costB = sum . map snd $ ys
+  in -- 這裏寫的時候遇到了bug!!
+  (if costA + a &lt; costB + b + c then (A, a) : xs
+   else (C, c) : (B, b) : ys,
+   if costB + b &lt; costA + a + c then (B, b) : ys
+   else (C, c) : (A, a) : xs)
+
+
+optimalPath :: RoadSystem -&gt; Path
+optimalPath roadSystem =
+  let (optimal_a, optimal_b) =
+        (foldl roadStep ([], []) roadSystem)
+      costA = sum . map snd $ optimal_a
+      costB = sum . map snd $ optimal_b
+  in
+    if costA &lt; costB then reverse optimal_a
+    else reverse optimal_b
+
+
+groupsOf :: Int -&gt; [a] -&gt; [[a]]
+groupsOf 0 _ = undefined
+groupsOf _ [] = []
+groupsOf n xs = take n xs : (groupsOf n $ drop n xs)
+
+
+main = do
+  contents &lt;- getContents
+  let triple = groupsOf 3 (map read . lines $ contents)
+      roadSystem = map (\ [a, b, c] -&gt; Section a b c) triple
+      path = optimalPath roadSystem
+      pathString = concat . map (show . fst) $ path
+      pathCost = sum . map snd $ path
+  putStrLn $ &quot;The best path is: &quot; ++ pathString
+  putStrLn $ &quot;The price is: &quot; ++ show pathCost
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/haskell-%E7%AC%94%E8%AE%B09/"><i class="fa fa-chevron-circle-left"></i> Haskell 笔记9</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/foldr%E5%92%8Cfoldl%E5%87%BD%E6%95%B8%E8%BE%A8%E6%9E%90/">foldl和foldr的不同點 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

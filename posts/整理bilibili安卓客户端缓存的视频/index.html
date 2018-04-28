@@ -1,0 +1,213 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>整理Bilibili安卓客户端缓存的视频</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2017-03-16T22:30:48Z">Mar 16, 2017</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/perl/">#Perl</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>昨天晚上无意中看到了B站竟然有TOUCH。。完全没想到。所以我决定这次要把这部动画片全部下载下来，B站的视频质量看起来还不错。所以最简单的方法就是用安卓客户端缓存，然后在电脑上处理了。</p>
+
+<p>其实之前我做过这件事情。当初是为了整理「暖暖日记」这部番，因为它每集仅仅有5分钟左右。每个视频只有一个文件，所以只需要找到所有视频然后读json文件找到视频名称，重命名就好了。</p>
+
+<p>不过这次好像有点不同：每集一般有25分钟，缓存的是高清的。奇怪的是：即使是同一集，最开始我缓存的时候某一集是仅仅有一个mp4文件，然后我又实验了一次，发现它就变成了多个flv文件。。真是迷。。</p>
+
+<p>处理也不难，如果是单个mp4文件直接重命名就好了。如果是多个flv文件，那么就需要先合并，然后再命名。</p>
+
+<p>然后看了一下之前写的Perl程序，竟然，看不太懂了。。。T_T，然而还好，最后还是搞定了：</p>
+
+<pre><code class="language-perl">#!/usr/bin/perl
+
+# Date  : 2017/03/16 19:14:35
+# Finish: 2017/03/16 22:04:07
+
+# NOTE: There MUST NOT be any non-ascii character in the path!!!!!!!!!!
+
+use strict;
+use warnings;
+use 5.014;
+use Cwd;
+use JSON qw();
+use open ':std', ':encoding(UTF-8)';
+use File::Copy;
+
+my $cur_dir = '/home/repl/Videos/Bilibili/Fanju/TOUCH/s_2425';
+opendir(DIR, $cur_dir) or dir $!;
+
+while (my $file = readdir(DIR)) {
+    next if ($file =~ /^\./);
+    
+    # get index_title
+    my $json_file = $cur_dir . &quot;/$file&quot; . '/entry.json';
+
+    my $json_text = do {
+	open(my $json_fh, &quot;&lt;:encoding(UTF-8)&quot;, $json_file)
+	    or die(&quot;Can not open $json_file\&quot;$!\n\&quot;&quot;);
+	local $/;
+	&lt;$json_fh&gt;
+    };
+
+    my $json = JSON-&gt;new;
+    my $data = $json-&gt;decode($json_text);
+    my $index = $data-&gt;{'ep'}{'index_title'};
+
+    # directories like 58116
+    my $subdir = &quot;$cur_dir/$file&quot;;
+    opendir(SUBDIR, $subdir) or dir $!;
+
+    while (my $subfile = readdir(SUBDIR)) {
+	next if ($subfile =~ /^\./);
+	if (-d &quot;$subdir/$subfile&quot;) {
+	    if ($subfile =~ /hdmp4/) {
+		# only rename
+		opendir(DSTDIR, &quot;$subdir/$subfile&quot;);
+		while (my $dstfile = readdir(DSTDIR)) {
+		    next if ($dstfile =~ /^\./);
+		    if ($dstfile =~ /mp4$/) {
+			$index =~ s/ /_/g;
+			rename(&quot;$subdir/$subfile/$dstfile&quot;, &quot;$index.mp4&quot;) or die
+			    &quot;failed to copy file&quot; . $index;
+		    }
+		}
+		closedir(DSTDIR);
+	    }
+	    if ($subfile =~ /flv/) {
+		# concat flv files
+		opendir(DSTDIR, &quot;$subdir/$subfile&quot;);
+		my @flv = ();
+		while (my $dstfile = readdir(DSTDIR)) {
+		    next if ($dstfile =~ /^\./);
+		    if ($dstfile =~ /flv$/) {
+			push @flv, $dstfile;
+		    }
+		}
+		@flv = sort { $a cmp $b } @flv;
+		@flv = map { &quot;file './$_'&quot; } @flv;
+		my $mylist = &quot;$subdir/$subfile/mylist.txt&quot;;
+		open (my $fh, &quot;&gt;&quot;, $mylist)
+		    or dir $!;
+		for (@flv) { print $fh &quot;$_\n&quot;; }
+		close($fh);
+		say &quot;$subdir/$subfile&quot;;
+		# output file is: output.flv. Chinese filename will crash. T_T
+		system(&quot;cd $subdir/$subfile &amp;&amp; ffmpeg -f concat -safe 0 -i mylist.txt -c copy output.flv&quot;);
+		# rename the filename of the output.flv to Chinese filename.
+		$index =~ s/ /_/g;
+		rename(&quot;$subdir/$subfile/output.flv&quot;, &quot;$index.flv&quot;) or die
+		    &quot;failed to copy file&quot; . $index;
+		closedir(DSTDIR);
+	    }
+	}
+    }
+    close(SUBDIR);
+}
+
+closedir(DIR);
+exit 0;
+</code></pre>
+
+<p>遇到几个陷阱：ffmpeg命令的输出文件不能是中文文件名，这个调试很久。然后文件路径最好不要有中文，否则出现一些奇怪的问题，不知道怎么解决，都改成英文名就好了。</p>
+
+<p>哦，还有一件事情：以前试过很多种从Android传数据到Linux的方法，最后还是发现，<code>adb pull</code>最好用，速度最快。比如：</p>
+
+<pre><code class="language-bash">adb pull /storage/emulated/0/Android/data/tv.danmaku.bili/download/s_2425
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E5%A4%8D%E4%B9%A0c/"><i class="fa fa-chevron-circle-left"></i> 复习C&#43;&#43;</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E9%87%8D%E6%96%B0%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">重新整理博客 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

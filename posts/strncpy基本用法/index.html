@@ -1,0 +1,148 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>strncpy基本用法</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-10-02T09:50:00Z">Oct 2, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/c/">#C</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>见<a href="http://baike.baidu.com/item/strncpy">百度百科</a>。</p>
+
+<p>注意这句话：</p>
+
+<p>（c/c++）复制src中的内容（字符，数字、汉字&hellip;.）到dest，复制多少由num的值决定，返回指向dest的指针。如果遇到null字符（&rsquo;\0&rsquo;），且还没有到num个字符时，就用（num - n）（n是遇到null字符前已经有的非null字符个数）个null字符附加到destination。注意：并不是添加到destination的最后，而是紧跟着由source中复制而来的字符后面。</p>
+
+<p>示例程序：</p>
+
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdlib&gt;
+int main(void)
+{
+
+//  char *greeting = &quot;hello&quot;;
+//  char *temp = (char*)malloc(6);
+//  strncpy(temp, greeting, 3);
+//  strncpy(temp + 3, &quot;p!&quot;, 2);
+//  greeting = temp;
+//  printf(&quot;%s\n&quot;, greeting);
+  char des[] = &quot;Hello,i am!&quot;;
+  int len = strlen(des);
+  char source[] = &quot;abc\0def&quot;;
+  strncpy(des, source, 5);
+  printf(&quot;%s\n&quot;, des);
+  for (int i = 0; i &lt; len; ++i) {
+    if (des[i] == '\0') printf(&quot;$&quot;);
+    else printf(&quot;%c&quot;, des[i]);
+  }
+  printf(&quot;\n&quot;);
+
+  return 0;
+}
+</code></pre>
+
+<p>可以发现输出是：</p>
+
+<pre><code>abc$$,i am!
+</code></pre>
+
+<p>这正是我们想要的==</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E5%A4%A7%E4%B8%89%E5%B0%B1%E8%BF%99%E4%B9%88%E6%AC%A2%E4%B9%90%E5%9C%B0%E5%BC%80%E5%A7%8B%E4%BA%86/"><i class="fa fa-chevron-circle-left"></i> 大三就这么欢乐地开始了</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E7%A9%BA%E7%BB%93%E6%9E%84%E4%BD%93%E5%A4%A7%E5%B0%8F%E6%98%AF%E5%A4%9A%E5%B0%91/">空结构体大小是多少？ <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

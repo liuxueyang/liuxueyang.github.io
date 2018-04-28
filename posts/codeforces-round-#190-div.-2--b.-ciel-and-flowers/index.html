@@ -1,0 +1,144 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Codeforces Round #190 (Div. 2)  B. Ciel and Flowers</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-07-03T14:14:00Z">Jul 3, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/codeforces/">#CodeForces</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>链接：<a href="http://codeforces.com/contest/322/problem/B">http://codeforces.com/contest/322/problem/B</a>
+这题做错了。没考虑周全。</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int main(void)
+{
+    int r, g, b;
+    while (~scanf(&quot;%d%d%d&quot;, &amp;r, &amp;g, &amp;b)) {
+        int x = r % 3, y = g % 3, z = b % 3, Max = max(x, max(y, z)), cnt =r/3+g/3+b/3;
+        if (Max == 1) {
+            if (x == y &amp;&amp; y == z &amp;&amp; x == 1) cnt++;
+        } 
+                if (Max == 2) {
+            if (x + y + z == 4) {
+                            if (x*y*z) cnt++;
+                            else if (!x &amp;&amp; r/3) cnt++;
+                            else if (!y &amp;&amp; g/3) cnt++;
+                            else if (!z &amp;&amp; b/3) cnt++;
+                        }
+                        else if (x + y + z == 5) cnt++;
+            else if (x + y + z == 6) cnt+=2;
+        }
+        printf(&quot;%d\n&quot;, cnt);
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+<p>。。
+。。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu3308--%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/"><i class="fa fa-chevron-circle-left"></i> hdu3308  线段树——区间合并</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uva-11020---efficient-solutions-%E5%B9%B3%E8%A1%A1bst/">uva 11020 - Efficient Solutions ——平衡BST <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>uva 573 The Snail</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2012-11-06T23:54:00Z">Nov 6, 2012</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/uva/">#Uva</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>The Snail</p>
+
+<p>A snail is at the bottom of a 6-foot well and wants to climb to the top. The snail can climb 3 feet while the sun is up, but slides down 1 foot at night while sleeping. The snail has a fatigue factor of 10%, which means that on each successive day the snail climbs 10%  3 = 0.3 feet less than it did the previous day. (The distance lost to fatigue is always 10% of the first day&rsquo;s climbing distance.) On what day does the snail leave the well, i.e., what is the first day during which the snail&rsquo;s height exceeds 6 feet? (A day consists of a period of sunlight followed by a period of darkness.) As you can see from the following table, the snail leaves the well during the third day.</p>
+
+<p>Day     Initial Height  Distance Climbed    Height After Climbing   Height After Sliding
+1   0&rsquo;  3&rsquo;  3&rsquo;  2&rsquo;
+2   2&rsquo;  2.7&rsquo;    4.7&rsquo;    3.7&rsquo;
+3   3.7&rsquo;    2.4&rsquo;    6.1&rsquo;    -</p>
+
+<p>Your job is to solve this problem in general. Depending on the parameters of the problem, the snail will eventually either leave the well or slide back to the bottom of the well. (In other words, the snail&rsquo;s height will exceed the height of the well or become negative.) You must find out which happens first and on what day.</p>
+
+<p>Input</p>
+
+<p>The input file contains one or more test cases, each on a line by itself. Each line contains four integers H, U, D, and F, separated by a single space. If H = 0 it signals the end of the input; otherwise, all four numbers will be between 1 and 100, inclusive. H is the height of the well in feet,U is the distance in feet that the snail can climb during the day, D is the distance in feet that the snail slides down during the night, and F is the fatigue factor expressed as a percentage. The snail never climbs a negative distance. If the fatigue factor drops the snail&rsquo;s climbing distance below zero, the snail does not climb at all that day. Regardless of how far the snail climbed, it always slides D feet at night.</p>
+
+<p>Output</p>
+
+<p>For each test case, output a line indicating whether the snail succeeded (left the well) or failed (slid back to the bottom) and on what day. Format the output exactly as shown in the example.</p>
+
+<p>Sample Input</p>
+
+<p>6 3 1 10 10 2 1 50 50 5 3 14 50 6 4 1 50 6 3 1 1 1 1 1 0 0 0 0</p>
+
+<p>Sample Output</p>
+
+<p>success on day 3 failure on day 4 failure on day 7 failure on day 68 success on day 20 failure on day 2</p>
+
+<p>Miguel A. Revilla
+1998-03-10</p>
+
+<p>这道题目，有一点，要注意边界，不等号取到等号还是取不到等号。</p>
+
+<p>另外，犯了一个很低级的错误，把变量的类型用错了，有小数的时候要用double型，我开始想都没想就用了int，结果怎么也不对，这种错误也会有。。。</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+
+using namespace std;
+
+int main(void)
+{
+    double h, u, d, f; int i;
+
+#ifndef ONLINE_JUDGE
+    freopen(&quot;at&quot;, &quot;r&quot;, stdin);
+#endif
+    while (cin &gt;&gt; h &gt;&gt; u &gt;&gt; d &gt;&gt; f)
+    {
+        if (!h)    break;
+        double sum = 0;int flag = 0;
+        i = 1;
+        while (1)
+        {
+            double clim = u - (i - 1) * f / 100 * u;
+            if (clim &lt;= 0)    clim = 0;
+            sum = sum + clim;    
+            if (sum &gt; h)    {flag = 1; break;}
+            sum -= d;     
+            if (sum &lt; 0)     {flag = 0; break;}
+            i++;
+        }
+        if (flag)    cout &lt;&lt; &quot;success on day &quot; &lt;&lt; i &lt;&lt; endl;
+        if (!flag)    cout &lt;&lt; &quot;failure on day &quot; &lt;&lt; i &lt;&lt; endl;
+    }
+
+    return 0;
+}
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/lost/"><i class="fa fa-chevron-circle-left"></i> lost</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uva-11044-searching-for-nessy/">uva 11044 Searching for Nessy <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,183 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>uva10177 (2/3/4)-D Sqr/Rects/Cubes/Boxes?</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2012-11-05T19:37:00Z">Nov 5, 2012</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/uva/">#Uva</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Problem J
+(2/3/4)-D Sqr/Rects/Cubes/Boxes?
+Input: standard input
+Output: standard output
+Time Limit: 2 seconds
+ 
+You can see a (4x4) grid below. Can you tell me how many squares and rectangles are hidden there? You can assume that squares are not rectangles. Perhaps one can count it by hand but can you count it for a (100x100) grid or a (10000x10000) grid. Can you do it for higher dimensions? That is can you count how many cubes or boxes of different size are there in a (10x10x10) sized cube or how many hyper-cubes or hyper-boxes of different size are there in a four-dimensional (5x5x5x5) sized hypercube. Remember that your program needs to be very efficient. You can assume that squares are not rectangles, cubes are not boxes and hyper-cubes are not hyper-boxes. 
+ 
+Fig: A 4x4 Grid                           Fig: A 4x4x4 Cube 
+Input
+The input contains one integer N (0&lt;=N&lt;=100) in each line, which is the length of one side of the grid or cube or hypercube. As for the example above the value of N is 4. There may be as many as 100 lines of input.
+ 
+Output
+For each line of input, output six integers S2, R2, S3, R3, S4, R4 in a single line where S2 means no of squares of different size in ( NxN) two-dimensional grid, R2 means no of rectangles of different size in (NxN) two-dimensional grid. S3, R3, S4, R4 means similar cases in higher dimensions as described before.  
+ 
+Sample Input:
+123
+Sample Output:</p>
+
+<p>1 0 1 0 1 05 4 9 18 17 6414 22 36 180 98 1198
+Shahriar Manzoor
+ 
+ 
+“A bus was running at full speed and suddenly the driver stopped it.
+As a result a passenger fell down from his seat and began scolding
+Newton as Newton invented inertia of motion.”
+ 
+ 
+这道题目是找规律的数学题。
+数正方形很简单，就是 ∑ iw 求和， i 从1到n, w 是维数。
+长方形的话，以2维的为例，3，4维的类比一下就可以。</p>
+
+<pre><code class="language-cpp">拙劣的代码
+
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cmath&gt;
+
+using namespace std;
+
+int main(void)
+{
+    long long int s2, s3, s4, r2, r3, r4, temp;
+    int n, i;
+
+    while (cin &gt;&gt; n)
+    {
+        temp = n * (n + 1) / 2;
+        s2 = n * (2 * n + 1) * (n + 1) / 6;
+        r2 = temp * temp - s2;
+        s3 = temp * temp;
+        r3 = temp * s3 - s3;
+        s4 = 0;
+        for (i = 1; i &lt;= n; i++)     s4 += i*i*i*i;
+        r4 = s3 * s3 - s4;
+        printf(&quot;%lld %lld %lld %lld %lld %lld\n&quot;, s2, r2, s3, r3, s4, r4);
+    }
+
+    return 0; 
+}
+
+
+</code></pre>
+
+<p> 
+假设一个正方形边长是n。
+从左边取一段作为长方形的一边，如果取长度为1，则有n种取法，如果长度为2，则有n-1种取法，以此类推，共有 n * (n + 1) / 2 种取法。
+从上边取一段作为长方形另一条临边，同理，有 n * (n + 1) / 2 种取法。
+令t = n * (n + 1) / 2，因此，长方形的个数一共有 t * t 个。
+其中包含了正方形，再把正方形减掉就可以了。 
+如果维数是 3 和 4 的话，则依次是 t * t * t, t * t * t * t ;
+另外，计算的时候，n 的平方求和可以用公式，n * (n + 1) * (2 * n + 1) / 2;
+n 的立方求和也有公式 n * n * (n + 1) * (n + 1) / 4。
+还有，要用 long long int 型变量。
+代码可读性不好，经过了一点简单的数学代换，所以直接看代码应该有点困难。知道方法自己推一下公式就可以了。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uva-100-the-3n&#43;1-problem/"><i class="fa fa-chevron-circle-left"></i> uva 100 The 3n&#43;1 problem</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E8%BD%AC%E8%BD%BD--acm%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92/">转载  ACM训练计划 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

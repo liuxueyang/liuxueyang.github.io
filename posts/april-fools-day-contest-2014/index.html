@@ -1,0 +1,276 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>April Fools Day Contest 2014</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2014-04-29T09:56:46Z">Apr 29, 2014</time>
+        </li>
+        
+        
+
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>April Fools Day Contest 2014</p>
+
+<p>Ａ、Ｃ、Ｈ三道题目</p>
+
+<hr />
+
+<p>A. The Great Game</p>
+
+<p>这题没看懂。。看了官方题解真是恍然大悟啊，原来是石头剪刀布啊！！！</p>
+
+<p>8&lt; 代表剪刀啊</p>
+
+<p>() 代表石头啊</p>
+
+<p>[] 代表布啊</p>
+
+<p>真是逆天啊，这么一说还真觉得有点像。。。。尤其是那个剪刀。</p>
+
+<p>给那个出题人的想象力跪了。</p>
+
+<pre><code> /*
+  * =====================================================================================
+  *       Filename : TheGreatGame.cpp
+  *    Description : So Funny
+  *    Version     : 0.1
+  *        Created : 04/29/14 07:58
+  *         Author : Liu Xue Yang (LXY), liuxueyang457@163.com
+  *         Motto  : How about today?
+  * =====================================================================================
+ */
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  judge
+ *  Description:  who win?
+ * =====================================================================================
+ */
+    int
+judge ( char a, char b )
+{
+    if ( a=='[' ) {
+        if ( b=='[' ) {
+            return 0;
+        }
+        else if ( b=='(' ) {
+            return 1;
+        }
+        else {
+            return -1;
+        }
+    }
+    if ( a=='(' ) {
+        if ( b=='[' ) {
+            return -1;
+        }
+        else if ( b=='(' ) {
+            return 0;
+        }
+        else {
+            return 1;
+        }
+    }
+    if ( a=='8' ) {
+        if ( b=='[' ) {
+            return 1;
+        }
+        else if ( b=='(' ) {
+            return -1;
+        }
+        else {
+            return 0;
+        }
+    }
+    return 0;
+}        /* -----  end of function judge  ----- */
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name: main
+ * =====================================================================================
+ */
+
+    int
+main ( int argc, char *argv[] )
+{
+    char a[21], b[21];
+    scanf ( &quot;%s%s&quot;, a, b );
+    int len = strlen(a), wina = 0, winb = 0;
+    for ( int i = 0; i &lt; len; i+=2 ) {
+        int tmp = judge(a[i], b[i]);
+        if ( tmp &gt; 0 ) {
+            ++wina;
+        }
+        else if ( tmp &lt; 0 ) {
+            ++winb;
+        }
+    }
+    if ( wina &gt; winb ) {
+        printf ( &quot;TEAM 1 WINS\n&quot; );
+    }
+    else if ( wina &lt; winb ) {
+        printf ( &quot;TEAM 2 WINS\n&quot; );
+    }
+    else {
+        printf ( &quot;TIE\n&quot; );
+    }
+
+        return EXIT_SUCCESS;
+}                /* ----------  end of function main  ---------- */
+</code></pre>
+
+<p>看了一下别人的python代码，挺简洁。</p>
+
+<pre><code>#!/bin/python
+team1 = input().replace('[', '7').replace('(', '6')
+team2 = input().replace('[', '7').replace('(', '6')
+s = 0
+for i in range(0, len(team1), 2):
+    if team1[i] &gt; team2[i]:
+        s += 1
+    elif team1[i] &lt; team2[i]:
+        s -= 1
+    if team1[i] == '8' and team2[i] == '6':
+        s -= 2
+    if team1[i] == '6' and team2[i] == '8':
+        s += 2
+if s &gt; 0:
+    print(&quot;TEAM 1 WINS&quot;)
+elif s &lt; 0:
+    print(&quot;TEAM 2 WINS&quot;)
+else:
+    print(&quot;TIE&quot;)
+</code></pre>
+
+<p>这个思路眼前一亮，把对应的字符赋值，比较，然后再修正。</p>
+
+<p>C. Magnum Opus</p>
+
+<p>同样的，开始我也没看懂，没错，是拉丁语。。。</p>
+
+<p>官方题解说Google翻译一下这封信，可以发现这是一封很优美又充满讽刺的信。。</p>
+
+<p>好吧，翻译之后也没看懂。需要注意前面的大写的罗马数字，然后猜想大概和配方的量有关系。</p>
+
+<p>五种配方的量依次是：1 1 2 7 4</p>
+
+<p>所以只需要让五种原料分别除以上面的五个数字，然后找到最小值，输出。</p>
+
+<p>这得需要多丰富的想象力啊！！</p>
+
+<pre><code>#!/bin/python
+
+a, b, c, d, e = list(map(int, input().split(' ')))
+result = (int)(min(a/1, b/1, c/2, d/7, e/4))
+print(result)
+</code></pre>
+
+<p>恩，用python写比较简单。</p>
+
+<p>H. A + B Strikes Back</p>
+
+<p>这道题嘛。绝。</p>
+
+<p>官方题解说，提交的前五次系统是不会测试直接给ＷＡ！！！</p>
+
+<p>我看到这句话就笑了啊！！！这也太有创意了吧，哈哈哈哈</p>
+
+<pre><code>#!/bin/python
+a, b = list(map(int, input().split(' ')))
+print(a+b)
+</code></pre>
+
+<p>不愧是April Fool&rsquo;s Day，题目真有意思。。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E6%8C%87%E9%92%88%E7%9A%84%E9%97%AE%E9%A2%98/"><i class="fa fa-chevron-circle-left"></i> 指针的问题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/some-simple-recursive-lisp-programs/">some simple recursive lisp programs <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

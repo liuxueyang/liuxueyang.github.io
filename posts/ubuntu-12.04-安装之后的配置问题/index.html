@@ -1,0 +1,123 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>ubuntu 12.04 安装之后的配置问题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2012-11-20T12:07:00Z">Nov 20, 2012</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/ubuntu/">#Ubuntu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <ol>
+<li>首先换软件源。</li>
+<li>如果安装vim的时候出现问题，比如：
+Reading package lists&hellip; DoneBuilding dependency tree       Reading state information&hellip; DonePackage vim is not available, but is referred to by another package.This may mean that the package is missing, has been obsoleted, oris only available from another source
+E: Package &lsquo;vim&rsquo; has no installation candidate
+执行 sudo apt-get update 就可以了</li>
+<li>如果刚刚安装上系统，没有中文输入法，也没有输入法的切换面板，执行：
+killall ibus-daemon
+ibus-daemon -d
+然后就出现了输入法切换面板，点击，找到 preferences 选项，在 inputmethod 里面添加中文输入法就可以了。</li>
+<li>设置允许root 登录 ：
+vi /etc/lightdm/lightdm.conf.
+在这个文件末尾加上下面两行代码
+greeter-show-manual-login=trueallow-guest=false
+保存退出。然后 sudo passwd root 设置root登录密码就可以了。</li>
+</ol>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/ubuntu12.04-inodeclient-%E8%BF%9E%E6%A0%A1%E5%9B%AD%E7%BD%91/"><i class="fa fa-chevron-circle-left"></i> ubuntu12.04 iNodeClient 连校园网</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu1754-i-hate-it-%E7%BA%BF%E6%AE%B5%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/">hdu1754 I Hate It ——线段数入门题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

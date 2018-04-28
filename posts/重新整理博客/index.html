@@ -1,0 +1,198 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>重新整理博客</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2017-04-10T21:11:11Z">Apr 10, 2017</time>
+        </li>
+        
+        
+
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>这么长时间过去了，好像很久不管这个博客了，差不多10个月过去了。是时候
+把这些零散的东西整理一下了。争取把之前在别的地方写的东西都整理到这里
+来。这样以后查看会方便很多吧！</p>
+
+<p>主要是2014年的「博客园」上面的东西。找了一下现有的工具<a href="https://npm.taobao.org/package/hexo-migrator-cnblogs">hexo-migrator-cnblogs</a>发现早已经不维护了，现在也不能用了。所以写了一个简单的脚本来爬取我的博客：</p>
+
+<pre><code class="language-python"># 2017/04/11 00:45:15 AM
+# Author: liuxueyang
+
+from bs4 import BeautifulSoup
+import requests
+import re
+import os.path
+
+url = 'http://www.cnblogs.com/liuxueyang/default.html?page='
+page_nums = range(1, 11)
+cnt = 0
+already_urls = []
+
+if os.path.exists('already.txt'):
+    with open('already.txt', 'r') as already_f:
+        already_urls = already_urls + already_f.readlines()
+
+for page_num in page_nums:
+    url1 = url + str(page_num)
+    r = requests.get(url1)
+    soup = BeautifulSoup(r.content, 'html5lib')
+
+    titles = soup.find_all('a', class_='posttitle')
+    for title in titles:
+        print '==' * 20, '\n\n'
+        cnt += 1
+        blog_url = title.get('href')
+        blog_name = title.string
+        blog_r = requests.get(blog_url)
+
+        if blog_url + '\n' in already_urls:
+            print cnt, blog_name
+            continue
+
+        blog_soup = BeautifulSoup(blog_r.content, 'html5lib')
+        blog_body = blog_soup.find(id='cnblogs_post_body')
+        blog_date = blog_soup.find(id='post-date').text
+
+        print cnt, blog_url
+        tags = 'tags: \n'
+
+        body = [
+            '---\n', 'title: &quot;%s&quot;\n' % blog_name, 'date: %s\n' % blog_date,
+            tags, '---\n\n'
+        ]
+
+        for child in blog_body.children:
+            if child.name == 'p':
+                body.append(child.text + '\n')
+            elif child.name == 'div' and child.has_attr('class') and child.get(
+                    'class')[0] == 'cnblogs_code':
+                lines = child.text.split('\n')
+                body.append('\n```cpp\n')
+                for line in lines:
+                    line = re.sub(r'^ *', '', line)
+                    line = re.sub(r'^\d* ', '', line)
+                    body.append(line + '\n')
+                body.append('```\n\n')
+
+        for line in body:
+            print line,
+        file_name = re.sub(r' |/', '-', blog_name) + '.md'
+        print file_name
+
+        action = raw_input()
+
+        if action == 'S':
+            process_later_file = 'later.txt'
+            f = open(process_later_file, 'a')
+            f.write(blog_url + '\n')
+            print '-' * 30
+            print 'process by hand later!'
+            print '-' * 30
+            f.close()
+            continue
+
+        if action:
+            action = action.split(',')
+            tags = 'tags: [' + ', '.join(action) + ']' + '\n'
+            body[3] = tags
+
+        ff = open(file_name, 'w')
+        for b in body:
+            ff.write(b.encode('utf-8'))
+        ff.close()
+
+        with open('already.txt', 'a') as already_f:
+            already_f.write(blog_url + '\n')
+
+</code></pre>
+
+<p>没有加处理图片的功能。因为以前的博客用的图片并不多，手动处理。它会抓取博客正文和嵌入的代码，处理嵌入代码的时候花了比较多的时间，比如如果从xml中获取到嵌入的代码，然后去掉行号之类的。这个程序抓取到一篇博客就显示出博客正文和代码块来，等待用户输入，如果正常，之间按回车处理下一篇，如果原来的博客有图片或者抓取的内容不完整，按下<code>S</code>会把当前博客的地址保存到一个<code>later.txt</code>这个文本文件里，随后手动处理。已经处理好的博客地址放到<code>already.txt</code>文件里，这样避免了重复处理。结果还可以。</p>
+
+<p>总共有455篇日志了。可能是我的电脑太老的原因，hexo生成的时候竟然用了好几分钟。所以之后想试一试Hakyll了。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86bilibili%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%BC%93%E5%AD%98%E7%9A%84%E8%A7%86%E9%A2%91/"><i class="fa fa-chevron-circle-left"></i> 整理Bilibili安卓客户端缓存的视频</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/haskell-%E7%AC%94%E8%AE%B01/">Haskell 笔记1 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

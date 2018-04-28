@@ -1,0 +1,185 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>CF 230A Dragons</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-03-10T16:30:00Z">Mar 10, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/codeforces/">#CodeForces</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>C - Dragons
+Time Limit:2000MS     Memory Limit:262144KB     64bit IO Format:%I64d &amp; %I64u
+Submit Status Practice CodeForces 230A</p>
+
+<p>Description</p>
+
+<p>Kirito is stuck on a level of the MMORPG he is playing now. To move on in the game, he&rsquo;s got to defeat all n dragons that live on this level. Kirito and the dragons have strength, which is represented by an integer. In the duel between two opponents the duel&rsquo;s outcome is determined by their strength. Initially, Kirito&rsquo;s strength equals s.</p>
+
+<p>If Kirito starts duelling with the i-th (1 ≤ i ≤ n) dragon and Kirito&rsquo;s strength is not greater than the dragon&rsquo;s strength xi, then Kirito loses the duel and dies. But if Kirito&rsquo;s strength is greater than the dragon&rsquo;s strength, then he defeats the dragon and gets a bonus strength increase by yi.</p>
+
+<p>Kirito can fight the dragons in any order. Determine whether he can move on to the next level of the game, that is, defeat all dragons without a single loss.</p>
+
+<p>Input</p>
+
+<p>The first line contains two space-separated integers s and n (1 ≤ s ≤ 104, 1 ≤ n ≤ 103). Then n lines follow: the i-th line contains space-separated integers xi and yi (1 ≤ xi ≤ 104, 0 ≤ yi ≤ 104) — the i-th dragon&rsquo;s strength and the bonus for defeating it.</p>
+
+<p>Output</p>
+
+<p>On a single line print &ldquo;YES&rdquo; (without the quotes), if Kirito can move on to the next level and print &ldquo;NO&rdquo; (without the quotes), if he can&rsquo;t.</p>
+
+<p>Sample Input
+Input</p>
+
+<p>2 2
+1 99
+100 0</p>
+
+<p>Output</p>
+
+<p>YES</p>
+
+<p>Input</p>
+
+<p>10 1
+100 100</p>
+
+<p>Output</p>
+
+<p>NO</p>
+
+<p>Hint</p>
+
+<p>In the first sample Kirito&rsquo;s strength initially equals 2. As the first dragon&rsquo;s strength is less than 2, Kirito can fight it and defeat it. After that he gets the bonus and his strength increases to 2 + 99 = 101. Now he can defeat the second dragon and move on to the next level.</p>
+
+<p>In the second sample Kirito&rsquo;s strength is too small to defeat the only dragon and win.</p>
+
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+struct dragon
+{
+  int x, y;
+}d[1000+10];
+int cmp(const void *a, const void *b)
+{
+  return (*(dragon*)a).x &gt; (*(dragon*)b).x ? 1 : -1;
+}
+int main(void){
+  int s, n;
+#ifndef ONLINE_JUDGE
+  freopen(&quot;dragon.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (~scanf(&quot;%d%d&quot;, &amp;s, &amp;n)){
+    for (int i = 0; i &lt; n; ++i){scanf(&quot;%d%d&quot;, &amp;d[i].x, &amp;d[i].y);}
+    qsort(d, n, sizeof(d[0]), cmp);
+    bool flag = true;
+    for (int i = 0; i &lt; n; ++i){
+      if (s &gt; d[i].x) s += d[i].y;
+      else {flag = false; break;}
+    }
+    if (flag) printf(&quot;YES\n&quot;);
+    else printf(&quot;NO\n&quot;);
+  }
+  return 0;
+}
+</code></pre>
+
+<p>简单题，木有卡……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/cf-231a-team/"><i class="fa fa-chevron-circle-left"></i> CF 231A Team</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/cf-142b-t-primes/">CF 142B T-primes <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

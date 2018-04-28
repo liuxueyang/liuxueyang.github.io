@@ -1,0 +1,167 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>USACO Greedy Gift Givers ——水题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-05-21T13:05:00Z">May 21, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/usaco/">#USACO</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://cerberus.delos.com:790/usacoprob2?S=gift1&amp;a=nR34fDHld4J">http://cerberus.delos.com:790/usacoprob2?S=gift1&amp;a=nR34fDHld4J</a>
+题目大意：<a href="http://blog.sina.com.cn/s/blog_63d0cab00100h1rx.html">http://blog.sina.com.cn/s/blog_63d0cab00100h1rx.html</a>
+赶脚这货考的是英语……</p>
+
+<pre><code class="language-cpp">
+/*
+ID: zypz457
+LANG: C++
+TASK: gift1
+ */
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;map&gt;
+using namespace std;
+int n;
+map&lt;string, int&gt; mymap;
+int wei[15][2];
+string name[20];
+void init() {
+  int i;
+  freopen(&quot;gift1.in&quot;, &quot;r&quot;, stdin);
+  freopen(&quot;gift1.out&quot;, &quot;w&quot;, stdout);
+  memset(wei, 0, sizeof(wei));
+  scanf(&quot;%d&quot;, &amp;n);
+  for (i = 0; i &lt; n; ++i)  {
+    cin &gt;&gt; name[i];
+    mymap[name[i]] = i;
+  }
+  string str, str1;
+  while (cin &gt;&gt; str) {
+    int cnt, id, recid, i;
+    id = mymap[str];
+    scanf(&quot;%d%d&quot;, &amp;wei[id][0], &amp;cnt);
+    for (i = 0; i &lt; cnt;++i) {
+      cin &gt;&gt; str1; recid = mymap[str1];
+      int tmp = wei[id][0] / cnt;
+      wei[id][0] = tmp * cnt;
+      wei[recid][1] += tmp;
+    }
+  }
+}
+void solve() {
+  int i;
+  for (i = 0; i &lt; n; ++i) {
+    cout &lt;&lt; name[i] &lt;&lt; ' ' &lt;&lt; -wei[i][0]+wei[i][1]&lt;&lt;'\n';
+  }
+}
+int main(void) {
+  init();
+  solve();
+
+  return 0;
+}
+
+</code></pre>
+
+<p>题目意思难理解，英语要好。
+直接搜的翻译，开始真没看懂题意，当初感觉是有多难，看了翻译才发现……呵呵</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/usaco-your-ride-is-here-%E6%B0%B4%E9%A2%98/"><i class="fa fa-chevron-circle-left"></i> USACO Your Ride Is Here ——水题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/usaco-friday-the-thirteenth-%E6%B0%B4%E9%A2%98/">USACO Friday the Thirteenth ——水题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>codeforces A. Difference Row</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-10-07T00:28:00Z">Oct 7, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/codeforces/">#CodeForces</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>link: <a href="http://codeforces.com/contest/347/problem/A">http://codeforces.com/contest/347/problem/A</a></p>
+
+<p>开始看起来很复杂的样子，但是刚写下样例，就发现因为中间的都消去了，其实起作用的就是最大值和最小值=_=</p>
+
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int a[102];
+int main(void) 
+{
+#ifndef ONLINE_JUDGE
+    freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+#endif
+    int n;
+    while (~scanf(&quot;%d&quot;, &amp;n))
+    {
+        int i;
+        for (i = 0; i &lt; n; scanf(&quot;%d&quot;, a+i++));
+        sort(a, a+n);
+        printf(&quot;%d&quot;, a[n-1]);
+        for (i = 1; i &lt; n-1; ++i)
+            printf(&quot; %d&quot;, a[i]);
+        printf(&quot; %d\n&quot;, a[0]);
+    }
+    return 0;
+}
+</code></pre>
+
+<p>排序后输出就行。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-b-fixed-points/"><i class="fa fa-chevron-circle-left"></i> codeforces B.Fixed Points</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/call%E6%8C%87%E4%BB%A4%E7%9A%84%E4%B8%80%E4%B8%AA%E7%BB%86%E8%8A%82/">call指令的一个细节 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

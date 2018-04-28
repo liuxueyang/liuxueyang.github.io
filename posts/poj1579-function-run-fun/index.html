@@ -1,0 +1,142 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj1579 Function Run Fun</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-03-08T13:38:00Z">Mar 8, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Description
+Input
+Output
+Sample Input
+Sample Output</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int ww[22][22][22];
+int w(int a, int b, int c){
+  if (a &lt;= 0 || b &lt;= 0 || c &lt;= 0) return 1;
+  if (a &gt; 20 || b &gt; 20 || c &gt; 20) return w(20, 20, 20);
+  if (ww[a][b][c] &gt; 0) return ww[a][b][c];
+  if (a &lt; b &amp;&amp; b &lt; c) return ww[a][b][c] = w(a, b, c-1) + w(a, b-1, c-1) - w(a, b-1, c);
+  else return ww[a][b][c] = w(a-1, b, c) + w(a-1, b-1, c) + w(a-1, b, c-1) - w(a-1, b-1, c-1);
+}
+int main(void){
+  int a, b, c;
+#ifndef ONLINE_JUDGE
+  freopen(&quot;poj1759.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (~scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c)){
+    if (a == b &amp;&amp; b == c &amp;&amp; c == -1) break;
+    memset(ww, -1, sizeof(ww));
+    printf(&quot;w(%d, %d, %d) = %d\n&quot;, a, b, c, w(a, b, c));
+  }
+  return 0;
+}
+
+</code></pre>
+
+<p>基本思想就是标记的思想，避免重复计算，水题，看了讨论板学会的，突然发现好久不做水题了……
+有一个事情，就是敲代码的时候，要认真，千万要避免打字错误……次奥，超级让人崩溃的</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj-2528-mayors-posters/"><i class="fa fa-chevron-circle-left"></i> poj 2528 Mayor&#39;s posters</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/mystery/">Mystery <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

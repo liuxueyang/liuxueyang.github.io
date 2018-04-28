@@ -1,0 +1,261 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Dynamic-programming: Spoj DIEHARD - DIE HARD</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-08-12T21:14:23Z">Aug 12, 2016</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/spoj/">#spoj</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目很好理解：</p>
+
+<pre><code>有三个区域，你在每个区域里面只能停留一秒，每个区域会对你的两个指标h和a增加或者减少：
+
+    区域A：h += 3, a += 2
+    区域B：h -= 5, a -= 10
+    区域C：h -= 20, a+= 5
+
+你在任意区域最多只能停留1秒，下一秒必须移动到其它两个区域中的一个，也就是说
+你不能一直呆在一个区域。在任意时刻，如果你的两个指标其中的任意一个&lt;=0，那么
+游戏结束，输出你一共在游戏里面停留了多长时间。
+</code></pre>
+
+<p>如果不加什么思考，那么容易想到，直接递归就可以了，递归函数有三个参数：当前的h值，
+当前的a值，当前的位置。为了不重复求解，用一个三位数组存储这一步的结果。</p>
+
+<p>程序如下：</p>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *
+ *       Filename:  main.cpp
+ *
+ *    Description:  http://www.spoj.com/problems/DIEHARD/
+ *
+ *        Version:  1.0
+ *        Created:  08/12/2016 20:04:27
+ *       Compiler:  g++
+ *
+ *         Author:  Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com
+ *
+ * =====================================================================================
+ */
+#include &lt;bits/stdc++.h&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+#define _ ios_base::sync_with_stdio(0);cin.tie(0);
+#define rep(i, a, n) for (int i = a; i &lt; n; ++i)
+#define per(i, a, n) for (int i = n-1; i &gt;= a; --i)
+#define pb push_back
+#define mp make_pair
+#define all(x) (x).begin(),(x).end()
+#define fi first
+#define se second
+#define SZ(x) ((int)(x).size())
+typedef vector&lt;int&gt; VI;
+typedef map&lt;int,int&gt; MI;
+typedef long long ll;
+typedef pair&lt;int,int&gt; PII;
+const ll MOD=1000000007;
+const int N=1020;
+ll sum[N][N][4];
+ll solve(int h,int a,int pos){
+  if(h&lt;=0||a&lt;=0)return 0;
+  if(-1!=sum[h][a][pos])return sum[h][a][pos];
+  ll a1,a2,a3;
+  if(pos==1){
+    a2=solve(h-5,a-10,2);
+    a3=solve(h-20,a+5,3);
+    return sum[h][a][pos]=1+max(a2,a3);
+  } else if(pos==2) {
+    a1=solve(h+3,a+2,1);
+    a3=solve(h-20,a+5,3);
+    return sum[h][a][pos]=1+max(a1,a3);
+  } else {
+    a1=solve(h+3,a+2,1);
+    a2=solve(h-5,a-10,2);
+    return sum[h][a][pos]=1+max(a1,a2);
+  }
+}
+  int
+main ( void )
+{
+#ifndef  ONLINE_JUDGE
+  freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);
+#endif     /* -----  ONLINE_JUDGE  ----- */
+
+  int T,h,a;cin&gt;&gt;T;while(T--){
+    memset(sum,-1,sizeof(sum));
+    cin&gt;&gt;h&gt;&gt;a;
+    ll a1=solve(h,a,1),a2=solve(h,a,2),a3=solve(h,a,3);
+    cout&lt;&lt;max(a1,max(a2,a3))-1&lt;&lt;endl;
+  }
+
+  return EXIT_SUCCESS;
+}				/* ----------  end of function main  ---------- */
+</code></pre>
+
+<p>程序风格写成这样，单纯是为了减少按键次数，不想按空格……所以就尽量写紧凑一点。也不
+想按回车键，所以除非必要的时候，不换行……反正这种程序也不复杂，以后我也不会再读，
+大概了解思路就好了。</p>
+
+<p>还可以稍微优化一下，注意到区域A对h和a值都会增加，所以，为了使停留时间尽量长，应该这样：</p>
+
+<pre><code>第一秒在区域A，第二秒在区域B或C，第三秒回到区域A，如此反复。
+</code></pre>
+
+<p>这样想，程序就简单一些：</p>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *
+ *       Filename:  main.cpp
+ *
+ *    Description:  http://www.spoj.com/problems/DIEHARD/
+ *
+ *        Version:  2.0
+ *        Created:  08/12/2016 20:50:32
+ *       Compiler:  g++
+ *
+ *         Author:  Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com
+ *
+ * =====================================================================================
+ */
+#include &lt;bits/stdc++.h&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+#define _ ios_base::sync_with_stdio(0);cin.tie(0);
+#define rep(i, a, n) for (int i = a; i &lt; n; ++i)
+#define per(i, a, n) for (int i = n-1; i &gt;= a; --i)
+#define pb push_back
+#define mp make_pair
+#define all(x) (x).begin(),(x).end()
+#define fi first
+#define se second
+#define SZ(x) ((int)(x).size())
+typedef vector&lt;int&gt; VI;
+typedef map&lt;int,int&gt; MI;
+typedef long long ll;
+typedef pair&lt;int,int&gt; PII;
+const ll MOD=1000000007;
+const int N=1020;
+ll sum[N][N];
+ll solve(int h,int a){
+  if(h&lt;=0||a&lt;=0)return -1;
+  if(-1!=sum[h][a])return sum[h][a];
+  ll a2=solve(h-2,a-8), a3=solve(h-17,a+7);
+  return sum[h][a]=2+max(a2,a3);
+}
+  int
+main ( void )
+{
+#ifndef  ONLINE_JUDGE
+  freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);
+#endif     /* -----  ONLINE_JUDGE  ----- */
+
+  int T,h,a;cin&gt;&gt;T;while(T--){
+    memset(sum,-1,sizeof(sum));
+    cin&gt;&gt;h&gt;&gt;a;cout&lt;&lt;solve(h,a)&lt;&lt;endl;
+  }
+
+  return EXIT_SUCCESS;
+}				/* ----------  end of function main  ---------- */
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/show-and-hide-dot-files-in-finder-of-os-x-el-capitan/"><i class="fa fa-chevron-circle-left"></i> show and hide dot files in Finder of OS X El Capitan</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/spoj-dynamic-programming-bytesm2-philosophers-stone/">Spoj, dynamic-programming: BYTESM2 - Philosophers Stone <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

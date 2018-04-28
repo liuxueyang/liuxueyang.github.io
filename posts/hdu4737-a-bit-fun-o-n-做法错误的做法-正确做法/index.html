@@ -1,0 +1,214 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu4737 A Bit Fun ——O(n)做法、错误的做法 &#43; 正确做法</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-09-15T13:31:00Z">Sep 15, 2013</time>
+        </li>
+        
+        
+
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>囧== 下面的做法是错误的。下午在路上突然明白了==</p>
+
+<p>哎，到现在还是只知道暴力的做法，囧爆了：<a href="http://www.cnblogs.com/liuxueyang/p/3322197.html">http://www.cnblogs.com/liuxueyang/p/3322197.html</a></p>
+
+<p>类似于前序和的那种思想。</p>
+
+<p>b数组代表前序或，c数组代表后序或。</p>
+
+<p>O(N)预处理出数组b和数组c</p>
+
+<p>在从前往后扫一遍O(N)的复杂度，求出ans</p>
+
+<p>如图：</p>
+
+<p><img src="http://wstaw.org/m/2017/04/10/15132955-54502bab7850451cac12b1e3c4033167.jpg" alt="img" /></p>
+
+<p>可以发现c[Head] &amp; b[Tail] 就可以求出任意区间内的f(Head, Tail)，可以知道，整个数组里面每个元素进入区间一次，出去一次，所以是O(N)的复杂度。</p>
+
+<p>就这么欢乐地解决了==</p>
+
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+const int N = 100000+4;
+int a[N], b[N], c[N];
+int main(void)
+{
+  #ifndef ONLINE_JUDGE
+  freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+  #endif // ONLINE_JUDGE
+    int t; scanf(&quot;%d&quot;, &amp;t);
+    for (int i = 1; i &lt;= t; ++i)
+    {
+        printf(&quot;Case #%d: &quot;, i);
+        int j, n, m; scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+        memset(b, 0, sizeof(b));
+        memset(c, 0, sizeof(c));
+        long long ans = 0;
+        for (j = 1; j &lt;= n; ++j) {
+            scanf(&quot;%d&quot;, a+j);
+            b[j] = b[j-1] | a[j];
+        }
+        for (j = n; j &gt;= 1; --j) {
+            c[j] = c[j+1] | a[j];
+        }
+        int Head = 1, Tail = 1;
+        while (Head &lt;= n &amp;&amp; Tail &lt;= n) {
+          int tmp = c[Head] &amp; b[Tail];
+          while (tmp &lt; m &amp;&amp; Tail &lt;= n) {
+            ans++; tmp = c[Head] &amp; b[++Tail];
+          }
+          ++Head; Tail = Head;
+        }
+        printf(&quot;%I64d\n&quot;, ans);
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>其实正确的做法应该是这样的：</p>
+
+<p><img src="http://wstaw.org/m/2017/04/10/16081941-c470947d097644859bbbd9bffdc39d5b.jpg" alt="img" /></p>
+
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+typedef long long int LL;
+const int N = 100000+3;
+int a[N], dig[33], cnt[33];
+int main(void) {
+#ifndef ONLINE_JUDGE
+    freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+#endif
+    int t; scanf(&quot;%d&quot;, &amp;t);
+    memset(dig, 0, sizeof(dig));
+    dig[0] = 1;
+    for (int i = 1; i &lt;= 31; ++i) dig[i] = dig[i-1] * 2;
+    for (int i = 1; i &lt;= t; ++i) {
+        printf(&quot;Case #%d: &quot;, i);
+        int Head = 0, Tail = 0, n, m, j, k;
+        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+        LL sum = (LL)n * (n+1) / 2, tmp, nosum = 0;
+        memset(cnt, 0, sizeof(cnt));
+        for (j = 0; j &lt; n; scanf(&quot;%d&quot;, a+j++));
+        while (Tail &lt; n) {
+            tmp = 0;
+            for (j = 0; j &lt;= 31; ++j)
+                if (dig[j] &amp; a[Tail])
+                    ++cnt[j];
+            for (j = 0; j &lt;= 31; ++j)
+                if (cnt[j])
+                    tmp += dig[j];
+            if (tmp &gt;= m) {
+                k = Head;
+                while (tmp &gt;= m) {
+                    tmp = 0;
+                    for (j = 0; j &lt;= 31; ++j)
+                        if (dig[j] &amp; a[Head])
+                            --cnt[j];
+                    for (j = 0; j &lt;= 31; ++j)
+                        if (cnt[j])
+                            tmp += dig[j];
+                    ++Head;
+                }
+                nosum += (LL)(n - Tail) * (Head - k);
+            }
+            ++Tail;
+        }
+        printf(&quot;%I64d\n&quot;, sum - nosum);
+    }
+    return 0;
+}
+</code></pre>
+
+<p>一定要记得强制类型转换！！！18行的那种。纠结了一晚上==</p>
+
+<p>嗨，中村。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu4737-a-bit-fun/"><i class="fa fa-chevron-circle-left"></i> hdu4737 A Bit Fun</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/do-it-wrong-get-it-right/">Do It Wrong, Get It Right <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

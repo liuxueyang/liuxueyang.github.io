@@ -1,0 +1,253 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>spoj, segment tree: KGSS - Maximum Sum</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-07-26T08:58:52Z">Jul 26, 2016</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/spoj/">#spoj</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p><a href="http://www.spoj.com/problems/KGSS/">Problem Link</a></p>
+
+<p>每个节点保存三个值：区间的最大值，区间的第二大值，区间的最大的两个数的和</p>
+
+<p>平常的区间的点更新和区间查询</p>
+
+<pre><code class="language-cpp">// 2016/07/25 19:29:33 PM
+// Sabastian
+
+#include &lt;iostream&gt;
+#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+using namespace std;
+
+typedef long long ll;
+
+typedef struct TreeNode {
+  int start, end;
+  int Max, SecMax, sum;
+
+  TreeNode()
+    : SecMax(-1) {}
+
+  void merge(TreeNode &amp; left, TreeNode &amp; right) {
+    sum = max(left.sum, max(right.sum, left.Max + right.Max));
+    Max = max(left.Max, right.Max);
+    SecMax = min(left.Max, right.Max);
+  }
+} TreeNode;
+
+TreeNode tree[4 * 100000 + 10];
+ll a[4 * 100000 + 10];
+
+void update(int stIndex, int start, int end);
+
+void printNode(int stIndex) {
+  TreeNode &amp;t = tree[stIndex];
+  printf(&quot;%d (%d, %d), total=%d\n&quot;, stIndex, t.start, t.end, t.sum);
+}
+
+void build(int stIndex, int start, int end) {
+  TreeNode &amp; t = tree[stIndex];
+
+  t.start = start;
+  t.end = end;
+
+  if (start == end) {
+    t.sum = t.Max = a[start];
+    return;
+  }
+
+  if (start &gt; end) {
+    return;
+  }
+
+  int mid = (start + end) / 2, leftChildIndex = stIndex * 2,
+      rightChildIndex = leftChildIndex + 1;
+
+  build(leftChildIndex, start, mid);
+  build(rightChildIndex, mid + 1, end);
+
+  t.merge(tree[leftChildIndex], tree[rightChildIndex]);
+}
+
+void update(int stIndex, int index, int value) {
+  TreeNode &amp;t = tree[stIndex];
+
+  // printf(&quot;(%d,%d), %d\n&quot;, t.start, t.end, index);
+  if (index == t.start &amp;&amp; index == t.end) {
+    t.sum = t.Max = value;
+    t.SecMax = -1;
+    return;
+  }
+
+  // node contain is contained in [start..end]
+  int leftChildIndex = stIndex * 2, rightChildIndex = leftChildIndex + 1,
+      mid = (t.start + t.end) / 2;
+
+  if (index &gt; mid) {
+    update(rightChildIndex, index, value);
+  } else {
+    update(leftChildIndex, index, value);
+  }
+
+  t.merge(tree[leftChildIndex], tree[rightChildIndex]);
+
+  return;
+}
+
+TreeNode query(int stIndex, int start, int end) {
+  TreeNode t = tree[stIndex];
+
+  if (start == t.start &amp;&amp; end == t.end) {
+    return t;
+  }
+
+  // node contain is contained in [start..end]
+  int leftChildIndex = stIndex * 2, rightChildIndex = leftChildIndex + 1,
+      mid = (t.start + t.end) / 2;
+  TreeNode result;
+
+  if (start &gt; mid) {
+    return query(rightChildIndex, start, end);
+  } else if (end &lt;= mid) {
+    return query(leftChildIndex, start, end);
+  } else {
+    TreeNode left = query(leftChildIndex, start, mid),
+      right = query(rightChildIndex, mid + 1, end);
+    result.merge(left, right);
+    return result;
+  }
+}
+
+int main(void) {
+#ifdef DEBUG
+  freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);
+#endif
+
+  int N, M;
+
+  scanf(&quot;%d&quot;, &amp;N);
+  for (int i = 0; i &lt; N; ++i) {
+    scanf(&quot;%lld&quot;, &amp;a[i]);
+  }
+
+  build(1, 0, N - 1);
+  scanf(&quot;%d&quot;, &amp;M);
+  for (int m = 1; m &lt;= M; ++m) {
+    int x, y;
+    char i[10];
+    scanf(&quot;%s%d%d&quot;, i, &amp;x, &amp;y);
+
+    x--;
+    if (i[0] == 'Q') {
+      y--;
+      printf(&quot;%d\n&quot;, query(1, x, y).sum);
+    } else {
+      update(1, x, y);
+    }
+  }
+  return 0;
+}
+
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/spoj-segment-tree-horrible-horrible-queries/"><i class="fa fa-chevron-circle-left"></i> spoj, segment tree: HORRIBLE - Horrible Queries</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2016-07-31-17-43-50-pm-%E6%9D%82%E4%BA%8B/">2016/07/31 17:43:50 PM 杂事 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,189 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj2001 Shortest Prefixes ——字典树复习</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-04-19T15:46:00Z">Apr 19, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+                    , 
+                    <a href="/tags/data-structure/">#Data Structure</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://poj.org/problem?id=2001">http://poj.org/problem?id=2001</a>
+这道题目以前写过，复习一下字典树，再写一遍……</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;set&gt;
+#include &lt;map&gt;
+#include &lt;vector&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+char a[1000+10][30], base = 'a'; const int lo = 26;
+typedef struct trie{
+  int num; bool terminal;
+  struct trie *son[lo];
+}trie;
+trie *newtrie(){
+  trie *pnt = new trie;
+  pnt-&gt;num = 1; pnt-&gt;terminal = false;
+  for (int i = 0; i &lt; lo; ++i) pnt-&gt;son[i] = NULL;
+  return pnt;
+}
+void insert(char str[], trie *pnt, int len){
+  trie *tem = pnt;
+  for (int i= 0; i &lt; len; ++i){
+    if (tem-&gt;son[str[i]-base] != NULL){
+      tem-&gt;son[str[i]-base]-&gt;num++;
+    } else{
+      tem-&gt;son[str[i]-base] = newtrie();
+    } tem = tem-&gt;son[str[i]-base];
+  }
+  tem-&gt;terminal = true;
+  return;
+}
+void find(char str[], trie *pnt, int len){
+  trie *tem= pnt;
+  for(int i = 0; i &lt;len; ++i){
+    if (tem-&gt;son[str[i]-base]-&gt;num == 1){
+      printf(&quot;%c&quot;, str[i]); return;
+    }
+    printf(&quot;%c&quot;, str[i]);
+    tem= tem-&gt;son[str[i]-base];
+  }
+  return;
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;2001.in&quot;, &quot;r&quot;, stdin);
+#endif
+  int cnt = 0, i = 0; trie *pnt = newtrie();
+  while (~scanf(&quot;%s&quot;, a[i])){
+    insert(a[i], pnt, strlen(a[i])); i++;
+  }
+  for (int j = 0; j &lt; i; ++j){
+    printf(&quot;%s &quot;, a[j]);
+    find(a[j], pnt, strlen(a[j]));
+    printf(&quot;\n&quot;);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>　　写的过程中还是出现了一些错误，比如，在第60行，开始写成了 trie * pnt = new trie; 只新建了一个节点没有初始化，悲剧的是，竟然可以运行，样例可以过，但是OJ上RE……还有，初始化结构体中的num的时候，要初始化为1,而不是0.查找的时候，要看当前节点的子节点的num是不是1,如果是1,先输出再返回，函数结束，而不是看当前节点的num的值是不是1,这样会多输出一个字符。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj1298-the-hardest-problem-ever-%E6%B0%B4%E9%A2%98/"><i class="fa fa-chevron-circle-left"></i> poj1298 The Hardest Problem Ever ——水题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%8819%E6%97%A5-%E5%9B%9B%E6%A0%A1%E8%81%94%E8%B5%9B%E6%8C%91%E6%88%98%E8%B5%9B%E6%80%BB%E7%BB%93/">2013年4月19日 四校联赛挑战赛总结 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

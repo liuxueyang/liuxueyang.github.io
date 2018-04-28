@@ -1,0 +1,173 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>zoj 1709 Oil Deposits ——DFS入门题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-04-07T00:23:00Z">Apr 7, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/zoj/">#zoj</a>
+                
+                    , 
+                    <a href="/tags/dfs/">#DFS</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=709">http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=709</a>
+题目大意：
+　　给一个矩阵，*代表空地，@代表油田，并且@如果水平，竖直，对角线相邻的话就认为是一块油田，问有多少块油田。
+　　思路就是DFS，从第一个字符开始搜，找到一个@就标记一下，cnt++，然后看它的八个方向上是不是有@，如果有，全部标记为*，不需要恢复现场。然后输出cnt的值就行了。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+
+char s[110][110];
+bool flag;
+int cnt, n, m;
+int dir[8][2] = {{0,1},{0,-1},{-1,0},{1,0},{1,1},{-1,1},{1,-1},{-1,-1}};
+void dfs(int i, int j){
+  if (i &lt; 0 || j &lt; 0 || i &gt; m || j &gt; n) return;
+  if (s[i][j] == '*') return;
+  if (s[i][j] == '@') flag = true;
+  s[i][j] = '*';
+  for (int k = 0; k &lt; 8; ++k){
+    if (s[i+dir[k][0]][j+dir[k][1]] == '@'){
+      dfs(i+dir[k][0], j+dir[k][1]);
+    }
+  }
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;zoj1709.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (~scanf(&quot;%d%d&quot;, &amp;m, &amp;n) &amp;&amp; (m+n)){
+    cnt = 0; flag = false;
+    for (int i = 0; i &lt; m; ++i){
+      scanf(&quot;%s&quot;, s[i]);
+    }
+    for (int i = 0; i &lt; m; ++i){
+      for (int j = 0; j &lt; n; ++j){
+        flag = false;
+        dfs(i, j);
+        if (flag) cnt++;
+      }
+    }
+    printf(&quot;%d\n&quot;, cnt);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>自己写的，好久不1A了……虽然题目很简单，但还是很高兴~O(∩_∩)O哈哈~</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/zoj-2110-tempter-of-the-bone-dfs&#43;%E5%89%AA%E6%9E%9D/"><i class="fa fa-chevron-circle-left"></i> zoj 2110 Tempter of the Bone ——DFS&#43;剪枝</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%886%E6%97%A5--%E6%99%B4/">2013年4月6日  晴 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

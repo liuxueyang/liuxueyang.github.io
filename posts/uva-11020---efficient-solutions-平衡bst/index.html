@@ -1,0 +1,152 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>uva 11020 - Efficient Solutions ——平衡BST</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-07-04T00:25:00Z">Jul 4, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/uva/">#Uva</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>链接：<a href="http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1961">http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1961</a>
+训练指南page228</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;set&gt;
+using namespace std;
+struct Point
+{
+    int a, b;
+    bool operator &lt; (const Point &amp; other) const
+    {
+        return (a &lt; other.a) || (a == other.a &amp;&amp; b &lt; other.b);
+    }
+};
+multiset&lt;Point&gt; S;
+multiset&lt;Point&gt;::iterator it;
+int main(void)
+{
+    #ifndef ONLINE_JUDGE
+     freopen(&quot;11020.in&quot;, &quot;r&quot;, stdin);
+    #endif // ONLINE_JUDGE
+    int T; scanf(&quot;%d&quot;, &amp;T);
+    for (int i = 1; i &lt;= T; ++i)
+    {
+        printf(&quot;Case #%d:\n&quot;, i); int n, a, b; scanf(&quot;%d&quot;, &amp;n); S.clear();
+        while (n--)
+        {
+            scanf(&quot;%d%d&quot;, &amp;a, &amp;b); Point P = (Point){a, b}; it = S.lower_bound(P);
+            if (it == S.begin() || (--it)-&gt;b &gt; b) S.insert(P), it = S.upper_bound(P);
+            while (it != S.end() &amp;&amp; it-&gt;b &gt;= b) S.erase(it++);
+            printf(&quot;%d\n&quot;, S.size());
+        }
+        if (i!=T) printf(&quot;\n&quot;);
+    }
+    return 0;
+}
+
+</code></pre>
+
+<p>。。
+　　本来想睡觉的，这题看了一半，还是做完吧，贴完睡觉。
+　　今天身体超级难受……好久没生过病了，没想到这么痛苦，o(╯□╰)o头疼，浑身上下都不舒服，下午去机房，那个难受啊，我去……赶紧回来了，晚上在综合楼还好一点，以后就住在综合楼和KFC和书院九号了。头晕，睡觉……
+　　对了，明天晚上跑步去，不去锻炼一下一点儿也没意思……什么毛病都出来了。。=_=
+　　晚安。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-round-#190-div.-2--b.-ciel-and-flowers/"><i class="fa fa-chevron-circle-left"></i> Codeforces Round #190 (Div. 2)  B. Ciel and Flowers</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84-%E5%88%98%E4%BA%AE%E7%A8%8B/">《一个人的村庄》 ——刘亮程 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

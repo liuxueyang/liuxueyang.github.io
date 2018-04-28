@@ -1,0 +1,205 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Computing the Minimum Cost of a Flight</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2017-05-17T08:37:01&#43;08:00">May 17, 2017</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="/categories/algorithm/">Algorithm</a>
+                
+                    , 
+                    <a href="/categories/dijkstra/">Dijkstra</a>
+                
+                    , 
+                    <a href="/categories/graph/">Graph</a>
+                
+            </em>
+        </li>
+        
+
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="https://gitlab.com/liuxueyang/algorithms-on-graph-exercise/blob/master/week4/paths_in_graphs_problems_2.pdf">pdf</a></p>
+
+<p>题目给出一个有向图，边的权值非负，求起点到终点的最短路。</p>
+
+<p>用Dijkstra，基本思想是这样的：如果一个有向图权值非负，那么两点之间的最
+短路有最优子结构的性质。两点之间的最短路上的任意两点之间的路径也是最优
+的。</p>
+
+<p>设<code>S -&gt; ... -&gt; u -&gt; ... -&gt; v -&gt; ... -&gt; t</code>是从S到t的一条最短路，那么这条路径
+上从u到v的部分也是u到v的最短路。反证：假设从u到v存在一条更短的路径L，
+那么用L替换S到t中从u到v的部分，就可以得到一条从S到v的更短的路径，由于
+我们假设原来的路径是从S对v的最短路，得出矛盾。</p>
+
+<p>这样，设d(S, t)是<code>S -&gt; ... -&gt; u -&gt; t</code>是S到t的最短路。则：</p>
+
+<pre><code>d(S, t) = d(S, u) + w(u, t)
+</code></pre>
+
+<p>所以我们可以不断地对所有边的进行松弛操作，直到没有边可以松弛。这个时候就可以得到单源最短路。这样的循环最多进行V次，每次最多进行E次松弛操作，因此复杂度是V*E。</p>
+
+<p>显然我们不必每次都对所有边进行松弛。我们可以记录下以后不需要松弛的点，也就是最短路已经确定的点，所以我们可以把所有点分成两个集合，一个集合表示这些点到源点的最短路已经确定，另一个集合表示最短路还不确定。</p>
+
+<p>也就是说每次松弛的循环中，我们可以把松弛过的点放到一个优先队列中，然后从中选择到源点距离最小的出队，它就是最短距离已经确定的点。继续从这个开始松弛操作，一直循环到队列为空。每个点入队一次，出队一次。总共循环V次，每次循环中要出队最小元素（VlogV），对这个点相连的所有边进行松弛并且入队(ElogV)。总共是(E+V)logV。</p>
+
+<pre><code class="language-cpp">// Mon May 15 10:45:45 CST 2017
+// Mon May 15 11:29:58 CST 2017
+
+/*
+最简单的Dijkstra
+ */
+
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;climits&gt;
+
+using namespace std;
+typedef pair&lt;int, int&gt; PII;
+
+class Comp {
+public:
+  bool operator() (const PII &amp;a, const PII &amp;b) {
+    return a.first &gt; b.first;
+  }
+};
+
+int distance(vector&lt;vector&lt;int&gt; &gt; &amp;adj, vector&lt;vector&lt;int&gt; &gt; &amp;cost, int s, int t) {
+  vector&lt;int&gt; visited(adj.size(), false);
+  priority_queue&lt;PII, vector&lt;PII&gt;, Comp &gt; que;
+  vector&lt;int&gt; dist(adj.size(), INT_MAX);
+
+  visited[s] = true;
+  dist[s] = 0;
+  que.push(make_pair(dist[s], s));
+
+  while (!que.empty()) {
+    int top = que.top().second;
+    que.pop();
+
+    for (size_t i = 0; i &lt; adj[top].size(); ++i) {
+      int tmp = dist[top] + cost[top][i];
+
+      if (dist[adj[top][i]] &gt; tmp) {
+	dist[adj[top][i]] = tmp;
+	que.push(make_pair(tmp, adj[top][i]));
+      }
+    }
+
+  }
+
+  return (dist[t] == INT_MAX ? -1 : dist[t]);
+}
+
+int main() {
+  int n, m;
+  while(std::cin &gt;&gt; n &gt;&gt; m) {
+    vector&lt;vector&lt;int&gt; &gt; adj(n, vector&lt;int&gt;());
+    vector&lt;vector&lt;int&gt; &gt; cost(n, vector&lt;int&gt;());
+    for (int i = 0; i &lt; m; i++) {
+      int x, y, w;
+      std::cin &gt;&gt; x &gt;&gt; y &gt;&gt; w;
+      adj[x - 1].push_back(y - 1);
+      cost[x - 1].push_back(w);
+    }
+    int s, t;
+    std::cin &gt;&gt; s &gt;&gt; t;
+    s--, t--;
+    std::cout &lt;&lt; distance(adj, cost, s, t) &lt;&lt; &quot;\n&quot;;
+  }
+}
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/checking-whether-a-graph-is-bipartite/"><i class="fa fa-chevron-circle-left"></i> Checking whether a Graph is Bipartite</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">Detecting Anomalies in Currency Exchange Rates <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

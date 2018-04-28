@@ -1,0 +1,175 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu4639 hehe      ——斐波纳契数列，找规律</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-08-03T10:29:00Z">Aug 3, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>link:<a href="http://acm.hdu.edu.cn/showproblem.php?pid=4639">http://acm.hdu.edu.cn/showproblem.php?pid=4639</a>
+refer to:
+<a href="http://blog.csdn.net/dongdongzhang_/article/details/9706259">http://blog.csdn.net/dongdongzhang_/article/details/9706259</a>
+<a href="http://www.cnblogs.com/wuhenqs/archive/2013/08/01/3230987.html">http://www.cnblogs.com/wuhenqs/archive/2013/08/01/3230987.html</a></p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+#include &lt;deque&gt;
+#include &lt;queue&gt;
+#include &lt;list&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;utility&gt;
+#include &lt;functional&gt;
+#include &lt;fstream&gt;
+#include &lt;iomanip&gt;
+#include &lt;sstream&gt;
+#include &lt;numeric&gt;
+#include &lt;cassert&gt;
+#include &lt;ctime&gt;
+#include &lt;iterator&gt;
+const int INF = 0x3f3f3f3f;
+const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}};
+using namespace std;
+
+const int MOD = 10007;
+char a[11111];
+long long fi[11111];
+int main(void)
+{
+    #ifndef ONLINE_JUDGE
+    freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+    #endif
+    ios::sync_with_stdio(false);
+    int t; cin&gt;&gt;t;
+    fi[0] = fi[1] = 1;
+    for (int i = 2; i &lt; 11111; ++i) fi[i] = (fi[i-1]+fi[i-2])%MOD;
+    for (int i = 1; i &lt;= t; ++i)
+    {
+        cin&gt;&gt;a; int len = strlen(a), cnt = 0, ans = 1;
+        for (int j = 1; j &lt; len; ++j)
+        {
+            if (a[j]=='e' &amp;&amp; a[j-1]=='h')
+            {
+                ++j; cnt++;
+            }
+            else
+            {
+                ans = (ans*fi[cnt])%MOD; cnt = 0;
+            }
+        }
+        ans = (ans*fi[cnt])%MOD;
+        cout&lt;&lt;&quot;Case &quot;&lt;&lt;i&lt;&lt;&quot;: &quot;&lt;&lt;ans&lt;&lt;endl;
+    }
+
+}
+
+</code></pre>
+
+<p>o(╯□╰)o</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codefoces-round193a/"><i class="fa fa-chevron-circle-left"></i> codefoces round193a</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu4642-fliping-game--------%E5%8D%9A%E5%BC%88/">hdu4642 Fliping game        ——博弈 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

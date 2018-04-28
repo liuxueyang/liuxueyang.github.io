@@ -1,0 +1,161 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu1202 The calculation of GPA ——水题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-04-15T20:39:00Z">Apr 15, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1202">http://acm.hdu.edu.cn/showproblem.php?pid=1202</a>
+题目大意：先计算出学分和点数的乘积的和，然后在除以学分之和。
+思路：
+　　很简单。只能说这道题目比较坑……不说什么了
+　　本来是早上起来想写道水题，练练手，结果碰见这种题目，刚才我还无聊的测试了很多次，交了N遍，发现这么个坑的问题，感觉这种题目很没有意思……</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;hdu1202.in&quot;, &quot;r&quot;, stdin);
+#endif
+  int t;
+  while (~scanf(&quot;%d&quot;, &amp;t)){
+    double cnt = 0, cnt1 = 0; double s, p;
+    for (int i = 0; i &lt; t; ++i){
+      cin &gt;&gt; s &gt;&gt; p; cnt += s;
+      if (p&gt;=90 &amp;&amp; p &lt;= 100) cnt1 += 4.0 * s;
+      else if (p&gt;=80) cnt1 += 3.0 * s;
+      else if (p&gt;=70) cnt1 += 2.0 * s;
+      else if (p&gt;=60) cnt1 += 1.0 * s;
+      else;
+    }
+    double ans = 0.0;
+    ans = cnt1 / cnt;
+    if (fabs(cnt1) &lt; eps) printf(&quot;-1\n&quot;);
+    else printf(&quot;%.2f\n&quot;, ans);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>　　开始没有考虑到学分可能都为0的情况，判断fabs(ans) &lt; eps ，OLE了，因为学分可能为0，这个时候0就做分母了。
+　　也有的人说这种题目很没意思，要考虑很多没有意义的情况，感觉比较坑……其实这也可能是考察人的思维的严谨程度的吧，我也WA了N次……开始也以为这道题目比较坑，无聊在OJ上测试了N遍之后，发现其实关键还是自己的错……不冷静，思维不严谨。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uestc1307-windy%E6%95%B0-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/"><i class="fa fa-chevron-circle-left"></i> uestc1307 windy数 ——数位DP入门题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu2098-%E4%B8%8D%E8%A6%8162-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/">hdu2098 不要62 ——数位DP入门题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

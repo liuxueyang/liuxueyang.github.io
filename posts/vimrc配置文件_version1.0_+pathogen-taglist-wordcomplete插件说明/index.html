@@ -1,0 +1,230 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>vimrc配置文件_version1.0_&#43;pathogen, taglist, wordcomplete插件说明</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-07-13T06:43:00Z">Jul 13, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/vim/">#Vim</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>为了表示对Ruchee的感谢，首先这是Ruchee的个人网站：<a href="http://www.ruchee.com/index.html，他的以前很多的代码都放到Git里面了，里面有链接。">http://www.ruchee.com/index.html，他的以前很多的代码都放到Git里面了，里面有链接。</a>
+看了整整一天，刚开始学习vim的时候就是用的Ruchee的vimrc脚本，现在终于可以自己写一点了，又认真看了一下Ruchee原来的脚本，虽然还有一些不太懂，但还是赶脚好腻害的样子。
+然后自己又加了一点自己东西：——适用于mac, linux平台</p>
+
+<pre><code class="language-cpp">
+&quot;Copyright 2013 Xueyang Liu, all rights reserved.
+&quot;www.cnblogs.com/liuxueyang/
+&quot;Hunan University
+
+
+&quot; ********************SET********************
+color lucius
+&quot;color desert
+set nocompatible
+set guifont=Monaco:h16
+set lines=30 columns=94
+set nu numberwidth=5
+set cindent
+set ai
+set tabstop=2
+set shiftwidth=2 
+set mouse=a
+set autochdir
+se hlsearch incsearch 
+se ruler
+set laststatus=2
+set cmdheight=2
+syntax on
+syntax enable
+filetype plugin indent on
+filetype indent on
+filetype plugin on
+&quot;filetype on
+&quot;set bg=dark
+
+&quot; ********************MAP********************
+let mapleader=&quot;,&quot;
+noremap &lt;space&gt; ve
+nnoremap &lt;leader&gt;ev :vsplit $MYVIMRC&lt;cr&gt;
+nnoremap &lt;leader&gt;sv :source $MYVIMRC&lt;cr&gt;
+nnoremap wt :WMToggle&lt;cr&gt; 
+nnoremap &lt;c-t&gt; :NERDTree&lt;cr&gt;
+nnoremap &lt;c-a&gt; :Tlist&lt;cr&gt;
+&quot;在某个单词上加上引号，括号
+nnoremap &lt;leader&gt;&quot; viw&lt;esc&gt;a&quot;&lt;esc&gt;hbi&quot;&lt;esc&gt;lel
+nnoremap &lt;leader&gt;' viw&lt;esc&gt;a'&lt;esc&gt;hbi'&lt;esc&gt;lel
+nnoremap &lt;leader&gt;&lt; viw&lt;esc&gt;a&gt;&lt;esc&gt;'&lt;i&lt;&lt;esc&gt;lw
+&quot;~~~~~~~~~~~~~~~大风歌~~~~~~~~~~~~~~~
+vnoremap \ U
+inoremap &lt;c-d&gt; &lt;esc&gt;ddi
+inoremap &lt;c-u&gt; &lt;esc&gt;veU
+inoremap jk &lt;esc&gt;
+inoremap &lt;esc&gt; &lt;nop&gt;
+&quot;括号,引号自动补全
+inoremap ( ()&lt;esc&gt;i
+inoremap ) &lt;c-r&gt;=ClosePair(')')&lt;cr&gt;
+inoremap { {}&lt;esc&gt;i
+inoremap } &lt;c-r&gt;=ClosePair('}')&lt;cr&gt;
+inoremap [ []&lt;esc&gt;i
+inoremap ] &lt;c-r&gt;=ClosePair(']')&lt;cr&gt; 
+inoremap &quot; &quot;&quot;&lt;esc&gt;i
+inoremap ' ''&lt;esc&gt;i
+onoremap p i(
+onoremap b /return&lt;cr&gt;
+
+&quot; ********************OTHER********************
+iabbrev @@ www.cnblogs.com/liuxueyang/
+iabbrev ccopy Copyright 2013 Xueyang Liu, all rights reserved.
+autocmd BufWritePre *.html :normal gg=G
+&quot;下面这些autocmd还没有学会=_=
+&quot;autocmd FileType C++ nnoremap &lt;buffer&gt; &lt;localleader&gt;c I//&lt;esc&gt;
+&quot;autocmd FileType javascript nnoremap &lt;buffer&gt; &lt;localleader&gt;c I//&lt;esc&gt;
+&quot;autocmd FileType javascript :iabbrev &lt;buffer&gt; iff if()&lt;left&gt;
+&quot;autocmd FileType python nnoremap &lt;buffer&gt; &lt;localleader&gt;c I#&lt;esc&gt;
+&quot;autocmd FileType python : iabbrev &lt;buffer&gt; iff if:&lt;left&gt;
+&quot;echo &quot;&gt;^.^&lt;&quot;
+
+&quot; ********************编译 &amp;&amp; 运行********************
+&quot; Compile
+func! CompileCode()
+    exec &quot;w&quot;
+    if &amp;filetype == &quot;c&quot;
+        exec &quot;!gcc -Wall -std=c99 %&lt;.c -o %&lt;&quot;
+    elseif &amp;filetype == &quot;cpp&quot;
+        exec &quot;!g++ -Wall -std=c++98 %&lt;.cpp -o %&lt;&quot;
+    elseif &amp;filetype == &quot;python&quot;
+        exec &quot;!python %&lt;.py&quot;
+    endif
+endfunc
+&quot;Run
+func! RunCode()
+    exec &quot;w&quot;
+    if &amp;filetype == &quot;c&quot; || &amp;filetype == &quot;cpp&quot;
+        exec &quot;! ./%&lt;&quot;
+    elseif &amp;filetype == &quot;python&quot;
+        exec &quot;!python %&lt;.py&quot;
+    endif
+endfunc
+&quot;&lt;c-c&gt; OneKey ComplieAndSave
+nnoremap &lt;c-c&gt; :call CompileCode()&lt;cr&gt;
+inoremap &lt;c-c&gt; &lt;esc&gt;:call CompileCode()&lt;cr&gt;
+vnoremap &lt;c-c&gt; &lt;esc&gt;:call CompileCode()&lt;cr&gt;
+&quot;&lt;c-r&gt; OneKey RunAndSave
+nnoremap &lt;c-r&gt; :call RunCode()&lt;cr&gt;
+inoremap &lt;c-r&gt; &lt;esc&gt;:call RunCode()&lt;cr&gt;
+vnoremap &lt;c-r&gt; &lt;esc&gt;:call RunCode()&lt;cr&gt;
+&quot;pathogen{
+execute pathogen#infect()
+call pathogen#infect()
+&quot;}
+&quot;taglist{
+    let Tlist_Show_One_File = 1            &quot;只显示当前文件的taglist，默认是显示多个
+    let Tlist_Exit_OnlyWindow = 1          &quot;如果taglist是最后一个窗口，则退出vim
+    let Tlist_Use_Right_Window = 1         &quot;在右侧窗口中显示taglist
+    let Tlist_GainFocus_On_ToggleOpen = 1  &quot;打开taglist时，光标保留在taglist窗口
+    let Tlist_Ctags_Cmd='/opt/local/bin/ctags'  &quot;设置ctags命令的位置
+    nnoremap &lt;leader&gt;tl : Tlist&lt;CR&gt;        &quot;设置关闭和打开taglist窗口的快捷键
+&quot;}
+autocmd BufEnter * call DoWordComplete()
+
+</code></pre>
+
+<p>主要部分是抄的Ruchee的=_=</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/"><i class="fa fa-chevron-circle-left"></i> 高斯消元</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/usaco-section1.1-broken-necklace/">usaco Section1.1 Broken Necklace <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>uva 100 The 3n&#43;1 problem</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2012-11-05T10:48:00Z">Nov 5, 2012</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/uva/">#Uva</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Problems in Computer Science are often classified as belonging to a certain class of problems (e.g., NP, Unsolvable, Recursive). In this problem you will be analyzing a property of an algorithm whose classification is not known for all possible inputs.
+ 
+Consider the following algorithm:
+2. print n
+3. if n = 1 then STOP
+4. if n is odd then
+5. else
+6. GOTO 2
+Given the input 22, the following sequence of numbers will be printed 22 11 34 17 52 26 13 40 20 10 5 16 8 4 2 1
+It is conjectured that the algorithm above will terminate (when a 1 is printed) for any integral input value. Despite the simplicity of the algorithm, it is unknown whether this conjecture is true. It has been verified, however, for all integers n such that 0 &lt; n &lt; 1,000,000 (and, in fact, for many more numbers than this.)
+Given an input n, it is possible to determine the number of numbers printed (including the 1). For a given n this is called the cycle-lengthof n. In the example above, the cycle length of 22 is 16.
+For any two numbers i and j you are to determine the maximum cycle length over all numbers between i and j.
+ 
+The input will consist of a series of pairs of integers i and j, one pair of integers per line. All integers will be less than 1,000,000 and greater than 0.
+You should process all pairs of integers and for each pair determine the maximum cycle length over all integers between and including iand j.
+You can assume that no operation overflows a 32-bit integer.
+ 
+For each pair of input integers i and j you should output i, j, and the maximum cycle length for integers between and including i and j. These three numbers should be separated by at least one space with all three numbers on one line and with one line of output for each line of input. The integers i and j must appear in the output in the same order in which they appeared in the input and should be followed by the maximum cycle length (on the same line).
+ 
+ 
+ 
+ </p>
+
+<pre><code class="language-cpp">拙劣的代码
+
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+
+int get(int n)
+{
+    int cnt = 1;
+    
+    while (n != 1)
+    {
+        if (n % 2)
+            n = 3 * n + 1;
+        else
+            n /= 2;
+        cnt++;
+    }
+    return cnt;
+}
+
+int main(void)
+{
+    int a, b, i, max = 0;
+
+    while (cin &gt;&gt; a &gt;&gt; b)
+    {
+        max = 0;
+        cout &lt;&lt; a &lt;&lt; ' ' &lt;&lt; b &lt;&lt; ' ';
+        int x = a &lt;= b ? a : b;
+        int y = a + b - x;
+        for (i = x; i &lt;= y; i++)
+        {
+            if (max &lt; get(i))
+            {
+                max = get(i);
+            }
+        }
+        cout &lt;&lt; max &lt;&lt; endl;
+    }
+    
+    return 0;
+}
+
+
+</code></pre>
+
+<p> </p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uva-10038-jolly-jumpers/"><i class="fa fa-chevron-circle-left"></i> uva 10038 Jolly Jumpers</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uva10177-2-3-4-d-sqr-rects-cubes-boxes/">uva10177 (2/3/4)-D Sqr/Rects/Cubes/Boxes? <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

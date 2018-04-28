@@ -1,0 +1,171 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>最小生成树示例程序_Kruscal算法</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-05-01T12:08:00Z">May 1, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/graph/">#Graph</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>输入：顶点个数n和边数m，然后输入m行，每行输入格式：u v w 分别表示两个顶点和这个边的权值，顶点序号从1开始
+输出：一次选择的各条边和最终的最小生成树的权值</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+#define MAXN 1000
+#define MAXM 1000
+int parent[MAXN], n, m;
+typedef struct Edge {
+    int u, v, w;
+    bool operator &lt; (const Edge &amp;other) const {
+        return w &lt; other.w;
+    }
+}Edge;
+Edge edge[MAXM];
+void init() {
+    for (int i = 1; i &lt;= n; ++i) parent[i] = -1;
+}
+int Find(int x) {
+    int s = x, tmp;
+    while (parent[s] &gt;= 0) s = parent[s];
+    while (s != x) {
+        tmp = parent[x]; parent[x] = s; x = tmp;
+    }
+    return s;
+}
+void Union(int a, int b) {
+    int x = Find(a), y = Find(b), tmp = parent[x] + parent[y];
+    if (parent[x] &lt; parent[y]) {
+        parent[y] = x; parent[x] = tmp;
+    } else {
+        parent[x] = y; parent[y] = tmp;
+    }
+}
+void kruscal() {
+    int cnt = 0, sum = 0, i, u, v, w;
+    for (i = 0; i &lt; m; ++i) {
+        u = edge[i].u; v = edge[i].v; w = edge[i].w;
+        if (Find(u) != Find(v)) {
+            cnt++; sum += w; printf(&quot;%d %d %d\n&quot;, u, v, w); Union(u, v);
+        }
+        if (cnt == n - 1) break;
+    }
+    printf(&quot;%d\n&quot;, sum);
+}
+int main(void) {
+    freopen(&quot;kruscal.in&quot;, &quot;r&quot;, stdin);
+    while (~scanf(&quot;%d%d&quot;, &amp;n, &amp;m)) {
+        int i, u, v, w;
+        for (i = 0; i &lt; m; ++i) {
+            scanf(&quot;%d%d%d&quot;, &amp;u, &amp;v, &amp;w); edge[i].u = u; edge[i].v = v; edge[i].w = w;
+        }
+        init(); sort(edge, edge+m); kruscal();
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+<p>呵呵</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj1094zoj1060-sorting-it-all-out-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E5%85%A5%E9%97%A8%E9%A2%98/"><i class="fa fa-chevron-circle-left"></i> poj1094&amp;&amp;zoj1060 Sorting It All Out ——拓扑排序入门题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/zoj1203-swordfish-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/">zoj1203 Swordfish ——最小生成树入门题_Kruscal算法 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

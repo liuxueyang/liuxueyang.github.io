@@ -1,0 +1,136 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>tyvj1023 - 奶牛的锻炼 ——DP</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-07-08T23:31:00Z">Jul 8, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/tyvj/">#tyvj</a>
+                
+                    , 
+                    <a href="/tags/dp/">#DP</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="https://www.tyvj.cn/Problem_Show.aspx?id=1023">https://www.tyvj.cn/Problem_Show.aspx?id=1023</a></p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+int a[2002],f[2002][502];
+int main(void) 
+{
+    //freopen(&quot;in1.txt&quot;,&quot;r&quot;,stdin);
+    int n, m; scanf(&quot;%d%d&quot;,&amp;n,&amp;m); for(int i=1;i&lt;=n;scanf(&quot;%d&quot;,a+i++)); f[0][0]=0,f[1][1]=a[1];
+    for(int i=1;i&lt;=n;++i) 
+        for(int j=0;j&lt;=m;++j)  {
+        if(!j) for(int k=1;k&lt;=i;++k) 
+            f[i][0]=max(max(f[i-1][0],f[i-k][k]),f[i][0]);
+        else f[i][j]=f[i-1][j-1]+a[i];
+        //printf(&quot;%d &quot;,f[i][j]);
+    }
+    printf(&quot;\n%d\n&quot;,f[n][0]);
+    return 0;
+}
+
+</code></pre>
+
+<p>=_=</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/tyvj1018---%E9%98%B6%E4%B9%98%E7%BB%9F%E8%AE%A1-%E6%9A%B4%E5%8A%9B/"><i class="fa fa-chevron-circle-left"></i> tyvj1018 - 阶乘统计 ——暴力</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/tyvj1022---%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2-%E8%BF%9B%E5%88%B6%E4%B8%BA%E8%B4%9F%E6%95%B0/">tyvj1022 - 进制转换 ——进制为负数 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

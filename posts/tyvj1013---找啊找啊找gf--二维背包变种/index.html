@@ -1,0 +1,136 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>tyvj1013 - 找啊找啊找GF  ——二维背包变种</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-07-07T16:51:00Z">Jul 7, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/tyvj/">#tyvj</a>
+                
+                    , 
+                    <a href="/tags/dp/">#DP</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="https://www.tyvj.cn/Problem_Show.aspx?id=1013">https://www.tyvj.cn/Problem_Show.aspx?id=1013</a>
+好吧，这题没节操=_=
+状态f[u,v,i]表示：消费u的人民币和v的人品同时泡到i个mm所需要的最少时间。</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdlib&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int f[101][101][101], r[101], rp[101], t[101], rmb, RP, n, INF=0x7f7f7f7f;
+int main(void) {
+    freopen(&quot;in1.txt&quot;,&quot;r&quot;,stdin);
+    scanf(&quot;%d&quot;,&amp;n);for(int i=1;i&lt;=n;scanf(&quot;%d%d%d&quot;,r+i,rp+i,t+i),++i)
+        ;scanf(&quot;%d%d&quot;,&amp;rmb,&amp;RP);
+    for(int i=0;i&lt;=rmb;++i)for(int j=0;j&lt;=RP;++j)for(int k=1;k&lt;=n;++k)f[i][j][k]=INF;
+    for(int i=1;i&lt;=n;++i)for(int u=rmb;u&gt;=r[i];--u)for(int v=RP;v&gt;=rp[i];--v)for(int j=1;j&lt;=i;++j)
+        if(f[u][v][j-1]!=INF) f[u][v][j]=min(f[u][v][j],f[u-r[i]][v-rp[i]][j-1]+t[i]);
+    for(int i=n;i&gt;=0;--i)if(f[rmb][RP][i]!=INF){printf(&quot;%d\n&quot;,f[rmb][RP][i]);break;}
+    return 0;
+}
+
+</code></pre>
+
+<p>为了使泡到的mm尽量多，所以要从后往前找合法的解，只要找到就输出，然后break;
+=_=</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/tyvj1012-p1012---%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F--%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/"><i class="fa fa-chevron-circle-left"></i> tyvj1012 P1012 - 火柴棒等式  ——暴力枚举</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/tyvj1014---%E4%B9%98%E6%B3%95%E6%B8%B8%E6%88%8F--%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2dp/">tyvj1014 - 乘法游戏  ——记忆化搜索DP <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

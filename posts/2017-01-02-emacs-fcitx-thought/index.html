@@ -1,0 +1,126 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>折腾Emacs和Fcitx的兼容问题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2017-01-02T11:21:37&#43;08:00">Jan 2, 2017</time>
+        </li>
+        
+        
+
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>在Emacs时而不能使用Fcitx中文输入法。</p>
+
+<p>我只是把这件事记录在这里，我并没有搞定这个问题。</p>
+
+<ul>
+<li>把下面的程序放到<code>~/.xprofile</code>文件里。未果。</li>
+</ul>
+
+<pre><code>export LANG=zh_CN.UTF8
+export LC_CTYPE=en_US.UTF-8
+export XMODIFIERS='@im=fcitx'
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export GTK3_IM_MODULE=fcitx
+</code></pre>
+
+<ul>
+<li>放到<code>~/.bashrc</code>或者<code>~/.zshrc</code>、<code>~/.profile</code>里。未果。</li>
+<li>试试XEmacs。未果。</li>
+<li>卸载Fcitx之后重新安装，未果。</li>
+<li>卸载Fcitx这后安装ibus输入法，也不能在Emacs里面使用ibus。</li>
+<li>把上面的设置改成<code>ibus</code>，未果。</li>
+<li>重新手动编译ibus，未果。</li>
+<li>元旦结束，放弃。</li>
+<li>元旦第二天，继续。</li>
+<li>编译安装ibus-wubi，未果。</li>
+<li>一天加半天过去，觉悟。放弃解决这个问题。</li>
+</ul>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2016-12-30-slackware-dolphin-chinese/"><i class="fa fa-chevron-circle-left"></i> Slackware Dolphin中文文件夹显示乱码</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/use-hexo/">Use Hexo <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

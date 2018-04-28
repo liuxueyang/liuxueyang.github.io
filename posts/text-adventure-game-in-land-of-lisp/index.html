@@ -1,0 +1,415 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Text Adventure Game in Land of Lisp</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-08-01T23:19:46Z">Aug 1, 2016</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/common-lisp/">#Common Lisp</a>
+                
+            </em>
+        </li>
+        
+
+        <li>4 min read</li>
+    </ul>
+</aside>
+    
+
+    <p><strong>Land of LiSP</strong> 这本书里面的第五章和第六章构建了一个字符冒险游戏，游戏截图如下：</p>
+
+<p><img src="/img/text-adventure-game.png" alt="Text Adventure Game" /></p>
+
+<pre><code class="language-lisp">;; 2016.07.30 23:22:41 PM
+;; Sabastian
+;; building a text adventure game engine
+
+;; ====================
+;; location
+
+(defparameter *nodes*
+  '((living-room (you are in the living-room.
+                  a wizard is snoring loudly on the couch.))
+    (garden (you are in a beautiful garden.
+             there is a well in front of you.))
+    (attic (you are in the attic.
+            there is a giant welding torch in the corner.))))
+
+(defun describe-location (location nodes)
+  &quot;location is a symbol.
+nodes is the global variable.&quot;
+  (cadr (assoc location nodes)))
+
+;; ====================
+;; edges
+
+(defparameter *edges*
+  '((living-room
+     (garden west door)
+     (attic upstairs ladder))
+    (garden
+     (living-room east door))
+    (attic
+     (living-room downstairs ladder))))
+
+(defun describe-path (edge)
+  `(there is a ,(caddr edge) going ,(cadr edge) from here.))
+
+(defun describe-paths (location edges)
+  &quot;location is a symbol.
+edges is the global variable&quot;
+  (apply #'append
+         (mapcar #'describe-path
+                 (cdr (assoc location edges)))))
+
+;; ====================
+;; objects
+
+(defparameter *objects* '(whiskey bucket frog chain))
+(defparameter *object-locations* '((whiskey living-room)
+                                   (bucket living-room)
+                                   (chain garden)
+                                   (frog garden)))
+
+
+;; One Way to write OBJECTS-AT function
+
+;; (defun object-at-location-p (object location object-locations)
+;;   &quot;object and location are symbols.
+;; object-locations is a global variable&quot;
+;;   (eq (cadr (assoc object object-locations))
+;;       location))
+
+;; if the test function in REMOVE-IF-NOT require more than one
+;; arguments, then use a lambda to wrap the function. ;-)
+
+;; (defun objects-at (location objects object-locations)
+;;   (remove-if-not #'(lambda (object)
+;;                      (object-at-location-p object
+;;                                            location
+;;                                            object-locations))
+;;                  objects))
+
+;; A better way for OBJECTS-AT function
+(defun objects-at (location objects object-locations)
+  &quot;location is a symbol.
+objects and object-locations are global variables.
+return a list of objects in the current location.&quot;
+  (labels ((at-location-p (object)
+             (eq location
+                 (cadr (assoc object object-locations)))))
+    (remove-if-not #'at-location-p objects)))
+
+(defun describe-objects (location objects object-locations)
+  &quot;location is a symbol.
+objects and object-locations are global variables.&quot;
+  (apply #'append
+         (mapcar #'(lambda (object)
+                     `(you see a ,object on the floor.))
+                 (objects-at location objects
+                             object-locations))))
+
+;; ====================
+;; Describing it ALL
+
+(defparameter *location* 'living-room)
+
+(defun look ()
+  (append (describe-location *location* *nodes*)
+          (describe-paths *location* *edges*)
+          (describe-objects *location* *objects*
+                            *object-locations*)))
+
+;; Walking Around in Our World
+(defun walk (direction)
+  (let ((next
+          (find direction
+                (cdr (assoc *location* *edges*))
+                :key #'cadr)))
+    (cond (next
+           (setf *location* (car next))
+           (look))
+          (t
+           '(you cannot go that way.)))))
+
+;; ====================
+;; Pick Up Objects
+
+(defun pickup (object)
+  &quot;object is a symbol.
+push a new list to *object-locations*, return a message list&quot;
+  (cond ((member
+          object
+          (objects-at *location* *objects*
+                      *object-locations*))
+         (push `(,object body) *object-locations*)
+         `(you are now carrying the ,object))
+        (t '(you cannot get that.))))
+
+;; ====================
+;; Checking Our Inventory
+
+(defun inventory ()
+  (cons 'items- (objects-at 'body *objects* *object-locations*)))
+
+(defun game-read ()
+  (let ((cmd
+          (read-from-string
+           (concatenate 'string &quot;(&quot; (read-line) &quot;)&quot;))))
+    (cons (car cmd)
+          (mapcar #'(lambda (x)
+                      `',x)
+                  (cdr cmd)))))
+
+(defun tweak-text (lst capital-p literal-p)
+  (let ((item (car lst))
+        (rest (rest lst)))
+    (if item
+        (cond ((member item '(#\! #\? #\.))
+               (cons item (tweak-text rest t nil)))
+              ((eq item #\&quot;)
+               (cons item (tweak-text rest nil (not literal-p))))
+              (literal-p
+               (cons item (tweak-text rest nil literal-p)))
+              (capital-p
+               (cons (char-upcase item)
+                     (if (alpha-char-p item)
+                         (tweak-text rest nil literal-p)
+                         (tweak-text rest t literal-p))))
+              (t
+               (cons (char-downcase item)
+                     (tweak-text rest nil literal-p)))))))
+
+(defun game-print (lst)
+  (princ
+   (coerce
+    (tweak-text
+     (coerce (string-trim &quot;() &quot;
+                          (prin1-to-string lst))
+             'list)
+     t nil)
+    'string))
+  (fresh-line))
+
+(defparameter *allowed-commands* '(look walk pickup inventory))
+
+(defun game-eval (sexp)
+  (if (member (first sexp)
+              *allowed-commands*)
+      (eval sexp)
+      '(i do not know that command.)))
+
+(defun game-repl ()
+  (let ((cmd (game-read)))
+    (unless (eq (car cmd)
+                'quit)
+      (game-print (game-eval cmd))
+      (game-repl))))
+
+</code></pre>
+
+<p>在第七章里，把游戏里面的位置位置关系通过有向图的形式用第三方库画出来：</p>
+
+<p><img src="/img/wizard.png" alt="adventure game world" /></p>
+
+<pre><code class="language-lisp">;; 2016/08/01 11:48:58 AM
+;; Xueyang Liu
+
+(defparameter *wizard-nodes*
+  '((living-room (you are in the living-room.
+                  a wizard is snoring loudly on the couch.))
+    (garden (you are in a beautiful garden.
+             there is a well in front of you.))
+    (attic (you are in the attic.
+            there is a giant welding torch in the corner.))))
+
+(defparameter *wizard-edges*
+  '((living-room
+     (garden west door)
+     (attic upstairs ladder))
+    (garden
+     (living-room east door))
+    (attic
+     (living-room downstairs ladder))))
+
+(defun dot-name (sexp)
+  (string-downcase
+   (substitute-if #\_ (complement #'alphanumericp)
+                  (prin1-to-string sexp))))
+
+(defparameter *max-label-length* 30)
+
+(defun dot-label (sexp)
+  (if sexp
+      (let ((s (write-to-string sexp
+                                :pretty nil)))
+        (if (&gt; (length s)
+               *max-label-length*)
+            (concatenate 'string
+                         (string-downcase
+                          (subseq s
+                                  0 (- *max-label-length* 3)))
+                         &quot;...&quot;)
+            s))
+      &quot;&quot;))
+
+(defun nodes-&gt;dot (nodes)
+  (mapc (lambda (sexp)
+          (fresh-line)
+          (princ (dot-name (car sexp)))
+          (princ &quot;[label=\&quot;&quot;)
+          (princ (dot-label sexp))
+          (princ &quot;\&quot;];&quot;))
+        nodes))
+
+(defun edges-&gt;dot (edges)
+  (mapc (lambda (node)
+          (mapc (lambda (edge)
+                  (fresh-line)
+                  (princ (dot-name (car node)))
+                  (princ &quot;-&gt;&quot;)
+                  (princ (dot-name (car edge)))
+                  (princ &quot;[label=\&quot;&quot;)
+                  (princ (string-downcase
+                          (prin1-to-string (cdr edge))))
+                  (princ &quot;\&quot;];&quot;))
+                (cdr node)))
+        edges))
+
+(defun uedges-&gt;dot (edges)
+  (maplist (lambda (lst)
+             (mapc (lambda (edge)
+                     (unless (assoc (car edge)
+                                    lst)
+                       (fresh-line)
+                       (princ (dot-name (caar lst)))
+                       (princ &quot;--&quot;)
+                       (princ (dot-name (car edge)))
+                       (princ &quot;[label=\&quot;&quot;)
+                       (princ (string-downcase
+                               (prin1-to-string (cdr edge))))
+                       (princ &quot;\&quot;];&quot;)))
+                   (cdar lst)))
+           edges))
+
+(defun graph-&gt;dot (nodes edges)
+  (princ &quot;digraph{&quot;)
+  (nodes-&gt;dot nodes)
+  (edges-&gt;dot edges)
+  (princ &quot;}&quot;))
+
+(defun ugraph-&gt;dot (nodes edges)
+  (princ &quot;graph{&quot;)
+  (nodes-&gt;dot nodes)
+  (uedges-&gt;dot edges)
+  (princ &quot;}&quot;))
+
+(defun dot-&gt;png (fname thunk)
+  (with-open-file (*standard-output*
+                   fname
+                   :direction :output
+                   :if-exists :supersede)
+    (funcall thunk))
+  (ext:shell (concatenate 'string
+                          &quot;dot -Tpng -O &quot; fname)))
+
+(defun graph-&gt;png (fname nodes edges)
+  (dot-&gt;png fname
+            (lambda ()
+              (graph-&gt;dot nodes edges))))
+
+(defun ugraph-&gt;png (fname nodes edges)
+  (dot-&gt;png fname
+            (lambda ()
+              (ugraph-&gt;dot nodes edges))))
+
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2016-07-31-17-43-50-pm-%E6%9D%82%E4%BA%8B/"><i class="fa fa-chevron-circle-left"></i> 2016/07/31 17:43:50 PM 杂事</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/show-and-hide-dot-files-in-finder-of-os-x-el-capitan/">show and hide dot files in Finder of OS X El Capitan <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

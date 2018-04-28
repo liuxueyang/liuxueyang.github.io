@@ -1,0 +1,137 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Erlang_2</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2012-11-27T15:35:00Z">Nov 27, 2012</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/erlang/">#Erlang</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>1.函数
+举个例子：判断一个数字是奇数还是偶数</p>
+
+<pre><code class="language-Erlang">
+-module(rev).
+-export([even/1]).
+
+even(Value) -&gt;
+    if 
+        Value rem 2 == 1 -&gt; odd;
+        Value rem 2 == 0 -&gt; even
+end.
+
+</code></pre>
+
+<p>文件名和模块名要相同。在终端中引用函数的时候，先编译，c(rev). 然后引用函数 rev:even(N).  其中N是一个已经赋值的变量。
+上面的函数的另一种写法：
+ </p>
+
+<pre><code class="language-Erlang">
+-module(rev).
+-export([even/1]).
+
+even(Value) -&gt;
+    case Value rem 2 of
+        1 -&gt; odd;
+        0 -&gt; even
+    end.
+
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/bash-%E6%94%B9%E4%B8%BA-vim-%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F/"><i class="fa fa-chevron-circle-left"></i> bash 改为 vim 输入模式</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/erlang_3/">Erlang_3 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,206 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>zoj 3409 KKV</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-03-20T21:43:00Z">Mar 20, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/zoj/">#zoj</a>
+                
+            </em>
+        </li>
+        
+
+        <li>5 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>KKV (short for Kinetic Kill Vehicle), a new kind of projectile, is a powerful weapon and has a great ability to move in the space. PLA developed a new missile based on the technology of KKV, and this kind of missile can launch and fly in the space, find the target and destroy it.
+Now the launch site of the KKV missile is at position (0, 0, 0), the missile will fly through N polygonal lines in order and its initial speed is zero. The initial mass of the missile is M, the mass without fuel is m, and every time the missile can eject some fuel which always has a mass of m0, and the eject speed (scalar) is always v0 (absolute, not relative).
+Now give you the N points in order which are the endpoints of the N polygonal lines(The first line is from (0, 0, 0) to the first point, the second line is from the first point to the second point, the third line is from the second point to the third point, etc.), your task is to calculate the time between the KKV missile&rsquo;s launching and its arriving at the Nth point.
+The KKV missile is so small that its size can be ignored. It can only and have to eject fuel at all the endpoints except the Nth point, and every time if it ejects fuel, the KKV missile always selects the direction that can make it fly along the next line, and have the largest speed. The motion of the KKV missile obey the principle of momentum conservation, thus m1 × v1 + m2 × v2 = m1 × v&rsquo;1 + m2 × v&rsquo;2, here m1 and m2 are the mass of two objects, v1 and v&rsquo;1 are the original speed and the speed after collision of m1, v2 and v&rsquo;2 are the original speed and the speed after collision of m2.
+But you know that sometimes the PLA will hide some real abilities about their weapons, so sometimes the data might not be valid to this kind of KKV. So, if you find this thing happens, just output &ldquo;Another kind of KKV.&rdquo;.
+There are multiply test cases. Each case begins with a line contains 5 integers N M m m0 and v0, here 1 ≤ N ≤ 40, 1 ≤ m &lt; M - N × m0, M ≤ 200000, 1 ≤ m0, 1 ≤ v0 ≤ 100. Then the following N lines each contains three integers xi yi and zi(1 ≤ i ≤ N), indicate the ith point&rsquo;s coordinates. Here -100000 ≤ xi, yi, zi ≤ 100000, and we guarantee that every pair of consecutive lines won&rsquo;t be perpendicular to each other, and the next line won&rsquo;t be in the negative direction of its previous one. (This means three consecutive points cannot be { (0, 0, 0), (0, 0, 3), (1, 1, 2) } or { (0, 0, 0), (0, 0, 3), (1, 1, 3) }, or something like these)
+For each test case, output the total flying time of the KKV missile in one line, with two digits after the decimal point, if the data cannot satisfy the KKV missile&rsquo;s flying path, output &ldquo;Another kind of KKV.&rdquo; instead. If the relative error is no more than 1e-6, the answer will be accepted.</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+using namespace std;
+const double eps = 1e-10;
+inline double sqr(double x){return x*x;}
+struct point{
+  double x, y, z;
+  void input(){
+    scanf(&quot;%lf%lf%lf&quot;, &amp;x, &amp;y, &amp;z);
+  }
+}p[50];
+struct vect{
+  double x, y, z, mod;
+  void init(point p, point q){
+    x = q.x - p.x; y = q.y - p.y; z = q.z - p.z;
+    mod = sqrt(sqr(x) + sqr(y) + sqr(z));
+  }
+  double cal(){
+    return mod = sqrt(sqr(x) + sqr(y) + sqr(z));
+  }
+}vec[50], v[50];
+double scalar(vect a, vect b){
+  return a.x * b.x + a.y * b.y + a.z * b.z;
+}
+void function(double a, double b, double c, bool &amp;mark, double &amp;k){
+  double det = sqr(b) - 4 * a * c;
+  if (det &lt; eps &amp;&amp; fabs(det) &gt; eps){
+    mark = false; return;
+  }
+  else {
+    mark = true; k = (-b + sqrt(det)) / (2.0 * a);
+    return;
+  }
+}
+void solve(int n){
+  double m, m1, mt, m0, v0, k, t = 0.0; int i;
+  scanf(&quot;%lf%lf%lf%lf&quot;, &amp;m, &amp;m1, &amp;m0, &amp;v0);
+  p[0].x = p[0].y = p[0].z = 0.0;
+  for (i = 1; i &lt;= n; ++i){
+    p[i].input(); vec[i-1].init(p[i-1], p[i]);
+  }
+  mt = m - m0;
+  k = sqrt(sqr(m0) * sqr(v0) / (sqr(mt) * sqr(vec[0].mod)));
+  v[0].x = k * vec[0].x; v[0].y = k * vec[0].y; v[0].z = k * vec[0].z;
+  t += (vec[0].mod / v[0].cal());
+  for (i = 1; i &lt; n; ++i){
+    double a, b, c, k1;
+    a = sqr(mt - m0) * sqr(vec[i].mod);
+    b = -2 * mt * (mt - m0) * scalar(vec[i], v[i-1]);
+    c = -sqr(m0) * v0 * v0 + sqr(mt) * sqr(v[i-1].cal());
+    bool mark = false;
+    function(a, b, c, mark, k1);
+    if (mark){
+      if (k1 &gt; 0) k = k1;
+      v[i].x = k * vec[i].x; v[i].y = k * vec[i].y; v[i].z = k * vec[i].z;
+      t += (vec[i].mod / v[i].cal());
+    }
+    else {
+      printf(&quot;Another kind of KKV.\n&quot;); return;
+    }
+    mt -= m0;
+  }
+  printf(&quot;%.2lf\n&quot;, t);
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;in&quot;, &quot;r&quot;, stdin);
+#endif
+  int n; 
+  while (~scanf(&quot;%d&quot;, &amp;n)){
+    solve(n);
+  }
+  return 0;
+}
+
+</code></pre>
+
+<p>以后自己再敲一遍……
+最讨厌那种只有代码的解题报告了……所以我还是写一点儿解释吧~
+分步解答：
+输入的 m 就是火箭和燃料的总质量，相当于原题中的M，m1就是火箭的质量，不包括燃料，m0就是每次喷出燃料的质量，v0是喷出的燃料的绝对速度。
+根据动量守恒定律
+（1）从原点开始到第一个点：
+0 = (m - m0) * v1(x, y, z) + m0 * v0(x, y, z);
+v1(x, y, z) = k * vec(x, y, z);
+V0x * V0x + v0y * V0y + V0z * V0z = V0 * V0;
+其中vec(x, y, z)是向量，由原点指向第一个点。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/zoj-3406-another-very-easy-task/"><i class="fa fa-chevron-circle-left"></i> zoj 3406 Another Very Easy Task</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/zoj-3410-laytons-escape/">zoj 3410 Layton&#39;s Escape <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

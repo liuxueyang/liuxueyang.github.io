@@ -1,0 +1,142 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>tyvj1004 滑雪</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-07-06T15:06:00Z">Jul 6, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/tyvj/">#tyvj</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="https://www.tyvj.cn/Problem_Show.aspx?id=1004">https://www.tyvj.cn/Problem_Show.aspx?id=1004</a>
+记忆化搜索</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int m[102][102], dp[102][102], r, C;
+int dfs(int x, int y) {
+    if (dp[x][y] &gt; 0) return dp[x][y]; dp[x][y]=1; int a,b,c,d; a=b=c=d=0;
+    if (x-1&gt;=1 &amp;&amp; m[x-1][y] &lt; m[x][y]) a = dfs(x-1,y);
+    if (x+1&lt;=r &amp;&amp; m[x+1][y] &lt; m[x][y]) b = dfs(x+1,y);
+    if (y-1&gt;=1 &amp;&amp; m[x][y-1] &lt; m[x][y]) c = dfs(x,y-1);
+    if (y+1&lt;=C &amp;&amp; m[x][y+1] &lt; m[x][y]) d = dfs(x,y+1);
+    dp[x][y] = max(max(a,b),max(c,d))+1; return dp[x][y];
+}
+int main(void) {
+    int Max;
+    freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);
+    scanf(&quot;%d%d&quot;,&amp;r, &amp;C);
+    for (int i = 1; i &lt;= r; ++i) for (int j = 1; j &lt;= C; ++j) scanf(&quot;%d&quot;, &amp;m[i][j]), dp[i][j] = 0; Max=1; 
+    for (int i = 1; i &lt;= r; ++i) for (int j = 1; j &lt;= C; ++j) {dp[i][j] = dfs(i, j); if (dp[i][j]&gt;Max) Max=dp[i][j];}
+    for (int i = 1; i &lt;= r; ++i) {
+        for (int j = 1; j &lt;= C; ++j) printf(&quot;%d &quot;, dp[i][j]); printf(&quot;\n&quot;);
+    }
+    printf(&quot;%d\n&quot;, Max);
+    
+    return 0;
+}
+
+</code></pre>
+
+<p>因为全局变量和局部变量冲突错了很久。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84-%E5%88%98%E4%BA%AE%E7%A8%8B/"><i class="fa fa-chevron-circle-left"></i> 《一个人的村庄》 ——刘亮程</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/tyvj1011---%E4%BC%A0%E7%BA%B8%E6%9D%A1--dp/">tyvj1011 - 传纸条  ——DP <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

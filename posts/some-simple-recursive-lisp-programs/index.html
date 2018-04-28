@@ -1,0 +1,175 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>some simple recursive lisp programs</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2014-05-09T01:28:13Z">May 9, 2014</time>
+        </li>
+        
+        
+
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <ul>
+<li>Write a procedure count-list to count the number of elements in a list</li>
+</ul>
+
+<pre><code>(defun count-list (numbers)
+       (if (null numbers) 0
+         (+ 1 (count-list (rest numbers)))))
+(print (count-list '(1 2 3)))
+
+result: 3
+</code></pre>
+
+<ul>
+<li>Write a procedure reverse-list to reverse each word in a list of words</li>
+</ul>
+
+<pre><code>(defun reverse-list (numbers)
+       (if (null numbers) nil
+         (cons (reverse (first numbers)) (reverse-list (rest numbers)))))
+(reverse-list '(&quot;dog&quot; &quot;pan&quot; &quot;tar&quot; &quot;tip&quot; &quot;net&quot;))
+</code></pre>
+
+<p>result: <code>(&quot;god&quot; &quot;nap&quot; &quot;rat&quot; &quot;pit&quot; &quot;ten&quot;)</code></p>
+
+<ul>
+<li>Write a procedure evenp-list to process a list of numbers, replacing each number by t if it&rsquo;s even, and nil if it&rsquo;s odd</li>
+</ul>
+
+<pre><code>(defun evenp-list (numbers)
+       (if (null numbers) nil
+         (cons (if (evenp (first numbers)) t nil)
+               (evenp-list (rest numbers)))))
+
+(evenp-list '(1 2 3 4 5 6 7 8))
+</code></pre>
+
+<p>result:</p>
+
+<p><code>(nil t nil t nil t nil t)</code></p>
+
+<ul>
+<li>Write a procedure max-list to return the maximum element of a list.</li>
+</ul>
+
+<pre><code>(defun max-list (numbers)
+       (if (null numbers) 0
+         (if (&gt; (first numbers) (max-list (rest numbers)))
+           (first numbers)
+           (max-list (rest numbers)))))
+
+(max-list '(11 13 17 19 2 3 5 7))
+</code></pre>
+
+<p>should return 19.</p>
+
+<p>These three small programs are all recursive. It is interesting to code in lisp. ;)</p>
+
+<p>The fourth program is incorrect. There is bug: I assume that all numbers in the list are positive.</p>
+
+<p>The following program is better:</p>
+
+<pre><code>(defun max-list (numbers)
+       (if (null (rest numbers)) (first numbers)
+         (if (&gt; (first numbers) (max-list (rest numbers)))
+           (first numbers)
+           (max-list (rest numbers)))))
+</code></pre>
+
+<p>btw, max is a build-in procedure. so:</p>
+
+<pre><code>(defun max-list (numbers)
+       (if (null (rest numbers)) (first numbers)
+         (max (first numbers) (max-list (rest numbers))
+           )))
+</code></pre>
+
+<p>It becomes simpler. ;)</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/april-fools-day-contest-2014/"><i class="fa fa-chevron-circle-left"></i> April Fools Day Contest 2014</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/my-new-post/">My new post <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>uva 10161 - Ant on a Chessboard</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2012-11-08T21:13:00Z">Nov 8, 2012</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/uva/">#Uva</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>One day, an ant called Alice came to an M*M chessboard. She wanted to go around all the grids. So she began to walk along the chessboard according to this way: (you can assume that her speed is one grid per second)
+  At the first second, Alice was standing at (1,1). Firstly she went up for a grid, then a grid to the right, a grid downward. After that, she went a grid to the right, then two grids upward, and then two grids to the left…in a word, the path was like a snake.
+  For example, her first 25 seconds went like this:
+  ( the numbers in the grids stands for the time when she went into the grids)
+ 
+5
+4
+3
+2
+1
+ 
+1          2          3           4           5
+At the 8th second , she was at (2,3), and at 20th second, she was at (5,4).
+Your task is to decide where she was at a given time.
+(you can assume that M is large enough)
+ 
+ 
+  Input file will contain several lines, and each line contains a number N(1&lt;=N&lt;=2*10^9), which stands for the time. The file will be ended with a line that contains a number 0.
+ 
+ 
+  For each input situation you should print a line with two numbers (x, y), the column and the row number, there must be only a space between them.
+ 
+ 
+8
+20
+25
+0
+ 
+ 
+2 3
+5 4
+1 5
+这道题目开始没看懂，以为挺复杂，其实看懂了之后，发现也挺简单，没什么好总结的，那个表格给出的是时间，其实和题目中蚂蚁每走一步走多长没有什么关系，简化一下就是按照那个规律填表，给出一个数字，求这个数字的位置，注意是坐标，而不是第几行第几列，我就犯了这个错误，不过只要行列互换一下就可以了。
+用 sqrt(n) 求出这个数字在第几个周期，在根据奇偶处理就可以了。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstdio&gt;
+
+using namespace std;
+
+int main(void)
+{
+    int n;
+    while (cin &gt;&gt; n)
+    {
+        if(!n)    break;
+        int k = floor(sqrt(n));
+        if (k * k == n)    { if(k&amp;1)cout&lt;&lt;&quot;1 &quot;&lt;&lt;k&lt;&lt;endl;else cout&lt;&lt;k&lt;&lt;&quot; 1&quot;&lt;&lt;endl; }
+        else
+        {
+            int t = n - k * k;
+            if (k&amp;1)
+            {
+                if (t &lt;= k + 1)    cout&lt;&lt;n-k*k&lt;&lt;' '&lt;&lt;k+1&lt;&lt;endl;
+                else    cout&lt;&lt;' '&lt;&lt;k+1&lt;&lt;k+1-((n-k*k)%(k+1))&lt;&lt;endl;
+            }
+            else
+            {
+                if (t&lt;=k+1)    cout&lt;&lt;k+1&lt;&lt;' '&lt;&lt;n-k*k&lt;&lt;endl;
+                else    cout&lt;&lt;k+1-((n-k*k)%(k+1))&lt;&lt;' '&lt;&lt;k+1&lt;&lt;endl;
+            }
+        }
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uva-113---power-of-cryptography/"><i class="fa fa-chevron-circle-left"></i> uva 113 - Power of Cryptography</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uva-253---cube-painting/">uva 253 - Cube painting <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>sgu548 Dragons and Princesses　　　贪心＋优先队列</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-07-18T17:53:00Z">Jul 18, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/sgu/">#Sgu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.sgu.ru/problem.php?contest=0&amp;problem=548">http://acm.sgu.ru/problem.php?contest=0&amp;problem=548</a>
+题目意思：
+　　有一个骑士，要经过n个房间，开始在第一个房间，每个房间里面有龙或者公主，遇到龙，可以决定杀或者不杀，如果杀，就可以得到相应的珠宝；如果遇到公主，如果这个骑士此时杀过的龙的数目大于等于公主的美貌值，那么这个骑士必须marry这个公主，不能拒绝．．^_^，但是骑士的真爱是在最后一个房间里面的公主，问骑士能不能到达最后一个房间？如果能的话，求出能够到达最后一个房间的情况下，得到的最大的珠宝数．
+做法：
+　　优先队列＋贪心．
+遇到龙就杀，用优先队列维护得到的珠宝数目，遇到公主就检查目前的杀的龙的数目是不是大于等于公主的美貌值，如果大于等于，就把有限队列里面珠宝值小的房间出队，直到杀的龙的数目小于美貌值为止．</p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;queue&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+using namespace std;
+struct Node {
+    int pos, n;
+    bool operator &lt; (const Node &amp;other) const  {
+        return n &lt; other.n;
+    }
+}node;
+int array[200009];
+priority_queue&lt;Node&gt; a;
+char ch[4];
+int main(void) {
+    int i, n, tmp, j, sum, cnt;
+    while (~scanf(&quot;%d&quot;, &amp;n)) {
+        sum = 0, cnt = 0, j = 0, i = 2;
+        for (int f = 0; f &lt; n-2; ++f, ++j, ++i) {
+            scanf(&quot;%s%d&quot;, ch, &amp;tmp);
+            node.pos = i, node.n = -tmp; 
+            if (ch[0] == 'd') {
+                a.push(node); cnt++; sum += tmp;
+            } 
+            else {
+                while (!a.empty() &amp;&amp; cnt &gt;= tmp) {
+                    int hehe = a.top().n; a.pop(); cnt--; sum += hehe;
+                }
+            }
+        }
+        scanf(&quot;%s%d&quot;, ch, &amp;tmp);
+        if (cnt &gt;= tmp) {
+            printf(&quot;%d\n%d\n&quot;, sum, cnt);
+            int e = 0;
+            while (!a.empty()) {
+                array[e++] = a.top().pos; a.pop();
+            }
+            sort(array, array+e);
+            for (int i = 0; i &lt; e; ++i) {
+                printf(&quot;%d&quot;, array[i]);
+                if (i != e-1) printf(&quot; &quot;);
+            }
+            printf(&quot;\n&quot;);
+        } 
+        else printf(&quot;-1\n&quot;);
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+<p>这题想明白就行了，可惜比赛的时候没有时间做．．．＝＝</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/sgu546-ternary-password/"><i class="fa fa-chevron-circle-left"></i> sgu546 Ternary Password</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-testing-round-#8-b.-sheldon-and-ice-pieces-%E6%B0%B4%E9%A2%98/">Codeforces Testing Round #8 B. Sheldon and Ice Pieces 水题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

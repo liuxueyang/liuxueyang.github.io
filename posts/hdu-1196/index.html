@@ -1,0 +1,155 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu 1196</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-01-22T09:23:00Z">Jan 22, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Lowest Bit</p>
+
+<p>Time Limit: <sup>2000</sup>&frasl;<sub>1000</sub> MS (Java/Others)    Memory Limit: <sup>65536</sup>&frasl;<sub>32768</sub> K (Java/Others)
+Total Submission(s): 5440    Accepted Submission(s): 3963</p>
+
+<p>Problem Description
+Given an positive integer A (1 &lt;= A &lt;= 100), output the lowest bit of A.</p>
+
+<p>For example, given A = 26, we can write A in binary form as 11010, so the lowest bit of A is 10, so the output should be 2.</p>
+
+<p>Another example goes like this: given A = 88, we can write A in binary form as 1011000, so the lowest bit of A is 1000, so the output should be 8.</p>
+
+<p>Input
+Each line of input contains only an integer A (1 &lt;= A &lt;= 100). A line containing &ldquo;0&rdquo; indicates the end of input, and this line is not a part of the input data.</p>
+
+<p>Output
+For each A in the input, output a line containing only its lowest bit.</p>
+
+<p>Sample Input
+26 88 0</p>
+
+<p>Sample Output
+2 8</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+
+using namespace std;
+
+int main(void)
+{
+    int n;
+#ifndef ONLINE_JUDGE
+    freopen(&quot;1196.in&quot;, &quot;r&quot;, stdin);
+#endif
+    while (~scanf(&quot;%d&quot;, &amp;n) &amp;&amp; n)
+    {
+        printf(&quot;%d\n&quot;, ((~n+1)&amp;n));
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>超级简单的一道题目……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1201/"><i class="fa fa-chevron-circle-left"></i> hdu 1201</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1076/">hdu 1076 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

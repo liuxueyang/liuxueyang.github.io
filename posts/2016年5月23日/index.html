@@ -1,0 +1,189 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>2016年5月23日</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-05-23T22:18:34Z">May 23, 2016</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/2016%E5%B9%B4/">#2016年</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>今天我发现时间越来越紧迫了起来。</p>
+
+<hr />
+
+<p>突然想到要整理一下我的浏览器收藏夹，因为我在用三种浏览器，Safari，Chrome
+和Firefox，在Mac OS X上面用Safari和Chrome，在旧电脑的Linux上面用Firefox，因为开
+Chrome实在是，太卡。。:joy::joy::joy:所以同步收藏夹就成了一个问题。一直以来，我
+都没有整理过我的收藏夹，并且不知道什么时候手贱，在Safari里面点了导入Chrome的收藏
+夹，然后又在Safari里面导入Firefox的收藏夹，然后在Chrome里面导入Safari的收藏夹，
+然后在Firefox里面导入Chrome的收藏夹……然后各种同步。。不知道为啥反正就是各种乱，
+很多重复的，也没办法简单地删除，因为都有后来自己添加的收藏并且没有同步或者导入的
+别的浏览器的。尝试过各种乱七八糟的去掉收藏夹里面重复网页的浏览器插件，Chrome和
+Firefox里面的都试过，下午在Linux里面的Firefox里面又试了一下：</p>
+
+<p><img src="/img/bookmark1.png" alt="firefox addon 1" /></p>
+
+<p>可以看到有13593个重复的收藏被检测到，然而这个插件并不能简单的一次性去重……然后
+尝试另外一个：</p>
+
+<p><img src="/img/bookmark3.png" alt="firefox addon 2" /></p>
+
+<p>这个倒是可以，然而点了按钮之后，等了十几分钟，还没结束，觉得这也太慢了。。然后就
+这样了：</p>
+
+<p><img src="/img/bookmark2.png" alt="醉了" /></p>
+
+<p>Google了半天也没找到别的比较好的方法。。:sob::sob::sob:</p>
+
+<p>然后突然想到一个办法：我自己手动去重吧。。然而并不会写浏览器插件，也并不会前端的
+乱七八糟的东西。所以想了个歪路子：（针对Firefox）</p>
+
+<ol>
+<li>把收藏夹导出成html文件，然后用awk之类的工具去重。。</li>
+<li>删除浏览器的所有收藏夹。</li>
+<li>导入处理之后的html文件到收藏夹。</li>
+</ol>
+
+<p>开始不知道怎么想到，一开始就想用awk处理，写的时候发现，然而在awk里面用正则的反向
+引用并不是那么方便的样子:question::question:额……我为什么不用
+Perl:exclamation::exclamation::anger:所以，很愉快地用Perl写完了。。</p>
+
+<pre><code class="language-perl">my %seen;
+
+while(&lt;&gt;) {
+    if (/&lt;A HREF=&quot;http([^\&quot;]+)&quot;/) {
+        unless ($seen{$1}) {
+            $seen{$1}++;
+            print;
+        }
+    } else {
+        print;
+    }
+}
+
+# 14595 -&gt; 991 ;-(
+
+exit 0;
+
+</code></pre>
+
+<p>处理了之后，可以发现，收藏总数从14595减少到了991:scream::scream:棒棒哒！这个去重
+貌似不彻底诶，然而已经减少了大部分了，再用之前使用的插件搞一下，发现需要手动删除
+的只有几个而已了，把浏览器里面的全部收藏删除之后，再导入处理之后的html文件。收工:bangbang:</p>
+
+<p>之后就是寻找一种方法可以各个浏览器之间同步的方法吧？貌似可能有插件可以搞定？随后
+再找找。。</p>
+
+<hr />
+
+<p>哦，对了，我发现把KDE Plasma 5里面的各种特效什么的都关掉，还是可以用的，用得挺流
+畅，在我的旧电脑上面并不卡。如果追求绝对稳定，当然还是Xfce4靠谱:smiley_cat:</p>
+
+<hr />
+
+<p>还有，前两天我又折腾了一下我的树莓派，它支持AirPlay了，最近我发现Real好用，iPad
+Air上面放的腾讯视频可以很愉快地在电视上面看，并且可以用我的Android手机作为遥控
+器，甚至不接显示器的时候，也可以把手机上的音乐AirPlay到树莓派上面播放:smile::smile:
+哦，Android里面的QQ音乐和虾米音乐都支持AirPlay，网易云音乐不支持，有点可惜。
+这两天它主要承担了给我妈播放电视剧的艰巨任务。。。:joy::joy:另外就是作为我的IRC
+的一个Bouncer，其实树莓派，还是蛮有用的嘛。:yum:</p>
+
+<p>自从我的Emacs支持Emoji了之后，我越来越喜欢在Emacs里面用Emoji了……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2016%E5%B9%B45%E6%9C%8822%E6%97%A5/"><i class="fa fa-chevron-circle-left"></i> 2016年5月22日</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E6%8E%A8%E8%8D%90kde-connect/">推荐 KDE Connect <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

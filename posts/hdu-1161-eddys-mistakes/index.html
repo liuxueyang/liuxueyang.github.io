@@ -1,0 +1,147 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu 1161 Eddy&#39;s mistakes</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2012-11-23T18:51:00Z">Nov 23, 2012</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Eddy&rsquo;s mistakes</p>
+
+<p>Time Limit: <sup>2000</sup>&frasl;<sub>1000</sub> MS (Java/Others)    Memory Limit: <sup>65536</sup>&frasl;<sub>32768</sub> K (Java/Others)
+Total Submission(s): 5189    Accepted Submission(s): 2956</p>
+
+<p>Problem Description
+Eddy usually writes articles ,but he likes mixing the English letter uses, for example &ldquo;computer science&rdquo; is written frequently &ldquo;coMpUtEr scIeNce&rdquo; by him, this mistakes lets Eddy&rsquo;s English teacher be extremely discontentment.Now please you to write a procedure to be able in the Bob article English letter to turn completely the small letter.</p>
+
+<p>Input
+The input contains several test cases.each line consists a test case，Expressed Eddy writes in an article , by letter, blank space,numeral as well as each kind of punctuation
+composition, the writing length does not surpass 1000 characters.</p>
+
+<p>Output
+For each test case, you should output an only line, after namely the result of transforms the lowercase letter.</p>
+
+<p>Sample Input
+weLcOmE tO HDOj Acm 2005!</p>
+
+<p>Sample Output
+welcome to hdoj acm 2005!</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cctype&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+int main(void)
+{
+    char a[1000+10];
+
+    while (gets(a)!=NULL)
+    {
+        for (int i = 0; a[i] != '\0'; ++i)if(isalpha(a[i]))a[i]=tolower(a[i]);
+        cout &lt;&lt; a &lt;&lt; endl;
+    }
+    return 0;
+}
+</code></pre>
+
+<p>水题。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1166-%E6%95%8C%E5%85%B5%E5%B8%83%E9%98%B5/"><i class="fa fa-chevron-circle-left"></i> hdu 1166 敌兵布阵</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/erlang_1/">Erlang_1 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

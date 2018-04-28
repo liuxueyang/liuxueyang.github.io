@@ -1,0 +1,112 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>使用Time Machine备份系统时磁盘空间不足的问题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-12-26T17:41:06Z">Dec 26, 2016</time>
+        </li>
+        
+        
+
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Time Machine这个功能我只在当初刚买了MacBook Air之后不久才用过一次。后来就再也没有管它。当初在移动硬盘里面分出125GB的空间作为Time Machine的分区。那次备份的时间是2014年8月24日。距离现在已经两年多了。</p>
+
+<p>之前我用这个Time Machine把电脑恢复到了2014年8月24日的状态。挺好用的。没有遇到问题。方法如下：</p>
+
+<pre><code>1. 关机，插入移动硬盘
+2. 在电脑开机的时候，按住cmd + R键
+3. 选择`Restore From Time Machine Backup`
+</code></pre>
+
+<p>等一段时间就好了。还原完毕之后，记得在系统设置的<code>Security &amp; Privacy</code>里面打开FileVault，然后把<code>recovery key</code>备份到一个安全的地方。然后我找回了我要的比较重要的文件。更新、升级系统。还是比较顺利的。</p>
+
+<p>我的SSD大小是120GB。然后我想在把更新后的系统备份到Time Machine里面。系统提示磁盘空间不足，也就是我的移动硬盘里面的Time Machine里面空间不足了，这就比较麻烦了，手上也没有足够空间的移动硬盘了。事实上，合适的Time Machine的空间应该是电脑硬盘空间的两倍，当初我并不知道，所以只分配了一倍。玩手机的时候无意中在国外的一个论坛的不知名的角落里发现一个人七八年之前的回复，说可以在备份的时候剔除某些目录，比如<code>/Users/</code>这个目录。备份完之后，再把被剔除的目录加进来，再备份一次。因为的的Time Machine的剩余空间只有30GB，所以我剔除了<code>/Users/</code>和<code>/Applications</code>这两个目录。成功备份。然后再加入<code>/Users/</code>目录，再备份一次。最后再加入<code>/Applications/</code>目录。继续备份。这个时候即使<code>/Applications/</code>目录的大小大于我的Time Machine的剩余空间，它也没有提示磁盘空间不足，而是会自动删除最老的备份，然后正常备份。挺神奇。为什么最开始的时候它不会自动删除最老的备份呢？</p>
+
+<p>另外，我发现它把2014年的整个备份删除了。没关系，反正我已经把所有的文件分类导出来了。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2016-12-25-stop-organize/"><i class="fa fa-chevron-circle-left"></i> 做事情分清主次</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2016-12-29-start-to-use-slackware/">开始使用Slackware <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

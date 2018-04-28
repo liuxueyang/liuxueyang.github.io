@@ -1,0 +1,120 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>A small pathogen plugin problem</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2014-06-17T20:10:27Z">Jun 17, 2014</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/tools/">#Tools</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>When I install vim-instant-markdown with pathogen. I find it can not be installed.</p>
+
+<p>It is so interesting.</p>
+
+<p>Look at this <a href="http://addisu.taddese.com/blog/using-github-and-pathogen-for-your-vim-config-files/">blog</a>.</p>
+
+<p>I have thought it is because the path is not correct so I mv the after/plugin directory into the root path of vim-instant-markdown. However, I cannot open the preview when I open a file with an extent <code>.md</code>;</p>
+
+<p>So I went to the project mainpage and at the FAQ I saw the solution. This is because the plugin only recognize files ending with <code>.markdown</code>, <code>.mdown</code> and <code>README.md</code>. In order to recognize files with <code>.md</code>, I neet to install <a href="https://github.com/tpope/vim-markdown">vim-markdown</a> plugin.</p>
+
+<p>I can write markdown file in vim and preview it in Safari at the same time.</p>
+
+<p>Problem solved!</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/run-3/"><i class="fa fa-chevron-circle-left"></i> Run-3</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/run-4/">Run-4 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

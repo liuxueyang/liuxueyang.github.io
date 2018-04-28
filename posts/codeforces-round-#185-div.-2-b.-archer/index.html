@@ -1,0 +1,137 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Codeforces Round #185 (Div. 2) B. Archer</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-05-31T11:10:00Z">May 31, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/codeforces/">#CodeForces</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://codeforces.com/problemset/problem/312/B">http://codeforces.com/problemset/problem/312/B</a>
+题目大意：
+　　很简短，不解释了。
+题目思路：
+　　开始怎么也读不懂题意，以为求期望呢，想不开……后来问了别人才知道，原来就是求概率，也没说多少个回合，所以就是求极限……
+　　所以，这货就是一道很简洁的概率题，推个公式就好了。
+ </p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int main(void) {
+  int a, b, c, d;
+  double p1, p2, ans;
+  scanf(&quot;%d%d%d%d&quot;, &amp;a, &amp;b, &amp;c, &amp;d);
+  p1 = 1.0*a/b; p2 = 1.0*c/d;
+  ans = p1/(1-(1-p1)*(1-p2));
+  printf(&quot;%.12f\n&quot;, ans);
+  return 0;
+}
+
+</code></pre>
+
+<p> 
+开始为什么怎么也读不懂捏？果然是理解能力差么？
+这题几天前做的，忘了总结一下了。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-round-#186-div.-2-c.-ilya-and-matrix/"><i class="fa fa-chevron-circle-left"></i> Codeforces Round #186 (Div. 2) C. Ilya and Matrix</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu1257-%E6%9C%80%E5%B0%91%E6%8B%A6%E6%88%AA%E7%B3%BB%E7%BB%9F-dp%E4%B9%88/">hdu1257 最少拦截系统 ——DP么？ <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,189 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu 1048</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-01-22T09:29:00Z">Jan 22, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>The Hardest Problem Ever</p>
+
+<p>Time Limit: <sup>2000</sup>&frasl;<sub>1000</sub> MS (Java/Others)    Memory Limit: <sup>65536</sup>&frasl;<sub>32768</sub> K (Java/Others)
+Total Submission(s): 11459    Accepted Submission(s): 5165</p>
+
+<p>Problem Description
+Julius Caesar lived in a time of danger and intrigue. The hardest situation Caesar ever faced was keeping himself alive. In order for him to survive, he decided to create one of the first ciphers. This cipher was so incredibly sound, that no one could figure it out without knowing how it worked.
+You are a sub captain of Caesar&rsquo;s army. It is your job to decipher the messages sent by Caesar and provide to your general. The code is simple. For each letter in a plaintext message, you shift it five places to the right to create the secure message (i.e., if the letter is &lsquo;A&rsquo;, the cipher text would be &lsquo;F&rsquo;). Since you are creating plain text out of Caesar&rsquo;s messages, you will do the opposite:</p>
+
+<p>Cipher text
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
+
+<p>Plain text
+V W X Y Z A B C D E F G H I J K L M N O P Q R S T U</p>
+
+<p>Only letters are shifted in this cipher. Any non-alphabetical character should remain the same, and all alphabetical characters will be upper case.</p>
+
+<p>Input
+Input to this problem will consist of a (non-empty) series of up to 100 data sets. Each data set will be formatted according to the following description, and there will be no blank lines separating data sets. All characters will be uppercase.</p>
+
+<p>A single data set has 3 components:</p>
+
+<p>Start line - A single line, &ldquo;START&rdquo;</p>
+
+<p>Cipher message - A single line containing from one to two hundred characters, inclusive, comprising a single message from Caesar</p>
+
+<p>End line - A single line, &ldquo;END&rdquo;</p>
+
+<p>Following the final data set will be a single line, &ldquo;ENDOFINPUT&rdquo;.</p>
+
+<p>Output
+For each data set, there will be exactly one line of output. This is the original message by Caesar.</p>
+
+<p>Sample Input
+START NS BFW, JAJSYX TK NRUTWYFSHJ FWJ YMJ WJXZQY TK YWNANFQ HFZXJX END START N BTZQI WFYMJW GJ KNWXY NS F QNYYQJ NGJWNFS ANQQFLJ YMFS XJHTSI NS WTRJ END START IFSLJW PSTBX KZQQ BJQQ YMFY HFJXFW NX RTWJ IFSLJWTZX YMFS MJ END ENDOFINPUT</p>
+
+<p>Sample Output
+IN WAR, EVENTS OF IMPORTANCE ARE THE RESULT OF TRIVIAL CAUSES I WOULD RATHER BE FIRST IN A LITTLE IBERIAN VILLAGE THAN SECOND IN ROME DANGER KNOWS FULL WELL THAT CAESAR IS MORE DANGEROUS THAN HE</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cctype&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+
+int main(void)
+{
+    char a[200+10], b[200+10];
+#ifndef ONLINE_JUDGE
+    freopen(&quot;1048.in&quot;, &quot;r&quot;, stdin);
+#endif
+    while (~scanf(&quot;%s&quot;, a))
+    {
+        getchar();
+        if (!strcmp(a, &quot;START&quot;))
+        {
+            gets(b);
+            for (int i = 0; b[i] != '\0'; ++i)
+            {
+                if (isalpha(b[i]) &amp;&amp; isupper(b[i]))
+                {
+                    if (b[i] &lt; 'F')
+                        printf(&quot;%c&quot;, b[i] + 21);
+                    else printf(&quot;%c&quot;, b[i] - 5);
+                }
+                else
+                    printf(&quot;%c&quot;, b[i]);
+            }
+            printf(&quot;\n&quot;);
+        }
+        else if (!strcmp(&quot;END&quot;, a))
+            continue;
+        else break;
+    }
+
+    return 0;
+}
+</code></pre>
+
+<p>这是入门题</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1049/"><i class="fa fa-chevron-circle-left"></i> hdu 1049</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1046/">hdu 1046 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

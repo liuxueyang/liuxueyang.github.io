@@ -1,0 +1,151 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu1420 Prepared for New Acmer ——快速幂</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-06-01T19:33:00Z">Jun 1, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+                    , 
+                    <a href="/tags/math/">#Math</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1420">http://acm.hdu.edu.cn/showproblem.php?pid=1420</a>
+题目大意：
+　　中文题。
+题目思路：
+　　赤裸裸的快速幂。呵呵</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cmath&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+#define LL long long
+LL m;
+LL Po(LL a, LL b) {
+  LL ans = 1;
+  while (b) {
+    if (b&amp;1) {
+      ans = (ans * a) % m;
+      b--;
+    }
+    b /= 2; a = a * a % m;
+  }
+  return ans;
+}
+int main(void) {
+  LL n, a, b;
+#ifndef ONLINE_JUDGE
+  freopen(&quot;1420.in&quot;, &quot;r&quot;, stdin);
+#endif
+  scanf(&quot;%I64d&quot;, &amp;n);
+  while (n--) {
+    scanf(&quot;%I64d%I64d%I64d&quot;, &amp;a, &amp;b, &amp;m);
+    printf(&quot;%I64d\n&quot;, Po(a, b));
+  }
+  return 0;
+}
+
+</code></pre>
+
+<p>WA了几次……原因就是输入输出要用%I64d，用%lld或者类型不用LL就出错。题目本身是说要范围10^6，如果平方一下，显然就超int了，所以不能用int</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu1257-%E6%9C%80%E5%B0%91%E6%8B%A6%E6%88%AA%E7%B3%BB%E7%BB%9F-dp%E4%B9%88/"><i class="fa fa-chevron-circle-left"></i> hdu1257 最少拦截系统 ——DP么？</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/kmp%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/">KMP示例程序 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj1002 487-3279 ——水题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-04-19T11:22:00Z">Apr 19, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://poj.org/problem?id=1002">http://poj.org/problem?id=1002</a>
+题目大意：
+　　给定一组电话号码，如果是包括字母，那么就映射到数字，统计相同的电话号码个数大于1的号码，按照从小到大的顺序输出，并且输出相应的个数。
+题目思路：
+　　因为电话号码最多又7位数字，在整数范围内，把每个读入的电话号码转化成整数，用一个ｍａｐ记录是不是出现过，如果出现过，就把相应的ｍａｐ记录加1,如果没有出现过，就把这个数字放进一个数组ａｒｒ里面，这样ａｒｒ里面的数字是不重复的。最后把ａｒｒ排序，对于每一个数组元素，输出相应的ｍａｐ记录，也就是它出现过的次数。
+　　输出的时候，按照整数输出，但是要注意，开始要输出3位，如果前面有0的话，按照整数输出就不行，所以要控制格式，用ｐｒｉｎｔｆ（“%03ｄ”）；这样的格式，表示前面要补齐0；卡住了，看得以前的代码才想到这种情况，还是思维不严谨 啊～</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;vector&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN = 0x3f3f3f3f;
+const int MINN = -0x3f3f3f3f;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+
+int arr[100000+10];
+map&lt;char, int&gt; ma;
+char pri[10];
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;poj1002.in&quot;, &quot;r&quot;, stdin);
+#endif
+    for (int i = 0; i &lt; 5; ++i){
+      ma[i*3+'A'] = ma[i*3+1+'A'] = ma[i*3+2+'A'] = i + 2;
+    }
+  ma['P'] = ma['R'] = ma['S'] = 7;
+  ma['T'] = ma['U'] = ma['V'] = 8;
+  ma['W'] = ma['X'] = ma['Y'] = 9;
+  int n; scanf(&quot;%d&quot;, &amp;n); char a[100]; map&lt;int , int&gt; cnt;
+  int k = 0, temp, i, j; cnt.clear();
+  for (i = 1; i &lt;= n; ++i){
+    scanf(&quot;%s&quot;, a); int len = strlen(a), temp = 0;
+    for (j = 0; j &lt; len; ++j){
+      if (isalpha(a[j])) {
+        temp = temp * 10 + ma[a[j]];
+      } else if (isdigit(a[j])){
+        temp = temp * 10 + (a[j] - '0');
+      }
+    }
+      if (cnt[temp] == 0){
+        cnt[temp]++; arr[k++] = temp; 
+      } else cnt[temp]++;
+  }
+  sort(arr, arr+k); bool flag = false;
+  for (i = 0; i &lt; k; ++i){
+    if (cnt[arr[i]] != 1){
+      flag = true;
+      printf(&quot;%03d-%04d %d\n&quot;, arr[i]/10000,arr[i]%10000,cnt[arr[i]]);
+    }
+  }
+  if (!flag){
+    cout &lt;&lt; &quot;No duplicates.\n&quot;;
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>主要是为了练习一下ＳＴＬ，用来刷水题……看来自己做水题速度还是比较慢的。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%8818%E6%97%A5-%E9%9B%A8/"><i class="fa fa-chevron-circle-left"></i> 2013年4月18日 雨</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj3087-shufflem-up-%E6%B0%B4%E9%A2%98/">poj3087 Shuffle&#39;m Up ——水题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

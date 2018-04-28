@@ -1,0 +1,159 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu 1019 Least Common Multiple</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-03-13T09:18:00Z">Mar 13, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Least Common Multiple</p>
+
+<p>Time Limit: <sup>2000</sup>&frasl;<sub>1000</sub> MS (Java/Others)    Memory Limit: <sup>65536</sup>&frasl;<sub>32768</sub> K (Java/Others)
+Total Submission(s): 21158    Accepted Submission(s): 7899</p>
+
+<p>Problem Description
+The least common multiple (LCM) of a set of positive integers is the smallest positive integer which is divisible by all the numbers in the set. For example, the LCM of 5, 7 and 15 is 105.</p>
+
+<p>Input
+Input will consist of multiple problem instances. The first line of the input will contain a single integer indicating the number of problem instances. Each instance will consist of a single line of the form m n1 n2 n3 &hellip; nm where m is the number of integers in the set and n1 &hellip; nm are the integers. All integers will be positive and lie within the range of a 32-bit integer.</p>
+
+<p>Output
+For each problem instance, output a single line containing the corresponding LCM. All results will lie in the range of a 32-bit integer.</p>
+
+<p>Sample Input
+2 3 5 7 15 6 4 10296 936 1287 792 1</p>
+
+<p>Sample Output
+105 10296</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cmath&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int gcd(int a, int b){
+  return b == 0 ? a : gcd(b, a%b);
+}
+int main(void){
+  int t; 
+#ifndef ONLINE_JUDGE
+  freopen(&quot;1019.in&quot;, &quot;r&quot;, stdin);
+#endif
+  scanf(&quot;%d&quot;, &amp;t);{
+    while (t--){
+      int n; scanf(&quot;%d&quot;, &amp;n);
+      int a, b, c; n--; scanf(&quot;%d&quot;, &amp;a);
+      while (n--){
+        scanf(&quot;%d&quot;, &amp;b);
+        a = b / gcd(a, b) * a;
+      }
+      printf(&quot;%d\n&quot;, a);
+    }
+  }
+  return 0;
+}
+</code></pre>
+
+<p>这题和又和原来的不一样了……纠结，输入t的时候，不能用 while (~scanf(&ldquo;%d&rdquo;,&amp;t)) ……唉，蛋疼……</p>
+
+<p>又测试了一下，原来可以按照上面的用，发现如果改成long long int 就ＷＡ，为毛？……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1061-rightmost-digit/"><i class="fa fa-chevron-circle-left"></i> hdu 1061 Rightmost Digit</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1028-ignatius-and-the-princess-iii/">hdu 1028 Ignatius and the Princess III <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,231 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj 2503 Babelfish</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-02-27T00:28:00Z">Feb 27, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+                    , 
+                    <a href="/tags/data-structure/">#Data Structure</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Babelfish
+Time Limit: 3000MS      Memory Limit: 65536K
+Total Submissions: 26498        Accepted: 11378</p>
+
+<p>Description
+You have just moved from Waterloo to a big city. The people here speak an incomprehensible dialect of a foreign language. Fortunately, you have a dictionary to help you understand them.</p>
+
+<p>Input
+Input consists of up to 100,000 dictionary entries, followed by a blank line, followed by a message of up to 100,000 words. Each dictionary entry is a line containing an English word, followed by a space and a foreign language word. No foreign word appears more than once in the dictionary. The message is a sequence of words in the foreign language, one word on each line. Each word in the input is a sequence of at most 10 lowercase letters.</p>
+
+<p>Output
+Output is the message translated to English, one word per line. Foreign words not in the dictionary should be translated as &ldquo;eh&rdquo;.</p>
+
+<p>Sample Input</p>
+
+<p>dog ogday
+cat atcay
+pig igpay
+froot ootfray
+loops oopslay</p>
+
+<p>atcay
+ittenkay
+oopslay</p>
+
+<p>Sample Output</p>
+
+<p>cat
+eh
+loops</p>
+
+<p>Hint
+Huge input and output,scanf and printf are recommended.</p>
+
+<p>简单的字典树就可以做……</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+
+const int sonnum = 26, base = 'a';
+struct Trie 
+{
+  int num; bool terminal; char dic[20];
+  Trie *son[sonnum];
+};
+Trie *NewTrie()
+{
+  Trie *temp = new Trie;
+  temp-&gt;num = 1; temp-&gt;terminal = false; 
+  memset(temp-&gt;dic, 0, sizeof(temp-&gt;dic));
+  for (int i = 0; i &lt; sonnum; ++i) temp-&gt;son[i] = NULL;
+  return temp;
+}
+
+void Insert(Trie *pnt, char *s, int len, char *t)
+{
+  Trie *temp = pnt;
+  for (int i = 0; i &lt; len; ++i)
+  {
+    if (temp-&gt;son[s[i]-base] == NULL)
+      temp-&gt;son[s[i]-base] = NewTrie();
+    else temp-&gt;son[s[i]-base]-&gt;num++;
+    temp = temp-&gt;son[s[i]-base];
+  }
+  temp-&gt;terminal = true;
+  strcpy(temp-&gt;dic, t);
+//  temp-&gt;dic = t;
+}
+
+Trie *Find(Trie *pnt, char *s, int len)
+{
+  Trie *temp = pnt;
+  for (int i = 0; i &lt; len; ++i)
+  {
+    if (temp-&gt;son[s[i]-base] == NULL)
+    {
+      printf(&quot;eh\n&quot;);
+      return temp;
+    }
+    else temp = temp-&gt;son[s[i]-base];
+  }
+  if (temp-&gt;terminal == true)
+    printf(&quot;%s\n&quot;, temp-&gt;dic);
+  return temp;
+}
+
+int main(void)
+{
+#ifndef ONLINE_JUDGE
+  freopen(&quot;poj2503.in&quot;, &quot;r&quot;, stdin);
+#endif
+  Trie *pnt = NewTrie();
+  char a[20], b[20], t;
+  while (1)
+  {
+    scanf(&quot;%s&quot;, a);
+    t = getchar();
+    if (t == '\n')
+      break;
+    scanf(&quot;%s&quot;, b);
+    Insert(pnt, b, strlen(b), a);
+  }
+  Find(pnt, a, strlen(a));
+  while (~scanf(&quot;%s&quot;, a))
+  {
+    Find(pnt, a, strlen(a));
+  }
+
+  return 0;
+}
+</code></pre>
+
+<p>但是我有一个困惑，关于指针的。</p>
+
+<p>如果把结构体中的dic换成指针形式，char *dic; 在Insert函数中写成 temp-&gt;dic = t; 但是程序结果为什么输出的是原来的单词，而不是翻译后的单词？</p>
+
+<p>这个问题现在还没想明白，以后还得多花时间学学C语言啊……</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj-2001-shortest-prefixes-%E5%AD%97%E5%85%B8%E6%A0%91%E5%85%A5%E9%97%A8/"><i class="fa fa-chevron-circle-left"></i> poj 2001 Shortest Prefixes ——字典树入门</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj-1056-immediate-decodability/">poj 1056 IMMEDIATE DECODABILITY <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

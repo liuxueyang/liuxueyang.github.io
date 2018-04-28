@@ -1,0 +1,186 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu1028 Ignatius and the Princess III ——DP</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-05-23T19:48:00Z">May 23, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+                    , 
+                    <a href="/tags/dp/">#DP</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1028">http://acm.hdu.edu.cn/showproblem.php?pid=1028</a>
+题目大意：　
+　　整数拆分，给一个整数n,求它有多少种拆分方法。
+题目思路：
+做法一：
+　　d[i][j]表示把整数 i 拆成最多 j 个数字所具有的方法数。那么
+　　if (i &gt;ｊ)　d[i][j] = d[i-j][j] + d[i][j-1]; 意思就是如果i&gt;j，那么有两种方式：一种是先把i里面分理处j个1，然后再把i-j拆成最多i-j个数字；另一种是把i拆分成最多j-1个数字。
+　　if (i &lt; j) d[i][j] = d[i][i]; 意思就是如果i&lt;j，那么这种情况和把数字i最多拆成i个数字的是一样的。
+　　if (i == j) d[i][j] = d[i][j-1] + 1; 意思就是如果i==j，那么可以把数字i拆分成j-1个数字，也可以把数字i拆分成i个1（这个就是那个1的意义）
+ </p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+using namespace std;
+#define LL long long
+int d[140][140], n;
+void init() {
+  while (~scanf(&quot;%d&quot;, &amp;n)) {
+    int i, j; memset(d, 0, sizeof(d));
+    for  (i = 0; i &lt;= n; ++i) d[i][1] = d[1][i] = 1;
+    for (i = 2; i &lt;= n; ++i) {
+      for (j = 1; j &lt;= n; ++j) {
+        if (i &gt; j) d[i][j] = d[i-j][j] + d[i][j-1];
+        else if (i == j) d[i][j] = 1 + d[i][j-1];
+        else d[i][j] = d[i][i];
+      }
+    }
+    cout &lt;&lt; d[n][n] &lt;&lt; endl;
+  }
+}
+int main(void) {
+  init();
+  return 0 ;
+}
+
+</code></pre>
+
+<p> 
+　　剩下的就是考虑一下边界，比如当 i 或者 j 等于1的时候，显然都是只有一种拆分情况。
+做法二：
+　　借用hdu1284这道题的方法，也可以做这道题目，因为n的范围是120嘛,两个算法的复杂度都是O(n^2)的，当然可以了。只需要把hdu1284的代码里面把3改成n，这题就过了……
+ </p>
+
+<pre><code class="language-cpp">
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+const int MAX = 32768+10;
+long long d[MAX];
+void solve() {
+  int n, i, j;
+  while (~scanf(&quot;%d&quot;, &amp;n)) {
+    memset(d, 0, sizeof(d));
+    d[0] = 1;
+    for (i = 1; i &lt;= n; ++i) {
+      for (j = i; j &lt;= n; ++j) {
+        d[j] += d[j-i];
+      }
+    }
+    printf(&quot;%lld\n&quot;, d[n]);
+  }
+}
+int main(void) {
+  solve();
+  return 0;
+}
+
+</code></pre>
+
+<p> 
+优化到了一维数组，这个方法碉堡了……
+参考博客：<a href="http://www.cnblogs.com/qiufeihai/archive/2012/09/11/2680840.html 膜拜……">http://www.cnblogs.com/qiufeihai/archive/2012/09/11/2680840.html 膜拜……</a>
+ </p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu1394-minimum-inversion-number-%E7%BA%BF%E6%AE%B5%E6%A0%91/"><i class="fa fa-chevron-circle-left"></i> hdu1394 Minimum Inversion Number ——线段树</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu1284-%E9%92%B1%E5%B8%81%E5%85%91%E6%8D%A2%E9%97%AE%E9%A2%98-dp/">hdu1284 钱币兑换问题 ——DP <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj2369 Permutations ——置换群</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-08-24T17:44:00Z">Aug 24, 2013</time>
+        </li>
+        
+        
+
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>link:<a href="http://poj.org/problem?id=2369">http://poj.org/problem?id=2369</a></p>
+
+<p>置换群，最简单的那种。</p>
+
+<p>找所有数字循环节的最小公倍数。</p>
+
+<pre><code class="language-cpp">/*
+ID: zypz4571
+LANG: C++
+TASK: permutations.cpp
+ */
+
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+#include &lt;deque&gt;
+#include &lt;queue&gt;
+#include &lt;list&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;utility&gt;
+#include &lt;functional&gt;
+#include &lt;fstream&gt;
+#include &lt;iomanip&gt;
+#include &lt;sstream&gt;
+#include &lt;numeric&gt;
+#include &lt;cassert&gt;
+#include &lt;ctime&gt;
+#include &lt;iterator&gt;
+const int INF = 0x3f3f3f3f;
+const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}};
+using namespace std;
+int a[1111];
+bool flag[1111];
+int gcd(int x, int y) {
+    return y == 0 ? x : gcd(y, x%y);
+}
+int lcm(int x, int y) {
+    return x/gcd(x,y)*y;
+}
+int main ( int argc, char *argv[] )
+{
+#ifndef ONLINE_JUDGE
+freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+#endif
+    ios::sync_with_stdio(false);
+    int n;
+    while (~scanf(&quot;%d&quot;, &amp;n)) {
+        for (int i = 0; i &lt; n; ++i) scanf(&quot;%d&quot;, a+i+1);
+        int ans = 1;
+        memset(flag, false, sizeof(flag));
+        for (int i = 1; i &lt;= n; ++i) {
+            int sum = 0, pos = i;
+            if (!flag[pos]) {
+                for (; !flag[a[pos]]; ++sum) {
+                    flag[a[pos]] = true;
+                    pos = a[pos];
+                }
+                ans = lcm(ans, sum);
+            }
+        }
+        printf(&quot;%d\n&quot;, ans);
+    }
+        return EXIT_SUCCESS;
+}                /* ----------  end of function main  ---------- */
+</code></pre>
+
+<p>开始有一点不理解，仔细想一想就明白了。把上面的程序模拟一下这个样例：</p>
+
+<pre><code>1	2	3	4	5
+4	1	5	2	3
+2	4	 	1	 
+1	2	 	4	 
+</code></pre>
+
+<p>比如，我在对1找循环节的时候，过程中出现了4，那么将来，就不用对4找循环节了。</p>
+
+<p>这么想：1 经过4到达1，那么4一定可以经过1到达4.并且4的循环节必然和1相等！</p>
+
+<p>因为在对1找循环节的时候，你遇到了4，那么这就相当于在这个时候对4找循环节么。很神奇的样子。</p>
+
+<p>多多模拟一下，严格的证明貌似还要好好看一下近世代数。</p>
+
+<p>嗨，中村</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2009%E5%B9%B4%E5%88%B02013%E5%B9%B4%E7%94%B2%E5%AD%90%E5%9B%ADed/"><i class="fa fa-chevron-circle-left"></i> 2009年到2013年甲子园ED</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj1026-cipher-%E7%BD%AE%E6%8D%A2%E7%BE%A4/">poj1026 Cipher ——置换群 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

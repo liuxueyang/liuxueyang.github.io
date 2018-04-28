@@ -1,0 +1,223 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Chapter 5</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2014-05-27T23:51:33Z">May 27, 2014</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/common-lisp/">#Common Lisp</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>##Optional Parameters</p>
+
+<p>we can use optional arguments in a function, such as:</p>
+
+<p>```common lisp
+    (defun foo (a b &amp;optional c d)
+     (list a b c d))</p>
+
+<pre><code>
+This will result:
+
+```common lisp
+(foo 1 2)				-&gt; (1 2 NIL NIL)
+(foo 1 2 3)			-&gt; (1 2 3 NIL)
+(foo 1 2 3 4)		-&gt; (1 2 3 4)
+</code></pre>
+
+<p>Besides, we can set default value for a argument:</p>
+
+<p>``` common lisp
+    (defun foo (a &amp;optional (b 10))
+     (list a b))</p>
+
+<pre><code>
+This will result:
+
+```common lisp
+(foo 1 2) 				-&gt; (1 2)
+(foo 1)					-&gt; (1 10)
+</code></pre>
+
+<p>In this example, argument b is set to 10 by default.</p>
+
+<p>We can also know whether a value is set by default or by explicitly.</p>
+
+<p>``` common lisp
+    (defun foo (a b &amp;optional (c 3 c-supplied-p))
+     (list a b c c-supplied-p))</p>
+
+<pre><code>
+For example:
+
+```common lisp
+(foo 1 2)			-&gt; (1 2 3 NIL)
+(foo 1 2 3)		-&gt; (1 2 3 T)
+(foo 1 2 4)		-&gt; (1 2 4 T)
+</code></pre>
+
+<p>Besides, we can use the value of argument which appears earlier in the argument list:</p>
+
+<p>```common lisp
+(defun foo (a &amp;optional (b a))
+    (+ a b))</p>
+
+<pre><code>
+##Keyword Parameters
+
+```common lisp
+(defun foo (&amp;key a b c) 
+	(list a b c))
+</code></pre>
+
+<p>function can be invoked as follows:</p>
+
+<p>```common lisp
+(foo)                       -&gt; (NIL NIL NIL)
+(foo :a 1)          -&gt; (1 NIL NIL)
+(foo :b 1)              -&gt; (NIL 1 NIL)
+(foo :a 1 :c 3)     -&gt; (1 NIL 3)</p>
+
+<pre><code>
+Keyword parameters can provide a default value form and the name of a supplied-p value. e.g.:
+
+```common lisp
+(defun foo (&amp;key (a 0) (b 0 b-supplied-p) (c (+ a b)))
+	(list a b c b-supplied-p))
+</code></pre>
+
+<p>If you want the keyword the caller uses to specify the parameter to be different from the name of the actual parameter. e.g:</p>
+
+<p>```common lisp
+(defun foo (&amp;key ((:apple a)) ((:box b) 0) ((:charlie c) 0 c-supplied-p))
+    (list a b c c-supplied-p))</p>
+
+<pre><code>
+##Mixing Different Parameter Types
+
+Combing &amp;optional and &amp;key parameters yields surprising results. e.g:
+
+```common lisp
+(defun foo (x &amp;optional y &amp;key z)
+	(list x y z))
+</code></pre>
+
+<p>It works like this:</p>
+
+<p>```common lisp
+(foo 1 2 :z 3)          -&gt; (1 2 3)
+(foo 1)                     -&gt; (1 nil nil)
+(foo 1 :z 3)                -&gt; ERROR</p>
+
+<pre><code>
+In the last case, the keyword :z is taken as a value to fill the optional y parameter and leaving only the argument 3 to be processed. So it leads to ERROR.
+
+However, we can combine &amp;rest and &amp;key parameters. e.g:
+
+```common lisp
+(defun foo (&amp;rest rest &amp;key a b c)
+	(list rest a b c))
+</code></pre>
+
+<p>you get this result:</p>
+
+<p><code>common lisp
+(foo :a 1 :b 2 :c 3)            -&gt; ((:A 1 :B 2 :C 3) 1 2 3)
+</code></p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/my-new-post/"><i class="fa fa-chevron-circle-left"></i> My new post</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/nfa2dfa/">NFA2DFA <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

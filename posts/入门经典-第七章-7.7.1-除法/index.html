@@ -1,0 +1,151 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>入门经典 第七章 7.7.1 除法</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2012-12-14T19:21:00Z">Dec 14, 2012</time>
+        </li>
+        
+        
+
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>这道题目还是卡了很久，原因是要考虑0是不是出现过，要标记。</p>
+
+<pre><code class="language-cpp">
+#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;math.h&gt;
+
+void f(int a[], int n)
+{
+    a[n%10] = 1;
+    n/=10;
+    while (n)
+    {
+        a[n%10] = 1;
+        n/=10;
+    }
+    return;
+}
+
+int main(void)
+{
+    int n, i, a[11], k, temp;
+    freopen(&quot;in&quot;, &quot;r&quot;, stdin);
+    while (~scanf(&quot;%d&quot;, &amp;n))
+    {
+        for (i = 100; i &lt; 50000; ++i)
+        {
+            k = i * n;
+            memset(a, 0, sizeof(a));
+            temp = k;
+            if (temp/100000!=0) continue;
+            f(a, temp);
+            f(a, i);
+            a[temp/10000] = a[i/10000] = 1;
+            int mrk=1;
+            for (int s = 0; s &lt; 10; ++s)
+            {
+                if(!a[s])
+                {mrk = 0; break;}
+            }
+            if (mrk == 1) printf(&quot;%05d / %05d = %d\n&quot;, k, i, n);
+        }
+        
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+<p>标记的时候要认真考虑特殊情况。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/gdb%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E7%AE%80%E8%A6%81%E6%80%BB%E7%BB%93/"><i class="fa fa-chevron-circle-left"></i> gdb调试方法简要总结</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-%E7%AC%AC%E4%B8%83%E7%AB%A0-7.7.2-%E6%9C%80%E5%A4%A7%E4%B9%98%E7%A7%AF/">入门经典 第七章 7.7.2 最大乘积 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

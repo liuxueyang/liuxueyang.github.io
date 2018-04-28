@@ -1,0 +1,190 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>uestc1824 Judgment Day ——比赛残留题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-04-20T09:30:00Z">Apr 20, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/uestc/">#uestc</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://www.acm.uestc.edu.cn/problem.php?pid=1824">http://www.acm.uestc.edu.cn/problem.php?pid=1824</a>
+题目大意：
+　　给一个大的字符串，给一个数字n，然后给出n个小的字符串，在大的字符串里面每个字母只能选一次，问最多可以组成多少个小的字符串。小的字符串最多有10个，每个小字符串和大字符串长度最多10000。
+题目思路：
+　　因为最多有10个小的字符串，从10个里面选，最多有1024种选法。因为字符串只包含26个小写字母，可以统计每个小字符串里面的每个小写字母的个数，这样，复杂度大约在10×26×1024,是10^5的范围，可以枚举。
+　　比如对于n个字符串，最多有1&lt;&lt;n种，用 x 从1枚举到1&lt;&lt;n - 1，然后用 j 从 0 枚举到n-1，用 1 &lt;&lt; j 和 x 相与，如果为1,则 j +1 表示第 j + 1 个人被选上了，判断它是不是能被选上，如果能被选上，那么 cnt++，再和max相比较，最后得到max。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1},
+  {1,1},{1,-1},{-1,-1}};
+const int L = 100000+10;
+char s[L], a[15][L];
+int t, nn, cnt[29], ca[15][29], cc[29];
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;j.in&quot;, &quot;r&quot;, stdin);
+#endif
+  int n, i, j, k, len; scanf(&quot;%d&quot;, &amp;t);
+  for (i = 1; i &lt;= t; ++i){
+    memset(cnt, 0, sizeof(cnt));
+    scanf(&quot;%s&quot;, s); len = strlen(s);
+    for (k = 0; k &lt; len; ++k){
+      cnt[s[k]-'a']++;
+    }
+    scanf(&quot;%d&quot;, &amp;nn);
+    memset(ca, 0, sizeof(ca));
+    for (j = 1; j &lt;= nn; ++j){
+      scanf(&quot;%s&quot;, a[j]); len = strlen(a[j]);
+      for (k = 0; k &lt; len; ++k){
+        ca[j][a[j][k]-'a']++;
+      }
+    }
+    int max = 0, count = 0;
+    for (int x = 1; x &lt;= (1&lt;&lt;nn)-1; ++x){
+      for (int s = 0; s &lt;= 25; ++s) cc[s] = cnt[s];
+      count = 0;
+      for (int j = 0; j &lt;= nn-1; ++j){
+        int pos = (1&lt;&lt;j)&amp;x;
+        if (pos){
+          int kk;
+          for (kk = 0; kk &lt;= 25; ++kk){
+            if (ca[j+1][kk]){
+              if (ca[j+1][kk] &lt;= cc[kk]) {
+                cc[kk] -= ca[j+1][kk];
+              }
+              else break;
+            }
+          }
+          if (kk == 26) count++;
+        }
+      }
+      if (count &gt; max) max = count;
+    }
+    printf(&quot;Case #%d: %d\n&quot;, i, max);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>　　写的过程中还是花了不少时间，有一些小细节，虽然明白，但是还是用错了，属于一些低级错误。还是代码能力不够吧。
+　　这是昨天比赛的一道题目，开始读错题目了，以为KMP，后来才发现不是，然后终于弄懂题目意思了，可是没注意到10这个条件，不知道用枚举，唉……
+　　以后读题至少要读清楚！</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%8819%E6%97%A5-%E5%9B%9B%E6%A0%A1%E8%81%94%E8%B5%9B%E6%8C%91%E6%88%98%E8%B5%9B%E6%80%BB%E7%BB%93/"><i class="fa fa-chevron-circle-left"></i> 2013年4月19日 四校联赛挑战赛总结</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%8821%E6%97%A5-%E9%98%B4/">2013年4月21日 阴 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

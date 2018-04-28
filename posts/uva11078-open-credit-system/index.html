@@ -1,0 +1,145 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>uva11078 Open Credit System</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-05-21T18:26:00Z">May 21, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/uva/">#Uva</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=2019">http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=2019</a>
+题目大意：
+　　给一个长度为n的序列，求Ai - Aj (i &lt; j)的最大值。序列的长度最大是10^5
+题目思路：
+　　动态维护某一个数字之前的最大值，不断更新之。同时不断更新结果ans，更新的方法是ans和当前数字之前的最大值与这个数字作差，取其中的最大值。时间复杂度O(N),空间复杂度O(1)</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+using namespace std;
+void solve() {
+  int t; scanf(&quot;%d&quot;, &amp;t);
+  while (t--) {
+    int n; scanf(&quot;%d&quot;, &amp;n);
+    int a, b; scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+    int i, Max = max(a,b), ans = a - b;
+    for (i = 0; i &lt; n - 2; ++i) {
+      scanf(&quot;%d&quot;, &amp;b);
+      ans = max(ans, Max - b);
+      Max = max(Max, b);
+    }
+    printf(&quot;%d\n&quot;, ans);
+  }
+}
+int main(void) {
+  //freopen(&quot;11078.in&quot;, &quot;r&quot;, stdin);
+  solve();
+  return 0;
+}
+
+</code></pre>
+
+<p>这个想法很神奇~
+也可以用数组先把序列保存起来。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/uva11462-age-sort-%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/"><i class="fa fa-chevron-circle-left"></i> uva11462 Age Sort ——计数排序</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8-7.1.1-%E9%99%A4%E6%B3%95/">入门经典 7.1.1 除法 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

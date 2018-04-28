@@ -1,0 +1,136 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu4737 A Bit Fun</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-09-15T10:26:00Z">Sep 15, 2013</time>
+        </li>
+        
+        
+
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>link:<a href="http://acm.hdu.edu.cn/showproblem.php?pid=4737">http://acm.hdu.edu.cn/showproblem.php?pid=4737</a></p>
+
+<p>暴力可以过啊。O(N^2)的复杂度。</p>
+
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+int a[100001];
+int main(void) {
+    #ifndef ONLINE_JUDGE
+    freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+    #endif
+    int t; scanf(&quot;%d&quot;, &amp;t);
+    long long int ans;
+    for (int i = 1; i &lt;= t; ++i) {
+        ans = 0;
+        printf(&quot;Case #%d: &quot;, i);
+        int m;
+        int n, j, k;
+        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+        for (j = 0; j &lt; n; scanf(&quot;%d&quot;, a+j++));
+        int tmp;
+        for (j = 0; j &lt; n; ++j) {
+            tmp = a[j];
+            for (k = j; k &lt; n; ++k) {
+                tmp = tmp | a[k];
+                if (tmp &lt; m)
+                    ans++;
+                else break;
+            }
+        }
+        printf(&quot;%lld\n&quot;, ans);
+    }
+    return 0;
+}
+</code></pre>
+
+<p>数据出的不好吧==</p>
+
+<p>比如100000个1怎么破？</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/codeforces-199a/"><i class="fa fa-chevron-circle-left"></i> codeforces 199a</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu4737-a-bit-fun-o-n-%E5%81%9A%E6%B3%95%E9%94%99%E8%AF%AF%E7%9A%84%E5%81%9A%E6%B3%95-%E6%AD%A3%E7%A1%AE%E5%81%9A%E6%B3%95/">hdu4737 A Bit Fun ——O(n)做法、错误的做法 &#43; 正确做法 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

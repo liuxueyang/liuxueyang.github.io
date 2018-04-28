@@ -1,0 +1,176 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>zoj 2165 Red and Black ——BFS入门题</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-04-07T19:06:00Z">Apr 7, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/zoj/">#zoj</a>
+                
+                    , 
+                    <a href="/tags/bfs/">#BFS</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1165">http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1165</a>
+题意：
+　　给一个字符矩阵，“.”代表黑色格子，“#”代表红色格子，有一个起点“@”，它属于黑色格子，一个人从起点出发，只能走黑色格子，并且只能上下左右走，不能对角线走，问这个人能走到的黑色格子有多少个。输出个数。输入W，H，代表有W列，H行，然后输入一个字符矩阵，输出能走到的最多的黑色格子的个数，包括起点。
+思路：
+　　这个题目很简单，和zoj 2110 类似，但是这道题目比那道简单多了，不用剪枝，不用恢复现场，直接深搜就可以。首先找到起点，然后从起点出发，判断这个点是不是被访问过，如果被访问过，就return；否则判断这个格子是不是黑色格子或者是起点，如果是，就cnt++，然后标记这个格子已经被访问过，如果不是，return; 如果没有return，就在这个点的四个方向继续深搜。思路很清晰。1A。</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cctype&gt;
+#include &lt;stack&gt;
+#include &lt;queue&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#define lson l, m, rt&lt;&lt;1
+#define rson m+1, r, rt&lt;&lt;1|1
+using namespace std;
+typedef long long int LL;
+const int MAXN =  0x3f3f3f3f;
+const int  MIN =  -0x3f3f3f3f;
+const double eps = 1e-9;
+
+int w, h, cnt = 0;
+char s[22][22]; bool flag[22][22];
+int dir[4][2] = {{0,1},{1,0},{-1,0},{0,-1}};
+void dfs(int i, int j){
+  if (i &lt;= 0 || j &lt;= 0 || i &gt; h || j &gt; w) return;
+  if (flag[i][j]) return;
+  if (s[i][j] == '.' || s[i][j] == '@'){
+    cnt++; flag[i][j] = true;
+  } else return;
+  for (int k = 0; k &lt; 4; ++k){
+    dfs(i + dir[k][0], j + dir[k][1]);
+  } 
+  return;
+}
+int main(void){
+#ifndef ONLINE_JUDGE
+  freopen(&quot;zoj2165.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (~scanf(&quot;%d%d&quot;, &amp;w, &amp;h) &amp;&amp; (w+h)){
+    getchar(); cnt = 0;
+    for (int i = 1; i &lt;= h; ++i){
+      for (int j = 1; j &lt;= w; ++j){
+        scanf(&quot;%c&quot;, &amp;s[i][j]);
+      } getchar();
+    }
+    memset(flag, false, sizeof(flag));
+    for(int i = 1; i &lt;= h; ++i){
+      for (int j = 1; j &lt;= w; ++j){
+        if (s[i][j] == '@'){
+          dfs(i, j); break;
+        }
+      }
+    }
+    printf(&quot;%d\n&quot;,cnt);
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+<p>感觉做这种DFS入门题的时候，只要理清思路，然后敲代码的时候认真一点儿，就没有问题了。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/zoj-2412-farm-irrigation-dfs%E5%85%A5%E9%97%A8%E9%A2%98/"><i class="fa fa-chevron-circle-left"></i> zoj 2412 Farm Irrigation ——DFS入门题</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/speedcells-spfa/">speedcell&#39;s SPFA <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

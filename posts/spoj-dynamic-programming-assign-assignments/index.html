@@ -1,0 +1,247 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Spoj, dynamic-programming: ASSIGN - Assignments</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-08-14T15:08:27Z">Aug 14, 2016</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/spoj/">#spoj</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    <p><a href="http://www.spoj.com/problems/ASSIGN/">题目意思：</a></p>
+
+<pre><code>有n个学生和n个任务，每个学生有喜欢的任务，输入一个矩阵，第i行第j列表示第i个
+学生喜欢第j个任务。把任务分配给所有学生，使得每个学生得到的任务都是他喜欢的。
+输出有多少种分配方法。n的最大值是20。
+</code></pre>
+
+<p>用一个数字的一个位表示这个任务是否已经被分配，如果任务全部被分配，那么这个数字就
+是<code>(1&lt;&lt;n)-1</code>。可以想到这样的递归方法：<code>solve(i,mask)</code> 表示对i..n这些人分配任务的
+方法的数目，mask代表此时对1..i-1这些人已经分配了任务，也就是说mask的二进制表示里
+面有i-1个1。对当前的人，如果他喜欢第j个任务，并且mask的第j位是0，那么就可以把这
+个任务分配给他，继续考虑下一个人。</p>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *
+ *       Filename:  main1.cpp
+ *
+ *    Description:  http://www.spoj.com/problems/ASSIGN/
+ *
+ *        Version:  2.0
+ *        Created:  08/13/2016 14:13:42
+ *       Compiler:  g++
+ *
+ *         Author:  Sabastian (liuxueyang.github.io), read3valprintloop@gmail.com
+ *
+ * =====================================================================================
+ */
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+#define _ ios_base::sync_with_stdio(0);cin.tie(0);
+#define rep(i, a, n) for (int i = a; i &lt; n; ++i)
+#define per(i, a, n) for (int i = n-1; i &gt;= a; --i)
+#define pb push_back
+#define mp make_pair
+#define all(x) (x).begin(),(x).end()
+#define fi first
+#define se second
+#define SZ(x) ((int)(x).size())
+typedef vector&lt;int&gt; VI;
+typedef map&lt;int,int&gt; MI;
+typedef long long ll;
+typedef pair&lt;int,int&gt; PII;
+const ll MOD=1000000007;
+const int N=((1&lt;&lt;20)+10);
+ll a[25][N];
+int b[25][25];
+ll result;
+int n;
+ 
+ll solve(int stu, ll mask){
+  if(a[stu][mask])return a[stu][mask];
+  if(stu&gt;=n+1)return a[stu][mask]=1;
+  ll result=0;rep(j,0,n){
+    if( b[stu-1][j]==1 &amp;&amp; !((1&lt;&lt;j)&amp;mask) )
+      result+=solve(stu+1,mask|(1&lt;&lt;j));
+  }
+  return a[stu][mask]=result;
+}
+ 
+int main ( void )
+{
+#ifndef  ONLINE_JUDGE
+  freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);
+#endif     /* -----  ONLINE_JUDGE  ----- */
+ 
+  int T;cin&gt;&gt;T;while(T--){
+    memset(a,0,sizeof(a)); cin&gt;&gt;n;rep(i,0,n)rep(j,0,n)cin&gt;&gt;b[i][j];
+    cout&lt;&lt;solve(1,0)&lt;&lt;endl;
+  }
+ 
+  return EXIT_SUCCESS;
+}				/* ----------  end of function main  ---------- */
+</code></pre>
+
+<p>然而，这会TLE。</p>
+
+<p>这个做法递归到最后，递归结束的时候，其实是在<code>solve(stu,mask)</code>里面的<code>stu==n+1</code>的
+时候。所以我们可以从下到上计算。<code>dp[(1&lt;&lt;n)-1]=1;</code>这是初始的条件。我们把<code>mask</code>从
+<code>(1&lt;&lt;n)-2</code>开始循环，一直到0，那么可以发现计算<code>dp[i]</code>的时候<code>dp[i..]</code>已经计算过了。
+另外，可以根据<code>i</code>里面的<code>1</code>的个数来判断当前是哪一个学生。</p>
+
+<p>复杂度是O(n*2^n)</p>
+
+<pre><code class="language-cpp">/*
+ * =====================================================================================
+ *
+ *       Filename:  main1.cpp
+ *
+ *    Description:  http://www.spoj.com/problems/ASSIGN/
+ *
+ *        Version:  2.0
+ *        Created:  2016年08月14日 13时32分54秒
+ *       Compiler:  g++
+ *
+ *         Author:  Sabastian (liuxueyang.github.io), read3valprintloop@gmail.com
+ *
+ * =====================================================================================
+ */
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+#define _ ios_base::sync_with_stdio(0);cin.tie(0);
+#define rep(i, a, n) for (int i = a; i &lt; n; ++i)
+#define per(i, a, n) for (int i = n-1; i &gt;= a; --i)
+#define pb push_back
+#define mp make_pair
+#define all(x) (x).begin(),(x).end()
+#define fi first
+#define se second
+#define SZ(x) ((int)(x).size())
+typedef vector&lt;int&gt; VI;
+typedef map&lt;int,int&gt; MI;
+typedef long long ll;
+typedef pair&lt;int,int&gt; PII;
+const ll MOD=1000000007;
+const ll N=1&lt;&lt;20;
+int b[25][N];
+ll a[N];
+int n;
+int cnt1(ll n){int cnt=0;while(n){if(n&amp;1) ++cnt;n/=2;}return cnt;}
+
+int main ( void )
+{
+#ifndef  ONLINE_JUDGE
+  freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);
+#endif     /* -----  ONLINE_JUDGE  ----- */
+
+    int T;cin&gt;&gt;T;while(T--) {
+        cin&gt;&gt;n; rep(i,1,n+1) rep(j,1,n+1) cin&gt;&gt;b[i][j];
+        memset(a,0,sizeof(a));
+        a[(1&lt;&lt;n)-1]=1;
+        per(mask,0,(1&lt;&lt;n)-1){int row=cnt1(mask);row++;
+            rep(j,1,n+1) if(b[row][j]&amp;&amp;(0==(mask&amp;(1&lt;&lt;(j-1))))) a[mask]+=a[mask|(1&lt;&lt;(j-1))];
+        }
+        cout&lt;&lt;a[0]&lt;&lt;endl;
+    }
+
+  return EXIT_SUCCESS;
+}				/* ----------  end of function main  ---------- */
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/spoj-dynamic-programming-aibohp-aibohphobia/"><i class="fa fa-chevron-circle-left"></i> Spoj, dynamic-programming: AIBOHP - Aibohphobia</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/spoj-anarc09a-seinfeld/">Spoj: ANARC09A - Seinfeld <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

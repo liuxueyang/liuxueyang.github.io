@@ -1,0 +1,183 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>hdu4632 Palindrome subsequence     ——区间动态规划</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-08-03T16:19:00Z">Aug 3, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/hdu/">#Hdu</a>
+                
+                    , 
+                    <a href="/tags/dp/">#DP</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>link:<a href="http://acm.hdu.edu.cn/showproblem.php?pid=4632">http://acm.hdu.edu.cn/showproblem.php?pid=4632</a>
+refer to:
+o(╯□╰)o……明明百度找的题解，然后后来就找不到我看的那份了，这位哥们对不住了……</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+#include &lt;deque&gt;
+#include &lt;queue&gt;
+#include &lt;list&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;utility&gt;
+#include &lt;functional&gt;
+#include &lt;fstream&gt;
+#include &lt;iomanip&gt;
+#include &lt;sstream&gt;
+#include &lt;numeric&gt;
+#include &lt;cassert&gt;
+#include &lt;ctime&gt;
+#include &lt;iterator&gt;
+const int INF = 0x3f3f3f3f;
+const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}};
+using namespace std;
+char a[1111];
+int dp[1111][1111];
+const int MOD = 10007;
+int main(void)
+{
+    #ifndef ONLINE_JUDGE
+    freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+    #endif // ONLINE_JUDGE
+    ios::sync_with_stdio(false);
+    int t; cin&gt;&gt;t;
+    for (int k = 1; k &lt;= t; ++k)
+    {
+        cin&gt;&gt;a; int len = strlen(a);
+        memset(dp, 0, sizeof(dp));
+        for (int i = 0; i &lt; len; ++i) for (int j = 0; j &lt; len; ++j)
+            if (i==j) dp[i][j] = 1;
+        for (int i = 0; i &lt; len; ++i)
+        {
+            for (int j = 0; i+j &lt; len; ++j)
+            {
+                if (a[i+j] == a[j])
+                {
+                    dp[j][i+j] = dp[j][i+j-1] + dp[j+1][i+j] + 1;
+                }
+                else
+                {
+                    dp[j][i+j] = dp[j+1][i+j] + dp[j][i+j-1] - dp[j+1][i+j-1];
+                }
+                dp[j][i+j] = (dp[j][i+j] + MOD)%MOD;
+            }
+        }
+        cout&lt;&lt; &quot;Case &quot;&lt;&lt;k&lt;&lt; &quot;: &quot;&lt;&lt;dp[0][len-1]&lt;&lt;endl;
+    }
+    return 0;
+}
+/*
+    模拟一下第二个样例 aaaaa 就懂了
+*/
+
+</code></pre>
+
+<p>o(╯□╰)o永远感觉规划是一个很神奇的东西，比如这道。想明白了就感觉很神奇~</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu4642-fliping-game--------%E5%8D%9A%E5%BC%88/"><i class="fa fa-chevron-circle-left"></i> hdu4642 Fliping game        ——博弈</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/sgu259printed-pr%E8%B4%AA%E5%BF%83/">sgu259　Printed PR　　　　贪心 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

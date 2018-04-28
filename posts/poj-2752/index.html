@@ -1,0 +1,164 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj 2752</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-01-30T20:51:00Z">Jan 30, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+                    , 
+                    <a href="/tags/kmp/">#KMP</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="http://poj.org/problem?id=2752">http://poj.org/problem?id=2752</a>
+ </p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#define N 400000
+using namespace std;
+
+char s[N];
+int next[N], a[N];
+void getnext(char *p, int *next)
+{
+    int i = 0, j = -1, len = strlen(p);
+    next[0] = -1;
+    while (i &lt; len)
+    {
+        if (j == -1 || p[j] == p[i])
+        {
+            i++; j++; next[i] = j;
+        }
+        else j = next[j];
+    }
+}
+int main(void)
+{
+    freopen(&quot;poj2752.in&quot;, &quot;r&quot;, stdin);
+    while (~scanf(&quot;%s&quot;, s))
+    {
+        getnext(s, next);
+        int len = strlen(s), i, k = 0;
+        i = len;
+        a[0] = len;
+        while (next[i] &gt; 0)
+        {
+            i = next[i];
+            a[++k] = i;
+        }
+        for (int j = k; j &gt;= 0; --j)
+        {
+            printf(&quot;%d&quot;, a[j]);
+            if (j) printf(&quot; &quot;);
+        }
+        printf(&quot;\n&quot;);
+    }
+
+    return 0;
+}
+
+</code></pre>
+
+<p>这道题目要求既是前缀字符串又是后缀字符串的所有可能的长度，正好运用了KMP算法里面next数组的意义，要保证结果是针对整个字符串的，所以在next数组中从后往前扫描即可，因为，next数组中，越往后，数字就越大，并且表示的是后缀和前缀相同的最大长度，所以所得到的结果顺序是反的，要求从小到大输出，逆序输出就可以了。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/cf266-b.-queue-at-the-school/"><i class="fa fa-chevron-circle-left"></i> CF266 B. Queue at the School</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/cf271-b.-prime-matrix/">CF271 B. Prime Matrix <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

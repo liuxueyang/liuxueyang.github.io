@@ -1,0 +1,241 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>poj 2945 Find the Clones</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-02-27T23:50:00Z">Feb 27, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/poj/">#POJ</a>
+                
+                    , 
+                    <a href="/tags/data-structure/">#Data Structure</a>
+                
+            </em>
+        </li>
+        
+
+        <li>4 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>Find the Clones
+Time Limit: 5000MS      Memory Limit: 65536K
+Total Submissions: 6265         Accepted: 2328</p>
+
+<p>Description
+Doubleville, a small town in Texas, was attacked by the aliens. They have abducted some of the residents and taken them to the a spaceship orbiting around earth. After some (quite unpleasant) human experiments, the aliens cloned the victims, and released multiple copies of them back in Doubleville. So now it might happen that there are 6 identical person named Hugh F. Bumblebee: the original person and its 5 copies. The Federal Bureau of Unauthorized Cloning (FBUC) charged you with the task of determining how many copies were made from each person. To help you in your task, FBUC have collected a DNA sample from each person. All copies of the same person have the same DNA sequence, and different people have different sequences (we know that there are no identical twins in the town, this is not an issue).</p>
+
+<p>Input
+The input contains several blocks of test cases. Each case begins with a line containing two integers: the number 1 ≤ n ≤ 20000 people, and the length 1 ≤ m ≤ 20 of the DNA sequences. The next n lines contain the DNA sequences: each line contains a sequence of m characters, where each character is either <code>A',</code>C&rsquo;, <code>G' or</code>T&rsquo;.</p>
+
+<p>The input is terminated by a block with n = m = 0 .</p>
+
+<p>Output
+For each test case, you have to output n lines, each line containing a single integer. The first line contains the number of different people that were not copied. The second line contains the number of people that were copied only once (i.e., there are two identical copies for each such person.) The third line contains the number of people that are present in three identical copies, and so on: the i -th line contains the number of persons that are present in i identical copies. For example, if there are 11 samples, one of them is from John Smith, and all the others are from copies of Joe Foobar, then you have to print <code>1' in the first andthe tenth lines, and</code>0&rsquo; in all the other lines.</p>
+
+<p>Sample Input</p>
+
+<p>9 6
+AAAAAA
+ACACAC
+GTTTTG
+ACACAC
+GTTTTG
+ACACAC
+ACACAC
+TCCCCC
+TCCCCC
+0 0</p>
+
+<p>Sample Output</p>
+
+<p>1
+2
+0
+1
+0
+0
+0
+0
+0</p>
+
+<p>Hint
+Huge input file, &lsquo;scanf&rsquo; recommended to avoid TLE.</p>
+
+<p>用字典树做的，方法比较笨。</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+
+using namespace std;
+const int sonnum = 26, base = 'A';
+char a[20000+10][25];
+int b[20000+10];
+struct Trie
+{
+  int num; bool terminal; int endsum; 
+  Trie *son[sonnum];
+};
+Trie *NewTrie()
+{
+  Trie *temp = new Trie;
+  temp-&gt;num = 1; temp-&gt;terminal = false; temp-&gt;endsum = 0;
+  for (int i = 0; i &lt; sonnum; ++i) temp-&gt;son[i] = NULL;
+  return temp;
+}
+void Insert(Trie *pnt, char *s, int len)
+{
+  Trie *temp = pnt;
+  for (int i = 0; i &lt; len; ++i)
+  {
+    if (temp-&gt;son[s[i]-base] == NULL) temp-&gt;son[s[i]-base] = NewTrie();
+    else temp-&gt;son[s[i]-base]-&gt;num++;
+    temp = temp-&gt;son[s[i]-base];
+  }
+  temp-&gt;endsum++; temp-&gt;terminal = true;
+}
+void Find(Trie *pnt, char *s, int len)
+{
+  Trie *temp = pnt;
+  for (int i = 0; i &lt; len; ++i)
+    temp = temp-&gt;son[s[i]-base];
+  if (temp-&gt;endsum == 1) b[0]++;
+  else 
+  {
+    if (temp-&gt;terminal == true)
+    {
+      b[temp-&gt;endsum-1]++;
+      temp-&gt;terminal = false;
+    }
+  }
+}
+void Delete(Trie *pnt)
+{
+  if (pnt != NULL)
+  {
+    for (int i = 0; i &lt; sonnum; ++i) if (pnt-&gt;son[i] != NULL) Delete(pnt-&gt;son[i]);
+    delete pnt;
+    pnt = NULL;
+  }
+}
+int main(void)
+{
+  int n, m;
+#ifndef ONLINE_JUDGE
+  freopen(&quot;poj2956.in&quot;, &quot;r&quot;, stdin);
+#endif
+  while (1)
+  {
+    Trie *pnt = NewTrie();
+    memset(b, 0, sizeof(b));
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    {
+      for (int i = 0; i &lt; n; ++i) 
+      {
+        scanf(&quot;%s&quot;, a[i]);
+        Insert(pnt, a[i], m);
+      }
+    }
+    for (int i = 0; i &lt; n; ++i) Find(pnt, a[i], m);
+    for (int i = 0; i &lt; n; ++i) printf(&quot;%d\n&quot;, b[i]);
+    Delete(pnt);
+    if (!n) break;
+    }
+
+  return 0;
+}
+</code></pre>
+
+<p>没有优化……应该速度可以更快一点儿。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj-1056-immediate-decodability/"><i class="fa fa-chevron-circle-left"></i> poj 1056 IMMEDIATE DECODABILITY</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu-1394-minimum-inversion-number/">hdu 1394 Minimum Inversion Number <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

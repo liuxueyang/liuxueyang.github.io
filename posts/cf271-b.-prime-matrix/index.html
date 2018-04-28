@@ -1,0 +1,236 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>CF271 B. Prime Matrix</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-02-15T16:06:00Z">Feb 15, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/codeforces/">#CodeForces</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>B. Prime Matrix
+time limit per test
+2 seconds
+memory limit per test
+256 megabytes
+input
+standard input
+output
+standard output</p>
+
+<p>You&rsquo;ve got an n × m matrix. The matrix consists of integers. In one move, you can apply a single transformation to the matrix: choose an arbitrary element of the matrix and increase it by 1. Each element can be increased an arbitrary number of times.</p>
+
+<p>You are really curious about prime numbers. Let us remind you that a prime number is a positive integer that has exactly two distinct positive integer divisors: itself and number one. For example, numbers 2, 3, 5 are prime and numbers 1, 4, 6 are not.</p>
+
+<p>A matrix is prime if at least one of the two following conditions fulfills:</p>
+
+<pre><code>the matrix has a row with prime numbers only;
+the matrix has a column with prime numbers only;
+</code></pre>
+
+<p>Your task is to count the minimum number of moves needed to get a prime matrix from the one you&rsquo;ve got.
+Input</p>
+
+<p>The first line contains two integers n, m (1 ≤ n, m ≤ 500) — the number of rows and columns in the matrix, correspondingly.</p>
+
+<p>Each of the following n lines contains m integers — the initial matrix. All matrix elements are positive integers. All numbers in the initial matrix do not exceed 105.</p>
+
+<p>The numbers in the lines are separated by single spaces.
+Output</p>
+
+<p>Print a single integer — the minimum number of moves needed to get a prime matrix from the one you&rsquo;ve got. If you&rsquo;ve got a prime matrix, print 0.
+Sample test(s)
+input</p>
+
+<p>3 3
+1 2 3
+5 6 1
+4 4 1</p>
+
+<p>output</p>
+
+<p>1</p>
+
+<p>input</p>
+
+<p>2 3
+4 8 8
+9 2 9</p>
+
+<p>output</p>
+
+<p>3</p>
+
+<p>input</p>
+
+<p>2 2
+1 3
+4 2</p>
+
+<p>output</p>
+
+<p>0</p>
+
+<p>Note</p>
+
+<p>In the first sample you need to increase number 1 in cell (1, 1). Thus, the first row will consist of prime numbers: 2, 2, 3.</p>
+
+<p>In the second sample you need to increase number 8 in cell (1, 2) three times. Thus, the second column will consist of prime numbers: 11, 2.</p>
+
+<p>In the third sample you don&rsquo;t have to do anything as the second column already consists of prime numbers: 3, 2.</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#define M 100000+10
+
+int a[509][509];
+int prime[100000+10];
+int main(void)
+{
+  int n, m;
+  //freopen(&quot;271b.in&quot;, &quot;r&quot;, stdin);
+  prime[0] = prime[1] = 1;
+  for (int i = 2; i * i &lt; M; ++i)
+    if (!prime[i])
+      for (int j = i * 2; j &lt; M; j+=i)
+        prime[j] = 1;
+  while (~scanf(&quot;%d%d&quot;, &amp;n, &amp;m))
+  {
+    for (int i = 0; i &lt; n; ++i)
+      for (int j = 0; j &lt; m; ++j)
+      {
+        scanf(&quot;%d&quot;, &amp;a[i][j]);
+        for (int k = a[i][j]; k &lt; M; ++k)
+          if (!prime[k])
+          {
+            a[i][j] = k - a[i][j]; 
+            break;
+          }
+      }
+    int min = (M)*10000;
+    for (int i = 0; i &lt; n; ++i)
+    {
+      int sum = 0;
+      for (int j = 0; j &lt; m; ++j)
+        sum += a[i][j];
+      if (sum &lt; min)
+        min = sum;
+    }
+    for (int i = 0; i &lt; m; ++i)
+    {
+      int sum = 0;
+      for (int j = 0; j &lt; n; ++j)
+        sum += a[j][i];
+      if (sum &lt; min)
+        min = sum;
+    }
+    printf(&quot;%d\n&quot;, min);
+  }
+
+  return 0;
+}
+</code></pre>
+
+<p>用到了素数筛选法。</p>
+
+<p>这道题目关键是要有想法。</p>
+
+<p>求出矩阵里面所有的数字和比它大的最小的素数的差的绝对值，然后求出每行，每列之和的最小值即可。</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/poj-2752/"><i class="fa fa-chevron-circle-left"></i> poj 2752</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/cf271-a.-beautiful-year/">CF271 A. Beautiful Year <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>编写子程序，显示字符串</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-10-08T11:41:00Z">Oct 8, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/masm/">#masm</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>在屏幕的8行3列，用绿色显示data段中的字符串。</p>
+
+<pre><code>assume cs:code, ds:data
+
+data segment
+    db 'Welcome to masm!', 0
+data ends
+
+code segment
+start:
+    mov dh, 8
+    mov dl, 3
+    mov cl, 2
+    mov ax, data
+    mov ds, ax
+    mov si, 0
+    call show_str
+
+    mov ax, 4c00h
+    int 21h
+
+show_str:
+    push dx
+    push cx
+
+    ;row
+    dec dh
+    mov al, 0a0h
+    mul dh
+    push ax
+
+    ;col
+    dec dl
+    mov al, 2h
+    mul dl
+
+    pop bx
+    add ax, bx
+    mov di, 0b800h
+    mov es, di
+    mov bp, ax
+    mov bl, cl
+
+change:
+    mov cl, [si]
+    mov ch, 0
+    jcxz ok
+    mov di, si
+    add di, di
+    mov al, ds:[si]
+    mov byte ptr es:[bp+di], al
+    mov byte ptr es:[bp+di+1], bl
+    inc si  
+    jmp short change
+ok:
+    pop cx
+    pop dx
+    ret
+
+code ends
+
+end start
+</code></pre>
+
+<p>开始遇到了很奇怪的bug，最终还是不知道为什么，所以换了一种方式解决问题了。</p>
+
+<p>那个bug是：内存地址一样的位置，数据竟然不一样：
+这两行地址不一样吗？为什么呢？
+为什么数据不同呢？
+后来又遇到了一个bug，就是si的增长方式和在es和ds中是不一样的，所以要用寄存器 di 临时作为es段中的偏移量。</p>
+
+<p>虽然搞了很久，但最终还是搞出来了=_=</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/call%E6%8C%87%E4%BB%A4%E7%9A%84%E4%B8%80%E4%B8%AA%E7%BB%86%E8%8A%82/"><i class="fa fa-chevron-circle-left"></i> call指令的一个细节</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/%E8%A7%A3%E5%86%B3%E9%99%A4%E6%B3%95%E6%BA%A2%E5%87%BA%E9%97%AE%E9%A2%98/">解决除法溢出问题 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

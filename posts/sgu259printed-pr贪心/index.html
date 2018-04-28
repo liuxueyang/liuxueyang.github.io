@@ -1,0 +1,177 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>sgu259　Printed PR　　　　贪心</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2013-08-06T10:27:00Z">Aug 6, 2013</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/sgu/">#Sgu</a>
+                
+            </em>
+        </li>
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>link:<a href="http://acm.sgu.ru/problem.php?contest=0&amp;problem=259">http://acm.sgu.ru/problem.php?contest=0&amp;problem=259</a>
+思路就是贪心．
+首先要读懂题目，输入的方式，把样例读懂．
+第一，打印的总时间一定．需要做的就是送出的时间尽可能的重合，这样总时间就会更少．所以，送出时间长的要尽可能的先打印，按照送出时间从大到小排序就可以了．</p>
+
+<pre><code class="language-cpp">
+/*
+ * =====================================================================================
+ *       Filename:  259.cpp
+ *        Created:  06/08/2013 10:15:09
+ *         Author:  liuxueyang (lxy), 1459917536@qq.com
+ *   Organization:  Hunan University
+ *
+ * =====================================================================================
+ */
+
+/*
+ID: zypz4571
+LANG: C++
+TASK: 259.cpp
+*/
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+#include &lt;set&gt;
+#include &lt;stack&gt;
+#include &lt;map&gt;
+#include &lt;list&gt;
+#define INF 0x3f3f3f3f
+#define MOD 1000000007
+#define LL long long
+const double eps=1e-9;
+using namespace std;
+struct Node{
+    int t, l;
+    bool operator &lt; (const Node other) const {
+        if (l!=other.l) return l&gt;other.l;
+        else return t&lt;other.t;
+    }
+}a[111];
+int main ( int argc, char *argv[] )
+{
+#ifndef ONLINE_JUDGE
+    freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);
+#endif
+    ios::sync_with_stdio(false);
+    int n;
+    while (cin&gt;&gt;n) {
+        for (int i = 0; i &lt; n; ++i) cin&gt;&gt;a[i].t;
+        for (int i = 0; i &lt; n; ++i) cin&gt;&gt;a[i].l;
+        int ans=0, sum=0;
+        sort(a,a+n);
+        for (int i = 0; i &lt; n; ++i)  {
+            sum += a[i].t;
+            ans = max(ans, sum+a[i].l);
+        }
+        cout&lt;&lt;ans&lt;&lt;endl;
+    }
+        return EXIT_SUCCESS;
+}                /* ----------  end of function main  ---------- */
+
+</code></pre>
+
+<p>囧
+开始要读懂题目意思啊，读题认真．</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu4632-palindrome-subsequence-----%E5%8C%BA%E9%97%B4%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><i class="fa fa-chevron-circle-left"></i> hdu4632 Palindrome subsequence     ——区间动态规划</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/hdu2546%E9%A5%AD%E5%8D%A1%EF%BC%90%EF%BC%91%E8%83%8C%E5%8C%85/">hdu2546　饭卡　　　　０１背包 <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

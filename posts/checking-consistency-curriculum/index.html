@@ -1,0 +1,199 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+  <title>LXY Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.32.2" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">LXY Site</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Checking Consistency of CS Curriculum</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2017-05-16T23:00:54&#43;08:00">May 16, 2017</time>
+        </li>
+        
+        
+        <li>
+            Categories: 
+            <em>
+                
+                    
+                    <a href="/categories/algorithm/">Algorithm</a>
+                
+                    , 
+                    <a href="/categories/dfs/">DFS</a>
+                
+            </em>
+        </li>
+        
+
+        
+
+        <li>1 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>题目链接：<a href="https://gitlab.com/liuxueyang/algorithms-on-graph-exercise/blob/master/week2/decomposition-of-graphs.pdf">pdf</a></p>
+
+<p>题目给一个有向图，判断是不是有环。我的方法是DFS，对于一个点，访问的过程中存在这三种情况：</p>
+
+<ol>
+<li>访问v的过程中，再次访问到了v这个点，说明存在环。</li>
+<li>完成访问v后（DFS已经回退到v之后），以后再次访问到了v，这是没有问题
+的，这种情况不能说明存在环。</li>
+<li>v还没有访问过。</li>
+</ol>
+
+<p>因此用三个不同的值来标记这三种情况就可以了。</p>
+
+<pre><code class="language-cpp">// Fri May 12 22:50:22 CST 2017
+// Fri May 12 23:50:02 CST 2017
+
+
+// 判断一个有向图是不是有环。。。
+
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+
+/*
+visit[i]的值有三种情况：
+0:这个点没有访问过
+1:这个点正在访问
+2:这个点以及和它相连的点都已经访问过了
+
+所以DFS的过程中，下一个点遇到了visit[e] == 1说明有环。
+ */
+
+void
+dfs(vector&lt;vector&lt;int&gt; &gt; &amp;adj, vector&lt;int&gt; &amp;visit,
+    int x, bool &amp;mark)
+{
+  // cout &lt;&lt; &quot;(&quot; &lt;&lt; x + 1 &lt;&lt; &quot;, &quot; &lt;&lt; num &lt;&lt; &quot;)&quot; &lt;&lt; &quot;\n&quot;;
+  visit[x] = 1;
+  if (mark) return;
+
+  for (auto e : adj[x]) {
+    if (mark) return;
+    else if (visit[e] == 1) {
+      mark = true;
+      return;
+    }
+    else if (!visit[e]) {
+      dfs(adj, visit, e, mark);
+    }
+  }
+
+  visit[x] = 2;
+}
+
+int
+acyclic(vector&lt;vector&lt;int&gt; &gt; &amp;adj, int n) {
+  vector&lt;int&gt; visit(n, 0);
+  bool mark = false;
+
+  for (size_t i = 0; i &lt; adj.size(); ++i) {
+    if (!visit[i]) {
+      dfs(adj, visit, i, mark);
+    }
+    if (mark) break;
+  }
+  
+  return (mark ? 1 : 0);
+}
+
+int main() {
+  size_t n, m;
+  // cin &gt;&gt; n &gt;&gt; m;
+  while(std::cin &gt;&gt; n &gt;&gt; m) {
+  vector&lt;vector&lt;int&gt; &gt; adj(n, vector&lt;int&gt;());
+  
+  for (size_t i = 0; i &lt; m; i++) {
+    int x, y;
+    std::cin &gt;&gt; x &gt;&gt; y;
+    adj[x - 1].push_back(y - 1);
+  }
+  std::cout &lt;&lt; acyclic(adj, n) &lt;&lt; endl;
+  }
+
+  return 0;
+}
+
+</code></pre>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/adding-exits-to-maze/"><i class="fa fa-chevron-circle-left"></i> Adding Exits to a Maze</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://liuxueyang.github.io/posts/determining-an-order-of-courses/">Determining an Order of Courses <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6> | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://liuxueyang.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>
