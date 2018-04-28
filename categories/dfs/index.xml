@@ -13,10 +13,10 @@
     
     <item>
       <title>Determining an Order of Courses</title>
-      <link>http://liuxueyang.github.io/blog/2017/05/16/determining-an-order-of-courses/</link>
+      <link>http://liuxueyang.github.io/posts/determining-an-order-of-courses/</link>
       <pubDate>Tue, 16 May 2017 23:11:46 +0800</pubDate>
       
-      <guid>http://liuxueyang.github.io/blog/2017/05/16/determining-an-order-of-courses/</guid>
+      <guid>http://liuxueyang.github.io/posts/determining-an-order-of-courses/</guid>
       <description>题目链接：pdf
 题目给出一个有向图，保证没有环，求这个有向图所有点的拓扑排序之后的序列， 只输出一种即可。
 同样用DFS，求拓扑排序的过程一般是先求所有出度为0的点，然后删除这些点， 如此循环。DFS的过程中，回退过程最早的那个点一定是出度为0，所以就可以记 录下DFS的过程中每个点回退的时刻，然后按照时刻大小逆序排序就是拓扑顺序 了。
@@ -25,10 +25,10 @@
     
     <item>
       <title>Checking Consistency of CS Curriculum</title>
-      <link>http://liuxueyang.github.io/blog/2017/05/16/checking-consistency-of-cs-curriculum/</link>
+      <link>http://liuxueyang.github.io/posts/checking-consistency-curriculum/</link>
       <pubDate>Tue, 16 May 2017 23:00:54 +0800</pubDate>
       
-      <guid>http://liuxueyang.github.io/blog/2017/05/16/checking-consistency-of-cs-curriculum/</guid>
+      <guid>http://liuxueyang.github.io/posts/checking-consistency-curriculum/</guid>
       <description>题目链接：pdf
 题目给一个有向图，判断是不是有环。我的方法是DFS，对于一个点，访问的过程中存在这三种情况：
  访问v的过程中，再次访问到了v这个点，说明存在环。 完成访问v后（DFS已经回退到v之后），以后再次访问到了v，这是没有问题 的，这种情况不能说明存在环。 v还没有访问过。  因此用三个不同的值来标记这三种情况就可以了。
@@ -37,10 +37,10 @@
     
     <item>
       <title>Adding Exits to a Maze</title>
-      <link>http://liuxueyang.github.io/blog/2017/05/16/adding-exits-to-a-maze/</link>
+      <link>http://liuxueyang.github.io/posts/adding-exits-to-maze/</link>
       <pubDate>Tue, 16 May 2017 22:52:55 +0800</pubDate>
       
-      <guid>http://liuxueyang.github.io/blog/2017/05/16/adding-exits-to-a-maze/</guid>
+      <guid>http://liuxueyang.github.io/posts/adding-exits-to-maze/</guid>
       <description>题目链接：pdf
 给出一个无向图，求连通分量的个数。对这个图做一遍DFS同时计数就好了。因 为我用邻接表表示图，所以还要记得孤点的情况，这个后来才发现。
 // Begin: Fri May 12 19:52:46 CST 2017 // Finish: Fri May 12 20:16:44 CST 2017 // 求有几个连通块。。 #include &amp;lt;iostream&amp;gt; #include &amp;lt;vector&amp;gt; using namespace std; void dfs(vector&amp;lt;vector&amp;lt;int&amp;gt; &amp;gt; &amp;amp;adj, vector&amp;lt;bool&amp;gt; &amp;amp;visit, int x) { visit[x] = true; for (size_t i = 0; i &amp;lt; adj[x].size(); ++i) { if (!visit[adj[x][i]]) { dfs(adj, visit, adj[x][i]); } } } int number_of_components(vector&amp;lt;vector&amp;lt;int&amp;gt; &amp;gt; &amp;amp;adj, int n) { int res = 0; vector&amp;lt;bool&amp;gt; visit(n, false); // 所以我忘了孤点。。。。T_T for (size_t i = 0; i &amp;lt; adj.</description>
@@ -48,10 +48,10 @@
     
     <item>
       <title>Finding an Exit from a Maze</title>
-      <link>http://liuxueyang.github.io/blog/2017/05/16/finding-an-exit-from-a-maze/</link>
+      <link>http://liuxueyang.github.io/posts/finding-an-exit-from-maze/</link>
       <pubDate>Tue, 16 May 2017 22:28:46 +0800</pubDate>
       
-      <guid>http://liuxueyang.github.io/blog/2017/05/16/finding-an-exit-from-a-maze/</guid>
+      <guid>http://liuxueyang.github.io/posts/finding-an-exit-from-maze/</guid>
       <description>题目链接：pdf
 这道题目给出一个无向图，一个起点，一个终点，判断从起点是否能够到达终点。 显然就是从起点开始做一次DFS就可以了。
 // 2017/05/12 19:35:19 // 判断两个点是否连通。。。 #include &amp;lt;iostream&amp;gt; #include &amp;lt;vector&amp;gt; using namespace std; void dfs(vector&amp;lt;vector&amp;lt;int&amp;gt; &amp;gt; &amp;amp;adj, int x, int y, vector&amp;lt;bool&amp;gt; &amp;amp;visit) { visit[x] = true; if (visit[y]) return; for (size_t i = 0; i &amp;lt; adj[x].size(); ++i) { if (!visit[adj[x][i]]) { dfs(adj, adj[x][i], y, visit); } } } int reach(vector&amp;lt;vector&amp;lt;int&amp;gt; &amp;gt; &amp;amp;adj, int x, int y, int n) { vector&amp;lt;bool&amp;gt; visit(n, false); dfs(adj, x, y, visit); return (visit[y] ?</description>

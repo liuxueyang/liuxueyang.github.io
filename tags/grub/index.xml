@@ -13,10 +13,10 @@
     
     <item>
       <title>ubuntu12.04 修复Grub2</title>
-      <link>http://liuxueyang.github.io/blog/2013/06/27/ubuntu12.04-%E4%BF%AE%E5%A4%8Dgrub2/</link>
+      <link>http://liuxueyang.github.io/posts/ubuntu12.04-%E4%BF%AE%E5%A4%8Dgrub2/</link>
       <pubDate>Thu, 27 Jun 2013 20:39:00 +0000</pubDate>
       
-      <guid>http://liuxueyang.github.io/blog/2013/06/27/ubuntu12.04-%E4%BF%AE%E5%A4%8Dgrub2/</guid>
+      <guid>http://liuxueyang.github.io/posts/ubuntu12.04-%E4%BF%AE%E5%A4%8Dgrub2/</guid>
       <description>电脑双系统，但是把win7重装了之后，会发现grub坏了，只能进入win7。 遇到过好几次，虽然每次都成功解决问题了，但是都花费了不少时间。 所以，总结一下，基本是从网上找到的方法，有的行不通，有的可以。就我的尝试，总结了一下对我的电脑来说，比较有效的方法。 首先说明：我的boot分区没有单独分区！ 第一步： 用光盘进入Ubuntu LiveCD，打开终端，
 sudo fdisk -l  找到 id 是83的那行，可惜我的有两个：/dev/sda3 和 /dev/sda8 。一般的应该有一行的……囧，可能是装系统的时候没搞好o(╯□╰)o 后来尝试发现，用 /dev/sda3 才是正确的。记住这个号码，考虑到一般性，这里记为/dev/sdaX 第二步：sudo -i 获得root权限 mkdir /media/tempdir   挂载：
 mount /dev/sdaX /media/tempdir grub-install --root-directory=/media/tempdir /dev/sda   第三步：重启，可能会进入到 grub rescue 界面。 输入set，查看相应的设置。然后修改：

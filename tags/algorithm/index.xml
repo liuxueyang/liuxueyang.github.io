@@ -13,19 +13,19 @@
     
     <item>
       <title>Binary Search Tree: Perl and Common Lisp implementation</title>
-      <link>http://liuxueyang.github.io/blog/2016/06/30/binary-search-tree-perl-and-common-lisp-implementation/</link>
+      <link>http://liuxueyang.github.io/posts/binary-search-tree-perl-and-common-lisp-implementation/</link>
       <pubDate>Thu, 30 Jun 2016 08:33:38 +0000</pubDate>
       
-      <guid>http://liuxueyang.github.io/blog/2016/06/30/binary-search-tree-perl-and-common-lisp-implementation/</guid>
+      <guid>http://liuxueyang.github.io/posts/binary-search-tree-perl-and-common-lisp-implementation/</guid>
       <description>Perl #!perl use strict; use warnings; use utf8; use 5.014; # insert given value into the proper position. If no tree provided, # use implicit pass by reference aspect of @_ to fill one. sub insert { my($tree, $value) = @_; unless ($tree) { $tree = {}; $tree-&amp;gt;{VALUE} = $value; $tree-&amp;gt;{LEFT} = undef; $tree-&amp;gt;{RIGHT} = undef; $_[0] = $tree; # $_[0] is reference param return; } if ($tree-&amp;gt;{VALUE} &amp;gt; $value) { insert($tree-&amp;gt;{LEFT}, $value) } elsif ($tree-&amp;gt;{VALUE} &amp;lt; $value) { insert($tree-&amp;gt;{RIGHT}, $value) } else { warn &amp;quot;duplicate insert of $value\n&amp;quot; } } sub in_order { my($tree) = @_; return unless $tree; in_order($tree-&amp;gt;{LEFT}); print $tree-&amp;gt;{VALUE}, &amp;quot; &amp;quot;; in_order($tree-&amp;gt;{RIGHT}); } sub pre_order { my($tree) = @_; return unless $tree; print $tree-&amp;gt;{VALUE}, &amp;quot; &amp;quot;; pre_order($tree-&amp;gt;{LEFT}); pre_order($tree-&amp;gt;{RIGHT}); } sub post_order { my($tree) = @_; return unless $tree; post_order($tree-&amp;gt;{LEFT}); post_order($tree-&amp;gt;{RIGHT}); print $tree-&amp;gt;{VALUE}, &amp;quot; &amp;quot;; } sub search { my($tree, $value) = @_; return unless $tree; return $tree if ($tree-&amp;gt;{VALUE} == $value); search ($tree-&amp;gt;{ ($value &amp;lt; $tree-&amp;gt;{VALUE}) ?</description>
     </item>
     
     <item>
       <title>Lowest common ancestor in binary tree: perl, c and common lisp implementation</title>
-      <link>http://liuxueyang.github.io/blog/2016/06/27/lowest-common-ancestor-in-binary-tree-perl-c-and-common-lisp-implementation/</link>
+      <link>http://liuxueyang.github.io/posts/lowest-common-ancestor-in-binary-tree-perl-c-and-common-lisp-implementation/</link>
       <pubDate>Mon, 27 Jun 2016 17:32:47 +0000</pubDate>
       
-      <guid>http://liuxueyang.github.io/blog/2016/06/27/lowest-common-ancestor-in-binary-tree-perl-c-and-common-lisp-implementation/</guid>
+      <guid>http://liuxueyang.github.io/posts/lowest-common-ancestor-in-binary-tree-perl-c-and-common-lisp-implementation/</guid>
       <description>Find lowest common ancestor in binary tree. We assume the values in the tree are unique and the two values are always in the tree.
 Time complexity O(n), Space complexity O(n)
 C: #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; // Find lowest common ancestor in binary tree. We assume the // values in the tree are unique and the two values are always in // the tree. // Time complexity O(n) // Space complexity O(n) typedef struct Node { int key; struct Node *left, *right; } Node; Node* createNode(int key) { Node * tmp = (Node*)malloc(sizeof(Node)); tmp-&amp;gt;key = key; tmp-&amp;gt;left = tmp-&amp;gt;right = NULL; return tmp; } Node* findLCA(Node* root, int n1, int n2) { if (root == NULL) { return NULL; } if (n1 == root-&amp;gt;key || n2 == root-&amp;gt;key) { return root; } Node* left = findLCA(root-&amp;gt;left, n1, n2); Node* right = findLCA(root-&amp;gt;right, n1, n2); if (left &amp;amp;&amp;amp; right) { return root; } return left ?</description>
@@ -33,10 +33,10 @@ C: #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; // Find lo
     
     <item>
       <title>Fenwick Tree</title>
-      <link>http://liuxueyang.github.io/blog/2016/06/27/fenwick-tree/</link>
+      <link>http://liuxueyang.github.io/posts/fenwick-tree/</link>
       <pubDate>Mon, 27 Jun 2016 00:54:39 +0000</pubDate>
       
-      <guid>http://liuxueyang.github.io/blog/2016/06/27/fenwick-tree/</guid>
+      <guid>http://liuxueyang.github.io/posts/fenwick-tree/</guid>
       <description>Fenwick Tree的原理是，把一个前缀和划分成多个子序列的和，子序列的个数是当前前缀和元素个数的数字二进制表示中的1的个数。
 Perl实现：
 #!/usr/bin/env perl -n #=============================================================================== # FILE: fenwick_tree.pl # AUTHOR: Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com # ORGANIZATION: Hunan University # CREATED: 2016/06/26 23时27分06秒 #=============================================================================== use strict; use warnings; use utf8; use 5.014; chomp; my @fenwick; my @array = split; unshift @array, 0; unshift @fenwick, 0; sub lowbit { $_[0] &amp;amp; -$_[0]; } sub build_fenwick_tree { for (1..$#array) { for my $j ($_-lowbit($_)+1..$_) { $fenwick[$_] += $array[$j] } } } sub modify_fenwick_tree { # two arguments # 1.</description>

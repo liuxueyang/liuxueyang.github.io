@@ -13,10 +13,10 @@
     
     <item>
       <title>Clustering</title>
-      <link>http://liuxueyang.github.io/blog/2017/05/17/clustering/</link>
+      <link>http://liuxueyang.github.io/posts/clustering/</link>
       <pubDate>Wed, 17 May 2017 15:33:49 +0800</pubDate>
       
-      <guid>http://liuxueyang.github.io/blog/2017/05/17/clustering/</guid>
+      <guid>http://liuxueyang.github.io/posts/clustering/</guid>
       <description>题目链接：pdf
 题目给出一个些点的坐标，要求把这些点分成k组，求这k组中，组和组之间的点 的最小距离d。
 这道题，好像可以用Kruskal？比如：按照边长度从小到大扫描， 同时记录当前有多少个连通分量（比如：每次Union之后连通分量 的个数减一），一直到只剩k个连通分量的时候，找到下一个可用 边（这个边的两个点在不同的连通分量中）的时候退出循环。这个 可用边就是答案。
@@ -28,10 +28,10 @@
     
     <item>
       <title>Building Roads to Connect Cities</title>
-      <link>http://liuxueyang.github.io/blog/2017/05/17/building-roads-to-connect-cities/</link>
+      <link>http://liuxueyang.github.io/posts/building-roads-to-connect-cities/</link>
       <pubDate>Wed, 17 May 2017 15:24:43 +0800</pubDate>
       
-      <guid>http://liuxueyang.github.io/blog/2017/05/17/building-roads-to-connect-cities/</guid>
+      <guid>http://liuxueyang.github.io/posts/building-roads-to-connect-cities/</guid>
       <description>题目链接：pdf
 给出平面上的一些点，任意两点之间可以相连，求最小生成树的总权值。
 用Kruskal：把所有边按照边长度升序排序，循环所有边，每次加入一个边之前要判断这个边的两个点是不是在一个集合中，如果是那么跳过，如果不是那么把这个边的两个点合并到一个集合中。集合操作用带路径压缩的并查集。循环边的过程中累加边的权值。
@@ -40,10 +40,10 @@
     
     <item>
       <title>Detecting Anomalies in Currency Exchange Rates</title>
-      <link>http://liuxueyang.github.io/blog/2017/05/17/detecting-anomalies-in-currency-exchange-rates/</link>
+      <link>http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/</link>
       <pubDate>Wed, 17 May 2017 15:01:28 +0800</pubDate>
       
-      <guid>http://liuxueyang.github.io/blog/2017/05/17/detecting-anomalies-in-currency-exchange-rates/</guid>
+      <guid>http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/</guid>
       <description>题目链接：pdf
 题目给一个有向图，判定这个有向图是不是存在负环。
 思路：
@@ -56,10 +56,10 @@
     
     <item>
       <title>Computing the Minimum Cost of a Flight</title>
-      <link>http://liuxueyang.github.io/blog/2017/05/17/computing-the-minimum-cost-of-a-flight/</link>
+      <link>http://liuxueyang.github.io/posts/computing-minimum-cost-of-a-flight/</link>
       <pubDate>Wed, 17 May 2017 08:37:01 +0800</pubDate>
       
-      <guid>http://liuxueyang.github.io/blog/2017/05/17/computing-the-minimum-cost-of-a-flight/</guid>
+      <guid>http://liuxueyang.github.io/posts/computing-minimum-cost-of-a-flight/</guid>
       <description>题目链接：pdf
 题目给出一个有向图，边的权值非负，求起点到终点的最短路。
 用Dijkstra，基本思想是这样的：如果一个有向图权值非负，那么两点之间的最 短路有最优子结构的性质。两点之间的最短路上的任意两点之间的路径也是最优 的。
@@ -73,10 +73,10 @@ d(S, t) = d(S, u) + w(u, t)  所以我们可以不断地对所有边的进行松
     
     <item>
       <title>Checking Whether Any Intersection in a City is Reachable from Any Other</title>
-      <link>http://liuxueyang.github.io/blog/2017/05/16/checking-whether-any-intersection-in-a-city-is-reachable-from-any-other/</link>
+      <link>http://liuxueyang.github.io/posts/checking-whether-any-intersection-in-a-city-is-reachable-any-other/</link>
       <pubDate>Tue, 16 May 2017 23:24:52 +0800</pubDate>
       
-      <guid>http://liuxueyang.github.io/blog/2017/05/16/checking-whether-any-intersection-in-a-city-is-reachable-from-any-other/</guid>
+      <guid>http://liuxueyang.github.io/posts/checking-whether-any-intersection-in-a-city-is-reachable-any-other/</guid>
       <description>题目链接：pdf
 题目给出一个有向图，要求输出图中强连通分量的个数。
 我把这样的强连通分量叫做一个sink：不存在一个边从这个强连通分量中的任意 一个点连接到其它连通分量。也就是说如果把这个强连通分量缩成一个点的话， 它的出度为0。

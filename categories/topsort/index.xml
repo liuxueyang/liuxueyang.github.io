@@ -13,10 +13,10 @@
     
     <item>
       <title>Determining an Order of Courses</title>
-      <link>http://liuxueyang.github.io/blog/2017/05/16/determining-an-order-of-courses/</link>
+      <link>http://liuxueyang.github.io/posts/determining-an-order-of-courses/</link>
       <pubDate>Tue, 16 May 2017 23:11:46 +0800</pubDate>
       
-      <guid>http://liuxueyang.github.io/blog/2017/05/16/determining-an-order-of-courses/</guid>
+      <guid>http://liuxueyang.github.io/posts/determining-an-order-of-courses/</guid>
       <description>题目链接：pdf
 题目给出一个有向图，保证没有环，求这个有向图所有点的拓扑排序之后的序列， 只输出一种即可。
 同样用DFS，求拓扑排序的过程一般是先求所有出度为0的点，然后删除这些点， 如此循环。DFS的过程中，回退过程最早的那个点一定是出度为0，所以就可以记 录下DFS的过程中每个点回退的时刻，然后按照时刻大小逆序排序就是拓扑顺序 了。
