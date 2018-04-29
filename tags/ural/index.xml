@@ -6,9 +6,7 @@
     <description>Recent content in Ural on LXY Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <managingEditor>your@email.com (Aos Dabbagh)</managingEditor>
-    <webMaster>your@email.com (Aos Dabbagh)</webMaster>
-    <copyright>(c) 2008 - 2014</copyright>
+    <copyright>Copyright &amp;copy; 2018 (LXY). All Rights Reserved.</copyright>
     <lastBuildDate>Wed, 15 May 2013 16:30:00 +0000</lastBuildDate>
     
 	<atom:link href="http://liuxueyang.github.io/tags/ural/index.xml" rel="self" type="application/rss+xml" />
@@ -18,10 +16,9 @@
       <title>ural1057 Amount of Degrees ——数位DP</title>
       <link>http://liuxueyang.github.io/posts/ural1057-amount-of-degrees-%E6%95%B0%E4%BD%8Ddp/</link>
       <pubDate>Wed, 15 May 2013 16:30:00 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/ural1057-amount-of-degrees-%E6%95%B0%E4%BD%8Ddp/</guid>
-      <description>题目链接：http://acm.timus.ru/problem.aspx?space=1&amp;amp;num=1057 题目大意： 意思就是给一个区间[x, y]，求这个区间内有多少个恰好可以被k个b的不同次幂的数之和表示出来的数字的个数。 题目思路： 只需要求区间[0, m]内的恰好可以被k个b的不同次幂的数之和表示出来的数字的个数，定义这个函数是solve(m, k, b)。题目要求的就是：solve(y, k, b) - solve(x - 1, k, b)。 思路就是，转化成二进制考虑。把这个区间内的某个数字表示成b进制，要求的数字是转化成b进制之后，每一位的数字均为0或者1，这样的数字。 画一棵完全二叉树，根节点是0，左子节点是0，右子节点是1，高度从0开始记起，整棵树的根节点不用。则f[i][j]表示，高度为i的二叉树里面恰好含有j个1的数字的个数。那么就有： f[i][j] = f[i-1][j-1] + f[i-1][j] 意思就是高度为i的树包含的数字里面，符合条件的数字的数目等于左右两棵子树的和。 当然数组f[i&amp;hellip;n][0]都要初始化为1，因为长度为i&amp;hellip;n的并且含有0个1的数字的个数总为1. 参考解题报告：http://hi.baidu.com/zyz913614263/item/a0215c20efefa01f42634a12
-#include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;stack&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;deque&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;algorithm&amp;gt; #define lson l, m, rt&amp;lt;&amp;lt;1 #define rson m+1, r, rt&amp;lt;&amp;lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x7fffffff; const int MINN = -0x7fffffff; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int f[32][32]; int solve(int n, int k, int b) { int a[32], sum, cnt, i, j; sum = 0; cnt = 0; i = 0; while (n) { a[++i] = n%b; n /= b; } for (j = i; j &amp;gt;= 1 &amp;amp;&amp;amp; cnt &amp;lt;= k; --j) { if (a[j] &amp;gt; 1) { sum += f[j][k-cnt]; break; } else if (a[j] == 1) { sum += f[j-1][k-cnt]; cnt++; } if (j == 1 &amp;amp;&amp;amp; cnt == k) sum++; } return sum; } int main(void){ #ifndef ONLINE_JUDGE freopen(&amp;quot;ural1057.</description>
+      <description>题目链接：http://acm.timus.ru/problem.aspx?space=1&amp;amp;num=1057 题目大意： 意思就是给一个区间[x, y]，求这个区间内有多少个恰好可以被k个b的不同次幂的数之和表示出来的数字的个数。 题目思路： 只需要求区间[0, m]内的恰好可以被k个b的不同次幂的数之和表示出来的数字的个数，定义这个函数是solve(m, k, b)。题目要求的就是：solve(y, k, b) - solve(x - 1, k, b)。 思路就是，转化成二进制考虑。把这个区间内的某个数字表示成b进制，要求的数字是转化成b进制之后，每一位的数字均为0或者1，这样的数字。 画一棵完全二叉树，根节点是0，左子节点是0，右子节点是1，高度从0开始记起，整棵树的根节点不用。则f[i][j]表示，高度为i的二叉树里面恰好含有j个1的数字的个数。那么就有： f[i][j] = f[i-1][j-1] + f[i-1][j] 意思就是高度为i的树包含的数字里面，符合条件的数字的数目等于左右两棵子树的和。 当然数组f[i&amp;hellip;n][0]都要初始化为1，因为长度为i&amp;hellip;n的并且含有0个1的数字的个数总为1.</description>
     </item>
     
   </channel>

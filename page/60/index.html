@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+	<meta name="generator" content="Hugo 0.32.2" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="keywords">
+    
+    <meta content="LXY Site" property="og:title">
+    <title>LXY Site</title>
+    <link rel="stylesheet" href="http://liuxueyang.github.io/css/main.css" >
+    <link rel="alternate" type="application/rss+xml" title="LXY Site" href='http://liuxueyang.github.io/index.xml' />
+
+    <link rel="icon" sizes="16x16 32x32 48x48" href='http://liuxueyang.github.io/favicon.ico' />
+  
+    
+
+  </head>
+  <body>
+    
+
+
+
+ 
+
+<header class="site-header" 
+  style="background:url('http://liuxueyang.github.io/img/header.jpg')
+  top center no-repeat fixed ; background-size:100% auto; " >
+
+  
+    <a class="site-title" href="http://liuxueyang.github.io">LXY Site</a>
+
+    
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+    
+    
+    <a class="page-link" href="https://github.com/liuxueyang/" title="">Github</a>
+    
+    <a class="page-link" href="/posts/" title="">Posts</a>
+    
+  </div>
+</nav>
+
+
+
+
+</header>
+
+
+    
+      <div class="nav-right">
+        <nav class="nav-item">
+          
+        </nav>
+      </div>
+
+    
+    <main class="wrapper">
+      
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/tyvj1004-%E6%BB%91%E9%9B%AA/"> tyvj1004 滑雪
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Jul 6, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/tyvj">tyvj</a>
+
+
+      
+      
+</div>
+
+  题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1004 记忆化搜索
+#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;algorithm&gt; #include &lt;cstring&gt; using namespace std; int m[102][102], dp[102][102], r, C; int dfs(int x, int y) { if (dp[x][y] &gt; 0) return dp[x][y]; dp[x][y]=1; int a,b,c,d; a=b=c=d=0; if (x-1&gt;=1 &amp;&amp; m[x-1][y] &lt; m[x][y]) a = dfs(x-1,y); if (x+1&lt;=r &amp;&amp; m[x+1][y] &lt; m[x][y]) b = dfs(x+1,y); if (y-1&gt;=1 &amp;&amp; m[x][y-1] &lt; m[x][y]) c = dfs(x,y-1); if (y+1&lt;=C &amp;&amp; m[x][y+1] &lt; m[x][y]) d = dfs(x,y+1); dp[x][y] = max(max(a,b),max(c,d))+1; return dp[x][y]; } int main(void) { int Max; freopen(&quot;in.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/tyvj1004-%E6%BB%91%E9%9B%AA/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84-%E5%88%98%E4%BA%AE%E7%A8%8B/"> 《一个人的村庄》 ——刘亮程
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Jul 4, 2013
+      
+      
+      
+</div>
+
+  一个人的村庄： 剩下的事情　他们都回去了，我一个留在野地上看守麦垛。得有一个月时间他们才能忙完村里的活，腾出手回来打麦子。野地离村子有大半天的路，也就是说，一个人不能在一天内往返一次野地。这是大概两天的路程，你硬要一天走完，说不定你走到什么地方，天突然黑了，剩下的路可就不好走了。谁都不想走到最后，剩下一截子黑路。是不是？　紧张的麦收结束了。同样的劳动，又在其他什么地方重新开始，这我能想得出。我知道村庄周围有几块地。他们给我留下够吃一个月的面和米，留下不够炒两顿菜的小半瓶清油。给我安排活儿的人，临走时又追加了一句：别老闲着望天，看有没有剩下的活儿主动干干。　第二天，我在麦茬地走了一圈，发现好多活儿没有干完，麦子没割完，麦捆没有拉完。可是麦收结束了，人都回去了。　在麦地南边，扔着一大捆麦子。显然是拉麦捆的人故意漏装的。地西头则整齐地长着半垅麦子。即使割完的麦垅，也在最后剩下那么一两镰，不好看地长在那里。似乎人干到最后已没有一丝耐心和力气。　我能想到这个剩下半拢麦子的人，肯定是最后一个离开地头的。在那个下午的斜阳里；没割倒的半拢麦子，一直望着扔下它们的那个人，走到麦地另一头，走进或蹲或站的一堆人里，再也认不出来。　麦地太大。从一头几乎望不到另一头。割麦的人一人把一城，不抬头地往前赶，一直割到天色渐晚，割到四周没有了镰声，抬起头，发现其他人早割完回去了，剩下他孤零零的一场。他有点急了，弯下腰猛割几镰，又茫然地停住，地里没一个人。干没干完都没人管了。没人知道他没干完，也没人知道他干完了。验收这件事的人回去了。他一下泄了气，瘫坐在麦茬上，楞了会儿神：球，不干了。　我或许能查出这个活儿没干完的人。　我已经知道他是谁。　但我不能把他喊回来，把剩下的麦子割完。这件事已经结束，更紧迫的劳动在别处开始。剩下的事情不再重要。　以后几天，我干着许多人干剩下的事情。一个人在空荡荡的麦地里转来转去。我想许多轰轰烈烈的大事之后，都会有一个收尾的人，他远远地跟在人们后头，干着他们自以为干完的事情。许多事情都一样，开始干的人很多，到了最后，便成了某一个人的。　远离村人　我每天的事：早晨起来望一眼麦垛。总共五大垛，一溜排开。整个白天可以不管它们。到了下午，天黑之前，再朝四野里望一望，看有无可疑的东西朝这边移动。　这片大野隐藏着许多东西。一个人，五垛麦子，也是其中的隐匿者，谁也不愿让谁发现。即使是树，也都蹲着长，躯干一曲再曲，枝桠匐着地伸展；我从没在荒野上看见一棵像杨树一样高扬着头、招摇而长的植物。有一种东西压着万物的头，也压抑着我。　有几个下午我注意到西边的荒野中有一个黑影。在不断地变大。我看不清那是什么东西，它孤独地蹲在那里；让我几个晚上没睡好觉。若有个东西在你身旁越变越小最后消失了，你或许一点不会在意。有个东西在你身边突然大起来，变得巨大无比，你便会感到惊慌和恐惧。　早晨天刚亮我便爬起来，看见那个黑影又长大了一些。再看麦垛，似乎一夜间矮了许多。我有点担心，扛着锨小心翼翼地走过去，穿过麦地走了一阵，才看清楚，是一棵树。一棵枯死的老树突然长出许多枝条和叶子。我围着树转了一圈。许多叶子是昨晚上才长出来的，我能感觉到它的枝枝叶叶还在长，而且会长得更加蓬蓬勃勃。我想这棵老树的某一条根，一定扎到了土地深处的一个旺水层。　能让一棵树长得粗壮兴旺的地方，也一定会让一个人活得像模像样。往回走时，我暗暗记住了这个地方。那时，我刚刚开始模糊地意识到，我已经放任自己像植物一样去随意生长。我的胳膊太细，腿也不粗，胆子也不大，需要长的东西很多。多少年来我似乎忘记了生长。　随着剩下的活儿一点一点地干完，莫名的空虚感开始笼罩着草棚，活儿干完了，镰刀和铁锨扔到一边。孤单成了一件事情。寂寞和恐惧成了一件大事情。　我第一次感到自己是一个，而它们&ndash;成群的、连片的、成堆的对着我。我的群落在几十里外的太平渠村里。此时此刻，我的村民帮不了我，朋友和亲人帮不了我。　我的寂寞和恐惧从村里带来的。　每个人最后都是独自面对剩下的寂寞和恐惧，无论在人群中还是在荒野上。那是他一个人的。　就像一粒虫、一棵草在它浩荡的群落中孤单地面对自己的那份欢乐和痛苦。其他的虫、草不知道。　一棵树枯死了，提前进入了比生更漫长的无花无叶的枯木期。其他的树还活着，枝繁叶茂。阳光照在绿叶上，也照在一棵柏树上。我们看不见一棵柏树在阳光中生长着什么。它埋在地深处的根在向什么地方延伸。死亡以后的事情，我们不知道。　一个人死了，我们把它搁过去&ndash;埋掉。　我们在坟墓旁边往下活。活着活着，就会觉得不对劲：这条路是谁留下的。那件事谁做过了。这句话谁说过。那个女人谁爱过&hellip;&hellip;　我在村人中生活了几十年，什么事都经过了，再呆下去，也不会有啥新鲜事。剩下的几十年，我想在花草中度过，在虫鸟水土中度过。我不知道这样行不行，或许村里人会把我喊回去，让我娶个女人生养孩子。让我翻地，种下一年的麦子。他们不会让我闲下来，他们必做的事情，也必然是我的事情。他们不会知道，在我心中，这些事情早就结束了。　如果我还有什么剩下要做的事情，那就是一棵草的事情，一粒虫的事情，一片云的事情。　我在野地上还有十几天时间，也可能更长。我正好远离村人，做点自己的事情。　风把人刮歪　刮了一夜大风，我在半夜被风喊醒。风在草棚和麦垛上发出恐怖的怪叫，类似女人不舒畅的哭喊。这些突兀地出现在荒野中的草棚麦垛，绊住了风的腿，扯住了风的衣裳，缠住了风的头发，让它追不上前面的风。她撕扯，哭喊。喊得满天地都是风声。　我把头伸出草棚，黑暗中隐约有几件东西在地上滚动，滚得极快，一晃就不见了。是风把麦垛刮走了。我不清楚刮走了多少，也只能看着它刮走。我比一捆麦大不了多少，一出去可能就找不见自己了。风朝着村子那边刮。如果风不在中途拐弯，一捆一捆的麦子会在风中跑回村子。明早村人醒来，看见了一捆捆麦子躲在墙根，像回来的家畜一样。　每年都有几场大风经过村庄。风把人刮歪。又把歪长的树刮直。风从不同方向来，人和草木往哪边斜不由自主。能做到的只是在每一场风后，把自己扶直。一棵树在各种各样的风中变得扭曲，古里古怪。你几乎可以看出它沧桑躯干上的哪个弯是南风吹的，哪个拐是北风刮的。但它最终高大粗壮地立在土地上，无论南风北风都无力动摇它。　我们村边就有几棵这样的大树，村里也有几个这样的人。我太年轻，根扎得不深，躯干也不结实。担心自己会被一场大风刮跑，像一棵草一片树叶，随风千里，飘落到一个陌生地方。也不管你喜不喜欢，愿不愿意，风把你一扔就不见了。你没地方去找风的麻烦，刮风的时候满世界都是风，风一停就只剩下空气。天空若无其事，大地也像什么都没发生。只有你的命运被改变了，莫名其妙地落在另一个地方。你只好等另一场相反的风把自己刮回去。可能一等多年，再没有一场能刮起你的大风。你在等待飞翔的时间里不情愿地长大，变得沉重无比。　去年，我在一场风中看见很久以前从我们家榆树上刮走的一片树叶，又从远处刮回来。它在空中翻了几个跟头，摇摇晃晃地落在窗台上。那场风刚好在我们村里停住，像是猛然刹了车。许多东西从天上往下掉，有纸片&ndash;写字的和没写字的纸片、布条、头发和毛，更多的是树叶。我在纷纷下落的东西中认出了我们家榆树上的一片树叶。我赶忙抓住它，平放在手中。这片叶子的边缘已有几处损伤，原先背阴的一面被晒得有些发白&ndash;它在什么地方经受了什么样的阳光？另一面粘着些褐黄的黏土。我不知道它被刮了多远又被另一场风刮回来，一路上经过了多少地方，这些地方都是我从没去过的。它飘回来了，这是极少数的一片叶子。　风是空气在跑。一场风一过，一个地方原有的空气便跑光了，有些气味再闻不到，有些东西再看不到&ndash;昨天弥漫村巷的谁家炒菜的肉香，昨晚被一个人独享的女人的体香，下午晾在树上忘收的一块布，早上放在窗台上写着几句话的一张纸。风把一个村庄酝酿许久的，被一村人吸进呼出弄出特殊味道的一窝子空气，整个地搬运到百里千里外的另一个地方。　每一场风后，都会有几朵我们不认识的云，停留在村庄上头，模样怪怪的，颜色生生的，弄不清啥意思。短期内如果没风，这几云就会?
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84-%E5%88%98%E4%BA%AE%E7%A8%8B/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/uva-11020---efficient-solutions-%E5%B9%B3%E8%A1%A1bst/"> uva 11020 - Efficient Solutions ——平衡BST
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Jul 4, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/uva">Uva</a>
+
+
+      
+      
+</div>
+
+  链接：http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1961 训练指南page228
+#include &lt;cstdio&gt; #include &lt;set&gt; using namespace std; struct Point { int a, b; bool operator &lt; (const Point &amp; other) const { return (a &lt; other.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/uva-11020---efficient-solutions-%E5%B9%B3%E8%A1%A1bst/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/codeforces-round-#190-div.-2--b.-ciel-and-flowers/"> Codeforces Round #190 (Div. 2)  B. Ciel and Flowers
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Jul 3, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/codeforces">CodeForces</a>
+
+
+      
+      
+</div>
+
+  链接：http://codeforces.com/contest/322/problem/B 这题做错了。没考虑周全。
+#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;iostream&gt; #include &lt;algorithm&gt; using namespace std; int main(void) { int r, g, b; while (~scanf(&quot;%d%d%d&quot;, &amp;r, &amp;g, &amp;b)) { int x = r % 3, y = g % 3, z = b % 3, Max = max(x, max(y, z)), cnt =r/3+g/3+b/3; if (Max == 1) { if (x == y &amp;&amp; y == z &amp;&amp; x == 1) cnt++; } if (Max == 2) { if (x + y + z == 4) { if (x*y*z) cnt++; else if (!
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/codeforces-round-#190-div.-2--b.-ciel-and-flowers/"> [Read more...] </a>
+  
+</article>
+
+<div class="pagination">
+  
+  <a class="button" href="/page/59/">
+    &laquo; Newer
+  </a>
+  
+  
+  <a class="button" href="/page/61/">
+    Older &raquo;
+  </a>
+  
+</div>
+
+
+
+    </main>
+
+    <footer class="site-footer ">
+
+  
+  <div class="footer-main">
+
+
+    <div class="footer-col-wrapper ">
+
+
+      
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+            
+          <li>
+            <span class="social-icon">
+              <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1664 1504v-768q-32 36-69 66-268 206-426 338-51 43-83 67t-86.5 48.5-102.5 24.5h-2q-48 0-102.5-24.5t-86.5-48.5-83-67q-158-132-426-338-37-30-69-66v768q0 13 9.5 22.5t22.5 9.5h1472q13 0 22.5-9.5t9.5-22.5zm0-1051v-24.5l-.5-13-3-12.5-5.5-9-9-7.5-14-2.5h-1472q-13 0-22.5 9.5t-9.5 22.5q0 168 147 284 193 152 401 317 6 5 35 29.5t46 37.5 44.5 31.5 50.5 27.5 43 9h2q20 0 43-9t50.5-27.5 44.5-31.5 46-37.5 35-29.5q208-165 401-317 54-43 100.5-115.5t46.5-131.5zm128-37v1088q0 66-47 113t-113 47h-1472q-66 0-113-47t-47-113v-1088q0-66 47-113t113-47h1472q66 0 113 47t47 113z"/></svg>
+            </span>
+            <a href="mailto:liuxueyang457@163.com">liuxueyang457@163.com</a>
+          </li>
+            
+          
+          <li>
+            <a href="http://liuxueyang.github.io/index.xml">
+              <span class="social-icon ">
+                <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M640 1280q0-53-37.5-90.5t-90.5-37.5-90.5 37.5-37.5 90.5 37.5 90.5 90.5 37.5 90.5-37.5 37.5-90.5zm351 94q-13-232-177-396t-396-177q-14-1-24 9t-10 23v128q0 13 8.5 22t21.5 10q154 11 264 121t121 264q1 13 10 21.5t22 8.5h128q13 0 23-10t9-24zm384 1q-5-154-56-297.5t-139.5-260-205-205-260-139.5-297.5-56q-14-1-23 9-10 10-10 23v128q0 13 9 22t22 10q204 7 378 111.5t278.5 278.5 111.5 378q1 13 10 22t22 9h128q13 0 23-10 11-9 9-23zm289-959v960q0 119-84.5 203.5t-203.5 84.5h-960q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z"/></svg>
+              </span>
+              
+              Subscribe via  RSS</a>
+          </li>
+
+          
+          
+          <li>
+            <a href="https://github.com/liuxueyang">
+              <span class="social-icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+              
+
+              <span class="username">Github: liuxueyang</span>
+            </a>
+          </li>
+          
+          
+
+          
+          
+
+        
+        <li>
+          <span class="social-icon ">
+            <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1248v320q0 40-28 68t-68 28h-320q-40 0-68-28t-28-68v-320q0-40 28-68t68-28h96v-192h-512v192h96q40 0 68 28t28 68v320q0 40-28 68t-68 28h-320q-40 0-68-28t-28-68v-320q0-40 28-68t68-28h96v-192h-512v192h96q40 0 68 28t28 68v320q0 40-28 68t-68 28h-320q-40 0-68-28t-28-68v-320q0-40 28-68t68-28h96v-192q0-52 38-90t90-38h512v-192h-96q-40 0-68-28t-28-68v-320q0-40 28-68t68-28h320q40 0 68 28t28 68v320q0 40-28 68t-68 28h-96v192h512q52 0 90 38t38 90v192h96q40 0 68 28t28 68z"/></svg>
+          </span>
+          <a href="http://liuxueyang.github.io/sitemap.xml">sitemap.xml</a>
+        </li>
+      </ul>
+
+    </div>
+
+    
+    <div class="footer-col  footer-col-2">
+      Latest Posts
+      <ul class="footer-latest-posts"> 
+      
+      <li>
+        <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
+          整理博客
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://liuxueyang.github.io/posts/2017-12-23-summary-for-2017/">
+          2017 年结束了
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://liuxueyang.github.io/posts/clustering/">
+          Clustering
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
+          Building Roads to Connect Cities
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
+          Detecting Anomalies in Currency Exchange Rates
+        </a>
+      </li>
+      
+
+    </ul>
+  </div>
+
+  
+  <div class="footer-col  footer-col-3">
+    
+    Categories<br/>
+    
+    
+    <a class="category" href="/categories/algorithm">algorithm</a>
+    
+    <a class="category" href="/categories/bfs">bfs</a>
+    
+    <a class="category" href="/categories/bipartite">bipartite</a>
+    
+    <a class="category" href="/categories/dfs">dfs</a>
+    
+    <a class="category" href="/categories/dijkstra">dijkstra</a>
+    
+    <a class="category" href="/categories/graph">graph</a>
+    
+    <a class="category" href="/categories/haskell">haskell</a>
+    
+    <a class="category" href="/categories/kruskal">kruskal</a>
+    
+    <a class="category" href="/categories/topsort">topsort</a>
+    
+    <br />
+
+    
+    Tags<br/>
+    
+    
+    <a class="tag" href="/tags/2016%E5%B9%B4">2016年</a>
+    
+    <a class="tag" href="/tags/algorithm">algorithm</a>
+    
+    <a class="tag" href="/tags/article">article</a>
+    
+    <a class="tag" href="/tags/assembly">assembly</a>
+    
+    <a class="tag" href="/tags/bfs">bfs</a>
+    
+    <a class="tag" href="/tags/bruteforce">bruteforce</a>
+    
+    <a class="tag" href="/tags/c">c</a>
+    
+    <a class="tag" href="/tags/c&#43;&#43;">c&#43;&#43;</a>
+    
+    <a class="tag" href="/tags/codechef">codechef</a>
+    
+    <a class="tag" href="/tags/codeforces">codeforces</a>
+    
+    <a class="tag" href="/tags/common-lisp">common-lisp</a>
+    
+    <a class="tag" href="/tags/data-structure">data-structure</a>
+    
+    <a class="tag" href="/tags/dfs">dfs</a>
+    
+    <a class="tag" href="/tags/diary">diary</a>
+    
+    <a class="tag" href="/tags/dp">dp</a>
+    
+    <a class="tag" href="/tags/dp-codeforce">dp-codeforce</a>
+    
+    <a class="tag" href="/tags/editor">editor</a>
+    
+    <a class="tag" href="/tags/emacs">emacs</a>
+    
+    <a class="tag" href="/tags/erlang">erlang</a>
+    
+    <a class="tag" href="/tags/fcitx">fcitx</a>
+    
+    <a class="tag" href="/tags/graph">graph</a>
+    
+    <a class="tag" href="/tags/grub">grub</a>
+    
+    <a class="tag" href="/tags/hdu">hdu</a>
+    
+    <a class="tag" href="/tags/jekyll">jekyll</a>
+    
+    <a class="tag" href="/tags/kmp">kmp</a>
+    
+    <a class="tag" href="/tags/macos">macos</a>
+    
+    <a class="tag" href="/tags/masm">masm</a>
+    
+    <a class="tag" href="/tags/math">math</a>
+    
+    <a class="tag" href="/tags/organize">organize</a>
+    
+    <a class="tag" href="/tags/perl">perl</a>
+    
+    <a class="tag" href="/tags/poj">poj</a>
+    
+    <a class="tag" href="/tags/possibility">possibility</a>
+    
+    <a class="tag" href="/tags/raspberry">raspberry</a>
+    
+    <a class="tag" href="/tags/ruby">ruby</a>
+    
+    <a class="tag" href="/tags/run">run</a>
+    
+    <a class="tag" href="/tags/sgu">sgu</a>
+    
+    <a class="tag" href="/tags/shell">shell</a>
+    
+    <a class="tag" href="/tags/slackware">slackware</a>
+    
+    <a class="tag" href="/tags/spoj">spoj</a>
+    
+    <a class="tag" href="/tags/tools">tools</a>
+    
+    <a class="tag" href="/tags/tyvj">tyvj</a>
+    
+    <a class="tag" href="/tags/ubuntu">ubuntu</a>
+    
+    <a class="tag" href="/tags/uestc">uestc</a>
+    
+    <a class="tag" href="/tags/update">update</a>
+    
+    <a class="tag" href="/tags/ural">ural</a>
+    
+    <a class="tag" href="/tags/usaco">usaco</a>
+    
+    <a class="tag" href="/tags/uva">uva</a>
+    
+    <a class="tag" href="/tags/vim">vim</a>
+    
+    <a class="tag" href="/tags/zoj">zoj</a>
+    
+    <a class="tag" href="/tags/%E4%B9%A0%E6%83%AF">习惯</a>
+    
+    <a class="tag" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2">字符串</a>
+    
+    <a class="tag" href="/tags/%E6%80%BB%E7%BB%93">总结</a>
+    
+    <a class="tag" href="/tags/%E6%95%B0%E5%AD%A6%E9%A2%98">数学题</a>
+    
+    <a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>
+    
+    <a class="tag" href="/tags/%E6%95%B4%E7%90%86">整理</a>
+    
+    <a class="tag" href="/tags/%E6%9A%B4%E5%8A%9B">暴力</a>
+    
+    <a class="tag" href="/tags/%E6%B0%B4%E9%A2%98">水题</a>
+    
+    <a class="tag" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>
+    
+
+  </div>
+</div> 
+</div>
+
+<div class="footer-last-line " >
+  
+  Copyright &copy; 2018 (LXY). All Rights Reserved.
+  
+  Powered by <a href="https://gohugo.io/">Hugo</a> | 
+  <a href="https://www.github.com/otterpro/apricot-hugo-theme/">Apricot theme by otter.pro</a>
+</div>
+</footer>
+
+
+    
+
+    
+
+    <script type="text/javascript" src='http://liuxueyang.github.io/js/main.js'></script>
+
+  </body>
+</html>

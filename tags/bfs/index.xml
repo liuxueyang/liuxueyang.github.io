@@ -6,9 +6,7 @@
     <description>Recent content in Bfs on LXY Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <managingEditor>your@email.com (Aos Dabbagh)</managingEditor>
-    <webMaster>your@email.com (Aos Dabbagh)</webMaster>
-    <copyright>(c) 2008 - 2014</copyright>
+    <copyright>Copyright &amp;copy; 2018 (LXY). All Rights Reserved.</copyright>
     <lastBuildDate>Wed, 17 Apr 2013 09:28:00 +0000</lastBuildDate>
     
 	<atom:link href="http://liuxueyang.github.io/tags/bfs/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +16,7 @@
       <title>Snakes &amp; Ladders ——BFS入门题</title>
       <link>http://liuxueyang.github.io/posts/snakes--ladders-bfs%E5%85%A5%E9%97%A8%E9%A2%98/</link>
       <pubDate>Wed, 17 Apr 2013 09:28:00 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/snakes--ladders-bfs%E5%85%A5%E9%97%A8%E9%A2%98/</guid>
       <description>题目链接：https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&amp;amp;Itemid=8&amp;amp;category=116&amp;amp;page=show_problem&amp;amp;problem=555 题目大意： 给一个棋盘，分布着蛇和梯子，投骰子确定走的步数，问最少投几次骰子可以到达终点，到达蛇头就回到蛇尾，到达梯子底部就上升到梯子顶部。 思路： BFS，到达每一个节点都可以扩展出6个节点，判断终点是不是到达过，如果到达过，退出循环。 这题WA了……
 #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;stack&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;map&amp;gt; #include &amp;lt;set&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;algorithm&amp;gt; #define lson l, m, rt&amp;lt;&amp;lt;1 #define rson m+1, r, rt&amp;lt;&amp;lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int D, N , S, L, a[23*23], b[23*23]; typedef struct La{ int start, end; }La; La la[120]; int main(void){ #ifndef ONLINE_JUDGE freopen(&amp;quot;arb.</description>
@@ -28,18 +26,17 @@
       <title>zoj2913 Bus Pass ——BFS入门题</title>
       <link>http://liuxueyang.github.io/posts/zoj2913-bus-pass-bfs%E5%85%A5%E9%97%A8%E9%A2%98/</link>
       <pubDate>Sat, 13 Apr 2013 01:29:00 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/zoj2913-bus-pass-bfs%E5%85%A5%E9%97%A8%E9%A2%98/</guid>
       <description>题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1912 题目大意： 有很多个地区，有几条公交线经过一些地区，求出一个地区，满足，使这个地区到这些公交线上的所有公交站的距离中的最大值，最小。（这里的距离指的是两点之间的边数） 思路： 对于这些公交站中的每一个点，BFS，求出出当前点外，其他所有点到这个点的最小距离，然后对于公交站上的其他点，也进行同样地操作，不断更新所有点到公交站上的当前点的最小距离的较大值，然后遍历所有点，求出距离最小的一个点。用res1数组存储。res数组的作用是对于公交线上的每个点，BFS其他点的时候，临时存放其他点到这个公交站的最小距离，然后在与res1数组进行比较，用来更新res1数组。 注意： visited数组，标记这个是不是被访问过，并且标记的顺序要想清楚！把这个点入队的时候就要标记它被访问了，而不是它出队的时候再标记！这是因为，如果两天点同时和一个点相邻，如果等点出队的时候在标记的话，就会产生这个点被访问两次的情况，这个问题让我纠结了一个星期……我去……
-比如这种情况，Ｃ和Ａ，Ｂ同时相邻，假如：先访问Ａ，ｒｅｓ［Ｂ］　＝　ｒｅｓ［Ｃ］　＝　２，把Ａ标记，然后出队；再访问Ｂ，ｒｅｓ［Ｃ］　＝　３，Ｃ的值显然是不对的，所以，当把Ｂ，Ｃ两个点入队的时候，就把他们标记为已经访问，就可以了…… 做这个题目感触挺大的，首先，写代码要全神贯注，不能有一点儿疏忽，否则很容易犯那种超级难找出来的隐蔽的错误，一定要考虑明白再写；然后就是数组的下标什么的，养成好习惯，到底什么时候该从０开始，什么时候该从１开始，我觉得从１开始比较保险，因为有的时候会用到编号，比如这道题目，点的标号从１开始；最后就是思考这种题目应该如何存储题目给的信息，这个东西是看的书上的思想； 自己写代码比看着人家的代码写感觉和收获是完全不一样的。
-#include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;stack&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;algorithm&amp;gt; #define lson l, m, rt&amp;lt;&amp;lt;1 #define rson m+1, r, rt&amp;lt;&amp;lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 10000+10; int edge[MAX][11], res[MAX], res1[MAX], ve, pa, mz[MAX]; bool visited[MAX]; queue&amp;lt;int&amp;gt; qt; void bfs(int id){ res[id] = 1; qt.</description>
+比如这种情况，Ｃ和Ａ，Ｂ同时相邻，假如：先访问Ａ，ｒｅｓ［Ｂ］　＝　ｒｅｓ［Ｃ］　＝　２，把Ａ标记，然后出队；再访问Ｂ，ｒｅｓ［Ｃ］　＝　３，Ｃ的值显然是不对的，所以，当把Ｂ，Ｃ两个点入队的时候，就把他们标记为已经访问，就可以了…… 做这个题目感触挺大的，首先，写代码要全神贯注，不能有一点儿疏忽，否则很容易犯那种超级难找出来的隐蔽的错误，一定要考虑明白再写；然后就是数组的下标什么的，养成好习惯，到底什么时候该从０开始，什么时候该从１开始，我觉得从１开始比较保险，因为有的时候会用到编号，比如这道题目，点的标号从１开始；最后就是思考这种题目应该如何存储题目给的信息，这个东西是看的书上的思想； 自己写代码比看着人家的代码写感觉和收获是完全不一样的。</description>
     </item>
     
     <item>
       <title>zoj 1649 Rescue ——BFS入门题</title>
       <link>http://liuxueyang.github.io/posts/zoj-1649-rescue-bfs%E5%85%A5%E9%97%A8%E9%A2%98/</link>
       <pubDate>Mon, 08 Apr 2013 20:21:00 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/zoj-1649-rescue-bfs%E5%85%A5%E9%97%A8%E9%A2%98/</guid>
       <description>题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=649 题意： 给一个字符矩阵，‘#’代表墙壁，&amp;rsquo;.&amp;lsquo;代表空格，‘x’代表有警察的空格，&amp;rsquo;r&amp;rsquo;和&amp;rsquo;a&amp;rsquo;分别代表一屌丝，并且&amp;rsquo;r&amp;rsquo;要到&amp;rsquo;a&amp;rsquo;那里去串门儿，r走一个空格花费单位时间1，走一个有警察的空格需要先干掉警察，话费单位时间1，然后再走过去，也就是共花费时间2，请问屌丝r到屌丝a那里去最少花费的时间。 思路： 首先要搞明白一个问题：就是路径最短的路不一定花费时间最少。这是可以理解的，比如，一条很短但是有很多警察，另一条路很长，但是没有警察，很有可能是第二条路花费时间少。用深搜？貌似不太合适，因为你一条路径访问过一个点后，另一条路径很可能也会访问这个点，并且时间较少。关键是深搜找到的接不一定是最优的。所以，考虑用广搜解。这道题最朴素的广搜显然不行，也就是说，仅仅求步数最少的不可行，需要加上访问时间这个附加条件。 用一个结构体数组存储每个点的信息，包括坐标，到达这个点所需要的最短时间，从起点开始搜，先访问起点，然后把起点出队，如果从一个点A到达下一个点B的当前所需时间比这个点现在标记的时间少，则把这个点入队，然后判断点A的另一个方向上的下一个点。这样，总有一天队列会为空，这是因为，某个点不可能被访问无数次，也就是说，某个点不可能无数次入队，因为到达某个点所需要的时间一定是有个最小值的，所以BFS一定可以结束，并且最后找到的点‘a’的信息一定是最优解。输出就可以了，如果无解，因为初始化到达所有点所需时间都是MAXN，所以，如果点‘a’的时间信息如果等于MAXN，那么说明无解。 第一次做深搜，这道题开始不知道怎么做，看了书上的思路，坚持没看代码，自己又想了想，就试着开始写，好神奇，竟然1A了！！！
 #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;stack&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;algorithm&amp;gt; #define lson l, m, rt&amp;lt;&amp;lt;1 #define rson m+1, r, rt&amp;lt;&amp;lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MINN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; typedef struct point{ int a, b, t; }point; point p[220][220], st, en; char s[220][220]; int n, m, T, si, sj, di, dj; queue&amp;lt;point&amp;gt; qt; void bfs(){ qt.</description>
@@ -49,7 +46,7 @@
       <title>zoj 2165 Red and Black ——BFS入门题</title>
       <link>http://liuxueyang.github.io/posts/zoj-2165-red-and-black-bfs%E5%85%A5%E9%97%A8%E9%A2%98/</link>
       <pubDate>Sun, 07 Apr 2013 19:06:00 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/zoj-2165-red-and-black-bfs%E5%85%A5%E9%97%A8%E9%A2%98/</guid>
       <description>题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1165 题意： 给一个字符矩阵，“.”代表黑色格子，“#”代表红色格子，有一个起点“@”，它属于黑色格子，一个人从起点出发，只能走黑色格子，并且只能上下左右走，不能对角线走，问这个人能走到的黑色格子有多少个。输出个数。输入W，H，代表有W列，H行，然后输入一个字符矩阵，输出能走到的最多的黑色格子的个数，包括起点。 思路： 这个题目很简单，和zoj 2110 类似，但是这道题目比那道简单多了，不用剪枝，不用恢复现场，直接深搜就可以。首先找到起点，然后从起点出发，判断这个点是不是被访问过，如果被访问过，就return；否则判断这个格子是不是黑色格子或者是起点，如果是，就cnt++，然后标记这个格子已经被访问过，如果不是，return; 如果没有return，就在这个点的四个方向继续深搜。思路很清晰。1A。
 #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstdlib&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;cctype&amp;gt; #include &amp;lt;stack&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;algorithm&amp;gt; #define lson l, m, rt&amp;lt;&amp;lt;1 #define rson m+1, r, rt&amp;lt;&amp;lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; int w, h, cnt = 0; char s[22][22]; bool flag[22][22]; int dir[4][2] = {{0,1},{1,0},{-1,0},{0,-1}}; void dfs(int i, int j){ if (i &amp;lt;= 0 || j &amp;lt;= 0 || i &amp;gt; h || j &amp;gt; w) return; if (flag[i][j]) return; if (s[i][j] == &#39;.</description>

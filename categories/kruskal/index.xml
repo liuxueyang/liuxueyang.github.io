@@ -6,9 +6,7 @@
     <description>Recent content in Kruskal on LXY Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <managingEditor>your@email.com (Aos Dabbagh)</managingEditor>
-    <webMaster>your@email.com (Aos Dabbagh)</webMaster>
-    <copyright>(c) 2008 - 2014</copyright>
+    <copyright>Copyright &amp;copy; 2018 (LXY). All Rights Reserved.</copyright>
     <lastBuildDate>Wed, 17 May 2017 15:33:49 +0800</lastBuildDate>
     
 	<atom:link href="http://liuxueyang.github.io/categories/kruskal/index.xml" rel="self" type="application/rss+xml" />
@@ -18,27 +16,25 @@
       <title>Clustering</title>
       <link>http://liuxueyang.github.io/posts/clustering/</link>
       <pubDate>Wed, 17 May 2017 15:33:49 +0800</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/clustering/</guid>
       <description>题目链接：pdf
 题目给出一个些点的坐标，要求把这些点分成k组，求这k组中，组和组之间的点 的最小距离d。
 这道题，好像可以用Kruskal？比如：按照边长度从小到大扫描， 同时记录当前有多少个连通分量（比如：每次Union之后连通分量 的个数减一），一直到只剩k个连通分量的时候，找到下一个可用 边（这个边的两个点在不同的连通分量中）的时候退出循环。这个 可用边就是答案。
 因为要求最小的d嘛，所以就是贪心吧。
-所以相对难实现的就是这些了：
- 处理输入数据 带路径压缩的并查集  这些也挺好写的。
-// Tue May 16 21:01:58 2017 // Tue May 16 22:06:44 2017 #include &amp;lt;bits/stdc++.h&amp;gt; using namespace std; struct edge { int from, to; double cost; }; inline double p_distance(int x1, int y1, int x2, int y2) { return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2)); } int p_find(int x, vector&amp;lt;int&amp;gt; &amp;amp;parent) { int p = x; while (p !</description>
+所以相对难实现的就是这些了：</description>
     </item>
     
     <item>
       <title>Building Roads to Connect Cities</title>
       <link>http://liuxueyang.github.io/posts/building-roads-to-connect-cities/</link>
       <pubDate>Wed, 17 May 2017 15:24:43 +0800</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/building-roads-to-connect-cities/</guid>
       <description>题目链接：pdf
 给出平面上的一些点，任意两点之间可以相连，求最小生成树的总权值。
 用Kruskal：把所有边按照边长度升序排序，循环所有边，每次加入一个边之前要判断这个边的两个点是不是在一个集合中，如果是那么跳过，如果不是那么把这个边的两个点合并到一个集合中。集合操作用带路径压缩的并查集。循环边的过程中累加边的权值。
-// Tue May 16 17:02:04 2017 // Tue May 16 20:42:10 2017 #include &amp;lt;bits/stdc++.h&amp;gt; using namespace std; struct edge { int from, to; double cost; }; inline double p_distance(int x1, int y1, int x2, int y2) { return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2)); } int p_find(int x, vector&amp;lt;int&amp;gt; &amp;amp;parent) { int p = x; while (p != parent[p]) { p = parent[p]; } return parent[x] = p; } void p_union(int x, int y, vector&amp;lt;int&amp;gt; &amp;amp;parent, vector&amp;lt;int&amp;gt; &amp;amp;p_size) { int p_x = p_find(x, parent), p_y = p_find(y, parent), ps_x = p_size[p_x], ps_y = p_size[p_y]; if (ps_x &amp;gt; ps_y) { parent[p_y] = p_x; p_size[p_x] += ps_y; } else { parent[p_x] = p_y; p_size[p_y] += ps_x; } }	double minimum_distance(vector&amp;lt;int&amp;gt; x, vector&amp;lt;int&amp;gt; y) { double result = 0.</description>
+// Tue May 16 17:02:04 2017 // Tue May 16 20:42:10 2017 #include &amp;lt;bits/stdc++.</description>
     </item>
     
   </channel>

@@ -6,9 +6,7 @@
     <description>Recent content in C&#43;&#43; on LXY Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <managingEditor>your@email.com (Aos Dabbagh)</managingEditor>
-    <webMaster>your@email.com (Aos Dabbagh)</webMaster>
-    <copyright>(c) 2008 - 2014</copyright>
+    <copyright>Copyright &amp;copy; 2018 (LXY). All Rights Reserved.</copyright>
     <lastBuildDate>Mon, 06 Mar 2017 23:24:07 +0000</lastBuildDate>
     
 	<atom:link href="http://liuxueyang.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +16,7 @@
       <title>复习C&#43;&#43;</title>
       <link>http://liuxueyang.github.io/posts/%E5%A4%8D%E4%B9%A0c/</link>
       <pubDate>Mon, 06 Mar 2017 23:24:07 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/%E5%A4%8D%E4%B9%A0c/</guid>
       <description>今天复习了一下C++。很久很久不碰这门语言，早上看到一段代码竟然感觉十分陌生。this，const pointer，引用之类的，有点忘了。其实也不是忘，就是感觉很陌生。比如this别的语言里面也有，只是不是指针，比较容易混淆。所以就大概查了一下C++ Primer，然后做了几道题目。放在这里。
 题目一 给CMyString类写一个方法，使它能够支持赋值=操作。CMyString类已经给出。
@@ -29,36 +27,28 @@
       <title>const member function in cpp</title>
       <link>http://liuxueyang.github.io/posts/const-member-function-in-cpp/</link>
       <pubDate>Mon, 06 Mar 2017 11:25:18 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/const-member-function-in-cpp/</guid>
-      <description>默认情况下，this是一个const pointer to the nonconst version of the class type。比如有一个类A，那么在类里面，this的类型是A * const。因为不能把一个const对象的地址赋值给一个指向nonconst对象的指针，因此不能把this绑定到一个const对象上。这就导致，不能在const对象上调用一个nonconst member function。
-解决方法就是，把this声明为const。可是this是隐性的变量，所以C++的解决方法就是在参数列表后面指定const。这样的函数就是const member function。它的语义是：this是一个const pointer to a const object of the class type。这样，const对象和nonconst对象都可以调用这个函数。</description>
+      <description>默认情况下，this是一个const pointer to the nonconst version of the class type。比如有一个类A，那么在类里面，this的类型是A * const。因为不能把一个const对象的地址赋值给一个指向nonconst对象的指针，因此不能把this绑定到一个const对象上。这就导致，不能在const对象上调用一个nonconst member function。</description>
     </item>
     
     <item>
       <title>const pointer and pointer to const in Cpp</title>
       <link>http://liuxueyang.github.io/posts/const-pointer-and-pointer-to-const-in-cpp/</link>
       <pubDate>Mon, 06 Mar 2017 10:03:28 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/const-pointer-and-pointer-to-const-in-cpp/</guid>
       <description>中文翻译好像有常量指针和指针常量这两种说法。然而翻译过来让我更加费解。还是英文更加直白。
-pointer to const const int b = 30; const int * bptr = &amp;amp;b;  bptr是一个指针，它指向的是一个类型为const int的对象。可以对bptr本身的内容（保存的地址）进行修改，但是不能对它指向的对象进行修改：
-const int c = 31; bptr = &amp;amp;c;  这样，bptr就指向了另外一个const对象。
-有个例外：可以让pointer to const指向一个nonconst对象。
-int d = 32; bptr = &amp;amp;d;  需要注意的是，即使d变量是nonconst，仍然不能通过bptr这个指针对b进行修改：
-// *bptr = 33; // error!  总之，
- 我可以指向const对象，也可以指向nonconst对象，你也可以修改我。但是，你不能修改我指向的*对象*。 &amp;mdash; pointer to const
- const pointer int a = 3; int * const aptr = &amp;amp;a;  aptr是一个常量，同时是一个指针。不能对aptr里面保存的地址进行修改。但是可以对aptr所指向的对象进行修改：</description>
+pointer to const const int b = 30; const int * bptr = &amp;amp;b;  bptr是一个指针，它指向的是一个类型为const int的对象。可以对bptr本身的内容（保存的地址）进行修改，但是不能对它指向的对象进行修改：</description>
     </item>
     
     <item>
       <title>NFA2DFA</title>
       <link>http://liuxueyang.github.io/posts/nfa2dfa/</link>
       <pubDate>Wed, 28 May 2014 14:01:53 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/nfa2dfa/</guid>
-      <description>input: number of symbols symbol set(each space between two symbol) number of states(state number starts from 1 to n by default) start state number number of accept states accept states set state transfer table (epsilon transfer is at column one and if there are several epsilon transfers, seperate them with a comma without spaces) The following file is the input file.
-NFA2DFA.txt 2 a b 4 1 1 3 3 2 1 -1 1 -1 -1 3 4 -1 -1 3  we input a integer N by str.</description>
+      <description>input: number of symbols symbol set(each space between two symbol) number of states(state number starts from 1 to n by default) start state number number of accept states accept states set state transfer table (epsilon transfer is at column one and if there are several epsilon transfers, seperate them with a comma without spaces) The following file is the input file.</description>
     </item>
     
   </channel>

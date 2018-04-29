@@ -6,9 +6,7 @@
     <description>Recent content in Dijkstra on LXY Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <managingEditor>your@email.com (Aos Dabbagh)</managingEditor>
-    <webMaster>your@email.com (Aos Dabbagh)</webMaster>
-    <copyright>(c) 2008 - 2014</copyright>
+    <copyright>Copyright &amp;copy; 2018 (LXY). All Rights Reserved.</copyright>
     <lastBuildDate>Wed, 17 May 2017 08:37:01 +0800</lastBuildDate>
     
 	<atom:link href="http://liuxueyang.github.io/categories/dijkstra/index.xml" rel="self" type="application/rss+xml" />
@@ -18,17 +16,12 @@
       <title>Computing the Minimum Cost of a Flight</title>
       <link>http://liuxueyang.github.io/posts/computing-minimum-cost-of-a-flight/</link>
       <pubDate>Wed, 17 May 2017 08:37:01 +0800</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/computing-minimum-cost-of-a-flight/</guid>
       <description>题目链接：pdf
 题目给出一个有向图，边的权值非负，求起点到终点的最短路。
 用Dijkstra，基本思想是这样的：如果一个有向图权值非负，那么两点之间的最 短路有最优子结构的性质。两点之间的最短路上的任意两点之间的路径也是最优 的。
-设S -&amp;gt; ... -&amp;gt; u -&amp;gt; ... -&amp;gt; v -&amp;gt; ... -&amp;gt; t是从S到t的一条最短路，那么这条路径 上从u到v的部分也是u到v的最短路。反证：假设从u到v存在一条更短的路径L， 那么用L替换S到t中从u到v的部分，就可以得到一条从S到v的更短的路径，由于 我们假设原来的路径是从S对v的最短路，得出矛盾。
-这样，设d(S, t)是S -&amp;gt; ... -&amp;gt; u -&amp;gt; t是S到t的最短路。则：
-d(S, t) = d(S, u) + w(u, t)  所以我们可以不断地对所有边的进行松弛操作，直到没有边可以松弛。这个时候就可以得到单源最短路。这样的循环最多进行V次，每次最多进行E次松弛操作，因此复杂度是V*E。
-显然我们不必每次都对所有边进行松弛。我们可以记录下以后不需要松弛的点，也就是最短路已经确定的点，所以我们可以把所有点分成两个集合，一个集合表示这些点到源点的最短路已经确定，另一个集合表示最短路还不确定。
-也就是说每次松弛的循环中，我们可以把松弛过的点放到一个优先队列中，然后从中选择到源点距离最小的出队，它就是最短距离已经确定的点。继续从这个开始松弛操作，一直循环到队列为空。每个点入队一次，出队一次。总共循环V次，每次循环中要出队最小元素（VlogV），对这个点相连的所有边进行松弛并且入队(ElogV)。总共是(E+V)logV。
-// Mon May 15 10:45:45 CST 2017 // Mon May 15 11:29:58 CST 2017 /* 最简单的Dijkstra */ #include &amp;lt;iostream&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;climits&amp;gt; using namespace std; typedef pair&amp;lt;int, int&amp;gt; PII; class Comp { public: bool operator() (const PII &amp;amp;a, const PII &amp;amp;b) { return a.</description>
+设S -&amp;gt; ... -&amp;gt; u -&amp;gt; .</description>
     </item>
     
   </channel>

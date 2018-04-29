@@ -6,9 +6,7 @@
     <description>Recent content in Assembly on LXY Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <managingEditor>your@email.com (Aos Dabbagh)</managingEditor>
-    <webMaster>your@email.com (Aos Dabbagh)</webMaster>
-    <copyright>(c) 2008 - 2014</copyright>
+    <copyright>Copyright &amp;copy; 2018 (LXY). All Rights Reserved.</copyright>
     <lastBuildDate>Sun, 20 Jul 2014 00:19:48 +0000</lastBuildDate>
     
 	<atom:link href="http://liuxueyang.github.io/tags/assembly/index.xml" rel="self" type="application/rss+xml" />
@@ -18,11 +16,9 @@
       <title>simple linux assembly program</title>
       <link>http://liuxueyang.github.io/posts/simple-linux-assembly-program/</link>
       <pubDate>Sun, 20 Jul 2014 00:19:48 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/simple-linux-assembly-program/</guid>
-      <description>There are three simple linux assembly program I wrote today.
-##eatcall
-; This is a &amp;quot;Hello-world&amp;quot; program ; makefile is: ; ;eatsyscall: eatsyscall.o ;	ld -o eatsyscall eatsyscall.o ;eatsyscall.o: eatsyscall.asm ;	nasm -f elf -g -F stabs eatsyscall.asm SECTION .data EatMsg: db &amp;quot;Eat at Liu&#39;s&amp;quot;, 10 EatLen: equ $-EatMsg SECTION .bss SECTION .text global _start _start: nop mov eax, 4 ; system write mov ebx, 1 ; standard ouput mov ecx, EatMsg mov edx, EatLen int 80h mov eax, 1 mov ebx, 0 int 80h ; The Following is the result: ;~/Hack/SedAwk/asm/eatsyscall-&amp;gt;.</description>
+      <description>There are three simple linux assembly program I wrote today.</description>
     </item>
     
   </channel>

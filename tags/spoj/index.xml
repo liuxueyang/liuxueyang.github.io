@@ -6,9 +6,7 @@
     <description>Recent content in Spoj on LXY Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <managingEditor>your@email.com (Aos Dabbagh)</managingEditor>
-    <webMaster>your@email.com (Aos Dabbagh)</webMaster>
-    <copyright>(c) 2008 - 2014</copyright>
+    <copyright>Copyright &amp;copy; 2018 (LXY). All Rights Reserved.</copyright>
     <lastBuildDate>Sun, 14 Aug 2016 21:11:34 +0000</lastBuildDate>
     
 	<atom:link href="http://liuxueyang.github.io/tags/spoj/index.xml" rel="self" type="application/rss+xml" />
@@ -18,152 +16,141 @@
       <title>Spoj, math: CPCRC1C - Sum of Digits</title>
       <link>http://liuxueyang.github.io/posts/spoj-math-cpcrc1c-sum-of-digits/</link>
       <pubDate>Sun, 14 Aug 2016 21:11:34 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/spoj-math-cpcrc1c-sum-of-digits/</guid>
       <description>Primary Problem 题目大意：
-给两个数字a和b，求从a到b所有数字的每一位的和。比如1到3就是：1+2+3=6, 10到12 就是：1+0 + 1+1 + 1+2=6，范围是10^9  为了表示方便，用[n]表示从1到n的所有数字的每一位的和。要求从a到b，只需要计算[b] - [a]就可以。
-[9] = 45; [19] = [9] + [9] + 10 * 1 = [9] * 2 + 10 * 1 [99] = [9] + ([9] + 10 * 1) + ([9] + 10 * 2) + ... + ([9] + 10 * 9) = = [9] * 10 + 10 * [9] [999] = [99] + ([99] + 100 * 1) + ([99] + 100 * 2) + ([99] + 100 * 3) + .</description>
+给两个数字a和b，求从a到b所有数字的每一位的和。比如1到3就是：1+2+3=6, 10到12 就是：1+0 + 1+1 + 1+2=6，范围是10^9  为了表示方便，用[n]表示从1到n的所有数字的每一位的和。要求从a到b，只需要计算[b] - [a]就可以。</description>
     </item>
     
     <item>
       <title>Spoj: ANARC09A - Seinfeld</title>
       <link>http://liuxueyang.github.io/posts/spoj-anarc09a-seinfeld/</link>
       <pubDate>Sun, 14 Aug 2016 15:59:14 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/spoj-anarc09a-seinfeld/</guid>
       <description>题目意思：
 一个字符串由`{`和`}`组成，长度最多位2000，求最少修改多少次可以使得这个字符串合法。  如果把合法的字符串都消去的话，那么最后留下不合法的括号，一定是这样的}*{*其中 *代表0个或者多个。题目规定字符串长度是偶数，所以不合法的括号的长度也一定是偶数， 假设它是len。
-1. 如果只有左括号或者右括号，那么答案是`len/2`； 2. 如果左右括号都有，那么答案是左括号的个数/2 + 右括号的个数 / 2，如果左括号 或者右括号的个数是奇数，那么答案增加一。比如这个例子：`}}}{{{`  所以复杂度是O(n)。
-/* * ===================================================================================== * * Filename: main.cpp * * Description: http://www.spoj.com/problems/ANARC09A/ * * Version: 1.0 * Created: 2016年08月14日 14时01分45秒 * Compiler: g++ * * Author: Sabastian (liuxueyang.github.io), read3valprintloop@gmail.com * * ===================================================================================== */ #include &amp;lt;bits/stdc++.h&amp;gt; using namespace std; #define _ ios_base::sync_with_stdio(0);cin.tie(0); #define rep(i, a, n) for (int i = a; i &amp;lt; n; ++i) #define per(i, a, n) for (int i = n-1; i &amp;gt;= a; --i) #define pb push_back #define mp make_pair #define all(x) (x).</description>
+1. 如果只有左括号或者右括号，那么答案是`len/2`； 2. 如果左右括号都有，那么答案是左括号的个数/2 + 右括号的个数 / 2，如果左括号 或者右括号的个数是奇数，那么答案增加一。比如这个例子：`}}}{{{`  所以复杂度是O(n)。</description>
     </item>
     
     <item>
       <title>Spoj, dynamic-programming: ASSIGN - Assignments</title>
       <link>http://liuxueyang.github.io/posts/spoj-dynamic-programming-assign-assignments/</link>
       <pubDate>Sun, 14 Aug 2016 15:08:27 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/spoj-dynamic-programming-assign-assignments/</guid>
       <description>题目意思：
-有n个学生和n个任务，每个学生有喜欢的任务，输入一个矩阵，第i行第j列表示第i个 学生喜欢第j个任务。把任务分配给所有学生，使得每个学生得到的任务都是他喜欢的。 输出有多少种分配方法。n的最大值是20。  用一个数字的一个位表示这个任务是否已经被分配，如果任务全部被分配，那么这个数字就 是(1&amp;lt;&amp;lt;n)-1。可以想到这样的递归方法：solve(i,mask) 表示对i..n这些人分配任务的 方法的数目，mask代表此时对1..i-1这些人已经分配了任务，也就是说mask的二进制表示里 面有i-1个1。对当前的人，如果他喜欢第j个任务，并且mask的第j位是0，那么就可以把这 个任务分配给他，继续考虑下一个人。
-/* * ===================================================================================== * * Filename: main1.cpp * * Description: http://www.spoj.com/problems/ASSIGN/ * * Version: 2.0 * Created: 08/13/2016 14:13:42 * Compiler: g++ * * Author: Sabastian (liuxueyang.github.io), read3valprintloop@gmail.com * * ===================================================================================== */ #include &amp;lt;bits/stdc++.h&amp;gt; using namespace std; #define _ ios_base::sync_with_stdio(0);cin.tie(0); #define rep(i, a, n) for (int i = a; i &amp;lt; n; ++i) #define per(i, a, n) for (int i = n-1; i &amp;gt;= a; --i) #define pb push_back #define mp make_pair #define all(x) (x).</description>
+有n个学生和n个任务，每个学生有喜欢的任务，输入一个矩阵，第i行第j列表示第i个 学生喜欢第j个任务。把任务分配给所有学生，使得每个学生得到的任务都是他喜欢的。 输出有多少种分配方法。n的最大值是20。  用一个数字的一个位表示这个任务是否已经被分配，如果任务全部被分配，那么这个数字就 是(1&amp;lt;&amp;lt;n)-1。可以想到这样的递归方法：solve(i,mask) 表示对i..n这些人分配任务的 方法的数目，mask代表此时对1..i-1这些人已经分配了任务，也就是说mask的二进制表示里 面有i-1个1。对当前的人，如果他喜欢第j个任务，并且mask的第j位是0，那么就可以把这 个任务分配给他，继续考虑下一个人。</description>
     </item>
     
     <item>
       <title>Spoj, dynamic-programming: AIBOHP - Aibohphobia</title>
       <link>http://liuxueyang.github.io/posts/spoj-dynamic-programming-aibohp-aibohphobia/</link>
       <pubDate>Fri, 12 Aug 2016 21:36:32 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/spoj-dynamic-programming-aibohp-aibohphobia/</guid>
       <description>给一个字符串，求最少插入多少个字符，可以使得这个字符串是回文的。
-可以这样想：我们假设它已经是回文的，那么把这个字符串逆序，如果它是回文的，那么对 应的每个字符应该相等。可以它不是回文的，那么就需要尽量少地加一些字符，加多少呢？ 那么需要知道当前的最长连续公共子序列的长度len，把不相等的那些字符串加进去就成为 了回文的。加进去的字符的最少个数 = 字符串长度 - 原先的字符串和它的逆序字符串的最 长连续公共子序列的长度。
-问题就转化为求两个序列的最长公共子序列。这个就简单了。
-因为懒并且想省时间，所以就用了一些宏，这让程序变得不易读，还好程序比较简单，不太 影响吧。反正以后也不会再读。。了解思路就可以了。
-/* * ===================================================================================== * * Filename: main.cpp * * Description: http://www.spoj.com/problems/AIBOHP/ * * Version: 1.0 * Created: 08/12/2016 18:27:30 * Compiler: g++ * * Author: Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com * * ===================================================================================== */ #include &amp;lt;bits/stdc++.h&amp;gt; using namespace std; #define _ ios_base::sync_with_stdio(0);cin.tie(0); #define rep(i, a, n) for (int i = a; i &amp;lt; n; ++i) #define per(i, a, n) for (int i = n-1; i &amp;gt; a; --i) #define pb push_back #define mp make_pair #define all(x) (x).</description>
+可以这样想：我们假设它已经是回文的，那么把这个字符串逆序，如果它是回文的，那么对 应的每个字符应该相等。可以它不是回文的，那么就需要尽量少地加一些字符，加多少呢？ 那么需要知道当前的最长连续公共子序列的长度len，把不相等的那些字符串加进去就成为 了回文的。加进去的字符的最少个数 = 字符串长度 - 原先的字符串和它的逆序字符串的最 长连续公共子序列的长度。</description>
     </item>
     
     <item>
       <title>Spoj, dynamic-programming: BYTESM2 - Philosophers Stone</title>
       <link>http://liuxueyang.github.io/posts/spoj-dynamic-programming-bytesm2-philosophers-stone/</link>
       <pubDate>Fri, 12 Aug 2016 21:32:26 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/spoj-dynamic-programming-bytesm2-philosophers-stone/</guid>
       <description>在矩阵里面捡石头，求最大值。和常见的直角三角形那样的问题是一样的。
-/* * ===================================================================================== * * Filename: main.cpp * * Description: http://www.spoj.com/problems/BYTESM2/ * * Version: 1.0 * Created: 08/12/2016 18:49:12 * Compiler: g++ * * Author: Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com * * ===================================================================================== */ #include &amp;lt;bits/stdc++.h&amp;gt; using namespace std; #define _ ios_base::sync_with_stdio(0);cin.tie(0); #define rep(i, a, n) for (int i = a; i &amp;lt; n; ++i) #define per(i, a, n) for (int i = n-1; i &amp;gt;= a; --i) #define pb push_back #define mp make_pair #define all(x) (x).</description>
+/* * ===================================================================================== * * Filename: main.cpp * * Description: http://www.</description>
     </item>
     
     <item>
       <title>Dynamic-programming: Spoj DIEHARD - DIE HARD</title>
       <link>http://liuxueyang.github.io/posts/dynamic-programming-spoj-diehard-die-hard/</link>
       <pubDate>Fri, 12 Aug 2016 21:14:23 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/dynamic-programming-spoj-diehard-die-hard/</guid>
       <description>题目很好理解：
-有三个区域，你在每个区域里面只能停留一秒，每个区域会对你的两个指标h和a增加或者减少： 区域A：h += 3, a += 2 区域B：h -= 5, a -= 10 区域C：h -= 20, a+= 5 你在任意区域最多只能停留1秒，下一秒必须移动到其它两个区域中的一个，也就是说 你不能一直呆在一个区域。在任意时刻，如果你的两个指标其中的任意一个&amp;lt;=0，那么 游戏结束，输出你一共在游戏里面停留了多长时间。  如果不加什么思考，那么容易想到，直接递归就可以了，递归函数有三个参数：当前的h值， 当前的a值，当前的位置。为了不重复求解，用一个三位数组存储这一步的结果。
-程序如下：
-/* * ===================================================================================== * * Filename: main.cpp * * Description: http://www.spoj.com/problems/DIEHARD/ * * Version: 1.0 * Created: 08/12/2016 20:04:27 * Compiler: g++ * * Author: Sabastian (liuxueyang.github.io), liuxueyang457@gmail.com * * ===================================================================================== */ #include &amp;lt;bits/stdc++.h&amp;gt; #include &amp;lt;cstdio&amp;gt; using namespace std; #define _ ios_base::sync_with_stdio(0);cin.tie(0); #define rep(i, a, n) for (int i = a; i &amp;lt; n; ++i) #define per(i, a, n) for (int i = n-1; i &amp;gt;= a; --i) #define pb push_back #define mp make_pair #define all(x) (x).</description>
+有三个区域，你在每个区域里面只能停留一秒，每个区域会对你的两个指标h和a增加或者减少： 区域A：h += 3, a += 2 区域B：h -= 5, a -= 10 区域C：h -= 20, a+= 5 你在任意区域最多只能停留1秒，下一秒必须移动到其它两个区域中的一个，也就是说 你不能一直呆在一个区域。在任意时刻，如果你的两个指标其中的任意一个&amp;lt;=0，那么 游戏结束，输出你一共在游戏里面停留了多长时间。  如果不加什么思考，那么容易想到，直接递归就可以了，递归函数有三个参数：当前的h值， 当前的a值，当前的位置。为了不重复求解，用一个三位数组存储这一步的结果。</description>
     </item>
     
     <item>
       <title>spoj, segment tree: KGSS - Maximum Sum</title>
       <link>http://liuxueyang.github.io/posts/spoj-segment-tree-kgss-maximum-sum/</link>
       <pubDate>Tue, 26 Jul 2016 08:58:52 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/spoj-segment-tree-kgss-maximum-sum/</guid>
       <description>Problem Link
 每个节点保存三个值：区间的最大值，区间的第二大值，区间的最大的两个数的和
 平常的区间的点更新和区间查询
-// 2016/07/25 19:29:33 PM // Sabastian #include &amp;lt;iostream&amp;gt; #include &amp;lt;math.h&amp;gt; #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;string.h&amp;gt; using namespace std; typedef long long ll; typedef struct TreeNode { int start, end; int Max, SecMax, sum; TreeNode() : SecMax(-1) {} void merge(TreeNode &amp;amp; left, TreeNode &amp;amp; right) { sum = max(left.sum, max(right.sum, left.Max + right.Max)); Max = max(left.Max, right.Max); SecMax = min(left.Max, right.Max); } } TreeNode; TreeNode tree[4 * 100000 + 10]; ll a[4 * 100000 + 10]; void update(int stIndex, int start, int end); void printNode(int stIndex) { TreeNode &amp;amp;t = tree[stIndex]; printf(&amp;quot;%d (%d, %d), total=%d\n&amp;quot;, stIndex, t.</description>
+// 2016/07/25 19:29:33 PM // Sabastian #include &amp;lt;iostream&amp;gt; #include &amp;lt;math.</description>
     </item>
     
     <item>
       <title>spoj, segment tree: HORRIBLE - Horrible Queries</title>
       <link>http://liuxueyang.github.io/posts/spoj-segment-tree-horrible-horrible-queries/</link>
       <pubDate>Mon, 25 Jul 2016 23:25:39 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/spoj-segment-tree-horrible-horrible-queries/</guid>
       <description>Problem Link
 平常的线段树区间更新和区间查询
-// 2016/07/22 14:38:03 PM // Sabastian #include &amp;lt;iostream&amp;gt; #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;string.h&amp;gt; using namespace std; typedef long long ll; typedef struct TreeNode { int start, end; ll total; ll lazy; } TreeNode; TreeNode tree[4 * 100000 + 10]; void printNode(int stIndex) { TreeNode &amp;amp;t = tree[stIndex]; printf(&amp;quot;(%d, %d), lazy=%lld, total=%lld\n&amp;quot;, t.start, t.end, t.lazy, t.total); } void build(int stIndex, int start, int end) { tree[stIndex].start = start; tree[stIndex].end = end; tree[stIndex].</description>
+// 2016/07/22 14:38:03 PM // Sabastian #include &amp;lt;iostream&amp;gt; #include &amp;lt;stdio.</description>
     </item>
     
     <item>
       <title>spoj, segment tree: GSS4 - Can you answer these queries IV</title>
       <link>http://liuxueyang.github.io/posts/spoj-segment-tree-gss4-can-you-answer-these-queries-iv/</link>
       <pubDate>Mon, 25 Jul 2016 23:19:05 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/spoj-segment-tree-gss4-can-you-answer-these-queries-iv/</guid>
       <description>Problem Link
 这道题目并没有用到懒惰更新，只是有一个优化：当一个区间的和等于区间长度的时候，那么他就没有必要更新了。
 平常的线段树区间更新和区间查询
 另外注意，题目中并没有说X和Y的大小关系。。
-// 2016/07/22 19:58:12 PM // Sabastian #include &amp;lt;iostream&amp;gt; #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;string.h&amp;gt; #include &amp;lt;math.h&amp;gt; using namespace std; typedef long long ll; typedef struct TreeNode { int start, end; ll total; } TreeNode; TreeNode tree[4 * 100000 + 10]; ll a[4 * 100000 + 10]; void update(int stIndex, int start, int end); void printNode(int stIndex) { TreeNode &amp;amp;t = tree[stIndex]; printf(&amp;quot;%d (%d, %d), total=%lld\n&amp;quot;, stIndex, t.start, t.</description>
+// 2016/07/22 19:58:12 PM // Sabastian #include &amp;lt;iostream&amp;gt; #include &amp;lt;stdio.</description>
     </item>
     
     <item>
       <title>spoj, segment tree: GSS3 - Can you answer these queries III</title>
       <link>http://liuxueyang.github.io/posts/spoj-segment-tree-gss3-can-you-answer-these-queries-iii/</link>
       <pubDate>Mon, 25 Jul 2016 23:16:44 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/spoj-segment-tree-gss3-can-you-answer-these-queries-iii/</guid>
       <description>Problem Link
-similar to GSS1 in addition to point update in segment tree.
-#include &amp;lt;iostream&amp;gt; using namespace std; struct SegmentTreeNode { int pre, suf, sub, total; void assignLeaf(int value) { pre = suf = sub = total = value; } void merge(SegmentTreeNode &amp;amp;left, SegmentTreeNode &amp;amp;right) { pre = max(left.pre, left.total + right.pre); suf = max(left.suf + right.total, right.suf); sub = max(left.sub, max(right.sub, left.suf + right.pre)); total = left.total + right.total; return; } int getValue() { return sub; } }; template &amp;lt;class T, class V&amp;gt; class SegmentTree { SegmentTreeNode *nodes; int N; public: SegmentTree(T arr[], int N) { this-&amp;gt;N = N; nodes = new SegmentTreeNode[getSegmentTreeSize(N)]; buildTree(arr, 1, 0, N - 1); } ~SegmentTree() { delete[] nodes; } V getValue(int lo, int hi) { SegmentTreeNode result = getValue(1, 0, N - 1, lo, hi); return result.</description>
+similar to GSS1 in addition to point update in segment tree.</description>
     </item>
     
     <item>
       <title>spoj, segment tree: GSS1 - Can you answer these queries I</title>
       <link>http://liuxueyang.github.io/posts/spoj-segment-tree-gss1-can-you-answer-these-queries-i/</link>
       <pubDate>Mon, 25 Jul 2016 23:07:09 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/spoj-segment-tree-gss1-can-you-answer-these-queries-i/</guid>
       <description>Problem Link
-max sum of a sequence can be from one of the three:
-1. left half of the sequence 2. right half of the sequence 3. left half + right half  segment tree range query
-#include &amp;lt;iostream&amp;gt; using namespace std; struct SegmentTreeNode { int pre, suf, sub, total; void assignLeaf(int value) { pre = suf = sub = total = value; } void merge(SegmentTreeNode &amp;amp;left, SegmentTreeNode &amp;amp;right) { pre = max(left.</description>
+max sum of a sequence can be from one of the three:</description>
     </item>
     
     <item>
       <title>spoj, segment tree: BRCKTS - Brackets</title>
       <link>http://liuxueyang.github.io/posts/spoj-segment-tree-brckts-brackets/</link>
       <pubDate>Mon, 25 Jul 2016 22:56:00 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/spoj-segment-tree-brckts-brackets/</guid>
       <description>Problem Link
 开始没有读懂题目，合法括号的意思其实就是常识情况下的括号合法：整个序列的左括号数目和右括号的数目相同，但是也不能出现这样的：)))(((，所以还要保证在任意一点，左括号的数目大于等于右括号的数目。
 这就需要，在序列里面任意一点，左边的不匹配的左括号的数目一定等于右边的不匹配右括号的数目。
 平常的线段树的点更新和区间查询
-#include &amp;lt;iostream&amp;gt; using namespace std; struct SegmentTreeNode { int unmatchedLeft, unmatchedRight; void assignLeaf(char value) { if (value == &#39;(&#39;) { unmatchedLeft = 1; unmatchedRight = 0; } else { unmatchedLeft = 0; unmatchedRight = 1; } } void merge(SegmentTreeNode &amp;amp;left, SegmentTreeNode &amp;amp;right) { int L_unl = left.unmatchedLeft, L_unr = left.unmatchedRight, R_unl = right.unmatchedLeft, R_unr = right.unmatchedRight; int matched = min(L_unl, R_unr); unmatchedLeft = L_unl + R_unl - matched; unmatchedRight = L_unr + R_unr - matched; return; } bool getValue() { return unmatchedRight == 0 &amp;amp;&amp;amp; unmatchedLeft == 0; } }; template &amp;lt;class T, class V&amp;gt; class SegmentTree { SegmentTreeNode *nodes; int N; public: SegmentTree(T arr[], int N) { this-&amp;gt;N = N; nodes = new SegmentTreeNode[getSegmentTreeSize(N)]; buildTree(arr, 1, 0, N - 1); } ~SegmentTree() { delete[] nodes; } V getValue(int lo, int hi) { SegmentTreeNode result = getValue(1, 0, N - 1, lo, hi); return result.</description>
+#include &amp;lt;iostream&amp;gt; using namespace std; struct SegmentTreeNode { int unmatchedLeft, unmatchedRight; void assignLeaf(char value) { if (value == &#39;(&#39;) { unmatchedLeft = 1; unmatchedRight = 0; } else { unmatchedLeft = 0; unmatchedRight = 1; } } void merge(SegmentTreeNode &amp;amp;left, SegmentTreeNode &amp;amp;right) { int L_unl = left.</description>
     </item>
     
     <item>
       <title>spoj, segment tree: AKVQLD03 - How to Handle the Fans</title>
       <link>http://liuxueyang.github.io/posts/spoj-segment-tree-akvqld03-how-to-handle-the-fans/</link>
       <pubDate>Mon, 25 Jul 2016 22:49:37 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/spoj-segment-tree-akvqld03-how-to-handle-the-fans/</guid>
       <description>Problem Link
 平常的线段树点更新和区间查询
-#include &amp;lt;iostream&amp;gt; #include &amp;lt;string.h&amp;gt; using namespace std; struct SegmentTreeNode { // fields on the node long long sum; void assignLeaf(int value) { sum = value; } void merge(SegmentTreeNode &amp;amp;left, SegmentTreeNode &amp;amp;right) { sum = left.sum + right.sum; } long long getValue() { return sum; } }; template &amp;lt;class T, class V&amp;gt; class SegmentTree { SegmentTreeNode *nodes; int N; public: SegmentTree(T arr[], int N) { this-&amp;gt;N = N; nodes = new SegmentTreeNode[getSegmentTreeSize(N)]; buildTree(arr, 1, 0, N - 1); } ~SegmentTree() { delete[] nodes; } V getValue(int lo, int hi) { SegmentTreeNode result = getValue(1, 0, N - 1, lo, hi); return result.</description>
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;string.h&amp;gt; using namespace std; struct SegmentTreeNode { // fields on the node long long sum; void assignLeaf(int value) { sum = value; } void merge(SegmentTreeNode &amp;amp;left, SegmentTreeNode &amp;amp;right) { sum = left.</description>
     </item>
     
   </channel>

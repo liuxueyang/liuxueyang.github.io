@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+	<meta name="generator" content="Hugo 0.32.2" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="keywords">
+    
+    <meta content="LXY Site" property="og:title">
+    <title>LXY Site</title>
+    <link rel="stylesheet" href="http://liuxueyang.github.io/css/main.css" >
+    <link rel="alternate" type="application/rss+xml" title="LXY Site" href='http://liuxueyang.github.io/index.xml' />
+
+    <link rel="icon" sizes="16x16 32x32 48x48" href='http://liuxueyang.github.io/favicon.ico' />
+  
+    
+
+  </head>
+  <body>
+    
+
+
+
+ 
+
+<header class="site-header" 
+  style="background:url('http://liuxueyang.github.io/img/header.jpg')
+  top center no-repeat fixed ; background-size:100% auto; " >
+
+  
+    <a class="site-title" href="http://liuxueyang.github.io">LXY Site</a>
+
+    
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+    
+    
+    <a class="page-link" href="https://github.com/liuxueyang/" title="">Github</a>
+    
+    <a class="page-link" href="/posts/" title="">Posts</a>
+    
+  </div>
+</nav>
+
+
+
+
+</header>
+
+
+    
+      <div class="nav-right">
+        <nav class="nav-item">
+          
+        </nav>
+      </div>
+
+    
+    <main class="wrapper">
+      
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/uestc1307-windy%E6%95%B0-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/"> uestc1307 windy数 ——数位DP入门题
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Apr 15, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/uestc">uestc</a>
+
+    <a class="tag" href="http://liuxueyang.github.io/tags/dp">DP</a>
+
+
+      
+      
+</div>
+
+  题目链接：http://acm.uestc.edu.cn/problem.php?pid=1307  题目大意： 不含前导零且相邻两个数字之差至少为2的正整数被称为windy数。windy想知道，在A和B之间，包括A和B，总共有多少个windy数？ 思路： 具体解释代码中有。看的这个人的代码：http://blog.csdn.net/acm_cxlove/article/details/7819907# 然后自己又分析了一下，终于明白了。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; int dp[15][10], a[15]; // 这个函数求的是区间（0，n）内的个数 LL solve(int n){ int len = 0; LL ans = 0; while (n){ a[++len] = n % 10; n /= 10; }int i, j; a[len+1] = 0; // 长度为1~len-1 for (i = 1; i &lt;= len-1; ++i) for (j = 1; j &lt;= 9; ++j) // 注意j从1开始，因为最高位不能是0！ ans += dp[i][j]; // debug了好久！！！ // 长度为len，但是最高位是a[len] - 1 for (i = 1; i &lt;= a[len] - 1; ++i) ans += dp[len][i]; // 长度为len，但是最高位是a[len] for (i = len - 1; i &gt;= 1; --i){ for (j = 0; j &lt; a[i]; ++j) if (abs(a[i+1] - j) &gt;= 2) ans += dp[i][j]; if (abs(a[i] - a[i+1]) &lt; 2) break; } return ans; } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;uestcoj1307.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/uestc1307-windy%E6%95%B0-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/hdu3555-bomb-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/"> hdu3555 Bomb ——数位DP入门题
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Apr 14, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/hdu">hdu</a>
+
+    <a class="tag" href="http://liuxueyang.github.io/tags/dp">DP</a>
+
+
+      
+      
+</div>
+
+  题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=3555 题目大意： 给一个数字n,范围在1~2^63-1，求1~n之间含有49的数字有多少个。 思路： 经典的数位DP，学习了一下，看的别人的代码：http://www.cnblogs.com/luyi0619/archive/2011/04/29/2033117.html 状态转移： dp[i][0]代表长度为 i 并且不含有49的数字的个数； dp[i][1]代表长度为 i 并且不含有49，但是最高位是9的数字的个数； dp[i][2]代表长度为 i 并且含有49的数字的个数。 数组 a[i] 从低位到高位存储 n 的每一位数字。 则：dp[i][0] = dp[i-1][0] * a[i] - dp[i-1][1]; 表示长度为 i 的不含有49的数字的个数等于长度为 i - 1 的不含有49的数字的个数*当前的数字，因为这个位置可以填0~a[i] - 1，然后再减去长度为 i - 1 的最高位是9的数字的个数，因为如果长度为 i - 1 的最高位是9的话，那么高一位就不能填4了，否则就组成了49。 dp[i][1] = dp[i-1][0]; 表示长度为 i 的并且不含有49同时最高位是9的数字的个数等于，长度为 i - 1 的不含有49的数字的个数，因为只要在它的高一位加上一个9就可以了。 dp[i][2] = dp[i-1][2] * a[i] + dp[i-1][1]; 表示长度为 i 的含有49的数字的个数等于，长度为 i - 1 的数字的个数*当前的数字，再加上长度为 i - 1 的并且不含有49同时最高位是9的数字的个数，因为这个时候，只要在高一位加上一个4就可以了，这样在最高的两位就组成了一个49。 做法是从数字的高位向低位扫描，对于第 i 位， 其实这个题目还有一个地方不懂，就是为什么要在输入 n 后，要把 n 加1。想了一下特例，比如输入49，按照上面的做法，在第3步，并不会把符合条件的数字加上，因为4不是严格大于4，最后的执行结果就是0，但是如果加上1之后，n就变成了50，这样第3步恰好可以执行，结果就是正确的了。但是对于一般的情况，还是不知道为什么要把n加1……o(╯□╰)o 这题还是卡了很久，照着别人的代码敲的，死活过不了，然后又找了一份代码：http://blog.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/hdu3555-bomb-%E6%95%B0%E4%BD%8Ddp%E5%85%A5%E9%97%A8%E9%A2%98/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%8812%E6%97%A5-%E6%99%B4/"> 2013年4月12日 晴
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Apr 13, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/run">run</a>
+
+
+      
+      
+</div>
+
+  休息了两天，今天本来想好好跑一下，结果还没有出公寓就岔气了……后来全程都不爽，一直岔气，想起一句话：比赛中的错误往往是在起跑后的两分钟内犯下的，甚至是在第一分钟内。后来跑得还算好吧，但是没有了节奏感，明天希望状态好一点儿~
+  
+</article>
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/zoj2913-bus-pass-bfs%E5%85%A5%E9%97%A8%E9%A2%98/"> zoj2913 Bus Pass ——BFS入门题
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Apr 13, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/zoj">zoj</a>
+
+    <a class="tag" href="http://liuxueyang.github.io/tags/bfs">BFS</a>
+
+
+      
+      
+</div>
+
+  题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1912 题目大意： 有很多个地区，有几条公交线经过一些地区，求出一个地区，满足，使这个地区到这些公交线上的所有公交站的距离中的最大值，最小。（这里的距离指的是两点之间的边数） 思路： 对于这些公交站中的每一个点，BFS，求出出当前点外，其他所有点到这个点的最小距离，然后对于公交站上的其他点，也进行同样地操作，不断更新所有点到公交站上的当前点的最小距离的较大值，然后遍历所有点，求出距离最小的一个点。用res1数组存储。res数组的作用是对于公交线上的每个点，BFS其他点的时候，临时存放其他点到这个公交站的最小距离，然后在与res1数组进行比较，用来更新res1数组。 注意： visited数组，标记这个是不是被访问过，并且标记的顺序要想清楚！把这个点入队的时候就要标记它被访问了，而不是它出队的时候再标记！这是因为，如果两天点同时和一个点相邻，如果等点出队的时候在标记的话，就会产生这个点被访问两次的情况，这个问题让我纠结了一个星期……我去……
+比如这种情况，Ｃ和Ａ，Ｂ同时相邻，假如：先访问Ａ，ｒｅｓ［Ｂ］　＝　ｒｅｓ［Ｃ］　＝　２，把Ａ标记，然后出队；再访问Ｂ，ｒｅｓ［Ｃ］　＝　３，Ｃ的值显然是不对的，所以，当把Ｂ，Ｃ两个点入队的时候，就把他们标记为已经访问，就可以了…… 做这个题目感触挺大的，首先，写代码要全神贯注，不能有一点儿疏忽，否则很容易犯那种超级难找出来的隐蔽的错误，一定要考虑明白再写；然后就是数组的下标什么的，养成好习惯，到底什么时候该从０开始，什么时候该从１开始，我觉得从１开始比较保险，因为有的时候会用到编号，比如这道题目，点的标号从１开始；最后就是思考这种题目应该如何存储题目给的信息，这个东西是看的书上的思想； 自己写代码比看着人家的代码写感觉和收获是完全不一样的。
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/zoj2913-bus-pass-bfs%E5%85%A5%E9%97%A8%E9%A2%98/"> [Read more...] </a>
+  
+</article>
+
+<div class="pagination">
+  
+  <a class="button" href="/page/85/">
+    &laquo; Newer
+  </a>
+  
+  
+  <a class="button" href="/page/87/">
+    Older &raquo;
+  </a>
+  
+</div>
+
+
+
+    </main>
+
+    <footer class="site-footer ">
+
+  
+  <div class="footer-main">
+
+
+    <div class="footer-col-wrapper ">
+
+
+      
+      <div class="footer-col  footer-col-1">
+        <ul class="social-media-list">
+          
+            
+          <li>
+            <span class="social-icon">
+              <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1664 1504v-768q-32 36-69 66-268 206-426 338-51 43-83 67t-86.5 48.5-102.5 24.5h-2q-48 0-102.5-24.5t-86.5-48.5-83-67q-158-132-426-338-37-30-69-66v768q0 13 9.5 22.5t22.5 9.5h1472q13 0 22.5-9.5t9.5-22.5zm0-1051v-24.5l-.5-13-3-12.5-5.5-9-9-7.5-14-2.5h-1472q-13 0-22.5 9.5t-9.5 22.5q0 168 147 284 193 152 401 317 6 5 35 29.5t46 37.5 44.5 31.5 50.5 27.5 43 9h2q20 0 43-9t50.5-27.5 44.5-31.5 46-37.5 35-29.5q208-165 401-317 54-43 100.5-115.5t46.5-131.5zm128-37v1088q0 66-47 113t-113 47h-1472q-66 0-113-47t-47-113v-1088q0-66 47-113t113-47h1472q66 0 113 47t47 113z"/></svg>
+            </span>
+            <a href="mailto:liuxueyang457@163.com">liuxueyang457@163.com</a>
+          </li>
+            
+          
+          <li>
+            <a href="http://liuxueyang.github.io/index.xml">
+              <span class="social-icon ">
+                <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M640 1280q0-53-37.5-90.5t-90.5-37.5-90.5 37.5-37.5 90.5 37.5 90.5 90.5 37.5 90.5-37.5 37.5-90.5zm351 94q-13-232-177-396t-396-177q-14-1-24 9t-10 23v128q0 13 8.5 22t21.5 10q154 11 264 121t121 264q1 13 10 21.5t22 8.5h128q13 0 23-10t9-24zm384 1q-5-154-56-297.5t-139.5-260-205-205-260-139.5-297.5-56q-14-1-23 9-10 10-10 23v128q0 13 9 22t22 10q204 7 378 111.5t278.5 278.5 111.5 378q1 13 10 22t22 9h128q13 0 23-10 11-9 9-23zm289-959v960q0 119-84.5 203.5t-203.5 84.5h-960q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z"/></svg>
+              </span>
+              
+              Subscribe via  RSS</a>
+          </li>
+
+          
+          
+          <li>
+            <a href="https://github.com/liuxueyang">
+              <span class="social-icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+              
+
+              <span class="username">Github: liuxueyang</span>
+            </a>
+          </li>
+          
+          
+
+          
+          
+
+        
+        <li>
+          <span class="social-icon ">
+            <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1248v320q0 40-28 68t-68 28h-320q-40 0-68-28t-28-68v-320q0-40 28-68t68-28h96v-192h-512v192h96q40 0 68 28t28 68v320q0 40-28 68t-68 28h-320q-40 0-68-28t-28-68v-320q0-40 28-68t68-28h96v-192h-512v192h96q40 0 68 28t28 68v320q0 40-28 68t-68 28h-320q-40 0-68-28t-28-68v-320q0-40 28-68t68-28h96v-192q0-52 38-90t90-38h512v-192h-96q-40 0-68-28t-28-68v-320q0-40 28-68t68-28h320q40 0 68 28t28 68v320q0 40-28 68t-68 28h-96v192h512q52 0 90 38t38 90v192h96q40 0 68 28t28 68z"/></svg>
+          </span>
+          <a href="http://liuxueyang.github.io/sitemap.xml">sitemap.xml</a>
+        </li>
+      </ul>
+
+    </div>
+
+    
+    <div class="footer-col  footer-col-2">
+      Latest Posts
+      <ul class="footer-latest-posts"> 
+      
+      <li>
+        <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
+          整理博客
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://liuxueyang.github.io/posts/2017-12-23-summary-for-2017/">
+          2017 年结束了
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://liuxueyang.github.io/posts/clustering/">
+          Clustering
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
+          Building Roads to Connect Cities
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
+          Detecting Anomalies in Currency Exchange Rates
+        </a>
+      </li>
+      
+
+    </ul>
+  </div>
+
+  
+  <div class="footer-col  footer-col-3">
+    
+    Categories<br/>
+    
+    
+    <a class="category" href="/categories/algorithm">algorithm</a>
+    
+    <a class="category" href="/categories/bfs">bfs</a>
+    
+    <a class="category" href="/categories/bipartite">bipartite</a>
+    
+    <a class="category" href="/categories/dfs">dfs</a>
+    
+    <a class="category" href="/categories/dijkstra">dijkstra</a>
+    
+    <a class="category" href="/categories/graph">graph</a>
+    
+    <a class="category" href="/categories/haskell">haskell</a>
+    
+    <a class="category" href="/categories/kruskal">kruskal</a>
+    
+    <a class="category" href="/categories/topsort">topsort</a>
+    
+    <br />
+
+    
+    Tags<br/>
+    
+    
+    <a class="tag" href="/tags/2016%E5%B9%B4">2016年</a>
+    
+    <a class="tag" href="/tags/algorithm">algorithm</a>
+    
+    <a class="tag" href="/tags/article">article</a>
+    
+    <a class="tag" href="/tags/assembly">assembly</a>
+    
+    <a class="tag" href="/tags/bfs">bfs</a>
+    
+    <a class="tag" href="/tags/bruteforce">bruteforce</a>
+    
+    <a class="tag" href="/tags/c">c</a>
+    
+    <a class="tag" href="/tags/c&#43;&#43;">c&#43;&#43;</a>
+    
+    <a class="tag" href="/tags/codechef">codechef</a>
+    
+    <a class="tag" href="/tags/codeforces">codeforces</a>
+    
+    <a class="tag" href="/tags/common-lisp">common-lisp</a>
+    
+    <a class="tag" href="/tags/data-structure">data-structure</a>
+    
+    <a class="tag" href="/tags/dfs">dfs</a>
+    
+    <a class="tag" href="/tags/diary">diary</a>
+    
+    <a class="tag" href="/tags/dp">dp</a>
+    
+    <a class="tag" href="/tags/dp-codeforce">dp-codeforce</a>
+    
+    <a class="tag" href="/tags/editor">editor</a>
+    
+    <a class="tag" href="/tags/emacs">emacs</a>
+    
+    <a class="tag" href="/tags/erlang">erlang</a>
+    
+    <a class="tag" href="/tags/fcitx">fcitx</a>
+    
+    <a class="tag" href="/tags/graph">graph</a>
+    
+    <a class="tag" href="/tags/grub">grub</a>
+    
+    <a class="tag" href="/tags/hdu">hdu</a>
+    
+    <a class="tag" href="/tags/jekyll">jekyll</a>
+    
+    <a class="tag" href="/tags/kmp">kmp</a>
+    
+    <a class="tag" href="/tags/macos">macos</a>
+    
+    <a class="tag" href="/tags/masm">masm</a>
+    
+    <a class="tag" href="/tags/math">math</a>
+    
+    <a class="tag" href="/tags/organize">organize</a>
+    
+    <a class="tag" href="/tags/perl">perl</a>
+    
+    <a class="tag" href="/tags/poj">poj</a>
+    
+    <a class="tag" href="/tags/possibility">possibility</a>
+    
+    <a class="tag" href="/tags/raspberry">raspberry</a>
+    
+    <a class="tag" href="/tags/ruby">ruby</a>
+    
+    <a class="tag" href="/tags/run">run</a>
+    
+    <a class="tag" href="/tags/sgu">sgu</a>
+    
+    <a class="tag" href="/tags/shell">shell</a>
+    
+    <a class="tag" href="/tags/slackware">slackware</a>
+    
+    <a class="tag" href="/tags/spoj">spoj</a>
+    
+    <a class="tag" href="/tags/tools">tools</a>
+    
+    <a class="tag" href="/tags/tyvj">tyvj</a>
+    
+    <a class="tag" href="/tags/ubuntu">ubuntu</a>
+    
+    <a class="tag" href="/tags/uestc">uestc</a>
+    
+    <a class="tag" href="/tags/update">update</a>
+    
+    <a class="tag" href="/tags/ural">ural</a>
+    
+    <a class="tag" href="/tags/usaco">usaco</a>
+    
+    <a class="tag" href="/tags/uva">uva</a>
+    
+    <a class="tag" href="/tags/vim">vim</a>
+    
+    <a class="tag" href="/tags/zoj">zoj</a>
+    
+    <a class="tag" href="/tags/%E4%B9%A0%E6%83%AF">习惯</a>
+    
+    <a class="tag" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2">字符串</a>
+    
+    <a class="tag" href="/tags/%E6%80%BB%E7%BB%93">总结</a>
+    
+    <a class="tag" href="/tags/%E6%95%B0%E5%AD%A6%E9%A2%98">数学题</a>
+    
+    <a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>
+    
+    <a class="tag" href="/tags/%E6%95%B4%E7%90%86">整理</a>
+    
+    <a class="tag" href="/tags/%E6%9A%B4%E5%8A%9B">暴力</a>
+    
+    <a class="tag" href="/tags/%E6%B0%B4%E9%A2%98">水题</a>
+    
+    <a class="tag" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0">读书笔记</a>
+    
+
+  </div>
+</div> 
+</div>
+
+<div class="footer-last-line " >
+  
+  Copyright &copy; 2018 (LXY). All Rights Reserved.
+  
+  Powered by <a href="https://gohugo.io/">Hugo</a> | 
+  <a href="https://www.github.com/otterpro/apricot-hugo-theme/">Apricot theme by otter.pro</a>
+</div>
+</footer>
+
+
+    
+
+    
+
+    <script type="text/javascript" src='http://liuxueyang.github.io/js/main.js'></script>
+
+  </body>
+</html>

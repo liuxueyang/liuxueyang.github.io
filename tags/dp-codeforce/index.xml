@@ -6,9 +6,7 @@
     <description>Recent content in Dp Codeforce on LXY Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <managingEditor>your@email.com (Aos Dabbagh)</managingEditor>
-    <webMaster>your@email.com (Aos Dabbagh)</webMaster>
-    <copyright>(c) 2008 - 2014</copyright>
+    <copyright>Copyright &amp;copy; 2018 (LXY). All Rights Reserved.</copyright>
     <lastBuildDate>Mon, 31 Mar 2014 12:11:01 +0000</lastBuildDate>
     
 	<atom:link href="http://liuxueyang.github.io/tags/dp-codeforce/index.xml" rel="self" type="application/rss+xml" />
@@ -18,15 +16,12 @@
       <title>CodeForces 239 Long Path</title>
       <link>http://liuxueyang.github.io/posts/codeforces-239-long-path/</link>
       <pubDate>Mon, 31 Mar 2014 12:11:01 +0000</pubDate>
-      <author>your@email.com (Aos Dabbagh)</author>
+      
       <guid>http://liuxueyang.github.io/posts/codeforces-239-long-path/</guid>
       <description>每个房间有两个单向出口，就是只能进不能出，这个开始理解错了。
 进入房间的时候，首先要在屋顶画一个叉叉，如果画完之后叉叉的个数是奇数的话：那么就从第二条出口出去，会到达ｐ[ i ]房间；如果叉叉的个数是偶数的话，那么就到下一个房间。
 问从1到ｎ+1房间一共走了多少个这样的单项出口。
-有一个条件：1 &amp;lt;= p[ i ] &amp;lt;= i 这个开始也没有注意到==。这是个很重要的条件。
-说明人只能通过第二个出口向后退，而不能向前跳跃。如果人要向前走，只能一步一步的通过第一条出口。
-所以，dp[ i ] 表示从i 房间到 i +1 房间需要经过的出口数。
-还有一个特点：如果人第一次到房间 i ，那么他必定下一步到达房间p[ i ], 然后再考虑从房间p [ i ] 出发到达 p[ i +1] 房间。如果要到达i + 1房间。那么需要经过的出口数目就是：2 + dp[ p[i], p[i] + 1, &amp;hellip; , i - 1 ] .其中的2 就是从房间 i 到房间p[ i ] 和从房间 i 到房间 i + 1的两步。另外一部分也就是从房间p[ i ] 到房间p[ i ] +1 ，从房间p[ i ] + 1 到房间 p[ i ] + 2等等。</description>
+有一个条件：1 &amp;lt;= p[ i ] &amp;lt;= i 这个开始也没有注意到==。这是个很重要的条件。</description>
     </item>
     
   </channel>
