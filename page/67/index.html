@@ -70,6 +70,30 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/hdu1398-square-coins-dp/"> hdu1398 Square Coins ——DP
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      May 23, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/hdu">Hdu</a>
+
+    <a class="tag" href="http://liuxueyang.github.io/tags/dp">DP</a>
+
+
+      
+      
+</div>
+
+  题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=1398 题目大意： 给一个数字，不大于300，求有多少种用完全平方数表示这个数字的方法 题目思路： 方法跟hdu1283一样一样的……只需要把那道题目的代码稍微改一下就可以过了 #include &lt;cstdio&gt; #include &lt;cmath&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; const int MAX = 32768+10; long long d[MAX]; void solve() { int n, i, j; while (~scanf(&quot;%d&quot;, &amp;n) &amp;&amp; n) { memset(d, 0, sizeof(d)); d[0] = 1; for (i = 1; i &lt;= floor(sqrt(n)); ++i) { for (j = i*i; j &lt;= n; ++j) { d[j] += d[j-i*i]; } } printf(&quot;%lld\n&quot;, d[n]); } } int main(void) { solve(); return 0; }   因为题目的范围很小嘛，只有300。 
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/hdu1284-%E9%92%B1%E5%B8%81%E5%85%91%E6%8D%A2%E9%97%AE%E9%A2%98-dp/"> hdu1284 钱币兑换问题 ——DP
 
  </a>
@@ -146,33 +170,6 @@
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/hdu1394-minimum-inversion-number-%E7%BA%BF%E6%AE%B5%E6%A0%91/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/poj2299-ultra-quicksort-%E7%BA%BF%E6%AE%B5%E6%A0%91/"> poj2299 Ultra-QuickSort ——线段树
-
- </a>
-  </h1>
-  <div class="article-meta">
-      May 23, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/poj">POJ</a>
-
-    <a class="tag" href="http://liuxueyang.github.io/tags/data-structure">Data Structure</a>
-
-
-      
-      
-</div>
-
-  题目链接：http://poj.org/problem?id=2299 题目大意： 给n个任意的数字，把他们排序，求最少的交换次数。 题目思路： 开始没想法。后来zjl一说才知道。原来就是求逆序数！每一个数字前面有多少比它小的，这个数字就至少要交换多少次。所以，只需要求这列数字的逆序数就可以！好神奇 还有一个，就是每个数字的范围比较大，开始我还在想开数组貌似放不下，后来zjl说离散化……好吧，果然，我肿么没想到o(╯□╰)o感觉挺自然的想法啊…… 剩下的就是原来做过的题目了……甚至比原来做过的还简单 最后一个问题就是，最后的结果应该是long long 的，稍微算一下就知道，最大值(2*10^11)超过了4个字节的整型范围(4 * 10^9)，long long 范围是(1*10^19)，所以输出要按照long long 输出……这个问题以后一定要注意，判断一下数字的范围！别傻乎乎地就用int…… //#define LOCAL #include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x7fffffff; const int MINN = -0x7fffffff; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 500000+10; typedef struct node { int val, index; bool operator &lt; (const node &amp; other) const { return val &lt; other.
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/poj2299-ultra-quicksort-%E7%BA%BF%E6%AE%B5%E6%A0%91/"> [Read more...] </a>
   
 </article>
 
@@ -261,6 +258,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -281,12 +284,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

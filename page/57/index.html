@@ -70,6 +70,31 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/"> 高斯消元
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Jul 11, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/math">Math</a>
+
+
+      
+      
+</div>
+
+  输入线性方程组的维数，然后随即生成一定有解的线性方程组的增广矩阵，求出解，然后输出时间和方程组的解，以及和标准解的误差（其实就是和标准解的方差）。 #include &lt;cstdio&gt; #include &lt;algorithm&gt; #include &lt;cstdlib&gt; #include &lt;iostream&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;ctime&gt; using namespace std; const double eps=1e-9; const int MAX=20000; double ans[MAX]; int n; double **inputdata; double *result; /* 输出标准解 */ void printresult() { for(int i=0;i&lt;n;i++) printf(&quot;%.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/tyvj1022---%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2-%E8%BF%9B%E5%88%B6%E4%B8%BA%E8%B4%9F%E6%95%B0/"> tyvj1022 - 进制转换 ——进制为负数
 
  </a>
@@ -145,32 +170,6 @@
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/tyvj1018---%E9%98%B6%E4%B9%98%E7%BB%9F%E8%AE%A1-%E6%9A%B4%E5%8A%9B/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/tyvj1017---%E5%86%97%E4%BD%99%E5%85%B3%E7%B3%BB-%E5%B9%B6%E6%9F%A5%E9%9B%86/"> tyvj1017 - 冗余关系 ——并查集
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Jul 7, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/tyvj">tyvj</a>
-
-
-      
-      
-</div>
-
-  题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1017 并查集
-#include &lt;cstdio&gt; #include &lt;cstdlib&gt; using namespace std; int parent[1001],n,m; void init() {for(int i=1;i&lt;=m;++i)parent[i]=-1; } int Find(int x) {int s; for(s=x;parent[s]&gt;=0;s=parent[s]);while (s!
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/tyvj1017---%E5%86%97%E4%BD%99%E5%85%B3%E7%B3%BB-%E5%B9%B6%E6%9F%A5%E9%9B%86/"> [Read more...] </a>
   
 </article>
 
@@ -259,6 +258,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -279,12 +284,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

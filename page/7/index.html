@@ -70,6 +70,31 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/const-member-function-in-cpp/"> const member function in cpp
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Mar 6, 2017
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/c&#43;&#43;">C&#43;&#43;</a>
+
+
+      
+      
+</div>
+
+  默认情况下，this是一个const pointer to the nonconst version of the class type。比如有一个类A，那么在类里面，this的类型是A * const。因为不能把一个const对象的地址赋值给一个指向nonconst对象的指针，因此不能把this绑定到一个const对象上。这就导致，不能在const对象上调用一个nonconst member function。
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/const-member-function-in-cpp/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/const-pointer-and-pointer-to-const-in-cpp/"> const pointer and pointer to const in Cpp
 
  </a>
@@ -131,30 +156,6 @@ pointer to const const int b = 30; const int * bptr = &amp;b;  bptr是一个指�
 
   今天我花了非常多的时间来学习org-mode，以前主要用它来记录每天的工作和学习日志，仅仅记录学习时间，几乎只用到了Clock in, Clock out之类的功能。这两天我发现我非常有必要对学过的东西做一个总结或者笔记，供以后查看，不然每次捡起很久之前看的东西还是有点困难。比如前几周学的PL课程，分三部分，学完第一部分觉得还可以，第二部分就比较难了，有些比较新的概念虽然没有完全理解，但是照葫芦画瓢做作业还是可以的。然后到了第三部分，也能够顺利把作业完成。然而到了最后的考试的时候考到第二部分的知识和概念，我竟然几乎完全记不起来了！说实话我还是挺惊讶的。所以我决定以后要经常作笔记，没有完全理解的概念和原理应该经常回顾，反复消化。所以我决定认真学习一下org-mode，用它来管理我的笔记。
 本来我把笔记放在了 Dropbox 里面同步，后来想了想，我可能还是会拷贝一份在这里。以后查阅可能会方便很多。随后我会陆续把关于org-mode的笔记贴到下面。
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/%E8%A7%A3%E5%86%B3kconsole%E4%B8%8Bemacs-org-mode%E5%BF%AB%E6%8D%B7%E9%94%AE%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/"> 解决Konsole下Emacs org-mode快捷键不能使用的问题
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Feb 16, 2017
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/editor">Editor</a>
-
-
-      
-      
-</div>
-
-  如果想在终端里面使用Emacs的话，org-mode的有些快捷键可能会失效，比如M-LEFT，这个问题在这里有一个解决方案：Stack Overflow。然而我还是觉得挺麻烦的。
-今天瞎玩的时候，一个非常偶然的机会，发现这个问题在KDE 4里面的原生的Konsole里面可以非常容易地被解决，只需要在Profile的设置里面的Keyboard标签里面的Key Bindings设置成Default (Xfree 4)，如图：
-然后在org-mode里面就可以使用类似于M-LEFT之类的快捷键了。虽然GUI版本的Emacs可能会比较好看，不过还是终端下用Emacs更方便一点。另外，说到终端，以前经常用Terminator，不过在KDE 4里面其实原生的Konsole体验更好。顺便说一句：Slackware是我用过的最好用的发行版。KDE 4非常好用，当作主力机使用了两个多月了，没有出现过问题。
   
 </article>
 
@@ -243,6 +244,12 @@ pointer to const const int b = 30; const int * bptr = &amp;b;  bptr是一个指�
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -263,12 +270,6 @@ pointer to const const int b = 30; const int * bptr = &amp;b;  bptr是一个指�
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

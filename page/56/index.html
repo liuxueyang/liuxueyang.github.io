@@ -70,6 +70,31 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/uestc1888-birthday-party-%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%E4%B9%98%E6%B3%95%E5%8E%9F%E7%90%86/"> uestc1888 Birthday Party 　　　组合数学，乘法原理
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Jul 18, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/math">Math</a>
+
+
+      
+      
+</div>
+
+  题目链接：http://acm.hust.edu.cn/vjudge/contest/view.action?cid=25539#problem/G 题目意思： 有n个人，每个人有一个礼物，每个人能拿自己礼物，n个人随机送礼物，给一个数字k,求出可以找到k个人，满足：这ｋ个人里面，第一个人把礼物给第二个人，第二个人把礼物给第三个人，以此类推，第ｋ个人把礼物给第１个人．求满足这个条件的概率． 组合数学： 满足条件的一组ｋ个人称为一个ｋ环，注意：可能有多个ｋ环！先考虑至少形成一个ｋ环的情况：A(n,k) * (n-1)^(n-k) / (k * (n-1)^(n)) == A(n, k) / (k * (n-1)^k) ；然后在考虑至少形成m个环的情况． 设至少形成m个环的概率是：f(m) = A(n, km)/(k^mm!
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/uestc1888-birthday-party-%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%E4%B9%98%E6%B3%95%E5%8E%9F%E7%90%86/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/usaco-milking-cows/"> usaco Milking Cows
 
  </a>
@@ -143,31 +168,6 @@
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/vimrc%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6_version1.0_&#43;pathogen-taglist-wordcomplete%E6%8F%92%E4%BB%B6%E8%AF%B4%E6%98%8E/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/"> 高斯消元
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Jul 11, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/math">Math</a>
-
-
-      
-      
-</div>
-
-  输入线性方程组的维数，然后随即生成一定有解的线性方程组的增广矩阵，求出解，然后输出时间和方程组的解，以及和标准解的误差（其实就是和标准解的方差）。 #include &lt;cstdio&gt; #include &lt;algorithm&gt; #include &lt;cstdlib&gt; #include &lt;iostream&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;ctime&gt; using namespace std; const double eps=1e-9; const int MAX=20000; double ans[MAX]; int n; double **inputdata; double *result; /* 输出标准解 */ void printresult() { for(int i=0;i&lt;n;i++) printf(&quot;%.
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/"> [Read more...] </a>
   
 </article>
 
@@ -256,6 +256,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -276,12 +282,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

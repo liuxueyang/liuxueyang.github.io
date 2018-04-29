@@ -70,6 +70,38 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/"> Building Roads to Connect Cities
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      May 17, 2017
+      
+      
+    <a class="category" href="http://liuxueyang.github.io/categories/algorithm">Algorithm</a>
+
+    <a class="category" href="http://liuxueyang.github.io/categories/graph">Graph</a>
+
+    <a class="category" href="http://liuxueyang.github.io/categories/kruskal">Kruskal</a>
+
+
+      
+      
+      
+</div>
+
+  题目链接：pdf
+给出平面上的一些点，任意两点之间可以相连，求最小生成树的总权值。
+用Kruskal：把所有边按照边长度升序排序，循环所有边，每次加入一个边之前要判断这个边的两个点是不是在一个集合中，如果是那么跳过，如果不是那么把这个边的两个点合并到一个集合中。集合操作用带路径压缩的并查集。循环边的过程中累加边的权值。
+// Tue May 16 17:02:04 2017 // Tue May 16 20:42:10 2017 #include &lt;bits/stdc++.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/"> Detecting Anomalies in Currency Exchange Rates
 
  </a>
@@ -168,36 +200,6 @@
   
 </article>
 
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/computing-minimum-number-of-flight-segments/"> Computing the Minimum Number of Flight Segments
-
- </a>
-  </h1>
-  <div class="article-meta">
-      May 16, 2017
-      
-      
-    <a class="category" href="http://liuxueyang.github.io/categories/algorithm">Algorithm</a>
-
-    <a class="category" href="http://liuxueyang.github.io/categories/bfs">BFS</a>
-
-
-      
-      
-      
-</div>
-
-  题目链接：pdf
-给一个无向图，一个起点，一个终点，求从起点到终点的路径的边数的最小值。
-就是一遍BFS。
-// Sun May 14 21:01:40 CST 2017 // Sun May 14 21:20:34 CST 2017 /* 最简单的BFS */ #include &lt;iostream&gt; #include &lt;vector&gt; #include &lt;queue&gt; using std::vector; using std::queue; int distance(vector&lt;vector&lt;int&gt; &gt; &amp;adj, int s, int t) { vector&lt;int&gt; dist(adj.
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/computing-minimum-number-of-flight-segments/"> [Read more...] </a>
-  
-</article>
-
 <div class="pagination">
   
   <a class="button" href="/">
@@ -283,6 +285,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -303,12 +311,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

@@ -70,6 +70,33 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/zoj-2412-farm-irrigation-dfs%E5%85%A5%E9%97%A8%E9%A2%98/"> zoj 2412 Farm Irrigation ——DFS入门题
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Apr 7, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/zoj">zoj</a>
+
+    <a class="tag" href="http://liuxueyang.github.io/tags/dfs">DFS</a>
+
+
+      
+      
+</div>
+
+  题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1412 题意： 有11种正方形，每种正方形里面对应一种形状的水管，不同的的正方形一用A到K表示，给一个矩阵，问至少需要多少个水源可以使矩形中所有的地方都可以被灌溉，如果两个相邻的正方形的水管正好对口，那么这两个正方形可以共用一个水源。 思路： 开始感觉很复杂，明显可以DFS做，但是感觉比较麻烦，关键是怎么处理题目中的条件。 首先，处理11种不同的水管，分4个方向，1表示有接口，0表示没有接口。用一个二维数组存所有种类的水管。 然后，把输入的字符转化成数字，可以再输入的时候边输入边处理，用字符减去字符“A”就可以了，对应的上面给11中不同水管中的一种。以上这两个处理方法要注意，学习一下，稍微看了一下别人的代码才想到的。这种看似比较简单的处理，往往给解题带来比较大的方便。 最后，就是如何深搜了。这个要考虑清楚。用一个flag二维数组表示是否访问过这个方格。深搜的时候，如果访问到它时，先判断它是否被访问过，然后立刻标记为已访问。然后就是判断当前方格的四个方向是不是有接口，如果某个方向有接口的话，就判断这个方向上的下一个方格中，和当前方格相邻的边是不是有接口，如果有接口，则继续深搜这个相邻的点。这里有个处理：（k+2）%4，意味着，比如：当前方格如果右边有接口，则判断右边的方格的左边的边是不是有接口，其它情况一样。然后就是主函数里面的dfs外面的for循环，思想和以前做过的zoj 1709是一样的，就是搜到某个点的时候，用一个mrk标记一下，把和它有关系的点都搜完，如果有符合条件的，mrk会改变，然后就cnt++用来计数，这种题目是相似的，都是要求符合条件的点相邻。 有一个细节，就是矩阵的数组还是从1开始吧，数组稍微开大一点儿，这样在深搜下一个方向的时候，就不会因为数组越界出错了。这个问题以前没有注意到。
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/zoj-2412-farm-irrigation-dfs%E5%85%A5%E9%97%A8%E9%A2%98/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%886%E6%97%A5%E5%9B%9B%E6%A0%A1%E8%81%94%E8%B5%9B%E6%80%BB%E7%BB%93/"> 2013年4月6日四校联赛总结
 
  </a>
@@ -132,33 +159,6 @@
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/zoj-1709-oil-deposits-dfs%E5%85%A5%E9%97%A8%E9%A2%98/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/zoj-2110-tempter-of-the-bone-dfs&#43;%E5%89%AA%E6%9E%9D/"> zoj 2110 Tempter of the Bone ——DFS&#43;剪枝
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Apr 6, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/zoj">zoj</a>
-
-    <a class="tag" href="http://liuxueyang.github.io/tags/dfs">DFS</a>
-
-
-      
-      
-</div>
-
-  题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1110 题意： 给一个矩阵，‘X’代表墙壁，‘.’代表空格，‘S’代表起始位置，‘D’代表终点。从起点开始，每个空格只许经过一次，求在规定的时间t的时候，能否正好到达终点。每走一个花费1个单位时间。输入n,m,t，分别代表矩阵的行，列，规定的时间。 思路： 深度优先搜索，从起点开始，按照四个方向搜索，判断某个方向的下一个方格如果不是墙壁的话，就把它标为墙壁，然后从这个点继续往下搜索，如果从这个点往下搜索失败后，就要把这个点标记回原来的空格符号：‘.’。然后尝试下一个方向。直到i == di, j == dj, t == T的时候，表示搜索成功，flag = true; return; 其中si sj 是起点位置，di dj是终点位置，T是当前所花费的时间。 然后还有几处剪枝：如果这个矩阵的空格的数目小于等于时间t，那么不可能成功。这在主函数里面可以剪枝。在dfs的过程中，如果发现剩余的时间小于当前位置到终点的最小距离，可以直接判断搜索失败；如果剩余的时间和当前位置到终点的最小时间的差值是奇数的话，可以判断搜索一定失败，可以剪枝，如果是偶数的话，则可能成功。 今天突然发现，以前写的解题报告太搓了……向kedebug的博客学习，O(∩_∩)O哈哈~加油
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/zoj-2110-tempter-of-the-bone-dfs&#43;%E5%89%AA%E6%9E%9D/"> [Read more...] </a>
   
 </article>
 
@@ -247,6 +247,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -267,12 +273,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

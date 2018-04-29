@@ -70,6 +70,36 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/poj2585zoj2193-window-pains-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E5%85%A5%E9%97%A8%E9%A2%98/"> poj2585&amp;&amp;zoj2193 Window Pains ——拓扑排序入门题
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Apr 30, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/poj">POJ</a>
+
+    <a class="tag" href="http://liuxueyang.github.io/tags/zoj">zoj</a>
+
+    <a class="tag" href="http://liuxueyang.github.io/tags/graph">Graph</a>
+
+
+      
+      
+</div>
+
+  题目链接：http://poj.org/problem?id=2585 http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=2193 题目大意： 有9个窗口，每个窗口占4个格子，并且每个窗口的位置是固定的。如果重叠的话，在前面的窗口会覆盖另一种窗口，这9个窗口在4*4的矩阵里面，给出一种矩阵的格局。问这中格局是不是合法的。 题目思路： 还是看的书上的。刚开始一点也没有思路。方法就是：16个格子，每个格子可能会存在哪几种窗口，这是可以枚举出来的。针对输入的矩阵，那么可以判断，每一个格子会覆盖哪几种窗口，如果这种窗口在16个格子里面出现过，那么就可以判断当前这个格子一定覆盖了它，那么就可以用一条有向边连接当前窗口和被覆盖的窗口。这样，就可以得到一个图。在16个格子里面没有出现过的窗口我们可以不考虑。得到有向图后，发现，如果存在一个有向环，那么就一定是不合理的，因为这表明，一种窗口A覆盖了另一种窗口B，同时B又覆盖了A，这是不可能的。所以这个矩阵就是不合法的。反之，如果不存在有向环，就是合法的。这样，就转化为用拓扑排序判断环的问题了。先建图，再判断环。 写了两遍，其中出现各种BUG…… 第一遍：
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; string cover[4][4]; int a[10][10];bool g[10][10];int id[10]; map&lt;int, bool&gt;mymap; int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;poj2585.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/poj2585zoj2193-window-pains-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E5%85%A5%E9%97%A8%E9%A2%98/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/hoj12614-dictionary-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E6%89%BE%E7%8E%AF%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98/"> hoj12614 Dictionary ——拓扑排序找环&amp;&amp;比赛残留题
 
  </a>
@@ -142,23 +172,6 @@
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%8826%E6%97%A5-%E6%99%B4/"> 2013年4月26日 晴
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Apr 26, 2013
-      
-      
-      
-</div>
-
-  25日 晚上去图书馆还书，没去跑步。开始读TAOCP，^_^ 26日 都起跑了才发现脚貌似有点儿受伤，大脚趾有些疼的感觉。乖乖回来了o(╯□╰)o 看来得休息几天了。 今天晚上自习的时候开始考虑要不要考研，以前的想法都是坚决不考研的，但是现在，唉……我也不知道该怎么办，总之，不想这些了，现在还是好好学习数学，英语，还有专业课，到时候想考就拼一下。目前最重要的是认真做比赛，还要努力把数学英语搞好，这货哪里都用得到。把自己的基础打好，各种技术都要自己去学，不管以后是去考研还是去找工作，都有好处，具体怎么样，以后的事情以后再说，现在想这些都没用。 纯粹胡思乱想…… 人生貌似有些迷茫了又。。迟早要面对，所谓选择和机会，都是留给认真准备的人的。什么都不会，感觉无路可走…… 看到一句话：当你倒了一杯热水，准备去喝的时候，发现水已经凉了，那么恭喜你，你已经进入状态了。
   
 </article>
 
@@ -247,6 +260,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -267,12 +286,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

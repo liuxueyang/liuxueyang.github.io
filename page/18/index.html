@@ -70,6 +70,35 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/problem-when-configuring-vim-taglist-plugin/"> problem when configuring vim taglist plugin
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Jun 10, 2016
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/tools">Tools</a>
+
+
+      
+      
+</div>
+
+  最开始，用这个插件的时候出现了类似
+ctags unrecognized option '--format=2'^@^itry
+这样的问题。
+然后我看了一下ctags的man page，发现，确实没有这个选项。这……是为啥。
+然后去看taglist插件的manual和它的首页，发现，它里面说的是exuberant ctags，然后 我看了一下这个对比了一下Linux里面的系 统的ctags的man page，发现确实不一样。然后我在常用的PATH里面找了一下exuberant， 很快就找到了/usr/bin/ctags-exuberant，然后根据taglist的文档，设置一个变量就好 了。
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/problem-when-configuring-vim-taglist-plugin/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/fish-shell-tutorial/"> fish shell tutorial
 
  </a>
@@ -141,33 +170,6 @@ liu@lisp /p/tmp&gt; echo {good,bad}&quot; apples&quot; good apples bad apples li
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/codeforces-round-354-div-2-c-vasya-and-string/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/2016%E5%B9%B45%E6%9C%8829%E6%97%A5/"> 2016年5月29日
-
- </a>
-  </h1>
-  <div class="article-meta">
-      May 29, 2016
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/2016%E5%B9%B4">2016年</a>
-
-
-      
-      
-</div>
-
-  前几天花了大量的时间整理我的各个平台的浏览器书签，最后终于不得不承认，要想一次性 把那么杂乱的书签整理好、去重然后找一个好的插件保持各个浏览器同步是一件很困难的 事情……
-所以我想把杂乱的旧书签备份一下，然后重新开始。:joy:我还发现，其实我之前保存书签 的方法一点都不科学。。有的东西其实更适合保存在Evernote里面。Evernote的浏览器插件 其实是一个非常好用的东西。只是我一直没有好好利用。保存到Evernote的好处还有就是即 使原先的链接失效了也丝毫不影响我的笔记内容。并且Evernote各个平台都有比较好的客户 端，也可以很方便地整理和复习。
-所以就要比较合理地管理Evernote了，建立笔记本、笔记本组、标签什么的，自己慢慢摸索 吧。感觉分类就是有点麻烦。
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/2016%E5%B9%B45%E6%9C%8829%E6%97%A5/"> [Read more...] </a>
   
 </article>
 
@@ -256,6 +258,12 @@ liu@lisp /p/tmp&gt; echo {good,bad}&quot; apples&quot; good apples bad apples li
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -276,12 +284,6 @@ liu@lisp /p/tmp&gt; echo {good,bad}&quot; apples&quot; good apples bad apples li
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

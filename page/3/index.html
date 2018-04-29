@@ -70,6 +70,36 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/computing-minimum-number-of-flight-segments/"> Computing the Minimum Number of Flight Segments
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      May 16, 2017
+      
+      
+    <a class="category" href="http://liuxueyang.github.io/categories/algorithm">Algorithm</a>
+
+    <a class="category" href="http://liuxueyang.github.io/categories/bfs">BFS</a>
+
+
+      
+      
+      
+</div>
+
+  题目链接：pdf
+给一个无向图，一个起点，一个终点，求从起点到终点的路径的边数的最小值。
+就是一遍BFS。
+// Sun May 14 21:01:40 CST 2017 // Sun May 14 21:20:34 CST 2017 /* 最简单的BFS */ #include &lt;iostream&gt; #include &lt;vector&gt; #include &lt;queue&gt; using std::vector; using std::queue; int distance(vector&lt;vector&lt;int&gt; &gt; &amp;adj, int s, int t) { vector&lt;int&gt; dist(adj.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/computing-minimum-number-of-flight-segments/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/checking-whether-any-intersection-in-a-city-is-reachable-any-other/"> Checking Whether Any Intersection in a City is Reachable from Any Other
 
  </a>
@@ -162,35 +192,6 @@
   
 </article>
 
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/adding-exits-to-maze/"> Adding Exits to a Maze
-
- </a>
-  </h1>
-  <div class="article-meta">
-      May 16, 2017
-      
-      
-    <a class="category" href="http://liuxueyang.github.io/categories/algorithm">Algorithm</a>
-
-    <a class="category" href="http://liuxueyang.github.io/categories/dfs">DFS</a>
-
-
-      
-      
-      
-</div>
-
-  题目链接：pdf
-给出一个无向图，求连通分量的个数。对这个图做一遍DFS同时计数就好了。因 为我用邻接表表示图，所以还要记得孤点的情况，这个后来才发现。
-// Begin: Fri May 12 19:52:46 CST 2017 // Finish: Fri May 12 20:16:44 CST 2017 // 求有几个连通块。。 #include &lt;iostream&gt; #include &lt;vector&gt; using namespace std; void dfs(vector&lt;vector&lt;int&gt; &gt; &amp;adj, vector&lt;bool&gt; &amp;visit, int x) { visit[x] = true; for (size_t i = 0; i &lt; adj[x].
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/adding-exits-to-maze/"> [Read more...] </a>
-  
-</article>
-
 <div class="pagination">
   
   <a class="button" href="/page/2/">
@@ -276,6 +277,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -296,12 +303,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

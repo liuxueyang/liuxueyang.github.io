@@ -70,6 +70,33 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/tyvj1011---%E4%BC%A0%E7%BA%B8%E6%9D%A1--dp/"> tyvj1011 - 传纸条  ——DP
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Jul 7, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/tyvj">tyvj</a>
+
+    <a class="tag" href="http://liuxueyang.github.io/tags/dp">DP</a>
+
+
+      
+      
+</div>
+
+  题目链接：https://www.tyvj.cn/Problem_Show.aspx?id=1011 状态转移方程： f[k,x1,x2] = max(f[k-1,x1,x2],f[k-1,x1-1,x2],f[k-1,x1-1,x2-1],f[k-1,x1,x2-1]) + a[y1,x1] + a[y2,x2]; f[k,x1,x2]表示，第K步的时候，一条路的横坐标是x1,另一条路的横坐标是x2的时候所得到的最优解。另外，还要考虑一下，当x1==x2的时候的情况，这个时候，只能允许一条路走到那个位置。
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/tyvj1011---%E4%BC%A0%E7%BA%B8%E6%9D%A1--dp/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/tyvj1004-%E6%BB%91%E9%9B%AA/"> tyvj1004 滑雪
 
  </a>
@@ -137,32 +164,6 @@
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/uva-11020---efficient-solutions-%E5%B9%B3%E8%A1%A1bst/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/codeforces-round-#190-div.-2--b.-ciel-and-flowers/"> Codeforces Round #190 (Div. 2)  B. Ciel and Flowers
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Jul 3, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/codeforces">CodeForces</a>
-
-
-      
-      
-</div>
-
-  链接：http://codeforces.com/contest/322/problem/B 这题做错了。没考虑周全。
-#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;iostream&gt; #include &lt;algorithm&gt; using namespace std; int main(void) { int r, g, b; while (~scanf(&quot;%d%d%d&quot;, &amp;r, &amp;g, &amp;b)) { int x = r % 3, y = g % 3, z = b % 3, Max = max(x, max(y, z)), cnt =r/3+g/3+b/3; if (Max == 1) { if (x == y &amp;&amp; y == z &amp;&amp; x == 1) cnt++; } if (Max == 2) { if (x + y + z == 4) { if (x*y*z) cnt++; else if (!
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/codeforces-round-#190-div.-2--b.-ciel-and-flowers/"> [Read more...] </a>
   
 </article>
 
@@ -251,6 +252,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -271,12 +278,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

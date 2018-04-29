@@ -70,6 +70,32 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/the-unique-mst-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7/"> The Unique MST ——最小生成树的唯一性
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      May 26, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/graph">Graph</a>
+
+
+      
+      
+</div>
+
+  题目链接：http://acm.hust.edu.cn/vjudge/contest/view.action?cid=24534#problem/C 题目大意： 判断最小生成树是否唯一。 题目思路： 对于如果有一条边A在最小生成树里面，并且存在和这条边权值一样的另外一条边B，那么再次求最小生成树的时候，把A去掉，看看求出的最小生成树是不是和原来的最小生成树权值一样。如果一样，就是不唯一，否则就刚才去掉的加进来，然后再找下一条这样的边。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; using namespace std; #define MAXN 110 #define MAXM 5009 typedef struct edge { int u, v, w, used, del, equal; bool operator &lt; (const edge &amp;other) const { return w &lt; other.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/the-unique-mst-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/constructing-roads-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/"> Constructing Roads ——最小生成树
 
  </a>
@@ -144,31 +170,6 @@
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/hdu1176-%E5%85%8D%E8%B4%B9%E9%A6%85%E9%A5%BC-dp/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/poj1018-communication-system-%E8%B4%AA%E5%BF%83&#43;%E6%9E%9A%E4%B8%BE/"> poj1018 Communication System ——贪心&#43;枚举
-
- </a>
-  </h1>
-  <div class="article-meta">
-      May 25, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/poj">POJ</a>
-
-
-      
-      
-</div>
-
-  题目链接：http://poj.org/problem?id=1018 题目大意： 有n种设备，每种设备有mi个选择，每种设备选择一个，每个设备都有一个带宽值和价钱，要求每种设备选择一个，最终选择的n个设备里面，带宽B是这n个设备里面所有带宽的最小值吗，价钱P为这n个设备价钱的和，求B/P的最大值。 题目思路： 这题开始没读懂题意，后来搜的题意之后才明白。然后没有思路……看了人家的思路，貌似懂了……然后就开始写，写跪了……开始的方法是，求出所有这n种设备里面每种设备的带宽的最小值，依次枚举这些最小值就可以了。总是WA…… 昨天纠结一晚上，今天早上又想了一下，发现原来的想法是有问题的，应该一直枚举到所有n中设备里面每种带宽的最大值的最小值。第一：保证这n种设备每一种都可以选上。第二：虽然枚举的B值比原来大了，所得到的的价钱不小于我原来的做法所得到的的价钱，但是，重点来了：B也增大了啊！有木有！所以，这就是我当初没有想到的！ #include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; using namespace std; #define MAXN 0x7fffffff #define MINN -MAXN const int MAX = 100+10; typedef struct node { int p, b, cnt; bool operator &lt; (const node &amp; other ) const { if (p !
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/poj1018-communication-system-%E8%B4%AA%E5%BF%83&#43;%E6%9E%9A%E4%B8%BE/"> [Read more...] </a>
   
 </article>
 
@@ -257,6 +258,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -277,12 +284,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

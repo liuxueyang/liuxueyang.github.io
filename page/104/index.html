@@ -70,6 +70,34 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/poj-1056-immediate-decodability/"> poj 1056 IMMEDIATE DECODABILITY
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Feb 27, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/poj">POJ</a>
+
+    <a class="tag" href="http://liuxueyang.github.io/tags/data-structure">Data Structure</a>
+
+
+      
+      
+</div>
+
+  Description Input Output Sample Input Sample Output
+#include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;cstring&gt; using namespace std; const int sonnum = 2, base = '0'; struct Trie { int num; bool terminal; Trie *son[sonnum]; }; Trie *NewTrie() { Trie *temp = new Trie; temp-&gt;num = 1; temp-&gt;terminal = false; for (int i = 0; i &lt; sonnum; ++i) temp-&gt;son[i] = NULL; return temp; } bool Insert(Trie *pnt, char *s, int len) { Trie *temp = pnt; bool mrk = true; for (int i = 0; i &lt; len; ++i) { if (temp-&gt;son[s[i]-base] == NULL) temp-&gt;son[s[i]-base] = NewTrie(); else { temp-&gt;son[s[i]-base]-&gt;num++; if (temp-&gt;son[s[i]-base]-&gt;terminal == true) mrk = false; } temp = temp-&gt;son[s[i]-base]; } temp-&gt;terminal = true; return mrk; } int main(void) { Trie *tree; char a[20]; int cnt = 1; #ifndef ONLINE_JUDGE freopen(&quot;poj2056.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/poj-1056-immediate-decodability/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/poj-2503-babelfish/"> poj 2503 Babelfish
 
  </a>
@@ -144,31 +172,6 @@
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/cf271-c.-secret/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/cf271-a.-beautiful-year/"> CF271 A. Beautiful Year
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Feb 15, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/codeforces">CodeForces</a>
-
-
-      
-      
-</div>
-
-  A. Beautiful Year time limit per test 2 seconds memory limit per test 256 megabytes input standard input output standard output
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/cf271-a.-beautiful-year/"> [Read more...] </a>
   
 </article>
 
@@ -257,6 +260,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -277,12 +286,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

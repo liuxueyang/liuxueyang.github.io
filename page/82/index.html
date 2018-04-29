@@ -70,6 +70,33 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/poj2480-longges-problem-%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/"> poj2480 Longge&#39;s problem ——积性函数入门题
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Apr 21, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/poj">POJ</a>
+
+    <a class="tag" href="http://liuxueyang.github.io/tags/math">Math</a>
+
+
+      
+      
+</div>
+
+  题目链接：http://poj.org/problem?id=2480 题目大意： 给定一个数字N，求∑gcd(i, N) 1&lt;=i &lt;=N 的值。 题目思路： x是一个数字，m与n互素，则gcd(x,m*n) = gcd(x, m) * gcd(x, n) 令g(y) = gcd(x, y) 那么g(y)是一个积性函数。令f(N) = ∑gcd(i, N) 满足gcd(x, n) = 1 的个数是欧拉函数φ(n)，那么可以知道，满足gcd(x, n) = p 的个数可以这么求：x 和 n 同时除以 p ，那么gcd(x/p, n/p) = 1 ，那么个数就是φ(n/p)。 分解N = p1^a1 * p2^a2 * …… *pn^an ，则f(N) = f(p1^a1 * p2^a2 * …… *pn^an) = f(p1^a1) * f(p2^a2) * …… * f(pn^an)； 可以枚举pi^ai的因数，对于f(pi^ai) = 1 * φ(pi^ai) + pi * φ(pi^(ai-1)) + pi^2 * φ(pi^(ai-2)) + …… + pi^(ai-1) * φ(pi) + pi^ai * φ(1)； 根据φ(pi^ai) = pi^ai - pi^(ai-1)，那么可以化简上面的式子：f(pi^ai) = ai * pi^ai + ai * pi^(ai-1) + pi^ai = pi^ai * (ai + ai/pi + 1)； 所以，f(N) = N * (a1 + a1/p1 + 1) * (a2 + a2/p2 + 1) * …… * (an + an/pn + 1)。 这题当然不是自己想出来的，但是学习了一下积性函数，看的神牛的解题代码：http://hi.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/poj2480-longges-problem-%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8%E9%A2%98/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%8821%E6%97%A5-%E9%98%B4/"> 2013年4月21日 阴
 
  </a>
@@ -129,34 +156,6 @@
 </div>
 
   卡在了水题上。后面的题目就不用说了，根本就没看。平时学习的东西根本就没有用上，简单题这一关就过不了。 唯一需要注意的就是，一道题目，有了想法，自己先把能考虑到的情况都考虑周全，不要指望和队友讨论再讨论一下，有的时候队友在思考自己的想法，没有时间，所以自己一定要考虑周全，再敲代码，千万不要有一个想法就敲，快写完的时候发现错了……就悲剧了。还有就是，读题，这次我就读错了一道题目，把队友坑了，虽然后来队友发现了，但我们三个还是都没有想法，比较坑的是，这题可以枚举，因为是10个人，范围很小。我们三个都没有注意到这一点。llh本来当时还问了一下范围，我看题的时候看到了10人，后来忘了，，就说题目没有给……我去……以后一定不能出现这种情况！ 然后就是代码能力，千万不能把代码敲错，比如赛后敲一道题目，思路很清晰，但是敲的时候就错了，调试很久，后来才发现，原来是自己命名的变量用错了，还有一些地方写错了……浪费很多时间，照这个情况，就算这道题目比赛的时候知道怎么做，也不一定能敲出来，虽然就是枚举。 比赛的时候过得第二道题目，我的想法是错的，llh有另一个想法，敲完后不知道哪里错了，虽然给我讲了，但是还是不太理解，最后还是因为一个小细节没处理好。不是想法的问题。当初我能够仔细按照那个想法做一下就好了，以后队友讲想法的时候认真理解。 总的来说，还是水题都过不了。第一：没有想法。第二，代码能力。第三，好好学STL，有的时候，切水题用STL很方便。至于没有想法这个问题，只有多练习，多思考，一般的水题都不会太难，考察的关键是思路和代码能力。 zsl神牛昨天跟我说，每次比赛都要好好总结，比赛后没过的题目都要过了，只要校队有人过的，都必须过，没人过的，也要过几道，如果校队的人都比不过，到了现场赛就不用说了！唉，确实是这样。谢谢sl学长。 这次挑战赛又输了，四校联赛又不能去了，我们队从来没有赢过Babel。唉，太窝囊了…… 从现在起，坚决不能再输给他们了！ 5月份就去南京邀请赛了，我不知道为什么我们从来没有赢过Babel却可以去南京，但是，既然让我们队去了，就别想别的，不要让大家失望，认真珍惜这次出去的机会！
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/poj2001-shortest-prefixes-%E5%AD%97%E5%85%B8%E6%A0%91%E5%A4%8D%E4%B9%A0/"> poj2001 Shortest Prefixes ——字典树复习
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Apr 19, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/poj">POJ</a>
-
-    <a class="tag" href="http://liuxueyang.github.io/tags/data-structure">Data Structure</a>
-
-
-      
-      
-</div>
-
-  题目链接：http://poj.org/problem?id=2001 这道题目以前写过，复习一下字典树，再写一遍……
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;set&gt; #include &lt;map&gt; #include &lt;vector&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; char a[1000+10][30], base = 'a'; const int lo = 26; typedef struct trie{ int num; bool terminal; struct trie *son[lo]; }trie; trie *newtrie(){ trie *pnt = new trie; pnt-&gt;num = 1; pnt-&gt;terminal = false; for (int i = 0; i &lt; lo; ++i) pnt-&gt;son[i] = NULL; return pnt; } void insert(char str[], trie *pnt, int len){ trie *tem = pnt; for (int i= 0; i &lt; len; ++i){ if (tem-&gt;son[str[i]-base] !
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/poj2001-shortest-prefixes-%E5%AD%97%E5%85%B8%E6%A0%91%E5%A4%8D%E4%B9%A0/"> [Read more...] </a>
   
 </article>
 
@@ -245,6 +244,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -265,12 +270,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

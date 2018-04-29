@@ -70,6 +70,36 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/longest-increasing-subsequence/"> Longest Increasing Subsequence
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Mar 22, 2014
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/dp">DP</a>
+
+
+      
+      
+</div>
+
+  很久不写算法了== 写个东西练练手
+最长上升子序列
+输入n，然后是数组a[ ]的n个元素
+输出最长上升子序列的长度
+一、最简单的方法复杂度O(n * n)
+DP[ i ] 是以a[ i ] 为结尾的最长上升子序列的长度。 DP[ i ] = max{DP[ j ] + 1 | j &lt; i &amp;&amp; a[ j ] &lt; a[ i ]}  代码：
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/longest-increasing-subsequence/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86/"> Vim插件管理
 
  </a>
@@ -136,33 +166,6 @@ $ git config --global user.
 n;main(k){for(;read(0,&amp;n,1);k-=n&lt;11)k%3||putchar(n%91&lt;65?n:n%70%44+65);}  72字节。
 用到了read这个函数
 对于不需要处理的字符串，没有作处理，简化了很多。
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/poj2368-buttons-nim%E5%8F%96%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F/"> poj2368 Buttons Nim取石子游戏
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Feb 3, 2014
-      
-      
-      
-</div>
-
-  链接：http://poj.org/problem?id=2368
-和前面差距还是很大啊囧
-代码：
-k,a;main(i){for(scanf(&quot;%d&quot;,&amp;k),a=k-1,i=3;i&lt;=k/2&amp;&amp;k%i;++i);k%i||(a=i-1);printf(&quot;%d\n&quot;,a);}  短码之美那本书上面的这道题目的代码思路是对的，可是会TLE的。
-可是ozy的代码还是那么短得可怕😨
-那个，又省掉了一个特别脑残的变量。。
-代码：
-k;main(i){for(scanf(&quot;%d&quot;,&amp;k),i=3;i&lt;=k/2&amp;&amp;k%i;++i);printf(&quot;%d\n&quot;,k%i?k-1:i-1);}  78字节。
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/poj2368-buttons-nim%E5%8F%96%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F/"> [Read more...] </a>
   
 </article>
 
@@ -251,6 +254,12 @@ k;main(i){for(scanf(&quot;%d&quot;,&amp;k),i=3;i&lt;=k/2&amp;&amp;k%i;++i);print
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -271,12 +280,6 @@ k;main(i){for(scanf(&quot;%d&quot;,&amp;k),i=3;i&lt;=k/2&amp;&amp;k%i;++i);print
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

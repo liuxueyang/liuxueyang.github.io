@@ -70,6 +70,34 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/zoj-1649-rescue-bfs%E5%85%A5%E9%97%A8%E9%A2%98/"> zoj 1649 Rescue ——BFS入门题
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Apr 8, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/zoj">zoj</a>
+
+    <a class="tag" href="http://liuxueyang.github.io/tags/bfs">BFS</a>
+
+
+      
+      
+</div>
+
+  题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=649 题意： 给一个字符矩阵，‘#’代表墙壁，&rsquo;.&lsquo;代表空格，‘x’代表有警察的空格，&rsquo;r&rsquo;和&rsquo;a&rsquo;分别代表一屌丝，并且&rsquo;r&rsquo;要到&rsquo;a&rsquo;那里去串门儿，r走一个空格花费单位时间1，走一个有警察的空格需要先干掉警察，话费单位时间1，然后再走过去，也就是共花费时间2，请问屌丝r到屌丝a那里去最少花费的时间。 思路： 首先要搞明白一个问题：就是路径最短的路不一定花费时间最少。这是可以理解的，比如，一条很短但是有很多警察，另一条路很长，但是没有警察，很有可能是第二条路花费时间少。用深搜？貌似不太合适，因为你一条路径访问过一个点后，另一条路径很可能也会访问这个点，并且时间较少。关键是深搜找到的接不一定是最优的。所以，考虑用广搜解。这道题最朴素的广搜显然不行，也就是说，仅仅求步数最少的不可行，需要加上访问时间这个附加条件。 用一个结构体数组存储每个点的信息，包括坐标，到达这个点所需要的最短时间，从起点开始搜，先访问起点，然后把起点出队，如果从一个点A到达下一个点B的当前所需时间比这个点现在标记的时间少，则把这个点入队，然后判断点A的另一个方向上的下一个点。这样，总有一天队列会为空，这是因为，某个点不可能被访问无数次，也就是说，某个点不可能无数次入队，因为到达某个点所需要的时间一定是有个最小值的，所以BFS一定可以结束，并且最后找到的点‘a’的信息一定是最优解。输出就可以了，如果无解，因为初始化到达所有点所需时间都是MAXN，所以，如果点‘a’的时间信息如果等于MAXN，那么说明无解。 第一次做深搜，这道题开始不知道怎么做，看了书上的思路，坚持没看代码，自己又想了想，就试着开始写，好神奇，竟然1A了！！！
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MINN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; typedef struct point{ int a, b, t; }point; point p[220][220], st, en; char s[220][220]; int n, m, T, si, sj, di, dj; queue&lt;point&gt; qt; void bfs(){ qt.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/zoj-1649-rescue-bfs%E5%85%A5%E9%97%A8%E9%A2%98/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%887%E6%97%A5-%E6%99%B4/"> 2013年4月7日 晴
 
  </a>
@@ -140,33 +168,6 @@
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/zoj-2165-red-and-black-bfs%E5%85%A5%E9%97%A8%E9%A2%98/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/zoj-2412-farm-irrigation-dfs%E5%85%A5%E9%97%A8%E9%A2%98/"> zoj 2412 Farm Irrigation ——DFS入门题
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Apr 7, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/zoj">zoj</a>
-
-    <a class="tag" href="http://liuxueyang.github.io/tags/dfs">DFS</a>
-
-
-      
-      
-</div>
-
-  题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1412 题意： 有11种正方形，每种正方形里面对应一种形状的水管，不同的的正方形一用A到K表示，给一个矩阵，问至少需要多少个水源可以使矩形中所有的地方都可以被灌溉，如果两个相邻的正方形的水管正好对口，那么这两个正方形可以共用一个水源。 思路： 开始感觉很复杂，明显可以DFS做，但是感觉比较麻烦，关键是怎么处理题目中的条件。 首先，处理11种不同的水管，分4个方向，1表示有接口，0表示没有接口。用一个二维数组存所有种类的水管。 然后，把输入的字符转化成数字，可以再输入的时候边输入边处理，用字符减去字符“A”就可以了，对应的上面给11中不同水管中的一种。以上这两个处理方法要注意，学习一下，稍微看了一下别人的代码才想到的。这种看似比较简单的处理，往往给解题带来比较大的方便。 最后，就是如何深搜了。这个要考虑清楚。用一个flag二维数组表示是否访问过这个方格。深搜的时候，如果访问到它时，先判断它是否被访问过，然后立刻标记为已访问。然后就是判断当前方格的四个方向是不是有接口，如果某个方向有接口的话，就判断这个方向上的下一个方格中，和当前方格相邻的边是不是有接口，如果有接口，则继续深搜这个相邻的点。这里有个处理：（k+2）%4，意味着，比如：当前方格如果右边有接口，则判断右边的方格的左边的边是不是有接口，其它情况一样。然后就是主函数里面的dfs外面的for循环，思想和以前做过的zoj 1709是一样的，就是搜到某个点的时候，用一个mrk标记一下，把和它有关系的点都搜完，如果有符合条件的，mrk会改变，然后就cnt++用来计数，这种题目是相似的，都是要求符合条件的点相邻。 有一个细节，就是矩阵的数组还是从1开始吧，数组稍微开大一点儿，这样在深搜下一个方向的时候，就不会因为数组越界出错了。这个问题以前没有注意到。
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/zoj-2412-farm-irrigation-dfs%E5%85%A5%E9%97%A8%E9%A2%98/"> [Read more...] </a>
   
 </article>
 
@@ -255,6 +256,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -275,12 +282,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

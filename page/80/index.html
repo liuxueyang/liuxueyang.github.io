@@ -70,6 +70,23 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%8826%E6%97%A5-%E6%99%B4/"> 2013年4月26日 晴
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Apr 26, 2013
+      
+      
+      
+</div>
+
+  25日 晚上去图书馆还书，没去跑步。开始读TAOCP，^_^ 26日 都起跑了才发现脚貌似有点儿受伤，大脚趾有些疼的感觉。乖乖回来了o(╯□╰)o 看来得休息几天了。 今天晚上自习的时候开始考虑要不要考研，以前的想法都是坚决不考研的，但是现在，唉……我也不知道该怎么办，总之，不想这些了，现在还是好好学习数学，英语，还有专业课，到时候想考就拼一下。目前最重要的是认真做比赛，还要努力把数学英语搞好，这货哪里都用得到。把自己的基础打好，各种技术都要自己去学，不管以后是去考研还是去找工作，都有好处，具体怎么样，以后的事情以后再说，现在想这些都没用。 纯粹胡思乱想…… 人生貌似有些迷茫了又。。迟早要面对，所谓选择和机会，都是留给认真准备的人的。什么都不会，感觉无路可走…… 看到一句话：当你倒了一杯热水，准备去喝的时候，发现水已经凉了，那么恭喜你，你已经进入状态了。
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%8824%E6%97%A5-%E9%98%B4%E8%BD%AC%E6%99%B4/"> 2013年4月24日 阴转晴
 
  </a>
@@ -137,34 +154,6 @@
 </div>
 
   22日 雨 晚上下雨，没跑成…… 23日 阴转雨 晚上跑步出门的时候，有一些小雨点，但是貌似好几天没跑了，所以，还是起跑了。状态还差不多，天气也挺凉快，到终点的时候，悲剧了，开始下雨了。。还有2500+m的路程。。唉，浑身上下都是汗水和雨水。最终还是回来了，可怜我的P3……进水了还没挂o(╯□╰)o晚上回去赶紧洗澡，换衣服……
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/hdu1394-minimum-inversion-number-%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98/"> hdu1394 Minimum Inversion Number ——线段树入门题
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Apr 23, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/hdu">Hdu</a>
-
-    <a class="tag" href="http://liuxueyang.github.io/tags/data-structure">Data Structure</a>
-
-
-      
-      
-</div>
-
-  题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=1394 题目大意： 给一个数字由0~n-1这n个数字组成的数列，不断地把第一个数字移动到最后，一共得到n个数列。求这n个数列中，逆序数最小是多少。 题目思路： 首先，建一棵线段树，每个节点表示这个区间内已经插入的数字的个数，开始初始化为0.然后没读入一个数字，把这个数字插入得到线段树的叶子节点，然后向上更新父节点。这样，在建树的过程中，就可以统计出每个逆序数，也就是说，可以再插入每个数字的时候，查找已经插入的数字当中，比这个数字大的数字有多少个，直到最后就可以求出这个数列的逆序数。 然后，利用数列的性质。因为每次都是把第一个数字移动到最后，比如这个数字是a，那么显然，比这个数字小的有a个，比这个数字大的有n-1-a个；因为这个数字在最前面，所以当前这个数字的逆序数是a，把这个数字移动到最后之后，这个数字的逆序数是n-1-a，逆序数增加量：n-1-a-a。这样就可以由原来的数列的逆序数求出所有数列的逆序数。好神奇~
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 5000+10; int a[MAX&lt;&lt;2], n, b[MAX]; void pushup(int rt) { a[rt] = a[rt&lt;&lt;1] + a[rt&lt;&lt;1|1]; } void build(int l, int r, int rt) { if (l == r) { a[rt] = 0; return; } int m = (l + r) &gt;&gt; 1; build(lson); build(rson); pushup(rt); } void update(int p, int l, int r, int rt) { if (l == r) { a[rt]++; return; } int m = (l + r) &gt;&gt; 1; if (p &lt;= m) update(p, lson); else update(p, rson); pushup(rt); } int query(int L, int R, int l, int r, int rt) { if (L &lt;= l &amp;&amp; R &gt;= r) { return a[rt]; } int m = (l + r) &gt;&gt; 1, ret = 0; if (L &lt;= m) ret += query(L, R, lson); if (R &gt; m) ret += query(L, R, rson); return ret; } int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;hdu1394.
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/hdu1394-minimum-inversion-number-%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98/"> [Read more...] </a>
   
 </article>
 
@@ -253,6 +242,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -273,12 +268,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

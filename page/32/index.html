@@ -70,6 +70,32 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/%E7%BC%96%E5%86%99%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%AD7ch%E7%9A%84%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B%E5%B0%86%E4%B8%80%E4%B8%AA%E4%BB%A50%E7%BB%93%E5%B0%BE%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E5%8C%96%E4%B8%BA%E5%A4%A7%E5%86%99/"> 编写安装中断7ch的中断例程：将一个以0结尾的字符串，转化为大写
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Oct 17, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/masm">masm</a>
+
+
+      
+      
+</div>
+
+  中断的安装程序：
+assume cs:code code segment start: mov ax, cs mov ds, ax mov si, offset chstr mov ax, 0 mov es, ax mov di, 200h mov cx, offset chstrend - offset chstr cld rep movsb mov ax, 0 mov es, ax mov word ptr es:[7ch * 4 + 0], 200h mov word ptr es:[7ch * 4 + 2], 0 mov ax, 4c00h int 21h chstr: mov si, 0 lh: mov cx, 0 mov cl, [si] jcxz ok and byte ptr [si], 11011111b inc si jmp lh ok: iret chstrend: nop code ends end start  测试程序：
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/%E7%BC%96%E5%86%99%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%AD7ch%E7%9A%84%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B%E5%B0%86%E4%B8%80%E4%B8%AA%E4%BB%A50%E7%BB%93%E5%B0%BE%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E5%8C%96%E4%B8%BA%E5%A4%A7%E5%86%99/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/%E7%BC%96%E5%86%99%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B7ch%E8%AE%A1%E7%AE%97word%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%B9%B3%E6%96%B9/"> 编写中断例程7ch：计算word型数据的平方
 
  </a>
@@ -145,34 +171,6 @@ assume cs:code, ds:data data segment db &quot;Beginner's All-purpose Symbolic In
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/%E5%AE%9E%E9%AA%8C%E5%8D%81%E4%B8%80%E7%BC%96%E5%86%99%E5%AD%90%E7%A8%8B%E5%BA%8F/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/%E8%AF%95%E9%AA%8C%E5%8D%81-3-%E6%95%B0%E5%80%BC%E6%98%BE%E7%A4%BA/"> 试验十 3.数值显示
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Oct 11, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/masm">masm</a>
-
-
-      
-      
-</div>
-
-  题目的意思是：
-　把一个16进制的数字转化成十进制，然后在屏幕的第3行，第8列，用绿色输出。
-这货倒是不太难，就是学会调用之前写过的函数就行了==
-assume cs:code, ds:data, ss:stack data segment db 10 dup(0) data ends stack segment dw 10 dup(0) stack ends code segment start: mov ax, 12666 mov dx, 0 mov bx, data mov ds, bx mov si, 0 call dtoc mov dh, 8 mov dl, 3 mov cl, 2 call show_str mov ax, 4c00h int 21h dtoc: push si mov bx, 10 mov cx, ax mov di, 0 sad: div bx add dx, 30h push dx mov dx, 0 inc di mov cx, ax add cx, 1 loop sad mov bp, 0 mov cx, di ago: pop dx mov al, dl mov ds:[bp], al inc bp loop ago mov ds:[bp], 0 pop si ret show_str: push dx push cx ;row dec dh mov al, 0a0h mul dh push ax ;col dec dl mov al, 2h mul dl pop bx add ax, bx mov di, 0b800h mov es, di mov bp, ax mov bl, cl change: mov cl, [si] mov ch, 0 jcxz ok mov di, si add di, di mov al, ds:[si] mov byte ptr es:[bp+di], al mov byte ptr es:[bp+di+1], bl inc si jmp short change ok: pop cx pop dx ret code ends end start  虽然很长……看起来好腻害的样子=_=
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/%E8%AF%95%E9%AA%8C%E5%8D%81-3-%E6%95%B0%E5%80%BC%E6%98%BE%E7%A4%BA/"> [Read more...] </a>
   
 </article>
 
@@ -261,6 +259,12 @@ assume cs:code, ds:data, ss:stack data segment db 10 dup(0) data ends stack segm
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -281,12 +285,6 @@ assume cs:code, ds:data, ss:stack data segment db 10 dup(0) data ends stack segm
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

@@ -70,6 +70,33 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/codeforces-magic-five-%E5%BF%AB%E9%80%9F%E5%B9%82%E6%A8%A1/"> codeforces magic five －－快速幂模
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Jul 19, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/codeforces">CodeForces</a>
+
+    <a class="tag" href="http://liuxueyang.github.io/tags/math">Math</a>
+
+
+      
+      
+</div>
+
+  题目链接：http://codeforces.com/contest/327/problem/C 首先先算出一个周期里面的值，保存在ans里面，就是平常的快速幂模m做法． 然后要计算一个公式，比如有k个部分，那么对于没一个位置i, 都有2^i + 2^(i+n) + &hellip; + 2^(i+(k-1)*n) = 2^i(1 + 2^n + &hellip; + 2^((k-1)*n)) = 2^i * (1-2^(n*k))/(1-2^n) 所以结果就是ans * (1-2^(n*k))/(1-2^n) % MOD; 然后就是关键计算(1-2^(n*k))/(1-2^n) % MOD； 用到费马小定理a^(p-1)同余于1(mod 1)．p是一个质数，那么a^(p-2) * a 同余于１(mod 1) ，所以a 的逆元就是 a^(p-2) MOD是一个质数,所以(1-2^(n*k))/(1-2^n) % MOD = (2^(n*k)-1)/(2^n-1) % MOD = (2^(n*k)-1)%MOD * ((2^n-1)^(MOD-2))%MOD
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/codeforces-magic-five-%E5%BF%AB%E9%80%9F%E5%B9%82%E6%A8%A1/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/codeforces-hungry-sequence--%E6%B0%B4%E9%A2%98/"> codeforces hungry sequence  水题
 
  </a>
@@ -142,32 +169,6 @@ You should also print 42 if the next element of progression is not integer.
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/testing-round-#8--a.-iq-test---%E6%B0%B4%E9%A2%98/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/codeforces-testing-round-#8-b.-sheldon-and-ice-pieces-%E6%B0%B4%E9%A2%98/"> Codeforces Testing Round #8 B. Sheldon and Ice Pieces 水题
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Jul 18, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/codeforces">CodeForces</a>
-
-
-      
-      
-</div>
-
-  题目链接：http://codeforces.com/problemset/problem/328/B 水题~
-#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; char n[10], a[202]; int b[13], c[13]; int main(void) { //freopen(&quot;in.
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/codeforces-testing-round-#8-b.-sheldon-and-ice-pieces-%E6%B0%B4%E9%A2%98/"> [Read more...] </a>
   
 </article>
 
@@ -256,6 +257,12 @@ You should also print 42 if the next element of progression is not integer.
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -276,12 +283,6 @@ You should also print 42 if the next element of progression is not integer.
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

@@ -70,6 +70,31 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/poj1018-communication-system-%E8%B4%AA%E5%BF%83&#43;%E6%9E%9A%E4%B8%BE/"> poj1018 Communication System ——贪心&#43;枚举
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      May 25, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/poj">POJ</a>
+
+
+      
+      
+</div>
+
+  题目链接：http://poj.org/problem?id=1018 题目大意： 有n种设备，每种设备有mi个选择，每种设备选择一个，每个设备都有一个带宽值和价钱，要求每种设备选择一个，最终选择的n个设备里面，带宽B是这n个设备里面所有带宽的最小值吗，价钱P为这n个设备价钱的和，求B/P的最大值。 题目思路： 这题开始没读懂题意，后来搜的题意之后才明白。然后没有思路……看了人家的思路，貌似懂了……然后就开始写，写跪了……开始的方法是，求出所有这n种设备里面每种设备的带宽的最小值，依次枚举这些最小值就可以了。总是WA…… 昨天纠结一晚上，今天早上又想了一下，发现原来的想法是有问题的，应该一直枚举到所有n中设备里面每种带宽的最大值的最小值。第一：保证这n种设备每一种都可以选上。第二：虽然枚举的B值比原来大了，所得到的的价钱不小于我原来的做法所得到的的价钱，但是，重点来了：B也增大了啊！有木有！所以，这就是我当初没有想到的！ #include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; using namespace std; #define MAXN 0x7fffffff #define MINN -MAXN const int MAX = 100+10; typedef struct node { int p, b, cnt; bool operator &lt; (const node &amp; other ) const { if (p !
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/poj1018-communication-system-%E8%B4%AA%E5%BF%83&#43;%E6%9E%9A%E4%B8%BE/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/%E8%AE%BE%E7%BD%AEzsh%E4%B8%BA%E7%B3%BB%E7%BB%9F%E9%BB%98%E8%AE%A4shell/"> 设置zsh为系统默认shell
 
  </a>
@@ -126,30 +151,6 @@
 </div>
 
   最近长沙的天气啊，不是下雨就是下雨……无语O__O&rdquo;… 今天晚上终于去跑步了，穿上跑鞋，还有差不多半年没有穿过的棒球队队服，去跑步吧~ 开始感觉不错，节奏还不错，跑得略快，到一半的时候，感觉有点吃不消啊，还好后来放慢速度，把节奏调整好了，继续跑着，又是一个月明风清的晚上，湘江边对面的灯光很美，就那么不快不慢地跑着，多好，人生一大幸事啊。夏天来了，汗水，激情，奋斗，梦想，青春，就是这样的吧，加油 最后还是跑完全程5K了。虽然也许永远也达不到高中的时候48分钟跑完10K的那种状态了，但是跑步也不全是为了速度或者成绩，高兴就行了，实力是在不知不觉中增长的。 说好了晚上回宿舍就补作业不写程序的，结果……不知不觉写了一晚上的程序，，然后就跑步去了，，回来就十点半了……又写了会儿程序，，就到现在了……果然还是没写作业啊……要交作业了还没有预习完有木有……果然是要通宵补作业了么…… 学习时间可以少，但是效率一定要高！ 身边总有些人在无私地帮助我，鼓励我，谢谢你们~
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/hdu1398-square-coins-dp/"> hdu1398 Square Coins ——DP
-
- </a>
-  </h1>
-  <div class="article-meta">
-      May 23, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/hdu">Hdu</a>
-
-    <a class="tag" href="http://liuxueyang.github.io/tags/dp">DP</a>
-
-
-      
-      
-</div>
-
-  题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=1398 题目大意： 给一个数字，不大于300，求有多少种用完全平方数表示这个数字的方法 题目思路： 方法跟hdu1283一样一样的……只需要把那道题目的代码稍微改一下就可以过了 #include &lt;cstdio&gt; #include &lt;cmath&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; const int MAX = 32768+10; long long d[MAX]; void solve() { int n, i, j; while (~scanf(&quot;%d&quot;, &amp;n) &amp;&amp; n) { memset(d, 0, sizeof(d)); d[0] = 1; for (i = 1; i &lt;= floor(sqrt(n)); ++i) { for (j = i*i; j &lt;= n; ++j) { d[j] += d[j-i*i]; } } printf(&quot;%lld\n&quot;, d[n]); } } int main(void) { solve(); return 0; }   因为题目的范围很小嘛，只有300。 
   
 </article>
 
@@ -238,6 +239,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -258,12 +265,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

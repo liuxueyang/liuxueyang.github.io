@@ -70,6 +70,32 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/poj-2828-buy-tickets/"> poj 2828 Buy Tickets
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Mar 2, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/poj">POJ</a>
+
+
+      
+      
+</div>
+
+  Description Input Output Sample Input Sample Output 这道题目想法很重要，先建树，每个节点表示这个区间内的空的位置的数量，然后，从后往前读，Pos的值表示这个人前面有多少个空位，之所以从后往前读，是因为这样每个人的位置是确定的，以后就不用移动了，以后直接在树里面查找空位就可以了。 具体实现见代码：
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; using namespace std; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 const int maxn = 222222; int tree[maxn&lt;&lt;2], val[maxn], pos[maxn], ans[maxn]; int id; void build(int l, int r, int rt){ tree[rt] = r - l + 1; if (l == r) {return;} int m = (l + r) &gt;&gt; 1; build(lson); build(rson); } void update(int p, int l, int r, int rt){ tree[rt]--; if (l == r){id = l-1; return;} int m = (l + r) &gt;&gt; 1; if (tree[rt&lt;&lt;1] &gt;= p) update(p, lson); else {p -= tree[rt&lt;&lt;1]; update(p, rson);} } int main(void){ int n; #ifndef ONLINE_JUDGE freopen(&quot;poj2828.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/poj-2828-buy-tickets/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/hdu-2795-billboard/"> hdu 2795 Billboard
 
  </a>
@@ -148,34 +174,6 @@ Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/poj-2945-find-the-clones/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/poj-1056-immediate-decodability/"> poj 1056 IMMEDIATE DECODABILITY
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Feb 27, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/poj">POJ</a>
-
-    <a class="tag" href="http://liuxueyang.github.io/tags/data-structure">Data Structure</a>
-
-
-      
-      
-</div>
-
-  Description Input Output Sample Input Sample Output
-#include &lt;iostream&gt; #include &lt;cstdlib&gt; #include &lt;cstdio&gt; #include &lt;cstring&gt; using namespace std; const int sonnum = 2, base = '0'; struct Trie { int num; bool terminal; Trie *son[sonnum]; }; Trie *NewTrie() { Trie *temp = new Trie; temp-&gt;num = 1; temp-&gt;terminal = false; for (int i = 0; i &lt; sonnum; ++i) temp-&gt;son[i] = NULL; return temp; } bool Insert(Trie *pnt, char *s, int len) { Trie *temp = pnt; bool mrk = true; for (int i = 0; i &lt; len; ++i) { if (temp-&gt;son[s[i]-base] == NULL) temp-&gt;son[s[i]-base] = NewTrie(); else { temp-&gt;son[s[i]-base]-&gt;num++; if (temp-&gt;son[s[i]-base]-&gt;terminal == true) mrk = false; } temp = temp-&gt;son[s[i]-base]; } temp-&gt;terminal = true; return mrk; } int main(void) { Trie *tree; char a[20]; int cnt = 1; #ifndef ONLINE_JUDGE freopen(&quot;poj2056.
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/poj-1056-immediate-decodability/"> [Read more...] </a>
   
 </article>
 
@@ -264,6 +262,12 @@ Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -284,12 +288,6 @@ Time Limit: 2000&frasl;1000 MS (Java/Others) Memory Limit: 65536&frasl;32768 K (
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

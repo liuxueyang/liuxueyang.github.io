@@ -70,6 +70,34 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/zoj1586-qs-network-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98_prim%E7%AE%97%E6%B3%95/"> zoj1586 QS Network ——最小生成树入门题_Prim算法
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      May 3, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/zoj">zoj</a>
+
+    <a class="tag" href="http://liuxueyang.github.io/tags/graph">Graph</a>
+
+
+      
+      
+</div>
+
+  题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=586 题目大意： 题目意思比较难懂。看书上的翻译竟然没有看懂，还是打开OJ，看英文的原题。看了两遍的样子，终于差不多懂了。 QS是一种生物，要完成通信，需要设备，每个QS需要的设备的价格不同，并且，这种设备只能在两个QS之间用一次，也就是说，如果一个QS需要和3个QS通信的话，它就必须得买3个设备，同时，对方三个也必须买对应的适合自己的设备。同时，每两个QS之间是有距离的，要完成通信还需要网线，给出每两个QS之间的网线的价值。求一棵生成树，使得所需要的费用最少。数据范围：所有数据都在1000以内。 题目思路： 根据这种设备的特性，每个设备只能和另外一个QS通信，所以呢，建图的时候，每条边的权值就是网线的费用，加上这条边的两个端点的QS所需设备的费用的和。这样，就转化成了常规的最小生成树的问题。因为只需要求出最小费用，所以，可以不必记录prim过程中要选的边的顶点编号，也就是说，可以省略nearvex数组，用lowcost数组就可以实现。如果lowcost[i]的值是-1，则代表已经选择了这个点，否则，lowcost[i]依然表示集合T1内的顶点 i 距离集合T内个顶点权值最小的边的权值。
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 1000+10; int edge[MAX][MAX], lowcost[MAX]; int t, n, pri[MAX]; void prim(int u0) { int sum = 0, i, j, v; for (i = 1; i &lt;= n; ++i) lowcost[i] = edge[u0][i]; lowcost[u0] = -1; for (i = 1; i &lt; n; ++i) { int min = MAXN; v = -1; for (j = 1; j &lt;= n; ++j) { if (min &gt; lowcost[j] &amp;&amp; lowcost[j] !
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/zoj1586-qs-network-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98_prim%E7%AE%97%E6%B3%95/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F_prim%E7%AE%97%E6%B3%95/"> 最小生成树示例程序_Prim算法
 
  </a>
@@ -144,34 +172,6 @@
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/hoj12616-median-tree-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/poj1861zoj1542-network-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/"> poj1861&amp;&amp;zoj1542 Network ——最小生成树入门题_Kruscal算法
-
- </a>
-  </h1>
-  <div class="article-meta">
-      May 1, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/poj">POJ</a>
-
-    <a class="tag" href="http://liuxueyang.github.io/tags/graph">Graph</a>
-
-
-      
-      
-</div>
-
-  题目链接：http://poj.org/problem?id=1861 http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=542 题目大意： 给n个点，m条边。求一棵生成树，并且满足任意两点之间的距离的最大值最小。输出这个最大值，然后输出树的边的数量，最后输出树的每条边。 题目思路： 其实就是求最小生成树。关键就是证明，对于一个图的最小生成树来说，它的最大边满足在所有的生成树的最大边里最小。这是可以理解的。简单思考一下：假设最小生成树不满足这个条件。那么就是说，存在另一棵生成树，它的最大边的值比最小生成树还小，但是它的权值之和可能比最小生成树大，但是这表明，构造最小生成树的时候，存在一步，选择边的时候，没有选择权值最小的，这是不可能的。所以矛盾。所以假设不成立。所以，问题就转化成了常规的求最小生成树的问题了。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 1000+10; const int MAX1 = 15000+10; typedef struct Edge { int u, v, w; bool operator &lt; (const Edge &amp;other) const { return w &lt; other.
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/poj1861zoj1542-network-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E5%85%A5%E9%97%A8%E9%A2%98_kruscal%E7%AE%97%E6%B3%95/"> [Read more...] </a>
   
 </article>
 
@@ -260,6 +260,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -280,12 +286,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

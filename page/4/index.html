@@ -70,6 +70,35 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/adding-exits-to-maze/"> Adding Exits to a Maze
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      May 16, 2017
+      
+      
+    <a class="category" href="http://liuxueyang.github.io/categories/algorithm">Algorithm</a>
+
+    <a class="category" href="http://liuxueyang.github.io/categories/dfs">DFS</a>
+
+
+      
+      
+      
+</div>
+
+  题目链接：pdf
+给出一个无向图，求连通分量的个数。对这个图做一遍DFS同时计数就好了。因 为我用邻接表表示图，所以还要记得孤点的情况，这个后来才发现。
+// Begin: Fri May 12 19:52:46 CST 2017 // Finish: Fri May 12 20:16:44 CST 2017 // 求有几个连通块。。 #include &lt;iostream&gt; #include &lt;vector&gt; using namespace std; void dfs(vector&lt;vector&lt;int&gt; &gt; &amp;adj, vector&lt;bool&gt; &amp;visit, int x) { visit[x] = true; for (size_t i = 0; i &lt; adj[x].
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/adding-exits-to-maze/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/finding-an-exit-from-maze/"> Finding an Exit from a Maze
 
  </a>
@@ -146,32 +175,6 @@ data Name = Name String String  Name既是類型名，也是一個Value Construc
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/foldr%E5%92%8Cfoldl%E5%87%BD%E6%95%B8%E8%BE%A8%E6%9E%90/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/haskell-%E7%AC%94%E8%AE%B010/"> Haskel筆記 10
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Apr 18, 2017
-      
-      
-    <a class="category" href="http://liuxueyang.github.io/categories/haskell">Haskell</a>
-
-
-      
-      
-      
-</div>
-
-  這是Functionally Solving Problems一章的筆記。
-Reverse Polish notation calculator polish :: (Num a, Read a) =&gt; String -&gt; a polish = head .
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/haskell-%E7%AC%94%E8%AE%B010/"> [Read more...] </a>
   
 </article>
 
@@ -260,6 +263,12 @@ Reverse Polish notation calculator polish :: (Num a, Read a) =&gt; String -&gt; 
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -280,12 +289,6 @@ Reverse Polish notation calculator polish :: (Num a, Read a) =&gt; String -&gt; 
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

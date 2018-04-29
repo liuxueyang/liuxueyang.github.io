@@ -70,6 +70,31 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/cf-231a-team/"> CF 231A Team
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Mar 10, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/codeforces">CodeForces</a>
+
+
+      
+      
+</div>
+
+  A - Team Time Limit:2000MS Memory Limit:262144KB 64bit IO Format:%I64d &amp; %I64u Submit Status Practice CodeForces 231A
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/cf-231a-team/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/hdu4484-hailstone-hotpo-%E6%B0%B4%E9%A2%98/"> hdu4484 Hailstone HOTPO ——水题
 
  </a>
@@ -125,32 +150,6 @@
 </div>
 
   #include &lt;cstdio&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; using namespace std; char a[200]; int b[800]; int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;in&quot;, &quot;r&quot;, stdin); #endif int t; scanf(&quot;%d&quot;, &amp;t); while (t--){ int s; scanf(&quot;%d&quot;, &amp;s); getchar(); gets(a); int n; scanf(&quot;%d&quot;, &amp;n); for (int i = 0; i &lt; n; ++i) scanf(&quot;%d&quot;, b+i); printf(&quot;%d &quot;, s); int po = 0, len = strlen(a); for (int i = 0; i &lt; n; ++i) { po = po + b[i]; if (po &gt;= len) po = po % len; else if (po &lt; 0) po = (po + len); printf(&quot;%c&quot;, a[po]); } printf(&quot;\n&quot;); } return 0; }  题目不难，就是卡了很久，最后才发现，原来是输入的文件里面写错了，多打了一个空格……次奥……
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/poj1579-function-run-fun/"> poj1579 Function Run Fun
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Mar 8, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/poj">POJ</a>
-
-
-      
-      
-</div>
-
-  Description Input Output Sample Input Sample Output
-#include &lt;cstdio&gt; #include &lt;cstring&gt; using namespace std; int ww[22][22][22]; int w(int a, int b, int c){ if (a &lt;= 0 || b &lt;= 0 || c &lt;= 0) return 1; if (a &gt; 20 || b &gt; 20 || c &gt; 20) return w(20, 20, 20); if (ww[a][b][c] &gt; 0) return ww[a][b][c]; if (a &lt; b &amp;&amp; b &lt; c) return ww[a][b][c] = w(a, b, c-1) + w(a, b-1, c-1) - w(a, b-1, c); else return ww[a][b][c] = w(a-1, b, c) + w(a-1, b-1, c) + w(a-1, b, c-1) - w(a-1, b-1, c-1); } int main(void){ int a, b, c; #ifndef ONLINE_JUDGE freopen(&quot;poj1759.
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/poj1579-function-run-fun/"> [Read more...] </a>
   
 </article>
 
@@ -239,6 +238,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -259,12 +264,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

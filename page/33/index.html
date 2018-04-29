@@ -70,6 +70,34 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/%E8%AF%95%E9%AA%8C%E5%8D%81-3-%E6%95%B0%E5%80%BC%E6%98%BE%E7%A4%BA/"> 试验十 3.数值显示
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Oct 11, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/masm">masm</a>
+
+
+      
+      
+</div>
+
+  题目的意思是：
+　把一个16进制的数字转化成十进制，然后在屏幕的第3行，第8列，用绿色输出。
+这货倒是不太难，就是学会调用之前写过的函数就行了==
+assume cs:code, ds:data, ss:stack data segment db 10 dup(0) data ends stack segment dw 10 dup(0) stack ends code segment start: mov ax, 12666 mov dx, 0 mov bx, data mov ds, bx mov si, 0 call dtoc mov dh, 8 mov dl, 3 mov cl, 2 call show_str mov ax, 4c00h int 21h dtoc: push si mov bx, 10 mov cx, ax mov di, 0 sad: div bx add dx, 30h push dx mov dx, 0 inc di mov cx, ax add cx, 1 loop sad mov bp, 0 mov cx, di ago: pop dx mov al, dl mov ds:[bp], al inc bp loop ago mov ds:[bp], 0 pop si ret show_str: push dx push cx ;row dec dh mov al, 0a0h mul dh push ax ;col dec dl mov al, 2h mul dl pop bx add ax, bx mov di, 0b800h mov es, di mov bp, ax mov bl, cl change: mov cl, [si] mov ch, 0 jcxz ok mov di, si add di, di mov al, ds:[si] mov byte ptr es:[bp+di], al mov byte ptr es:[bp+di+1], bl inc si jmp short change ok: pop cx pop dx ret code ends end start  虽然很长……看起来好腻害的样子=_=
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/%E8%AF%95%E9%AA%8C%E5%8D%81-3-%E6%95%B0%E5%80%BC%E6%98%BE%E7%A4%BA/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/%E8%A7%A3%E5%86%B3%E9%99%A4%E6%B3%95%E6%BA%A2%E5%87%BA%E9%97%AE%E9%A2%98/"> 解决除法溢出问题
 
  </a>
@@ -148,33 +176,6 @@ assume cs:code code segment start: mov ax, 0 call s inc ax s: pop ax mov ax, 4c0
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/call%E6%8C%87%E4%BB%A4%E7%9A%84%E4%B8%80%E4%B8%AA%E7%BB%86%E8%8A%82/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/codeforces-a-difference-row/"> codeforces A. Difference Row
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Oct 7, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/codeforces">CodeForces</a>
-
-
-      
-      
-</div>
-
-  link: http://codeforces.com/contest/347/problem/A
-开始看起来很复杂的样子，但是刚写下样例，就发现因为中间的都消去了，其实起作用的就是最大值和最小值=_=
-#include &lt;cstdio&gt; #include &lt;algorithm&gt; using namespace std; int a[102]; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/codeforces-a-difference-row/"> [Read more...] </a>
   
 </article>
 
@@ -263,6 +264,12 @@ assume cs:code code segment start: mov ax, 0 call s inc ax s: pop ax mov ax, 4c0
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -283,12 +290,6 @@ assume cs:code code segment start: mov ax, 0 call s inc ax s: pop ax mov ax, 4c0
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       

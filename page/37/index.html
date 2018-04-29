@@ -70,6 +70,35 @@
 
 <article>
   <h1>
+    <a href="http://liuxueyang.github.io/posts/%E6%A0%88%E6%AE%B5-%E6%BB%A1%E6%98%AF%E7%96%91%E9%97%AE/"> 栈段 ——满是疑问==
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Oct 3, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/masm">masm</a>
+
+
+      
+      
+</div>
+
+  遇到一个问题
+比如：
+用栈操作将10000H~1000FH中的8个字，逆序拷贝到2000H~2000FH中。
+写出以下代码：
+mov ax, 2000h mov ds, ax mov ax, f00h mov ss, ax mov sp, 1000h pop [e] pop [c] pop [a] pop [8] pop [6] pop [4] pop [2] pop [0]  开始我还以为可能是栈空间太小，跟以前一样的问题，特意把栈的短地址缩小到f00h，可是还是结果不对，跟踪之后我发现，
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/%E6%A0%88%E6%AE%B5-%E6%BB%A1%E6%98%AF%E7%96%91%E9%97%AE/"> [Read more...] </a>
+  
+</article>
+
+<article>
+  <h1>
     <a href="http://liuxueyang.github.io/posts/cpu%E7%9A%84%E6%A0%88%E6%9C%BA%E5%88%B6%E7%9A%84%E4%B8%80%E4%B8%AA%E5%B0%8F%E9%97%AE%E9%A2%98/"> CPU的栈机制的一个小问题
 
  </a>
@@ -154,36 +183,6 @@ x、y、z代表原子之间的化学键
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/codeforces-magnets/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/codeforces-expecting-trouble/"> codeforces Expecting Trouble
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Oct 2, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/codeforces">CodeForces</a>
-
-
-      
-      
-</div>
-
-  link:http://codeforces.com/contest/345/problem/A
-写完这道题目才发现这场比赛只能用Ada语言提交==
-好吧，逗我玩呢
-考的是数学期望公式，二项分布的期望E=np
-C++代码：（我可不会Ada……=_=）
-#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;iostream&gt; #include &lt;cstring&gt; using namespace std; int main(void) { char a[51]; double p; #ifndef ONLINE_JUDGE freopen(&quot;in.
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/codeforces-expecting-trouble/"> [Read more...] </a>
   
 </article>
 
@@ -272,6 +271,12 @@ C++代码：（我可不会Ada……=_=）
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
+          读书笔记5
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E6%95%B4%E7%90%86%E5%8D%9A%E5%AE%A2/">
           整理博客
         </a>
@@ -292,12 +297,6 @@ C++代码：（我可不会Ada……=_=）
       <li>
         <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
           Building Roads to Connect Cities
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/detecting-anomalies-in-currency-exchange-rates/">
-          Detecting Anomalies in Currency Exchange Rates
         </a>
       </li>
       
