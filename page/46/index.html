@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
-	<meta name="generator" content="Hugo 0.32.2" />
+	<meta name="generator" content="Hugo 0.40.3" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="keywords">
@@ -67,6 +67,32 @@
     
     <main class="wrapper">
       
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/codeforces194b/"> codeforces194b
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Aug 15, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/codeforces">CodeForces</a>
+
+
+      
+      
+</div>
+
+  link:http://codeforces.com/problemset/problem/334/B
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int main(void) { set&lt;int&gt; sadx, sady; int x[9] ,y[9] ; bool flag = true; for (int i=0;i&lt;8;++i) { scanf(&quot;%d%d&quot;,&amp;x[i],&amp;y[i]); sadx.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/codeforces194b/"> [Read more...] </a>
+  
+</article>
 
 <article>
   <h1>
@@ -143,32 +169,6 @@
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/codeforces195a/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/hdu4671-backup-plan-%E6%9E%84%E9%80%A0%E9%A2%98/"> hdu4671 Backup Plan ——构造题
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Aug 15, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/hdu">Hdu</a>
-
-
-      
-      
-</div>
-
-  link:http://acm.hdu.edu.cn/showproblem.php?pid=4671 其实是不难的那种构造题，先排第一列，第二列从后往前选。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; #include &lt;cctype&gt; #include &lt;algorithm&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;queue&gt; #include &lt;list&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;utility&gt; #include &lt;functional&gt; #include &lt;fstream&gt; #include &lt;iomanip&gt; #include &lt;sstream&gt; #include &lt;numeric&gt; #include &lt;cassert&gt; #include &lt;ctime&gt; #include &lt;iterator&gt; const int INF = 0x3f3f3f3f; const int dir[8][2] = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}}; using namespace std; int sad[111], fun[111][111]; int main(void) { int n, m; while (~scanf(&quot;%d%d&quot;,&amp;n,&amp;m)) { for(int i=1;i&lt;=n;++i) { sad[i]=m/n; if(i&lt;=m%n) sad[i]++; } int row=1; for(int i=1;i&lt;=n;++i) { int k=n; for(int j=1;j&lt;=sad[i];++j) { while (i==k||k==0) {if(i==k) k--; if(k==0) k=n;} fun[row][0]=i; fun[row][1]=k; k--; row++; } } for(int i=1;i&lt;=m;++i) { printf(&quot;%d %d&quot;,fun[i][0],fun[i][1]); for(int j=1;j&lt;=n;++j) { if(j!
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/hdu4671-backup-plan-%E6%9E%84%E9%80%A0%E9%A2%98/"> [Read more...] </a>
   
 </article>
 
@@ -257,6 +257,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B06%E6%8A%80%E6%9C%AF%E7%B1%BB/">
+          读书笔记6「技术类」
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
           读书笔记5
         </a>
@@ -277,12 +283,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/clustering/">
           Clustering
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
-          Building Roads to Connect Cities
         </a>
       </li>
       

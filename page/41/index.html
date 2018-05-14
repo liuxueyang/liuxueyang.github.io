@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
-	<meta name="generator" content="Hugo 0.32.2" />
+	<meta name="generator" content="Hugo 0.40.3" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="keywords">
@@ -67,6 +67,34 @@
     
     <main class="wrapper">
       
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/codeforces-340c-tourist-problem/"> codeforces 340C Tourist Problem
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Sep 4, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/codeforces">CodeForces</a>
+
+
+      
+      
+</div>
+
+  link:http://codeforces.com/problemset/problem/340/C
+开始一点也没思路，赛后看别人写的代码那么短，可是不知道怎么推出来的啊！
+后来明白了。
+首先考虑第一个数字，就是和0想减的内个。那么剩下的n-1个数字有(n-1)!个排列方式。所以呢，在n!个式子里面，第一个位置的和就是：a1 * (n-1)! + a2 * (n-1)! + &hellip;&hellip; + an * (n-1)!
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/codeforces-340c-tourist-problem/"> [Read more...] </a>
+  
+</article>
 
 <article>
   <h1>
@@ -151,32 +179,6 @@
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/hdu4497-gcd-and-lcm-%E7%B4%A0%E6%95%B0%E5%88%86%E8%A7%A3-%E8%AE%A1%E6%95%B0/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/poj1026-cipher-%E7%BD%AE%E6%8D%A2%E7%BE%A4/"> poj1026 Cipher ——置换群
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Aug 25, 2013
-      
-      
-      
-</div>
-
-  link:http://poj.org/problem?id=1026
-其实这道题目和poj2369这道题目一样。
-都是基础的置换群题目。把那道题目理解了，这道题就没问题了。
-不过我的方法貌似比较挫，或者处理方法效率不高，比较慢……
-就是对每个数字求出循环节，用rec[]保存，然后用k%rec[]得到余数，
-再模拟这个余数次就得到了目标位置。
-/* ID: zypz4571 LANG: C++ TASK: decode.
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/poj1026-cipher-%E7%BD%AE%E6%8D%A2%E7%BE%A4/"> [Read more...] </a>
   
 </article>
 
@@ -265,6 +267,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B06%E6%8A%80%E6%9C%AF%E7%B1%BB/">
+          读书笔记6「技术类」
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
           读书笔记5
         </a>
@@ -285,12 +293,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/clustering/">
           Clustering
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
-          Building Roads to Connect Cities
         </a>
       </li>
       

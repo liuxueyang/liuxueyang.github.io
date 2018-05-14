@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
-	<meta name="generator" content="Hugo 0.32.2" />
+	<meta name="generator" content="Hugo 0.40.3" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="keywords">
@@ -67,6 +67,23 @@
     
     <main class="wrapper">
       
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/mystery/"> Mystery
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Mar 10, 2013
+      
+      
+      
+</div>
+
+  #include &lt;cstdio&gt; #include &lt;cstring&gt; #include &lt;cmath&gt; using namespace std; char a[200]; int b[800]; int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;in&quot;, &quot;r&quot;, stdin); #endif int t; scanf(&quot;%d&quot;, &amp;t); while (t--){ int s; scanf(&quot;%d&quot;, &amp;s); getchar(); gets(a); int n; scanf(&quot;%d&quot;, &amp;n); for (int i = 0; i &lt; n; ++i) scanf(&quot;%d&quot;, b+i); printf(&quot;%d &quot;, s); int po = 0, len = strlen(a); for (int i = 0; i &lt; n; ++i) { po = po + b[i]; if (po &gt;= len) po = po % len; else if (po &lt; 0) po = (po + len); printf(&quot;%c&quot;, a[po]); } printf(&quot;\n&quot;); } return 0; }  题目不难，就是卡了很久，最后才发现，原来是输入的文件里面写错了，多打了一个空格……次奥……
+  
+</article>
 
 <article>
   <h1>
@@ -142,34 +159,6 @@
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/poj-3468-a-simple-problem-with-integers/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/hdu-1698-just-a-hook/"> hdu 1698 Just a Hook
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Mar 4, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/hdu">Hdu</a>
-
-    <a class="tag" href="http://liuxueyang.github.io/tags/data-structure">Data Structure</a>
-
-
-      
-      
-</div>
-
-  Just a Hook
-Time Limit: 4000&frasl;2000 MS (Java/Others) Memory Limit: 32768&frasl;32768 K (Java/Others) Total Submission(s): 10792 Accepted Submission(s): 5328
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/hdu-1698-just-a-hook/"> [Read more...] </a>
   
 </article>
 
@@ -258,6 +247,12 @@ Time Limit: 4000&frasl;2000 MS (Java/Others) Memory Limit: 32768&frasl;32768 K (
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B06%E6%8A%80%E6%9C%AF%E7%B1%BB/">
+          读书笔记6「技术类」
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
           读书笔记5
         </a>
@@ -278,12 +273,6 @@ Time Limit: 4000&frasl;2000 MS (Java/Others) Memory Limit: 32768&frasl;32768 K (
       <li>
         <a href="http://liuxueyang.github.io/posts/clustering/">
           Clustering
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
-          Building Roads to Connect Cities
         </a>
       </li>
       

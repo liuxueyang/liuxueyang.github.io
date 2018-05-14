@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
-	<meta name="generator" content="Hugo 0.32.2" />
+	<meta name="generator" content="Hugo 0.40.3" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="keywords">
@@ -67,6 +67,32 @@
     
     <main class="wrapper">
       
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/%E5%AE%9E%E9%AA%8C%E5%8D%81%E4%B8%80%E7%BC%96%E5%86%99%E5%AD%90%E7%A8%8B%E5%BA%8F/"> 实验十一：编写子程序
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Oct 15, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/masm">masm</a>
+
+
+      
+      
+</div>
+
+  将一个0结尾的字符串中的小写字母转化成大写字母
+assume cs:code, ds:data data segment db &quot;Beginner's All-purpose Symbolic Instruction Code.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/%E5%AE%9E%E9%AA%8C%E5%8D%81%E4%B8%80%E7%BC%96%E5%86%99%E5%AD%90%E7%A8%8B%E5%BA%8F/"> [Read more...] </a>
+  
+</article>
 
 <article>
   <h1>
@@ -150,32 +176,6 @@ assume cs:code, ds:data data segment db 'Welcome to masm!', 0 data ends code seg
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/%E7%BC%96%E5%86%99%E5%AD%90%E7%A8%8B%E5%BA%8F%E6%98%BE%E7%A4%BA%E5%AD%97%E7%AC%A6%E4%B8%B2/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/call%E6%8C%87%E4%BB%A4%E7%9A%84%E4%B8%80%E4%B8%AA%E7%BB%86%E8%8A%82/"> call指令的一个细节
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Oct 7, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/masm">masm</a>
-
-
-      
-      
-</div>
-
-  执行下面这个程序之后，ax的值是多少？
-assume cs:code code segment start: mov ax, 0 call s inc ax s: pop ax mov ax, 4c00h int 21h code ends end start  答案是0006h
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/call%E6%8C%87%E4%BB%A4%E7%9A%84%E4%B8%80%E4%B8%AA%E7%BB%86%E8%8A%82/"> [Read more...] </a>
   
 </article>
 
@@ -264,6 +264,12 @@ assume cs:code code segment start: mov ax, 0 call s inc ax s: pop ax mov ax, 4c0
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B06%E6%8A%80%E6%9C%AF%E7%B1%BB/">
+          读书笔记6「技术类」
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
           读书笔记5
         </a>
@@ -284,12 +290,6 @@ assume cs:code code segment start: mov ax, 0 call s inc ax s: pop ax mov ax, 4c0
       <li>
         <a href="http://liuxueyang.github.io/posts/clustering/">
           Clustering
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
-          Building Roads to Connect Cities
         </a>
       </li>
       

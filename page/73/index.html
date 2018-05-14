@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
-	<meta name="generator" content="Hugo 0.32.2" />
+	<meta name="generator" content="Hugo 0.40.3" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="keywords">
@@ -67,6 +67,34 @@
     
     <main class="wrapper">
       
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/hdu1272-%E5%B0%8F%E5%B8%8C%E7%9A%84%E8%BF%B7%E5%AE%AB-%E5%B9%B6%E6%9F%A5%E9%9B%86%E6%97%A0%E5%90%91%E5%9B%BE%E5%88%A4%E7%8E%AF/"> hdu1272 小希的迷宫 ——并查集无向图判环
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      May 12, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/hdu">Hdu</a>
+
+    <a class="tag" href="http://liuxueyang.github.io/tags/data-structure">Data Structure</a>
+
+
+      
+      
+</div>
+
+  题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=1272 题目大意： 给一个无向图，判断是不是有环，有就输出No，否则输出Yes 题目思路： 用并查集，开始还天真地以为要用拓扑排序，好吧……虽然那个也可以做，可是为什么不用简单的方法呢？
+#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;deque&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x7fffffff; const int MINN = -0x7fffffff; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; const int MAX = 100000+10; int parent[MAX]; bool flag; void init() { for (int i = 1; i&lt;=MAX; ++i) parent[i] = -1; } int find(int x) { int s; for (s = x; parent[s] !
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/hdu1272-%E5%B0%8F%E5%B8%8C%E7%9A%84%E8%BF%B7%E5%AE%AB-%E5%B9%B6%E6%9F%A5%E9%9B%86%E6%97%A0%E5%90%91%E5%9B%BE%E5%88%A4%E7%8E%AF/"> [Read more...] </a>
+  
+</article>
 
 <article>
   <h1>
@@ -139,32 +167,6 @@
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/2013%E5%B9%B45%E6%9C%8811%E6%97%A5zoj%E6%AF%94%E8%B5%9B%E6%AE%8B%E7%95%99%E9%A2%98-zoj5000-density-of-power-network--zoj5002-friends/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B45%E6%9C%8811%E6%97%A5-zoj%E6%AF%94%E8%B5%9B%E4%B8%89%E9%81%93%E6%B0%B4%E9%A2%98zoj4998-break-standard-weight--zoj5004-hard-to-play--zoj5006-java-beans/"> 2013年5月11日 zoj比赛三道水题：zoj4998 Break Standard Weight &amp;&amp; zoj5004 Hard to Play &amp;&amp; zoj5006 Java Beans
-
- </a>
-  </h1>
-  <div class="article-meta">
-      May 11, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/zoj">zoj</a>
-
-
-      
-      
-</div>
-
-  都是水题，特别水的内种，题目意思、思路神马滴就不说了…… Break Standard Weight 题目链接：http://acm.zju.edu.cn/onlinejudge/showContestProblem.do?problemId=4998 范围只有100，并且只有3个数字，直接枚举，代码好挫……o(╯□╰)o 只有一个需要注意的地方，就是绝对值为0的时候要考虑到！因为如果绝对值为0，那么根本就称不出什么重量来。。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; #include &lt;set&gt; #include &lt;vector&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x7fffffff; const int MINN = -0x7fffffff; const double eps = 1e-9; const int dir[8][2] = {{0,1},{1,0},{0,-1},{-1,0},{-1,1}, {1,1},{1,-1},{-1,-1}}; map&lt;int, bool&gt;mymap; int main(void){ #ifndef ONLINE_JUDGE freopen(&quot;zoj4998.
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/2013%E5%B9%B45%E6%9C%8811%E6%97%A5-zoj%E6%AF%94%E8%B5%9B%E4%B8%89%E9%81%93%E6%B0%B4%E9%A2%98zoj4998-break-standard-weight--zoj5004-hard-to-play--zoj5006-java-beans/"> [Read more...] </a>
   
 </article>
 
@@ -253,6 +255,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B06%E6%8A%80%E6%9C%AF%E7%B1%BB/">
+          读书笔记6「技术类」
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
           读书笔记5
         </a>
@@ -273,12 +281,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/clustering/">
           Clustering
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
-          Building Roads to Connect Cities
         </a>
       </li>
       

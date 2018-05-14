@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
-	<meta name="generator" content="Hugo 0.32.2" />
+	<meta name="generator" content="Hugo 0.40.3" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="keywords">
@@ -67,6 +67,32 @@
     
     <main class="wrapper">
       
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/foldr%E5%92%8Cfoldl%E5%87%BD%E6%95%B8%E8%BE%A8%E6%9E%90/"> foldl和foldr的不同點
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Apr 18, 2017
+      
+      
+    <a class="category" href="http://liuxueyang.github.io/categories/haskell">Haskell</a>
+
+
+      
+      
+      
+</div>
+
+  foldl foldl這個函數的類型是：
+(a -&gt; b -&gt; a) -&gt; a -&gt; [b] -&gt; b  它接收一個函數、一個起始值、一個列表。它的作用相當于：
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/foldr%E5%92%8Cfoldl%E5%87%BD%E6%95%B8%E8%BE%A8%E6%9E%90/"> [Read more...] </a>
+  
+</article>
 
 <article>
   <h1>
@@ -137,32 +163,6 @@ Hello, world! Files and streams getContents：从标准输入读数据，返回I
   因为前几天（4月7日晚上）我的笔记本硬盘突然坏了，不能读盘了，造成了一些损失，之前做得Coursera上的三部分PL课的作业什么的都没有了，当初也没有多想就没有放到网盘里面同步，万万没想到硬盘会出问题。另外损失了大概两天的工作量，因为两天之前同步过一次Dropbox，因为需要频繁修改一些文件，Dropbox也就会频繁同步，我的电脑比较老了，一直开着Dropbox比较占内存和CPU，所以只是偶尔打开Dropbox。这也算是一个教训吧，所以在这里纪录一下。
 最简单的就是用网盘了，比如Dropbox之类的。Slackware里面我用Dropbox和OneDrive。另外一种方法就是Gitlab或者Bitbucket的私有仓储，如果可以公开的话，可以直接放到Github的公开仓库，缺点就是需要频繁git add，git push什么的，这个时候Emacs的插件magit就很有用了。
 以后尤其是手写的文档，一定要注意经常同步。不管是移动硬盘还是笔记本硬盘都不如网盘靠谱，至于数据的安全性嘛，都是一些笔记啊，程序啊之类的，好像也没有什么特别需要保护的。当然也可以把文件加密再上传到网盘。
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/haskell-%E7%AC%94%E8%AE%B07/"> Haskell 笔记7
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Apr 12, 2017
-      
-      
-    <a class="category" href="http://liuxueyang.github.io/categories/haskell">Haskell</a>
-
-
-      
-      
-      
-</div>
-
-  这是一些阅读Learn You a Haskell for Great Good!的时候的笔记，之前用Latex写的，放在Dropbox里面，现在想把它们整理一下，放在博客里。这是第七章 Modules的笔记。
-Loading modules 之前用TeXmacs虽然挺方便，但还是感觉有点不舒服。所以还是换回来吧。
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/haskell-%E7%AC%94%E8%AE%B07/"> [Read more...] </a>
   
 </article>
 
@@ -251,6 +251,12 @@ Loading modules 之前用TeXmacs虽然挺方便，但还是感觉有点不舒服
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B06%E6%8A%80%E6%9C%AF%E7%B1%BB/">
+          读书笔记6「技术类」
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
           读书笔记5
         </a>
@@ -271,12 +277,6 @@ Loading modules 之前用TeXmacs虽然挺方便，但还是感觉有点不舒服
       <li>
         <a href="http://liuxueyang.github.io/posts/clustering/">
           Clustering
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
-          Building Roads to Connect Cities
         </a>
       </li>
       

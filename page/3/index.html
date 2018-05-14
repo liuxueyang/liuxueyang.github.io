@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
-	<meta name="generator" content="Hugo 0.32.2" />
+	<meta name="generator" content="Hugo 0.40.3" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="keywords">
@@ -67,6 +67,40 @@
     
     <main class="wrapper">
       
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/checking-whether-a-graph-is-bipartite/"> Checking whether a Graph is Bipartite
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      May 17, 2017
+      
+      
+    <a class="category" href="http://liuxueyang.github.io/categories/algorithm">Algorithm</a>
+
+    <a class="category" href="http://liuxueyang.github.io/categories/bfs">BFS</a>
+
+    <a class="category" href="http://liuxueyang.github.io/categories/bipartite">bipartite</a>
+
+
+      
+      
+      
+</div>
+
+  题目链接：pdf
+题目给一个无向图，判定这个图是否是二分图。
+所谓二分图就是，用可以两种颜色给这个图的所有节点染色，并且满足相邻两个点颜色不同。
+思路：
+模拟染色过程，遍历所有点，如果这个点没有被染色，那么用BFS从这个点开始染色，当出现两个点颜色相同，说明这个图不是二分图。如果这个点已经被染色过，那么判断一下和这个点直接相连的点和它的颜色是否相同。
+// Sun May 14 21:24:26 CST 2017 // Sun May 14 21:43:44 CST 2017 /* 二分图判定 */ #include &lt;iostream&gt; #include &lt;vector&gt; #include &lt;queue&gt; using std::vector; using std::queue; int bipartite(vector&lt;vector&lt;int&gt; &gt; &amp;adj) { int result = 1; vector&lt;int&gt; color(adj.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/checking-whether-a-graph-is-bipartite/"> [Read more...] </a>
+  
+</article>
 
 <article>
   <h1>
@@ -162,36 +196,6 @@
   
 </article>
 
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/checking-consistency-curriculum/"> Checking Consistency of CS Curriculum
-
- </a>
-  </h1>
-  <div class="article-meta">
-      May 16, 2017
-      
-      
-    <a class="category" href="http://liuxueyang.github.io/categories/algorithm">Algorithm</a>
-
-    <a class="category" href="http://liuxueyang.github.io/categories/dfs">DFS</a>
-
-
-      
-      
-      
-</div>
-
-  题目链接：pdf
-题目给一个有向图，判断是不是有环。我的方法是DFS，对于一个点，访问的过程中存在这三种情况：
- 访问v的过程中，再次访问到了v这个点，说明存在环。 完成访问v后（DFS已经回退到v之后），以后再次访问到了v，这是没有问题 的，这种情况不能说明存在环。 v还没有访问过。  因此用三个不同的值来标记这三种情况就可以了。
-// Fri May 12 22:50:22 CST 2017 // Fri May 12 23:50:02 CST 2017 // 判断一个有向图是不是有环。。。 #include &lt;iostream&gt; #include &lt;vector&gt; using namespace std; /* visit[i]的值有三种情况： 0:这个点没有访问过 1:这个点正在访问 2:这个点以及和它相连的点都已经访问过了 所以DFS的过程中，下一个点遇到了visit[e] == 1说明有环。 */ void dfs(vector&lt;vector&lt;int&gt; &gt; &amp;adj, vector&lt;int&gt; &amp;visit, int x, bool &amp;mark) { // cout &lt;&lt; &quot;(&quot; &lt;&lt; x + 1 &lt;&lt; &quot;, &quot; &lt;&lt; num &lt;&lt; &quot;)&quot; &lt;&lt; &quot;\n&quot;; visit[x] = 1; if (mark) return; for (auto e : adj[x]) { if (mark) return; else if (visit[e] == 1) { mark = true; return; } else if (!
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/checking-consistency-curriculum/"> [Read more...] </a>
-  
-</article>
-
 <div class="pagination">
   
   <a class="button" href="/page/2/">
@@ -277,6 +281,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B06%E6%8A%80%E6%9C%AF%E7%B1%BB/">
+          读书笔记6「技术类」
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
           读书笔记5
         </a>
@@ -297,12 +307,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/clustering/">
           Clustering
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
-          Building Roads to Connect Cities
         </a>
       </li>
       

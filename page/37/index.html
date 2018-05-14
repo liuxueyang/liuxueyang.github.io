@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
-	<meta name="generator" content="Hugo 0.32.2" />
+	<meta name="generator" content="Hugo 0.40.3" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="keywords">
@@ -67,6 +67,33 @@
     
     <main class="wrapper">
       
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/debug%E4%B8%8D%E8%BF%87%E7%9A%84%E7%A8%8B%E5%BA%8F/"> debug不过的程序
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Oct 4, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/masm">masm</a>
+
+
+      
+      
+</div>
+
+  下面的程序debug是不能通过的。
+至于为什么我还不知道。
+assume cs:codesg codesg segment start: mov ax,2000h mov ss, ax mov sp, 0 add sp, 4 pop ax pop bx push ax push bx pop ax pop bx mov ax, 4c00h int 21h codesg ends end  这个问题留在这里，以后解决。
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/debug%E4%B8%8D%E8%BF%87%E7%9A%84%E7%A8%8B%E5%BA%8F/"> [Read more...] </a>
+  
+</article>
 
 <article>
   <h1>
@@ -158,34 +185,6 @@ x、y、z代表原子之间的化学键
   
 </article>
 
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/codeforces-magnets/"> codeforces Magnets
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Oct 2, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/codeforces">CodeForces</a>
-
-
-      
-      
-</div>
-
-  link: http://codeforces.com/contest/344/problem/A
-这道题目很简单。
-把输入的01 和10 当做整数，如果相邻两个数字相等的话，那么就属于同一组，否则，就新增加了一组。
-#include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; using namespace std; int main(void) { #ifndef ONLINE_JUDGE freopen(&quot;in.
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/codeforces-magnets/"> [Read more...] </a>
-  
-</article>
-
 <div class="pagination">
   
   <a class="button" href="/page/36/">
@@ -271,6 +270,12 @@ x、y、z代表原子之间的化学键
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B06%E6%8A%80%E6%9C%AF%E7%B1%BB/">
+          读书笔记6「技术类」
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
           读书笔记5
         </a>
@@ -291,12 +296,6 @@ x、y、z代表原子之间的化学键
       <li>
         <a href="http://liuxueyang.github.io/posts/clustering/">
           Clustering
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
-          Building Roads to Connect Cities
         </a>
       </li>
       

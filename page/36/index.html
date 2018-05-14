@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
-	<meta name="generator" content="Hugo 0.32.2" />
+	<meta name="generator" content="Hugo 0.40.3" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="keywords">
@@ -67,6 +67,29 @@
     
     <main class="wrapper">
       
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/%E6%9B%B4%E7%81%B5%E6%B4%BB%E7%9A%84%E5%AE%9A%E4%BD%8D%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E7%9A%84%E6%96%B9%E6%B3%95%E5%A4%A7%E5%B0%8F%E5%86%99%E8%BD%AC%E6%8D%A2/"> 更灵活的定位内存地址的方法——大小写转换
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Oct 4, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/masm">masm</a>
+
+
+      
+      
+</div>
+
+  如下：
+;BasiC to BASIC ;MinIX to minix assume cs:code, ds:data data segment db 'BaSiC' db 'MinIX' data ends code segment start: mov ax, data mov ds, ax mov bx, 0 mov cx, 5 s: mov al, 0[bx] and al, 11011111b mov 0[bx], al mov al, 5[bx] or al, 00100000b mov 5[bx], al inc bx loop s mov ax, 4c00h int 21h code ends end start  很简单的一个程序。
+  
+</article>
 
 <article>
   <h1>
@@ -141,33 +164,6 @@ assume cs:sad sad segment start: mov ax, 0ffffh mov ds, ax mov dx, 0 ; add ds:0b
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/%E8%AE%A1%E7%AE%97ffff-0-ffff-b%E6%95%B0%E6%8D%AE%E7%9A%84%E5%92%8C%E7%BB%93%E6%9E%9C%E5%AD%98%E5%9C%A8dx%E4%B8%AD/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/debug%E4%B8%8D%E8%BF%87%E7%9A%84%E7%A8%8B%E5%BA%8F/"> debug不过的程序
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Oct 4, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/masm">masm</a>
-
-
-      
-      
-</div>
-
-  下面的程序debug是不能通过的。
-至于为什么我还不知道。
-assume cs:codesg codesg segment start: mov ax,2000h mov ss, ax mov sp, 0 add sp, 4 pop ax pop bx push ax push bx pop ax pop bx mov ax, 4c00h int 21h codesg ends end  这个问题留在这里，以后解决。
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/debug%E4%B8%8D%E8%BF%87%E7%9A%84%E7%A8%8B%E5%BA%8F/"> [Read more...] </a>
   
 </article>
 
@@ -256,6 +252,12 @@ assume cs:codesg codesg segment start: mov ax,2000h mov ss, ax mov sp, 0 add sp,
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B06%E6%8A%80%E6%9C%AF%E7%B1%BB/">
+          读书笔记6「技术类」
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
           读书笔记5
         </a>
@@ -276,12 +278,6 @@ assume cs:codesg codesg segment start: mov ax,2000h mov ss, ax mov sp, 0 add sp,
       <li>
         <a href="http://liuxueyang.github.io/posts/clustering/">
           Clustering
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
-          Building Roads to Connect Cities
         </a>
       </li>
       

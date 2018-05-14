@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
-	<meta name="generator" content="Hugo 0.32.2" />
+	<meta name="generator" content="Hugo 0.40.3" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="keywords">
@@ -67,6 +67,34 @@
     
     <main class="wrapper">
       
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/zoj3623-battle-ships-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E7%AE%80%E5%8D%95dp-%E6%B3%9B%E5%8C%96%E8%83%8C%E5%8C%85/"> zoj3623 Battle Ships ——完全背包？简单DP！|| 泛化背包
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Aug 15, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/zoj">ZOJ</a>
+
+    <a class="tag" href="http://liuxueyang.github.io/tags/dp">DP</a>
+
+
+      
+      
+</div>
+
+  link:http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=3623 看起来像完全背包，但是物品价值是变化的，所以很多人搞的很复杂。 晚上的代码要么很复杂，有一个代码虽然很简洁在zoj可以过，但是是错误的。求教lyl神犇，果然思想很深刻，抓住乐问题的本质，想法比网上搜到的所有博客里面的做法都简洁。 事实上，就是简单的DP，抓住一个技巧：让时间倒流，也就是说，把时间反过来考虑，先在将来把船造好，然后在过去用船攻击，哈哈，太巧秒了，说起来很别扭，很有意思，dp[j+time[i]]=max(dp[j]+j*time[i])；dp[j]表示在j这个时间，所造成的最大伤害。这样就可以枚举时间，在每个特定的时间内，枚举船的种类，找到最大值。最终在dp[]数组里面找到符合条件的并且时间最少的解。 只能说，ORZ…… 后来好不容易想明白了。茶具从哪里来……
+/* ID: zypz4571 LANG: C++ TASK: battle.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/zoj3623-battle-ships-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E7%AE%80%E5%8D%95dp-%E6%B3%9B%E5%8C%96%E8%83%8C%E5%8C%85/"> [Read more...] </a>
+  
+</article>
 
 <article>
   <h1>
@@ -148,26 +176,6 @@
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/hdu1712-acboy-needs-your-help----%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/%E5%BD%93%E6%88%91%E6%8A%8A%E7%94%B5%E8%84%91500g%E7%A1%AC%E7%9B%98%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BA%86%E7%9A%84%E6%97%B6%E5%80%99%E5%9C%A8%E6%83%B3%E4%BA%9B%E4%BB%80%E4%B9%88/"> 当我把电脑500G硬盘格式化了的时候，在想些什么
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Aug 11, 2013
-      
-      
-      
-</div>
-
-  所以我就想重新尝试一下怎么装多系统，bootloader,MBR到底是怎么回事儿。 简要记录一下： 首先，在可以作为启动盘的Ｕ盘里面，备份一份可以用的WinXP镜像+校园网客户端安装文件+驱动精灵安装文件。然后再说别的。 我的硬盘初步规划是这样的：把硬盘分成4个分区，3P+1E。也就是3个主分区，1个扩展分区。每个50G。硬盘主分区最多有4个，为了以后装Linux，我分了3个主分区，一个用来装WinXP，另外两个装Ubuntu，CentOS。扩展分区再划分出几个逻辑分区：分出100G作为WinXP里面的D盘，装软件；再分出100G作为WinXP里面的E盘，存文档。足够用。剩下的100+G，分出1G作为Ubuntu的swap分区，再分出1G作为CentOS的swap分区。剩下的作为空闲分区备用。 这样三个主分区编号分别是：/dev/sda1 /dev/sda2 /dev/sda3 D，E两个盘的编号是：/dev/sda5 /dev/sda6 两个swap分区的编号是：/dev/sda7 /dev/sda8 先装winXP系统，找一个Ghost版的，把U盘用大白菜制作成启动盘，进入PE，还原系统就行了。 然后装Ubuntu，自己有一张安装盘，12.
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/%E5%BD%93%E6%88%91%E6%8A%8A%E7%94%B5%E8%84%91500g%E7%A1%AC%E7%9B%98%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BA%86%E7%9A%84%E6%97%B6%E5%80%99%E5%9C%A8%E6%83%B3%E4%BA%9B%E4%BB%80%E4%B9%88/"> [Read more...] </a>
   
 </article>
 
@@ -256,6 +264,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B06%E6%8A%80%E6%9C%AF%E7%B1%BB/">
+          读书笔记6「技术类」
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
           读书笔记5
         </a>
@@ -276,12 +290,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/clustering/">
           Clustering
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
-          Building Roads to Connect Cities
         </a>
       </li>
       

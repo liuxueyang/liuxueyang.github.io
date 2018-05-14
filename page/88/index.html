@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
-	<meta name="generator" content="Hugo 0.32.2" />
+	<meta name="generator" content="Hugo 0.40.3" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="keywords">
@@ -67,6 +67,28 @@
     
     <main class="wrapper">
       
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/2013%E5%B9%B44%E6%9C%888%E6%97%A5-%E6%99%B4/"> 2013年4月8日 晴
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Apr 9, 2013
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/run">run</a>
+
+
+      
+      
+</div>
+
+  今天跑步很悲剧，遇到极点了，中途各种不想跑，各种累，但还是坚持下来了，嗯，跑步嘛，总会有这种时候，尤其是今天下午也比较热，这种时候，最重要的就是两个字：坚持。不管怎么样，千万不能停下来，如果一停下来，基本就跑步不起来了…… 加油~
+  
+</article>
 
 <article>
   <h1>
@@ -140,34 +162,6 @@
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/speedcells-spfa/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/zoj-2165-red-and-black-bfs%E5%85%A5%E9%97%A8%E9%A2%98/"> zoj 2165 Red and Black ——BFS入门题
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Apr 7, 2013
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/zoj">zoj</a>
-
-    <a class="tag" href="http://liuxueyang.github.io/tags/bfs">BFS</a>
-
-
-      
-      
-</div>
-
-  题目链接：http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemId=1165 题意： 给一个字符矩阵，“.”代表黑色格子，“#”代表红色格子，有一个起点“@”，它属于黑色格子，一个人从起点出发，只能走黑色格子，并且只能上下左右走，不能对角线走，问这个人能走到的黑色格子有多少个。输出个数。输入W，H，代表有W列，H行，然后输入一个字符矩阵，输出能走到的最多的黑色格子的个数，包括起点。 思路： 这个题目很简单，和zoj 2110 类似，但是这道题目比那道简单多了，不用剪枝，不用恢复现场，直接深搜就可以。首先找到起点，然后从起点出发，判断这个点是不是被访问过，如果被访问过，就return；否则判断这个格子是不是黑色格子或者是起点，如果是，就cnt++，然后标记这个格子已经被访问过，如果不是，return; 如果没有return，就在这个点的四个方向继续深搜。思路很清晰。1A。
-#include &lt;iostream&gt; #include &lt;cstdio&gt; #include &lt;cstdlib&gt; #include &lt;cstring&gt; #include &lt;cctype&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;cmath&gt; #include &lt;algorithm&gt; #define lson l, m, rt&lt;&lt;1 #define rson m+1, r, rt&lt;&lt;1|1 using namespace std; typedef long long int LL; const int MAXN = 0x3f3f3f3f; const int MIN = -0x3f3f3f3f; const double eps = 1e-9; int w, h, cnt = 0; char s[22][22]; bool flag[22][22]; int dir[4][2] = {{0,1},{1,0},{-1,0},{0,-1}}; void dfs(int i, int j){ if (i &lt;= 0 || j &lt;= 0 || i &gt; h || j &gt; w) return; if (flag[i][j]) return; if (s[i][j] == '.
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/zoj-2165-red-and-black-bfs%E5%85%A5%E9%97%A8%E9%A2%98/"> [Read more...] </a>
   
 </article>
 
@@ -256,6 +250,12 @@
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B06%E6%8A%80%E6%9C%AF%E7%B1%BB/">
+          读书笔记6「技术类」
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
           读书笔记5
         </a>
@@ -276,12 +276,6 @@
       <li>
         <a href="http://liuxueyang.github.io/posts/clustering/">
           Clustering
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
-          Building Roads to Connect Cities
         </a>
       </li>
       

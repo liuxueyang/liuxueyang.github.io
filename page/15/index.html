@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
-	<meta name="generator" content="Hugo 0.32.2" />
+	<meta name="generator" content="Hugo 0.40.3" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="keywords">
@@ -67,6 +67,35 @@
     
     <main class="wrapper">
       
+
+<article>
+  <h1>
+    <a href="http://liuxueyang.github.io/posts/spoj-segment-tree-brckts-brackets/"> spoj, segment tree: BRCKTS - Brackets
+
+ </a>
+  </h1>
+  <div class="article-meta">
+      Jul 25, 2016
+      
+      
+      
+    <a class="tag" href="http://liuxueyang.github.io/tags/spoj">spoj</a>
+
+
+      
+      
+</div>
+
+  Problem Link
+开始没有读懂题目，合法括号的意思其实就是常识情况下的括号合法：整个序列的左括号数目和右括号的数目相同，但是也不能出现这样的：)))(((，所以还要保证在任意一点，左括号的数目大于等于右括号的数目。
+这就需要，在序列里面任意一点，左边的不匹配的左括号的数目一定等于右边的不匹配右括号的数目。
+平常的线段树的点更新和区间查询
+#include &lt;iostream&gt; using namespace std; struct SegmentTreeNode { int unmatchedLeft, unmatchedRight; void assignLeaf(char value) { if (value == '(') { unmatchedLeft = 1; unmatchedRight = 0; } else { unmatchedLeft = 0; unmatchedRight = 1; } } void merge(SegmentTreeNode &amp;left, SegmentTreeNode &amp;right) { int L_unl = left.
+  
+  <br />
+  <a class="read-more" href="http://liuxueyang.github.io/posts/spoj-segment-tree-brckts-brackets/"> [Read more...] </a>
+  
+</article>
 
 <article>
   <h1>
@@ -145,33 +174,6 @@
   
   <br />
   <a class="read-more" href="http://liuxueyang.github.io/posts/iterm2-%E6%9F%A5%E7%9C%8B%E5%9B%BE%E7%89%87/"> [Read more...] </a>
-  
-</article>
-
-<article>
-  <h1>
-    <a href="http://liuxueyang.github.io/posts/poj3320-jessica-s-reading-problem/"> POJ3320 Jessica&#39;s Reading Problem
-
- </a>
-  </h1>
-  <div class="article-meta">
-      Jul 3, 2016
-      
-      
-      
-    <a class="tag" href="http://liuxueyang.github.io/tags/poj">POJ</a>
-
-
-      
-      
-</div>
-
-  Problem Jessica&rsquo;s Reading Problem
-Solution 方法和Subsequence一样，只是增加一个计数的步骤。
-Code C++ #include &lt;algorithm&gt; #include &lt;iostream&gt; #include &lt;map&gt; #include &lt;set&gt; using namespace std; const int MAX_N = 100 * 10000 + 1; int a[MAX_N], n; set&lt;int&gt; idea; map&lt;int, int&gt; num_idea; void solve() { idea.
-  
-  <br />
-  <a class="read-more" href="http://liuxueyang.github.io/posts/poj3320-jessica-s-reading-problem/"> [Read more...] </a>
   
 </article>
 
@@ -260,6 +262,12 @@ Code C++ #include &lt;algorithm&gt; #include &lt;iostream&gt; #include &lt;map&g
       <ul class="footer-latest-posts"> 
       
       <li>
+        <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B06%E6%8A%80%E6%9C%AF%E7%B1%BB/">
+          读书笔记6「技术类」
+        </a>
+      </li>
+      
+      <li>
         <a href="http://liuxueyang.github.io/posts/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05/">
           读书笔记5
         </a>
@@ -280,12 +288,6 @@ Code C++ #include &lt;algorithm&gt; #include &lt;iostream&gt; #include &lt;map&g
       <li>
         <a href="http://liuxueyang.github.io/posts/clustering/">
           Clustering
-        </a>
-      </li>
-      
-      <li>
-        <a href="http://liuxueyang.github.io/posts/building-roads-to-connect-cities/">
-          Building Roads to Connect Cities
         </a>
       </li>
       
