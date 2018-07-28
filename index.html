@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<!-- 2018-07-25 Wed 11:11 -->
+<!-- 2018-07-28 Sat 19:55 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>個人主頁</title>
@@ -179,7 +179,7 @@
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="views/css/site.css" />
-<link rel="stylesheet" type="text/css" href="http://gongzhitaao.org/orgcss/org.css"/>
+<link rel='icon' type='image/icon' href='favicon.ico'>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -237,52 +237,66 @@ for the JavaScript code in this tag.
 <h1 class="title">個人主頁</h1>
 </header><ul class="org-ul">
 <li><a href="補番列表.html">補番列表</a></li>
-<li><a href="閱讀.html">閱讀</a></li>
+<li><a href="閱讀.html">閱讀</a>
+<ul class="org-ul">
+<li><a href="萬曆十五年.html">萬曆十五年</a></li>
+</ul></li>
+<li>Programming Languages
+<ul class="org-ul">
+<li>Rust
+<ul class="org-ul">
+<li><a href="%E7%A7%BB%E5%8B%95%E8%AA%9E%E7%BE%A9.html">移動語義</a></li>
+</ul></li>
+</ul></li>
+<li>Linux
+<ul class="org-ul">
+<li><a href="Gentoo.html">Gentoo</a></li>
+</ul></li>
+<li>Editors
+<ul class="org-ul">
+<li><a href="Emacs.html">Emacs</a></li>
+</ul></li>
 </ul>
 </div>
 <div id="postamble" class="status">
 
 <br/>
 <br/>
-<p class='author'>Author:  (<a href="mailto:liuxueyang457@gmail.com">liuxueyang457@gmail.com</a>)</p>
-<p class='export'>Exported: 2018-07-25 Wed 11:11</p>
-<p class='modified'>Modified: 2018-07-25 Wed 11:11</p>
-<p class='creator'><a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="https://orgmode.org">Org</a> mode 9.1.9)</p>
+<p class='author'>Author: liuxueyang (<a href="mailto:liuxueyang457@gmail.com">liuxueyang457@gmail.com</a>)</p>
+<p class='export'>Exported: 2018-07-28 Sat 19:55</p>
+<p class='modified'>Modified: 2018-07-28 Sat 15:33</p>
+<p class='creator'>Emacs 26.1 (Org mode 9.1.9)</p>
 <p class='validation'><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 
-<div id='comments'>
-    <div class='disqus_btn' id='disqus_btn'
-         onclick='disqus()'>点击加载 Disqus 评论
-    </div>
-    <div id='disqus_thread'></div>
-</div>
-
-<script type='text/javascript'>
-    let disqus_loaded = false;
-    function disqus() {
-        if (!disqus_loaded) {
-            disqus_loaded = true;
-            var disqus_config = function () {
-                this.page.url = 'https://liuxueyang.github.io/html/%(site_id)s';
-                this.page.identifier = '%(site_id)s';
-            };
-            (function () {
-                var d = document, s = d.createElement('script');
-                s.src = 'https://liuxueyang.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        }
-        document.getElementById('disqus_btn').style.display = 'none';
-        return false;
-    }
+<script>
+var idcomments_acct = 'ab93a85474f166ce7e6c4b85791a447d';
+var idcomments_post_id;
+var idcomments_post_url;
 </script>
 
-<noscript>Please enable JavaScript to view the
-    <a href='https://disqus.com/?ref_noscript'>comments powered by
-        Disqus.
-    </a>
-</noscript>
+ <div id='comments'>
+  <div class='intense_debate' id='intense_debate_btn'
+       onclick='intense_debate()'>点击加载评论
+  </div>
+  <div id='intense_debate_thread'></div>
+  <span id='IDCommentsPostTitle' style='display:none'></span>
+ </div>
+
+ <script>
+     let disqus_loaded = false;
+     function intense_debate() {
+         if (!disqus_loaded) {
+             disqus_loaded = true;
+             (function () {
+                 var d = document, s = d.createElement('script');
+                 s.src = 'https://www.intensedebate.com/js/genericCommentWrapperV2.js';
+                 d.body.appendChild(s);
+             })();
+         }
+         document.getElementById('intense_debate_btn').style.display = 'none';
+         return false;
+     }
+ </script>
 </div>
 </body>
 </html>
