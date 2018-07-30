@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<!-- 2018-07-30 Mon 15:26 -->
+<!-- 2018-07-31 Tue 07:49 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emacs</title>
@@ -266,22 +266,43 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#37636;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org330d6c9">1. 導出 HTML 的時候去掉多餘空格</a></li>
-<li><a href="#orgdcc6e56">2. Emacs 中顯示 Emoji</a></li>
-<li><a href="#org407d08d">3. 相關鏈接</a>
+<li><a href="#orge1aa98a">1. 配置</a>
 <ul>
-<li><a href="#orgf2745ea">3.1. Emacs</a></li>
-<li><a href="#orga375d53">3.2. org-mode</a></li>
+<li><a href="#org330d6c9">1.1. 導出 HTML 的時候去掉多餘空格</a></li>
+<li><a href="#orgdcc6e56">1.2. Emacs 中顯示 Emoji</a></li>
+<li><a href="#orgb068cdc">1.3. <span class="todo TODO">TODO</span> 快捷鍵樣式</a></li>
+<li><a href="#org19fa49c">1.4. <span class="todo TODO">TODO</span> 添加 FootNotes</a></li>
+<li><a href="#orgcee13ca">1.5. <span class="todo TODO">TODO</span> org-mode Clock Out/In 的替代方法</a></li>
 </ul>
 </li>
-<li><a href="#org70965a4">4. 插件</a></li>
+<li><a href="#org407d08d">2. 相關鏈接</a>
+<ul>
+<li><a href="#orgf2745ea">2.1. Emacs</a></li>
+<li><a href="#org48fac8b">2.2. org-mode</a>
+<ul>
+<li><a href="#org508ff3c">2.2.1. 文檔</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org70965a4">3. 插件</a></li>
+<li><a href="#org9e00e75">4. 技巧</a>
+<ul>
+<li><a href="#org2bf3b2f">4.1. org-mode</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org330d6c9" class="outline-2">
-<h2 id="org330d6c9"><span class="section-number-2">1</span> 導出 HTML 的時候去掉多餘空格</h2>
+
+<div id="outline-container-orge1aa98a" class="outline-2">
+<h2 id="orge1aa98a"><span class="section-number-2">1</span> 配置</h2>
 <div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org330d6c9" class="outline-3">
+<h3 id="org330d6c9"><span class="section-number-3">1.1</span> 導出 HTML 的時候去掉多餘空格</h3>
+<div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-elisp"><span style="color: #707183;">(</span><span style="color: #a020f0;">defadvice</span> <span style="color: #0000ff;">org-html-paragraph</span> <span style="color: #7388d6;">(</span>before org-html-paragraph-advice
                                       <span style="color: #909183;">(</span>paragraph contents info<span style="color: #909183;">)</span> activate<span style="color: #7388d6;">)</span>
@@ -310,23 +331,54 @@ Emacs 主題設置吧，其實也海星。:P
 </div>
 </div>
 
-<div id="outline-container-orgdcc6e56" class="outline-2">
-<h2 id="orgdcc6e56"><span class="section-number-2">2</span> Emacs 中顯示 Emoji</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgdcc6e56" class="outline-3">
+<h3 id="orgdcc6e56"><span class="section-number-3">1.2</span> Emacs 中顯示 Emoji</h3>
+<div class="outline-text-3" id="text-1-2">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">[2018-07-28 Sat 20:08]</span></span>
+</p>
+
+<p>
 参考<a href="https://github.com/iqbalansari/emacs-emojify">emacs-emojify 插件</a>。:new-moon-with-face:
 </p>
 </div>
 </div>
 
+<div id="outline-container-orgb068cdc" class="outline-3">
+<h3 id="orgb068cdc"><span class="section-number-3">1.3</span> <span class="todo TODO">TODO</span> 快捷鍵樣式</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2018-07-31 Tue 07:48]</span></span>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org19fa49c" class="outline-3">
+<h3 id="org19fa49c"><span class="section-number-3">1.4</span> <span class="todo TODO">TODO</span> 添加 FootNotes</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2018-07-31 Tue 07:48]</span></span>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcee13ca" class="outline-3">
+<h3 id="orgcee13ca"><span class="section-number-3">1.5</span> <span class="todo TODO">TODO</span> org-mode Clock Out/In 的替代方法</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2018-07-31 Tue 07:49]</span></span>
+</p>
+</div>
+</div>
+</div>
+
 <div id="outline-container-org407d08d" class="outline-2">
-<h2 id="org407d08d"><span class="section-number-2">3</span> 相關鏈接</h2>
-<div class="outline-text-2" id="text-3">
+<h2 id="org407d08d"><span class="section-number-2">2</span> 相關鏈接</h2>
+<div class="outline-text-2" id="text-2">
 </div>
 <div id="outline-container-orgf2745ea" class="outline-3">
-<h3 id="orgf2745ea"><span class="section-number-3">3.1</span> Emacs</h3>
-<div class="outline-text-3" id="text-3-1">
+<h3 id="orgf2745ea"><span class="section-number-3">2.1</span> Emacs</h3>
+<div class="outline-text-3" id="text-2-1">
 <ol class="org-ol">
 <li><a href="https://github.com/hick/emacs-chinese">https://github.com/hick/emacs-chinese</a></li>
 <li><a href="https://emacs-china.org/">https://emacs-china.org/</a></li>
@@ -337,10 +389,11 @@ Emacs 主題設置吧，其實也海星。:P
 </div>
 </div>
 
-<div id="outline-container-orga375d53" class="outline-3">
-<h3 id="orga375d53"><span class="section-number-3">3.2</span> org-mode</h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-org48fac8b" class="outline-3">
+<h3 id="org48fac8b"><span class="section-number-3">2.2</span> org-mode</h3>
+<div class="outline-text-3" id="text-2-2">
 <ol class="org-ol">
+<li><a href="https://orgmode.org/">https://orgmode.org/</a></li>
 <li><a href="https://www.gnu.org/software/emacs/manual/html_node/org/index.html#Top">https://www.gnu.org/software/emacs/manual/html_node/org/index.html#Top</a></li>
 <li><a href="https://www.youtube.com/channel/UCfbGTpcJyEOMwKP-eYz3_fg">https://www.youtube.com/channel/UCfbGTpcJyEOMwKP-eYz3_fg</a></li>
 <li><a href="http://lotleaf.com/editor/emacs-orgmode.html">http://lotleaf.com/editor/emacs-orgmode.html</a></li>
@@ -363,16 +416,54 @@ Emacs 主題設置吧，其實也海星。:P
 <li><a href="https://lists.gnu.org/archive/html/emacs-orgmode/2011-02/msg01422.html">https://lists.gnu.org/archive/html/emacs-orgmode/2011-02/msg01422.html</a></li>
 </ol>
 </div>
+
+
+<div id="outline-container-org508ff3c" class="outline-4">
+<h4 id="org508ff3c"><span class="section-number-4">2.2.1</span> 文檔</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2018-07-31 Tue 07:47]</span></span>
+</p>
+<ol class="org-ol">
+<li><a href="doc/orgcard.pdf">orgcard</a> 來源：<a href="https://orgmode.org/orgcard.pdf">https://orgmode.org/orgcard.pdf</a></li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 
 
 <div id="outline-container-org70965a4" class="outline-2">
-<h2 id="org70965a4"><span class="section-number-2">4</span> 插件</h2>
-<div class="outline-text-2" id="text-4">
+<h2 id="org70965a4"><span class="section-number-2">3</span> 插件</h2>
+<div class="outline-text-2" id="text-3">
 <ol class="org-ol">
 <li><a href="https://github.com/coldnew/pangu-spacing">https://github.com/coldnew/pangu-spacing</a></li>
 </ol>
+</div>
+</div>
+
+
+<div id="outline-container-org9e00e75" class="outline-2">
+<h2 id="org9e00e75"><span class="section-number-2">4</span> 技巧</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2018-07-31 Tue 07:47]</span></span>
+</p>
+
+<p>
+不管 Emacs 使用了多久，還是可以發現很多很多新的東西和用法，這就是 Emacs
+的魅力所在。
+</p>
+</div>
+
+<div id="outline-container-org2bf3b2f" class="outline-3">
+<h3 id="org2bf3b2f"><span class="section-number-3">4.1</span> org-mode</h3>
+<div class="outline-text-3" id="text-4-1">
+<ol class="org-ol">
+<li>全局摺疊和展開子樹： `Shift-Tab`</li>
+<li>把當前子樹及其內容放置到另外一個父子樹下面：`C-c C-w`</li>
+</ol>
+</div>
 </div>
 </div>
 </div>
@@ -382,8 +473,8 @@ Emacs 主題設置吧，其實也海星。:P
 <br/>
 <p class='author'>Author: liuxueyang (<a href="mailto:liuxueyang457@gmail.com">liuxueyang457@gmail.com</a>)</p>
 <p class='date'>Created: 2018-07-28 Sat 00:00</p>
-<p class='export'>Exported: 2018-07-30 Mon 15:26</p>
-<p class='modified'>Modified: 2018-07-30 Mon 15:25</p>
+<p class='export'>Exported: 2018-07-31 Tue 07:49</p>
+<p class='modified'>Modified: 2018-07-31 Tue 07:49</p>
 <p class='creator'>Emacs 26.1 (Org mode 9.1.9)</p>
 <p class='validation'><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 
