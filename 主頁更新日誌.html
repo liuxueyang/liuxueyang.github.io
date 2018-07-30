@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<!-- 2018-07-30 Mon 10:16 -->
+<!-- 2018-07-30 Mon 11:33 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>主頁更新日誌</title>
@@ -180,7 +180,15 @@
 </style>
 <link rel="stylesheet" type="text/css" href="views/css/site.css" />
 
-<!--<link rel='icon' type='image/icon' href='favicon.ico'>-->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=UA-123066567-1'></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-123066567-1');
+</script>
 
 <link rel='apple-touch-icon' sizes='57x57' href='./images/favicon/apple-icon-57x57.png'>
 <link rel='apple-touch-icon' sizes='60x60' href='./images/favicon/apple-icon-60x60.png'>
@@ -258,34 +266,35 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#37636;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4d748aa">1. 使用 Hexo 生成靜態博客，使用多說評論系統</a></li>
-<li><a href="#orgad7a5de">2. 切換成 VimWiki</a></li>
-<li><a href="#org4e55b8c">3. 切換成 Jekyll</a></li>
-<li><a href="#org2c523b0">4. 切換成 Hugo</a></li>
-<li><a href="#org77097e7">5. 使用 org-mode 直接生成 HTML</a>
+<li><a href="#orge9c1f2d">1. 使用 Hexo 生成靜態博客，使用多說評論系統</a></li>
+<li><a href="#org5ade1ee">2. 切換成 VimWiki</a></li>
+<li><a href="#orgce0e5fb">3. 切換成 Jekyll</a></li>
+<li><a href="#org2872a6d">4. 切換成 Hugo</a></li>
+<li><a href="#org1d08942">5. 使用 org-mode 直接生成 HTML</a>
 <ul>
-<li><a href="#orgedbc8d5">5.1. <span class="done DONE">DONE</span> 看 <code>org-mode</code> 的 <code>Publishing</code> 的文檔</a></li>
-<li><a href="#org39e1503">5.2. <span class="done DONE">DONE</span> 配置 <code>ox-publish</code> ，找大佬的配置改一改</a></li>
-<li><a href="#org8158a07">5.3. <span class="done DONE">DONE</span> 把大佬的 <code>CSS</code> 複製過來改一改</a></li>
-<li><a href="#orgb94f669">5.4. <span class="done DONE">DONE</span> 增加 <code>Disqus</code> 的評論插件</a></li>
-<li><a href="#org57fe96a">5.5. <span class="done DONE">DONE</span> 對 <code>Disqus</code> 的評論增加「點擊加載」的功能</a></li>
-<li><a href="#orgb47c3c9">5.6. <span class="done DONE">DONE</span> 找來各種 <code>CSS</code> 樣式測試，添加、修改樣式</a></li>
-<li><a href="#org1b2ca6a">5.7. <span class="done DONE">DONE</span> 因爲 <code>Disqus</code> 需要翻牆，所以切換成 <code>IntenseDebate</code> 評論系統</a></li>
-<li><a href="#orga12d30c">5.8. <span class="done DONE">DONE</span> 添加 <code>Favicon</code></a></li>
-<li><a href="#orga1adda9">5.9. <span class="done DONE">DONE</span> 優化 <code>Favicon</code> ，生成各種尺寸的圖片：Favicon Generator</a></li>
-<li><a href="#orgad1d286">5.10. <span class="todo TODO">TODO</span> 在 <code>postamble</code> 裏面增加 <code>Created</code> 字段</a>
+<li><a href="#orge913b64">5.1. <span class="done DONE">DONE</span> 看 <code>org-mode</code> 的 <code>Publishing</code> 的文檔</a></li>
+<li><a href="#org5400a1d">5.2. <span class="done DONE">DONE</span> 配置 <code>ox-publish</code> ，找大佬的配置改一改</a></li>
+<li><a href="#orgdaf61a3">5.3. <span class="done DONE">DONE</span> 把大佬的 <code>CSS</code> 複製過來改一改</a></li>
+<li><a href="#org8497470">5.4. <span class="done DONE">DONE</span> 增加 <code>Disqus</code> 的評論插件</a></li>
+<li><a href="#org2151f02">5.5. <span class="done DONE">DONE</span> 對 <code>Disqus</code> 的評論增加「點擊加載」的功能</a></li>
+<li><a href="#orgb37d74f">5.6. <span class="done DONE">DONE</span> 找來各種 <code>CSS</code> 樣式測試，添加、修改樣式</a></li>
+<li><a href="#org1795d37">5.7. <span class="done DONE">DONE</span> 因爲 <code>Disqus</code> 需要翻牆，所以切換成 <code>IntenseDebate</code> 評論系統</a></li>
+<li><a href="#org2c953e3">5.8. <span class="done DONE">DONE</span> 添加 <code>Favicon</code></a></li>
+<li><a href="#org5e68ab2">5.9. <span class="done DONE">DONE</span> 優化 <code>Favicon</code> ，生成各種尺寸的圖片：Favicon Generator</a></li>
+<li><a href="#orgc351c9f">5.10. <span class="todo TODO">TODO</span> 在 <code>postamble</code> 裏面增加 <code>Created</code> 字段</a>
 <ul>
-<li><a href="#orge840572">5.10.1. <span class="todo TODO">TODO</span> 修改 timestamp 字段</a></li>
+<li><a href="#org6e9abdd">5.10.1. <span class="todo TODO">TODO</span> 修改 timestamp 字段</a></li>
 </ul>
 </li>
-<li><a href="#org9a3c1de">5.11. <span class="todo TODO">TODO</span> 在導出的 <code>HTML</code> 中顯示 emoji 表情</a></li>
+<li><a href="#orgf207a66">5.11. <span class="todo TODO">TODO</span> 在導出的 <code>HTML</code> 中顯示 emoji 表情</a></li>
+<li><a href="#org6d07a87">5.12. <span class="todo TODO">TODO</span> 添加 Google Analytics</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org4d748aa" class="outline-2">
-<h2 id="org4d748aa"><span class="section-number-2">1</span> 使用 Hexo 生成靜態博客，使用多說評論系統</h2>
+<div id="outline-container-orge9c1f2d" class="outline-2">
+<h2 id="orge9c1f2d"><span class="section-number-2">1</span> 使用 Hexo 生成靜態博客，使用多說評論系統</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 幾年前的事情了，大概從 2014 年開始？
@@ -300,8 +309,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgad7a5de" class="outline-2">
-<h2 id="orgad7a5de"><span class="section-number-2">2</span> 切換成 VimWiki</h2>
+<div id="outline-container-org5ade1ee" class="outline-2">
+<h2 id="org5ade1ee"><span class="section-number-2">2</span> 切換成 VimWiki</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 大概只用了一段時間吧。其實我是不太會用啦。大概是因爲不是特別喜歡在~Vim~
@@ -310,8 +319,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org4e55b8c" class="outline-2">
-<h2 id="org4e55b8c"><span class="section-number-2">3</span> 切換成 Jekyll</h2>
+<div id="outline-container-orgce0e5fb" class="outline-2">
+<h2 id="orgce0e5fb"><span class="section-number-2">3</span> 切換成 Jekyll</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 看起來是更簡潔一些吧。 <code>Github Pages</code> 原生支持。然而還是需要維護各種配置哦，還是要用討厭的 <code>Markdown</code> 。個人感覺好像還不如用 <code>Hexo</code> 舒服。
@@ -319,8 +328,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org2c523b0" class="outline-2">
-<h2 id="org2c523b0"><span class="section-number-2">4</span> 切換成 Hugo</h2>
+<div id="outline-container-org2872a6d" class="outline-2">
+<h2 id="org2872a6d"><span class="section-number-2">4</span> 切換成 Hugo</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 把原來的別的平臺上的博客都轉成 <code>Markdown</code> 格式，打算都放在這裏，一共大概有四百篇博客。發現用 <code>Hexo</code> 生成 <code>HTML</code> 就要好久「大概幾分鐘？」。這個有點兒不能忍受啊，然後就考慮切換成 <code>Hugo</code> 。可以說優勢很明顯了，四百篇左右的 <code>Markdown</code> ，生成 <code>HTML</code> 大概是秒出。
@@ -333,8 +342,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org77097e7" class="outline-2">
-<h2 id="org77097e7"><span class="section-number-2">5</span> 使用 org-mode 直接生成 HTML</h2>
+<div id="outline-container-org1d08942" class="outline-2">
+<h2 id="org1d08942"><span class="section-number-2">5</span> 使用 org-mode 直接生成 HTML</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 沒有主題可選，沒有配置可選，只能夠依靠找別人的網站，「借鑑」（偷）點兒東西過來這樣子。
@@ -347,51 +356,61 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgedbc8d5" class="outline-3">
-<h3 id="orgedbc8d5"><span class="section-number-3">5.1</span> <span class="done DONE">DONE</span> 看 <code>org-mode</code> 的 <code>Publishing</code> 的文檔</h3>
+<div id="outline-container-orge913b64" class="outline-3">
+<h3 id="orge913b64"><span class="section-number-3">5.1</span> <span class="done DONE">DONE</span> 看 <code>org-mode</code> 的 <code>Publishing</code> 的文檔</h3>
 </div>
-<div id="outline-container-org39e1503" class="outline-3">
-<h3 id="org39e1503"><span class="section-number-3">5.2</span> <span class="done DONE">DONE</span> 配置 <code>ox-publish</code> ，找大佬的配置改一改</h3>
+<div id="outline-container-org5400a1d" class="outline-3">
+<h3 id="org5400a1d"><span class="section-number-3">5.2</span> <span class="done DONE">DONE</span> 配置 <code>ox-publish</code> ，找大佬的配置改一改</h3>
 </div>
-<div id="outline-container-org8158a07" class="outline-3">
-<h3 id="org8158a07"><span class="section-number-3">5.3</span> <span class="done DONE">DONE</span> 把大佬的 <code>CSS</code> 複製過來改一改</h3>
+<div id="outline-container-orgdaf61a3" class="outline-3">
+<h3 id="orgdaf61a3"><span class="section-number-3">5.3</span> <span class="done DONE">DONE</span> 把大佬的 <code>CSS</code> 複製過來改一改</h3>
 </div>
-<div id="outline-container-orgb94f669" class="outline-3">
-<h3 id="orgb94f669"><span class="section-number-3">5.4</span> <span class="done DONE">DONE</span> 增加 <code>Disqus</code> 的評論插件</h3>
+<div id="outline-container-org8497470" class="outline-3">
+<h3 id="org8497470"><span class="section-number-3">5.4</span> <span class="done DONE">DONE</span> 增加 <code>Disqus</code> 的評論插件</h3>
 </div>
-<div id="outline-container-org57fe96a" class="outline-3">
-<h3 id="org57fe96a"><span class="section-number-3">5.5</span> <span class="done DONE">DONE</span> 對 <code>Disqus</code> 的評論增加「點擊加載」的功能</h3>
+<div id="outline-container-org2151f02" class="outline-3">
+<h3 id="org2151f02"><span class="section-number-3">5.5</span> <span class="done DONE">DONE</span> 對 <code>Disqus</code> 的評論增加「點擊加載」的功能</h3>
 </div>
-<div id="outline-container-orgb47c3c9" class="outline-3">
-<h3 id="orgb47c3c9"><span class="section-number-3">5.6</span> <span class="done DONE">DONE</span> 找來各種 <code>CSS</code> 樣式測試，添加、修改樣式</h3>
+<div id="outline-container-orgb37d74f" class="outline-3">
+<h3 id="orgb37d74f"><span class="section-number-3">5.6</span> <span class="done DONE">DONE</span> 找來各種 <code>CSS</code> 樣式測試，添加、修改樣式</h3>
 </div>
-<div id="outline-container-org1b2ca6a" class="outline-3">
-<h3 id="org1b2ca6a"><span class="section-number-3">5.7</span> <span class="done DONE">DONE</span> 因爲 <code>Disqus</code> 需要翻牆，所以切換成 <code>IntenseDebate</code> 評論系統</h3>
+<div id="outline-container-org1795d37" class="outline-3">
+<h3 id="org1795d37"><span class="section-number-3">5.7</span> <span class="done DONE">DONE</span> 因爲 <code>Disqus</code> 需要翻牆，所以切換成 <code>IntenseDebate</code> 評論系統</h3>
 </div>
-<div id="outline-container-orga12d30c" class="outline-3">
-<h3 id="orga12d30c"><span class="section-number-3">5.8</span> <span class="done DONE">DONE</span> 添加 <code>Favicon</code></h3>
+<div id="outline-container-org2c953e3" class="outline-3">
+<h3 id="org2c953e3"><span class="section-number-3">5.8</span> <span class="done DONE">DONE</span> 添加 <code>Favicon</code></h3>
 </div>
-<div id="outline-container-orga1adda9" class="outline-3">
-<h3 id="orga1adda9"><span class="section-number-3">5.9</span> <span class="done DONE">DONE</span> 優化 <code>Favicon</code> ，生成各種尺寸的圖片：<a href="https://www.favicon-generator.org/">Favicon Generator</a></h3>
+<div id="outline-container-org5e68ab2" class="outline-3">
+<h3 id="org5e68ab2"><span class="section-number-3">5.9</span> <span class="done DONE">DONE</span> 優化 <code>Favicon</code> ，生成各種尺寸的圖片：<a href="https://www.favicon-generator.org/">Favicon Generator</a></h3>
 <div class="outline-text-3" id="text-5-9">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">[2018-07-29 Sun 23:13]</span></span>
 </p>
 </div>
 </div>
-<div id="outline-container-orgad1d286" class="outline-3">
-<h3 id="orgad1d286"><span class="section-number-3">5.10</span> <span class="todo TODO">TODO</span> 在 <code>postamble</code> 裏面增加 <code>Created</code> 字段</h3>
+<div id="outline-container-orgc351c9f" class="outline-3">
+<h3 id="orgc351c9f"><span class="section-number-3">5.10</span> <span class="todo TODO">TODO</span> 在 <code>postamble</code> 裏面增加 <code>Created</code> 字段</h3>
 <div class="outline-text-3" id="text-5-10">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">[2018-07-30 Mon 10:10]</span></span>
 </p>
 </div>
-<div id="outline-container-orge840572" class="outline-4">
-<h4 id="orge840572"><span class="section-number-4">5.10.1</span> <span class="todo TODO">TODO</span> 修改 timestamp 字段</h4>
+<div id="outline-container-org6e9abdd" class="outline-4">
+<h4 id="org6e9abdd"><span class="section-number-4">5.10.1</span> <span class="todo TODO">TODO</span> 修改 timestamp 字段</h4>
 </div>
 </div>
-<div id="outline-container-org9a3c1de" class="outline-3">
-<h3 id="org9a3c1de"><span class="section-number-3">5.11</span> <span class="todo TODO">TODO</span> 在導出的 <code>HTML</code> 中顯示 emoji 表情</h3>
+<div id="outline-container-orgf207a66" class="outline-3">
+<h3 id="orgf207a66"><span class="section-number-3">5.11</span> <span class="todo TODO">TODO</span> 在導出的 <code>HTML</code> 中顯示 emoji 表情</h3>
+</div>
+<div id="outline-container-org6d07a87" class="outline-3">
+<h3 id="org6d07a87"><span class="section-number-3">5.12</span> <span class="todo TODO">TODO</span> 添加 Google Analytics</h3>
+<div class="outline-text-3" id="text-5-12">
+<p>
+<span class="timestamp-wrapper">
+<span class="timestamp-kwd">CLOCK:</span> <span class="timestamp">[2018-07-30 Mon 11:30]</span>nil
+</span>
+</p>
+</div>
 </div>
 </div>
 </div>
@@ -401,8 +420,8 @@ for the JavaScript code in this tag.
 <br/>
 <p class='author'>Author: liuxueyang (<a href="mailto:liuxueyang457@gmail.com">liuxueyang457@gmail.com</a>)</p>
 <p class='date'>Created: 2018-07-29 Sun 00:00</p>
-<p class='export'>Exported: 2018-07-30 Mon 10:16</p>
-<p class='modified'>Modified: 2018-07-30 Mon 10:16</p>
+<p class='export'>Exported: 2018-07-30 Mon 11:33</p>
+<p class='modified'>Modified: 2018-07-30 Mon 11:30</p>
 <p class='creator'>Emacs 26.1 (Org mode 9.1.9)</p>
 <p class='validation'><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 
