@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<!-- 2018-07-31 Tue 07:56 -->
+<!-- 2018-07-31 Tue 20:11 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>區塊鏈</title>
@@ -266,14 +266,118 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#37636;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgfc42b38">1. 鏈接</a></li>
+<li><a href="#org796df0c">1. 啓動 Geth</a></li>
+<li><a href="#orgeb440b0">2. 把帳號從 MetaMask 中導入到 Geth</a>
+<ul>
+<li><a href="#orgd7612f8">2.1. 導出 Private Key</a></li>
+<li><a href="#org964d2b9">2.2. 導入</a></li>
+</ul>
+</li>
+<li><a href="#org7db34d3">3. 設置 Geth 的 coinbase</a></li>
+<li><a href="#orgfc42b38">4. 鏈接</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-orgfc42b38" class="outline-2">
-<h2 id="orgfc42b38"><span class="section-number-2">1</span> 鏈接</h2>
+<div id="outline-container-org796df0c" class="outline-2">
+<h2 id="org796df0c"><span class="section-number-2">1</span> 啓動 Geth</h2>
 <div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+<pre class="src src-bash">geth --rinkeby console
+</pre>
+</div>
+
+<p>
+輸出如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">^^/W/solidity &gt;&gt;&gt; geth --rinkeby console 2&gt;&gt; rinkebyEth.log                                                                     19:42:45
+Welcome to the Geth JavaScript console!
+
+instance: Geth/v1.8.10-stable/darwin-amd64/go1.10.2
+coinbase: 0xc40d2e3c3a01263a5012033678559fd2cc584036
+at block: 2731148 (Tue, 31 Jul 2018 19:42:07 CST)
+ datadir: /Users/&lt;your_user&gt;/Library/Ethereum/rinkeby
+ modules: admin:1.0 clique:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeb440b0" class="outline-2">
+<h2 id="orgeb440b0"><span class="section-number-2">2</span> 把帳號從 MetaMask 中導入到 Geth</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgd7612f8" class="outline-3">
+<h3 id="orgd7612f8"><span class="section-number-3">2.1</span> 導出 Private Key</h3>
+<div class="outline-text-3" id="text-2-1">
+
+<figure>
+<img src="./images/MetaMask-Export.png" alt="MetaMask-Export.png">
+
+</figure>
+
+<p>
+Private Key 保存到一個文件裏面： <code>liu.csv</code> 。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org964d2b9" class="outline-3">
+<h3 id="org964d2b9"><span class="section-number-3">2.2</span> 導入</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+<pre class="src src-bash">geth account import liu.csv
+</pre>
+</div>
+
+<p>
+設置一個密碼，我選擇不相信自己的記憶，老老實實把密碼記在了 KeePass 裏面。
+</p>
+
+<p>
+當然，如果帳號是在 Rinkeby 上面的話「我的這個帳號就是 Rinkeby 上的」，應該這樣做：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">geth --rinkeby account import liu.csv
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7db34d3" class="outline-2">
+<h2 id="org7db34d3"><span class="section-number-2">3</span> 設置 Geth 的 coinbase</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+假設我想要設置的地址是 <code>eth.accounts[2]</code> ：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #0000ff;">miner.setEtherbase</span>(eth.accounts[2])
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><a href="https://ethereum.stackexchange.com/questions/12181/how-do-you-configure-geth-to-use-coinbase">https://ethereum.stackexchange.com/questions/12181/how-do-you-configure-geth-to-use-coinbase</a></li>
+</ul>
+
+<p>
+不過這樣設置好像不是永久的，重啓 Geth 的時候 <code>coinbase</code> 會變成原來的。其實啓動 Geth 的時候可以用下標的形式指定 <code>eth.accounts</code> 中的某個地址：「指定下標爲 2 的地址作爲 <code>coinbase</code> 」
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">geth --rinkeby --etherbase 2 console 2&gt;&gt; rinkebyEth.log
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfc42b38" class="outline-2">
+<h2 id="orgfc42b38"><span class="section-number-2">4</span> 鏈接</h2>
+<div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li><a href="https://faucet.rinkeby.io/">https://faucet.rinkeby.io/</a>
 <ul class="org-ul">
@@ -285,6 +389,13 @@ for the JavaScript code in this tag.
 <li><a href="https://hackmd.io/s/rJjjPb7NQ">https://hackmd.io/s/rJjjPb7NQ</a></li>
 <li><a href="https://hackmd.io/s/SkZPJoBVQ">https://hackmd.io/s/SkZPJoBVQ</a></li>
 </ul></li>
+<li>Remix IDE
+<ul class="org-ul">
+<li><a href="https://remix.readthedocs.io/en/latest/index.html">https://remix.readthedocs.io/en/latest/index.html</a>
+<ul class="org-ul">
+<li>Installation: <a href="https://remix.readthedocs.io/en/latest/packages.html">https://remix.readthedocs.io/en/latest/packages.html</a></li>
+</ul></li>
+</ul></li>
 </ul>
 </div>
 </div>
@@ -295,8 +406,8 @@ for the JavaScript code in this tag.
 <br/>
 <p class='author'>Author: liuxueyang (<a href="mailto:liuxueyang457@gmail.com">liuxueyang457@gmail.com</a>)</p>
 <p class='date'>Created: 2018-07-30 Mon 00:00</p>
-<p class='export'>Exported: 2018-07-31 Tue 07:56</p>
-<p class='modified'>Modified: 2018-07-30 Mon 17:32</p>
+<p class='export'>Exported: 2018-07-31 Tue 20:11</p>
+<p class='modified'>Modified: 2018-07-31 Tue 20:10</p>
 <p class='creator'>Emacs 26.1 (Org mode 9.1.9)</p>
 <p class='validation'><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 

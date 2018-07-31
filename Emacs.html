@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<!-- 2018-07-31 Tue 10:19 -->
+<!-- 2018-07-31 Tue 20:11 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emacs</title>
@@ -273,12 +273,13 @@ for the JavaScript code in this tag.
 <li><a href="#org22268a8">1.3. <span class="done DONE">DONE</span> 添加快捷鍵樣式</a></li>
 <li><a href="#orgd874eca">1.4. <span class="todo TODO">TODO</span> 添加 FootNotes</a></li>
 <li><a href="#org8abb124">1.5. <span class="todo TODO">TODO</span> org-mode Clock Out/In 的替代方法</a></li>
+<li><a href="#org1f09473">1.6. <span class="done DONE">DONE</span> org-mode 中插入圖片</a></li>
 </ul>
 </li>
 <li><a href="#orgc0d3ec3">2. 相關鏈接</a>
 <ul>
 <li><a href="#orgcd067f6">2.1. Emacs</a></li>
-<li><a href="#orgb111ec8">2.2. org-mode</a>
+<li><a href="#orgffcd678">2.2. org-mode</a>
 <ul>
 <li><a href="#orgd8fdec4">2.2.1. 視頻</a></li>
 <li><a href="#orge3535f6">2.2.2. 文字</a></li>
@@ -290,7 +291,7 @@ for the JavaScript code in this tag.
 <li><a href="#org24bd836">3. 插件</a></li>
 <li><a href="#orgaa9ebb4">4. 技巧</a>
 <ul>
-<li><a href="#orge4daa2a">4.1. org-mode</a></li>
+<li><a href="#orgec9c58d">4.1. org-mode</a></li>
 </ul>
 </li>
 </ul>
@@ -382,6 +383,20 @@ Emacs 主題設置吧，其實也海星。:P
 </p>
 </div>
 </div>
+
+<div id="outline-container-org1f09473" class="outline-3">
+<h3 id="org1f09473"><span class="section-number-3">1.6</span> <span class="done DONE">DONE</span> org-mode 中插入圖片</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2018-07-31 Tue 20:01]</span></span>
+</p>
+
+<ul class="org-ul">
+<li><a href="http://pragmaticemacs.com/emacs/org-mode-basics-iii-add-links-and-images-to-you-notes/">http://pragmaticemacs.com/emacs/org-mode-basics-iii-add-links-and-images-to-you-notes/</a></li>
+<li><a href="https://orgmode.org/manual/Images-and-tables.html">https://orgmode.org/manual/Images-and-tables.html</a></li>
+</ul>
+</div>
+</div>
 </div>
 
 <div id="outline-container-orgc0d3ec3" class="outline-2">
@@ -402,8 +417,8 @@ Emacs 主題設置吧，其實也海星。:P
 </div>
 
 
-<div id="outline-container-orgb111ec8" class="outline-3">
-<h3 id="orgb111ec8"><span class="section-number-3">2.2</span> org-mode</h3>
+<div id="outline-container-orgffcd678" class="outline-3">
+<h3 id="orgffcd678"><span class="section-number-3">2.2</span> org-mode</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
 <div id="outline-container-orgd8fdec4" class="outline-4">
@@ -426,7 +441,10 @@ Emacs 主題設置吧，其實也海星。:P
 <li><a href="http://www.zmonster.me/2016/06/03/org-mode-table.html">http://www.zmonster.me/2016/06/03/org-mode-table.html</a></li>
 <li><a href="http://members.optusnet.com.au/~charles57/GTD/org_dates/">http://members.optusnet.com.au/~charles57/GTD/org_dates/</a></li>
 <li><a href="http://endlessparentheses.com/better-time-stamps-in-org-export.html">http://endlessparentheses.com/better-time-stamps-in-org-export.html</a></li>
-<li><a href="http://ergoemacs.org/emacs/emacs_org_markup.html">http://ergoemacs.org/emacs/emacs_org_markup.html</a></li>
+<li><a href="http://ergoemacs.org/emacs/emacs_org_markup.html">http://ergoemacs.org/emacs/emacs_org_markup.html</a>
+<ul class="org-ul">
+<li><a href="http://ergoemacs.org/emacs/emacs_outline.html">http://ergoemacs.org/emacs/emacs_outline.html</a></li>
+</ul></li>
 <li><a href="http://gongzhitaao.org/orgcss/">http://gongzhitaao.org/orgcss/</a>
 <ul class="org-ul">
 <li><a href="https://github.com/gongzhitaao/orgcss">https://github.com/gongzhitaao/orgcss</a></li>
@@ -483,12 +501,18 @@ Emacs 的魅力所在。
 </p>
 </div>
 
-<div id="outline-container-orge4daa2a" class="outline-3">
-<h3 id="orge4daa2a"><span class="section-number-3">4.1</span> org-mode</h3>
+<div id="outline-container-orgec9c58d" class="outline-3">
+<h3 id="orgec9c58d"><span class="section-number-3">4.1</span> org-mode</h3>
 <div class="outline-text-3" id="text-4-1">
 <ol class="org-ol">
 <li>全局摺疊和展開子樹： <kbd>&lt;S-tab&gt;</kbd></li>
-<li>把當前子樹及其內容放置到另外一個父子樹下面： <kbd>C-c C-w</kbd></li>
+<li>把當前子樹及其內容放置到另外一個子樹下面： <kbd>C-c C-w</kbd>
+<ul class="org-ul">
+<li>默認情況下，目標子樹只能是當前 buffer 的頂級子樹，可以通過設置
+<code>org-refile-targets</code> 來設置成當前 buffer 的任意一個子樹。
+<code>'(org-refile-targets (quote ((nil :maxlevel . 5))))</code> 參考 manual
+中 <code>org-refile-targets</code> 的文檔。</li>
+</ul></li>
 </ol>
 </div>
 </div>
@@ -500,8 +524,8 @@ Emacs 的魅力所在。
 <br/>
 <p class='author'>Author: liuxueyang (<a href="mailto:liuxueyang457@gmail.com">liuxueyang457@gmail.com</a>)</p>
 <p class='date'>Created: 2018-07-28 Sat 00:00</p>
-<p class='export'>Exported: 2018-07-31 Tue 10:19</p>
-<p class='modified'>Modified: 2018-07-31 Tue 10:18</p>
+<p class='export'>Exported: 2018-07-31 Tue 20:11</p>
+<p class='modified'>Modified: 2018-07-31 Tue 20:01</p>
 <p class='creator'>Emacs 26.1 (Org mode 9.1.9)</p>
 <p class='validation'><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 
