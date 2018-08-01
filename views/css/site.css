@@ -369,7 +369,24 @@ a:hover {
     /*background-color: LightGrey;*/
 }
 
+/* img { */
+/*     box-shadow: 0 0 10px #555; */
+/*     border-radius: 6px; */
+/*     margin-left: auto; */
+/*     margin-right: auto; */
+/*     margin-top: 10px; */
+/*     margin-bottom: 10px; */
+/*     -webkit-box-shadow: 0 0 10px #555; */
+/*     width: 100%; */
+/*     max-width: 600px; */
+/* } */
+
+* {
+    box-sizing: border-box;
+}
+
 img {
+    display: block;
     box-shadow: 0 0 10px #555;
     border-radius: 6px;
     margin-left: auto;
@@ -377,14 +394,16 @@ img {
     margin-top: 10px;
     margin-bottom: 10px;
     -webkit-box-shadow: 0 0 10px #555;
-    width: 20%;
-    max-width: 600px;
 }
 
 img.displayed {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+p {
+    line-height: 1.4
 }
 
 .timestamp {

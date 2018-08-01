@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<!-- 2018-08-01 Wed 10:23 -->
+<!-- 2018-08-01 Wed 17:25 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emacs</title>
@@ -278,12 +278,15 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#org1f09473">1.6. <span class="done DONE">DONE</span> org-mode 中插入圖片</a></li>
+<li><a href="#org799bb70">1.7. <span class="todo SOMEDAY">SOMEDAY</span> 標記 Git 倉庫裏的文件改變的那些行</a></li>
+<li><a href="#org7daf9ef">1.8. <span class="todo SOMEDAY">SOMEDAY</span> 快速窗口切換</a></li>
+<li><a href="#org111a9df">1.9. <span class="done DONE">DONE</span> 透明窗口</a></li>
 </ul>
 </li>
 <li><a href="#orgc0d3ec3">2. 相關鏈接</a>
 <ul>
 <li><a href="#orgcd067f6">2.1. Emacs</a></li>
-<li><a href="#orgec9c58d">2.2. org-mode</a>
+<li><a href="#org08aca2a">2.2. org-mode</a>
 <ul>
 <li><a href="#orgd8fdec4">2.2.1. 視頻</a></li>
 <li><a href="#orge3535f6">2.2.2. 文字</a></li>
@@ -295,7 +298,8 @@ for the JavaScript code in this tag.
 <li><a href="#org24bd836">3. 插件</a></li>
 <li><a href="#orgaa9ebb4">4. 技巧</a>
 <ul>
-<li><a href="#org97d92b2">4.1. org-mode</a></li>
+<li><a href="#org8877363">4.1. org-mode</a></li>
+<li><a href="#org8af5618">4.2. emacs</a></li>
 </ul>
 </li>
 </ul>
@@ -345,6 +349,7 @@ Emacs 主題設置吧，其實也海星。:P
 <li>State "SOMEDAY"    from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-01 Wed 10:20] </span></span> <br>
 Emacs 裏面倒是可以顯示 Emoji 表情了，但是導出的 HTML 文件裏面並不能顯示對應的 Emoji 表情。</li>
 </ul>
+
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">[2018-07-28 Sat 20:08]</span></span>
 </p>
@@ -368,8 +373,7 @@ Emacs 裏面倒是可以顯示 Emoji 表情了，但是導出的 HTML 文件裏�
 </ol>
 
 <p>
-<span class="timestamp-wrapper"><span class="timestamp">[2018-07-31 Tue 09:53]</span></span>
-<span class="timestamp-wrapper"><span class="timestamp">[2018-07-31 Tue 10:13]</span></span>
+<span class="timestamp-wrapper"><span class="timestamp">[2018-07-31 Tue 09:53] </span></span> &#x2013; <span class="timestamp-wrapper"><span class="timestamp">[2018-07-31 Tue 10:13]</span></span>
 </p>
 </div>
 </div>
@@ -388,7 +392,8 @@ Emacs 裏面倒是可以顯示 Emoji 表情了，但是導出的 HTML 文件裏�
 <div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
 <li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-08-01 Wed 10:16] </span></span> <br>
-其實不需要使用 clock in/out 的方式。只需要設置 <code>org-todo-keywords</code> 這個變量就可以了，它可以設置在進入或者某個狀態的時候，記錄時間戳或者寫一段文字作爲狀態改變的筆記。詳細的用法有時間再寫吧。 :P</li>
+其實不需要使用 clock in/out 的方式。只需要設置 <code>org-todo-keywords</code> 這個變量就可以了，它可以設置在進入或者某個狀態的時候，記錄時間戳或者寫一段文字作爲狀態改變的筆記。詳細的用法有時間再寫吧。 :P
+<a href="https://www.youtube.com/watch?v=15w3I6MwCfs">https://www.youtube.com/watch?v=15w3I6MwCfs</a></li>
 </ul>
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">[2018-07-31 Tue 07:49]</span></span>
@@ -418,6 +423,42 @@ Emacs 裏面倒是可以顯示 Emoji 表情了，但是導出的 HTML 文件裏�
 </ul>
 </div>
 </div>
+<div id="outline-container-org799bb70" class="outline-3">
+<h3 id="org799bb70"><span class="section-number-3">1.7</span> <span class="todo SOMEDAY">SOMEDAY</span> 標記 Git 倉庫裏的文件改變的那些行</h3>
+<div class="outline-text-3" id="text-1-7">
+<ul class="org-ul">
+<li>State "SOMEDAY"    from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-01 Wed 10:28] </span></span> <br>
+感覺這個功能還是很必要的</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7daf9ef" class="outline-3">
+<h3 id="org7daf9ef"><span class="section-number-3">1.8</span> <span class="todo SOMEDAY">SOMEDAY</span> 快速窗口切換</h3>
+<div class="outline-text-3" id="text-1-8">
+<ul class="org-ul">
+<li>State "SOMEDAY"    from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-01 Wed 10:29] </span></span> <br>
+使用 ace-window 這個插件，有時間配置一下。
+<a href="https://emacs.stackexchange.com/questions/3458/how-to-switch-between-windows-quickly">https://emacs.stackexchange.com/questions/3458/how-to-switch-between-windows-quickly</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org111a9df" class="outline-3">
+<h3 id="org111a9df"><span class="section-number-3">1.9</span> <span class="done DONE">DONE</span> 透明窗口</h3>
+<div class="outline-text-3" id="text-1-9">
+<ul class="org-ul">
+<li>State "DONE"       from "INPROGRESS" <span class="timestamp-wrapper"><span class="timestamp">[2018-08-01 Wed 15:28] </span></span> <br>
+稍微有點兒透明效果還是有點兒用的</li>
+<li>State "INPROGRESS" from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-01 Wed 15:23] </span></span> <br>
+把之前的設置搬過來</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #707183;">(</span>set-frame-parameter <span style="color: #7388d6;">(</span>selected-frame<span style="color: #7388d6;">)</span> 'alpha '<span style="color: #7388d6;">(</span>85 . 50<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span>add-to-list 'default-frame-alist '<span style="color: #7388d6;">(</span>alpha . <span style="color: #909183;">(</span>85 . 50<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
 </div>
 
 <div id="outline-container-orgc0d3ec3" class="outline-2">
@@ -438,8 +479,8 @@ Emacs 裏面倒是可以顯示 Emoji 表情了，但是導出的 HTML 文件裏�
 </div>
 
 
-<div id="outline-container-orgec9c58d" class="outline-3">
-<h3 id="orgec9c58d"><span class="section-number-3">2.2</span> org-mode</h3>
+<div id="outline-container-org08aca2a" class="outline-3">
+<h3 id="org08aca2a"><span class="section-number-3">2.2</span> org-mode</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
 <div id="outline-container-orgd8fdec4" class="outline-4">
@@ -522,8 +563,8 @@ Emacs 的魅力所在。
 </p>
 </div>
 
-<div id="outline-container-org97d92b2" class="outline-3">
-<h3 id="org97d92b2"><span class="section-number-3">4.1</span> org-mode</h3>
+<div id="outline-container-org8877363" class="outline-3">
+<h3 id="org8877363"><span class="section-number-3">4.1</span> org-mode</h3>
 <div class="outline-text-3" id="text-4-1">
 <ol class="org-ol">
 <li>全局摺疊和展開子樹： <kbd>&lt;S-tab&gt;</kbd></li>
@@ -537,6 +578,19 @@ Emacs 的魅力所在。
 </ol>
 </div>
 </div>
+
+
+<div id="outline-container-org8af5618" class="outline-3">
+<h3 id="org8af5618"><span class="section-number-3">4.2</span> emacs</h3>
+<div class="outline-text-3" id="text-4-2">
+<ol class="org-ol">
+<li>Word Search
+<ul class="org-ul">
+<li><a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Word-Search.html">https://www.gnu.org/software/emacs/manual/html_node/emacs/Word-Search.html</a></li>
+</ul></li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
@@ -545,8 +599,8 @@ Emacs 的魅力所在。
 <br/>
 <p class='author'>Author: liuxueyang (<a href="mailto:liuxueyang457@gmail.com">liuxueyang457@gmail.com</a>)</p>
 <p class='date'>Created: 2018-07-28 Sat 00:00</p>
-<p class='export'>Exported: 2018-08-01 Wed 10:23</p>
-<p class='modified'>Modified: 2018-08-01 Wed 10:22</p>
+<p class='export'>Exported: 2018-08-01 Wed 17:25</p>
+<p class='modified'>Modified: 2018-08-01 Wed 17:25</p>
 <p class='creator'>Emacs 26.1 (Org mode 9.1.9)</p>
 <p class='validation'><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 
