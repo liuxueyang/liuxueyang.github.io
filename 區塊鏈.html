@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<!-- 2018-07-31 Tue 20:11 -->
+<!-- 2018-08-01 Wed 10:23 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>區塊鏈</title>
@@ -271,6 +271,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orgd7612f8">2.1. 導出 Private Key</a></li>
 <li><a href="#org964d2b9">2.2. 導入</a></li>
+<li><a href="#org41a8172">2.3. 永久 unlock 賬戶</a></li>
 </ul>
 </li>
 <li><a href="#org7db34d3">3. 設置 Geth 的 coinbase</a></li>
@@ -308,7 +309,11 @@ at block: 2731148 (Tue, 31 Jul 2018 19:42:07 CST)
 <div id="outline-container-orgeb440b0" class="outline-2">
 <h2 id="orgeb440b0"><span class="section-number-2">2</span> 把帳號從 MetaMask 中導入到 Geth</h2>
 <div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><a href="https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts">https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts</a></li>
+</ul>
 </div>
+
 <div id="outline-container-orgd7612f8" class="outline-3">
 <h3 id="orgd7612f8"><span class="section-number-3">2.1</span> 導出 Private Key</h3>
 <div class="outline-text-3" id="text-2-1">
@@ -342,6 +347,21 @@ Private Key 保存到一個文件裏面： <code>liu.csv</code> 。
 
 <div class="org-src-container">
 <pre class="src src-bash">geth --rinkeby account import liu.csv
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org41a8172" class="outline-3">
+<h3 id="org41a8172"><span class="section-number-3">2.3</span> 永久 unlock 賬戶</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li><a href="https://ethereum.stackexchange.com/questions/11102/unlock-account-permanently">https://ethereum.stackexchange.com/questions/11102/unlock-account-permanently</a></li>
+<li><a href="https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts">https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts</a></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #0000ff;">personal.unlockAccount</span>(<span style="color: #8b2252;">"address"</span>, <span style="color: #8b2252;">"pass"</span>, 0);
 </pre>
 </div>
 </div>
@@ -396,6 +416,10 @@ Private Key 保存到一個文件裏面： <code>liu.csv</code> 。
 <li>Installation: <a href="https://remix.readthedocs.io/en/latest/packages.html">https://remix.readthedocs.io/en/latest/packages.html</a></li>
 </ul></li>
 </ul></li>
+<li><a href="https://github.com/ethereum/wiki/wiki">https://github.com/ethereum/wiki/wiki</a>
+<ul class="org-ul">
+<li><a href="https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console">https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console</a></li>
+</ul></li>
 </ul>
 </div>
 </div>
@@ -406,8 +430,8 @@ Private Key 保存到一個文件裏面： <code>liu.csv</code> 。
 <br/>
 <p class='author'>Author: liuxueyang (<a href="mailto:liuxueyang457@gmail.com">liuxueyang457@gmail.com</a>)</p>
 <p class='date'>Created: 2018-07-30 Mon 00:00</p>
-<p class='export'>Exported: 2018-07-31 Tue 20:11</p>
-<p class='modified'>Modified: 2018-07-31 Tue 20:10</p>
+<p class='export'>Exported: 2018-08-01 Wed 10:23</p>
+<p class='modified'>Modified: 2018-07-31 Tue 20:54</p>
 <p class='creator'>Emacs 26.1 (Org mode 9.1.9)</p>
 <p class='validation'><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 

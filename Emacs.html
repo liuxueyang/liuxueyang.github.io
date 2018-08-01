@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<!-- 2018-07-31 Tue 20:11 -->
+<!-- 2018-08-01 Wed 10:23 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emacs</title>
@@ -269,17 +269,21 @@ for the JavaScript code in this tag.
 <li><a href="#org0866c6d">1. 配置</a>
 <ul>
 <li><a href="#org86acc0a">1.1. 導出 HTML 的時候去掉多餘空格</a></li>
-<li><a href="#org7ea3b4a">1.2. Emacs 中顯示 Emoji</a></li>
+<li><a href="#org7ea3b4a">1.2. <span class="todo SOMEDAY">SOMEDAY</span> Emacs 中顯示 Emoji</a></li>
 <li><a href="#org22268a8">1.3. <span class="done DONE">DONE</span> 添加快捷鍵樣式</a></li>
 <li><a href="#orgd874eca">1.4. <span class="todo TODO">TODO</span> 添加 FootNotes</a></li>
-<li><a href="#org8abb124">1.5. <span class="todo TODO">TODO</span> org-mode Clock Out/In 的替代方法</a></li>
+<li><a href="#org8abb124">1.5. <span class="done DONE">DONE</span> org-mode Clock Out/In 的替代方法</a>
+<ul>
+<li><a href="#org848937e">1.5.1. <span class="todo SOMEDAY">SOMEDAY</span> 介紹 <code>org-todo-keywords</code> 的詳細用法</a></li>
+</ul>
+</li>
 <li><a href="#org1f09473">1.6. <span class="done DONE">DONE</span> org-mode 中插入圖片</a></li>
 </ul>
 </li>
 <li><a href="#orgc0d3ec3">2. 相關鏈接</a>
 <ul>
 <li><a href="#orgcd067f6">2.1. Emacs</a></li>
-<li><a href="#orgffcd678">2.2. org-mode</a>
+<li><a href="#orgec9c58d">2.2. org-mode</a>
 <ul>
 <li><a href="#orgd8fdec4">2.2.1. 視頻</a></li>
 <li><a href="#orge3535f6">2.2.2. 文字</a></li>
@@ -291,7 +295,7 @@ for the JavaScript code in this tag.
 <li><a href="#org24bd836">3. 插件</a></li>
 <li><a href="#orgaa9ebb4">4. 技巧</a>
 <ul>
-<li><a href="#orgec9c58d">4.1. org-mode</a></li>
+<li><a href="#org97d92b2">4.1. org-mode</a></li>
 </ul>
 </li>
 </ul>
@@ -335,8 +339,12 @@ Emacs 主題設置吧，其實也海星。:P
 </div>
 
 <div id="outline-container-org7ea3b4a" class="outline-3">
-<h3 id="org7ea3b4a"><span class="section-number-3">1.2</span> Emacs 中顯示 Emoji</h3>
+<h3 id="org7ea3b4a"><span class="section-number-3">1.2</span> <span class="todo SOMEDAY">SOMEDAY</span> Emacs 中顯示 Emoji</h3>
 <div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>State "SOMEDAY"    from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-01 Wed 10:20] </span></span> <br>
+Emacs 裏面倒是可以顯示 Emoji 表情了，但是導出的 HTML 文件裏面並不能顯示對應的 Emoji 表情。</li>
+</ul>
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">[2018-07-28 Sat 20:08]</span></span>
 </p>
@@ -376,14 +384,27 @@ Emacs 主題設置吧，其實也海星。:P
 </div>
 
 <div id="outline-container-org8abb124" class="outline-3">
-<h3 id="org8abb124"><span class="section-number-3">1.5</span> <span class="todo TODO">TODO</span> org-mode Clock Out/In 的替代方法</h3>
+<h3 id="org8abb124"><span class="section-number-3">1.5</span> <span class="done DONE">DONE</span> org-mode Clock Out/In 的替代方法</h3>
 <div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-08-01 Wed 10:16] </span></span> <br>
+其實不需要使用 clock in/out 的方式。只需要設置 <code>org-todo-keywords</code> 這個變量就可以了，它可以設置在進入或者某個狀態的時候，記錄時間戳或者寫一段文字作爲狀態改變的筆記。詳細的用法有時間再寫吧。 :P</li>
+</ul>
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">[2018-07-31 Tue 07:49]</span></span>
 </p>
 </div>
-</div>
 
+<div id="outline-container-org848937e" class="outline-4">
+<h4 id="org848937e"><span class="section-number-4">1.5.1</span> <span class="todo SOMEDAY">SOMEDAY</span> 介紹 <code>org-todo-keywords</code> 的詳細用法</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<ul class="org-ul">
+<li>State "SOMEDAY"    from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-01 Wed 10:22] </span></span> <br>
+最簡單的 TODO 早就會用了，可惜到現在才學會怎麼使用這個功能。</li>
+</ul>
+</div>
+</div>
+</div>
 <div id="outline-container-org1f09473" class="outline-3">
 <h3 id="org1f09473"><span class="section-number-3">1.6</span> <span class="done DONE">DONE</span> org-mode 中插入圖片</h3>
 <div class="outline-text-3" id="text-1-6">
@@ -417,8 +438,8 @@ Emacs 主題設置吧，其實也海星。:P
 </div>
 
 
-<div id="outline-container-orgffcd678" class="outline-3">
-<h3 id="orgffcd678"><span class="section-number-3">2.2</span> org-mode</h3>
+<div id="outline-container-orgec9c58d" class="outline-3">
+<h3 id="orgec9c58d"><span class="section-number-3">2.2</span> org-mode</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
 <div id="outline-container-orgd8fdec4" class="outline-4">
@@ -501,8 +522,8 @@ Emacs 的魅力所在。
 </p>
 </div>
 
-<div id="outline-container-orgec9c58d" class="outline-3">
-<h3 id="orgec9c58d"><span class="section-number-3">4.1</span> org-mode</h3>
+<div id="outline-container-org97d92b2" class="outline-3">
+<h3 id="org97d92b2"><span class="section-number-3">4.1</span> org-mode</h3>
 <div class="outline-text-3" id="text-4-1">
 <ol class="org-ol">
 <li>全局摺疊和展開子樹： <kbd>&lt;S-tab&gt;</kbd></li>
@@ -524,8 +545,8 @@ Emacs 的魅力所在。
 <br/>
 <p class='author'>Author: liuxueyang (<a href="mailto:liuxueyang457@gmail.com">liuxueyang457@gmail.com</a>)</p>
 <p class='date'>Created: 2018-07-28 Sat 00:00</p>
-<p class='export'>Exported: 2018-07-31 Tue 20:11</p>
-<p class='modified'>Modified: 2018-07-31 Tue 20:01</p>
+<p class='export'>Exported: 2018-08-01 Wed 10:23</p>
+<p class='modified'>Modified: 2018-08-01 Wed 10:22</p>
 <p class='creator'>Emacs 26.1 (Org mode 9.1.9)</p>
 <p class='validation'><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 
