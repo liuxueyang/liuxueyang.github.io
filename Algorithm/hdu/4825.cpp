@@ -494,11 +494,13 @@ public:
     REP(i, ALPHASIZE) { child[i] = nullptr; }
   }
   ~TrieNode() {}
-  void insert(string word) {
+  void insert(int num) {
     int i;
     TrieNode *cur = this;
-    for (auto x:word) {
-      i = x - '0';
+    LL tmp = 1LL<<32;
+    REPV(j, 33) {
+      tmp = 1 << j;
+      i = (tmp & num) >> j;
       if (nullptr == cur->child[i]) {
         cur->child[i] = new TrieNode();
         cur = cur->child[i];
@@ -533,18 +535,16 @@ public:
   LL find_xor_num(LL num) {
     LL res = 0;
     TrieNode *cur = this;
-    // PR1(num);
+
     int len=33;
     REPV(i, len) {
-      if ((num & (1<<(len-1-i))) == 0) {
+      if ((num & (1<<i)) == 0) {
         if (cur->child[1] != nullptr) { res += (1<<i); cur = cur->child[1]; }
         else cur = cur->child[0];
       } else {
-        // PR1(cur->child[0]);
         if (cur->child[0] != nullptr) cur = cur->child[0];
         else { res += (1<<i); cur = cur->child[1]; }
       }
-      // PR2(i, res);
     }
     return res;
   }
@@ -552,20 +552,6 @@ public:
   bool wordEnd;
   int cnt; // number of words with the prefix
 };
-
-
-
-string bin_num(LL x) {
-  string s;
-  while (x) {
-    if (x&1) s += '1';
-    else s += '0';
-    x >>= 1;
-  }
-  reverse(s.begin(), s.end());
-  while (s.size() < 33) s = "0" + s;
-  return s;
-}
 
 // ==================================================
 
@@ -585,10 +571,10 @@ int main( void ) {
     LL t;
     REP(jj, N) {
       cin >> t;
-      tree.insert(bin_num(t));
+      tree.insert(t);
     }
     REP(jj, M) {
-      cin >> t; s = bin_num(t);
+      cin >> t;
       LL r = tree.find_xor_num(t);
       PRLN(r);
     }
