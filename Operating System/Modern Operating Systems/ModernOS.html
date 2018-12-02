@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<!-- 2018-12-02 Sun 22:42 -->
+<!-- 2018-12-02 Sun 22:43 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>存儲管理</title>
+<title>ModernOS</title>
 <meta name="generator" content="Org mode">
 <meta name="author" content="liuxueyang">
 <style type="text/css">
@@ -263,119 +263,29 @@ for the JavaScript code in this tag.
  <a accesskey="H" href="/"> 主頁 </a>
 </div><div id="content">
 <header>
-<h1 class="title">存儲管理</h1>
+<h1 class="title">ModernOS</h1>
 </header><nav id="table-of-contents">
 <h2>&#30446;&#37636;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org27046bd">1. <span class="done DONE">DONE</span> 一種存儲器抽象：地址空間</a>
-<ul>
-<li><a href="#orgadd011b">1.1. 地址空間的概念</a></li>
-<li><a href="#org6b4f2f0">1.2. 交換技術</a></li>
-<li><a href="#orgd2ca877">1.3. 空閒內存管理</a>
-<ul>
-<li><a href="#org649d53f">1.3.1. 位圖</a></li>
-<li><a href="#org4696022">1.3.2. 空閒鏈表</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org434d88e">2. <span class="todo TODO">TODO</span> 虛擬內存</a></li>
+<li><a href="#org86e79e3">1. 進程與線程</a></li>
+<li><a href="#orgb195a90">2. 存儲管理</a></li>
+<li><a href="#orgcf6b7c7">3. 文件系統</a></li>
 </ul>
 </div>
 </nav>
-
-<div id="outline-container-org27046bd" class="outline-2">
-<h2 id="org27046bd"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> 一種存儲器抽象：地址空間</h2>
-<div class="outline-text-2" id="text-1">
-</div>
-<div id="outline-container-orgadd011b" class="outline-3">
-<h3 id="orgadd011b"><span class="section-number-3">1.1</span> 地址空間的概念</h3>
-<div class="outline-text-3" id="text-1-1">
 <p>
-每個程序需要有自己的地址空間，可以簡單地使用「動態重定位」的方法，利用基址寄存器和界限寄存器來把內存分段。缺點是每次訪問內存都需要進行加法和比較運算。
-</p>
-</div>
-</div>
-<div id="outline-container-org6b4f2f0" class="outline-3">
-<h3 id="org6b4f2f0"><span class="section-number-3">1.2</span> 交換技術</h3>
-<div class="outline-text-3" id="text-1-2">
-<p>
-當所有程序所需要的內存大於物理內存的時候，有兩種方法：
+簡要的學習筆記。
 </p>
 
-<ul class="org-ul">
-<li>比較簡單的方法是使用交換技術，即把進程佔用的內存存入磁盤，當它再次運行時再從磁盤調入內存。</li>
-<li>使用虛擬內存。該策略可以使程序在只有一部分被調入內存的情況下運行。</li>
-</ul>
+<div id="outline-container-org86e79e3" class="outline-2">
+<h2 id="org86e79e3"><span class="section-number-2">1</span> 進程與線程</h2>
 </div>
+<div id="outline-container-orgb195a90" class="outline-2">
+<h2 id="orgb195a90"><span class="section-number-2">2</span> <a href="Chapter3.html">存儲管理</a></h2>
 </div>
-<div id="outline-container-orgd2ca877" class="outline-3">
-<h3 id="orgd2ca877"><span class="section-number-3">1.3</span> 空閒內存管理</h3>
-<div class="outline-text-3" id="text-1-3">
-<p>
-操作系統管理動態分配的內存有兩種方式：
-</p>
-</div>
-<div id="outline-container-org649d53f" class="outline-4">
-<h4 id="org649d53f"><span class="section-number-4">1.3.1</span> 位圖</h4>
-<div class="outline-text-4" id="text-1-3-1">
-<p>
-用位圖中的一位代表分配單元是否空閒。位圖的大小和分配單元的大小有關。缺點是：在位圖中找到連續的空閒內存是耗時的操作。
-</p>
-</div>
-</div>
-<div id="outline-container-org4696022" class="outline-4">
-<h4 id="org4696022"><span class="section-number-4">1.3.2</span> 空閒鏈表</h4>
-<div class="outline-text-4" id="text-1-3-2">
-<p>
-維護一個記錄已分配內存段和空閒內存段的鏈表。爲進程分配內存的時候有幾種常見的算法：
-</p>
-</div>
-<ol class="org-ol">
-<li><a id="org486ecd3"></a>首次適配<br>
-<div class="outline-text-5" id="text-1-3-2-1">
-<p>
-每次從鏈表頭開始搜索，找到第一個足夠大的空閒區。根據需要把這個空閒區全部佔用或者分割成兩部分，一部分供進程使用，一部分形成新的空閒區。
-</p>
-</div>
-</li>
-<li><a id="org737751d"></a>下次適配<br>
-<div class="outline-text-5" id="text-1-3-2-2">
-<p>
-和首次適配算法相同，不同點是每次找到合適的空閒區時都記錄當時的位置，下次尋找空閒區時從上次結束的地方開始搜索。性能略低於首次適配。
-</p>
-</div>
-</li>
-<li><a id="org654e07f"></a>最佳適配<br>
-<div class="outline-text-5" id="text-1-3-2-3">
-<p>
-搜索整個鏈表，找出能夠容納進程的最小的空閒區。它比前兩種算法浪費更多的內存，因爲產生了很多無用的小空閒區。
-</p>
-</div>
-</li>
-<li><a id="orgb6a0239"></a>最差適配<br>
-<div class="outline-text-5" id="text-1-3-2-4">
-<p>
-總是分配最大的可用空閒區，使得新的空閒區比較大而可以繼續使用。這也不是一個好的算法。
-</p>
-</div>
-</li>
-<li><a id="org3665052"></a>快速適配<br>
-<div class="outline-text-5" id="text-1-3-2-5">
-<p>
-把常用大小的空閒區維護單獨的鏈表，這樣找到指定大小的空閒區就會十分快速。這個算法和所有按照空閒區大小排序的算法一樣都有一個缺點，即當進程終止或換出時，尋找它的相鄰塊，查看是否可以合併是十分耗時的。
-</p>
-</div>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div id="outline-container-org434d88e" class="outline-2">
-<h2 id="org434d88e"><span class="section-number-2">2</span> <span class="todo TODO">TODO</span> 虛擬內存</h2>
-<div class="outline-text-2" id="text-2">
-</div>
+<div id="outline-container-orgcf6b7c7" class="outline-2">
+<h2 id="orgcf6b7c7"><span class="section-number-2">3</span> 文件系統</h2>
 </div>
 </div>
 <div id="postamble" class="status">
@@ -383,7 +293,7 @@ for the JavaScript code in this tag.
 <br/>
 <br/>
 <p class='author'>Author: liuxueyang (<a href="mailto:liuxueyang457@gmail.com">liuxueyang457@gmail.com</a>)</p>
-<p class='date'>Date: 2018-09-30 Sun 00:00</p>
+<p class='date'>Date: 2018-12-02 Sun 00:00</p>
 <p class='creator'>Emacs 26.1 (Org mode 9.1.9)</p>
 <p class='validation'><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 
