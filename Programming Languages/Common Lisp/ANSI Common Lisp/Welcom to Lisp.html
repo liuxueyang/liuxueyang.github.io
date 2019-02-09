@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<!-- 2018-11-29 Thu 22:20 -->
+<!-- 2019-02-09 Sat 20:26 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Welcom to Lisp</title>
@@ -268,51 +268,51 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#37636;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7f079d3">1. <span class="done DONE">DONE</span> Form</a></li>
-<li><a href="#orgcd2f5b3">2. <span class="done DONE">DONE</span> Evaluation</a></li>
-<li><a href="#orgf104f8e">3. <span class="done DONE">DONE</span> Data</a></li>
-<li><a href="#org129df37">4. <span class="done DONE">DONE</span> List Operations</a></li>
-<li><a href="#org596841d">5. <span class="done DONE">DONE</span> Truth</a></li>
-<li><a href="#org3e062fd">6. <span class="done DONE">DONE</span> Functions</a></li>
-<li><a href="#orgd81da06">7. <span class="done DONE">DONE</span> Recursion</a></li>
-<li><a href="#org738e618">8. <span class="done DONE">DONE</span> Reading Lisp</a></li>
-<li><a href="#org78ac269">9. <span class="done DONE">DONE</span> Input and Output</a></li>
-<li><a href="#org801aa43">10. <span class="done DONE">DONE</span> Variables</a></li>
-<li><a href="#org2cc9e36">11. <span class="done DONE">DONE</span> Assignment</a></li>
-<li><a href="#org0566093">12. <span class="done DONE">DONE</span> Functional Programming</a></li>
-<li><a href="#orgad8ddcd">13. <span class="done DONE">DONE</span> Iteration</a></li>
-<li><a href="#org87f951c">14. <span class="done DONE">DONE</span> Functions as Objects</a></li>
-<li><a href="#orge8f9908">15. <span class="done DONE">DONE</span> Types</a></li>
-<li><a href="#orgf1809bd">16. <span class="done DONE">DONE</span> Looking Forward</a></li>
-<li><a href="#org8d923f8">17. <span class="done DONE">DONE</span> Exercises</a>
+<li><a href="#org95a6f09">1. <span class="done DONE">DONE</span> Form</a></li>
+<li><a href="#org9c15416">2. <span class="done DONE">DONE</span> Evaluation</a></li>
+<li><a href="#orgfd92ffd">3. <span class="done DONE">DONE</span> Data</a></li>
+<li><a href="#orga447b33">4. <span class="done DONE">DONE</span> List Operations</a></li>
+<li><a href="#org30daa1f">5. <span class="done DONE">DONE</span> Truth</a></li>
+<li><a href="#org1e6758f">6. <span class="done DONE">DONE</span> Functions</a></li>
+<li><a href="#org126481e">7. <span class="done DONE">DONE</span> Recursion</a></li>
+<li><a href="#orgf91aabc">8. <span class="done DONE">DONE</span> Reading Lisp</a></li>
+<li><a href="#orga695921">9. <span class="done DONE">DONE</span> Input and Output</a></li>
+<li><a href="#orgd999526">10. <span class="done DONE">DONE</span> Variables</a></li>
+<li><a href="#orgd638c1f">11. <span class="done DONE">DONE</span> Assignment</a></li>
+<li><a href="#org55c4ed4">12. <span class="done DONE">DONE</span> Functional Programming</a></li>
+<li><a href="#org469ae9e">13. <span class="done DONE">DONE</span> Iteration</a></li>
+<li><a href="#org6a39b76">14. <span class="done DONE">DONE</span> Functions as Objects</a></li>
+<li><a href="#org345b31f">15. <span class="done DONE">DONE</span> Types</a></li>
+<li><a href="#org2fe920d">16. <span class="done DONE">DONE</span> Looking Forward</a></li>
+<li><a href="#org21815ee">17. <span class="done DONE">DONE</span> Exercises</a>
 <ul>
-<li><a href="#org1ca2dc0">17.1. Problem 2</a></li>
-<li><a href="#org31cf9eb">17.2. Problem 3</a></li>
-<li><a href="#org6f3b408">17.3. Problem 4</a></li>
-<li><a href="#org62d0310">17.4. Problem 5</a>
+<li><a href="#org69514c7">17.1. Problem 2</a></li>
+<li><a href="#orgfd188d5">17.2. Problem 3</a></li>
+<li><a href="#org126ae2f">17.3. Problem 4</a></li>
+<li><a href="#org008d193">17.4. Problem 5</a>
 <ul>
-<li><a href="#org51705a3">17.4.1. Problem a</a></li>
-<li><a href="#org84c750a">17.4.2. Problem b</a></li>
+<li><a href="#org00df097">17.4.1. Problem a</a></li>
+<li><a href="#org91746db">17.4.2. Problem b</a></li>
 </ul>
 </li>
-<li><a href="#org5b11716">17.5. <span class="done DONE">DONE</span> Problem 6</a>
+<li><a href="#org3a87ef6">17.5. <span class="done DONE">DONE</span> Problem 6</a>
 <ul>
-<li><a href="#org64dc294">17.5.1. Problem a</a></li>
-<li><a href="#org2cd23a0">17.5.2. Problem b</a></li>
-<li><a href="#orgba2abe8">17.5.3. Problem c</a></li>
+<li><a href="#org11f82ce">17.5.1. Problem a</a></li>
+<li><a href="#org540e141">17.5.2. Problem b</a></li>
+<li><a href="#org3ca0394">17.5.3. Problem c</a></li>
 </ul>
 </li>
-<li><a href="#org71e7d13">17.6. <span class="done DONE">DONE</span> Problem 7</a></li>
-<li><a href="#org218855d">17.7. <span class="done DONE">DONE</span> Problem 8</a>
+<li><a href="#org3174ed9">17.6. <span class="done DONE">DONE</span> Problem 7</a></li>
+<li><a href="#org91013a7">17.7. <span class="done DONE">DONE</span> Problem 8</a>
 <ul>
-<li><a href="#orgacfb584">17.7.1. Problem a</a></li>
-<li><a href="#org32e9c37">17.7.2. Problem b</a></li>
+<li><a href="#org083e436">17.7.1. Problem a</a></li>
+<li><a href="#org0aea037">17.7.2. Problem b</a></li>
 </ul>
 </li>
-<li><a href="#orgd8962d4">17.8. <span class="done DONE">DONE</span> Problem 9</a>
+<li><a href="#org686a98e">17.8. <span class="done DONE">DONE</span> Problem 9</a>
 <ul>
-<li><a href="#orgfcc805f">17.8.1. Problem a</a></li>
-<li><a href="#org6e89a75">17.8.2. Problem b</a></li>
+<li><a href="#org14d3392">17.8.1. Problem a</a></li>
+<li><a href="#orgdd76729">17.8.2. Problem b</a></li>
 </ul>
 </li>
 </ul>
@@ -320,8 +320,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </nav>
-<div id="outline-container-org7f079d3" class="outline-2">
-<h2 id="org7f079d3"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> Form</h2>
+<div id="outline-container-org95a6f09" class="outline-2">
+<h2 id="org95a6f09"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> Form</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-19 Sun 14:19]</span></span></li>
@@ -341,8 +341,8 @@ Lisp 表達式只有兩種：原子「atom」、列表「list」。像 C 一類�
 </div>
 </div>
 
-<div id="outline-container-orgcd2f5b3" class="outline-2">
-<h2 id="orgcd2f5b3"><span class="section-number-2">2</span> <span class="done DONE">DONE</span> Evaluation</h2>
+<div id="outline-container-org9c15416" class="outline-2">
+<h2 id="org9c15416"><span class="section-number-2">2</span> <span class="done DONE">DONE</span> Evaluation</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-19 Sun 15:45]</span></span></li>
@@ -377,8 +377,8 @@ operator」，接受一個參數，並且按照參數的原樣返回它。作用
 </div>
 </div>
 
-<div id="outline-container-orgf104f8e" class="outline-2">
-<h2 id="orgf104f8e"><span class="section-number-2">3</span> <span class="done DONE">DONE</span> Data</h2>
+<div id="outline-container-orgfd92ffd" class="outline-2">
+<h2 id="orgfd92ffd"><span class="section-number-2">3</span> <span class="done DONE">DONE</span> Data</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-19 Sun 16:48]</span></span></li>
@@ -461,8 +461,8 @@ T
 </div>
 </div>
 
-<div id="outline-container-org129df37" class="outline-2">
-<h2 id="org129df37"><span class="section-number-2">4</span> <span class="done DONE">DONE</span> List Operations</h2>
+<div id="outline-container-orga447b33" class="outline-2">
+<h2 id="orga447b33"><span class="section-number-2">4</span> <span class="done DONE">DONE</span> List Operations</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-19 Sun 17:04] </span></span> <br>
@@ -506,8 +506,8 @@ CL-USER&gt; <span class="org-rainbow-delimiters-depth-1">(</span>caddr '<span cl
 </div>
 </div>
 
-<div id="outline-container-org596841d" class="outline-2">
-<h2 id="org596841d"><span class="section-number-2">5</span> <span class="done DONE">DONE</span> Truth</h2>
+<div id="outline-container-org30daa1f" class="outline-2">
+<h2 id="org30daa1f"><span class="section-number-2">5</span> <span class="done DONE">DONE</span> Truth</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 11:09]</span></span></li>
@@ -552,8 +552,8 @@ NIL
 </div>
 </div>
 
-<div id="outline-container-org3e062fd" class="outline-2">
-<h2 id="org3e062fd"><span class="section-number-2">6</span> <span class="done DONE">DONE</span> Functions</h2>
+<div id="outline-container-org1e6758f" class="outline-2">
+<h2 id="org1e6758f"><span class="section-number-2">6</span> <span class="done DONE">DONE</span> Functions</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 11:20]</span></span></li>
@@ -574,8 +574,8 @@ Symbol 其實是名字，用來綁定到變量或者函數上。
 </div>
 </div>
 
-<div id="outline-container-orgd81da06" class="outline-2">
-<h2 id="orgd81da06"><span class="section-number-2">7</span> <span class="done DONE">DONE</span> Recursion</h2>
+<div id="outline-container-org126481e" class="outline-2">
+<h2 id="org126481e"><span class="section-number-2">7</span> <span class="done DONE">DONE</span> Recursion</h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 11:26]</span></span></li>
@@ -596,8 +596,8 @@ Symbol 其實是名字，用來綁定到變量或者函數上。
 </div>
 </div>
 
-<div id="outline-container-org738e618" class="outline-2">
-<h2 id="org738e618"><span class="section-number-2">8</span> <span class="done DONE">DONE</span> Reading Lisp</h2>
+<div id="outline-container-orgf91aabc" class="outline-2">
+<h2 id="orgf91aabc"><span class="section-number-2">8</span> <span class="done DONE">DONE</span> Reading Lisp</h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 11:37]</span></span></li>
@@ -622,8 +622,8 @@ Symbol 其實是名字，用來綁定到變量或者函數上。
 </div>
 </div>
 
-<div id="outline-container-org78ac269" class="outline-2">
-<h2 id="org78ac269"><span class="section-number-2">9</span> <span class="done DONE">DONE</span> Input and Output</h2>
+<div id="outline-container-orga695921" class="outline-2">
+<h2 id="orga695921"><span class="section-number-2">9</span> <span class="done DONE">DONE</span> Input and Output</h2>
 <div class="outline-text-2" id="text-9">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 11:47]</span></span></li>
@@ -667,8 +667,8 @@ NIL
 </p>
 </div>
 </div>
-<div id="outline-container-org801aa43" class="outline-2">
-<h2 id="org801aa43"><span class="section-number-2">10</span> <span class="done DONE">DONE</span> Variables</h2>
+<div id="outline-container-orgd999526" class="outline-2">
+<h2 id="orgd999526"><span class="section-number-2">10</span> <span class="done DONE">DONE</span> Variables</h2>
 <div class="outline-text-2" id="text-10">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 14:57]</span></span></li>
@@ -750,8 +750,8 @@ NIL
 </div>
 </div>
 
-<div id="outline-container-org2cc9e36" class="outline-2">
-<h2 id="org2cc9e36"><span class="section-number-2">11</span> <span class="done DONE">DONE</span> Assignment</h2>
+<div id="outline-container-orgd638c1f" class="outline-2">
+<h2 id="orgd638c1f"><span class="section-number-2">11</span> <span class="done DONE">DONE</span> Assignment</h2>
 <div class="outline-text-2" id="text-11">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 15:40]</span></span></li>
@@ -786,8 +786,8 @@ CL-USER&gt; x
 </div>
 </div>
 
-<div id="outline-container-org0566093" class="outline-2">
-<h2 id="org0566093"><span class="section-number-2">12</span> <span class="done DONE">DONE</span> Functional Programming</h2>
+<div id="outline-container-org55c4ed4" class="outline-2">
+<h2 id="org55c4ed4"><span class="section-number-2">12</span> <span class="done DONE">DONE</span> Functional Programming</h2>
 <div class="outline-text-2" id="text-12">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 16:51]</span></span></li>
@@ -816,8 +816,8 @@ CL-USER&gt; lst
 </div>
 </div>
 
-<div id="outline-container-orgad8ddcd" class="outline-2">
-<h2 id="orgad8ddcd"><span class="section-number-2">13</span> <span class="done DONE">DONE</span> Iteration</h2>
+<div id="outline-container-org469ae9e" class="outline-2">
+<h2 id="org469ae9e"><span class="section-number-2">13</span> <span class="done DONE">DONE</span> Iteration</h2>
 <div class="outline-text-2" id="text-13">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 19:15]</span></span></li>
@@ -907,8 +907,8 @@ DONE
 </div>
 </div>
 
-<div id="outline-container-org87f951c" class="outline-2">
-<h2 id="org87f951c"><span class="section-number-2">14</span> <span class="done DONE">DONE</span> Functions as Objects</h2>
+<div id="outline-container-org6a39b76" class="outline-2">
+<h2 id="org6a39b76"><span class="section-number-2">14</span> <span class="done DONE">DONE</span> Functions as Objects</h2>
 <div class="outline-text-2" id="text-14">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 21:26]</span></span></li>
@@ -1007,8 +1007,8 @@ CL-USER&gt; <span class="org-rainbow-delimiters-depth-1">(</span>funcall #'<span
 </div>
 </div>
 
-<div id="outline-container-orge8f9908" class="outline-2">
-<h2 id="orge8f9908"><span class="section-number-2">15</span> <span class="done DONE">DONE</span> Types</h2>
+<div id="outline-container-org345b31f" class="outline-2">
+<h2 id="org345b31f"><span class="section-number-2">15</span> <span class="done DONE">DONE</span> Types</h2>
 <div class="outline-text-2" id="text-15">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 21:33]</span></span></li>
@@ -1033,8 +1033,8 @@ T
 </div>
 </div>
 
-<div id="outline-container-orgf1809bd" class="outline-2">
-<h2 id="orgf1809bd"><span class="section-number-2">16</span> <span class="done DONE">DONE</span> Looking Forward</h2>
+<div id="outline-container-org2fe920d" class="outline-2">
+<h2 id="org2fe920d"><span class="section-number-2">16</span> <span class="done DONE">DONE</span> Looking Forward</h2>
 <div class="outline-text-2" id="text-16">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 21:58]</span></span></li>
@@ -1044,15 +1044,15 @@ Lisp 可以改變程序員思考編程的方式：與其使用某種編程語言
 </p>
 </div>
 </div>
-<div id="outline-container-org8d923f8" class="outline-2">
-<h2 id="org8d923f8"><span class="section-number-2">17</span> <span class="done DONE">DONE</span> Exercises</h2>
+<div id="outline-container-org21815ee" class="outline-2">
+<h2 id="org21815ee"><span class="section-number-2">17</span> <span class="done DONE">DONE</span> Exercises</h2>
 <div class="outline-text-2" id="text-17">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 23:30]</span></span></li>
 </ul>
 </div>
-<div id="outline-container-org1ca2dc0" class="outline-3">
-<h3 id="org1ca2dc0"><span class="section-number-3">17.1</span> Problem 2</h3>
+<div id="outline-container-org69514c7" class="outline-3">
+<h3 id="org69514c7"><span class="section-number-3">17.1</span> Problem 2</h3>
 <div class="outline-text-3" id="text-17-1">
 <div class="org-src-container">
 <pre class="src src-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>cons 'a <span class="org-rainbow-delimiters-depth-2">(</span>cons 'b <span class="org-rainbow-delimiters-depth-3">(</span>cons 'c nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -1062,8 +1062,8 @@ Lisp 可以改變程序員思考編程的方式：與其使用某種編程語言
 </div>
 </div>
 </div>
-<div id="outline-container-org31cf9eb" class="outline-3">
-<h3 id="org31cf9eb"><span class="section-number-3">17.2</span> Problem 3</h3>
+<div id="outline-container-orgfd188d5" class="outline-3">
+<h3 id="orgfd188d5"><span class="section-number-3">17.2</span> Problem 3</h3>
 <div class="outline-text-3" id="text-17-2">
 <div class="org-src-container">
 <pre class="src src-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">our-fourth</span> <span class="org-rainbow-delimiters-depth-2">(</span>lst<span class="org-rainbow-delimiters-depth-2">)</span>
@@ -1072,8 +1072,8 @@ Lisp 可以改變程序員思考編程的方式：與其使用某種編程語言
 </div>
 </div>
 </div>
-<div id="outline-container-org6f3b408" class="outline-3">
-<h3 id="org6f3b408"><span class="section-number-3">17.3</span> Problem 4</h3>
+<div id="outline-container-org126ae2f" class="outline-3">
+<h3 id="org126ae2f"><span class="section-number-3">17.3</span> Problem 4</h3>
 <div class="outline-text-3" id="text-17-3">
 <div class="org-src-container">
 <pre class="src src-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">greater-two</span> <span class="org-rainbow-delimiters-depth-2">(</span>x y<span class="org-rainbow-delimiters-depth-2">)</span>
@@ -1084,12 +1084,12 @@ Lisp 可以改變程序員思考編程的方式：與其使用某種編程語言
 </div>
 </div>
 </div>
-<div id="outline-container-org62d0310" class="outline-3">
-<h3 id="org62d0310"><span class="section-number-3">17.4</span> Problem 5</h3>
+<div id="outline-container-org008d193" class="outline-3">
+<h3 id="org008d193"><span class="section-number-3">17.4</span> Problem 5</h3>
 <div class="outline-text-3" id="text-17-4">
 </div>
-<div id="outline-container-org51705a3" class="outline-4">
-<h4 id="org51705a3"><span class="section-number-4">17.4.1</span> Problem a</h4>
+<div id="outline-container-org00df097" class="outline-4">
+<h4 id="org00df097"><span class="section-number-4">17.4.1</span> Problem a</h4>
 <div class="outline-text-4" id="text-17-4-1">
 <div class="org-src-container">
 <pre class="src src-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">enigma</span> <span class="org-rainbow-delimiters-depth-2">(</span>x<span class="org-rainbow-delimiters-depth-2">)</span>
@@ -1104,8 +1104,8 @@ Lisp 可以改變程序員思考編程的方式：與其使用某種編程語言
 </p>
 </div>
 </div>
-<div id="outline-container-org84c750a" class="outline-4">
-<h4 id="org84c750a"><span class="section-number-4">17.4.2</span> Problem b</h4>
+<div id="outline-container-org91746db" class="outline-4">
+<h4 id="org91746db"><span class="section-number-4">17.4.2</span> Problem b</h4>
 <div class="outline-text-4" id="text-17-4-2">
 <div class="org-src-container">
 <pre class="src src-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">mystery</span> <span class="org-rainbow-delimiters-depth-2">(</span>x y<span class="org-rainbow-delimiters-depth-2">)</span>
@@ -1136,15 +1136,15 @@ CL-USER&gt; <span class="org-rainbow-delimiters-depth-1">(</span>mystery 'a '<sp
 </div>
 </div>
 </div>
-<div id="outline-container-org5b11716" class="outline-3">
-<h3 id="org5b11716"><span class="section-number-3">17.5</span> <span class="done DONE">DONE</span> Problem 6</h3>
+<div id="outline-container-org3a87ef6" class="outline-3">
+<h3 id="org3a87ef6"><span class="section-number-3">17.5</span> <span class="done DONE">DONE</span> Problem 6</h3>
 <div class="outline-text-3" id="text-17-5">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 23:04]</span></span></li>
 </ul>
 </div>
-<div id="outline-container-org64dc294" class="outline-4">
-<h4 id="org64dc294"><span class="section-number-4">17.5.1</span> Problem a</h4>
+<div id="outline-container-org11f82ce" class="outline-4">
+<h4 id="org11f82ce"><span class="section-number-4">17.5.1</span> Problem a</h4>
 <div class="outline-text-4" id="text-17-5-1">
 <div class="org-src-container">
 <pre class="src src-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>car <span class="org-rainbow-delimiters-depth-2">(</span>car <span class="org-rainbow-delimiters-depth-3">(</span>cdr '<span class="org-rainbow-delimiters-depth-4">(</span>a <span class="org-rainbow-delimiters-depth-5">(</span>b c<span class="org-rainbow-delimiters-depth-5">)</span> d<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -1152,8 +1152,8 @@ CL-USER&gt; <span class="org-rainbow-delimiters-depth-1">(</span>mystery 'a '<sp
 </div>
 </div>
 </div>
-<div id="outline-container-org2cd23a0" class="outline-4">
-<h4 id="org2cd23a0"><span class="section-number-4">17.5.2</span> Problem b</h4>
+<div id="outline-container-org540e141" class="outline-4">
+<h4 id="org540e141"><span class="section-number-4">17.5.2</span> Problem b</h4>
 <div class="outline-text-4" id="text-17-5-2">
 <div class="org-src-container">
 <pre class="src src-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>or 13 <span class="org-rainbow-delimiters-depth-2">(</span>/ 1 0<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -1161,8 +1161,8 @@ CL-USER&gt; <span class="org-rainbow-delimiters-depth-1">(</span>mystery 'a '<sp
 </div>
 </div>
 </div>
-<div id="outline-container-orgba2abe8" class="outline-4">
-<h4 id="orgba2abe8"><span class="section-number-4">17.5.3</span> Problem c</h4>
+<div id="outline-container-org3ca0394" class="outline-4">
+<h4 id="org3ca0394"><span class="section-number-4">17.5.3</span> Problem c</h4>
 <div class="outline-text-4" id="text-17-5-3">
 <div class="org-src-container">
 <pre class="src src-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>apply #'list 1 nil<span class="org-rainbow-delimiters-depth-1">)</span>
@@ -1171,8 +1171,8 @@ CL-USER&gt; <span class="org-rainbow-delimiters-depth-1">(</span>mystery 'a '<sp
 </div>
 </div>
 </div>
-<div id="outline-container-org71e7d13" class="outline-3">
-<h3 id="org71e7d13"><span class="section-number-3">17.6</span> <span class="done DONE">DONE</span> Problem 7</h3>
+<div id="outline-container-org3174ed9" class="outline-3">
+<h3 id="org3174ed9"><span class="section-number-3">17.6</span> <span class="done DONE">DONE</span> Problem 7</h3>
 <div class="outline-text-3" id="text-17-6">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 23:13]</span></span></li>
@@ -1188,15 +1188,15 @@ CL-USER&gt; <span class="org-rainbow-delimiters-depth-1">(</span>mystery 'a '<sp
 </div>
 </div>
 </div>
-<div id="outline-container-org218855d" class="outline-3">
-<h3 id="org218855d"><span class="section-number-3">17.7</span> <span class="done DONE">DONE</span> Problem 8</h3>
+<div id="outline-container-org91013a7" class="outline-3">
+<h3 id="org91013a7"><span class="section-number-3">17.7</span> <span class="done DONE">DONE</span> Problem 8</h3>
 <div class="outline-text-3" id="text-17-7">
 <ul class="org-ul">
 <li>State "DONE"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 23:23]</span></span></li>
 </ul>
 </div>
-<div id="outline-container-orgacfb584" class="outline-4">
-<h4 id="orgacfb584"><span class="section-number-4">17.7.1</span> Problem a</h4>
+<div id="outline-container-org083e436" class="outline-4">
+<h4 id="org083e436"><span class="section-number-4">17.7.1</span> Problem a</h4>
 <div class="outline-text-4" id="text-17-7-1">
 <div class="org-src-container">
 <pre class="src src-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">print-dots</span> <span class="org-rainbow-delimiters-depth-2">(</span>n<span class="org-rainbow-delimiters-depth-2">)</span>
@@ -1214,8 +1214,8 @@ CL-USER&gt; <span class="org-rainbow-delimiters-depth-1">(</span>mystery 'a '<sp
 </div>
 </div>
 </div>
-<div id="outline-container-org32e9c37" class="outline-4">
-<h4 id="org32e9c37"><span class="section-number-4">17.7.2</span> Problem b</h4>
+<div id="outline-container-org0aea037" class="outline-4">
+<h4 id="org0aea037"><span class="section-number-4">17.7.2</span> Problem b</h4>
 <div class="outline-text-4" id="text-17-7-2">
 <div class="org-src-container">
 <pre class="src src-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">count-a</span> <span class="org-rainbow-delimiters-depth-2">(</span>lst<span class="org-rainbow-delimiters-depth-2">)</span>
@@ -1236,16 +1236,16 @@ CL-USER&gt; <span class="org-rainbow-delimiters-depth-1">(</span>mystery 'a '<sp
 </div>
 </div>
 </div>
-<div id="outline-container-orgd8962d4" class="outline-3">
-<h3 id="orgd8962d4"><span class="section-number-3">17.8</span> <span class="done DONE">DONE</span> Problem 9</h3>
+<div id="outline-container-org686a98e" class="outline-3">
+<h3 id="org686a98e"><span class="section-number-3">17.8</span> <span class="done DONE">DONE</span> Problem 9</h3>
 <div class="outline-text-3" id="text-17-8">
 <ul class="org-ul">
 <li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 23:29]</span></span></li>
 <li>State "TODO"       from              <span class="timestamp-wrapper"><span class="timestamp">[2018-08-20 Mon 23:23]</span></span></li>
 </ul>
 </div>
-<div id="outline-container-orgfcc805f" class="outline-4">
-<h4 id="orgfcc805f"><span class="section-number-4">17.8.1</span> Problem a</h4>
+<div id="outline-container-org14d3392" class="outline-4">
+<h4 id="org14d3392"><span class="section-number-4">17.8.1</span> Problem a</h4>
 <div class="outline-text-4" id="text-17-8-1">
 <p>
 原程序錯在 <code>remove</code> 不會改變原有列表。
@@ -1259,8 +1259,8 @@ CL-USER&gt; <span class="org-rainbow-delimiters-depth-1">(</span>mystery 'a '<sp
 </div>
 </div>
 </div>
-<div id="outline-container-org6e89a75" class="outline-4">
-<h4 id="org6e89a75"><span class="section-number-4">17.8.2</span> Problem b</h4>
+<div id="outline-container-orgdd76729" class="outline-4">
+<h4 id="orgdd76729"><span class="section-number-4">17.8.2</span> Problem b</h4>
 <div class="outline-text-4" id="text-17-8-2">
 <p>
 原程序錯在沒有考慮參數是空列表的基本情況。

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<!-- 2018-11-29 Thu 22:20 -->
+<!-- 2019-02-09 Sat 20:26 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chapter 3 數組和字符串</title>
@@ -290,23 +290,23 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#37636;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf3a5670">1. <span class="done DONE">DONE</span> 數組</a></li>
-<li><a href="#orgec7b6fd">2. <span class="done DONE">DONE</span> 字符數組</a></li>
-<li><a href="#org3381b02">3. <span class="done DONE">DONE</span> 最長迴文字串</a>
+<li><a href="#org0e8ccba">1. <span class="done DONE">DONE</span> 數組</a></li>
+<li><a href="#org6ab6cf0">2. <span class="done DONE">DONE</span> 字符數組</a></li>
+<li><a href="#orgfdd3037">3. <span class="done DONE">DONE</span> 最長迴文字串</a>
 <ul>
-<li><a href="#org2e0e4cc">3.1. fgetc 和 getchar</a></li>
-<li><a href="#org682ba34">3.2. fgets 和 gets</a></li>
-<li><a href="#org1cd11df">3.3. ctype 中的幾個實用函數</a></li>
-<li><a href="#orgee61b38">3.4. 實現</a></li>
+<li><a href="#org13b3f4b">3.1. fgetc 和 getchar</a></li>
+<li><a href="#org42071a0">3.2. fgets 和 gets</a></li>
+<li><a href="#org7e6f42a">3.3. ctype 中的幾個實用函數</a></li>
+<li><a href="#orgee87431">3.4. 實現</a></li>
 </ul>
 </li>
-<li><a href="#orge4454f6">4. <span class="done DONE">DONE</span> 小結與習題</a>
+<li><a href="#org2042300">4. <span class="done DONE">DONE</span> 小結與習題</a>
 <ul>
-<li><a href="#org6649fab">4.1. 補碼表示法</a></li>
-<li><a href="#org5867067">4.2. 關於輸入輸出</a></li>
-<li><a href="#org1cbafa2">4.3. I/O 的效率</a>
+<li><a href="#org27d573b">4.1. 補碼表示法</a></li>
+<li><a href="#org0f15451">4.2. 關於輸入輸出</a></li>
+<li><a href="#orgfffee27">4.3. I/O 的效率</a>
 <ul>
-<li><a href="#orge3c20e9">4.3.1. 使用字符串流</a></li>
+<li><a href="#org21203b0">4.3.1. 使用字符串流</a></li>
 </ul>
 </li>
 </ul>
@@ -315,8 +315,8 @@ for the JavaScript code in this tag.
 </div>
 </nav>
 
-<div id="outline-container-orgf3a5670" class="outline-2">
-<h2 id="orgf3a5670"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> 數組</h2>
+<div id="outline-container-org0e8ccba" class="outline-2">
+<h2 id="org0e8ccba"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> 數組</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <span class="timestamp-wrapper">
@@ -368,8 +368,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-orgec7b6fd" class="outline-2">
-<h2 id="orgec7b6fd"><span class="section-number-2">2</span> <span class="done DONE">DONE</span> 字符數組</h2>
+<div id="outline-container-org6ab6cf0" class="outline-2">
+<h2 id="org6ab6cf0"><span class="section-number-2">2</span> <span class="done DONE">DONE</span> 字符數組</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 <span class="timestamp-wrapper">
@@ -390,8 +390,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-org3381b02" class="outline-2">
-<h2 id="org3381b02"><span class="section-number-2">3</span> <span class="done DONE">DONE</span> 最長迴文字串</h2>
+<div id="outline-container-orgfdd3037" class="outline-2">
+<h2 id="orgfdd3037"><span class="section-number-2">3</span> <span class="done DONE">DONE</span> 最長迴文字串</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>State "DONE"       from "INPROGRESS" <span class="timestamp-wrapper"><span class="timestamp">[2018-09-11 Tue 11:25]</span></span></li>
@@ -407,8 +407,8 @@ for the JavaScript code in this tag.
 介紹實用的字符串處理函數。
 </p>
 </div>
-<div id="outline-container-org2e0e4cc" class="outline-3">
-<h3 id="org2e0e4cc"><span class="section-number-3">3.1</span> fgetc 和 getchar</h3>
+<div id="outline-container-org13b3f4b" class="outline-3">
+<h3 id="org13b3f4b"><span class="section-number-3">3.1</span> fgetc 和 getchar</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 <code>fgetc(stdin)</code> 從標準輸入讀取一個字符，返回一個 <code>int</code> ，如果遇到文件結束符，返回 <code>EOF</code> 。相當於 <code>getchar()</code> 函數。使用 <code>getchar()</code> 函數處理字符的時候需要特別小心，尤其注意空格和換行。
@@ -440,8 +440,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-org682ba34" class="outline-3">
-<h3 id="org682ba34"><span class="section-number-3">3.2</span> fgets 和 gets</h3>
+<div id="outline-container-org42071a0" class="outline-3">
+<h3 id="org42071a0"><span class="section-number-3">3.2</span> fgets 和 gets</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 <code>fgets(buf, MAXN, fin)</code> 讀取完整的一行，讀取字符個數不超過 MAXN - 1，然後自動在末尾添上結束符 '\0'。它遇到換行符就結束讀取，換行符就是
@@ -453,8 +453,8 @@ buf 的最後一個字符（再往後就是字符串結束符了）。當這個�
 </p>
 </div>
 </div>
-<div id="outline-container-org1cd11df" class="outline-3">
-<h3 id="org1cd11df"><span class="section-number-3">3.3</span> ctype 中的幾個實用函數</h3>
+<div id="outline-container-org7e6f42a" class="outline-3">
+<h3 id="org7e6f42a"><span class="section-number-3">3.3</span> ctype 中的幾個實用函數</h3>
 <div class="outline-text-3" id="text-3-3">
 <ul class="org-ul">
 <li>isalpha 判斷字符是否爲大寫字母或者小寫字母</li>
@@ -465,8 +465,8 @@ buf 的最後一個字符（再往後就是字符串結束符了）。當這個�
 </ul>
 </div>
 </div>
-<div id="outline-container-orgee61b38" class="outline-3">
-<h3 id="orgee61b38"><span class="section-number-3">3.4</span> 實現</h3>
+<div id="outline-container-orgee87431" class="outline-3">
+<h3 id="orgee87431"><span class="section-number-3">3.4</span> 實現</h3>
 <div class="outline-text-3" id="text-3-4">
 <div class="org-src-container">
 <pre class="src src-cpp"><span class="org-keyword">const</span> <span class="org-type">int</span> <span class="org-variable-name">MAXN</span> = 5000 + 20;
@@ -529,27 +529,27 @@ buf 的最後一個字符（再往後就是字符串結束符了）。當這個�
 </div>
 </div>
 </div>
-<div id="outline-container-orge4454f6" class="outline-2">
-<h2 id="orge4454f6"><span class="section-number-2">4</span> <span class="done DONE">DONE</span> 小結與習題</h2>
+<div id="outline-container-org2042300" class="outline-2">
+<h2 id="org2042300"><span class="section-number-2">4</span> <span class="done DONE">DONE</span> 小結與習題</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>State "DONE"       from "INPROGRESS" <span class="timestamp-wrapper"><span class="timestamp">[2018-09-11 Tue 13:31]</span></span></li>
 <li>State "INPROGRESS" from              <span class="timestamp-wrapper"><span class="timestamp">[2018-09-11 Tue 13:22]</span></span></li>
 </ul>
 </div>
-<div id="outline-container-org6649fab" class="outline-3">
-<h3 id="org6649fab"><span class="section-number-3">4.1</span> 補碼表示法</h3>
+<div id="outline-container-org27d573b" class="outline-3">
+<h3 id="org27d573b"><span class="section-number-3">4.1</span> 補碼表示法</h3>
 </div>
-<div id="outline-container-org5867067" class="outline-3">
-<h3 id="org5867067"><span class="section-number-3">4.2</span> 關於輸入輸出</h3>
+<div id="outline-container-org0f15451" class="outline-3">
+<h3 id="org0f15451"><span class="section-number-3">4.2</span> 關於輸入輸出</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 使用 <code>sscanf</code> 函數從字符串中提取值
 </p>
 </div>
 </div>
-<div id="outline-container-org1cbafa2" class="outline-3">
-<h3 id="org1cbafa2"><span class="section-number-3">4.3</span> I/O 的效率</h3>
+<div id="outline-container-orgfffee27" class="outline-3">
+<h3 id="orgfffee27"><span class="section-number-3">4.3</span> I/O 的效率</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 C++ 字符串和字符數組可以互相轉換：
@@ -562,8 +562,8 @@ printf(<span class="org-string">"%s\n"</span>, s.c_str());
 </pre>
 </div>
 </div>
-<div id="outline-container-orge3c20e9" class="outline-4">
-<h4 id="orge3c20e9"><span class="section-number-4">4.3.1</span> 使用字符串流</h4>
+<div id="outline-container-org21203b0" class="outline-4">
+<h4 id="org21203b0"><span class="section-number-4">4.3.1</span> 使用字符串流</h4>
 <div class="outline-text-4" id="text-4-3-1">
 <div class="org-src-container">
 <pre class="src src-cpp">
