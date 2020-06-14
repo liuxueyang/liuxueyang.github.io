@@ -9,7 +9,7 @@ A simple XTerm configuration.
 
 ![My XTerm in FVWM](/assets/2020-06-14_XTerm_scrot.png)
 
-{% highlight %}
+{% highlight config %}
 XTerm*scrollBar: off
 XTerm*rightScrollBar: on
 XTerm*title: XTerm
