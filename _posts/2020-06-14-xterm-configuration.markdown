@@ -1,6 +1,6 @@
 ---
 layout:		post
-title:		"Simple XTerm Configuration"
+title:		"XTerm Configuration"
 date:		2020-06-14 19:31:11 +0800
 tags:		XTerm configuration Xwindow Linux
 ---
@@ -8,6 +8,8 @@ tags:		XTerm configuration Xwindow Linux
 A simple XTerm configuration.
 
 ![My XTerm in FVWM](/assets/2020-06-14_XTerm_scrot.png)
+
+Copy the following configuration to `$HOME/.Xdefaults`.
 
 {% highlight config %}
 XTerm*scrollBar: off
