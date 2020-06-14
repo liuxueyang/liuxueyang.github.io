@@ -325,4 +325,6 @@ set -g status-position top
 
 # Screenshot
 
+## Tmux on macos
+
 ![Tmux on macos](/assets/2020-06-14-21.24.18_macos_tmux.png)
