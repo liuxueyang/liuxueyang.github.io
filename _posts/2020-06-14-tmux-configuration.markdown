@@ -323,6 +323,8 @@ set -g status-position top
 # set -ga terminal-overrides ",*256col*:Tc"
 {% endhighlight %}
 
+Change `defaut-shell` to your preferred shell if needed.
+
 # Screenshot
 
 ## Tmux on macos
