@@ -10,7 +10,7 @@ tags:		Tmux configuration Linux GNU
 {% highlight bash %}
 cd
 git clone https://github.com/gpakosz/.tmux.git
-ln -s -f .tmux/.tmux.conf
+ln -s -f .tmux/.tmux.conf .tmux.conf
 cp .tmux/.tmux.conf.local .
 {% endhighlight %}
 
@@ -330,3 +330,7 @@ Change `defaut-shell` to your preferred shell if needed.
 ## Tmux on macos
 
 ![Tmux on macos](/assets/2020-06-14-21.24.18_macos_tmux.png)
+
+## Tmux on Linux XTerm
+
+![Tmux on Linux XTerm](/assets/2020-06-14_tmux_on_XTerm.png)
