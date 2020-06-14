@@ -2,7 +2,7 @@
 layout:		post
 title:		"XTerm Configuration"
 date:		2020-06-14 19:31:11 +0800
-tags:		XTerm configuration Xwindow Linux
+tags:		XTerm configuration Xwindow Linux GNU
 ---
 
 A simple XTerm configuration.
