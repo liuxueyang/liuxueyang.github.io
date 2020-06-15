@@ -26,3 +26,7 @@ touch ~/.emacs-custom.el
 ## Customized GNU Emacs on macos
 
 ![Customized Emacs on macos Screenshot](/assets/2020-06-15-customized-emacs-on-macos.png)
+
+## Customized GNU Emacs on Slackware KDE
+
+![Customized Emacs on Slackware KDE](/assets/2020-06-16_scrot_Slackware_KDE4_Emacs.png)
