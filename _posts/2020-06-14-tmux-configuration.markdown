@@ -334,3 +334,7 @@ Change `defaut-shell` to your preferred shell if needed.
 ## Tmux on Linux XTerm
 
 ![Tmux on Linux XTerm](/assets/2020-06-14_tmux_on_XTerm.png)
+
+## Tmux on Linux Terminator
+
+![Tmux on Linux Terminator](/assets/2020-06-16_scrot_Slackware_KDE4_Tmux.png)
