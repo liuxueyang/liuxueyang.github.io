@@ -15,10 +15,14 @@ touch ~/.emacs-custom.el
 
 # Screenshot
 
-## Default GNU Emacs
+## Default GNU Emacs on Slackware
 
-![Default Emacs Screenshot](/assets/2020-06-14_emacs_scrot.png)
+![Default Emacs on Slackware Screenshot](/assets/2020-06-14_emacs_scrot.png)
 
-## Customized GNU Emacs
+## Customized GNU Emacs on Slackware FVWM
 
-![Customized Emacs Screenshot](/assets/2020-06-14_customized_emacs_scrot.png)
+![Customized Emacs on Slackware Screenshot](/assets/2020-06-14_customized_emacs_scrot.png)
+
+## Customized GNU Emacs on macos
+
+![Customized Emacs on macos Screenshot](/assets/2020-06-15-customized-emacs-on-macos.png)
