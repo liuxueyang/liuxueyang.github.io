@@ -215,9 +215,9 @@ void print_res(int I, int J) {
 
 int main() {
 
-  #ifdef DEBUG
+#ifdef DEBUG
   freopen("brackets.in", "r", stdin);
-  #endif
+#endif
   int n_case;
   cin >> n_case;
   cin.get();
@@ -253,13 +253,12 @@ int main() {
             (a[i] == '[' && a[j] == ']')) {
           d[i][j] = min(d[i][j], d[i+1][j-1]);
         }
-        {
-          for (int k = i; k < j; k++) {
-            int tmp = d[i][k] + d[k+1][j];
-            if (tmp < d[i][j]) {
-              d[i][j] = tmp;
-              path[i][j] = k;
-            }
+
+        for (int k = i; k < j; k++) {
+          int tmp = d[i][k] + d[k+1][j];
+          if (tmp < d[i][j]) {
+            d[i][j] = tmp;
+            path[i][j] = k;
           }
         }
       }
