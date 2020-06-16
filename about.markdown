@@ -4,6 +4,8 @@ title: About
 permalink: /about/
 ---
 
+一些零散的笔记和备忘。
+
 ### Notes
 
 1. Done is better than perfect.
