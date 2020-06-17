@@ -21,3 +21,8 @@ tags: Bookmark
 # News
 
 - [Hacker News](https://news.ycombinator.com/)
+
+# Zsh
+
+- [Git-Flow plugin](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git-flow)
+- [Git aliases](https://kapeli.com/cheat_sheets/Oh-My-Zsh_Git.docset/Contents/Resources/Documents/index)
