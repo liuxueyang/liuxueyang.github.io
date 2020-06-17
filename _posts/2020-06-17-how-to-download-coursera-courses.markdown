@@ -22,8 +22,10 @@ pip install -r requirements.txt
 
 使用过程中遇到了 SSL 的一个错误，解决方式在[这里](https://github.com/coursera-dl/coursera-dl#sslerror-errno-1-_ssl c504-error14094410ssl-routinesssl3_read_bytessslv3-alert-handshake-failure)。
 
-新建文件 `~/.netrc`，输入 Coursera 的帐号密码，如下：
+下载课程需要登录。新建文件 `~/.netrc`，输入 Coursera 的帐号密码，如下：
 
 ```
 machine coursera-dl login <user> password <pass>
 ```
+
+如果还有登录问题，可以使用 Cookie，参加[这里](https://github.com/coursera-dl/coursera-dl/issues/702)。
