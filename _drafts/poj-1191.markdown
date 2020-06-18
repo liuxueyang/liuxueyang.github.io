@@ -1,0 +1,88 @@
+---
+layout: post
+title: "POJ 1191"
+date: 2020-06-19 00:30:44 +0800
+tags: ICPC DP POJ
+---
+
+[棋盘分割](http://poj.org/problem?id=1191)
+
+```cpp
+#include <iostream>
+#include <cstdio>
+#include <algorithm>
+
+using namespace std;
+
+int a[8][8], d[15][8][8][8][8], s[8][8];
+int n;
+const int MAX = 0x7ffffff0;
+
+int fun(int k, int x1, int y1, int x2, int y2)
+{
+  if (d[k][x1][y1][x2][y2] != MAX)
+    {
+      return d[k][x1][y1][x2][y2];
+    }
+
+  int res = MAX;
+
+  for (int a = 0; a < 7; a++)
+    {
+      int tmp1 = s[x1][y1][a][y2] + fun(k - 1, a + 1, y1, x2, y2);
+      int tmp2 = fun(k - 1, x1, y1, a, y2) + s[a+1][y1][x2][y2];
+      res = min(tmp1, tmp2);
+    }
+
+  for (int a = 0; a < 7; a++)
+    {
+      int tmp1 = s[x1][y1][x2][a] + fun(k - 1, x1, a + 1, x2, y2);
+      int tmp2 = fun(k - 1, x1, y1, x2, a) + s[x1][a+1][x2][y2];
+      res = min(res, min(tmp1, tmp2));
+    }
+
+  d[k][x1][y1][x2][y2] = res;
+  return res;
+}
+
+int main(void)
+{
+  while (cin >> n)
+    {
+      for(int i = 1; i < 15; i++)
+        {
+          for (int x1 = 0; x1 < 8; x1++)
+            for (int y1 = 0; y1 < 8; y1++)
+              for (int x2 = 0; x2 < 8; x2++)
+                for (int y2 = 0; y2 < 8; y2++)
+                  d[i][x1][y1][x2][y2] = MAX;
+        }
+      for (int i = 0; i < 8; i++)
+        {
+          for (int j = 0; j < 8; j++)
+            {
+              cin >> a[i][j];
+            }
+        }
+
+      for (int i = 0; i < 8; i++)
+        {
+          for (int j = 0; j < 8; j++)
+            {
+              s[i][j] = a[i][j] * a[i][j];
+              if (i > 0)
+                {
+                  s[i][j] += s[i-1][j];
+                }
+              if (j > 0)
+                s[i][j] += s[i][j-1];
+              if (i > 0 && j > 0)
+                s[i][j] -= s[i-1][j-1];
+            }
+        }
+
+    }
+
+  return 0;
+}
+```
