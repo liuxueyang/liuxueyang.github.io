@@ -7,7 +7,7 @@ tags: Python virtualenv
 
 新建文件 `~/.pip/pip.conf`:
 
-```
+```conf
 [global]
 
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple
