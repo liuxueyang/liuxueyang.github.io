@@ -28,4 +28,4 @@ pip install -r requirements.txt
 machine coursera-dl login <user> password <pass>
 ```
 
-如果还有登录问题，可以使用 Cookie，参加[这里](https://github.com/coursera-dl/coursera-dl/issues/702)。
+如果还有登录问题，可以使用 Cookie，参考[这里](https://github.com/coursera-dl/coursera-dl/issues/702)。
