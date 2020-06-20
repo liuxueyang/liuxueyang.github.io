@@ -75,7 +75,7 @@ int main(void)
 
   double res = fun(n - 1, 1, 1, 8, 8);
   res = sqrt(res / n - sum * sum);
-  printf("%.3f\n", res);
+  printf("%.3lf\n", res);
 
   return 0;
 }
