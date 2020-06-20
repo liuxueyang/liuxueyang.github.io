@@ -9,6 +9,8 @@ tags: ACM/ICPC algorithm UVa DP
 
 [UVa 1626 Brackets sequences](https://vjudge.net/problem/UVA-1626/origin)
 
+`d[i][j]`表示使`[i, j]`区间规范的需要添加括号的最小个数。`path[i][j]`用来记录状态路径。
+
 动态规划的第一种动机：记忆化搜索。
 
 第一种方法：记忆化搜索
