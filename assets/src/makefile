@@ -1,8 +1,8 @@
 build-a:
 	clang++ -o a a.cpp
 
-run-a:
-	./a
+clean:
+	rm -rf *.dSYM
 
 brackets: brackets.cpp
 	g++ -Wall -DDEBUG -g brackets.cpp -o brackets
