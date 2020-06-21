@@ -11,6 +11,8 @@ tags: Git
 git reset --soft HEAD~1
 ```
 
+详情见[这里](https://www.git-tower.com/learn/git/faq/undo-last-commit)。
+
 在`magit`中的做法是在`log`页面，把光标放在上一个提交，先按下`X`（代表 reset）再选择`s`（代表`soft`选项）。
 
 然后再把改动放到`stash`中，提交到正确的分支。
