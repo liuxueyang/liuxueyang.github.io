@@ -22,8 +22,8 @@ LL area(int x1, int y1, int x2, int y2) {
 
 LL fun2(int K) {
   for (int k = 0; k <= K; k++) {
-    for (int x1 = 8; x1 >= 1; x1--) {
-      for (int y1 = 8; y1 >= 1; y1--) {
+    for (int x1 = 1; x1 <= 8; x1++) {
+      for (int y1 = 1; y1 <= 8; y1++) {
         for (int x2 = x1; x2 <= 8; x2++) {
           for (int y2 = y1; y2 <= 8; y2++) {
             LL &res = d[k][x1][y1][x2][y2];
@@ -42,18 +42,12 @@ LL fun2(int K) {
               LL tmp1 = d[0][x1][y1][x2][a] + d[k-1][x1][a+1][x2][y2];
               LL tmp2 = d[k-1][x1][y1][x2][a] + d[0][x1][a+1][x2][y2];
               res = min(res, min(tmp1, tmp2));
-              // cout << "tmp1=" << tmp1
-              //      << " tmp2=" << tmp2 << endl;
             }
-            // cout << "x1="<< x1 << " y1=" << y1 << " x2=" << x2 << " y2=" << y2 <<
-            //   " res=" << res
-            //      << " k=" << k << endl;
           }
         }
       }
     }
   }
-  // cout << d[K][1][1][8][8] << endl;
   return d[K][1][1][8][8];
 }
 
@@ -78,7 +72,6 @@ int main(void)
       r[i][j] = a[i][j] + r[i-1][j] + r[i][j-1] - r[i-1][j-1];
 
   double res = fun2(n - 1);
-  // cout << "res=" << res << " sum=" << sum << endl;
   res = sqrt(res / n - sum * sum);
   printf("%.3lf\n", res);
 

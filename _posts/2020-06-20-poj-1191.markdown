@@ -218,8 +218,98 @@ int main(void)
 
 以后还是用`C++`来交题吧。
 
-
-#### TODO
 使用自底向上的递推的方法做一遍。
 
-仔细想了一下递推顺序，没有还是没有想清楚应该怎么处理。
+仔细想了一下递推顺序，没有还是没有想清楚应该怎么处理。后来发现，其实不难，首先按照次数递增的顺序递推，其次枚举两个点的位置即可：
+
+```cpp
+#include <iostream>
+#include <cstdio>
+#include <algorithm>
+#include <cmath>
+#include <cstdlib>
+
+using namespace std;
+
+typedef long long LL;
+const int X = 10;
+LL a[X][X], d[15][X][X][X][X], r[X][X];
+int vis[15][X][X][X][X];
+int n;
+const LL oo = 0x7fffffff;
+
+template<typename T>
+T D(T x) {return x * x;}
+
+LL area(int x1, int y1, int x2, int y2) {
+  return r[x2][y2] + r[x1-1][y1-1] - r[x1-1][y2] - r[x2][y1-1];
+}
+
+LL fun2(int K) {
+  for (int k = 0; k <= K; k++) {
+    for (int x1 = 1; x1 <= 8; x1++) {
+      for (int y1 = 1; y1 <= 8; y1++) {
+        for (int x2 = x1; x2 <= 8; x2++) {
+          for (int y2 = y1; y2 <= 8; y2++) {
+            LL &res = d[k][x1][y1][x2][y2];
+            res = oo;
+            if (k == 0) {
+              res = D<LL>(area(x1, y1, x2, y2));
+              continue;
+            }
+
+            for (int a = x1; a < x2; a++) {
+              LL tmp1 = d[0][x1][y1][a][y2] + d[k-1][a+1][y1][x2][y2];
+              LL tmp2 = d[k-1][x1][y1][a][y2] + d[0][a+1][y1][x2][y2];
+              res = min(res, min(tmp1, tmp2));
+            }
+            for (int a = y1; a < y2; a++) {
+              LL tmp1 = d[0][x1][y1][x2][a] + d[k-1][x1][a+1][x2][y2];
+              LL tmp2 = d[k-1][x1][y1][x2][a] + d[0][x1][a+1][x2][y2];
+              res = min(res, min(tmp1, tmp2));
+            }
+          }
+        }
+      }
+    }
+  }
+  return d[K][1][1][8][8];
+}
+
+int main(void)
+{
+
+  #ifdef DEBUG
+  freopen("poj1191.in", "r", stdin);
+  #endif
+
+  cin >> n;
+  double sum = 0;
+
+  for (int i = 1; i <= 8; i++)
+    for (int j = 1; j <= 8; j++) {
+      cin >> a[i][j];
+      sum += a[i][j];
+    }
+  sum /= n;
+  for (int i = 1; i <= 8; i++)
+    for (int j = 1; j <= 8; j++)
+      r[i][j] = a[i][j] + r[i-1][j] + r[i][j-1] - r[i-1][j-1];
+
+  double res = fun2(n - 1);
+  res = sqrt(res / n - sum * sum);
+  printf("%.3lf\n", res);
+
+  return 0;
+}
+```
+
+[poj1191_1.cpp](/assets/src/poj1191_1.cpp)
+
+思考、调试了很久，不过还是独立做出来了，很开心，这种成就感还是很强烈的。做题的动力就是为了这种时刻。
+
+调试的 BUG 原因是自己使用了一种非常不常见的命名方式：循环变量使用大写，但是循环内部很自然地使用了小写变量，正好引用到了循环外部的小写同名变量。
+
+### 额外收获
+
+调试的过程中主要是使用打印中间变量的做法，在 Emacs 的`eshell`中编译运行。发现`eshell`一个非常好用的地方，搜索日志极其方便，毕竟它只是一个 Emacs 的 buffer，可以使用 Emacs 支持的搜索方式，调试的时候搜索关键日志非常方便。以后调试就用 eshell 了。
