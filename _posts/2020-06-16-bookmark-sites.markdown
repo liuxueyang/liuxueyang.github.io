@@ -14,6 +14,11 @@ tags: Bookmark
 - [elisp manual](https://www.gnu.org/software/emacs/manual/html_node/elisp/)
 - [GNU Emacs Manual](https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html)
 
+## eshell
+- [Eshell](https://caiorss.github.io/Emacs-Elisp-Programming/Eshell.html)
+- [Eshell as a main shell](https://ambrevar.xyz/emacs-eshell/)
+- [Don't be afraid of eshell](https://www.gonsie.com/blorg/eshell.html)
+
 # Blog
 
 - [cynically](https://blog.cynically.moe/)
