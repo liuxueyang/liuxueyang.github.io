@@ -9,3 +9,6 @@ poj1191: poj1191.cpp
 
 poj1191_1: poj1191_1.cpp
 	g++ -Wall -DDEBUG -g poj1191_1.cpp -o poj1191_1.exe
+
+sdoj1546: sdoj1546.cpp
+	g++ -Wall -DDEBUG -g sdoj1546.cpp -o sdoj1546.exe
