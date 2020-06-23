@@ -25,21 +25,21 @@ int main() {
       }
     }
 
-    for (int i = 1; i <= n + 1; i++)
-      for (int j = 1; j <= n + 1; j++)
-        d[i][j] = false;
+    for (int i = 1; i <= 2*n; i++) {
+      for (int j = i; j <= 2*n; j++)
+        d[i][j] = d[j][i] = (i+1==j ? true : false);
+    }
 
-    for (int len = 1; len < n * 2; len++) {
-      for (int i = n; i >= 1; i--) {
+    for (int len = 2; len <= n; len++) {
+      for (int i = 1; i + len <= 2*n; i++) {
         int j = i + len;
-        if (j > n + 1) continue;
-        if (len == 1) {
-          d[i][j] = d[j][i] = true;
-          continue;
-        }
         for (int m = i + 1; m < j; m++) {
-          if ( (d[j][m] && d[i][m]) &&
-               (a[b[j]][b[m]] || a[b[i]][b[m]])) {
+          int i1 = (i % n == 0 ? n : i % n);
+          int m1 = (m % n == 0 ? n : m % n);
+          int j1 = (j % n == 0 ? n : j % n);
+
+          if ( (d[m][j] && d[i][m]) &&
+               (a[i1][m1] || a[j1][m1])) {
             d[i][j] = d[j][i] = true;
             break;
           }
@@ -47,11 +47,8 @@ int main() {
       }
     }
 
-    if (d[1][n+1]) res[b[1]] = true;
-
-
     for (int i = 1; i <= n; i++) {
-      cout << (res[i] ? 1 : 0) << endl;
+      cout << (d[i][i+n] ? 1 : 0) << endl;
     }
 
     if (tt != T - 1) cout << endl;

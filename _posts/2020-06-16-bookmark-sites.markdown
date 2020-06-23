@@ -32,3 +32,7 @@ tags: Bookmark
 
 - [Git-Flow plugin](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git-flow)
 - [Git aliases](https://kapeli.com/cheat_sheets/Oh-My-Zsh_Git.docset/Contents/Resources/Documents/index)
+
+# Misc
+
+- [The Plain Person’s Guide to Plain Text Social Science](https://plain-text.co/index.html#introduction)

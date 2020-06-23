@@ -29,3 +29,8 @@ tags: Emacs
 ```
 
 ![Default Aquamacs](/assets/2020-06-23-try-Aquamacs.png)
+
+### Links
+
+- [Features: Why use Aquamacs?](https://aquamacs.org/features.html)
+- [For My Friends With Macs](https://formyfriendswithmacs.com/aquamacs.html)
