@@ -13,6 +13,7 @@ tags: Bookmark
 - [ErgoEmacs](https://wilkesley.org/~ian/xah/index.html)
 - [elisp manual](https://www.gnu.org/software/emacs/manual/html_node/elisp/)
 - [GNU Emacs Manual](https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html)
+- [A Guided Tour of Emacs](https://www.gnu.org/software/emacs/tour/)
 
 ## eshell
 - [Eshell](https://caiorss.github.io/Emacs-Elisp-Programming/Eshell.html)
