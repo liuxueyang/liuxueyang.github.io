@@ -15,3 +15,6 @@ sdutoj1546: sdutoj1546.cpp
 
 sdutoj1546_1: sdutoj1546_1.cpp
 	g++ -Wall -DDEBUG -g sdutoj1546_1.cpp -o sdutoj1546_1.exe
+
+uva1291: uva1291.cpp
+	g++ -Wall -DDEBUG -g uva1291.cpp -o uva1291.exe

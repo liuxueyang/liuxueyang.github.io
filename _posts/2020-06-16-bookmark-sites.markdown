@@ -33,6 +33,14 @@ tags: Bookmark
 - [Git-Flow plugin](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git-flow)
 - [Git aliases](https://kapeli.com/cheat_sheets/Oh-My-Zsh_Git.docset/Contents/Resources/Documents/index)
 
+# ACM/ICPC OI
+
+## Blog
+- [日拱一卒 功不唐捐](https://www.cnblogs.com/TheRoadToTheGold/)
+
+## Online Judge
+- [Virtual Judge](https://vjudge.net/)
+
 # Misc
 
 - [The Plain Person’s Guide to Plain Text Social Science](https://plain-text.co/index.html#introduction)
