@@ -11,7 +11,7 @@ bool d[N][N], res[N];
 int main() {
 
   #ifdef DEBUG
-  freopen("sdoj1546.in", "r", stdin);
+  freopen("sdutoj1546.in", "r", stdin);
   #endif
   int T;
   cin >> T;
