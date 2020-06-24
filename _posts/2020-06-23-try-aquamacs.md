@@ -30,6 +30,8 @@ tags: Emacs
 
 ![Default Aquamacs](/assets/2020-06-23-try-Aquamacs.png)
 
+可能是因为版本比较老，有些 Emacs 的包它不支持，目前不准备使用它。另外它的字体配置也比较奇怪，比如`modeline`的字体并没有使用`default`配置的字体。先不折腾它了。
+
 ### Links
 
 - [Features: Why use Aquamacs?](https://aquamacs.org/features.html)
