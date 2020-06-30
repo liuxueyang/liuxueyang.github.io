@@ -18,3 +18,6 @@ sdutoj1546_1: sdutoj1546_1.cpp
 
 uva1291: uva1291.cpp
 	g++ -Wall -DDEBUG -std=c++11 -g uva1291.cpp -o uva1291.exe
+
+luogu5760: luogu5760.cpp
+	g++ -Wall -DDEBUG -std=c++11 -g luogu5760.cpp -o luogu5760.exe
