@@ -82,22 +82,27 @@ void PRINTAV( T1 & vec, T2 x) {
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1079.in", "r", stdin);
+  freopen("1083.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int n, m = 1;
-  double s = 0;
-  cin >> n;
-  cout.precision(4);
-  cout.setf(ios::fixed, ios::floatfield);
-  for (int i = 1; i <= n; i++) {
-    s += double(1. / i) * m;
-    m *= -1;
+  int a, b;
+  cin >> a >> b;
+  a %= 7;
+  for (int i = 0; i < b - 1; i++) {
+    a = (a * a) % 7;
   }
-  cout << s << endl;
+  switch (a) {
+  case 1: cout << "Monday\n"; break;
+  case 2: cout << "Tuesday\n"; break;
+  case 3: cout << "Wednesday\n"; break;
+  case 4: cout << "Thursday\n"; break;
+  case 5: cout << "Friday\n"; break;
+  case 6: cout << "Saturday\n"; break;
+  case 0: cout << "Sunday\n"; break;
+  }
 
   return 0;
 }

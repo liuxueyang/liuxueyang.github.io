@@ -82,22 +82,20 @@ void PRINTAV( T1 & vec, T2 x) {
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1079.in", "r", stdin);
+  freopen("1084.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int n, m = 1;
-  double s = 0;
-  cin >> n;
-  cout.precision(4);
-  cout.setf(ios::fixed, ios::floatfield);
-  for (int i = 1; i <= n; i++) {
-    s += double(1. / i) * m;
-    m *= -1;
+  int a, b;
+  cin >> a >> b;
+  a %= 1000;
+  for (int i = 0; i < b - 1; ++i) {
+    a = (a * a) % 1000;
   }
-  cout << s << endl;
+  cout.setf(ios::fixed);
+  cout << setw(3) << a << endl;
 
   return 0;
 }

@@ -79,25 +79,27 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
+int gcd(int a, int b) {
+  if (a < b) swap(a, b);
+  int t = a % b;
+  if (!t) return b;
+  return gcd(b, a % b);
+}
+
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1079.in", "r", stdin);
+  freopen("1080.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int n, m = 1;
-  double s = 0;
-  cin >> n;
-  cout.precision(4);
-  cout.setf(ios::fixed, ios::floatfield);
-  for (int i = 1; i <= n; i++) {
-    s += double(1. / i) * m;
-    m *= -1;
-  }
-  cout << s << endl;
+  int a[3];
+  for (int i = 0; i < 3; i++) cin >> a[i];
+  sort(a, a + 3);
+  int b = a[1] - a[0], c = a[2] - a[1];
+  cout << gcd(b, c) << endl;
 
   return 0;
 }

@@ -86,7 +86,7 @@ int main( void ) {
 #endif
 
   ios::sync_with_stdio(false);
-  cin.tie(nullptr);
+  cin.tie(NULL);
 
   int n, a, s = 0;
   cin >> n;

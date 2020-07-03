@@ -86,7 +86,7 @@ int main( void ) {
 #endif
 
   ios::sync_with_stdio(false);
-  cin.tie(nullptr);
+  cin.tie(NULL);
 
   int a[13], s = 0, c = 0; bool flag = true;
   for (int i = 1; i <= 12; i++) {

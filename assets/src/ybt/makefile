@@ -27,3 +27,15 @@ clean:
 
 1079: 1079.cpp
 	g++ -Wall -DDEBUG -g 1079.cpp -o 1079.exe
+
+1080: 1080.cpp
+	g++ -Wall -DDEBUG -g 1080.cpp -o 1080.exe
+
+1081: 1081.cpp
+	g++ -Wall -DDEBUG -g 1081.cpp -o 1081.exe
+
+1083: 1083.cpp
+	g++ -Wall -DDEBUG -g 1083.cpp -o 1083.exe
+
+1084: 1084.cpp
+	g++ -Wall -DDEBUG -g 1084.cpp -o 1084.exe
