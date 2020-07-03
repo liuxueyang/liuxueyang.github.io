@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  c-struct-padding
+title:  struct padding in C
 date:   2020-07-01 11:47:41 +0800
 tags:   C
 ---

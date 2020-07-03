@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  emacs-etags
+title:  use Etags in Emacs
 date:   2020-07-01 11:54:04 +0800
 tags:   Emacs Etags
 ---
