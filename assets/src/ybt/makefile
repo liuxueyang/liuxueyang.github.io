@@ -138,3 +138,6 @@ clean:
 
 1117: 1117.cpp
 	g++ -Wall -DDEBUG -g 1117.cpp -o 1117.exe
+
+1118: 1118.cpp
+	g++ -Wall -DDEBUG -g 1118.cpp -o 1118.exe
