@@ -63,3 +63,15 @@ clean:
 
 1092: 1092.cpp
 	g++ -Wall -DDEBUG -g 1092.cpp -o 1092.exe
+
+1093: 1093.cpp
+	g++ -Wall -DDEBUG -g 1093.cpp -o 1093.exe
+
+1094: 1094.cpp
+	g++ -Wall -DDEBUG -g 1094.cpp -o 1094.exe
+
+1095: 1095.cpp
+	g++ -Wall -DDEBUG -g 1095.cpp -o 1095.exe
+
+1096: 1096.cpp
+	g++ -Wall -DDEBUG -g 1096.cpp -o 1096.exe
