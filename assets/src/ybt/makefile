@@ -39,3 +39,27 @@ clean:
 
 1084: 1084.cpp
 	g++ -Wall -DDEBUG -g 1084.cpp -o 1084.exe
+
+1085: 1085.cpp
+	g++ -Wall -DDEBUG -g 1085.cpp -o 1085.exe
+
+1086: 1086.cpp
+	g++ -Wall -DDEBUG -g 1086.cpp -o 1086.exe
+
+1087: 1087.cpp
+	g++ -Wall -DDEBUG -g 1087.cpp -o 1087.exe
+
+1088: 1088.cpp
+	g++ -Wall -DDEBUG -g 1088.cpp -o 1088.exe
+
+1089: 1089.cpp
+	g++ -Wall -DDEBUG -g 1089.cpp -o 1089.exe
+
+1090: 1090.cpp
+	g++ -Wall -DDEBUG -g 1090.cpp -o 1090.exe
+
+1091: 1091.cpp
+	g++ -Wall -DDEBUG -g 1091.cpp -o 1091.exe
+
+1092: 1092.cpp
+	g++ -Wall -DDEBUG -g 1092.cpp -o 1092.exe

@@ -89,6 +89,7 @@ int main( void ) {
   cin.tie(NULL);
 
   int a[13], s = 0, c = 0; bool flag = true;
+  int r = 0;
   for (int i = 1; i <= 12; i++) {
     cin >> a[i];
     if (!flag) continue;
@@ -96,16 +97,17 @@ int main( void ) {
     c -= a[i];
     if (c < 0) {
       flag = false;
-      cout << -i << endl;
+      r = -i;
     }
     int t = c / 100 * 100;
     c -= t;
     s += t;
   }
   if (flag) {
-    c += int(s * 1.2);
+    // NOTE: precision lost using s * 1.2
+    c += (s + s / 5);
     cout << c << endl;
-  }
+  } else cout << r << endl;
 
   return 0;
 }

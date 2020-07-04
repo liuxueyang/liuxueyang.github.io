@@ -88,12 +88,13 @@ int main( void ) {
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int a, b;
+  int a, b, c;
   cin >> a >> b;
-  a %= 7;
+  c = a % 7;
   for (int i = 0; i < b - 1; i++) {
-    a = (a * a) % 7;
+    c = (c * a) % 7;
   }
+  a = c;
   switch (a) {
   case 1: cout << "Monday\n"; break;
   case 2: cout << "Tuesday\n"; break;
