@@ -75,3 +75,30 @@ clean:
 
 1096: 1096.cpp
 	g++ -Wall -DDEBUG -g 1096.cpp -o 1096.exe
+
+1097: 1097.cpp
+	g++ -Wall -DDEBUG -g 1097.cpp -o 1097.exe
+
+1098: 1098.cpp
+	g++ -Wall -DDEBUG -g 1098.cpp -o 1098.exe
+
+1099: 1099.cpp
+	g++ -Wall -DDEBUG -g 1099.cpp -o 1099.exe
+
+1100: 1100.cpp
+	g++ -Wall -DDEBUG -g 1100.cpp -o 1100.exe
+
+1101: 1101.cpp
+	g++ -Wall -DDEBUG -g 1101.cpp -o 1101.exe
+
+1102: 1102.cpp
+	g++ -Wall -DDEBUG -g 1102.cpp -o 1102.exe
+
+1103: 1103.cpp
+	g++ -Wall -DDEBUG -g 1103.cpp -o 1103.exe
+
+1104: 1104.cpp
+	g++ -Wall -DDEBUG -g 1104.cpp -o 1104.exe
+
+1105: 1105.cpp
+	g++ -Wall -DDEBUG -g 1105.cpp -o 1105.exe
