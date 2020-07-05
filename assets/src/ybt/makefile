@@ -234,3 +234,33 @@ clean:
 
 1149: 1149.cpp
 	g++ -Wall -DDEBUG -g 1149.cpp -o 1149.exe
+
+1158: 1158.cpp
+	g++ -Wall -DDEBUG -g 1158.cpp -o 1158.exe
+
+1159: 1159.cpp
+	g++ -Wall -DDEBUG -g 1159.cpp -o 1159.exe
+
+1160: 1160.cpp
+	g++ -Wall -DDEBUG -g 1160.cpp -o 1160.exe
+
+1161: 1161.cpp
+	g++ -Wall -DDEBUG -g 1161.cpp -o 1161.exe
+
+1162: 1162.cpp
+	g++ -Wall -DDEBUG -g 1162.cpp -o 1162.exe
+
+1163: 1163.cpp
+	g++ -Wall -DDEBUG -g 1163.cpp -o 1163.exe
+
+1164: 1164.cpp
+	g++ -Wall -DDEBUG -g 1164.cpp -o 1164.exe
+
+1165: 1165.cpp
+	g++ -Wall -DDEBUG -g 1165.cpp -o 1165.exe
+
+1166: 1166.cpp
+	g++ -Wall -DDEBUG -g 1166.cpp -o 1166.exe
+
+1167: 1167.cpp
+	g++ -Wall -DDEBUG -g 1167.cpp -o 1167.exe
