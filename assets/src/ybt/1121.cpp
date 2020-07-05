@@ -82,23 +82,25 @@ void PRINTAV( T1 & vec, T2 x) {
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1112.in", "r", stdin);
+  freopen("1121.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int mi, ma, m, m1;
-  mi = oo;
-  ma = -oo;
-  cin >> m1;
-  for (int i = 0; i < m1; i++)
+  int m,n;
+  cin>>m>>n;
+  LL s=0;
+  for(int i=1;i<=m;i++)
     {
-      cin >> m;
-      if (m > ma) ma = m;
-      if (m < mi) mi = m;
+      for(int j=1;j<=n;j++)
+        {
+          int t;
+          cin>>t;
+          if(i==1||i==m||j==1||j==n)s+=t;
+        }
     }
-  cout << ma - mi << endl;
+  cout<<s<<endl;
 
   return 0;
 }

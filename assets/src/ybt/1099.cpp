@@ -79,13 +79,13 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-const int N = 10010;
+const int N = 10010*11;
 int a[N], b[N];
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1099.in", "r", stdin);
+  // freopen("1099.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);

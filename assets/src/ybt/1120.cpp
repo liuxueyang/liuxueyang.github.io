@@ -82,23 +82,52 @@ void PRINTAV( T1 & vec, T2 x) {
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1112.in", "r", stdin);
+  freopen("1120.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int mi, ma, m, m1;
-  mi = oo;
-  ma = -oo;
-  cin >> m1;
-  for (int i = 0; i < m1; i++)
+  int n, I, J;
+  cin>>n>>I>>J;
+  for(int j=1;j<=n;j++)
     {
-      cin >> m;
-      if (m > ma) ma = m;
-      if (m < mi) mi = m;
+      cout<<"("<<I<<","<<j<<")";
+      if(j==n)cout<<endl;
+      else cout<<" ";
     }
-  cout << ma - mi << endl;
+  for(int i=1;i<=n;i++)
+    {
+      cout<<"("<<i<<","<<J<<")";
+      if(i==n)cout<<endl;
+      else cout<<" ";
+    }
+  for(int i=1;i<=n;i++)
+    {
+      for(int j=1;j<=n;j++)
+        {
+          if(i-j==I-J)
+            {
+              cout<<"("<<i<<","<<j<<")";
+              if(i==n||j==n)cout<<endl;
+              else cout<<" ";
+              break;
+            }
+        }
+    }
+  for(int i=n;i>=1;i--)
+    {
+      for(int j=1;j<=n;j++)
+        {
+          if(i+j==I+J)
+            {
+              cout<<"("<<i<<","<<j<<")";
+              if(i==0||j==n)cout<<endl;
+              else cout<<" ";
+              break;
+            }
+        }
+    }
 
   return 0;
 }

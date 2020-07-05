@@ -82,23 +82,56 @@ void PRINTAV( T1 & vec, T2 x) {
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1112.in", "r", stdin);
+  freopen("1122.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int mi, ma, m, m1;
-  mi = oo;
-  ma = -oo;
-  cin >> m1;
-  for (int i = 0; i < m1; i++)
+  int a[6][6],l[6][6],c[6][6];
+  for(int i=1;i<=5;i++)for(int j=1;j<=5;j++)l[i][j]=c[i][j]=0;
+  for(int i=1;i<=5;i++)
     {
-      cin >> m;
-      if (m > ma) ma = m;
-      if (m < mi) mi = m;
+      int lm=-oo;
+      for(int j=1;j<=5;j++)
+        {
+          cin>>a[i][j];
+          if(a[i][j]>lm)
+            {
+              lm=a[i][j];
+            }
+        }
+      for(int j=1;j<=5;j++)
+        if(lm==a[i][j])
+          l[i][j]=1;
     }
-  cout << ma - mi << endl;
+  for(int j=1;j<=5;j++)
+    {
+      int rm=oo;
+      for(int i=1;i<=5;i++)
+        {
+          if(a[i][j]<rm)
+            {
+              rm=a[i][j];
+            }
+        }
+      for(int i=1;i<=5;i++)
+        if(rm==a[i][j])
+          c[i][j]=1;
+    }
+  bool flag=false;
+  for(int i=1;i<=5;i++)
+    {
+      for(int j=1;j<=5;j++)
+        {
+          if(c[i][j]&&l[i][j])
+            {
+              cout<<i<<" "<<j<<" "<<a[i][j]<<endl;
+              flag=true;
+            }
+        }
+    }
+  if(!flag)cout<<"not found\n";
 
   return 0;
 }
