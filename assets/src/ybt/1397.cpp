@@ -79,33 +79,56 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-double atanx(double x){
-  double s=0, t, x1=x;
-  int m=1;
+int pos;
 
-  for(int i=1;;i+=2){
-    t=m*x1/i;
-    // 先判断精度!
-    if(fabs(t)<1e-6)break;
-    s+=t;
-    m*=-1;
-    x1*=(x*x);
-  }
+int get_int(char *a)
+{
+  int s=0;
+  while(isspace(a[pos]))pos++;
+  while(isdigit(a[pos]))
+    {
+      s=s*10+(a[pos]-'0');
+      pos++;
+    }
   return s;
+}
+
+char get_op(char*a)
+{
+  while(isspace(a[pos]))pos++;
+  return a[pos++];
+}
+
+int eval_exp(char op, int i1, int i2)
+{
+  switch(op)
+    {
+    case '+': return i1+i2;
+    case '-':return i1-i2;
+    case '/':return i1/i2;
+    case '%':return i1%i2;
+    case '*':return i1*i2;
+    }
+  return 0;
 }
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1156.in", "r", stdin);
+  freopen("1397.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  cout.precision(10);
-  cout.setf(ios::fixed, ios::floatfield);
-  cout<<6*atanx(1/sqrt(3))<<endl;
+  char a[1000];
+  cin.getline(a,999);
+
+  int i1=get_int(a);
+  char op=get_op(a);
+  int i2=get_int(a);
+  // PRINT3(i1,op,i2);
+  cout<<eval_exp(op, i1, i2)<<endl;
 
   return 0;
 }

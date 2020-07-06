@@ -78,34 +78,45 @@ void PRINTAV( T1 & vec, T2 x) {
 
 // ==================================================
 
+const int N=10000;
+int a[N];
 
-double atanx(double x){
-  double s=0, t, x1=x;
-  int m=1;
-
-  for(int i=1;;i+=2){
-    t=m*x1/i;
-    // 先判断精度!
-    if(fabs(t)<1e-6)break;
-    s+=t;
-    m*=-1;
-    x1*=(x*x);
-  }
-  return s;
+int pro(int n)
+{
+  for(int i=n;i>=2;i--)
+    {
+      if(!a[i]&&n%i==0) return i;
+    }
+  return 0;
 }
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1156.in", "r", stdin);
+  freopen("1410.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  cout.precision(10);
-  cout.setf(ios::fixed, ios::floatfield);
-  cout<<6*atanx(1/sqrt(3))<<endl;
+  a[0]=a[1]=1;
+  for(int i=2;i<=N;i++)
+    {
+      if(!a[i])
+        {
+          for(int j=i<<1;j<=N;j+=i)
+            a[j]=1;
+        }
+    }
+
+  int m,n;
+  cin>>m>>n;
+  for(int i=m;i<=n;i++)
+    {
+      cout<<pro(i);
+      if(i==n)cout<<endl;
+      else cout<<",";
+    }
 
   return 0;
 }
