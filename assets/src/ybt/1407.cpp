@@ -79,33 +79,59 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-double atanx(double x){
-  double s=0, t, x1=x;
-  int m=1;
-
-  for(int i=1;;i+=2){
-    t=m*x1/i;
-    // NOTE:先判断精度!
-    if(fabs(t)<1e-6)break;
-    s+=t;
-    m*=-1;
-    x1*=(x*x);
-  }
-  return s;
-}
+const int N=1000+100;
+int a[N], w[30];
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1156.in", "r", stdin);
+  freopen("1407.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  cout.precision(10);
-  cout.setf(ios::fixed, ios::floatfield);
-  cout<<6*atanx(1/sqrt(3))<<endl;
+  a[0]=a[1]=1;
+  for(int i=2;i<=N;i++)
+    {
+      if(!a[i])
+        {
+          for(int j=i<<1;j<=N;j+=i)
+            a[j]=1;
+        }
+    }
+
+  string s;
+  while(cin>>s)
+    {
+      int ma=0,mi=1000;
+      memset(w,0,sizeof(w));
+      for(size_t i=0;i<s.size();i++)
+        {
+          if(!isalpha(s[i]))continue;
+          if(s[i]>='a'&&s[i]<='z')
+            {
+              int t=s[i]-'a';
+              w[t]++;
+
+              // TODO:为什么这里不对???
+              // ma=max_(ma,w[t]);
+              // mi=min_(mi,w[t]);
+            }
+        }
+      for(int i=0;i<26;i++)
+        {
+          if(!w[i])continue;
+          ma=max_(ma,w[i]);
+          mi=min_(mi,w[i]);
+        }
+      int t1=ma-mi;
+      if(t1>=0&&!a[t1])
+        {
+          cout<<"Lucky Word\n"<<t1<<endl;
+        }
+      else cout<<"No Answer\n"<<0<<endl;
+    }
 
   return 0;
 }

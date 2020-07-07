@@ -79,33 +79,71 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-double atanx(double x){
-  double s=0, t, x1=x;
-  int m=1;
+string w;
+string a;
+bool flag=false;
+int pos,f1pos,cnt;
 
-  for(int i=1;;i+=2){
-    t=m*x1/i;
-    // NOTE:先判断精度!
-    if(fabs(t)<1e-6)break;
-    s+=t;
-    m*=-1;
-    x1*=(x*x);
-  }
+string lowcase(string a)
+{
+  string s;
+  for(size_t i=0;i<a.size();i++)
+    {
+      s+=tolower(a[i]);
+    }
   return s;
+}
+
+void find_token()
+{
+  while (a[pos])
+    {
+      string t;
+      while(a[pos]&&isspace(a[pos]))++pos;
+      t="";
+      while(a[pos]&&isalpha(a[pos]))
+        {
+          t+=a[pos++];
+        }
+      if(lowcase(t)==lowcase(w))
+        {
+          if(!flag)
+            {
+              f1pos=pos-t.size();
+            }
+          flag=true;
+          ++cnt;
+        }
+    }
 }
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1156.in", "r", stdin);
+  freopen("1400.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  cout.precision(10);
-  cout.setf(ios::fixed, ios::floatfield);
-  cout<<6*atanx(1/sqrt(3))<<endl;
+  cin>>w;
+
+  string _t;
+  getline(cin, _t);
+
+  // NOTE: 输入字符串的长度大于10000，使用string,不能预设长度。
+  getline(cin, a);
+
+  find_token();
+
+  if(!flag)
+    {
+      cout<<-1<<endl;
+    }
+  else
+    {
+      cout<<cnt<<" "<<f1pos<<endl;
+    }
 
   return 0;
 }

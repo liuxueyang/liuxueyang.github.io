@@ -309,3 +309,21 @@ clean:
 
 1397: 1397.cpp
 	g++ -Wall -DDEBUG -g 1397.cpp -o 1397.exe
+
+1406: 1406.cpp
+	g++ -Wall -DDEBUG -g 1406.cpp -o 1406.exe
+
+1400: 1400.cpp
+	g++ -Wall -DDEBUG -g 1400.cpp -o 1400.exe
+
+1404: 1404.cpp
+	g++ -Wall -DDEBUG -g 1404.cpp -o 1404.exe
+
+1407: 1407.cpp
+	g++ -Wall -DDEBUG -g 1407.cpp -o 1407.exe
+
+1412: 1412.cpp
+	g++ -Wall -DDEBUG -g 1412.cpp -o 1412.exe
+
+1402: 1402.cpp
+	g++ -Wall -DDEBUG -g 1402.cpp -o 1402.exe

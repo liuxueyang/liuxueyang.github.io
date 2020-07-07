@@ -79,33 +79,50 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-double atanx(double x){
-  double s=0, t, x1=x;
-  int m=1;
-
-  for(int i=1;;i+=2){
-    t=m*x1/i;
-    // NOTE:先判断精度!
-    if(fabs(t)<1e-6)break;
-    s+=t;
-    m*=-1;
-    x1*=(x*x);
-  }
-  return s;
-}
+char a[30][30];
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1156.in", "r", stdin);
+  freopen("1402.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  cout.precision(10);
-  cout.setf(ios::fixed, ios::floatfield);
-  cout<<6*atanx(1/sqrt(3))<<endl;
+  for(char i='A';i<='Z';i++)
+    {
+      for(char j='A';j<='Z';j++)
+        {
+          int i1=i-'A',j1=j-'A';
+          a[i1][j1]=(i1+j1)%26;
+        }
+    }
+  char k[200];
+  cin>>k;
+  for(int i=0;k[i];i++)k[i]=toupper(k[i]);
+  char C[1100];
+  cin>>C;
+  string m;
+  for(int i=0;C[i];i++)
+    {
+      int c1=toupper(C[i])-'A', k1=k[i%strlen(k)]-'A', m1=0;
+      for(int j=0;j<26;j++)
+        {
+          if(a[j][k1]==c1)
+            {
+              m1=j;
+              break;
+            }
+        }
+      if(isupper(C[i]))
+        {
+          m1+='A';
+        }
+      else m1+='a';
+      m+=char(m1);
+    }
+  cout<<m<<endl;
 
   return 0;
 }
