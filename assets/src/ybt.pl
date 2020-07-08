@@ -22,5 +22,5 @@ for my $file (@files){
     while(<FH>) {
         print DFH $_;
     }
-    print DFH "```\n\n[$file](./assets/src/ybt/$file)\n\n"
+    print DFH "```\n\n[$file](/assets/src/ybt/$file)\n\n"
 }

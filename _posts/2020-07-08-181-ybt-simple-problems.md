@@ -5,11 +5,11 @@ date:   2020-07-08 11:55:20 +0800
 tags:  ACM/ICPC
 ---
 
-把前面的语言基础题目基本做完了。~~还不是为了刷排名~~
+花了一周的时间，把前面的语言基础题目基本做完了。~~还不是为了刷排名~~
 
 这是这篇博客的拼接脚本：
 
-```
+```pl
 #!/usr/bin/env perl
 use 5.018;
 use strict;
@@ -34,11 +34,15 @@ for my $file (@files){
     while(<FH>) {
         print DFH $_;
     }
-    print DFH "```\n\n[$file](./assets/src/ybt/$file)\n\n"
+    print DFH "```\n\n[$file](/assets/src/ybt/$file)\n\n"
 }
 ```
 
-[ybt.pl](./assets/src/ybt.pl)
+[ybt.pl](/assets/src/ybt.pl)
+
+做的过程中，尽量减少 WA，不过还是因为各种原因 WA 了 39 次。
+
+![ybt](/assets/2020-07-08-14.42.26-ybt.png)
 
 ```cpp
 #include <iostream>
@@ -54,7 +58,7 @@ int main() {
 }
 ```
 
-[1000.cpp](./assets/src/ybt/1000.cpp)
+[1000.cpp](/assets/src/ybt/1000.cpp)
 
 
 ```cpp
@@ -69,7 +73,7 @@ int main() {
 }
 ```
 
-[1001.cpp](./assets/src/ybt/1001.cpp)
+[1001.cpp](/assets/src/ybt/1001.cpp)
 
 
 ```cpp
@@ -84,7 +88,7 @@ int main() {
 }
 ```
 
-[1002.cpp](./assets/src/ybt/1002.cpp)
+[1002.cpp](/assets/src/ybt/1002.cpp)
 
 
 ```cpp
@@ -105,7 +109,7 @@ int main() {
 }
 ```
 
-[1003.cpp](./assets/src/ybt/1003.cpp)
+[1003.cpp](/assets/src/ybt/1003.cpp)
 
 
 ```cpp
@@ -123,7 +127,7 @@ int main() {
 }
 ```
 
-[1004.cpp](./assets/src/ybt/1004.cpp)
+[1004.cpp](/assets/src/ybt/1004.cpp)
 
 
 ```cpp
@@ -136,7 +140,7 @@ int main(void) {
 }
 ```
 
-[1006.cpp](./assets/src/ybt/1006.cpp)
+[1006.cpp](/assets/src/ybt/1006.cpp)
 
 
 ```cpp
@@ -148,7 +152,7 @@ int main() {
 }
 ```
 
-[1007.cpp](./assets/src/ybt/1007.cpp)
+[1007.cpp](/assets/src/ybt/1007.cpp)
 
 
 ```cpp
@@ -160,7 +164,7 @@ int main() {
 }
 ```
 
-[1008.cpp](./assets/src/ybt/1008.cpp)
+[1008.cpp](/assets/src/ybt/1008.cpp)
 
 
 ```cpp
@@ -172,7 +176,7 @@ int main(void){
 }
 ```
 
-[1009.cpp](./assets/src/ybt/1009.cpp)
+[1009.cpp](/assets/src/ybt/1009.cpp)
 
 
 ```cpp
@@ -186,7 +190,7 @@ int main() {
 }
 ```
 
-[1010.cpp](./assets/src/ybt/1010.cpp)
+[1010.cpp](/assets/src/ybt/1010.cpp)
 
 
 ```cpp
@@ -200,7 +204,7 @@ int main() {
 }
 ```
 
-[1011.cpp](./assets/src/ybt/1011.cpp)
+[1011.cpp](/assets/src/ybt/1011.cpp)
 
 
 ```cpp
@@ -215,7 +219,7 @@ int main() {
 }
 ```
 
-[1012.cpp](./assets/src/ybt/1012.cpp)
+[1012.cpp](/assets/src/ybt/1012.cpp)
 
 
 ```cpp
@@ -229,7 +233,7 @@ int main() {
 }
 ```
 
-[1013.cpp](./assets/src/ybt/1013.cpp)
+[1013.cpp](/assets/src/ybt/1013.cpp)
 
 
 ```cpp
@@ -245,7 +249,7 @@ int main() {
 }
 ```
 
-[1014.cpp](./assets/src/ybt/1014.cpp)
+[1014.cpp](/assets/src/ybt/1014.cpp)
 
 
 ```cpp
@@ -258,7 +262,7 @@ int main() {
 }
 ```
 
-[1015.cpp](./assets/src/ybt/1015.cpp)
+[1015.cpp](/assets/src/ybt/1015.cpp)
 
 
 ```cpp
@@ -270,7 +274,7 @@ int main() {
 }
 ```
 
-[1016.cpp](./assets/src/ybt/1016.cpp)
+[1016.cpp](/assets/src/ybt/1016.cpp)
 
 
 ```cpp
@@ -282,7 +286,7 @@ int main() {
 }
 ```
 
-[1017.cpp](./assets/src/ybt/1017.cpp)
+[1017.cpp](/assets/src/ybt/1017.cpp)
 
 
 ```cpp
@@ -294,7 +298,7 @@ int main() {
 }
 ```
 
-[1018.cpp](./assets/src/ybt/1018.cpp)
+[1018.cpp](/assets/src/ybt/1018.cpp)
 
 
 ```cpp
@@ -308,7 +312,7 @@ int main() {
 }
 ```
 
-[1019.cpp](./assets/src/ybt/1019.cpp)
+[1019.cpp](/assets/src/ybt/1019.cpp)
 
 
 ```cpp
@@ -320,7 +324,7 @@ int main() {
 }
 ```
 
-[1020.cpp](./assets/src/ybt/1020.cpp)
+[1020.cpp](/assets/src/ybt/1020.cpp)
 
 
 ```cpp
@@ -332,7 +336,7 @@ int main() {
 }
 ```
 
-[1021.cpp](./assets/src/ybt/1021.cpp)
+[1021.cpp](/assets/src/ybt/1021.cpp)
 
 
 ```cpp
@@ -344,7 +348,7 @@ int main() {
 }
 ```
 
-[1022.cpp](./assets/src/ybt/1022.cpp)
+[1022.cpp](/assets/src/ybt/1022.cpp)
 
 
 ```cpp
@@ -356,7 +360,7 @@ int main() {
 }
 ```
 
-[1023.cpp](./assets/src/ybt/1023.cpp)
+[1023.cpp](/assets/src/ybt/1023.cpp)
 
 
 ```cpp
@@ -369,7 +373,7 @@ int main() {
 }
 ```
 
-[1024.cpp](./assets/src/ybt/1024.cpp)
+[1024.cpp](/assets/src/ybt/1024.cpp)
 
 
 ```cpp
@@ -383,7 +387,7 @@ int main() {
 }
 ```
 
-[1025.cpp](./assets/src/ybt/1025.cpp)
+[1025.cpp](/assets/src/ybt/1025.cpp)
 
 
 ```cpp
@@ -398,7 +402,7 @@ int main() {
 }
 ```
 
-[1026.cpp](./assets/src/ybt/1026.cpp)
+[1026.cpp](/assets/src/ybt/1026.cpp)
 
 
 ```cpp
@@ -412,7 +416,7 @@ int main() {
 }
 ```
 
-[1027.cpp](./assets/src/ybt/1027.cpp)
+[1027.cpp](/assets/src/ybt/1027.cpp)
 
 
 ```cpp
@@ -442,7 +446,7 @@ int main() {
 }
 ```
 
-[1028.cpp](./assets/src/ybt/1028.cpp)
+[1028.cpp](/assets/src/ybt/1028.cpp)
 
 
 ```cpp
@@ -457,7 +461,7 @@ int main() {
 }
 ```
 
-[1029.cpp](./assets/src/ybt/1029.cpp)
+[1029.cpp](/assets/src/ybt/1029.cpp)
 
 
 ```cpp
@@ -472,7 +476,7 @@ int main() {
 }
 ```
 
-[1030.cpp](./assets/src/ybt/1030.cpp)
+[1030.cpp](/assets/src/ybt/1030.cpp)
 
 
 ```cpp
@@ -491,7 +495,7 @@ int main() {
 }
 ```
 
-[1031.cpp](./assets/src/ybt/1031.cpp)
+[1031.cpp](/assets/src/ybt/1031.cpp)
 
 
 ```cpp
@@ -506,7 +510,7 @@ int main() {
 }
 ```
 
-[1032.cpp](./assets/src/ybt/1032.cpp)
+[1032.cpp](/assets/src/ybt/1032.cpp)
 
 
 ```cpp
@@ -522,7 +526,7 @@ int main() {
 }
 ```
 
-[1033.cpp](./assets/src/ybt/1033.cpp)
+[1033.cpp](/assets/src/ybt/1033.cpp)
 
 
 ```cpp
@@ -536,7 +540,7 @@ int main() {
 }
 ```
 
-[1035.cpp](./assets/src/ybt/1035.cpp)
+[1035.cpp](/assets/src/ybt/1035.cpp)
 
 
 ```cpp
@@ -548,7 +552,7 @@ int main() {
 }
 ```
 
-[1036.cpp](./assets/src/ybt/1036.cpp)
+[1036.cpp](/assets/src/ybt/1036.cpp)
 
 
 ```cpp
@@ -561,7 +565,7 @@ int main() {
 }
 ```
 
-[1037.cpp](./assets/src/ybt/1037.cpp)
+[1037.cpp](/assets/src/ybt/1037.cpp)
 
 
 ```cpp
@@ -576,7 +580,7 @@ int main() {
 }
 ```
 
-[1038.cpp](./assets/src/ybt/1038.cpp)
+[1038.cpp](/assets/src/ybt/1038.cpp)
 
 
 ```cpp
@@ -592,7 +596,7 @@ int main() {
 }
 ```
 
-[1039.cpp](./assets/src/ybt/1039.cpp)
+[1039.cpp](/assets/src/ybt/1039.cpp)
 
 
 ```cpp
@@ -607,7 +611,7 @@ int main() {
 }
 ```
 
-[1040.cpp](./assets/src/ybt/1040.cpp)
+[1040.cpp](/assets/src/ybt/1040.cpp)
 
 
 ```cpp
@@ -620,7 +624,7 @@ int main() {
 }
 ```
 
-[1041.cpp](./assets/src/ybt/1041.cpp)
+[1041.cpp](/assets/src/ybt/1041.cpp)
 
 
 ```cpp
@@ -633,7 +637,7 @@ int main() {
 }
 ```
 
-[1042.cpp](./assets/src/ybt/1042.cpp)
+[1042.cpp](/assets/src/ybt/1042.cpp)
 
 
 ```cpp
@@ -651,7 +655,7 @@ int main() {
 }
 ```
 
-[1043.cpp](./assets/src/ybt/1043.cpp)
+[1043.cpp](/assets/src/ybt/1043.cpp)
 
 
 ```cpp
@@ -664,7 +668,7 @@ int main(void) {
 }
 ```
 
-[1044.cpp](./assets/src/ybt/1044.cpp)
+[1044.cpp](/assets/src/ybt/1044.cpp)
 
 
 ```cpp
@@ -677,7 +681,7 @@ int main() {
 }
 ```
 
-[1045.cpp](./assets/src/ybt/1045.cpp)
+[1045.cpp](/assets/src/ybt/1045.cpp)
 
 
 ```cpp
@@ -690,7 +694,7 @@ int main() {
 }
 ```
 
-[1046.cpp](./assets/src/ybt/1046.cpp)
+[1046.cpp](/assets/src/ybt/1046.cpp)
 
 
 ```cpp
@@ -719,7 +723,7 @@ int main() {
 }
 ```
 
-[1047.cpp](./assets/src/ybt/1047.cpp)
+[1047.cpp](/assets/src/ybt/1047.cpp)
 
 
 ```cpp
@@ -732,7 +736,7 @@ int main() {
 }
 ```
 
-[1048.cpp](./assets/src/ybt/1048.cpp)
+[1048.cpp](/assets/src/ybt/1048.cpp)
 
 
 ```cpp
@@ -752,7 +756,7 @@ int main() {
 }
 ```
 
-[1049.cpp](./assets/src/ybt/1049.cpp)
+[1049.cpp](/assets/src/ybt/1049.cpp)
 
 
 ```cpp
@@ -772,7 +776,7 @@ int main() {
 }
 ```
 
-[1050.cpp](./assets/src/ybt/1050.cpp)
+[1050.cpp](/assets/src/ybt/1050.cpp)
 
 
 ```cpp
@@ -790,7 +794,7 @@ int main() {
 }
 ```
 
-[1051.cpp](./assets/src/ybt/1051.cpp)
+[1051.cpp](/assets/src/ybt/1051.cpp)
 
 
 ```cpp
@@ -810,7 +814,7 @@ int main() {
 }
 ```
 
-[1052.cpp](./assets/src/ybt/1052.cpp)
+[1052.cpp](/assets/src/ybt/1052.cpp)
 
 
 ```cpp
@@ -827,7 +831,7 @@ int main() {
 }
 ```
 
-[1053.cpp](./assets/src/ybt/1053.cpp)
+[1053.cpp](/assets/src/ybt/1053.cpp)
 
 
 ```cpp
@@ -842,7 +846,7 @@ int main() {
 }
 ```
 
-[1054.cpp](./assets/src/ybt/1054.cpp)
+[1054.cpp](/assets/src/ybt/1054.cpp)
 
 
 ```cpp
@@ -856,7 +860,7 @@ int main() {
 }
 ```
 
-[1055.cpp](./assets/src/ybt/1055.cpp)
+[1055.cpp](/assets/src/ybt/1055.cpp)
 
 
 ```cpp
@@ -870,7 +874,7 @@ int main() {
 }
 ```
 
-[1056.cpp](./assets/src/ybt/1056.cpp)
+[1056.cpp](/assets/src/ybt/1056.cpp)
 
 
 ```cpp
@@ -896,7 +900,7 @@ int main() {
 }
 ```
 
-[1057.cpp](./assets/src/ybt/1057.cpp)
+[1057.cpp](/assets/src/ybt/1057.cpp)
 
 
 ```cpp
@@ -927,7 +931,7 @@ int main() {
 }
 ```
 
-[1058.cpp](./assets/src/ybt/1058.cpp)
+[1058.cpp](/assets/src/ybt/1058.cpp)
 
 
 ```cpp
@@ -942,7 +946,7 @@ int main() {
 }
 ```
 
-[1059.cpp](./assets/src/ybt/1059.cpp)
+[1059.cpp](/assets/src/ybt/1059.cpp)
 
 
 ```cpp
@@ -958,7 +962,7 @@ int main() {
 }
 ```
 
-[1060.cpp](./assets/src/ybt/1060.cpp)
+[1060.cpp](/assets/src/ybt/1060.cpp)
 
 
 ```cpp
@@ -974,7 +978,7 @@ int main() {
 }
 ```
 
-[1061.cpp](./assets/src/ybt/1061.cpp)
+[1061.cpp](/assets/src/ybt/1061.cpp)
 
 
 ```cpp
@@ -990,7 +994,7 @@ int main() {
 }
 ```
 
-[1062.cpp](./assets/src/ybt/1062.cpp)
+[1062.cpp](/assets/src/ybt/1062.cpp)
 
 
 ```cpp
@@ -1008,7 +1012,7 @@ int main() {
 }
 ```
 
-[1063.cpp](./assets/src/ybt/1063.cpp)
+[1063.cpp](/assets/src/ybt/1063.cpp)
 
 
 ```cpp
@@ -1026,7 +1030,7 @@ int main() {
 }
 ```
 
-[1064.cpp](./assets/src/ybt/1064.cpp)
+[1064.cpp](/assets/src/ybt/1064.cpp)
 
 
 ```cpp
@@ -1042,7 +1046,7 @@ int main() {
 }
 ```
 
-[1065.cpp](./assets/src/ybt/1065.cpp)
+[1065.cpp](/assets/src/ybt/1065.cpp)
 
 
 ```cpp
@@ -1058,7 +1062,7 @@ int main() {
 }
 ```
 
-[1066.cpp](./assets/src/ybt/1066.cpp)
+[1066.cpp](/assets/src/ybt/1066.cpp)
 
 
 ```cpp
@@ -1079,7 +1083,7 @@ int main() {
 }
 ```
 
-[1067.cpp](./assets/src/ybt/1067.cpp)
+[1067.cpp](/assets/src/ybt/1067.cpp)
 
 
 ```cpp
@@ -1095,7 +1099,7 @@ int main() {
 }
 ```
 
-[1068.cpp](./assets/src/ybt/1068.cpp)
+[1068.cpp](/assets/src/ybt/1068.cpp)
 
 
 ```cpp
@@ -1111,7 +1115,7 @@ int main() {
 }
 ```
 
-[1069.cpp](./assets/src/ybt/1069.cpp)
+[1069.cpp](/assets/src/ybt/1069.cpp)
 
 
 ```cpp
@@ -1129,7 +1133,7 @@ int main() {
 }
 ```
 
-[1070.cpp](./assets/src/ybt/1070.cpp)
+[1070.cpp](/assets/src/ybt/1070.cpp)
 
 
 ```cpp
@@ -1236,7 +1240,7 @@ int main( void ) {
 }
 ```
 
-[1071.cpp](./assets/src/ybt/1071.cpp)
+[1071.cpp](/assets/src/ybt/1071.cpp)
 
 
 ```cpp
@@ -1347,7 +1351,7 @@ int main( void ) {
 }
 ```
 
-[1072.cpp](./assets/src/ybt/1072.cpp)
+[1072.cpp](/assets/src/ybt/1072.cpp)
 
 
 ```cpp
@@ -1455,7 +1459,7 @@ int main( void ) {
 }
 ```
 
-[1073.cpp](./assets/src/ybt/1073.cpp)
+[1073.cpp](/assets/src/ybt/1073.cpp)
 
 
 ```cpp
@@ -1574,7 +1578,7 @@ int main( void ) {
 }
 ```
 
-[1074.cpp](./assets/src/ybt/1074.cpp)
+[1074.cpp](/assets/src/ybt/1074.cpp)
 
 
 ```cpp
@@ -1684,7 +1688,7 @@ int main( void ) {
 }
 ```
 
-[1075.cpp](./assets/src/ybt/1075.cpp)
+[1075.cpp](/assets/src/ybt/1075.cpp)
 
 
 ```cpp
@@ -1795,7 +1799,7 @@ int main( void ) {
 }
 ```
 
-[1076.cpp](./assets/src/ybt/1076.cpp)
+[1076.cpp](/assets/src/ybt/1076.cpp)
 
 
 ```cpp
@@ -1902,7 +1906,7 @@ int main( void ) {
 }
 ```
 
-[1077.cpp](./assets/src/ybt/1077.cpp)
+[1077.cpp](/assets/src/ybt/1077.cpp)
 
 
 ```cpp
@@ -2010,7 +2014,7 @@ int main( void ) {
 }
 ```
 
-[1078.cpp](./assets/src/ybt/1078.cpp)
+[1078.cpp](/assets/src/ybt/1078.cpp)
 
 
 ```cpp
@@ -2119,7 +2123,7 @@ int main( void ) {
 }
 ```
 
-[1079.cpp](./assets/src/ybt/1079.cpp)
+[1079.cpp](/assets/src/ybt/1079.cpp)
 
 
 ```cpp
@@ -2241,7 +2245,7 @@ int main( void ) {
 }
 ```
 
-[1080.cpp](./assets/src/ybt/1080.cpp)
+[1080.cpp](/assets/src/ybt/1080.cpp)
 
 
 ```cpp
@@ -2343,7 +2347,7 @@ int main( void ) {
 }
 ```
 
-[1081.cpp](./assets/src/ybt/1081.cpp)
+[1081.cpp](/assets/src/ybt/1081.cpp)
 
 
 ```cpp
@@ -2458,7 +2462,7 @@ int main( void ) {
 }
 ```
 
-[1083.cpp](./assets/src/ybt/1083.cpp)
+[1083.cpp](/assets/src/ybt/1083.cpp)
 
 
 ```cpp
@@ -2566,7 +2570,7 @@ int main( void ) {
 }
 ```
 
-[1084.cpp](./assets/src/ybt/1084.cpp)
+[1084.cpp](/assets/src/ybt/1084.cpp)
 
 
 ```cpp
@@ -2674,7 +2678,7 @@ int main( void ) {
 }
 ```
 
-[1085.cpp](./assets/src/ybt/1085.cpp)
+[1085.cpp](/assets/src/ybt/1085.cpp)
 
 
 ```cpp
@@ -2787,7 +2791,7 @@ int main( void ) {
 }
 ```
 
-[1086.cpp](./assets/src/ybt/1086.cpp)
+[1086.cpp](/assets/src/ybt/1086.cpp)
 
 
 ```cpp
@@ -2894,7 +2898,7 @@ int main( void ) {
 }
 ```
 
-[1087.cpp](./assets/src/ybt/1087.cpp)
+[1087.cpp](/assets/src/ybt/1087.cpp)
 
 
 ```cpp
@@ -3000,7 +3004,7 @@ int main( void ) {
 }
 ```
 
-[1088.cpp](./assets/src/ybt/1088.cpp)
+[1088.cpp](/assets/src/ybt/1088.cpp)
 
 
 ```cpp
@@ -3108,7 +3112,7 @@ int main( void ) {
 }
 ```
 
-[1089.cpp](./assets/src/ybt/1089.cpp)
+[1089.cpp](/assets/src/ybt/1089.cpp)
 
 
 ```cpp
@@ -3221,7 +3225,7 @@ int main( void ) {
 }
 ```
 
-[1090.cpp](./assets/src/ybt/1090.cpp)
+[1090.cpp](/assets/src/ybt/1090.cpp)
 
 
 ```cpp
@@ -3333,7 +3337,7 @@ int main( void ) {
 }
 ```
 
-[1091.cpp](./assets/src/ybt/1091.cpp)
+[1091.cpp](/assets/src/ybt/1091.cpp)
 
 
 ```cpp
@@ -3453,7 +3457,7 @@ int main( void ) {
 }
 ```
 
-[1092.cpp](./assets/src/ybt/1092.cpp)
+[1092.cpp](/assets/src/ybt/1092.cpp)
 
 
 ```cpp
@@ -3564,7 +3568,7 @@ int main( void ) {
 }
 ```
 
-[1093.cpp](./assets/src/ybt/1093.cpp)
+[1093.cpp](/assets/src/ybt/1093.cpp)
 
 
 ```cpp
@@ -3681,7 +3685,7 @@ int main( void ) {
 }
 ```
 
-[1094.cpp](./assets/src/ybt/1094.cpp)
+[1094.cpp](/assets/src/ybt/1094.cpp)
 
 
 ```cpp
@@ -3796,7 +3800,7 @@ int main( void ) {
 }
 ```
 
-[1095.cpp](./assets/src/ybt/1095.cpp)
+[1095.cpp](/assets/src/ybt/1095.cpp)
 
 
 ```cpp
@@ -3911,7 +3915,7 @@ int main( void ) {
 }
 ```
 
-[1096.cpp](./assets/src/ybt/1096.cpp)
+[1096.cpp](/assets/src/ybt/1096.cpp)
 
 
 ```cpp
@@ -4022,7 +4026,7 @@ int main( void ) {
 }
 ```
 
-[1097.cpp](./assets/src/ybt/1097.cpp)
+[1097.cpp](/assets/src/ybt/1097.cpp)
 
 
 ```cpp
@@ -4130,7 +4134,7 @@ int main( void ) {
 }
 ```
 
-[1098.cpp](./assets/src/ybt/1098.cpp)
+[1098.cpp](/assets/src/ybt/1098.cpp)
 
 
 ```cpp
@@ -4248,7 +4252,7 @@ int main( void ) {
 }
 ```
 
-[1099.cpp](./assets/src/ybt/1099.cpp)
+[1099.cpp](/assets/src/ybt/1099.cpp)
 
 
 ```cpp
@@ -4361,7 +4365,7 @@ int main( void ) {
 }
 ```
 
-[1100.cpp](./assets/src/ybt/1100.cpp)
+[1100.cpp](/assets/src/ybt/1100.cpp)
 
 
 ```cpp
@@ -4468,7 +4472,7 @@ int main( void ) {
 }
 ```
 
-[1101.cpp](./assets/src/ybt/1101.cpp)
+[1101.cpp](/assets/src/ybt/1101.cpp)
 
 
 ```cpp
@@ -4573,7 +4577,7 @@ int main( void ) {
 }
 ```
 
-[1102.cpp](./assets/src/ybt/1102.cpp)
+[1102.cpp](/assets/src/ybt/1102.cpp)
 
 
 ```cpp
@@ -4678,7 +4682,7 @@ int main( void ) {
 }
 ```
 
-[1103.cpp](./assets/src/ybt/1103.cpp)
+[1103.cpp](/assets/src/ybt/1103.cpp)
 
 
 ```cpp
@@ -4790,7 +4794,7 @@ int main( void ) {
 }
 ```
 
-[1104.cpp](./assets/src/ybt/1104.cpp)
+[1104.cpp](/assets/src/ybt/1104.cpp)
 
 
 ```cpp
@@ -4898,7 +4902,7 @@ int main( void ) {
 }
 ```
 
-[1105.cpp](./assets/src/ybt/1105.cpp)
+[1105.cpp](/assets/src/ybt/1105.cpp)
 
 
 ```cpp
@@ -5014,7 +5018,7 @@ int main( void ) {
 }
 ```
 
-[1106.cpp](./assets/src/ybt/1106.cpp)
+[1106.cpp](/assets/src/ybt/1106.cpp)
 
 
 ```cpp
@@ -5126,7 +5130,7 @@ int main( void ) {
 }
 ```
 
-[1107.cpp](./assets/src/ybt/1107.cpp)
+[1107.cpp](/assets/src/ybt/1107.cpp)
 
 
 ```cpp
@@ -5232,7 +5236,7 @@ int main( void ) {
 }
 ```
 
-[1108.cpp](./assets/src/ybt/1108.cpp)
+[1108.cpp](/assets/src/ybt/1108.cpp)
 
 
 ```cpp
@@ -5355,7 +5359,7 @@ int main( void ) {
 }
 ```
 
-[1109.cpp](./assets/src/ybt/1109.cpp)
+[1109.cpp](/assets/src/ybt/1109.cpp)
 
 
 ```cpp
@@ -5472,7 +5476,7 @@ int main( void ) {
 }
 ```
 
-[1110.cpp](./assets/src/ybt/1110.cpp)
+[1110.cpp](/assets/src/ybt/1110.cpp)
 
 
 ```cpp
@@ -5585,7 +5589,7 @@ int main( void ) {
 }
 ```
 
-[1111.cpp](./assets/src/ybt/1111.cpp)
+[1111.cpp](/assets/src/ybt/1111.cpp)
 
 
 ```cpp
@@ -5695,7 +5699,7 @@ int main( void ) {
 }
 ```
 
-[1112.cpp](./assets/src/ybt/1112.cpp)
+[1112.cpp](/assets/src/ybt/1112.cpp)
 
 
 ```cpp
@@ -5807,7 +5811,7 @@ int main( void ) {
 }
 ```
 
-[1113.cpp](./assets/src/ybt/1113.cpp)
+[1113.cpp](/assets/src/ybt/1113.cpp)
 
 
 ```cpp
@@ -5929,7 +5933,7 @@ int main( void ) {
 }
 ```
 
-[1114.cpp](./assets/src/ybt/1114.cpp)
+[1114.cpp](/assets/src/ybt/1114.cpp)
 
 
 ```cpp
@@ -6044,7 +6048,7 @@ int main( void ) {
 }
 ```
 
-[1115.cpp](./assets/src/ybt/1115.cpp)
+[1115.cpp](/assets/src/ybt/1115.cpp)
 
 
 ```cpp
@@ -6165,7 +6169,7 @@ int main( void ) {
 }
 ```
 
-[1116.cpp](./assets/src/ybt/1116.cpp)
+[1116.cpp](/assets/src/ybt/1116.cpp)
 
 
 ```cpp
@@ -6281,7 +6285,7 @@ int main( void ) {
 }
 ```
 
-[1117.cpp](./assets/src/ybt/1117.cpp)
+[1117.cpp](/assets/src/ybt/1117.cpp)
 
 
 ```cpp
@@ -6405,7 +6409,7 @@ int main( void ) {
 }
 ```
 
-[1118.cpp](./assets/src/ybt/1118.cpp)
+[1118.cpp](/assets/src/ybt/1118.cpp)
 
 
 ```cpp
@@ -6526,7 +6530,7 @@ int main( void ) {
 }
 ```
 
-[1119.cpp](./assets/src/ybt/1119.cpp)
+[1119.cpp](/assets/src/ybt/1119.cpp)
 
 
 ```cpp
@@ -6665,7 +6669,7 @@ int main( void ) {
 }
 ```
 
-[1120.cpp](./assets/src/ybt/1120.cpp)
+[1120.cpp](/assets/src/ybt/1120.cpp)
 
 
 ```cpp
@@ -6777,7 +6781,7 @@ int main( void ) {
 }
 ```
 
-[1121.cpp](./assets/src/ybt/1121.cpp)
+[1121.cpp](/assets/src/ybt/1121.cpp)
 
 
 ```cpp
@@ -6920,7 +6924,7 @@ int main( void ) {
 }
 ```
 
-[1122.cpp](./assets/src/ybt/1122.cpp)
+[1122.cpp](/assets/src/ybt/1122.cpp)
 
 
 ```cpp
@@ -7027,7 +7031,7 @@ int main( void ) {
 }
 ```
 
-[1123.cpp](./assets/src/ybt/1123.cpp)
+[1123.cpp](/assets/src/ybt/1123.cpp)
 
 
 ```cpp
@@ -7142,7 +7146,7 @@ int main( void ) {
 }
 ```
 
-[1124.cpp](./assets/src/ybt/1124.cpp)
+[1124.cpp](/assets/src/ybt/1124.cpp)
 
 
 ```cpp
@@ -7261,7 +7265,7 @@ int main( void ) {
 }
 ```
 
-[1125.cpp](./assets/src/ybt/1125.cpp)
+[1125.cpp](/assets/src/ybt/1125.cpp)
 
 
 ```cpp
@@ -7368,7 +7372,7 @@ int main( void ) {
 }
 ```
 
-[1126.cpp](./assets/src/ybt/1126.cpp)
+[1126.cpp](/assets/src/ybt/1126.cpp)
 
 
 ```cpp
@@ -7475,7 +7479,7 @@ int main( void ) {
 }
 ```
 
-[1127.cpp](./assets/src/ybt/1127.cpp)
+[1127.cpp](/assets/src/ybt/1127.cpp)
 
 
 ```cpp
@@ -7612,7 +7616,7 @@ int main( void ) {
 }
 ```
 
-[1128.cpp](./assets/src/ybt/1128.cpp)
+[1128.cpp](/assets/src/ybt/1128.cpp)
 
 
 ```cpp
@@ -7719,7 +7723,7 @@ int main( void ) {
 }
 ```
 
-[1129.cpp](./assets/src/ybt/1129.cpp)
+[1129.cpp](/assets/src/ybt/1129.cpp)
 
 
 ```cpp
@@ -7849,7 +7853,7 @@ int main( void ) {
 }
 ```
 
-[1130.cpp](./assets/src/ybt/1130.cpp)
+[1130.cpp](/assets/src/ybt/1130.cpp)
 
 
 ```cpp
@@ -7959,7 +7963,7 @@ int main( void ) {
 
 ```
 
-[1131.cpp](./assets/src/ybt/1131.cpp)
+[1131.cpp](/assets/src/ybt/1131.cpp)
 
 
 ```cpp
@@ -8090,7 +8094,7 @@ int main( void ) {
 }
 ```
 
-[1132.cpp](./assets/src/ybt/1132.cpp)
+[1132.cpp](/assets/src/ybt/1132.cpp)
 
 
 ```cpp
@@ -8197,7 +8201,7 @@ int main( void ) {
 }
 ```
 
-[1133.cpp](./assets/src/ybt/1133.cpp)
+[1133.cpp](/assets/src/ybt/1133.cpp)
 
 
 ```cpp
@@ -8325,7 +8329,7 @@ int main( void ) {
 }
 ```
 
-[1134.cpp](./assets/src/ybt/1134.cpp)
+[1134.cpp](/assets/src/ybt/1134.cpp)
 
 
 ```cpp
@@ -8440,7 +8444,7 @@ int main( void ) {
 }
 ```
 
-[1135.cpp](./assets/src/ybt/1135.cpp)
+[1135.cpp](/assets/src/ybt/1135.cpp)
 
 
 ```cpp
@@ -8553,7 +8557,7 @@ int main( void ) {
 }
 ```
 
-[1136.cpp](./assets/src/ybt/1136.cpp)
+[1136.cpp](/assets/src/ybt/1136.cpp)
 
 
 ```cpp
@@ -8699,7 +8703,7 @@ int main( void ) {
 }
 ```
 
-[1137.cpp](./assets/src/ybt/1137.cpp)
+[1137.cpp](/assets/src/ybt/1137.cpp)
 
 
 ```cpp
@@ -8807,7 +8811,7 @@ int main( void ) {
 }
 ```
 
-[1138.cpp](./assets/src/ybt/1138.cpp)
+[1138.cpp](/assets/src/ybt/1138.cpp)
 
 
 ```cpp
@@ -8925,7 +8929,7 @@ int main( void ) {
 }
 ```
 
-[1139.cpp](./assets/src/ybt/1139.cpp)
+[1139.cpp](/assets/src/ybt/1139.cpp)
 
 
 ```cpp
@@ -9061,7 +9065,7 @@ int main( void ) {
 }
 ```
 
-[1140.cpp](./assets/src/ybt/1140.cpp)
+[1140.cpp](/assets/src/ybt/1140.cpp)
 
 
 ```cpp
@@ -9179,7 +9183,7 @@ int main( void ) {
 }
 ```
 
-[1141.cpp](./assets/src/ybt/1141.cpp)
+[1141.cpp](/assets/src/ybt/1141.cpp)
 
 
 ```cpp
@@ -9305,7 +9309,7 @@ int main( void ) {
 }
 ```
 
-[1142.cpp](./assets/src/ybt/1142.cpp)
+[1142.cpp](/assets/src/ybt/1142.cpp)
 
 
 ```cpp
@@ -9439,7 +9443,7 @@ int main( void ) {
 }
 ```
 
-[1143.cpp](./assets/src/ybt/1143.cpp)
+[1143.cpp](/assets/src/ybt/1143.cpp)
 
 
 ```cpp
@@ -9572,7 +9576,7 @@ int main( void ) {
 }
 ```
 
-[1144.cpp](./assets/src/ybt/1144.cpp)
+[1144.cpp](/assets/src/ybt/1144.cpp)
 
 
 ```cpp
@@ -9710,7 +9714,7 @@ int main( void ) {
 }
 ```
 
-[1145.cpp](./assets/src/ybt/1145.cpp)
+[1145.cpp](/assets/src/ybt/1145.cpp)
 
 
 ```cpp
@@ -9821,7 +9825,7 @@ int main( void ) {
 }
 ```
 
-[1146.cpp](./assets/src/ybt/1146.cpp)
+[1146.cpp](/assets/src/ybt/1146.cpp)
 
 
 ```cpp
@@ -9933,7 +9937,7 @@ int main( void ) {
 }
 ```
 
-[1147.cpp](./assets/src/ybt/1147.cpp)
+[1147.cpp](/assets/src/ybt/1147.cpp)
 
 
 ```cpp
@@ -10067,7 +10071,7 @@ int main( void ) {
 }
 ```
 
-[1148.cpp](./assets/src/ybt/1148.cpp)
+[1148.cpp](/assets/src/ybt/1148.cpp)
 
 
 ```cpp
@@ -10207,7 +10211,7 @@ int main( void ) {
 }
 ```
 
-[1149.cpp](./assets/src/ybt/1149.cpp)
+[1149.cpp](/assets/src/ybt/1149.cpp)
 
 
 ```cpp
@@ -10319,7 +10323,7 @@ int main( void ) {
 }
 ```
 
-[1150.cpp](./assets/src/ybt/1150.cpp)
+[1150.cpp](/assets/src/ybt/1150.cpp)
 
 
 ```cpp
@@ -10432,7 +10436,7 @@ int main( void ) {
 }
 ```
 
-[1151.cpp](./assets/src/ybt/1151.cpp)
+[1151.cpp](/assets/src/ybt/1151.cpp)
 
 
 ```cpp
@@ -10540,7 +10544,7 @@ cout<<Max(a,b,c)/(Max(a+b,b,c)*Max(a,b,b+c))<<endl;
 }
 ```
 
-[1152.cpp](./assets/src/ybt/1152.cpp)
+[1152.cpp](/assets/src/ybt/1152.cpp)
 
 
 ```cpp
@@ -10663,7 +10667,7 @@ int main( void ) {
 }
 ```
 
-[1153.cpp](./assets/src/ybt/1153.cpp)
+[1153.cpp](/assets/src/ybt/1153.cpp)
 
 
 ```cpp
@@ -10788,7 +10792,7 @@ int main( void ) {
 }
 ```
 
-[1154.cpp](./assets/src/ybt/1154.cpp)
+[1154.cpp](/assets/src/ybt/1154.cpp)
 
 
 ```cpp
@@ -10908,7 +10912,7 @@ int main( void ) {
 }
 ```
 
-[1155.cpp](./assets/src/ybt/1155.cpp)
+[1155.cpp](/assets/src/ybt/1155.cpp)
 
 
 ```cpp
@@ -11025,7 +11029,7 @@ int main( void ) {
 }
 ```
 
-[1156.cpp](./assets/src/ybt/1156.cpp)
+[1156.cpp](/assets/src/ybt/1156.cpp)
 
 
 ```cpp
@@ -11152,7 +11156,7 @@ int main( void ) {
 }
 ```
 
-[1157.cpp](./assets/src/ybt/1157.cpp)
+[1157.cpp](/assets/src/ybt/1157.cpp)
 
 
 ```cpp
@@ -11260,7 +11264,7 @@ int main( void ) {
 }
 ```
 
-[1158.cpp](./assets/src/ybt/1158.cpp)
+[1158.cpp](/assets/src/ybt/1158.cpp)
 
 
 ```cpp
@@ -11369,7 +11373,7 @@ int main( void ) {
 }
 ```
 
-[1159.cpp](./assets/src/ybt/1159.cpp)
+[1159.cpp](/assets/src/ybt/1159.cpp)
 
 
 ```cpp
@@ -11482,7 +11486,7 @@ int main( void ) {
 }
 ```
 
-[1160.cpp](./assets/src/ybt/1160.cpp)
+[1160.cpp](/assets/src/ybt/1160.cpp)
 
 
 ```cpp
@@ -11598,7 +11602,7 @@ int main( void ) {
 }
 ```
 
-[1161.cpp](./assets/src/ybt/1161.cpp)
+[1161.cpp](/assets/src/ybt/1161.cpp)
 
 
 ```cpp
@@ -11709,7 +11713,7 @@ int main( void ) {
 }
 ```
 
-[1162.cpp](./assets/src/ybt/1162.cpp)
+[1162.cpp](/assets/src/ybt/1162.cpp)
 
 
 ```cpp
@@ -11826,7 +11830,7 @@ int main( void ) {
 }
 ```
 
-[1163.cpp](./assets/src/ybt/1163.cpp)
+[1163.cpp](/assets/src/ybt/1163.cpp)
 
 
 ```cpp
@@ -11937,7 +11941,7 @@ int main( void ) {
 }
 ```
 
-[1164.cpp](./assets/src/ybt/1164.cpp)
+[1164.cpp](/assets/src/ybt/1164.cpp)
 
 
 ```cpp
@@ -12049,7 +12053,7 @@ int main( void ) {
 }
 ```
 
-[1165.cpp](./assets/src/ybt/1165.cpp)
+[1165.cpp](/assets/src/ybt/1165.cpp)
 
 
 ```cpp
@@ -12160,7 +12164,7 @@ int main( void ) {
 }
 ```
 
-[1166.cpp](./assets/src/ybt/1166.cpp)
+[1166.cpp](/assets/src/ybt/1166.cpp)
 
 
 ```cpp
@@ -12274,7 +12278,7 @@ int main( void ) {
 }
 ```
 
-[1167.cpp](./assets/src/ybt/1167.cpp)
+[1167.cpp](/assets/src/ybt/1167.cpp)
 
 
 ```cpp
@@ -12414,7 +12418,7 @@ int main( void ) {
 }
 ```
 
-[1397.cpp](./assets/src/ybt/1397.cpp)
+[1397.cpp](/assets/src/ybt/1397.cpp)
 
 
 ```cpp
@@ -12524,7 +12528,7 @@ int main( void ) {
 }
 ```
 
-[1398.cpp](./assets/src/ybt/1398.cpp)
+[1398.cpp](/assets/src/ybt/1398.cpp)
 
 
 ```cpp
@@ -12637,7 +12641,7 @@ int main( void ) {
 }
 ```
 
-[1399.cpp](./assets/src/ybt/1399.cpp)
+[1399.cpp](/assets/src/ybt/1399.cpp)
 
 
 ```cpp
@@ -12792,7 +12796,7 @@ int main( void ) {
 }
 ```
 
-[1400.cpp](./assets/src/ybt/1400.cpp)
+[1400.cpp](/assets/src/ybt/1400.cpp)
 
 
 ```cpp
@@ -12919,7 +12923,7 @@ int main( void ) {
 }
 ```
 
-[1401.cpp](./assets/src/ybt/1401.cpp)
+[1401.cpp](/assets/src/ybt/1401.cpp)
 
 
 ```cpp
@@ -13053,7 +13057,7 @@ int main( void ) {
 }
 ```
 
-[1402.cpp](./assets/src/ybt/1402.cpp)
+[1402.cpp](/assets/src/ybt/1402.cpp)
 
 
 ```cpp
@@ -13177,7 +13181,7 @@ int main( void ) {
 }
 ```
 
-[1403.cpp](./assets/src/ybt/1403.cpp)
+[1403.cpp](/assets/src/ybt/1403.cpp)
 
 
 ```cpp
@@ -13288,7 +13292,7 @@ int main( void ) {
 }
 ```
 
-[1404.cpp](./assets/src/ybt/1404.cpp)
+[1404.cpp](/assets/src/ybt/1404.cpp)
 
 
 ```cpp
@@ -13410,7 +13414,7 @@ int main( void ) {
 }
 ```
 
-[1405.cpp](./assets/src/ybt/1405.cpp)
+[1405.cpp](/assets/src/ybt/1405.cpp)
 
 
 ```cpp
@@ -13539,7 +13543,7 @@ int main( void ) {
 }
 ```
 
-[1406.cpp](./assets/src/ybt/1406.cpp)
+[1406.cpp](/assets/src/ybt/1406.cpp)
 
 
 ```cpp
@@ -13682,7 +13686,7 @@ int main( void ) {
 }
 ```
 
-[1407.cpp](./assets/src/ybt/1407.cpp)
+[1407.cpp](/assets/src/ybt/1407.cpp)
 
 
 ```cpp
@@ -13812,7 +13816,7 @@ int main( void ) {
 }
 ```
 
-[1408.cpp](./assets/src/ybt/1408.cpp)
+[1408.cpp](/assets/src/ybt/1408.cpp)
 
 
 ```cpp
@@ -13932,7 +13936,7 @@ int main( void ) {
 }
 ```
 
-[1409.cpp](./assets/src/ybt/1409.cpp)
+[1409.cpp](/assets/src/ybt/1409.cpp)
 
 
 ```cpp
@@ -14060,7 +14064,7 @@ int main( void ) {
 }
 ```
 
-[1410.cpp](./assets/src/ybt/1410.cpp)
+[1410.cpp](/assets/src/ybt/1410.cpp)
 
 
 ```cpp
@@ -14198,7 +14202,7 @@ int main( void ) {
 }
 ```
 
-[1411.cpp](./assets/src/ybt/1411.cpp)
+[1411.cpp](/assets/src/ybt/1411.cpp)
 
 
 ```cpp
@@ -14316,5 +14320,5 @@ int main( void ) {
 }
 ```
 
-[1412.cpp](./assets/src/ybt/1412.cpp)
+[1412.cpp](/assets/src/ybt/1412.cpp)
 
