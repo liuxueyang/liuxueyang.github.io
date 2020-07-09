@@ -336,3 +336,27 @@ clean:
 
 1401: 1401.cpp
 	g++ -Wall -DDEBUG -g 1401.cpp -o 1401.exe
+
+1168: 1168.cpp
+	g++ -Wall -DDEBUG -g 1168.cpp -o 1168.exe
+
+1169: 1169.cpp
+	g++ -Wall -DDEBUG -g 1169.cpp -o 1169.exe
+
+1307: 1307.cpp
+	g++ -Wall -DDEBUG -g 1307.cpp -o 1307.exe
+
+1174: 1174.cpp
+	g++ -Wall -DDEBUG -g 1174.cpp -o 1174.exe
+
+1173: 1173.cpp
+	g++ -Wall -DDEBUG -g 1173.cpp -o 1173.exe
+
+1172: 1172.cpp
+	g++ -Wall -DDEBUG -g 1172.cpp -o 1172.exe
+
+1170: 1170.cpp
+	g++ -Wall -DDEBUG -g 1170.cpp -o 1170.exe
+
+1171: 1171.cpp
+	g++ -Wall -DDEBUG -g 1171.cpp -o 1171.exe
