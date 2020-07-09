@@ -360,3 +360,9 @@ clean:
 
 1171: 1171.cpp
 	g++ -Wall -DDEBUG -g 1171.cpp -o 1171.exe
+
+1175: 1175.cpp
+	g++ -Wall -DDEBUG -g 1175.cpp -o 1175.exe
+
+1309: 1309.cpp
+	g++ -Wall -DDEBUG -g 1309.cpp -o 1309.exe
