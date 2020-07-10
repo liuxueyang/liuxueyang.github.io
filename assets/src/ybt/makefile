@@ -366,3 +366,16 @@ clean:
 
 1309: 1309.cpp
 	g++ -Wall -DDEBUG -g 1309.cpp -o 1309.exe
+
+1005: 1005.cpp
+	g++ -Wall -DDEBUG -g 1005.cpp -o 1005.exe
+
+1034: 1034.cpp
+	g++ -Wall -DDEBUG -g 1034.cpp -o 1034.exe
+
+1082: 1082.cpp
+	g++ -Wall -DDEBUG -g 1082.cpp -o 1082.exe
+
+1413: 1413.cpp
+	g++ -Wall -DDEBUG -g 1413.cpp -o 1413.exe
+
