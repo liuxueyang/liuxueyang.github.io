@@ -384,3 +384,6 @@ clean:
 
 1310: 1310.cpp
 	g++ -Wall -DDEBUG -g 1310.cpp -o 1310.exe
+
+1982: 1982.cpp
+	g++ -Wall -DDEBUG -g 1982.cpp -o 1982.exe
