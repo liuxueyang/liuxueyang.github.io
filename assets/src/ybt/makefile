@@ -379,3 +379,8 @@ clean:
 1413: 1413.cpp
 	g++ -Wall -DDEBUG -g 1413.cpp -o 1413.exe
 
+1308: 1308.cpp
+	g++ -Wall -DDEBUG -g 1308.cpp -o 1308.exe
+
+1310: 1310.cpp
+	g++ -Wall -DDEBUG -g 1310.cpp -o 1310.exe
