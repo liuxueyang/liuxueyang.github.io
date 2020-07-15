@@ -387,3 +387,12 @@ clean:
 
 1982: 1982.cpp
 	g++ -Wall -DDEBUG -g 1982.cpp -o 1982.exe
+
+1176: 1176.cpp
+	g++ -Wall -DDEBUG -g 1176.cpp -o 1176.exe
+
+1177: 1177.cpp
+	g++ -Wall -DDEBUG -g 1177.cpp -o 1177.exe
+
+1178: 1178.cpp
+	g++ -Wall -DDEBUG -g 1178.cpp -o 1178.exe
