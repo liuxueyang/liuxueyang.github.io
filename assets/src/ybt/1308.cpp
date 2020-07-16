@@ -79,43 +79,106 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-int a[50], c[50];
+int a[500],b[500],c[500],d[500],lena,lenb,lenc,lend;
+
+void copy1(int k)
+{
+  memset(d,0,sizeof(d));
+  lend=lenb+k-1;
+  // d=b*(10^(k-1))
+  for(int i=1;i<=lenb;i++)
+    {
+      d[i+k-1]=b[i];
+    }
+}
+
+void minus1()
+{
+  // a-d
+  for(int i=1;i<=lena;i++)
+    {
+      if(a[i]>=d[i])
+        {
+          a[i]-=d[i];
+        }
+      else
+        {
+          a[i+1]--;
+          a[i]=a[i]+10-d[i];
+        }
+    }
+  while(lena&&!a[lena])--lena;
+}
+
+int cmp()
+{
+  // compare a,d
+  if(lena<lend)return -1;
+  else if(lena>lend)return 1;
+  for(int i=lena;i>=1;i--)
+    {
+      if(a[i]>d[i])return 1;
+      else if(a[i]<d[i])return -1;
+    }
+  return 0;
+}
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1171.in", "r", stdin);
+  freopen("1308.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  string a1;
-  cin>>a1;
+  string a1,b1;
+  cin>>a1>>b1;
   memset(a,0,sizeof(a));
+  memset(b,0,sizeof(b));
   memset(c,0,sizeof(c));
-  int lena=a1.size(),x=0;
-  for(int i=lena;i>=1;i--)a[i]=a1[i-1]-'0';
-  bool flag=false;
-  for(int k=2;k<=9;k++)
+  memset(d,0,sizeof(d));
+  lena=a1.size();
+  lenb=b1.size();
+  for(int i=lena;i>=1;--i)a[i]=a1[lena-i]-'0';
+  for(int i=lenb;i>=1;--i)b[i]=b1[lenb-i]-'0';
+  lenc=lena-lenb+1;
+  if(cmp()==0)
     {
-      x=0;
-      for(int i=1;i<=lena;i++)
-        {
-          c[i]=(a[i]+10*x)/k;
-          x=(a[i]+10*x)%k;
-        }
-      if(!x)
-        {
-          if(flag) cout<<" ";
-          flag=true;
-          cout<<k;
-        }
+      cout<<1<<endl<<0<<endl;
     }
-
-  if(!flag)cout<<"none\n";
+  else if(cmp()<0)
+    {
+      cout<<0<<endl<<a1<<endl;
+    }
   else
-    cout<<endl;
+    {
+      for(int i=lenc;i>=1;i--)
+        {
+          copy1(i);
+          while(cmp()>=0)
+            {
+              c[i]++;
+              minus1();
+            }
+        }
+
+      while(lenc&&!c[lenc])--lenc;
+      if(lenc)
+        {
+          for(int i=lenc;i>=1;--i)cout<<c[i];
+        }
+      else cout<<0;
+
+      NL;
+
+      while(lena&&!a[lena])--lena;
+      if(lena)
+        for(int i=lena;i>=1;--i)cout<<a[i];
+      else cout<<0;
+
+      NL;
+    }
 
   return 0;
 }

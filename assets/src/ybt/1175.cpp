@@ -79,12 +79,12 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-int a[50], c[50];
+int a[300], c[300];
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1171.in", "r", stdin);
+  freopen("1175.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
@@ -94,28 +94,18 @@ int main( void ) {
   cin>>a1;
   memset(a,0,sizeof(a));
   memset(c,0,sizeof(c));
-  int lena=a1.size(),x=0;
-  for(int i=lena;i>=1;i--)a[i]=a1[i-1]-'0';
-  bool flag=false;
-  for(int k=2;k<=9;k++)
+  int lena=a1.size(),x=0,k=13,lenc=lena;
+  for(int i=lena;i>=1;i--)a[i]=a1[lena-i]-'0';
+  for(int i=lena;i>=1;i--)
     {
-      x=0;
-      for(int i=1;i<=lena;i++)
-        {
-          c[i]=(a[i]+10*x)/k;
-          x=(a[i]+10*x)%k;
-        }
-      if(!x)
-        {
-          if(flag) cout<<" ";
-          flag=true;
-          cout<<k;
-        }
+      c[i]=(a[i]+10*x)/k;
+      x=(a[i]+10*x)%k;
     }
-
-  if(!flag)cout<<"none\n";
+  while(!c[lenc])lenc--;
+  if(!lenc)cout<<0;
   else
-    cout<<endl;
+    for(int i=lenc;i>=1;i--)cout<<c[i];
+  cout<<endl<<x<<endl;
 
   return 0;
 }

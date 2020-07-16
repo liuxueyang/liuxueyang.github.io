@@ -79,43 +79,29 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-int a[50], c[50];
+double D(double x)
+{
+  return x*x;
+}
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1171.in", "r", stdin);
+  freopen("1034.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  string a1;
-  cin>>a1;
-  memset(a,0,sizeof(a));
-  memset(c,0,sizeof(c));
-  int lena=a1.size(),x=0;
-  for(int i=lena;i>=1;i--)a[i]=a1[i-1]-'0';
-  bool flag=false;
-  for(int k=2;k<=9;k++)
-    {
-      x=0;
-      for(int i=1;i<=lena;i++)
-        {
-          c[i]=(a[i]+10*x)/k;
-          x=(a[i]+10*x)%k;
-        }
-      if(!x)
-        {
-          if(flag) cout<<" ";
-          flag=true;
-          cout<<k;
-        }
-    }
-
-  if(!flag)cout<<"none\n";
-  else
-    cout<<endl;
+  double x1,y1,x2,y2,x3,y3,p,l1,l2,l3;
+  cin>>x1>>y1>>x2>>y2>>x3>>y3;
+  l1=sqrt(D(x1-x2)+D(y1-y2));
+  l2=sqrt(D(x1-x3)+D(y1-y3));
+  l3=sqrt(D(x3-x2)+D(y3-y2));
+  p=(l1+l2+l3)/2;
+  cout.precision(2);
+  cout.setf(ios::fixed,ios::floatfield);
+  cout<<sqrt(p*(p-l1)*(p-l2)*(p-l3))<<endl;
 
   return 0;
 }

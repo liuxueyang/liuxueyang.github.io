@@ -79,43 +79,19 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-int a[50], c[50];
-
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1171.in", "r", stdin);
+  freopen("1982.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  string a1;
-  cin>>a1;
-  memset(a,0,sizeof(a));
-  memset(c,0,sizeof(c));
-  int lena=a1.size(),x=0;
-  for(int i=lena;i>=1;i--)a[i]=a1[i-1]-'0';
-  bool flag=false;
-  for(int k=2;k<=9;k++)
-    {
-      x=0;
-      for(int i=1;i<=lena;i++)
-        {
-          c[i]=(a[i]+10*x)/k;
-          x=(a[i]+10*x)%k;
-        }
-      if(!x)
-        {
-          if(flag) cout<<" ";
-          flag=true;
-          cout<<k;
-        }
-    }
-
-  if(!flag)cout<<"none\n";
-  else
-    cout<<endl;
+  string s;
+  cin>>s;
+  int r=0;
+  for(int i=0;i<int(s.size());i++)r+=(s[i]=='1');cout<<r<<endl;
 
   return 0;
 }

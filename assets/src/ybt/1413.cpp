@@ -79,43 +79,44 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-int a[50], c[50];
+LL toD(LL x,int n)
+{
+  LL b=1,r=0;
+  while(x)
+    {
+      if((x%10)>=n)return 0;
+      r=r+(x%10)*b;
+      b*=n;
+      x/=10;
+    }
+  return r;
+}
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1171.in", "r", stdin);
+  freopen("1413.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  string a1;
-  cin>>a1;
-  memset(a,0,sizeof(a));
-  memset(c,0,sizeof(c));
-  int lena=a1.size(),x=0;
-  for(int i=lena;i>=1;i--)a[i]=a1[i-1]-'0';
-  bool flag=false;
-  for(int k=2;k<=9;k++)
+  LL p,q,r;
+  cin>>p>>q>>r;
+
+  for(int i=2;i<=40;i++)
     {
-      x=0;
-      for(int i=1;i<=lena;i++)
+      LL t1=toD(p,i), t2=toD(q,i),t3=toD(r,i);
+      if(t1&&t2&&t3
+         &&t1*t2==t3)
         {
-          c[i]=(a[i]+10*x)/k;
-          x=(a[i]+10*x)%k;
-        }
-      if(!x)
-        {
-          if(flag) cout<<" ";
-          flag=true;
-          cout<<k;
+          cout<<i<<endl;
+          return 0;
         }
     }
-
-  if(!flag)cout<<"none\n";
+  if(p==q&&q==r&&p==1)cout<<1<<endl;
   else
-    cout<<endl;
+    cout<<0<<endl;
 
   return 0;
 }

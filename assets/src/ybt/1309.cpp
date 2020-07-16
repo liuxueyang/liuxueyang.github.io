@@ -79,43 +79,81 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-int a[50], c[50];
+int a[500],b[500],c[500], lena,lenb,lenc,n;
+
+bool check()
+{
+  for(int i=1;i<=lenc/2;i++)
+    {
+      if(c[i]!=c[lenc-i+1])return false;
+    }
+  return true;
+}
+
+void add()
+{
+  lenb=lena;
+  for(int i=1;i<=lena;i++)
+    {
+      b[i]=a[lena-i+1];
+    }
+  lenc=lena;
+  memset(c,0,sizeof(c));
+  for(int i=1;i<=lena;i++)
+    {
+      c[i+1]=(a[i]+b[i]+c[i])/n;
+      c[i]=(a[i]+b[i]+c[i])%n;
+    }
+  while(c[lenc+1])lenc++;
+}
+
+void c2a()
+{
+  while(!c[lenc])lenc--;
+  for(int i=1;i<=lenc;i++)a[i]=c[i];
+  lena=lenc;
+}
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1171.in", "r", stdin);
+  freopen("1309.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  string a1;
-  cin>>a1;
+  int cnt=0;
+  cin>>n;
+  string m;
+  cin>>m;
   memset(a,0,sizeof(a));
+  memset(b,0,sizeof(b));
   memset(c,0,sizeof(c));
-  int lena=a1.size(),x=0;
-  for(int i=lena;i>=1;i--)a[i]=a1[i-1]-'0';
-  bool flag=false;
-  for(int k=2;k<=9;k++)
-    {
-      x=0;
-      for(int i=1;i<=lena;i++)
-        {
-          c[i]=(a[i]+10*x)/k;
-          x=(a[i]+10*x)%k;
-        }
-      if(!x)
-        {
-          if(flag) cout<<" ";
-          flag=true;
-          cout<<k;
-        }
-    }
+  lena=m.size();
+  for(int i=lena;i>=1;i--) {
+    if(isdigit(m[lena-i]))
+      a[i]=m[lena-i]-'0';
+    else a[i]=m[lena-i]-'A'+10;
+  }
 
-  if(!flag)cout<<"none\n";
-  else
-    cout<<endl;
+  bool flag=false;
+  for(int i=1;i<=30;i++)
+    {
+      add();
+      if(check())
+        {
+          // for(int j=lenc;j>=1;j--)cout<<c[j];
+          // NL;
+
+          flag=true;
+          cnt=i;
+          break;
+        }
+      c2a();
+    }
+  if(flag)cout<<cnt<<endl;
+  else cout<<"Impossible\n";
 
   return 0;
 }
