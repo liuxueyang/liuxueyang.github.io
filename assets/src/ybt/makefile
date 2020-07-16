@@ -435,3 +435,6 @@ clean:
 
 1190: 1190.cpp
 	g++ -Wall -DDEBUG -g 1190.cpp -o 1190.exe
+
+1194: 1194.cpp
+	g++ -Wall -DDEBUG -g 1194.cpp -o 1194.exe
