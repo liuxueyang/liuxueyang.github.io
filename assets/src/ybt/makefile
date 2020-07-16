@@ -423,3 +423,15 @@ clean:
 
 1180: 1180.cpp
 	g++ -Wall -DDEBUG -g 1180.cpp -o 1180.exe
+
+1311: 1311.cpp
+	g++ -Wall -DDEBUG -g 1311.cpp -o 1311.exe
+
+1188: 1188.cpp
+	g++ -Wall -DDEBUG -g 1188.cpp -o 1188.exe
+
+1189: 1189.cpp
+	g++ -Wall -DDEBUG -g 1189.cpp -o 1189.exe
+
+1190: 1190.cpp
+	g++ -Wall -DDEBUG -g 1190.cpp -o 1190.exe
