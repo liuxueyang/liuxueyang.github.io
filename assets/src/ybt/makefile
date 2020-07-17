@@ -441,3 +441,15 @@ clean:
 
 1312: 1312.cpp
 	g++ -Wall -DDEBUG -g 1312.cpp -o 1312.exe
+
+1313: 1313.cpp
+	g++ -Wall -DDEBUG -g 1313.cpp -o 1313.exe
+
+1314: 1314.cpp
+	g++ -Wall -DDEBUG -g 1314.cpp -o 1314.exe
+
+1191: 1191.cpp
+	g++ -Wall -DDEBUG -g 1191.cpp -o 1191.exe
+
+1195: 1195.cpp
+	g++ -Wall -DDEBUG -g 1195.cpp -o 1195.exe
