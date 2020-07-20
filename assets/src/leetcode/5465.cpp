@@ -100,9 +100,9 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 const int N=100000+10;
-unordered_map<int,int> ed, lc;
-unordered_map<int,char> lab;
-map<int,VI> gr;
+int lc[N];
+char lab[N];
+int gr[N][N];
 map<char, VI> rev;
 VI res;
 bool vis[N];
@@ -119,24 +119,25 @@ public:
       if(vis[x]) ++lc[x];
     }
 
-    for(auto &x: gr[pos]) {
-      if(!vis[x]) {
-        dfs(x);
-        vis[x] = false;
-      }
-    }
+    // for(int i=1; i<=Size; ++i)
+    //   if(gr[i][pos] && !vis[i]) {
+    //     dfs(i);
+    //     vis[i] = false;
+    //   }
   }
+
   vector<int> countSubTrees(int n, vector<vector<int>>& edges, string labels) {
-    lc.clear(); lab.clear(); gr.clear();
+    memset(lc, 0, sizeof(lc));
+    memset(lab, 0, sizeof(lab));
     res.clear(); rev.clear();
     memset(vis, false, sizeof(vis));
+    memset(gr,0,sizeof(gr));
 
     Size = n;
     for(auto &x: edges) {
       int a=x[0]+1, b=x[1]+1;
       lc[a] = lc[b] = 0;
-      gr[a].push_back(b);
-      gr[b].push_back(a);
+      // gr[a]=b; gr[b]=a;
     }
     for(int i=0;i<int(labels.size());i++) {
       lab[i+1] = labels[i];
