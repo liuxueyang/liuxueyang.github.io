@@ -501,3 +501,9 @@ clean:
 
 1206: 1206.cpp
 	g++ -Wall -DDEBUG -g 1206.cpp -o 1206.exe
+
+1315: 1315.cpp
+	g++ -Wall -DDEBUG -g 1315.cpp -o 1315.exe
+
+1316: 1316.cpp
+	g++ -Wall -DDEBUG -g 1316.cpp -o 1316.exe
