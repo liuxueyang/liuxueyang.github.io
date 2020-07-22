@@ -32,9 +32,15 @@ if ($target_dir_path and !(-d $target_dir_path)) {
 
 while(<>) {
     chomp;
-    my $inputfile = $dir_path . $_ . ".in";
-    my $srcfile = $dir_path . $_ . ".cpp";
-    print Dumper $inputfile, $srcfile;
+    my $inputfile = $_ . ".in";
+    my $srcfile = $_ . ".cpp";
+    $inputfile = File::Spec->catfile($dir_path, $inputfile);
+    $srcfile = File::Spec->catfile($dir_path, $srcfile);
+
+    print Dumper $inputfile, $srcfile, $dst_dir;
+    
+    move($inputfile, $dst_dir) or warn "move failed: $!";
+    move($srcfile, $dst_dir) or warn "move failed: $!";
 }
 
 exit;
