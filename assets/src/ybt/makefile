@@ -510,3 +510,6 @@ clean:
 
 1317: 1317.cpp
 	g++ -Wall -DDEBUG -g 1317.cpp -o 1317.exe
+
+1318: 1318.cpp
+	g++ -Wall -DDEBUG -g 1318.cpp -o 1318.exe
