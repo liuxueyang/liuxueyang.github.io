@@ -83,23 +83,29 @@ void PRINTAV( T1 & vec, T2 x) {
 int a[10][10],cnt,p;
 
 void print(){
-  ++cnt;
   cout<<"No. "<<cnt;NL;
   for(int i=1;i<=8;i++){
-    for(int j=1;j<8;j++){
-      cout<<a[i][j]<<" ";
-    }
-    cout<<a[i][8]<<endl;
+    for(int j=1;j<=8;j++){
+      cout<<a[j][i]<<" ";
+    }NL;
   }
+  ++cnt;
 }
 void bar(int x){
   if(x==9&&p==8){
     print();return;
   }
+#define BR {flag=true;break;}
   for(int j=1;j<=8;++j){
     bool flag=false;
     for(int i=x-1;i>=1;--i){
-      if(a[i][j]||a[i][x-i+j]||a[i][j-x+i]){flag=true;break;}
+      if(a[i][j]) BR;
+
+      int y1=x-i+j;
+      if(y1>=1 && y1 <= 8 && a[i][y1]) BR;
+
+      y1=j-x+i;
+      if(y1 >= 1 && y1 <= 8 && a[i][y1]) BR;
     }
     if(flag)continue;
     a[x][j]=1;
@@ -110,15 +116,21 @@ void bar(int x){
   }
 }
 
+/*
+  这题需要观察前两个输出，找规律。
+  需要把原始输出按 x=y 线对称输出矩阵。
+  贡献了好几次 WA
+*/
+
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1213.in", "r", stdin);
+  // freopen("1213.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
-
+  cnt=1;
   bar(1);
 
   return 0;
