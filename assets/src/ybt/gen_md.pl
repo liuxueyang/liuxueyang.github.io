@@ -18,7 +18,7 @@ $section_name or die $help_msg;
 open(MDF, '>', $section_name . ".md");
 my $section_dir_path = File::Spec->catfile($Bin, $section_name);
 opendir my $dir, $section_dir_path or die "Cannot open directory: $!";
-for my $f (grep (/\.cpp$/, readdir $dir)) {
+for my $f (sort(grep(/\.cpp$/, readdir $dir))) {
     my $file = File::Spec->catfile($section_dir_path, $f);
     open(my $in, '<', $file) or die $!;
     $f =~ /(\d+)\.cpp/;
@@ -30,21 +30,3 @@ for my $f (grep (/\.cpp$/, readdir $dir)) {
     }
     print MDF "```\n\n[$f](/assets/src/ybt/$section_name/$f)\n\n----\n\n";
 }
-
-# my @files = grep {/\d{4}\.cpp/ && -f "$dir_path/$_"} readdir($dir);
-# closedir($dir);
-
-# @files = sort @files;
-
-# my $dest_file="ybt.md";
-# open(DFH, '>', $dest_file) or die $!;
-
-# for my $file (@files){
-#     my $file1=File::Spec->catfile($dir_path, $file);
-#     open(FH, '<', $file1) or die $!;
-#     print DFH "\n```cpp\n";
-#     while(<FH>) {
-#         print DFH $_;
-#     }
-#     print DFH "```\n\n[$file](/assets/src/ybt/$file)\n\n"
-# }

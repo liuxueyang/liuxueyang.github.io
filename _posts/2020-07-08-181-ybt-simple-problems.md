@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  一本通上的 181 道基础题目
+title:  【一本通】语言基础 187 题
 date:   2020-07-08 11:55:20 +0800
 tags:  ACM/ICPC
 ---
@@ -44,6 +44,8 @@ for my $file (@files){
 
 ![ybt](/assets/2020-07-08-14.42.26-ybt.png)
 
+[Problem 1000](http://ybt.ssoier.cn:8088/problem_show.php?pid=1000)
+
 ```cpp
 #include <iostream>
 
@@ -58,8 +60,11 @@ int main() {
 }
 ```
 
-[1000.cpp](/assets/src/ybt/1000.cpp)
+[1000.cpp](/assets/src/ybt/language_basics/1000.cpp)
 
+----
+
+[Problem 1001](http://ybt.ssoier.cn:8088/problem_show.php?pid=1001)
 
 ```cpp
 #include <iostream>
@@ -73,8 +78,11 @@ int main() {
 }
 ```
 
-[1001.cpp](/assets/src/ybt/1001.cpp)
+[1001.cpp](/assets/src/ybt/language_basics/1001.cpp)
 
+----
+
+[Problem 1002](http://ybt.ssoier.cn:8088/problem_show.php?pid=1002)
 
 ```cpp
 #include <iostream>
@@ -88,8 +96,11 @@ int main() {
 }
 ```
 
-[1002.cpp](/assets/src/ybt/1002.cpp)
+[1002.cpp](/assets/src/ybt/language_basics/1002.cpp)
 
+----
+
+[Problem 1003](http://ybt.ssoier.cn:8088/problem_show.php?pid=1003)
 
 ```cpp
 #include <iostream>
@@ -109,8 +120,11 @@ int main() {
 }
 ```
 
-[1003.cpp](/assets/src/ybt/1003.cpp)
+[1003.cpp](/assets/src/ybt/language_basics/1003.cpp)
 
+----
+
+[Problem 1004](http://ybt.ssoier.cn:8088/problem_show.php?pid=1004)
 
 ```cpp
 #include <iostream>
@@ -127,8 +141,118 @@ int main() {
 }
 ```
 
-[1004.cpp](/assets/src/ybt/1004.cpp)
+[1004.cpp](/assets/src/ybt/language_basics/1004.cpp)
 
+----
+
+[Problem 1005](http://ybt.ssoier.cn:8088/problem_show.php?pid=1005)
+
+```cpp
+// ==================================================
+
+// C library
+#include <cmath>
+#include <climits>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
+
+// Containers
+#include <vector>
+#include <list>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <set>
+#include <map>
+
+// Input/Output
+#include <iostream>
+#include <istream>
+#include <ostream>
+#include <sstream>
+#include <fstream>
+#include <ios>
+#include <iomanip>
+
+// Other
+#include <string>
+#include <bitset>
+#include <algorithm>
+#include <utility>
+#include <iterator>
+#include <limits>
+
+// ==================================================
+
+using namespace std;
+
+typedef pair<int, int> PII;
+typedef long long LL;
+
+// ==================================================
+#define oo ((1LL<<31) - 10);
+#define max_(x, y) ((x) > (y) ? (x) : (y))
+#define min_(x, y) ((x) > (y) ? (y) : (x))
+
+#define PR(x) cout << #x " = " << (x) << "\t"
+#define NL cout << "\n"
+
+#define PRINT1(x) PR(x), NL
+#define PRINT2(x1, x2) PR(x1), PRINT1(x2)
+#define PRINT3(x1, x2, x3) PR(x1), PRINT2(x2, x3)
+#define PRINT4(x1, x2, x3, x4) PR(x1), PRINT3(x2, x3, x4)
+
+// ==================================================
+
+template<typename T>
+void PRINTC(const T& a) { cout << a << " "; }
+
+template<typename T>
+void PRINTA(const T ar[], int n) {
+  for (int i = 0; i < n; ++i) PRINTC(ar[i]); NL;
+}
+
+template<typename T1, typename T2>
+void PRINTP(const pair<T1, T2>& p) { PRINTC(p.first); PRINTLN(p.second); }
+
+template<typename T>
+void PRINTLN(const T& a) { cout << a << "\n"; }
+
+template< typename T1, typename T2 >
+void PRINTAV( T1 & vec, T2 x) {
+  ostream_iterator< T2 > O( cout, " " );
+  copy( begin( vec ), end( vec ), O ); NL;
+}
+
+// ==================================================
+
+
+int main( void ) {
+
+#ifdef DEBUG
+  freopen("1005.in", "r", stdin);
+#endif
+
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  double x,a,y,b;
+  cin>>x>>a>>y>>b;
+  cout.precision(2);
+  cout.setf(ios::fixed,ios::floatfield);
+  cout<<(b*y-a*x)/(b-a)<<endl;
+
+  return 0;
+}
+```
+
+[1005.cpp](/assets/src/ybt/language_basics/1005.cpp)
+
+----
+
+[Problem 1006](http://ybt.ssoier.cn:8088/problem_show.php?pid=1006)
 
 ```cpp
 #include <iostream>
@@ -140,8 +264,11 @@ int main(void) {
 }
 ```
 
-[1006.cpp](/assets/src/ybt/1006.cpp)
+[1006.cpp](/assets/src/ybt/language_basics/1006.cpp)
 
+----
+
+[Problem 1007](http://ybt.ssoier.cn:8088/problem_show.php?pid=1007)
 
 ```cpp
 #include <iostream>
@@ -152,8 +279,11 @@ int main() {
 }
 ```
 
-[1007.cpp](/assets/src/ybt/1007.cpp)
+[1007.cpp](/assets/src/ybt/language_basics/1007.cpp)
 
+----
+
+[Problem 1008](http://ybt.ssoier.cn:8088/problem_show.php?pid=1008)
 
 ```cpp
 #include <iostream>
@@ -164,8 +294,11 @@ int main() {
 }
 ```
 
-[1008.cpp](/assets/src/ybt/1008.cpp)
+[1008.cpp](/assets/src/ybt/language_basics/1008.cpp)
 
+----
+
+[Problem 1009](http://ybt.ssoier.cn:8088/problem_show.php?pid=1009)
 
 ```cpp
 #include <iostream>
@@ -176,8 +309,11 @@ int main(void){
 }
 ```
 
-[1009.cpp](/assets/src/ybt/1009.cpp)
+[1009.cpp](/assets/src/ybt/language_basics/1009.cpp)
 
+----
+
+[Problem 1010](http://ybt.ssoier.cn:8088/problem_show.php?pid=1010)
 
 ```cpp
 #include <iostream>
@@ -190,8 +326,11 @@ int main() {
 }
 ```
 
-[1010.cpp](/assets/src/ybt/1010.cpp)
+[1010.cpp](/assets/src/ybt/language_basics/1010.cpp)
 
+----
+
+[Problem 1011](http://ybt.ssoier.cn:8088/problem_show.php?pid=1011)
 
 ```cpp
 #include <iostream>
@@ -204,8 +343,11 @@ int main() {
 }
 ```
 
-[1011.cpp](/assets/src/ybt/1011.cpp)
+[1011.cpp](/assets/src/ybt/language_basics/1011.cpp)
 
+----
+
+[Problem 1012](http://ybt.ssoier.cn:8088/problem_show.php?pid=1012)
 
 ```cpp
 #include <iostream>
@@ -219,8 +361,11 @@ int main() {
 }
 ```
 
-[1012.cpp](/assets/src/ybt/1012.cpp)
+[1012.cpp](/assets/src/ybt/language_basics/1012.cpp)
 
+----
+
+[Problem 1013](http://ybt.ssoier.cn:8088/problem_show.php?pid=1013)
 
 ```cpp
 #include <iostream>
@@ -233,8 +378,11 @@ int main() {
 }
 ```
 
-[1013.cpp](/assets/src/ybt/1013.cpp)
+[1013.cpp](/assets/src/ybt/language_basics/1013.cpp)
 
+----
+
+[Problem 1014](http://ybt.ssoier.cn:8088/problem_show.php?pid=1014)
 
 ```cpp
 #include <iostream>
@@ -249,8 +397,11 @@ int main() {
 }
 ```
 
-[1014.cpp](/assets/src/ybt/1014.cpp)
+[1014.cpp](/assets/src/ybt/language_basics/1014.cpp)
 
+----
+
+[Problem 1015](http://ybt.ssoier.cn:8088/problem_show.php?pid=1015)
 
 ```cpp
 #include <iostream>
@@ -262,8 +413,11 @@ int main() {
 }
 ```
 
-[1015.cpp](/assets/src/ybt/1015.cpp)
+[1015.cpp](/assets/src/ybt/language_basics/1015.cpp)
 
+----
+
+[Problem 1016](http://ybt.ssoier.cn:8088/problem_show.php?pid=1016)
 
 ```cpp
 #include <iostream>
@@ -274,8 +428,11 @@ int main() {
 }
 ```
 
-[1016.cpp](/assets/src/ybt/1016.cpp)
+[1016.cpp](/assets/src/ybt/language_basics/1016.cpp)
 
+----
+
+[Problem 1017](http://ybt.ssoier.cn:8088/problem_show.php?pid=1017)
 
 ```cpp
 #include <iostream>
@@ -286,8 +443,11 @@ int main() {
 }
 ```
 
-[1017.cpp](/assets/src/ybt/1017.cpp)
+[1017.cpp](/assets/src/ybt/language_basics/1017.cpp)
 
+----
+
+[Problem 1018](http://ybt.ssoier.cn:8088/problem_show.php?pid=1018)
 
 ```cpp
 #include <iostream>
@@ -298,8 +458,11 @@ int main() {
 }
 ```
 
-[1018.cpp](/assets/src/ybt/1018.cpp)
+[1018.cpp](/assets/src/ybt/language_basics/1018.cpp)
 
+----
+
+[Problem 1019](http://ybt.ssoier.cn:8088/problem_show.php?pid=1019)
 
 ```cpp
 #include <iostream>
@@ -312,8 +475,11 @@ int main() {
 }
 ```
 
-[1019.cpp](/assets/src/ybt/1019.cpp)
+[1019.cpp](/assets/src/ybt/language_basics/1019.cpp)
 
+----
+
+[Problem 1020](http://ybt.ssoier.cn:8088/problem_show.php?pid=1020)
 
 ```cpp
 #include <iostream>
@@ -324,8 +490,11 @@ int main() {
 }
 ```
 
-[1020.cpp](/assets/src/ybt/1020.cpp)
+[1020.cpp](/assets/src/ybt/language_basics/1020.cpp)
 
+----
+
+[Problem 1021](http://ybt.ssoier.cn:8088/problem_show.php?pid=1021)
 
 ```cpp
 #include <iostream>
@@ -336,8 +505,11 @@ int main() {
 }
 ```
 
-[1021.cpp](/assets/src/ybt/1021.cpp)
+[1021.cpp](/assets/src/ybt/language_basics/1021.cpp)
 
+----
+
+[Problem 1022](http://ybt.ssoier.cn:8088/problem_show.php?pid=1022)
 
 ```cpp
 #include <iostream>
@@ -348,8 +520,11 @@ int main() {
 }
 ```
 
-[1022.cpp](/assets/src/ybt/1022.cpp)
+[1022.cpp](/assets/src/ybt/language_basics/1022.cpp)
 
+----
+
+[Problem 1023](http://ybt.ssoier.cn:8088/problem_show.php?pid=1023)
 
 ```cpp
 #include <iostream>
@@ -360,8 +535,11 @@ int main() {
 }
 ```
 
-[1023.cpp](/assets/src/ybt/1023.cpp)
+[1023.cpp](/assets/src/ybt/language_basics/1023.cpp)
 
+----
+
+[Problem 1024](http://ybt.ssoier.cn:8088/problem_show.php?pid=1024)
 
 ```cpp
 #include <iostream>
@@ -373,8 +551,11 @@ int main() {
 }
 ```
 
-[1024.cpp](/assets/src/ybt/1024.cpp)
+[1024.cpp](/assets/src/ybt/language_basics/1024.cpp)
 
+----
+
+[Problem 1025](http://ybt.ssoier.cn:8088/problem_show.php?pid=1025)
 
 ```cpp
 #include <iostream>
@@ -387,8 +568,11 @@ int main() {
 }
 ```
 
-[1025.cpp](/assets/src/ybt/1025.cpp)
+[1025.cpp](/assets/src/ybt/language_basics/1025.cpp)
 
+----
+
+[Problem 1026](http://ybt.ssoier.cn:8088/problem_show.php?pid=1026)
 
 ```cpp
 #include <iostream>
@@ -402,8 +586,11 @@ int main() {
 }
 ```
 
-[1026.cpp](/assets/src/ybt/1026.cpp)
+[1026.cpp](/assets/src/ybt/language_basics/1026.cpp)
 
+----
+
+[Problem 1027](http://ybt.ssoier.cn:8088/problem_show.php?pid=1027)
 
 ```cpp
 #include <iostream>
@@ -416,8 +603,11 @@ int main() {
 }
 ```
 
-[1027.cpp](/assets/src/ybt/1027.cpp)
+[1027.cpp](/assets/src/ybt/language_basics/1027.cpp)
 
+----
+
+[Problem 1028](http://ybt.ssoier.cn:8088/problem_show.php?pid=1028)
 
 ```cpp
 #include <iostream>
@@ -446,8 +636,11 @@ int main() {
 }
 ```
 
-[1028.cpp](/assets/src/ybt/1028.cpp)
+[1028.cpp](/assets/src/ybt/language_basics/1028.cpp)
 
+----
+
+[Problem 1029](http://ybt.ssoier.cn:8088/problem_show.php?pid=1029)
 
 ```cpp
 #include <iostream>
@@ -461,8 +654,11 @@ int main() {
 }
 ```
 
-[1029.cpp](/assets/src/ybt/1029.cpp)
+[1029.cpp](/assets/src/ybt/language_basics/1029.cpp)
 
+----
+
+[Problem 1030](http://ybt.ssoier.cn:8088/problem_show.php?pid=1030)
 
 ```cpp
 #include <iostream>
@@ -476,8 +672,11 @@ int main() {
 }
 ```
 
-[1030.cpp](/assets/src/ybt/1030.cpp)
+[1030.cpp](/assets/src/ybt/language_basics/1030.cpp)
 
+----
+
+[Problem 1031](http://ybt.ssoier.cn:8088/problem_show.php?pid=1031)
 
 ```cpp
 #include <iostream>
@@ -495,8 +694,11 @@ int main() {
 }
 ```
 
-[1031.cpp](/assets/src/ybt/1031.cpp)
+[1031.cpp](/assets/src/ybt/language_basics/1031.cpp)
 
+----
+
+[Problem 1032](http://ybt.ssoier.cn:8088/problem_show.php?pid=1032)
 
 ```cpp
 #include <iostream>
@@ -510,8 +712,11 @@ int main() {
 }
 ```
 
-[1032.cpp](/assets/src/ybt/1032.cpp)
+[1032.cpp](/assets/src/ybt/language_basics/1032.cpp)
 
+----
+
+[Problem 1033](http://ybt.ssoier.cn:8088/problem_show.php?pid=1033)
 
 ```cpp
 #include <iostream>
@@ -526,8 +731,127 @@ int main() {
 }
 ```
 
-[1033.cpp](/assets/src/ybt/1033.cpp)
+[1033.cpp](/assets/src/ybt/language_basics/1033.cpp)
 
+----
+
+[Problem 1034](http://ybt.ssoier.cn:8088/problem_show.php?pid=1034)
+
+```cpp
+// ==================================================
+
+// C library
+#include <cmath>
+#include <climits>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
+
+// Containers
+#include <vector>
+#include <list>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <set>
+#include <map>
+
+// Input/Output
+#include <iostream>
+#include <istream>
+#include <ostream>
+#include <sstream>
+#include <fstream>
+#include <ios>
+#include <iomanip>
+
+// Other
+#include <string>
+#include <bitset>
+#include <algorithm>
+#include <utility>
+#include <iterator>
+#include <limits>
+
+// ==================================================
+
+using namespace std;
+
+typedef pair<int, int> PII;
+typedef long long LL;
+
+// ==================================================
+#define oo ((1LL<<31) - 10);
+#define max_(x, y) ((x) > (y) ? (x) : (y))
+#define min_(x, y) ((x) > (y) ? (y) : (x))
+
+#define PR(x) cout << #x " = " << (x) << "\t"
+#define NL cout << "\n"
+
+#define PRINT1(x) PR(x), NL
+#define PRINT2(x1, x2) PR(x1), PRINT1(x2)
+#define PRINT3(x1, x2, x3) PR(x1), PRINT2(x2, x3)
+#define PRINT4(x1, x2, x3, x4) PR(x1), PRINT3(x2, x3, x4)
+
+// ==================================================
+
+template<typename T>
+void PRINTC(const T& a) { cout << a << " "; }
+
+template<typename T>
+void PRINTA(const T ar[], int n) {
+  for (int i = 0; i < n; ++i) PRINTC(ar[i]); NL;
+}
+
+template<typename T1, typename T2>
+void PRINTP(const pair<T1, T2>& p) { PRINTC(p.first); PRINTLN(p.second); }
+
+template<typename T>
+void PRINTLN(const T& a) { cout << a << "\n"; }
+
+template< typename T1, typename T2 >
+void PRINTAV( T1 & vec, T2 x) {
+  ostream_iterator< T2 > O( cout, " " );
+  copy( begin( vec ), end( vec ), O ); NL;
+}
+
+// ==================================================
+
+
+double D(double x)
+{
+  return x*x;
+}
+
+int main( void ) {
+
+#ifdef DEBUG
+  freopen("1034.in", "r", stdin);
+#endif
+
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  double x1,y1,x2,y2,x3,y3,p,l1,l2,l3;
+  cin>>x1>>y1>>x2>>y2>>x3>>y3;
+  l1=sqrt(D(x1-x2)+D(y1-y2));
+  l2=sqrt(D(x1-x3)+D(y1-y3));
+  l3=sqrt(D(x3-x2)+D(y3-y2));
+  p=(l1+l2+l3)/2;
+  cout.precision(2);
+  cout.setf(ios::fixed,ios::floatfield);
+  cout<<sqrt(p*(p-l1)*(p-l2)*(p-l3))<<endl;
+
+  return 0;
+}
+```
+
+[1034.cpp](/assets/src/ybt/language_basics/1034.cpp)
+
+----
+
+[Problem 1035](http://ybt.ssoier.cn:8088/problem_show.php?pid=1035)
 
 ```cpp
 #include <iostream>
@@ -540,8 +864,11 @@ int main() {
 }
 ```
 
-[1035.cpp](/assets/src/ybt/1035.cpp)
+[1035.cpp](/assets/src/ybt/language_basics/1035.cpp)
 
+----
+
+[Problem 1036](http://ybt.ssoier.cn:8088/problem_show.php?pid=1036)
 
 ```cpp
 #include <iostream>
@@ -552,8 +879,11 @@ int main() {
 }
 ```
 
-[1036.cpp](/assets/src/ybt/1036.cpp)
+[1036.cpp](/assets/src/ybt/language_basics/1036.cpp)
 
+----
+
+[Problem 1037](http://ybt.ssoier.cn:8088/problem_show.php?pid=1037)
 
 ```cpp
 #include <iostream>
@@ -565,8 +895,11 @@ int main() {
 }
 ```
 
-[1037.cpp](/assets/src/ybt/1037.cpp)
+[1037.cpp](/assets/src/ybt/language_basics/1037.cpp)
 
+----
+
+[Problem 1038](http://ybt.ssoier.cn:8088/problem_show.php?pid=1038)
 
 ```cpp
 #include <iostream>
@@ -580,8 +913,11 @@ int main() {
 }
 ```
 
-[1038.cpp](/assets/src/ybt/1038.cpp)
+[1038.cpp](/assets/src/ybt/language_basics/1038.cpp)
 
+----
+
+[Problem 1039](http://ybt.ssoier.cn:8088/problem_show.php?pid=1039)
 
 ```cpp
 #include <iostream>
@@ -596,8 +932,11 @@ int main() {
 }
 ```
 
-[1039.cpp](/assets/src/ybt/1039.cpp)
+[1039.cpp](/assets/src/ybt/language_basics/1039.cpp)
 
+----
+
+[Problem 1040](http://ybt.ssoier.cn:8088/problem_show.php?pid=1040)
 
 ```cpp
 #include <iostream>
@@ -611,8 +950,11 @@ int main() {
 }
 ```
 
-[1040.cpp](/assets/src/ybt/1040.cpp)
+[1040.cpp](/assets/src/ybt/language_basics/1040.cpp)
 
+----
+
+[Problem 1041](http://ybt.ssoier.cn:8088/problem_show.php?pid=1041)
 
 ```cpp
 #include <iostream>
@@ -624,8 +966,11 @@ int main() {
 }
 ```
 
-[1041.cpp](/assets/src/ybt/1041.cpp)
+[1041.cpp](/assets/src/ybt/language_basics/1041.cpp)
 
+----
+
+[Problem 1042](http://ybt.ssoier.cn:8088/problem_show.php?pid=1042)
 
 ```cpp
 #include <iostream>
@@ -637,8 +982,11 @@ int main() {
 }
 ```
 
-[1042.cpp](/assets/src/ybt/1042.cpp)
+[1042.cpp](/assets/src/ybt/language_basics/1042.cpp)
 
+----
+
+[Problem 1043](http://ybt.ssoier.cn:8088/problem_show.php?pid=1043)
 
 ```cpp
 #include <iostream>
@@ -655,8 +1003,11 @@ int main() {
 }
 ```
 
-[1043.cpp](/assets/src/ybt/1043.cpp)
+[1043.cpp](/assets/src/ybt/language_basics/1043.cpp)
 
+----
+
+[Problem 1044](http://ybt.ssoier.cn:8088/problem_show.php?pid=1044)
 
 ```cpp
 #include <iostream>
@@ -668,8 +1019,11 @@ int main(void) {
 }
 ```
 
-[1044.cpp](/assets/src/ybt/1044.cpp)
+[1044.cpp](/assets/src/ybt/language_basics/1044.cpp)
 
+----
+
+[Problem 1045](http://ybt.ssoier.cn:8088/problem_show.php?pid=1045)
 
 ```cpp
 #include <iostream>
@@ -681,8 +1035,11 @@ int main() {
 }
 ```
 
-[1045.cpp](/assets/src/ybt/1045.cpp)
+[1045.cpp](/assets/src/ybt/language_basics/1045.cpp)
 
+----
+
+[Problem 1046](http://ybt.ssoier.cn:8088/problem_show.php?pid=1046)
 
 ```cpp
 #include <iostream>
@@ -694,8 +1051,11 @@ int main() {
 }
 ```
 
-[1046.cpp](/assets/src/ybt/1046.cpp)
+[1046.cpp](/assets/src/ybt/language_basics/1046.cpp)
 
+----
+
+[Problem 1047](http://ybt.ssoier.cn:8088/problem_show.php?pid=1047)
 
 ```cpp
 #include <iostream>
@@ -723,8 +1083,11 @@ int main() {
 }
 ```
 
-[1047.cpp](/assets/src/ybt/1047.cpp)
+[1047.cpp](/assets/src/ybt/language_basics/1047.cpp)
 
+----
+
+[Problem 1048](http://ybt.ssoier.cn:8088/problem_show.php?pid=1048)
 
 ```cpp
 #include <iostream>
@@ -736,8 +1099,11 @@ int main() {
 }
 ```
 
-[1048.cpp](/assets/src/ybt/1048.cpp)
+[1048.cpp](/assets/src/ybt/language_basics/1048.cpp)
 
+----
+
+[Problem 1049](http://ybt.ssoier.cn:8088/problem_show.php?pid=1049)
 
 ```cpp
 #include <iostream>
@@ -756,8 +1122,11 @@ int main() {
 }
 ```
 
-[1049.cpp](/assets/src/ybt/1049.cpp)
+[1049.cpp](/assets/src/ybt/language_basics/1049.cpp)
 
+----
+
+[Problem 1050](http://ybt.ssoier.cn:8088/problem_show.php?pid=1050)
 
 ```cpp
 #include <iostream>
@@ -776,8 +1145,11 @@ int main() {
 }
 ```
 
-[1050.cpp](/assets/src/ybt/1050.cpp)
+[1050.cpp](/assets/src/ybt/language_basics/1050.cpp)
 
+----
+
+[Problem 1051](http://ybt.ssoier.cn:8088/problem_show.php?pid=1051)
 
 ```cpp
 #include <iostream>
@@ -794,8 +1166,11 @@ int main() {
 }
 ```
 
-[1051.cpp](/assets/src/ybt/1051.cpp)
+[1051.cpp](/assets/src/ybt/language_basics/1051.cpp)
 
+----
+
+[Problem 1052](http://ybt.ssoier.cn:8088/problem_show.php?pid=1052)
 
 ```cpp
 #include <iostream>
@@ -814,8 +1189,11 @@ int main() {
 }
 ```
 
-[1052.cpp](/assets/src/ybt/1052.cpp)
+[1052.cpp](/assets/src/ybt/language_basics/1052.cpp)
 
+----
+
+[Problem 1053](http://ybt.ssoier.cn:8088/problem_show.php?pid=1053)
 
 ```cpp
 #include <iostream>
@@ -831,8 +1209,11 @@ int main() {
 }
 ```
 
-[1053.cpp](/assets/src/ybt/1053.cpp)
+[1053.cpp](/assets/src/ybt/language_basics/1053.cpp)
 
+----
+
+[Problem 1054](http://ybt.ssoier.cn:8088/problem_show.php?pid=1054)
 
 ```cpp
 #include <iostream>
@@ -846,8 +1227,11 @@ int main() {
 }
 ```
 
-[1054.cpp](/assets/src/ybt/1054.cpp)
+[1054.cpp](/assets/src/ybt/language_basics/1054.cpp)
 
+----
+
+[Problem 1055](http://ybt.ssoier.cn:8088/problem_show.php?pid=1055)
 
 ```cpp
 #include <iostream>
@@ -860,8 +1244,11 @@ int main() {
 }
 ```
 
-[1055.cpp](/assets/src/ybt/1055.cpp)
+[1055.cpp](/assets/src/ybt/language_basics/1055.cpp)
 
+----
+
+[Problem 1056](http://ybt.ssoier.cn:8088/problem_show.php?pid=1056)
 
 ```cpp
 #include <iostream>
@@ -874,8 +1261,11 @@ int main() {
 }
 ```
 
-[1056.cpp](/assets/src/ybt/1056.cpp)
+[1056.cpp](/assets/src/ybt/language_basics/1056.cpp)
 
+----
+
+[Problem 1057](http://ybt.ssoier.cn:8088/problem_show.php?pid=1057)
 
 ```cpp
 #include <iostream>
@@ -900,8 +1290,11 @@ int main() {
 }
 ```
 
-[1057.cpp](/assets/src/ybt/1057.cpp)
+[1057.cpp](/assets/src/ybt/language_basics/1057.cpp)
 
+----
+
+[Problem 1058](http://ybt.ssoier.cn:8088/problem_show.php?pid=1058)
 
 ```cpp
 #include <iostream>
@@ -931,8 +1324,11 @@ int main() {
 }
 ```
 
-[1058.cpp](/assets/src/ybt/1058.cpp)
+[1058.cpp](/assets/src/ybt/language_basics/1058.cpp)
 
+----
+
+[Problem 1059](http://ybt.ssoier.cn:8088/problem_show.php?pid=1059)
 
 ```cpp
 #include <iostream>
@@ -946,8 +1342,11 @@ int main() {
 }
 ```
 
-[1059.cpp](/assets/src/ybt/1059.cpp)
+[1059.cpp](/assets/src/ybt/language_basics/1059.cpp)
 
+----
+
+[Problem 1060](http://ybt.ssoier.cn:8088/problem_show.php?pid=1060)
 
 ```cpp
 #include <iostream>
@@ -962,8 +1361,11 @@ int main() {
 }
 ```
 
-[1060.cpp](/assets/src/ybt/1060.cpp)
+[1060.cpp](/assets/src/ybt/language_basics/1060.cpp)
 
+----
+
+[Problem 1061](http://ybt.ssoier.cn:8088/problem_show.php?pid=1061)
 
 ```cpp
 #include <iostream>
@@ -978,8 +1380,11 @@ int main() {
 }
 ```
 
-[1061.cpp](/assets/src/ybt/1061.cpp)
+[1061.cpp](/assets/src/ybt/language_basics/1061.cpp)
 
+----
+
+[Problem 1062](http://ybt.ssoier.cn:8088/problem_show.php?pid=1062)
 
 ```cpp
 #include <iostream>
@@ -994,8 +1399,11 @@ int main() {
 }
 ```
 
-[1062.cpp](/assets/src/ybt/1062.cpp)
+[1062.cpp](/assets/src/ybt/language_basics/1062.cpp)
 
+----
+
+[Problem 1063](http://ybt.ssoier.cn:8088/problem_show.php?pid=1063)
 
 ```cpp
 #include <iostream>
@@ -1012,8 +1420,11 @@ int main() {
 }
 ```
 
-[1063.cpp](/assets/src/ybt/1063.cpp)
+[1063.cpp](/assets/src/ybt/language_basics/1063.cpp)
 
+----
+
+[Problem 1064](http://ybt.ssoier.cn:8088/problem_show.php?pid=1064)
 
 ```cpp
 #include <iostream>
@@ -1030,8 +1441,11 @@ int main() {
 }
 ```
 
-[1064.cpp](/assets/src/ybt/1064.cpp)
+[1064.cpp](/assets/src/ybt/language_basics/1064.cpp)
 
+----
+
+[Problem 1065](http://ybt.ssoier.cn:8088/problem_show.php?pid=1065)
 
 ```cpp
 #include <iostream>
@@ -1046,8 +1460,11 @@ int main() {
 }
 ```
 
-[1065.cpp](/assets/src/ybt/1065.cpp)
+[1065.cpp](/assets/src/ybt/language_basics/1065.cpp)
 
+----
+
+[Problem 1066](http://ybt.ssoier.cn:8088/problem_show.php?pid=1066)
 
 ```cpp
 #include <iostream>
@@ -1062,8 +1479,11 @@ int main() {
 }
 ```
 
-[1066.cpp](/assets/src/ybt/1066.cpp)
+[1066.cpp](/assets/src/ybt/language_basics/1066.cpp)
 
+----
+
+[Problem 1067](http://ybt.ssoier.cn:8088/problem_show.php?pid=1067)
 
 ```cpp
 #include <iostream>
@@ -1083,8 +1503,11 @@ int main() {
 }
 ```
 
-[1067.cpp](/assets/src/ybt/1067.cpp)
+[1067.cpp](/assets/src/ybt/language_basics/1067.cpp)
 
+----
+
+[Problem 1068](http://ybt.ssoier.cn:8088/problem_show.php?pid=1068)
 
 ```cpp
 #include <iostream>
@@ -1099,8 +1522,11 @@ int main() {
 }
 ```
 
-[1068.cpp](/assets/src/ybt/1068.cpp)
+[1068.cpp](/assets/src/ybt/language_basics/1068.cpp)
 
+----
+
+[Problem 1069](http://ybt.ssoier.cn:8088/problem_show.php?pid=1069)
 
 ```cpp
 #include <iostream>
@@ -1115,8 +1541,11 @@ int main() {
 }
 ```
 
-[1069.cpp](/assets/src/ybt/1069.cpp)
+[1069.cpp](/assets/src/ybt/language_basics/1069.cpp)
 
+----
+
+[Problem 1070](http://ybt.ssoier.cn:8088/problem_show.php?pid=1070)
 
 ```cpp
 #include <iostream>
@@ -1133,8 +1562,11 @@ int main() {
 }
 ```
 
-[1070.cpp](/assets/src/ybt/1070.cpp)
+[1070.cpp](/assets/src/ybt/language_basics/1070.cpp)
 
+----
+
+[Problem 1071](http://ybt.ssoier.cn:8088/problem_show.php?pid=1071)
 
 ```cpp
 // ==================================================
@@ -1240,8 +1672,11 @@ int main( void ) {
 }
 ```
 
-[1071.cpp](/assets/src/ybt/1071.cpp)
+[1071.cpp](/assets/src/ybt/language_basics/1071.cpp)
 
+----
+
+[Problem 1072](http://ybt.ssoier.cn:8088/problem_show.php?pid=1072)
 
 ```cpp
 // ==================================================
@@ -1351,8 +1786,11 @@ int main( void ) {
 }
 ```
 
-[1072.cpp](/assets/src/ybt/1072.cpp)
+[1072.cpp](/assets/src/ybt/language_basics/1072.cpp)
 
+----
+
+[Problem 1073](http://ybt.ssoier.cn:8088/problem_show.php?pid=1073)
 
 ```cpp
 // ==================================================
@@ -1459,8 +1897,11 @@ int main( void ) {
 }
 ```
 
-[1073.cpp](/assets/src/ybt/1073.cpp)
+[1073.cpp](/assets/src/ybt/language_basics/1073.cpp)
 
+----
+
+[Problem 1074](http://ybt.ssoier.cn:8088/problem_show.php?pid=1074)
 
 ```cpp
 // ==================================================
@@ -1578,8 +2019,11 @@ int main( void ) {
 }
 ```
 
-[1074.cpp](/assets/src/ybt/1074.cpp)
+[1074.cpp](/assets/src/ybt/language_basics/1074.cpp)
 
+----
+
+[Problem 1075](http://ybt.ssoier.cn:8088/problem_show.php?pid=1075)
 
 ```cpp
 // ==================================================
@@ -1688,8 +2132,11 @@ int main( void ) {
 }
 ```
 
-[1075.cpp](/assets/src/ybt/1075.cpp)
+[1075.cpp](/assets/src/ybt/language_basics/1075.cpp)
 
+----
+
+[Problem 1076](http://ybt.ssoier.cn:8088/problem_show.php?pid=1076)
 
 ```cpp
 // ==================================================
@@ -1799,8 +2246,11 @@ int main( void ) {
 }
 ```
 
-[1076.cpp](/assets/src/ybt/1076.cpp)
+[1076.cpp](/assets/src/ybt/language_basics/1076.cpp)
 
+----
+
+[Problem 1077](http://ybt.ssoier.cn:8088/problem_show.php?pid=1077)
 
 ```cpp
 // ==================================================
@@ -1906,8 +2356,11 @@ int main( void ) {
 }
 ```
 
-[1077.cpp](/assets/src/ybt/1077.cpp)
+[1077.cpp](/assets/src/ybt/language_basics/1077.cpp)
 
+----
+
+[Problem 1078](http://ybt.ssoier.cn:8088/problem_show.php?pid=1078)
 
 ```cpp
 // ==================================================
@@ -2014,8 +2467,11 @@ int main( void ) {
 }
 ```
 
-[1078.cpp](/assets/src/ybt/1078.cpp)
+[1078.cpp](/assets/src/ybt/language_basics/1078.cpp)
 
+----
+
+[Problem 1079](http://ybt.ssoier.cn:8088/problem_show.php?pid=1079)
 
 ```cpp
 // ==================================================
@@ -2123,8 +2579,11 @@ int main( void ) {
 }
 ```
 
-[1079.cpp](/assets/src/ybt/1079.cpp)
+[1079.cpp](/assets/src/ybt/language_basics/1079.cpp)
 
+----
+
+[Problem 1080](http://ybt.ssoier.cn:8088/problem_show.php?pid=1080)
 
 ```cpp
 // ==================================================
@@ -2245,8 +2704,11 @@ int main( void ) {
 }
 ```
 
-[1080.cpp](/assets/src/ybt/1080.cpp)
+[1080.cpp](/assets/src/ybt/language_basics/1080.cpp)
 
+----
+
+[Problem 1081](http://ybt.ssoier.cn:8088/problem_show.php?pid=1081)
 
 ```cpp
 // ==================================================
@@ -2347,8 +2809,123 @@ int main( void ) {
 }
 ```
 
-[1081.cpp](/assets/src/ybt/1081.cpp)
+[1081.cpp](/assets/src/ybt/language_basics/1081.cpp)
 
+----
+
+[Problem 1082](http://ybt.ssoier.cn:8088/problem_show.php?pid=1082)
+
+```cpp
+// ==================================================
+
+// C library
+#include <cmath>
+#include <climits>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
+
+// Containers
+#include <vector>
+#include <list>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <set>
+#include <map>
+
+// Input/Output
+#include <iostream>
+#include <istream>
+#include <ostream>
+#include <sstream>
+#include <fstream>
+#include <ios>
+#include <iomanip>
+
+// Other
+#include <string>
+#include <bitset>
+#include <algorithm>
+#include <utility>
+#include <iterator>
+#include <limits>
+
+// ==================================================
+
+using namespace std;
+
+typedef pair<int, int> PII;
+typedef long long LL;
+
+// ==================================================
+#define oo ((1LL<<31) - 10);
+#define max_(x, y) ((x) > (y) ? (x) : (y))
+#define min_(x, y) ((x) > (y) ? (y) : (x))
+
+#define PR(x) cout << #x " = " << (x) << "\t"
+#define NL cout << "\n"
+
+#define PRINT1(x) PR(x), NL
+#define PRINT2(x1, x2) PR(x1), PRINT1(x2)
+#define PRINT3(x1, x2, x3) PR(x1), PRINT2(x2, x3)
+#define PRINT4(x1, x2, x3, x4) PR(x1), PRINT3(x2, x3, x4)
+
+// ==================================================
+
+template<typename T>
+void PRINTC(const T& a) { cout << a << " "; }
+
+template<typename T>
+void PRINTA(const T ar[], int n) {
+  for (int i = 0; i < n; ++i) PRINTC(ar[i]); NL;
+}
+
+template<typename T1, typename T2>
+void PRINTP(const pair<T1, T2>& p) { PRINTC(p.first); PRINTLN(p.second); }
+
+template<typename T>
+void PRINTLN(const T& a) { cout << a << "\n"; }
+
+template< typename T1, typename T2 >
+void PRINTAV( T1 & vec, T2 x) {
+  ostream_iterator< T2 > O( cout, " " );
+  copy( begin( vec ), end( vec ), O ); NL;
+}
+
+// ==================================================
+
+
+int main( void ) {
+
+#ifdef DEBUG
+  freopen("1082.in", "r", stdin);
+#endif
+
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  int a,b,n,r,c;
+  cin>>a>>b>>n;
+  r=a%b;
+  for(int i=0;i<n;i++)
+    {
+      r*=10;
+      c=r/b;
+      r%=b;
+    }
+  cout<<c<<endl;
+
+  return 0;
+}
+```
+
+[1082.cpp](/assets/src/ybt/language_basics/1082.cpp)
+
+----
+
+[Problem 1083](http://ybt.ssoier.cn:8088/problem_show.php?pid=1083)
 
 ```cpp
 // ==================================================
@@ -2462,8 +3039,11 @@ int main( void ) {
 }
 ```
 
-[1083.cpp](/assets/src/ybt/1083.cpp)
+[1083.cpp](/assets/src/ybt/language_basics/1083.cpp)
 
+----
+
+[Problem 1084](http://ybt.ssoier.cn:8088/problem_show.php?pid=1084)
 
 ```cpp
 // ==================================================
@@ -2570,8 +3150,11 @@ int main( void ) {
 }
 ```
 
-[1084.cpp](/assets/src/ybt/1084.cpp)
+[1084.cpp](/assets/src/ybt/language_basics/1084.cpp)
 
+----
+
+[Problem 1085](http://ybt.ssoier.cn:8088/problem_show.php?pid=1085)
 
 ```cpp
 // ==================================================
@@ -2678,8 +3261,11 @@ int main( void ) {
 }
 ```
 
-[1085.cpp](/assets/src/ybt/1085.cpp)
+[1085.cpp](/assets/src/ybt/language_basics/1085.cpp)
 
+----
+
+[Problem 1086](http://ybt.ssoier.cn:8088/problem_show.php?pid=1086)
 
 ```cpp
 // ==================================================
@@ -2791,8 +3377,11 @@ int main( void ) {
 }
 ```
 
-[1086.cpp](/assets/src/ybt/1086.cpp)
+[1086.cpp](/assets/src/ybt/language_basics/1086.cpp)
 
+----
+
+[Problem 1087](http://ybt.ssoier.cn:8088/problem_show.php?pid=1087)
 
 ```cpp
 // ==================================================
@@ -2898,8 +3487,11 @@ int main( void ) {
 }
 ```
 
-[1087.cpp](/assets/src/ybt/1087.cpp)
+[1087.cpp](/assets/src/ybt/language_basics/1087.cpp)
 
+----
+
+[Problem 1088](http://ybt.ssoier.cn:8088/problem_show.php?pid=1088)
 
 ```cpp
 // ==================================================
@@ -3004,8 +3596,11 @@ int main( void ) {
 }
 ```
 
-[1088.cpp](/assets/src/ybt/1088.cpp)
+[1088.cpp](/assets/src/ybt/language_basics/1088.cpp)
 
+----
+
+[Problem 1089](http://ybt.ssoier.cn:8088/problem_show.php?pid=1089)
 
 ```cpp
 // ==================================================
@@ -3112,8 +3707,11 @@ int main( void ) {
 }
 ```
 
-[1089.cpp](/assets/src/ybt/1089.cpp)
+[1089.cpp](/assets/src/ybt/language_basics/1089.cpp)
 
+----
+
+[Problem 1090](http://ybt.ssoier.cn:8088/problem_show.php?pid=1090)
 
 ```cpp
 // ==================================================
@@ -3225,8 +3823,11 @@ int main( void ) {
 }
 ```
 
-[1090.cpp](/assets/src/ybt/1090.cpp)
+[1090.cpp](/assets/src/ybt/language_basics/1090.cpp)
 
+----
+
+[Problem 1091](http://ybt.ssoier.cn:8088/problem_show.php?pid=1091)
 
 ```cpp
 // ==================================================
@@ -3337,8 +3938,11 @@ int main( void ) {
 }
 ```
 
-[1091.cpp](/assets/src/ybt/1091.cpp)
+[1091.cpp](/assets/src/ybt/language_basics/1091.cpp)
 
+----
+
+[Problem 1092](http://ybt.ssoier.cn:8088/problem_show.php?pid=1092)
 
 ```cpp
 // ==================================================
@@ -3457,8 +4061,11 @@ int main( void ) {
 }
 ```
 
-[1092.cpp](/assets/src/ybt/1092.cpp)
+[1092.cpp](/assets/src/ybt/language_basics/1092.cpp)
 
+----
+
+[Problem 1093](http://ybt.ssoier.cn:8088/problem_show.php?pid=1093)
 
 ```cpp
 // ==================================================
@@ -3568,8 +4175,11 @@ int main( void ) {
 }
 ```
 
-[1093.cpp](/assets/src/ybt/1093.cpp)
+[1093.cpp](/assets/src/ybt/language_basics/1093.cpp)
 
+----
+
+[Problem 1094](http://ybt.ssoier.cn:8088/problem_show.php?pid=1094)
 
 ```cpp
 // ==================================================
@@ -3685,8 +4295,11 @@ int main( void ) {
 }
 ```
 
-[1094.cpp](/assets/src/ybt/1094.cpp)
+[1094.cpp](/assets/src/ybt/language_basics/1094.cpp)
 
+----
+
+[Problem 1095](http://ybt.ssoier.cn:8088/problem_show.php?pid=1095)
 
 ```cpp
 // ==================================================
@@ -3800,8 +4413,11 @@ int main( void ) {
 }
 ```
 
-[1095.cpp](/assets/src/ybt/1095.cpp)
+[1095.cpp](/assets/src/ybt/language_basics/1095.cpp)
 
+----
+
+[Problem 1096](http://ybt.ssoier.cn:8088/problem_show.php?pid=1096)
 
 ```cpp
 // ==================================================
@@ -3915,8 +4531,11 @@ int main( void ) {
 }
 ```
 
-[1096.cpp](/assets/src/ybt/1096.cpp)
+[1096.cpp](/assets/src/ybt/language_basics/1096.cpp)
 
+----
+
+[Problem 1097](http://ybt.ssoier.cn:8088/problem_show.php?pid=1097)
 
 ```cpp
 // ==================================================
@@ -4026,8 +4645,11 @@ int main( void ) {
 }
 ```
 
-[1097.cpp](/assets/src/ybt/1097.cpp)
+[1097.cpp](/assets/src/ybt/language_basics/1097.cpp)
 
+----
+
+[Problem 1098](http://ybt.ssoier.cn:8088/problem_show.php?pid=1098)
 
 ```cpp
 // ==================================================
@@ -4134,8 +4756,11 @@ int main( void ) {
 }
 ```
 
-[1098.cpp](/assets/src/ybt/1098.cpp)
+[1098.cpp](/assets/src/ybt/language_basics/1098.cpp)
 
+----
+
+[Problem 1099](http://ybt.ssoier.cn:8088/problem_show.php?pid=1099)
 
 ```cpp
 // ==================================================
@@ -4252,8 +4877,11 @@ int main( void ) {
 }
 ```
 
-[1099.cpp](/assets/src/ybt/1099.cpp)
+[1099.cpp](/assets/src/ybt/language_basics/1099.cpp)
 
+----
+
+[Problem 1100](http://ybt.ssoier.cn:8088/problem_show.php?pid=1100)
 
 ```cpp
 // ==================================================
@@ -4365,8 +4993,11 @@ int main( void ) {
 }
 ```
 
-[1100.cpp](/assets/src/ybt/1100.cpp)
+[1100.cpp](/assets/src/ybt/language_basics/1100.cpp)
 
+----
+
+[Problem 1101](http://ybt.ssoier.cn:8088/problem_show.php?pid=1101)
 
 ```cpp
 // ==================================================
@@ -4472,8 +5103,11 @@ int main( void ) {
 }
 ```
 
-[1101.cpp](/assets/src/ybt/1101.cpp)
+[1101.cpp](/assets/src/ybt/language_basics/1101.cpp)
 
+----
+
+[Problem 1102](http://ybt.ssoier.cn:8088/problem_show.php?pid=1102)
 
 ```cpp
 // ==================================================
@@ -4577,8 +5211,11 @@ int main( void ) {
 }
 ```
 
-[1102.cpp](/assets/src/ybt/1102.cpp)
+[1102.cpp](/assets/src/ybt/language_basics/1102.cpp)
 
+----
+
+[Problem 1103](http://ybt.ssoier.cn:8088/problem_show.php?pid=1103)
 
 ```cpp
 // ==================================================
@@ -4682,8 +5319,11 @@ int main( void ) {
 }
 ```
 
-[1103.cpp](/assets/src/ybt/1103.cpp)
+[1103.cpp](/assets/src/ybt/language_basics/1103.cpp)
 
+----
+
+[Problem 1104](http://ybt.ssoier.cn:8088/problem_show.php?pid=1104)
 
 ```cpp
 // ==================================================
@@ -4794,8 +5434,11 @@ int main( void ) {
 }
 ```
 
-[1104.cpp](/assets/src/ybt/1104.cpp)
+[1104.cpp](/assets/src/ybt/language_basics/1104.cpp)
 
+----
+
+[Problem 1105](http://ybt.ssoier.cn:8088/problem_show.php?pid=1105)
 
 ```cpp
 // ==================================================
@@ -4902,8 +5545,11 @@ int main( void ) {
 }
 ```
 
-[1105.cpp](/assets/src/ybt/1105.cpp)
+[1105.cpp](/assets/src/ybt/language_basics/1105.cpp)
 
+----
+
+[Problem 1106](http://ybt.ssoier.cn:8088/problem_show.php?pid=1106)
 
 ```cpp
 // ==================================================
@@ -5018,8 +5664,11 @@ int main( void ) {
 }
 ```
 
-[1106.cpp](/assets/src/ybt/1106.cpp)
+[1106.cpp](/assets/src/ybt/language_basics/1106.cpp)
 
+----
+
+[Problem 1107](http://ybt.ssoier.cn:8088/problem_show.php?pid=1107)
 
 ```cpp
 // ==================================================
@@ -5130,8 +5779,11 @@ int main( void ) {
 }
 ```
 
-[1107.cpp](/assets/src/ybt/1107.cpp)
+[1107.cpp](/assets/src/ybt/language_basics/1107.cpp)
 
+----
+
+[Problem 1108](http://ybt.ssoier.cn:8088/problem_show.php?pid=1108)
 
 ```cpp
 // ==================================================
@@ -5236,8 +5888,11 @@ int main( void ) {
 }
 ```
 
-[1108.cpp](/assets/src/ybt/1108.cpp)
+[1108.cpp](/assets/src/ybt/language_basics/1108.cpp)
 
+----
+
+[Problem 1109](http://ybt.ssoier.cn:8088/problem_show.php?pid=1109)
 
 ```cpp
 // ==================================================
@@ -5359,8 +6014,11 @@ int main( void ) {
 }
 ```
 
-[1109.cpp](/assets/src/ybt/1109.cpp)
+[1109.cpp](/assets/src/ybt/language_basics/1109.cpp)
 
+----
+
+[Problem 1110](http://ybt.ssoier.cn:8088/problem_show.php?pid=1110)
 
 ```cpp
 // ==================================================
@@ -5476,8 +6134,11 @@ int main( void ) {
 }
 ```
 
-[1110.cpp](/assets/src/ybt/1110.cpp)
+[1110.cpp](/assets/src/ybt/language_basics/1110.cpp)
 
+----
+
+[Problem 1111](http://ybt.ssoier.cn:8088/problem_show.php?pid=1111)
 
 ```cpp
 // ==================================================
@@ -5589,8 +6250,11 @@ int main( void ) {
 }
 ```
 
-[1111.cpp](/assets/src/ybt/1111.cpp)
+[1111.cpp](/assets/src/ybt/language_basics/1111.cpp)
 
+----
+
+[Problem 1112](http://ybt.ssoier.cn:8088/problem_show.php?pid=1112)
 
 ```cpp
 // ==================================================
@@ -5699,8 +6363,11 @@ int main( void ) {
 }
 ```
 
-[1112.cpp](/assets/src/ybt/1112.cpp)
+[1112.cpp](/assets/src/ybt/language_basics/1112.cpp)
 
+----
+
+[Problem 1113](http://ybt.ssoier.cn:8088/problem_show.php?pid=1113)
 
 ```cpp
 // ==================================================
@@ -5811,8 +6478,11 @@ int main( void ) {
 }
 ```
 
-[1113.cpp](/assets/src/ybt/1113.cpp)
+[1113.cpp](/assets/src/ybt/language_basics/1113.cpp)
 
+----
+
+[Problem 1114](http://ybt.ssoier.cn:8088/problem_show.php?pid=1114)
 
 ```cpp
 // ==================================================
@@ -5933,8 +6603,11 @@ int main( void ) {
 }
 ```
 
-[1114.cpp](/assets/src/ybt/1114.cpp)
+[1114.cpp](/assets/src/ybt/language_basics/1114.cpp)
 
+----
+
+[Problem 1115](http://ybt.ssoier.cn:8088/problem_show.php?pid=1115)
 
 ```cpp
 // ==================================================
@@ -6048,8 +6721,11 @@ int main( void ) {
 }
 ```
 
-[1115.cpp](/assets/src/ybt/1115.cpp)
+[1115.cpp](/assets/src/ybt/language_basics/1115.cpp)
 
+----
+
+[Problem 1116](http://ybt.ssoier.cn:8088/problem_show.php?pid=1116)
 
 ```cpp
 // ==================================================
@@ -6169,8 +6845,11 @@ int main( void ) {
 }
 ```
 
-[1116.cpp](/assets/src/ybt/1116.cpp)
+[1116.cpp](/assets/src/ybt/language_basics/1116.cpp)
 
+----
+
+[Problem 1117](http://ybt.ssoier.cn:8088/problem_show.php?pid=1117)
 
 ```cpp
 // ==================================================
@@ -6285,8 +6964,11 @@ int main( void ) {
 }
 ```
 
-[1117.cpp](/assets/src/ybt/1117.cpp)
+[1117.cpp](/assets/src/ybt/language_basics/1117.cpp)
 
+----
+
+[Problem 1118](http://ybt.ssoier.cn:8088/problem_show.php?pid=1118)
 
 ```cpp
 // ==================================================
@@ -6409,8 +7091,11 @@ int main( void ) {
 }
 ```
 
-[1118.cpp](/assets/src/ybt/1118.cpp)
+[1118.cpp](/assets/src/ybt/language_basics/1118.cpp)
 
+----
+
+[Problem 1119](http://ybt.ssoier.cn:8088/problem_show.php?pid=1119)
 
 ```cpp
 // ==================================================
@@ -6530,8 +7215,11 @@ int main( void ) {
 }
 ```
 
-[1119.cpp](/assets/src/ybt/1119.cpp)
+[1119.cpp](/assets/src/ybt/language_basics/1119.cpp)
 
+----
+
+[Problem 1120](http://ybt.ssoier.cn:8088/problem_show.php?pid=1120)
 
 ```cpp
 // ==================================================
@@ -6669,8 +7357,11 @@ int main( void ) {
 }
 ```
 
-[1120.cpp](/assets/src/ybt/1120.cpp)
+[1120.cpp](/assets/src/ybt/language_basics/1120.cpp)
 
+----
+
+[Problem 1121](http://ybt.ssoier.cn:8088/problem_show.php?pid=1121)
 
 ```cpp
 // ==================================================
@@ -6781,8 +7472,11 @@ int main( void ) {
 }
 ```
 
-[1121.cpp](/assets/src/ybt/1121.cpp)
+[1121.cpp](/assets/src/ybt/language_basics/1121.cpp)
 
+----
+
+[Problem 1122](http://ybt.ssoier.cn:8088/problem_show.php?pid=1122)
 
 ```cpp
 // ==================================================
@@ -6924,8 +7618,11 @@ int main( void ) {
 }
 ```
 
-[1122.cpp](/assets/src/ybt/1122.cpp)
+[1122.cpp](/assets/src/ybt/language_basics/1122.cpp)
 
+----
+
+[Problem 1123](http://ybt.ssoier.cn:8088/problem_show.php?pid=1123)
 
 ```cpp
 // ==================================================
@@ -7031,8 +7728,11 @@ int main( void ) {
 }
 ```
 
-[1123.cpp](/assets/src/ybt/1123.cpp)
+[1123.cpp](/assets/src/ybt/language_basics/1123.cpp)
 
+----
+
+[Problem 1124](http://ybt.ssoier.cn:8088/problem_show.php?pid=1124)
 
 ```cpp
 // ==================================================
@@ -7146,8 +7846,11 @@ int main( void ) {
 }
 ```
 
-[1124.cpp](/assets/src/ybt/1124.cpp)
+[1124.cpp](/assets/src/ybt/language_basics/1124.cpp)
 
+----
+
+[Problem 1125](http://ybt.ssoier.cn:8088/problem_show.php?pid=1125)
 
 ```cpp
 // ==================================================
@@ -7265,8 +7968,11 @@ int main( void ) {
 }
 ```
 
-[1125.cpp](/assets/src/ybt/1125.cpp)
+[1125.cpp](/assets/src/ybt/language_basics/1125.cpp)
 
+----
+
+[Problem 1126](http://ybt.ssoier.cn:8088/problem_show.php?pid=1126)
 
 ```cpp
 // ==================================================
@@ -7372,8 +8078,11 @@ int main( void ) {
 }
 ```
 
-[1126.cpp](/assets/src/ybt/1126.cpp)
+[1126.cpp](/assets/src/ybt/language_basics/1126.cpp)
 
+----
+
+[Problem 1127](http://ybt.ssoier.cn:8088/problem_show.php?pid=1127)
 
 ```cpp
 // ==================================================
@@ -7479,8 +8188,11 @@ int main( void ) {
 }
 ```
 
-[1127.cpp](/assets/src/ybt/1127.cpp)
+[1127.cpp](/assets/src/ybt/language_basics/1127.cpp)
 
+----
+
+[Problem 1128](http://ybt.ssoier.cn:8088/problem_show.php?pid=1128)
 
 ```cpp
 // ==================================================
@@ -7563,7 +8275,7 @@ void PRINTAV( T1 & vec, T2 x) {
 
 // ==================================================
 
-static int dir[4][2]={ {0,1},{0,-1},{1,0},{-1,0} };
+static int dir[4][2]={{0,1},{0,-1},{1,0},{-1,0}};
 
 int main( void ) {
 
@@ -7616,8 +8328,11 @@ int main( void ) {
 }
 ```
 
-[1128.cpp](/assets/src/ybt/1128.cpp)
+[1128.cpp](/assets/src/ybt/language_basics/1128.cpp)
 
+----
+
+[Problem 1129](http://ybt.ssoier.cn:8088/problem_show.php?pid=1129)
 
 ```cpp
 // ==================================================
@@ -7723,8 +8438,11 @@ int main( void ) {
 }
 ```
 
-[1129.cpp](/assets/src/ybt/1129.cpp)
+[1129.cpp](/assets/src/ybt/language_basics/1129.cpp)
 
+----
+
+[Problem 1130](http://ybt.ssoier.cn:8088/problem_show.php?pid=1130)
 
 ```cpp
 // ==================================================
@@ -7853,8 +8571,11 @@ int main( void ) {
 }
 ```
 
-[1130.cpp](/assets/src/ybt/1130.cpp)
+[1130.cpp](/assets/src/ybt/language_basics/1130.cpp)
 
+----
+
+[Problem 1131](http://ybt.ssoier.cn:8088/problem_show.php?pid=1131)
 
 ```cpp
 // ==================================================
@@ -7963,8 +8684,11 @@ int main( void ) {
 
 ```
 
-[1131.cpp](/assets/src/ybt/1131.cpp)
+[1131.cpp](/assets/src/ybt/language_basics/1131.cpp)
 
+----
+
+[Problem 1132](http://ybt.ssoier.cn:8088/problem_show.php?pid=1132)
 
 ```cpp
 // ==================================================
@@ -8094,8 +8818,11 @@ int main( void ) {
 }
 ```
 
-[1132.cpp](/assets/src/ybt/1132.cpp)
+[1132.cpp](/assets/src/ybt/language_basics/1132.cpp)
 
+----
+
+[Problem 1133](http://ybt.ssoier.cn:8088/problem_show.php?pid=1133)
 
 ```cpp
 // ==================================================
@@ -8201,8 +8928,11 @@ int main( void ) {
 }
 ```
 
-[1133.cpp](/assets/src/ybt/1133.cpp)
+[1133.cpp](/assets/src/ybt/language_basics/1133.cpp)
 
+----
+
+[Problem 1134](http://ybt.ssoier.cn:8088/problem_show.php?pid=1134)
 
 ```cpp
 // ==================================================
@@ -8329,8 +9059,11 @@ int main( void ) {
 }
 ```
 
-[1134.cpp](/assets/src/ybt/1134.cpp)
+[1134.cpp](/assets/src/ybt/language_basics/1134.cpp)
 
+----
+
+[Problem 1135](http://ybt.ssoier.cn:8088/problem_show.php?pid=1135)
 
 ```cpp
 // ==================================================
@@ -8444,8 +9177,11 @@ int main( void ) {
 }
 ```
 
-[1135.cpp](/assets/src/ybt/1135.cpp)
+[1135.cpp](/assets/src/ybt/language_basics/1135.cpp)
 
+----
+
+[Problem 1136](http://ybt.ssoier.cn:8088/problem_show.php?pid=1136)
 
 ```cpp
 // ==================================================
@@ -8557,8 +9293,11 @@ int main( void ) {
 }
 ```
 
-[1136.cpp](/assets/src/ybt/1136.cpp)
+[1136.cpp](/assets/src/ybt/language_basics/1136.cpp)
 
+----
+
+[Problem 1137](http://ybt.ssoier.cn:8088/problem_show.php?pid=1137)
 
 ```cpp
 // ==================================================
@@ -8703,8 +9442,11 @@ int main( void ) {
 }
 ```
 
-[1137.cpp](/assets/src/ybt/1137.cpp)
+[1137.cpp](/assets/src/ybt/language_basics/1137.cpp)
 
+----
+
+[Problem 1138](http://ybt.ssoier.cn:8088/problem_show.php?pid=1138)
 
 ```cpp
 // ==================================================
@@ -8811,8 +9553,11 @@ int main( void ) {
 }
 ```
 
-[1138.cpp](/assets/src/ybt/1138.cpp)
+[1138.cpp](/assets/src/ybt/language_basics/1138.cpp)
 
+----
+
+[Problem 1139](http://ybt.ssoier.cn:8088/problem_show.php?pid=1139)
 
 ```cpp
 // ==================================================
@@ -8929,8 +9674,11 @@ int main( void ) {
 }
 ```
 
-[1139.cpp](/assets/src/ybt/1139.cpp)
+[1139.cpp](/assets/src/ybt/language_basics/1139.cpp)
 
+----
+
+[Problem 1140](http://ybt.ssoier.cn:8088/problem_show.php?pid=1140)
 
 ```cpp
 // ==================================================
@@ -9065,8 +9813,11 @@ int main( void ) {
 }
 ```
 
-[1140.cpp](/assets/src/ybt/1140.cpp)
+[1140.cpp](/assets/src/ybt/language_basics/1140.cpp)
 
+----
+
+[Problem 1141](http://ybt.ssoier.cn:8088/problem_show.php?pid=1141)
 
 ```cpp
 // ==================================================
@@ -9183,8 +9934,11 @@ int main( void ) {
 }
 ```
 
-[1141.cpp](/assets/src/ybt/1141.cpp)
+[1141.cpp](/assets/src/ybt/language_basics/1141.cpp)
 
+----
+
+[Problem 1142](http://ybt.ssoier.cn:8088/problem_show.php?pid=1142)
 
 ```cpp
 // ==================================================
@@ -9309,8 +10063,11 @@ int main( void ) {
 }
 ```
 
-[1142.cpp](/assets/src/ybt/1142.cpp)
+[1142.cpp](/assets/src/ybt/language_basics/1142.cpp)
 
+----
+
+[Problem 1143](http://ybt.ssoier.cn:8088/problem_show.php?pid=1143)
 
 ```cpp
 // ==================================================
@@ -9443,8 +10200,11 @@ int main( void ) {
 }
 ```
 
-[1143.cpp](/assets/src/ybt/1143.cpp)
+[1143.cpp](/assets/src/ybt/language_basics/1143.cpp)
 
+----
+
+[Problem 1144](http://ybt.ssoier.cn:8088/problem_show.php?pid=1144)
 
 ```cpp
 // ==================================================
@@ -9576,8 +10336,11 @@ int main( void ) {
 }
 ```
 
-[1144.cpp](/assets/src/ybt/1144.cpp)
+[1144.cpp](/assets/src/ybt/language_basics/1144.cpp)
 
+----
+
+[Problem 1145](http://ybt.ssoier.cn:8088/problem_show.php?pid=1145)
 
 ```cpp
 // ==================================================
@@ -9714,8 +10477,11 @@ int main( void ) {
 }
 ```
 
-[1145.cpp](/assets/src/ybt/1145.cpp)
+[1145.cpp](/assets/src/ybt/language_basics/1145.cpp)
 
+----
+
+[Problem 1146](http://ybt.ssoier.cn:8088/problem_show.php?pid=1146)
 
 ```cpp
 // ==================================================
@@ -9825,8 +10591,11 @@ int main( void ) {
 }
 ```
 
-[1146.cpp](/assets/src/ybt/1146.cpp)
+[1146.cpp](/assets/src/ybt/language_basics/1146.cpp)
 
+----
+
+[Problem 1147](http://ybt.ssoier.cn:8088/problem_show.php?pid=1147)
 
 ```cpp
 // ==================================================
@@ -9937,8 +10706,11 @@ int main( void ) {
 }
 ```
 
-[1147.cpp](/assets/src/ybt/1147.cpp)
+[1147.cpp](/assets/src/ybt/language_basics/1147.cpp)
 
+----
+
+[Problem 1148](http://ybt.ssoier.cn:8088/problem_show.php?pid=1148)
 
 ```cpp
 // ==================================================
@@ -10071,8 +10843,11 @@ int main( void ) {
 }
 ```
 
-[1148.cpp](/assets/src/ybt/1148.cpp)
+[1148.cpp](/assets/src/ybt/language_basics/1148.cpp)
 
+----
+
+[Problem 1149](http://ybt.ssoier.cn:8088/problem_show.php?pid=1149)
 
 ```cpp
 // ==================================================
@@ -10211,8 +10986,11 @@ int main( void ) {
 }
 ```
 
-[1149.cpp](/assets/src/ybt/1149.cpp)
+[1149.cpp](/assets/src/ybt/language_basics/1149.cpp)
 
+----
+
+[Problem 1150](http://ybt.ssoier.cn:8088/problem_show.php?pid=1150)
 
 ```cpp
 // ==================================================
@@ -10323,8 +11101,11 @@ int main( void ) {
 }
 ```
 
-[1150.cpp](/assets/src/ybt/1150.cpp)
+[1150.cpp](/assets/src/ybt/language_basics/1150.cpp)
 
+----
+
+[Problem 1151](http://ybt.ssoier.cn:8088/problem_show.php?pid=1151)
 
 ```cpp
 // ==================================================
@@ -10436,8 +11217,11 @@ int main( void ) {
 }
 ```
 
-[1151.cpp](/assets/src/ybt/1151.cpp)
+[1151.cpp](/assets/src/ybt/language_basics/1151.cpp)
 
+----
+
+[Problem 1152](http://ybt.ssoier.cn:8088/problem_show.php?pid=1152)
 
 ```cpp
 // ==================================================
@@ -10544,8 +11328,11 @@ cout<<Max(a,b,c)/(Max(a+b,b,c)*Max(a,b,b+c))<<endl;
 }
 ```
 
-[1152.cpp](/assets/src/ybt/1152.cpp)
+[1152.cpp](/assets/src/ybt/language_basics/1152.cpp)
 
+----
+
+[Problem 1153](http://ybt.ssoier.cn:8088/problem_show.php?pid=1153)
 
 ```cpp
 // ==================================================
@@ -10667,8 +11454,11 @@ int main( void ) {
 }
 ```
 
-[1153.cpp](/assets/src/ybt/1153.cpp)
+[1153.cpp](/assets/src/ybt/language_basics/1153.cpp)
 
+----
+
+[Problem 1154](http://ybt.ssoier.cn:8088/problem_show.php?pid=1154)
 
 ```cpp
 // ==================================================
@@ -10792,8 +11582,11 @@ int main( void ) {
 }
 ```
 
-[1154.cpp](/assets/src/ybt/1154.cpp)
+[1154.cpp](/assets/src/ybt/language_basics/1154.cpp)
 
+----
+
+[Problem 1155](http://ybt.ssoier.cn:8088/problem_show.php?pid=1155)
 
 ```cpp
 // ==================================================
@@ -10912,8 +11705,11 @@ int main( void ) {
 }
 ```
 
-[1155.cpp](/assets/src/ybt/1155.cpp)
+[1155.cpp](/assets/src/ybt/language_basics/1155.cpp)
 
+----
+
+[Problem 1156](http://ybt.ssoier.cn:8088/problem_show.php?pid=1156)
 
 ```cpp
 // ==================================================
@@ -11029,8 +11825,11 @@ int main( void ) {
 }
 ```
 
-[1156.cpp](/assets/src/ybt/1156.cpp)
+[1156.cpp](/assets/src/ybt/language_basics/1156.cpp)
 
+----
+
+[Problem 1157](http://ybt.ssoier.cn:8088/problem_show.php?pid=1157)
 
 ```cpp
 // ==================================================
@@ -11156,8 +11955,11 @@ int main( void ) {
 }
 ```
 
-[1157.cpp](/assets/src/ybt/1157.cpp)
+[1157.cpp](/assets/src/ybt/language_basics/1157.cpp)
 
+----
+
+[Problem 1158](http://ybt.ssoier.cn:8088/problem_show.php?pid=1158)
 
 ```cpp
 // ==================================================
@@ -11264,8 +12066,11 @@ int main( void ) {
 }
 ```
 
-[1158.cpp](/assets/src/ybt/1158.cpp)
+[1158.cpp](/assets/src/ybt/language_basics/1158.cpp)
 
+----
+
+[Problem 1159](http://ybt.ssoier.cn:8088/problem_show.php?pid=1159)
 
 ```cpp
 // ==================================================
@@ -11373,8 +12178,11 @@ int main( void ) {
 }
 ```
 
-[1159.cpp](/assets/src/ybt/1159.cpp)
+[1159.cpp](/assets/src/ybt/language_basics/1159.cpp)
 
+----
+
+[Problem 1160](http://ybt.ssoier.cn:8088/problem_show.php?pid=1160)
 
 ```cpp
 // ==================================================
@@ -11486,8 +12294,11 @@ int main( void ) {
 }
 ```
 
-[1160.cpp](/assets/src/ybt/1160.cpp)
+[1160.cpp](/assets/src/ybt/language_basics/1160.cpp)
 
+----
+
+[Problem 1161](http://ybt.ssoier.cn:8088/problem_show.php?pid=1161)
 
 ```cpp
 // ==================================================
@@ -11602,8 +12413,11 @@ int main( void ) {
 }
 ```
 
-[1161.cpp](/assets/src/ybt/1161.cpp)
+[1161.cpp](/assets/src/ybt/language_basics/1161.cpp)
 
+----
+
+[Problem 1162](http://ybt.ssoier.cn:8088/problem_show.php?pid=1162)
 
 ```cpp
 // ==================================================
@@ -11713,8 +12527,11 @@ int main( void ) {
 }
 ```
 
-[1162.cpp](/assets/src/ybt/1162.cpp)
+[1162.cpp](/assets/src/ybt/language_basics/1162.cpp)
 
+----
+
+[Problem 1163](http://ybt.ssoier.cn:8088/problem_show.php?pid=1163)
 
 ```cpp
 // ==================================================
@@ -11830,8 +12647,11 @@ int main( void ) {
 }
 ```
 
-[1163.cpp](/assets/src/ybt/1163.cpp)
+[1163.cpp](/assets/src/ybt/language_basics/1163.cpp)
 
+----
+
+[Problem 1164](http://ybt.ssoier.cn:8088/problem_show.php?pid=1164)
 
 ```cpp
 // ==================================================
@@ -11941,8 +12761,11 @@ int main( void ) {
 }
 ```
 
-[1164.cpp](/assets/src/ybt/1164.cpp)
+[1164.cpp](/assets/src/ybt/language_basics/1164.cpp)
 
+----
+
+[Problem 1165](http://ybt.ssoier.cn:8088/problem_show.php?pid=1165)
 
 ```cpp
 // ==================================================
@@ -12053,8 +12876,11 @@ int main( void ) {
 }
 ```
 
-[1165.cpp](/assets/src/ybt/1165.cpp)
+[1165.cpp](/assets/src/ybt/language_basics/1165.cpp)
 
+----
+
+[Problem 1166](http://ybt.ssoier.cn:8088/problem_show.php?pid=1166)
 
 ```cpp
 // ==================================================
@@ -12164,8 +12990,11 @@ int main( void ) {
 }
 ```
 
-[1166.cpp](/assets/src/ybt/1166.cpp)
+[1166.cpp](/assets/src/ybt/language_basics/1166.cpp)
 
+----
+
+[Problem 1167](http://ybt.ssoier.cn:8088/problem_show.php?pid=1167)
 
 ```cpp
 // ==================================================
@@ -12278,8 +13107,146 @@ int main( void ) {
 }
 ```
 
-[1167.cpp](/assets/src/ybt/1167.cpp)
+[1167.cpp](/assets/src/ybt/language_basics/1167.cpp)
 
+----
+
+[Problem 1318](http://ybt.ssoier.cn:8088/problem_show.php?pid=1318)
+
+```cpp
+// ==================================================
+
+// C library
+#include <cmath>
+#include <climits>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
+
+// Containers
+#include <vector>
+#include <list>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <set>
+#include <map>
+
+// Input/Output
+#include <iostream>
+#include <istream>
+#include <ostream>
+#include <sstream>
+#include <fstream>
+#include <ios>
+#include <iomanip>
+
+// Other
+#include <string>
+#include <bitset>
+#include <algorithm>
+#include <utility>
+#include <iterator>
+#include <limits>
+
+// ==================================================
+
+using namespace std;
+
+typedef vector<int> VI;
+typedef pair<int, int> PII;
+typedef long long LL;
+
+// ==================================================
+#define oo (1LL<<31);
+#define max_(x, y) ((x) > (y) ? (x) : (y))
+#define min_(x, y) ((x) > (y) ? (y) : (x))
+
+#define PR(x) cout << #x " = " << (x) << "\t"
+#define NL cout << "\n"
+
+#define PRINT1(x) PR(x), NL
+#define PRINT2(x1, x2) PR(x1), PRINT1(x2)
+#define PRINT3(x1, x2, x3) PR(x1), PRINT2(x2, x3)
+#define PRINT4(x1, x2, x3, x4) PR(x1), PRINT3(x2, x3, x4)
+
+// ==================================================
+
+template<typename T>
+void PRINTC(const T& a) { cout << a << " "; }
+
+template<typename T>
+void PRINTA(const T ar[], int n) {
+  for (int i = 0; i < n; ++i) PRINTC(ar[i]); NL;
+}
+
+template<typename T1, typename T2>
+void PRINTP(const pair<T1, T2>& p) { PRINTC(p.first); PRINTLN(p.second); }
+
+template<typename T>
+void PRINTLN(const T& a) { cout << a << "\n"; }
+
+template< typename T1, typename T2 >
+void PRINTAV( T1 & vec, T2 x) {
+  ostream_iterator< T2 > O( cout, " " );
+  copy( begin( vec ), end( vec ), O ); NL;
+}
+
+// ==================================================
+
+
+int a[1100], n;
+
+void print(int pos) {
+  cout<<n<<"=";
+  for(int i=1;i<pos-1;++i)cout<<a[i]<<"+";
+  cout<<a[pos-1];NL;
+}
+
+void foo(int m, int pos) {
+  if(m==1){
+    if(a[pos-1]>1)return;
+    a[pos++]=1;
+    print(pos);
+    return;
+  }
+  if(m==0){
+    print(pos);return;
+  }
+  if(m>n)return;
+  for(int i=a[pos-1]; i<=m; ++i){
+    m-=i;
+    a[pos]=i;
+    if(i==n)continue;
+    foo(m,++pos);
+    m+=i;
+    --pos;
+  }
+}
+
+int main( void ) {
+
+#ifdef DEBUG
+  freopen("1318.in", "r", stdin);
+#endif
+
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  cin>>n;
+  a[0]=1;
+  foo(n, 1);
+
+  return 0;
+}
+```
+
+[1318.cpp](/assets/src/ybt/language_basics/1318.cpp)
+
+----
+
+[Problem 1397](http://ybt.ssoier.cn:8088/problem_show.php?pid=1397)
 
 ```cpp
 // ==================================================
@@ -12418,8 +13385,11 @@ int main( void ) {
 }
 ```
 
-[1397.cpp](/assets/src/ybt/1397.cpp)
+[1397.cpp](/assets/src/ybt/language_basics/1397.cpp)
 
+----
+
+[Problem 1398](http://ybt.ssoier.cn:8088/problem_show.php?pid=1398)
 
 ```cpp
 // ==================================================
@@ -12528,8 +13498,11 @@ int main( void ) {
 }
 ```
 
-[1398.cpp](/assets/src/ybt/1398.cpp)
+[1398.cpp](/assets/src/ybt/language_basics/1398.cpp)
 
+----
+
+[Problem 1399](http://ybt.ssoier.cn:8088/problem_show.php?pid=1399)
 
 ```cpp
 // ==================================================
@@ -12641,8 +13614,11 @@ int main( void ) {
 }
 ```
 
-[1399.cpp](/assets/src/ybt/1399.cpp)
+[1399.cpp](/assets/src/ybt/language_basics/1399.cpp)
 
+----
+
+[Problem 1400](http://ybt.ssoier.cn:8088/problem_show.php?pid=1400)
 
 ```cpp
 // ==================================================
@@ -12796,8 +13772,11 @@ int main( void ) {
 }
 ```
 
-[1400.cpp](/assets/src/ybt/1400.cpp)
+[1400.cpp](/assets/src/ybt/language_basics/1400.cpp)
 
+----
+
+[Problem 1401](http://ybt.ssoier.cn:8088/problem_show.php?pid=1401)
 
 ```cpp
 // ==================================================
@@ -12923,8 +13902,11 @@ int main( void ) {
 }
 ```
 
-[1401.cpp](/assets/src/ybt/1401.cpp)
+[1401.cpp](/assets/src/ybt/language_basics/1401.cpp)
 
+----
+
+[Problem 1402](http://ybt.ssoier.cn:8088/problem_show.php?pid=1402)
 
 ```cpp
 // ==================================================
@@ -13057,8 +14039,11 @@ int main( void ) {
 }
 ```
 
-[1402.cpp](/assets/src/ybt/1402.cpp)
+[1402.cpp](/assets/src/ybt/language_basics/1402.cpp)
 
+----
+
+[Problem 1403](http://ybt.ssoier.cn:8088/problem_show.php?pid=1403)
 
 ```cpp
 // ==================================================
@@ -13181,8 +14166,11 @@ int main( void ) {
 }
 ```
 
-[1403.cpp](/assets/src/ybt/1403.cpp)
+[1403.cpp](/assets/src/ybt/language_basics/1403.cpp)
 
+----
+
+[Problem 1404](http://ybt.ssoier.cn:8088/problem_show.php?pid=1404)
 
 ```cpp
 // ==================================================
@@ -13292,8 +14280,11 @@ int main( void ) {
 }
 ```
 
-[1404.cpp](/assets/src/ybt/1404.cpp)
+[1404.cpp](/assets/src/ybt/language_basics/1404.cpp)
 
+----
+
+[Problem 1405](http://ybt.ssoier.cn:8088/problem_show.php?pid=1405)
 
 ```cpp
 // ==================================================
@@ -13414,8 +14405,11 @@ int main( void ) {
 }
 ```
 
-[1405.cpp](/assets/src/ybt/1405.cpp)
+[1405.cpp](/assets/src/ybt/language_basics/1405.cpp)
 
+----
+
+[Problem 1406](http://ybt.ssoier.cn:8088/problem_show.php?pid=1406)
 
 ```cpp
 // ==================================================
@@ -13543,8 +14537,11 @@ int main( void ) {
 }
 ```
 
-[1406.cpp](/assets/src/ybt/1406.cpp)
+[1406.cpp](/assets/src/ybt/language_basics/1406.cpp)
 
+----
+
+[Problem 1407](http://ybt.ssoier.cn:8088/problem_show.php?pid=1407)
 
 ```cpp
 // ==================================================
@@ -13686,8 +14683,11 @@ int main( void ) {
 }
 ```
 
-[1407.cpp](/assets/src/ybt/1407.cpp)
+[1407.cpp](/assets/src/ybt/language_basics/1407.cpp)
 
+----
+
+[Problem 1408](http://ybt.ssoier.cn:8088/problem_show.php?pid=1408)
 
 ```cpp
 // ==================================================
@@ -13816,8 +14816,11 @@ int main( void ) {
 }
 ```
 
-[1408.cpp](/assets/src/ybt/1408.cpp)
+[1408.cpp](/assets/src/ybt/language_basics/1408.cpp)
 
+----
+
+[Problem 1409](http://ybt.ssoier.cn:8088/problem_show.php?pid=1409)
 
 ```cpp
 // ==================================================
@@ -13936,8 +14939,11 @@ int main( void ) {
 }
 ```
 
-[1409.cpp](/assets/src/ybt/1409.cpp)
+[1409.cpp](/assets/src/ybt/language_basics/1409.cpp)
 
+----
+
+[Problem 1410](http://ybt.ssoier.cn:8088/problem_show.php?pid=1410)
 
 ```cpp
 // ==================================================
@@ -14064,8 +15070,11 @@ int main( void ) {
 }
 ```
 
-[1410.cpp](/assets/src/ybt/1410.cpp)
+[1410.cpp](/assets/src/ybt/language_basics/1410.cpp)
 
+----
+
+[Problem 1411](http://ybt.ssoier.cn:8088/problem_show.php?pid=1411)
 
 ```cpp
 // ==================================================
@@ -14202,8 +15211,11 @@ int main( void ) {
 }
 ```
 
-[1411.cpp](/assets/src/ybt/1411.cpp)
+[1411.cpp](/assets/src/ybt/language_basics/1411.cpp)
 
+----
+
+[Problem 1412](http://ybt.ssoier.cn:8088/problem_show.php?pid=1412)
 
 ```cpp
 // ==================================================
@@ -14320,5 +15332,243 @@ int main( void ) {
 }
 ```
 
-[1412.cpp](/assets/src/ybt/1412.cpp)
+[1412.cpp](/assets/src/ybt/language_basics/1412.cpp)
 
+----
+
+[Problem 1413](http://ybt.ssoier.cn:8088/problem_show.php?pid=1413)
+
+```cpp
+// ==================================================
+
+// C library
+#include <cmath>
+#include <climits>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
+
+// Containers
+#include <vector>
+#include <list>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <set>
+#include <map>
+
+// Input/Output
+#include <iostream>
+#include <istream>
+#include <ostream>
+#include <sstream>
+#include <fstream>
+#include <ios>
+#include <iomanip>
+
+// Other
+#include <string>
+#include <bitset>
+#include <algorithm>
+#include <utility>
+#include <iterator>
+#include <limits>
+
+// ==================================================
+
+using namespace std;
+
+typedef pair<int, int> PII;
+typedef long long LL;
+
+// ==================================================
+#define oo ((1LL<<31) - 10);
+#define max_(x, y) ((x) > (y) ? (x) : (y))
+#define min_(x, y) ((x) > (y) ? (y) : (x))
+
+#define PR(x) cout << #x " = " << (x) << "\t"
+#define NL cout << "\n"
+
+#define PRINT1(x) PR(x), NL
+#define PRINT2(x1, x2) PR(x1), PRINT1(x2)
+#define PRINT3(x1, x2, x3) PR(x1), PRINT2(x2, x3)
+#define PRINT4(x1, x2, x3, x4) PR(x1), PRINT3(x2, x3, x4)
+
+// ==================================================
+
+template<typename T>
+void PRINTC(const T& a) { cout << a << " "; }
+
+template<typename T>
+void PRINTA(const T ar[], int n) {
+  for (int i = 0; i < n; ++i) PRINTC(ar[i]); NL;
+}
+
+template<typename T1, typename T2>
+void PRINTP(const pair<T1, T2>& p) { PRINTC(p.first); PRINTLN(p.second); }
+
+template<typename T>
+void PRINTLN(const T& a) { cout << a << "\n"; }
+
+template< typename T1, typename T2 >
+void PRINTAV( T1 & vec, T2 x) {
+  ostream_iterator< T2 > O( cout, " " );
+  copy( begin( vec ), end( vec ), O ); NL;
+}
+
+// ==================================================
+
+
+LL toD(LL x,int n)
+{
+  LL b=1,r=0;
+  while(x)
+    {
+      if((x%10)>=n)return 0;
+      r=r+(x%10)*b;
+      b*=n;
+      x/=10;
+    }
+  return r;
+}
+
+int main( void ) {
+
+#ifdef DEBUG
+  freopen("1413.in", "r", stdin);
+#endif
+
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  LL p,q,r;
+  cin>>p>>q>>r;
+
+  for(int i=2;i<=40;i++)
+    {
+      LL t1=toD(p,i), t2=toD(q,i),t3=toD(r,i);
+      if(t1&&t2&&t3
+         &&t1*t2==t3)
+        {
+          cout<<i<<endl;
+          return 0;
+        }
+    }
+  if(p==q&&q==r&&p==1)cout<<1<<endl;
+  else
+    cout<<0<<endl;
+
+  return 0;
+}
+```
+
+[1413.cpp](/assets/src/ybt/language_basics/1413.cpp)
+
+----
+
+[Problem 1982](http://ybt.ssoier.cn:8088/problem_show.php?pid=1982)
+
+```cpp
+// ==================================================
+
+// C library
+#include <cmath>
+#include <climits>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
+
+// Containers
+#include <vector>
+#include <list>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <set>
+#include <map>
+
+// Input/Output
+#include <iostream>
+#include <istream>
+#include <ostream>
+#include <sstream>
+#include <fstream>
+#include <ios>
+#include <iomanip>
+
+// Other
+#include <string>
+#include <bitset>
+#include <algorithm>
+#include <utility>
+#include <iterator>
+#include <limits>
+
+// ==================================================
+
+using namespace std;
+
+typedef pair<int, int> PII;
+typedef long long LL;
+
+// ==================================================
+#define oo ((1LL<<31) - 10);
+#define max_(x, y) ((x) > (y) ? (x) : (y))
+#define min_(x, y) ((x) > (y) ? (y) : (x))
+
+#define PR(x) cout << #x " = " << (x) << "\t"
+#define NL cout << "\n"
+
+#define PRINT1(x) PR(x), NL
+#define PRINT2(x1, x2) PR(x1), PRINT1(x2)
+#define PRINT3(x1, x2, x3) PR(x1), PRINT2(x2, x3)
+#define PRINT4(x1, x2, x3, x4) PR(x1), PRINT3(x2, x3, x4)
+
+// ==================================================
+
+template<typename T>
+void PRINTC(const T& a) { cout << a << " "; }
+
+template<typename T>
+void PRINTA(const T ar[], int n) {
+  for (int i = 0; i < n; ++i) PRINTC(ar[i]); NL;
+}
+
+template<typename T1, typename T2>
+void PRINTP(const pair<T1, T2>& p) { PRINTC(p.first); PRINTLN(p.second); }
+
+template<typename T>
+void PRINTLN(const T& a) { cout << a << "\n"; }
+
+template< typename T1, typename T2 >
+void PRINTAV( T1 & vec, T2 x) {
+  ostream_iterator< T2 > O( cout, " " );
+  copy( begin( vec ), end( vec ), O ); NL;
+}
+
+// ==================================================
+
+
+int main( void ) {
+
+#ifdef DEBUG
+  freopen("1982.in", "r", stdin);
+#endif
+
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  string s;
+  cin>>s;
+  int r=0;
+  for(int i=0;i<int(s.size());i++)r+=(s[i]=='1');cout<<r<<endl;
+
+  return 0;
+}
+```
+
+[1982.cpp](/assets/src/ybt/language_basics/1982.cpp)
+
+----
