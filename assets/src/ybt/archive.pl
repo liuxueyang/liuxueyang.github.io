@@ -13,8 +13,8 @@ my $target_dir_path;
 my $filename;
 
 # 源文件归档脚本
-# eg. perl archive.pl --dst-dir for_loop for_loop.org
-# for_loop.org 文件包含题号列表
+# eg. perl archive.pl --dst-dir sorting sorting.org
+# sorting.org 文件包含题号列表
 GetOptions(
     'dst-dir=s' => \$target_dir_path,
     ) or die `Usage: $0 --dst-dir DIRNAME FILENAME`;
