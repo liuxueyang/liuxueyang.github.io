@@ -80,47 +80,46 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-int a[1100], n;
+int R,S,res,cnt;
+char a[100][100];
+int dir[4][2]={{0,1},{0,-1},{-1,0},{1,0}}, cc[200];
 
-void print(int pos) {
-  cout<<n<<"=";
-  for(int i=1;i<pos-1;++i)cout<<a[i]<<"+";
-  cout<<a[pos-1];NL;
+bool check(int i,int j){
+  return (i>=0&&i<R&&
+          j>=0&&j<S);
 }
+void foo(int x,int y){
+  int _c=int(a[x][y]);
+  ++cc[_c];
+  ++cnt;
+  res=max_(res,cnt);
 
-void foo(int m, int pos) {
-  if(m==1){
-    if(a[pos-1]>1)return;
-    a[pos++]=1;
-    print(pos);
-    return;
-  }
-  if(m==0){
-    print(pos);return;
-  }
-  if(m>n)return;
-  for(int i=a[pos-1]; i<=m; ++i){
-    m-=i;
-    a[pos]=i;
-    if(i==n)continue;
-    foo(m,++pos);
-    m+=i;
-    --pos;
+  for(int i=0;i<4;i++){
+    int x1=x+dir[i][0],y1=y+dir[i][1];
+    int _c=int(a[x1][y1]);
+    if(!cc[_c]&&check(x1,y1)){
+      foo(x1,y1);
+      --cc[_c];
+      --cnt;
+    }
   }
 }
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1318.in", "r", stdin);
+  freopen("1212.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  cin>>n;
-  a[0]=1;
-  foo(n, 1);
+  cin>>R>>S;
+  for(int i=0;i<R;++i){
+    cin>>a[i];
+  }
+  foo(0,0);
+  cout<<res;NL;
 
   return 0;
 }
