@@ -93,8 +93,7 @@ bool check(int a, int b) {
 
 const int N = 20;
 bool pr[N][N];
-int a[N], n, b[N];
-LL res, cnt;
+int a[N], n, b[N], res, cnt;
 
 void dfs(int pos) {
   if (pos == 0) {
@@ -108,15 +107,28 @@ void dfs(int pos) {
     return;
   }
   if (cnt >= res) return;
-  for (int i = 0; i < pos; ++i) {
-    if (pr[i][pos] && b[i]) {
-      b[pos] = b[i];
+
+  for (int j = 1; j <= cnt; ++j) {
+    bool flag = true;
+    for (int i = 0; i < pos; ++i) {
+      if (b[i] == j) {
+        if (!pr[i][pos]) {
+          flag = false;
+          break;
+        }
+      }
+    }
+    if (flag) {
+      b[pos] = j;
       dfs(pos + 1);
       b[pos] = 0;
     }
   }
+
   b[pos] = ++cnt;
   dfs(pos + 1);
+  --cnt;
+  b[pos] = 0;
 }
 
 int main( void ) {
@@ -128,18 +140,15 @@ int main( void ) {
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int n;
   cin >> n;
   for(int i = 0; i < n; ++i) cin >> a[i];
   for(int i = 0; i < n; ++i) {
     for (int j = i + 1; j < n; ++j) {
       pr[i][j] = pr[j][i] = check(a[i], a[j]);
-      // if (pr[i][j])
-      //   PRINT2(i, j);
     }
   }
 
-  res = oo;
+  res = n+1;
   dfs(0);
   cout << res << endl;
 
