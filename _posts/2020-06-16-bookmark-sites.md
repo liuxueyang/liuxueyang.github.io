@@ -7,6 +7,12 @@ tags: Bookmark
 
 之前也零散收集过一些网站，太零散以至于后来放弃了，之后就写在这个列表里面，方便查阅。
 
+# Programming Languages
+
+## Perl
+
+- [Perl Maven](https://perlmaven.com/)
+
 # Emacs
 
 - [Emacs Life](http://emacslife.com/)
@@ -14,6 +20,7 @@ tags: Bookmark
 - [elisp manual](https://www.gnu.org/software/emacs/manual/html_node/elisp/)
 - [GNU Emacs Manual](https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html)
 - [A Guided Tour of Emacs](https://www.gnu.org/software/emacs/tour/)
+- [EverET.org](https://everet.org/thinking-of-emacs.html)
 
 ## eshell
 - [Eshell](https://caiorss.github.io/Emacs-Elisp-Programming/Eshell.html)
@@ -24,17 +31,20 @@ tags: Bookmark
 
 - [cynically](https://blog.cynically.moe/)
 - [fmdkdd](https://0xc0de.fr/)
+- [alvin alexander](https://alvinalexander.com/)
 
 # News
 
 - [Hacker News](https://news.ycombinator.com/)
 
-# Zsh
+# Shell
+
+## Zsh
 
 - [Git-Flow plugin](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git-flow)
 - [Git aliases](https://kapeli.com/cheat_sheets/Oh-My-Zsh_Git.docset/Contents/Resources/Documents/index)
 
-# ACM/ICPC OI
+# ACM/ICPC & OI
 
 ## Blog
 - [日拱一卒 功不唐捐](https://www.cnblogs.com/TheRoadToTheGold/)

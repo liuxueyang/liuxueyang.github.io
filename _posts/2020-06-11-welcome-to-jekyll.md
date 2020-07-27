@@ -32,7 +32,10 @@ Get Date string for Jekyll using the following bash command:
 date "+%Y-%m-%d %T %z"
 {% endhighlight %}
 
+For more markdown syntax, refer to [Learning Markdown][Learning Markdown]
+
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
 [supported-languages]: https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers
+[Learning Markdown]: http://xianbai.me/learn-md/article/syntax/blockquotes.html
