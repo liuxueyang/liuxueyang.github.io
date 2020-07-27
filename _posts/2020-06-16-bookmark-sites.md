@@ -23,6 +23,7 @@ tags: Bookmark
 # Blog
 
 - [cynically](https://blog.cynically.moe/)
+- [fmdkdd](https://0xc0de.fr/)
 
 # News
 
