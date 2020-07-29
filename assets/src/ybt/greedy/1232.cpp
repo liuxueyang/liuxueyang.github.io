@@ -89,53 +89,23 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-char a[20];
-int k;
-
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1231.in", "r", stdin);
+  freopen("1232.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int t; cin >> t; while (t--) {
-    cin >> a >> k;
-    int len=strlen(a);
-    while (k) {
-      bool flag = false;
-      for (int i = 0; i < len; i++) {
-        int j = i + 1;
-        while (j < len && !isdigit(a[j])) ++j;
-
-        if (j < len &&
-            isdigit(a[i]) && a[i] > a[j]) {
-          flag = true;
-          a[i] = 'a';
-          k--;
-          break;
-        }
-      }
-      if (!flag) {
-        char c = 0;
-        int ps = -1;
-        for (int i = 0; i < len; ++i) {
-          if (isdigit(a[i]) && a[i] > c) {
-            c = a[i]; ps = i;
-          }
-        }
-        if (ps != -1) {
-          --k; a[ps] = 'a';
-        }
-      }
-    }
-    for (int i = 0; i < len; ++i) {
-      if (isdigit(a[i])) cout << a[i];
-    }
-    NL;
+  // TODO:
+  int t; cin>>t; while(t--) {
+    int n;cin>>n; int t,s=0; LL m=oo;
+    for(int i=0;i<n;++i){
+      cin>>t; m=min_(m,t); s+=t;
+    }    cout<<s-m<<endl;
   }
 
   return 0;
 }
+

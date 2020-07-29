@@ -89,52 +89,59 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-char a[20];
-int k;
+struct pe{double v; int t;};
+pe a[10000+10], b[10000+10];
+bool cmp(pe a, pe b){
+  if(a.t!=b.t) return a.t<b.t;
+  return a.v>b.v;
+}
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1231.in", "r", stdin);
+  freopen("1227.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int t; cin >> t; while (t--) {
-    cin >> a >> k;
-    int len=strlen(a);
-    while (k) {
-      bool flag = false;
-      for (int i = 0; i < len; i++) {
-        int j = i + 1;
-        while (j < len && !isdigit(a[j])) ++j;
+  int n; while (cin>>n) {
+    if(!n) break;
+    for(int i=0;i<n;++i){ cin>>a[i].v>>a[i].t;
+      if(a[i].t<0) a[i].t=0;
+      a[i].v/=3.6;
+    }
+    sort(a,a+n,cmp);
+    double res=0,d=0,t=4500;
+    int j=0;
+    for(int i=0;i<n;++i){
+      if(!i){
+        b[j++]=a[i];continue;
+      }
+      if(a[i].t==a[i-1].t)continue;
+      b[j++]=a[i];
+    }
 
-        if (j < len &&
-            isdigit(a[i]) && a[i] > a[j]) {
-          flag = true;
-          a[i] = 'a';
-          k--;
-          break;
-        }
+    for(int i=0;i<j;++i) PRINT2(i,b[i].v);
+
+    for(int i=0;i<j;++i) {
+      if(i==j-1){
+        res+=(t-d)/b[i].v;
+        continue;
       }
-      if (!flag) {
-        char c = 0;
-        int ps = -1;
-        for (int i = 0; i < len; ++i) {
-          if (isdigit(a[i]) && a[i] > c) {
-            c = a[i]; ps = i;
-          }
-        }
-        if (ps != -1) {
-          --k; a[ps] = 'a';
-        }
+      int dt=b[i+1].t-b[i].t;
+      double d1=b[i].v*dt;
+      PRINT2(dt,d1);
+      if(d+d1>t){
+        res+=(t-d)/b[i].v;
+        break;
+      } else {
+        d+=d1;
+        res+=dt;
+        if(fabs(d-t)<1e-9) break;
       }
     }
-    for (int i = 0; i < len; ++i) {
-      if (isdigit(a[i])) cout << a[i];
-    }
-    NL;
+    cout<<int(ceil(res))<<endl;
   }
 
   return 0;

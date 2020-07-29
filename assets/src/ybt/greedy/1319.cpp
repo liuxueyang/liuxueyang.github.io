@@ -89,53 +89,33 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-char a[20];
-int k;
+struct pe { int t, i; };
+bool cmp(pe a, pe b) {return a.t < b.t; }
+
+pe a[1010]; int d[1010];
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1231.in", "r", stdin);
+  freopen("1319.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int t; cin >> t; while (t--) {
-    cin >> a >> k;
-    int len=strlen(a);
-    while (k) {
-      bool flag = false;
-      for (int i = 0; i < len; i++) {
-        int j = i + 1;
-        while (j < len && !isdigit(a[j])) ++j;
-
-        if (j < len &&
-            isdigit(a[i]) && a[i] > a[j]) {
-          flag = true;
-          a[i] = 'a';
-          k--;
-          break;
-        }
-      }
-      if (!flag) {
-        char c = 0;
-        int ps = -1;
-        for (int i = 0; i < len; ++i) {
-          if (isdigit(a[i]) && a[i] > c) {
-            c = a[i]; ps = i;
-          }
-        }
-        if (ps != -1) {
-          --k; a[ps] = 'a';
-        }
-      }
-    }
-    for (int i = 0; i < len; ++i) {
-      if (isdigit(a[i])) cout << a[i];
-    }
-    NL;
+  int n; cin >> n; for(int i = 0; i<n;++i) {cin >> a[i].t; a[i].i=i;};
+  sort(a,a+n,cmp);
+  int sum=0,t=0;
+  for(int i =0;i<n;++i) {
+    if(i==n-1)cout<<a[i].i+1<<endl;
+    else cout<<a[i].i+1<<" ";
+    d[i]+=t;
+    t+=a[i].t; if(!i)continue;
+    sum += d[i];
   }
+  cout.precision(2);
+  cout.setf(ios::fixed, ios::floatfield);
+  cout << (1. *sum / n)<<endl;
 
   return 0;
 }
