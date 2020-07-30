@@ -18,3 +18,6 @@ clean:
 
 1227: 1227.cpp
 	g++ -Wall -DDEBUG -g 1227.cpp -o 1227.exe && ./1227.exe
+
+1321: 1321.cpp
+	g++ -Wall -DDEBUG -g 1321.cpp -o 1321.exe && ./1321.exe

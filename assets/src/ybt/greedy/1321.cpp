@@ -52,7 +52,7 @@ __attribute__((unused)) const static int dir[8][2] = {
 };
 
 // ==================================================
-#define oo (1LL<<31);
+#define oo (1LL<<31)
 #define max_(x, y) ((x) > (y) ? (x) : (y))
 #define min_(x, y) ((x) > (y) ? (y) : (x))
 
@@ -89,34 +89,55 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-struct pe{double v; int t;};
-pe a[10000+10], b[10000+10];
-bool cmp(pe a, pe b){
-  if(a.t!=b.t) return a.t<b.t;
-  return a.v>b.v;
-}
+char a[300];
+int k;
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1227.in", "r", stdin);
+  freopen("1321.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int n; while (cin>>n) {
-    if(!n) break;
-    for(int i=0;i<n;++i){ cin>>a[i].v>>a[i].t; }
-    double res,t=4500*3.6; res=oo;
+  cin>>a>>k;
+  int len=strlen(a);
+  while (k) {
+    bool flag=false;
+    for (int i = 0; i < len; i++) {
+      int j = i + 1;
+      while (j < len && !isdigit(a[j])) ++j;
 
-    for(int i=0;i<n;++i) {
-      if(a[i].t<0) continue;
-      double t1=int(ceil(t/a[i].v)+a[i].t);
-      res=min_(t1,res);
+      if (j < len &&
+          isdigit(a[i]) && a[i] > a[j]) {
+        flag = true;
+        a[i] = 'a';
+        k--;
+        break;
+      }
     }
-    cout<<res<<endl;
+    if (!flag) {
+      char c = 0;
+      int ps = -1;
+      for (int i = 0; i < len; ++i) {
+        if (isdigit(a[i]) && a[i] > c) {
+          c = a[i]; ps = i;
+        }
+      }
+      if (ps != -1) {
+        --k; a[ps] = 'a';
+      }
+    }
   }
+  // PRINT1(a);
+  int i=0;
+  while (i<len&&(!isdigit(a[i])||a[i]=='0'))
+    ++i;
+  for (; i < len; ++i) {
+    if (isdigit(a[i])) cout << a[i];
+  }
+  NL;
 
   return 0;
 }
