@@ -21,3 +21,6 @@ uva1291: uva1291.cpp
 
 luogu5760: luogu5760.cpp
 	g++ -Wall -DDEBUG -std=c++11 -g luogu5760.cpp -o luogu5760.exe
+
+c_literal:
+	gcc -Wall c_literal.c -o c_literal.exe

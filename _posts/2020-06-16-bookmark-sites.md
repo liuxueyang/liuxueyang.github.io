@@ -13,6 +13,14 @@ tags: Bookmark
 
 - [Perl Maven](https://perlmaven.com/)
 
+## Awk
+
+- [Awk A Tutorial and Introduction](https://www.grymoire.com/Unix/Awk.html)
+
+## Go
+
+- [Go 语言学习 - cyent 笔记](https://cyent.github.io/golang/)
+
 # Emacs
 
 - [Emacs Life](http://emacslife.com/)
@@ -21,6 +29,7 @@ tags: Bookmark
 - [GNU Emacs Manual](https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html)
 - [A Guided Tour of Emacs](https://www.gnu.org/software/emacs/tour/)
 - [EverET.org](https://everet.org/thinking-of-emacs.html)
+- [(think)](https://batsov.com/articles/2011/11/19/why-emacs/)
 
 ## eshell
 - [Eshell](https://caiorss.github.io/Emacs-Elisp-Programming/Eshell.html)
@@ -48,6 +57,10 @@ tags: Bookmark
 
 ## Blog
 - [日拱一卒 功不唐捐](https://www.cnblogs.com/TheRoadToTheGold/)
+- [影法師の物語](https://yfsyfs.github.io/)
+- [99°](https://e99net.github.io/)
+- [ieki](https://oi.ieki.xyz/CodeVS/p1018.html)
+- [gzr](https://www.cnblogs.com/TFLS-gzr/)
 
 ## Online Judge
 - [Virtual Judge](https://vjudge.net/)
