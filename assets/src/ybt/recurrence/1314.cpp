@@ -80,7 +80,7 @@ void PRINTAV( T1 & vec, T2 x) {
 
 
 const int N=50;
-int a[50][50], dir[4][2]={{1,1},{1,-1},{-1,1},{-1,-1}};
+int a[50][50], dir[4][2]={ {1,1},{1,-1},{-1,1},{-1,-1} };
 LL b[N][N];
 
 int main( void ) {

@@ -82,7 +82,7 @@ void PRINTAV( T1 & vec, T2 x) {
 
 int R,S,res,cnt;
 char a[100][100];
-int dir[4][2]={{0,1},{0,-1},{-1,0},{1,0}}, cc[200];
+int dir[4][2]={ {0,1},{0,-1},{-1,0},{1,0} }, cc[200];
 
 bool check(int i,int j){
   return (i>=0&&i<R&&

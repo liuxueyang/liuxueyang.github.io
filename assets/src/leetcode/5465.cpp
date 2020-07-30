@@ -158,9 +158,9 @@ int main( void ) {
 #endif
 
   Solution a;
-  // vector<VI> edgs = {{0,1},{0,2},{1,4},{1,5},{2,3},{2,6}};
-  // vector<VI> edgs = {{0,1},{1,2},{0,3}};
-  vector<VI> edgs = {{0,2},{1,2},{0,3}};
+  // vector<VI> edgs = { {0,1},{0,2},{1,4},{1,5},{2,3},{2,6} };
+  // vector<VI> edgs = { {0,1},{1,2},{0,3} };
+  vector<VI> edgs = { {0,2},{1,2},{0,3} };
   PRINT_CONTAINER(a.countSubTrees(4, edgs, "aeed"));
 
   return 0;
