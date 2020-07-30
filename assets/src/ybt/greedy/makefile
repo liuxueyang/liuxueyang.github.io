@@ -21,3 +21,15 @@ clean:
 
 1321: 1321.cpp
 	g++ -Wall -DDEBUG -g 1321.cpp -o 1321.exe && ./1321.exe
+
+1320: 1320.cpp
+	g++ -Wall -DDEBUG -g 1320.cpp -o 1320.exe && ./1320.exe
+
+1322: 1322.cpp
+	g++ -Wall -DDEBUG -g 1322.cpp -o 1322.exe && ./1322.exe
+
+1323: 1323.cpp
+	g++ -Wall -DDEBUG -g 1323.cpp -o 1323.exe && ./1323.exe
+
+1324: 1324.cpp
+	g++ -Wall -DDEBUG -g 1324.cpp -o 1324.exe && ./1324.exe
