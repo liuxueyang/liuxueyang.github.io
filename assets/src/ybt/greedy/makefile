@@ -33,3 +33,12 @@ clean:
 
 1324: 1324.cpp
 	g++ -Wall -DDEBUG -g 1324.cpp -o 1324.exe && ./1324.exe
+
+1224: 1224.cpp
+	g++ -Wall -DDEBUG -g 1224.cpp -o 1224.exe && ./1224.exe
+
+1225: 1225.cpp
+	g++ -Wall -DDEBUG -g 1225.cpp -o 1225.exe && ./1225.exe
+
+1230: 1230.cpp
+	g++ -Wall -DDEBUG -g 1230.cpp -o 1230.exe && ./1230.exe
