@@ -37,3 +37,5 @@ unison $HOME/a.tmp ssh://pi@pi-ip-addr//home/pi/a.tmp/ -repeat watch
 ```
 
 此时就完成配置了。对本地的`a.tmp`目录中做更改也会同步到树莓派上。
+
+如果想查看更高级的配置可以参阅 Unison [官方文档](https://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html#afterinstall)
