@@ -89,6 +89,9 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
+const int N=10000+10;
+LL a[N],d[N];
+
 int main( void ) {
 
 #ifdef DEBUG
@@ -98,12 +101,18 @@ int main( void ) {
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  // TODO:
   int t; cin>>t; while(t--) {
-    int n;cin>>n; int t,s=0; LL m=oo;
-    for(int i=0;i<n;++i){
-      cin>>t; m=min_(m,t); s+=t;
-    }    cout<<s-m<<endl;
+    int n;cin>>n;
+    for(int i=1;i<=n;++i){
+      cin>>a[i];
+      d[n]=oo;
+    }
+    sort(a+1,a+1+n);
+    d[1]=a[1];d[2]=a[2];
+    for(int i=3;i<=n;++i){
+      d[i]=min_(d[i-1]+a[i]+a[1],d[i-2]+a[i]+a[1]+2*a[2]);
+    }
+    cout<<d[n]<<endl;
   }
 
   return 0;
