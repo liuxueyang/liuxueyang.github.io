@@ -100,33 +100,29 @@ int main( void ) {
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  pi = acos(-1);
+  pi = acos(-1.0);
   cin >> L1 >> n >> C;
   L2 = (1+n*C)*L1;
+  L1 /= 2;
+  L2 /= 2;
 
-  // TODO:
-  double low = 0, high = pi/2, mid, s1 = L1/L2, s2;
+  double low = 0, high = pi, mid, s1 = 2*L2/L1, s2;
   while (high - low > eps) {
-    s2 = sin(high)/high;
-
-    PRINT2(s1, s2);
-    PRINT2(low, high);
     mid = (low + high) / 2;
+    s2 = mid / sin(mid/2);
+
     if (s2 < s1) {
       low = mid;
     } else {
       high = mid;
     }
   }
-  PRINT2(s1, s2);
-  L1/=2;
+
   cout.precision(3);
   cout.setf(ios::floatfield, ios::fixed);
-  cout << L1/(sin(high)) - L1/tan(high) << "\n";
-  double r = L2/2/high;
-  cout << r - r*cos(high) << "\n";
 
-
+  double r = L2/(mid/2);
+  cout << r - r*cos(mid/2) << "\n";
 
   return 0;
 }
