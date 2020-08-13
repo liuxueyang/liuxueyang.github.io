@@ -1,58 +1,30 @@
 // ==================================================
 
 // C library
-#include <cmath>
-#include <climits>
 #include <cstdio>
 #include <cstdlib>
-#include <cstring>
-#include <ctime>
-
-// Containers
-#include <vector>
-#include <list>
-#include <stack>
-#include <queue>
-#include <deque>
-#include <set>
-#include <map>
 
 // Input/Output
 #include <iostream>
-#include <istream>
-#include <ostream>
-#include <sstream>
-#include <fstream>
-#include <ios>
-#include <iomanip>
-
-// Other
-#include <string>
-#include <bitset>
-#include <algorithm>
-#include <utility>
-#include <iterator>
-#include <limits>
 
 // ==================================================
 
 using namespace std;
 
-typedef vector<int> VI;
 typedef pair<int, int> PII;
 typedef long long LL;
 
 // ==================================================
 
 __attribute__((unused)) const static int dir[8][2] = {
-  {0, 1}, {1, 0},
-  {0, -1},{-1, 0},
-  {1, 1}, {1, -1},
-  {-1,1}, {-1,-1},
+                                                      {0, 1}, {1, 0},
+                                                      {0, -1},{-1, 0},
+                                                      {1, 1}, {1, -1},
+                                                      {-1,1}, {-1,-1},
 };
 
 // ==================================================
-#define oo (1LL<<31);
+#define oo (1LL<<31)
 #define max_(x, y) ((x) > (y) ? (x) : (y))
 #define min_(x, y) ((x) > (y) ? (y) : (x))
 
@@ -80,41 +52,58 @@ void PRINTP(const pair<T1, T2>& p) { PRINTC(p.first); PRINTLN(p.second); }
 template<typename T>
 void PRINTLN(const T& a) { cout << a << "\n"; }
 
-template< typename T1, typename T2 >
-void PRINTAV( T1 & vec, T2 x) {
-  ostream_iterator< T2 > O( cout, " " );
-  copy( begin( vec ), end( vec ), O ); NL;
-}
-
 // ==================================================
 
 
-const int N=10000+10;
-LL a[N],d[N];
+const int N = 200000 + 100;
+int a[N], n;
+
+void qso(int l, int r) {
+  if (l >= r) return;
+  int mid = a[(l+r)>>1], i = l, j = r;
+  while (i <= j) {
+    while (a[i] < mid) {
+      ++i;
+    }
+    while (a[j] > mid) {
+      --j;
+    }
+    if (i <= j) {
+      swap(a[i], a[j]);
+      ++i;
+      --j;
+    }
+  }
+  if (i < r) qso(i, r);
+  if (j > l) qso(l, j);
+}
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1232.in", "r", stdin);
+  freopen("1239.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int t; cin>>t; while(t--) {
-    int n;cin>>n;
-    for(int i=1;i<=n;++i){
-      cin>>a[i];
-      d[n]=oo;
-    }
-    sort(a+1,a+1+n);
-    d[1]=a[1];d[2]=a[2];
-    for(int i=3;i<=n;++i){
-      d[i]=min_(d[i-1]+a[i]+a[1],d[i-2]+a[i]+a[1]+2*a[2]);
-    }
-    cout<<d[n]<<endl;
+  cin >> n;
+  for (int i = 0; i < n; ++i) {
+    cin >> a[i+1];
   }
+  qso(1, n);
+  int s = 1;
+  for (int i = 2; i <= n; ++i) {
+    if (a[i] == a[i-1]) {
+      ++s;
+      continue;
+    }
+    else {
+      cout << a[i-1] << " " << s << "\n";
+      s = 1;
+    }
+  }
+  cout << a[n] << " " << s << "\n";
 
   return 0;
 }
-

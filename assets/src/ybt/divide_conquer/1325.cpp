@@ -45,14 +45,14 @@ typedef long long LL;
 // ==================================================
 
 __attribute__((unused)) const static int dir[8][2] = {
-  {0, 1}, {1, 0},
-  {0, -1},{-1, 0},
-  {1, 1}, {1, -1},
-  {-1,1}, {-1,-1},
+                                                      {0, 1}, {1, 0},
+                                                      {0, -1},{-1, 0},
+                                                      {1, 1}, {1, -1},
+                                                      {-1,1}, {-1,-1},
 };
 
 // ==================================================
-#define oo (1LL<<31);
+#define oo (1LL<<31)
 #define max_(x, y) ((x) > (y) ? (x) : (y))
 #define min_(x, y) ((x) > (y) ? (y) : (x))
 
@@ -88,33 +88,38 @@ void PRINTAV( T1 & vec, T2 x) {
 
 // ==================================================
 
+const int N=1100;
+int n,m,a[N][N];
 
-const int N=10000+10;
-LL a[N],d[N];
+void solve(int x){
+  if(x==1){
+    a[1][1]=a[2][2]=1;
+    a[1][2]=a[2][1]=2;return;
+  }
+  solve(x-1);
+  int len=1<<(x-1);
+  for(int i=1;i<=len;++i)for(int j=1;j<=len;++j)a[i][j+len]=a[i][j]+len;
+  for(int i=1;i<=len;++i)for(int j=1;j<=len;++j)a[i+len][j]=a[i][j]+len;
+  for(int i=1;i<=len;++i)for(int j=1;j<=len;++j)a[i+len][j+len]=a[i][j];
+}
+void print(){
+  n=1<<m;for(int i=1;i<=n;++i){
+    for(int j=1;j<=n;++j){
+      cout<<a[i][j];if(j==n)cout<<endl;else cout<<" ";
+    }
+  }
+}
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1232.in", "r", stdin);
+  freopen("1325.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int t; cin>>t; while(t--) {
-    int n;cin>>n;
-    for(int i=1;i<=n;++i){
-      cin>>a[i];
-      d[n]=oo;
-    }
-    sort(a+1,a+1+n);
-    d[1]=a[1];d[2]=a[2];
-    for(int i=3;i<=n;++i){
-      d[i]=min_(d[i-1]+a[i]+a[1],d[i-2]+a[i]+a[1]+2*a[2]);
-    }
-    cout<<d[n]<<endl;
-  }
+  cin>>m;solve(m);print();
 
   return 0;
 }
-

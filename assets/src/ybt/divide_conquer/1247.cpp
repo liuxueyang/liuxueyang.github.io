@@ -45,14 +45,14 @@ typedef long long LL;
 // ==================================================
 
 __attribute__((unused)) const static int dir[8][2] = {
-  {0, 1}, {1, 0},
-  {0, -1},{-1, 0},
-  {1, 1}, {1, -1},
-  {-1,1}, {-1,-1},
+                                                      {0, 1}, {1, 0},
+                                                      {0, -1},{-1, 0},
+                                                      {1, 1}, {1, -1},
+                                                      {-1,1}, {-1,-1},
 };
 
 // ==================================================
-#define oo (1LL<<31);
+#define oo (1LL<<31)
 #define max_(x, y) ((x) > (y) ? (x) : (y))
 #define min_(x, y) ((x) > (y) ? (y) : (x))
 
@@ -89,32 +89,59 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-const int N=10000+10;
-LL a[N],d[N];
+const int N = 50000+10;
+int a[N],b[N],l,n,m;
+
+int rcnt(int len) {
+  for (int i = 0; i <= n; ++i) {
+    b[i] = a[i];
+  }
+  int cnt = 0;
+  for (int i = 1; i <= n; ++i) {
+    if (b[i] - b[i-1] < len) {
+      b[i] = b[i-1];
+      ++cnt;
+      if (cnt > m) {
+        return cnt;
+      }
+    }
+  }
+  return cnt;
+}
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1232.in", "r", stdin);
+  freopen("1247.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int t; cin>>t; while(t--) {
-    int n;cin>>n;
-    for(int i=1;i<=n;++i){
-      cin>>a[i];
-      d[n]=oo;
-    }
-    sort(a+1,a+1+n);
-    d[1]=a[1];d[2]=a[2];
-    for(int i=3;i<=n;++i){
-      d[i]=min_(d[i-1]+a[i]+a[1],d[i-2]+a[i]+a[1]+2*a[2]);
-    }
-    cout<<d[n]<<endl;
+  cin >> l >> n >> m;
+  for (int i = 1; i <= n; ++i) {
+    cin >> a[i];
   }
+  a[0] = 0;
+  a[++n] = l;
+  sort(a, a+1+n);
+  int low = 1, high = l, cnt;
+  while (low < high-1) {
+    int mid = (low + high) >> 1;
+    cnt = rcnt(mid);
+    if (cnt > m) {
+      high = mid;
+    }
+    else {
+      low = mid;
+    }
+  }
+  cnt = rcnt(high);
+  if (cnt <= m) {
+    cout << high << "\n";
+    return 0;
+  }
+  cout << low << "\n";
 
   return 0;
 }
-

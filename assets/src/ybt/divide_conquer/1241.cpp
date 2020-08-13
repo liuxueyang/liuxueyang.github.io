@@ -45,14 +45,14 @@ typedef long long LL;
 // ==================================================
 
 __attribute__((unused)) const static int dir[8][2] = {
-  {0, 1}, {1, 0},
-  {0, -1},{-1, 0},
-  {1, 1}, {1, -1},
-  {-1,1}, {-1,-1},
+                                                      {0, 1}, {1, 0},
+                                                      {0, -1},{-1, 0},
+                                                      {1, 1}, {1, -1},
+                                                      {-1,1}, {-1,-1},
 };
 
 // ==================================================
-#define oo (1LL<<31);
+#define oo (1LL<<31)
 #define max_(x, y) ((x) > (y) ? (x) : (y))
 #define min_(x, y) ((x) > (y) ? (y) : (x))
 
@@ -89,32 +89,39 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-const int N=10000+10;
-LL a[N],d[N];
+double fac(double x, int n) {
+  double res=1;
+  for (int i = 1; i <= n; ++i) {
+    res *= x;
+  }
+  return res;
+}
+
+// f(x)=x5−15x4+85x3−225x2+274x−121
+double f(double x) {
+  return fac(x,5) - 15*fac(x,4) + 85*fac(x,3) - 225*fac(x,2) +
+    274*x - 121;
+}
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1232.in", "r", stdin);
+  freopen("1241.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int t; cin>>t; while(t--) {
-    int n;cin>>n;
-    for(int i=1;i<=n;++i){
-      cin>>a[i];
-      d[n]=oo;
-    }
-    sort(a+1,a+1+n);
-    d[1]=a[1];d[2]=a[2];
-    for(int i=3;i<=n;++i){
-      d[i]=min_(d[i-1]+a[i]+a[1],d[i-2]+a[i]+a[1]+2*a[2]);
-    }
-    cout<<d[n]<<endl;
+  double l=1.5*1e6, r = 2.4*1e6, mid;
+  while (r - l > 1) {
+    mid = (l+r) / 2;
+    if (f(mid/1e6) > 0) l = mid;
+    else if (f(mid/1e6) < 0) r = mid;
+    else break;
   }
+  cout.precision(6);
+  cout.setf(ios::fixed, ios::floatfield);
+  cout << mid/1e6 << "\n";
 
   return 0;
 }
-

@@ -20,6 +20,7 @@ tags: Bookmark
 ## Go
 
 - [Go 语言学习 - cyent 笔记](https://cyent.github.io/golang/)
+- [踩坑记：go 服务内存暴涨](https://mp.weixin.qq.com/s/U-xUtzD_iObqSn3WFwRLbg)
 
 # Emacs
 
@@ -61,6 +62,8 @@ tags: Bookmark
 - [99°](https://e99net.github.io/)
 - [ieki](https://oi.ieki.xyz/CodeVS/p1018.html)
 - [gzr](https://www.cnblogs.com/TFLS-gzr/)
+- [【信息学奥赛一本通】题解目录](https://blog.csdn.net/u011815404/article/details/79324003)
+- [boyce's blog](http://bycore.net/)
 
 ## Online Judge
 - [Virtual Judge](https://vjudge.net/)

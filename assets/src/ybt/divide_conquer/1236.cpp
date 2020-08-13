@@ -45,14 +45,14 @@ typedef long long LL;
 // ==================================================
 
 __attribute__((unused)) const static int dir[8][2] = {
-  {0, 1}, {1, 0},
-  {0, -1},{-1, 0},
-  {1, 1}, {1, -1},
-  {-1,1}, {-1,-1},
+                                                      {0, 1}, {1, 0},
+                                                      {0, -1},{-1, 0},
+                                                      {1, 1}, {1, -1},
+                                                      {-1,1}, {-1,-1},
 };
 
 // ==================================================
-#define oo (1LL<<31);
+#define oo (1LL<<31)
 #define max_(x, y) ((x) > (y) ? (x) : (y))
 #define min_(x, y) ((x) > (y) ? (y) : (x))
 
@@ -89,31 +89,37 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-const int N=10000+10;
-LL a[N],d[N];
+const int N = 10000+100;
+bool a[N];
+int n;
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1232.in", "r", stdin);
+  freopen("1236.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int t; cin>>t; while(t--) {
-    int n;cin>>n;
-    for(int i=1;i<=n;++i){
-      cin>>a[i];
-      d[n]=oo;
+  cin >> n;
+  int mi = N, ma = -1;
+  for (int i = 0; i < n; ++i) {
+    int x, y;
+    cin >> x >> y;
+    mi = min_(mi, x);
+    ma = max_(ma, y);
+    for (int j = x; j < y; ++j) {
+      a[j] = true;
     }
-    sort(a+1,a+1+n);
-    d[1]=a[1];d[2]=a[2];
-    for(int i=3;i<=n;++i){
-      d[i]=min_(d[i-1]+a[i]+a[1],d[i-2]+a[i]+a[1]+2*a[2]);
-    }
-    cout<<d[n]<<endl;
   }
+  for (int i = mi; i < ma; ++i) {
+    if (!a[i]) {
+      cout << "no" << "\n";
+      return 0;
+    }
+  }
+  cout << mi << " " << ma << "\n";
 
   return 0;
 }

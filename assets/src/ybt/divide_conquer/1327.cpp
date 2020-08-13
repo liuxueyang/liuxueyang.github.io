@@ -45,14 +45,14 @@ typedef long long LL;
 // ==================================================
 
 __attribute__((unused)) const static int dir[8][2] = {
-  {0, 1}, {1, 0},
-  {0, -1},{-1, 0},
-  {1, 1}, {1, -1},
-  {-1,1}, {-1,-1},
+                                                      {0, 1}, {1, 0},
+                                                      {0, -1},{-1, 0},
+                                                      {1, 1}, {1, -1},
+                                                      {-1,1}, {-1,-1},
 };
 
 // ==================================================
-#define oo (1LL<<31);
+#define oo (1LL<<31)
 #define max_(x, y) ((x) > (y) ? (x) : (y))
 #define min_(x, y) ((x) > (y) ? (y) : (x))
 
@@ -88,33 +88,44 @@ void PRINTAV( T1 & vec, T2 x) {
 
 // ==================================================
 
+const int N=1100;
+char a[N];
+int n,cnt;
+const char *s[]={"ooo*o**--*o",
+                 "o--*o**oo*o",
+                 "o*o*o*--o*o",
+                 "--o*o*o*o*o"};
 
-const int N=10000+10;
-LL a[N],d[N];
+void solve(int x){
+  if(x==1)return;
+  if(!cnt){
+    for(int i=0;i<n*2+2;++i)a[i]='-';
+  }
+  for(int i=0;i<x;++i){a[i]='o';a[i+x]='*';}
+  a[x*2]=a[x*2+1]='-';
+  cout<<"step"<<setw(2)<<cnt++<<":"<<a<<endl;
+  a[x-1]=a[x]='-';a[x*2]='o';a[x*2+1]='*';
+  cout<<"step"<<setw(2)<<cnt++<<":"<<a<<endl;
+  if(x==4){
+    for(int i=0;i<4;++i){
+      for(int j=0;j<int(strlen(s[i]));++j)a[j]=s[i][j];
+      cout<<"step"<<setw(2)<<cnt++<<":"<<a<<endl;
+    }
+    return;
+  }
+  solve(x-1);
+}
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1232.in", "r", stdin);
+  freopen("1327.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int t; cin>>t; while(t--) {
-    int n;cin>>n;
-    for(int i=1;i<=n;++i){
-      cin>>a[i];
-      d[n]=oo;
-    }
-    sort(a+1,a+1+n);
-    d[1]=a[1];d[2]=a[2];
-    for(int i=3;i<=n;++i){
-      d[i]=min_(d[i-1]+a[i]+a[1],d[i-2]+a[i]+a[1]+2*a[2]);
-    }
-    cout<<d[n]<<endl;
-  }
+  cin>>n;solve(n);
 
   return 0;
 }
-

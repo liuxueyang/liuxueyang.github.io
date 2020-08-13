@@ -45,14 +45,14 @@ typedef long long LL;
 // ==================================================
 
 __attribute__((unused)) const static int dir[8][2] = {
-  {0, 1}, {1, 0},
-  {0, -1},{-1, 0},
-  {1, 1}, {1, -1},
-  {-1,1}, {-1,-1},
+                                                      {0, 1}, {1, 0},
+                                                      {0, -1},{-1, 0},
+                                                      {1, 1}, {1, -1},
+                                                      {-1,1}, {-1,-1},
 };
 
 // ==================================================
-#define oo (1LL<<31);
+#define oo (1LL<<31)
 #define max_(x, y) ((x) > (y) ? (x) : (y))
 #define min_(x, y) ((x) > (y) ? (y) : (x))
 
@@ -89,32 +89,81 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-const int N=10000+10;
-LL a[N],d[N];
+const int N = 10000+100;
+int a[N], K, n;
+
+int bcnt(int len) {
+  if (len == 0) {
+    return 0;
+  }
+  int l = 1, r = n, mid, pos, res = 0;
+  while (l + 1 < r) {
+    mid = (l+r)/2;
+    if (a[mid] >= len) {
+      r = mid;
+    } else {
+      l = mid+1;
+    }
+  }
+  pos = (a[l] >= mid ? l : r);
+  for (int i = pos; i <= n; ++i) {
+    res += a[i] / len;
+  }
+  return res;
+}
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1232.in", "r", stdin);
+  freopen("1242.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int t; cin>>t; while(t--) {
-    int n;cin>>n;
-    for(int i=1;i<=n;++i){
-      cin>>a[i];
-      d[n]=oo;
-    }
-    sort(a+1,a+1+n);
-    d[1]=a[1];d[2]=a[2];
-    for(int i=3;i<=n;++i){
-      d[i]=min_(d[i-1]+a[i]+a[1],d[i-2]+a[i]+a[1]+2*a[2]);
-    }
-    cout<<d[n]<<endl;
+  /*
+   * sample input:
+   1 3
+   0.02
+  */
+
+  cin >> n >> K;
+  double t;
+  int low = 0, high = 0, mid, cnt;
+  for (int i = 1; i <= n; ++i) {
+    cin >> t;
+    a[i] = int(floor(t*100.0));
+    high = max_(high, a[i]);
   }
+
+  sort(a+1, a+1+n);
+  cout.precision(2);
+  cout.setf(ios::floatfield, ios::fixed);
+
+  while (low + 1 < high) {
+    mid = (low+high)/2;
+    if (mid == 0) {
+      break;
+    }
+    cnt = bcnt(mid);
+    if (cnt >= K) {
+      low = mid;
+    } else {
+      high = mid-1;
+    }
+  }
+  cnt = bcnt(high);
+
+  if (cnt >= K) {
+    cout << high*1.0/100 << "\n";
+  } else {
+    if (bcnt(low) >= K) {
+      cout << low*1.0/100 << "\n";
+    } else {
+      cout << "0.00" << "\n";
+    }
+  }
+
 
   return 0;
 }
-

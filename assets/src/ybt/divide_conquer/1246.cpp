@@ -45,14 +45,14 @@ typedef long long LL;
 // ==================================================
 
 __attribute__((unused)) const static int dir[8][2] = {
-  {0, 1}, {1, 0},
-  {0, -1},{-1, 0},
-  {1, 1}, {1, -1},
-  {-1,1}, {-1,-1},
+                                                      {0, 1}, {1, 0},
+                                                      {0, -1},{-1, 0},
+                                                      {1, 1}, {1, -1},
+                                                      {-1,1}, {-1,-1},
 };
 
 // ==================================================
-#define oo (1LL<<31);
+#define oo (1LL<<31)
 #define max_(x, y) ((x) > (y) ? (x) : (y))
 #define min_(x, y) ((x) > (y) ? (y) : (x))
 
@@ -89,32 +89,40 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-const int N=10000+10;
-LL a[N],d[N];
+double L1, n, C, L2, pi, eps = 1e-12;
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1232.in", "r", stdin);
+  freopen("1246.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int t; cin>>t; while(t--) {
-    int n;cin>>n;
-    for(int i=1;i<=n;++i){
-      cin>>a[i];
-      d[n]=oo;
+  pi = acos(-1.0);
+  cin >> L1 >> n >> C;
+  L2 = (1+n*C)*L1;
+  L1 /= 2;
+  L2 /= 2;
+
+  double low = 0, high = pi, mid, s1 = 2*L2/L1, s2;
+  while (high - low > eps) {
+    mid = (low + high) / 2;
+    s2 = mid / sin(mid/2);
+
+    if (s2 < s1) {
+      low = mid;
+    } else {
+      high = mid;
     }
-    sort(a+1,a+1+n);
-    d[1]=a[1];d[2]=a[2];
-    for(int i=3;i<=n;++i){
-      d[i]=min_(d[i-1]+a[i]+a[1],d[i-2]+a[i]+a[1]+2*a[2]);
-    }
-    cout<<d[n]<<endl;
   }
+
+  cout.precision(3);
+  cout.setf(ios::floatfield, ios::fixed);
+
+  double r = L2/(mid/2);
+  cout << r - r*cos(mid/2) << "\n";
 
   return 0;
 }
-

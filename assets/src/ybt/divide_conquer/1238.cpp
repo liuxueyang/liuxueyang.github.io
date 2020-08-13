@@ -45,14 +45,14 @@ typedef long long LL;
 // ==================================================
 
 __attribute__((unused)) const static int dir[8][2] = {
-  {0, 1}, {1, 0},
-  {0, -1},{-1, 0},
-  {1, 1}, {1, -1},
-  {-1,1}, {-1,-1},
+                                                      {0, 1}, {1, 0},
+                                                      {0, -1},{-1, 0},
+                                                      {1, 1}, {1, -1},
+                                                      {-1,1}, {-1,-1},
 };
 
 // ==================================================
-#define oo (1LL<<31);
+#define oo (1LL<<31)
 #define max_(x, y) ((x) > (y) ? (x) : (y))
 #define min_(x, y) ((x) > (y) ? (y) : (x))
 
@@ -89,32 +89,35 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-const int N=10000+10;
-LL a[N],d[N];
+double a,b,c,d,eps=1e-9,x1,x2,x,y;
+int cnt;
+
+inline double f(double x){return a*x*x*x+b*x*x+c*x+d;}
+void solve(){
+  cout.precision(2);cout.setf(ios::fixed,ios::floatfield);
+  for(int i=-100;i<=100;++i){
+    x1=i;x2=i+1;y=f(x1)*f(x2);
+    // NOTE: 判断0的时候不需要使用fabs和eps比较
+    if(f(x1)==0){++cnt;if(cnt!=1)cout<<" ";cout<<x1;continue;}
+    if(y<0){
+      while(x2-x1>=0.001){
+        x=(x1+x2)/2;if(f(x1)*f(x)>0){x1=x;}else{x2=x;}
+      }
+      ++cnt;if(cnt!=1)cout<<" ";cout<<x1;
+    }
+  }
+}
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1232.in", "r", stdin);
+  freopen("1238.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int t; cin>>t; while(t--) {
-    int n;cin>>n;
-    for(int i=1;i<=n;++i){
-      cin>>a[i];
-      d[n]=oo;
-    }
-    sort(a+1,a+1+n);
-    d[1]=a[1];d[2]=a[2];
-    for(int i=3;i<=n;++i){
-      d[i]=min_(d[i-1]+a[i]+a[1],d[i-2]+a[i]+a[1]+2*a[2]);
-    }
-    cout<<d[n]<<endl;
-  }
+  cin>>a>>b>>c>>d;solve();NL;
 
   return 0;
 }
-
