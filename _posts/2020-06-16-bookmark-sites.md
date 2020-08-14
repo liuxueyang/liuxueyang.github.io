@@ -71,3 +71,4 @@ tags: Bookmark
 # Misc
 
 - [The Plain Person’s Guide to Plain Text Social Science](https://plain-text.co/index.html#introduction)
+- [Bear Emoticons](http://japaneseemoticons.me/bear-emoticons/5/)
