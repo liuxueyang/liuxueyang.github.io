@@ -9,3 +9,6 @@ clean:
 
 1248: 1248.cpp
 	g++ -Wall -DDEBUG -g 1248.cpp -o 1248.exe && ./1248.exe
+
+1249: 1249.cpp
+	g++ -Wall -DDEBUG -g 1249.cpp -o 1249.exe && ./1249.exe

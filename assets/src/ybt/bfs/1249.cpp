@@ -1,14 +1,14 @@
-// 1248.cpp --- 1248：Dungeon Master
+// 1249.cpp --- 1249：Lake Counting
 // 
-// Filename: 1248.cpp
+// Filename: 1249.cpp
 // Description: 
-// Author: abel-abel
+// Author: read eval print loop
 // Maintainer: 
-// Created: 二  8月 11 23:58:02 2020 (+0800)
+// Created: Fri Aug 14 09:19:07 2020 (+0800)
 // Version: 
-// Last-Updated: Fri Aug 14 09:19:03 2020 (+0800)
-//           By: read eval print loop
-//     Update #: 1
+// Last-Updated: 
+//           By: 
+//     Update #: 0
 // URL: 
 // Keywords: 
 // Compatibility: 
@@ -92,10 +92,10 @@ typedef long long LL;
 // ==================================================
 
 __attribute__((unused)) const static int dir[8][2] = {
-                                                      {0, 1}, {1, 0},
-                                                      {0, -1},{-1, 0},
-                                                      {1, 1}, {1, -1},
-                                                      {-1,1}, {-1,-1},
+  {0, 1}, {1, 0},
+  {0, -1},{-1, 0},
+  {1, 1}, {1, -1},
+  {-1,1}, {-1,-1},
 };
 
 // ==================================================
@@ -136,103 +136,63 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-const int N = 100+10;
-bool vis[N][N][N];
-int a[N][N][N], z, n, m;
-char g[N][N][N];
+const int N = 120;
+char a[N][N];
+bool vis[N][N];
+int n, m;
 
-struct Point {
-  int z, x, y;
-};
-
-const int di[6][3] = {
-                      {0, 1, 0}, {0, 0, 1},
-                      {0, -1, 0}, {0, 0, -1},
-                      {1, 0, 0}, {-1, 0, 0},
-};
-
-bool check(int z1, int x1, int y1) {
-  return (z1 >= 0 && z1 < z &&
-          x1 >= 0 && x1 < n &&
-          y1 >= 0 && y1 < m &&
-          !vis[z1][x1][y1]);
+bool check(int x, int y) {
+  return (x >= 0 && x < n &&
+          y >= 0 && y < m &&
+          !vis[x][y] &&
+          a[x][y] == 'W');
 }
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1248.in", "r", stdin);
+  freopen("1249.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  while (cin >> z >> n >> m) {
-    if (z+n+m == 0) {
-      break;
-    }
-    Point start, end;
-    for (int i = 0; i < z; ++i) {
-      for (int j = 0; j < n; ++j) {
-        cin >> g[i][j];
-        for (int k = 0; k < m; ++k) {
-          a[i][j][k] = -1;
-          vis[i][j][k] = false;
-          if (g[i][j][k] == 'S') {
-            start = Point{i, j, k};
-            a[i][j][k] = 0;
-          } else if (g[i][j][k] == 'E') {
-            end = Point{i, j, k};
-          } else if (g[i][j][k] == '#') {
-            vis[i][j][k] = true;
+  cin >> n >> m;
+  for (int i = 0; i < n; ++i) {
+    cin >> a[i];
+  }
+  int res = 0;
+  for (int i = 0; i < n; ++i) {
+    for (int j = 0; j < m; ++j) {
+      if (check(i, j)) {
+        vis[i][j] = true;
+        ++res;
+        queue<PII> que;
+        while (!que.empty()) {
+          que.pop();
+        }
+        que.push(make_pair(i, j));
+        while (!que.empty()) {
+          PII t = que.front();
+          que.pop();
+          int x = t.first, y = t.second, x1, y1;
+          for (int k = 0; k < 8; ++k) {
+            x1 = x + dir[k][0];
+            y1 = y + dir[k][1];
+            if (check(x1, y1)) {
+              vis[x1][y1] = true;
+              que.push(make_pair(x1, y1));
+            }
           }
         }
       }
-    }
-    queue<Point> que;
-    while (!que.empty()) {
-      que.pop();
-    }
-    que.push(start);
-    int res = -1;
-    
-    while (!que.empty()) {
-      Point t = que.front();
-      int z1 = t.z, x1 = t.x, y1 = t.y;
-      int ori = a[z1][x1][y1];
-      vis[z1][x1][y1] = true;
-      
-      que.pop();
-      for (int i = 0; i < 6; ++i) {
-        int z2, x2, y2;
-        z2 = z1+di[i][0];
-        x2 = x1+di[i][1];
-        y2 = y1+di[i][2];
-        if (check(z2, x2, y2)) {
-          Point t1 = Point{z2, x2, y2};
-          
-          if (x2 == end.x && y2 == end.y && z2 == end.z) {
-            res = ori + 1;
-            break;
-          }
-          vis[z2][x2][y2] = true;
-          que.push(t1);
-          a[z2][x2][y2] = ori + 1;
-        }
-      }
-      if (res != -1) break;
-    }
-    if (res == -1) {
-      cout << "Trapped!" << "\n";
-    } else {
-      cout << "Escaped in " << res << " minute(s)." << "\n";
     }
   }
- 
+  cout << res << "\n";
 
   return 0;
 }
 
 
 // 
-// 1248.cpp ends here
+// 1249.cpp ends here
