@@ -1,47 +1,48 @@
 // 1266.cpp --- 1266：【例9.10】机器分配
-// 
+//
 // Filename: 1266.cpp
-// Description: 
+// Description:
 // Author: read eval print loop
-// Maintainer: 
+// Maintainer:
 // Created: Sun Aug 16 22:26:53 2020 (+0800)
-// Version: 
-// Last-Updated: 
-//           By: 
-//     Update #: 0
-// URL: 
-// Keywords: 
-// Compatibility: 
-// 
-// 
+// Version:
+// Last-Updated: Sun Aug 16 23:20:23 2020 (+0800)
+//           By: read eval print loop
+//     Update #: 1
+// URL:
+// Keywords:
+// Compatibility:
+//
+//
 
-// Commentary: 
-// 
-// 
-// 
-// 
+// Commentary:
+// 4WA
+// 这题神坑。题目描述并没有写字典序最小，调试半天，最后在网上找到了这个条件。
+// https://blog.csdn.net/weixin_44574520/article/details/89603929
+//
+// 计算的过程中记录路径即可：path[i][j]表示第j个城市使用的机器个数。
 
 // Change Log:
-// 
-// 
-// 
-// 
+//
+//
+//
+//
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License as
 // published by the Free Software Foundation; either version 3, or
 // (at your option) any later version.
-// 
+//
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with this program; see the file COPYING.  If not, write to
 // the Free Software Foundation, Inc., 51 Franklin Street, Fifth
 // Floor, Boston, MA 02110-1301, USA.
-// 
-// 
+//
+//
 
 // Code:
 
@@ -168,14 +169,14 @@ int main( void ) {
     for (int j = 1; j <= m; ++j) {
       int w = 0;
       for (int k = 0; k <= j; ++k) {
-        int t = d[i-1][j-k] + a[i][k];
+        int t = d[i-1][k] + a[i][j-k];
         if (d[i][j] < t) {
           w = k;
           d[i][j] = t;
         }
       }
 
-      path[i][j] = w;
+      path[i][j] = j-w;
     }
 
   }
@@ -187,5 +188,5 @@ int main( void ) {
 }
 
 
-// 
+//
 // 1266.cpp ends here
