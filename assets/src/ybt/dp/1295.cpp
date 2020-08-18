@@ -1,12 +1,12 @@
-// 1267.cpp --- 1267：【例9.11】01背包问题
+// 1295.cpp --- 1295：装箱问题
 // 
-// Filename: 1267.cpp
+// Filename: 1295.cpp
 // Description: 
 // Author: read eval print loop
 // Maintainer: 
-// Created: Tue Aug 18 23:01:49 2020 (+0800)
+// Created: Tue Aug 18 23:21:15 2020 (+0800)
 // Version: 
-// Last-Updated: Tue Aug 18 23:11:28 2020 (+0800)
+// Last-Updated: Tue Aug 18 23:25:34 2020 (+0800)
 //           By: read eval print loop
 //     Update #: 1
 // URL: 
@@ -16,8 +16,8 @@
 // 
 
 // Commentary: 
-// 1WA
-// 数组开小了。
+// 1A
+// 
 // 
 // 
 
@@ -136,35 +136,35 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-const int N = 100;
-int w[N], c[N], M, n, d[300];
+const int N = 50, M = 20000+10;
+int V, n, w[N], d[M];
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1267.in", "r", stdin);
+  freopen("1295.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  cin >> M >> n;
+  cin >> V >> n;
   for (int i = 1; i < n+1; ++i) {
-    cin >> w[i] >> c[i];
+    cin >> w[i];
   }
 
   for (int i = 1; i < n+1; ++i) {
-    for (int v = M; v >= w[i]; --v) {
-      d[v] = max_(d[v], d[v-w[i]] + c[i]);
+    for (int v = V; v >= w[i]; --v) {
+      d[v] = max_(d[v], d[v-w[i]] + w[i]);
     }
 
   }
 
-  cout << d[M] << "\n";
+  cout << V - d[V] << "\n";
 
   return 0;
 }
 
 
 // 
-// 1267.cpp ends here
+// 1295.cpp ends here

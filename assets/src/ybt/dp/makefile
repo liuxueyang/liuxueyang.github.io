@@ -57,3 +57,15 @@ clean:
 
 1267: 1267.cpp
 	g++ -Wall -DDEBUG -g 1267.cpp -o 1267.exe && ./1267.exe
+
+1268: 1268.cpp
+	g++ -Wall -DDEBUG -g 1268.cpp -o 1268.exe && ./1268.exe
+
+1295: 1295.cpp
+	g++ -Wall -DDEBUG -g 1295.cpp -o 1295.exe && ./1295.exe
+
+1294: 1294.cpp
+	g++ -Wall -DDEBUG -g 1294.cpp -o 1294.exe && ./1294.exe
+
+1290: 1290.cpp
+	g++ -Wall -DDEBUG -g 1290.cpp -o 1290.exe && ./1290.exe

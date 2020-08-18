@@ -1,12 +1,12 @@
-// 1267.cpp --- 1267：【例9.11】01背包问题
+// 1268.cpp --- 1268：【例9.12】完全背包问题
 // 
-// Filename: 1267.cpp
+// Filename: 1268.cpp
 // Description: 
 // Author: read eval print loop
 // Maintainer: 
-// Created: Tue Aug 18 23:01:49 2020 (+0800)
+// Created: Tue Aug 18 23:14:58 2020 (+0800)
 // Version: 
-// Last-Updated: Tue Aug 18 23:11:28 2020 (+0800)
+// Last-Updated: Tue Aug 18 23:19:29 2020 (+0800)
 //           By: read eval print loop
 //     Update #: 1
 // URL: 
@@ -16,8 +16,8 @@
 // 
 
 // Commentary: 
-// 1WA
-// 数组开小了。
+// 1A
+// 
 // 
 // 
 
@@ -137,12 +137,12 @@ void PRINTAV( T1 & vec, T2 x) {
 
 
 const int N = 100;
-int w[N], c[N], M, n, d[300];
+int w[N], c[N], M, d[300], n;
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1267.in", "r", stdin);
+  freopen("1268.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
@@ -152,19 +152,19 @@ int main( void ) {
   for (int i = 1; i < n+1; ++i) {
     cin >> w[i] >> c[i];
   }
-
+  
   for (int i = 1; i < n+1; ++i) {
-    for (int v = M; v >= w[i]; --v) {
+    for (int v = w[i]; v <= M; ++v) {
       d[v] = max_(d[v], d[v-w[i]] + c[i]);
     }
 
   }
 
-  cout << d[M] << "\n";
+  cout << "max=" << d[M] << "\n";
 
   return 0;
 }
 
 
 // 
-// 1267.cpp ends here
+// 1268.cpp ends here

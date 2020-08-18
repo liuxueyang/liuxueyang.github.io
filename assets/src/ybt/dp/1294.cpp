@@ -1,12 +1,12 @@
-// 1267.cpp --- 1267：【例9.11】01背包问题
+// 1294.cpp --- 1294：Charm Bracelet
 // 
-// Filename: 1267.cpp
+// Filename: 1294.cpp
 // Description: 
 // Author: read eval print loop
 // Maintainer: 
-// Created: Tue Aug 18 23:01:49 2020 (+0800)
+// Created: Tue Aug 18 23:26:56 2020 (+0800)
 // Version: 
-// Last-Updated: Tue Aug 18 23:11:28 2020 (+0800)
+// Last-Updated: Tue Aug 18 23:29:48 2020 (+0800)
 //           By: read eval print loop
 //     Update #: 1
 // URL: 
@@ -16,8 +16,8 @@
 // 
 
 // Commentary: 
-// 1WA
-// 数组开小了。
+// 1A
+// 
 // 
 // 
 
@@ -136,35 +136,35 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-const int N = 100;
-int w[N], c[N], M, n, d[300];
+const int N = 3555, M = 12888;
+int n, c[N], w[N], d[M], m;
 
 int main( void ) {
 
 #ifdef DEBUG
-  freopen("1267.in", "r", stdin);
+  freopen("1294.in", "r", stdin);
 #endif
 
   ios::sync_with_stdio(false);
   cin.tie(NULL);
 
-  cin >> M >> n;
+  cin >> n >> m;
   for (int i = 1; i < n+1; ++i) {
     cin >> w[i] >> c[i];
   }
 
   for (int i = 1; i < n+1; ++i) {
-    for (int v = M; v >= w[i]; --v) {
+    for (int v = m; v >= w[i]; --v) {
       d[v] = max_(d[v], d[v-w[i]] + c[i]);
     }
 
   }
 
-  cout << d[M] << "\n";
+  cout << d[m] << "\n";
 
   return 0;
 }
 
 
 // 
-// 1267.cpp ends here
+// 1294.cpp ends here
