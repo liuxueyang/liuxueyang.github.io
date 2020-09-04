@@ -136,73 +136,30 @@ void PRINTAV( T1 & vec, T2 x) {
 // ==================================================
 
 
-// Assert::That(format_duration(0), Equals("now"));
-// Assert::That(format_duration(1), Equals("1 second"));       
-// Assert::That(format_duration(62), Equals("1 minute and 2 seconds"));
-// Assert::That(format_duration(120), Equals("2 minutes"));
-// Assert::That(format_duration(3662), Equals("1 hour, 1 minute and 2 seconds"));
-int second = 1,
-  minute = 60,
-  hour = minute * 60,
-  day = hour * 24,
-  year = 365 * day;
-
-string cnames[100] = {"", "second", "minute", "hour", "day", "year",
-  "seconds", "minutes", "hours", "days", "years"};
-  
-int bnums[100] = {0, second, minute, hour, day, year};
-
-string con1(int a, int i) {
-  if (a == 0) {
-    return "";
-  }
-  // PRINT3(a, i, cnames[i]);
-  string res = to_string(a) + " ";
-  if (a == 1) {
-    res += cnames[i];
-  } else {
-    res += cnames[i+5];
-  }
-  return res;
-}
 
 std::string format_duration(int seconds) {
   string res;
-  int a[100] = {0};
+  int a[6] = {0};
   int cntz = 0;
+  string cnames[11] = {"", "second", "minute", "hour", "day", "year",
+    "seconds", "minutes", "hours", "days", "years"};
+  int bnums[6] = {0, 1, 60, 60*60, 60*60*24, 60*60*24*365};
 
   for (int i = 5; i >= 1; --i) {
-    a[i] = seconds / bnums[i];
-    // PRINT3(i, cnames[i], a[i]);
-    if (a[i]) cntz++;
+    if ((a[i] = seconds / bnums[i])) cntz++;
     seconds %= bnums[i];
   }
 
-  if (!cntz) {
-    res = "now";
-  } else if (cntz == 1) {
-    for (int i = 5; i >= 1; --i) {
-      if (a[i]) {
-        res = con1(a[i], i);
-        break;
-      }
+  if (!cntz) return "now";
+  for (int i = 5; i >= 1; --i) {
+    if (a[i]) {
+      res += to_string(a[i]) + " " + (a[i] == 1 ? cnames[i] : cnames[i+5]);
+      if (cntz >= 3) res += ", ";
+      else if (cntz >= 2) res += " and ";
+      cntz--;
     }
-  } else {
-    for (int i = 5; i >= 1; --i) {
-      if (a[i]) {
-        if (cntz >= 3) {
-          res += con1(a[i], i) + ", ";
-        } else if (cntz >= 2) {
-          res += con1(a[i], i) + " and ";
-        } else {
-          res += con1(a[i], i);
-        }
-        cntz--;
-      }
-    }
-
   }
-  
+
   return res;
 }
 
