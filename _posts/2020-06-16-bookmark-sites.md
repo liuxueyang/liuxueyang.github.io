@@ -42,6 +42,8 @@ tags: Bookmark
 - [cynically](https://blog.cynically.moe/)
 - [fmdkdd](https://0xc0de.fr/)
 - [alvin alexander](https://alvinalexander.com/)
+- [Nothing replaces hard work!](http://mingxinglai.com/cn/)
+- [xzy's blog](https://xzy57369.github.io/post/3a897789.html)
 
 # News
 
