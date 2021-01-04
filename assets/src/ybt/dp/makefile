@@ -49,11 +49,20 @@ clean:
 1266: 1266.cpp
 	g++ -Wall -DDEBUG -g 1266.cpp -o 1266.exe && ./1266.exe
 
+1266_1: 1266_1.cpp
+	g++ -Wall -DDEBUG -g 1266_1.cpp -o 1266_1.exe && ./1266_1.exe
+
 1281: 1281.cpp
 	g++ -Wall -DDEBUG -g 1281.cpp -o 1281.exe && ./1281.exe
 
+1281_1: 1281_1.cpp
+	g++ -Wall -DDEBUG -g 1281_1.cpp -o 1281_1.exe && ./1281_1.exe
+
 1282: 1282.cpp
 	g++ -Wall -DDEBUG -g 1282.cpp -o 1282.exe && ./1282.exe
+
+1282_1: 1282_1.cpp
+	g++ -Wall -DDEBUG -g 1282_1.cpp -o 1282_1.exe && ./1282_1.exe
 
 1283: 1283.cpp
 	g++ -Wall -DDEBUG -g 1283.cpp -o 1283.exe && ./1283.exe
