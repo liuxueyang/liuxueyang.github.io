@@ -67,6 +67,9 @@ clean:
 1283: 1283.cpp
 	g++ -Wall -DDEBUG -g 1283.cpp -o 1283.exe && ./1283.exe
 
+1283_1: 1283_1.cpp
+	g++ -Wall -DDEBUG -g 1283_1.cpp -o 1283_1.exe && ./1283_1.exe
+
 1284: 1284.cpp
 	g++ -Wall -DDEBUG -g 1284.cpp -o 1284.exe && ./1284.exe
 
