@@ -91,17 +91,32 @@ clean:
 1287: 1287.cpp
 	g++ -Wall -DDEBUG -g 1287.cpp -o 1287.exe && ./1287.exe
 
+1287_1: 1287_1.cpp
+	g++ -Wall -DDEBUG -g 1287_1.cpp -o 1287_1.exe && ./1287_1.exe
+
 1288: 1288.cpp
 	g++ -Wall -DDEBUG -g 1288.cpp -o 1288.exe && ./1288.exe
+
+1288_1: 1288_1.cpp
+	g++ -Wall -DDEBUG -g 1288_1.cpp -o 1288_1.exe && ./1288_1.exe
 
 1289: 1289.cpp
 	g++ -Wall -DDEBUG -g 1289.cpp -o 1289.exe && ./1289.exe
 
+1289_1: 1289_1.cpp
+	g++ -Wall -DDEBUG -g 1289_1.cpp -o 1289_1.exe && ./1289_1.exe
+
 1267: 1267.cpp
 	g++ -Wall -DDEBUG -g 1267.cpp -o 1267.exe && ./1267.exe
 
+1267_1: 1267_1.cpp
+	g++ -Wall -DDEBUG -g 1267_1.cpp -o 1267_1.exe && ./1267_1.exe
+
 1268: 1268.cpp
 	g++ -Wall -DDEBUG -g 1268.cpp -o 1268.exe && ./1268.exe
+
+1268_1: 1268_1.cpp
+	g++ -Wall -DDEBUG -g 1268_1.cpp -o 1268_1.exe && ./1268_1.exe
 
 1295: 1295.cpp
 	g++ -Wall -DDEBUG -g 1295.cpp -o 1295.exe && ./1295.exe
