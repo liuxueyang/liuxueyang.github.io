@@ -19,17 +19,16 @@ public:
         int d[123];
         memset(d, 0, sizeof d);
 
-        d[0] = nums[0];
-        res = max(res, d[0]);
-        if (len == 1) return d[0];
-        d[1] = nums[1];
-        res = max(res, d[1]);
-        
-        for (int i = 2; i < len; i++) {
-            for (int j = 0; j < i - 1; ++j) {
-                d[i] = max(d[i], d[j] + nums[i]);
-                res = max(res, d[i]);
+        for (int i = 0; i < len; i++) {
+            if (i >= 2) {
+                d[i] = max(d[i-1], d[i-2] + nums[i]);
+            } else if (i >= 1) {
+                d[i] = max(d[i-1], nums[i]);
+            } else {
+                d[i] = nums[i];
             }
+
+            res = max(res, d[i]);
         }
         return res;
     }
