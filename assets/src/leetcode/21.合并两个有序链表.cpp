@@ -2,6 +2,9 @@
  * @lc app=leetcode.cn id=21 lang=cpp
  *
  * [21] 合并两个有序链表
+ * 
+ * 合理利用引用的特性來設計輔助函數，可以讓實現簡潔
+ * 可以利用原來的節點，不需要新建節點
  */
 
   struct ListNode {
@@ -45,6 +48,7 @@ public:
                 break;
             } else {
                 ListNode* tmp;
+                // 之前這個判斷寫錯了
                 if (l1->val <= l2->val) {
                     connect(cur, l1);
                 } else {

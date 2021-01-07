@@ -2,6 +2,10 @@
  * @lc app=leetcode.cn id=1039 lang=cpp
  *
  * [1039] 多边形三角剖分的最低得分
+ * 區間 DP
+ * d[i][j] 表示從點 i 到點 j 能夠取得的最小值
+ * 枚舉 [i+1..j-1] 的點 m，取得 d[i,m]+d[m,j]+A[i]*A[j]*A[m] 的最小值
+ * 首先枚舉長度，從最小開始枚舉。
  */
 
 #include <iostream>
@@ -38,4 +42,3 @@ public:
     }
 };
 // @lc code=end
-

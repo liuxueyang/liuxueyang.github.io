@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=396 lang=cpp
  *
  * [396] 旋转函数
+ * 
+ * 推數學公式，由 S[i] 推出 S[i+1] 的公式
  */
 
 #include <vector>

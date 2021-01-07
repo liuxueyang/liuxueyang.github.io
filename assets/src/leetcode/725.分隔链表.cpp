@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=725 lang=cpp
  *
  * [725] 分隔链表
+ * 
+ * 先計算出每段鏈表的長度，按照長度依次分配節點即可
  */
 
 #include <vector>

@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=213 lang=cpp
  *
  * [213] 打家劫舍 II
+ * 
+ * 分兩種情況，第一家是否要打劫。兩次 DP 即可，注意初始值的初始化
  */
 
 #include <iostream>

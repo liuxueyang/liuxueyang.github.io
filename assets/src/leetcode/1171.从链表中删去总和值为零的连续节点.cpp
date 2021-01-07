@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=1171 lang=cpp
  *
  * [1171] 从链表中删去总和值为零的连续节点
+ * 
+ * 注意到如果 pre_sum[i] == pre_sum[j]，則 [i+1..j] 的節點都可以刪除掉
  */
 #include <iostream>
 #include <unordered_map>

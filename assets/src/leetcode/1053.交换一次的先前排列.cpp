@@ -2,6 +2,11 @@
  * @lc app=leetcode.cn id=1053 lang=cpp
  *
  * [1053] 交换一次的先前排列
+ * 
+ * 從後往前找到第一個逆序 pos
+ * 
+ * 在 pos 右側，找到比 a[pos] 小，同時最大，並且最靠左邊的位置 cur
+ * 交換 a[pos], a[cur]
  */
 
 #include <vector>

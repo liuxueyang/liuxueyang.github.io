@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=657 lang=cpp
  *
  * [657] 机器人能否返回原点
+ * 
+ * 模擬即可
  */
 
 // @lc code=start

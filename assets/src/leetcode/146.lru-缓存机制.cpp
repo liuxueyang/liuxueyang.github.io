@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=146 lang=cpp
  *
  * [146] LRU 缓存机制
+ * 
+ * 把雙向鏈表的實現寫好就行了
  */
 
 // @lc code=start
@@ -76,7 +78,8 @@ public:
         ++len;
         return tmp;
     }
-    bool empty() const { 
+    bool empty() const {
+        // NOTE: 之前這裏的判斷寫錯了
         return len == 0 || (
             (*head).get_next() == tail &&
             (*tail).get_prev() == head
