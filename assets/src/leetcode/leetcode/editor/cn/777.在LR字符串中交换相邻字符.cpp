@@ -30,10 +30,44 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
+
+const int N = 10009;
+char a[N], b[N];
+int ai[N], bi[N];
+
 class Solution {
 public:
     bool canTransform(string start, string end) {
+        int alen = 0, blen = 0;
+        if (start.size() != end.size()) return false;
 
+        memset(a, 0, sizeof a);
+        memset(b, 0, sizeof b);
+        memset(ai, 0, sizeof ai);
+        memset(bi, 0, sizeof bi);
+
+        for (int i = 0; i < start.size(); i++) {
+            if (start[i] == 'L' || start[i] == 'R') {
+                a[alen] = start[i];
+                ai[alen] = i;
+                ++alen;
+            }
+            if (end[i] == 'L' || end[i] == 'R') {
+                b[blen] = end[i];
+                bi[blen] = i;
+                ++blen;
+            }
+        }
+        if (alen != blen) return false;
+        for (int i = 0; i < alen; ++i) {
+            if (a[i] != b[i]) return false;
+            if (a[i] == 'L') {
+                if (bi[i] > ai[i]) return false;
+            } else {
+                if (bi[i] < ai[i]) return false;
+            }
+        }
+        return true;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
