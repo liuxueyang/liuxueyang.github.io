@@ -29,6 +29,10 @@
 // Related Topics 哈希表 数学 
 // 👍 46 👎 0
 
+// 找规律，如果一个兔子答案是 K，那么也就是说至少有 K+1 个兔子答案都是 K
+// 分组求和即可
+// 如果一个兔子答案是 0，那说明它是独一无二的小兔子
+
 
 //leetcode submit region begin(Prohibit modification and deletion)
 #include <iostream>
