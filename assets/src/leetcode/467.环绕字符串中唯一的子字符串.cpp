@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=467 lang=cpp
  *
  * [467] 环绕字符串中唯一的子字符串
+ * 
+ * 找到以某個字母結尾的，最長的連續遞增序列的長度
  */
 
 // @lc code=start
