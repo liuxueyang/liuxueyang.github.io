@@ -39,6 +39,14 @@
 // Related Topics 树 
 // 👍 36 👎 0
 
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
@@ -50,19 +58,58 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+#include <iostream>
+#include <string>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <unordered_set>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <cmath>
+
+using namespace std;
+using VI = vector<int>;
+using VS = vector<string>;
+
 class CBTInserter {
 public:
-    CBTInserter(TreeNode* root) {
-
+    CBTInserter(TreeNode *root) : head(root) {
     }
-    
+
     int insert(int v) {
-
+        TreeNode *t = head;
+        queue < TreeNode * > que;
+        que.push(t);
+        int res;
+        TreeNode *v1 = new TreeNode(v);
+        TreeNode *tmp;
+        while (!que.empty()) {
+            tmp = que.front();
+            que.pop();
+            if (tmp->left == nullptr) {
+                tmp->left = v1;
+                res = tmp->val;
+                return res;
+            } else if (tmp->right == nullptr) {
+                tmp->right = v1;
+                res = tmp->val;
+                return res;
+            }
+            que.push(tmp->left);
+            que.push(tmp->right);
+        }
+        return res;
     }
-    
-    TreeNode* get_root() {
 
+    TreeNode *get_root() {
+        return head;
     }
+
+private:
+    TreeNode *head;
 };
 
 /**
