@@ -47,12 +47,60 @@
 // Related Topics 数学 
 // 👍 83 👎 0
 
+// 推求和公式，分组
+
 
 //leetcode submit region begin(Prohibit modification and deletion)
+#include <iostream>
+#include <string>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <unordered_set>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <cmath>
+
+using namespace std;
+using VI = vector<int>;
+using VS = vector<string>;
+
 class Solution {
 public:
-    vector<int> distributeCandies(int candies, int num_people) {
+    int get_s(int n, int p) {
+        return (n + 1) * n / 2 * p + n * n * p * (p - 1) / 2;
+    }
 
+    vector<int> distributeCandies(int candies, int n) {
+        VI res(n, 0);
+
+        int p = 1, tmp;
+        for (;; p++) {
+            tmp = get_s(n, p);
+            if (candies < tmp) break;
+        }
+        --p;
+        candies -= get_s(n, p);
+
+        if (p >= 1) {
+            for (int i = 0; i < n; ++i) {
+                res[i] = (i + 1) * p + (p - 1) * p / 2 * n;
+            }
+        }
+
+        for (int i = 0; i < n; ++i) {
+            if (candies > 0) {
+                int tmp = p * n + (i + 1);
+                tmp = min(tmp, candies);
+                candies -= tmp;
+                res[i] += tmp;
+            } else {
+                break;
+            }
+        }
+        return res;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
