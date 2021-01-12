@@ -53,8 +53,34 @@
 // Related Topics 树 深度优先搜索 递归 
 // 👍 106 👎 0
 
+// 求子树节点和。过程中计算坡度即可。
+
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
 
 //leetcode submit region begin(Prohibit modification and deletion)
+#include <iostream>
+#include <string>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <unordered_set>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <cmath>
+
+using namespace std;
+using VI = vector<int>;
+using VS = vector<string>;
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -68,8 +94,20 @@
  */
 class Solution {
 public:
-    int findTilt(TreeNode* root) {
+    int res;
 
+    int dfs(TreeNode *root) {
+        if (root == nullptr) return 0;
+        int left = dfs(root->left), right = dfs(root->right);
+        int sum = left + right + root->val;
+        res += abs(left - right);
+        return sum;
+    }
+
+    int findTilt(TreeNode *root) {
+        res = 0;
+        dfs(root);
+        return res;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
