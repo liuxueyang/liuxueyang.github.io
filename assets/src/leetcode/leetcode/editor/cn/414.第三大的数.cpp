@@ -43,10 +43,65 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
+#include <iostream>
+#include <string>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <unordered_set>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <cmath>
+#include <queue>
+
+using namespace std;
+using VI = vector<int>;
+using VS = vector<string>;
+
 class Solution {
 public:
-    int thirdMax(vector<int>& nums) {
+    int thirdMax(vector<int> &nums) {
+        int len = nums.size();
+        if (len == 1) return nums[0];
+        else if (len == 2) return max(nums[0], nums[1]);
+        priority_queue<int, VI, greater<int>> que;
+        set<int> ss;
+        int res = 0;
 
+        for (int i = 0; i < len; i++) {
+            if (que.empty()) {
+                que.push(nums[i]);
+                ss.insert(nums[i]);
+            } else {
+                if (ss.find(nums[i]) != ss.end()) continue;
+
+                int t = que.top();
+                if (nums[i] > t) {
+                    ss.insert(nums[i]);
+                    que.push(nums[i]);
+                    if (que.size() > 3) {
+                        que.pop();
+                        ss.erase(t);
+                    }
+                } else if (nums[i] < t) {
+                    if (que.size() < 3) {
+                        ss.insert(nums[i]);
+                        que.push(nums[i]);
+                    }
+                }
+            }
+        }
+        if (que.size() == 3) { res = que.top(); }
+        else {
+            while (!que.empty()) {
+                res = que.top();
+                que.pop();
+            }
+        }
+
+        return res;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
