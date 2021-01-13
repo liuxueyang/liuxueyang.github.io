@@ -42,12 +42,48 @@
 // Related Topics 二分查找 
 // 👍 182 👎 0
 
+// 找到每个房子左右两边距离最近的heater，所有房子的距离最近的heater的距离最大值即为所求
+// 找房子左右两边距离最近的heater，可以使用二分，利用lower_bound，找到>=x的第一个位置
+// 也可以手写二分
 
 //leetcode submit region begin(Prohibit modification and deletion)
+#include <iostream>
+#include <string>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <unordered_set>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <cmath>
+
+using namespace std;
+using VI = vector<int>;
+using VS = vector<string>;
+
 class Solution {
 public:
-    int findRadius(vector<int>& houses, vector<int>& heaters) {
-
+    int findRadius(vector<int> &houses, vector<int> &heaters) {
+        int len = houses.size();
+        VI d(len, 0x3f3f3f3f);
+        sort(heaters.begin(), heaters.end());
+        int res = 0;
+        for (int i = 0; i < len; i++) {
+            auto it = lower_bound(heaters.begin(), heaters.end(), houses[i]);
+            if (it == heaters.end()) {
+                --it;
+                d[i] = houses[i] - *it;
+            } else if (it == heaters.begin()) {
+                d[i] = *it - houses[i];
+            } else {
+                int left = *(it - 1), right = *it;
+                d[i] = min(houses[i] - left, right - houses[i]);
+            }
+            res = max(res, d[i]);
+        }
+        return res;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
