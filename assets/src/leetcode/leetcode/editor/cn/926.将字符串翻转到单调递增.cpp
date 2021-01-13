@@ -39,12 +39,57 @@
 // Related Topics 数组 
 // 👍 77 👎 0
 
+// 左边只可能是0，右边只可能是1，利用这个特性
+// 枚举每个位置，如果左边全部变成0，右边全部变成1，一共需要多少次操作；可以这样计算：左边有多少个1需要变成0，右边有多少个0需要变成1，
+// 因此只需要预处理出每个位置左边有多少个1即可。前缀和。
+// 注意边界情况：全部为1，全部为0
+
 
 //leetcode submit region begin(Prohibit modification and deletion)
+#include <iostream>
+#include <string>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <unordered_set>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <cmath>
+
+using namespace std;
+using VI = vector<int>;
+using VS = vector<string>;
+
 class Solution {
 public:
     int minFlipsMonoIncr(string S) {
-
+        int len = S.size();
+        VI d(len, 0);
+        int sum = 0;
+        for (int i = 0; i < len; i++) {
+            int t = (S[i] == '1');
+            if (i > 0) {
+                d[i] = d[i - 1] + t;
+            } else {
+                d[i] = t;
+            }
+            sum += t;
+        }
+        int res = len * 2;
+        for (int i = 0; i <= len; i++) {
+            int left, right;
+            if (i == 0) {
+                left = 0;
+                right = len - sum;
+            } else {
+                left = d[i - 1];
+                right = (len - i) - (sum - left);
+            }
+            res = min(res, left + right);
+        }
+        return res;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
