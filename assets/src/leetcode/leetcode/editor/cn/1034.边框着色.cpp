@@ -42,12 +42,75 @@
 // Related Topics 深度优先搜索 
 // 👍 22 👎 0
 
+// DFS，遇到边界的时候检查
+
 
 //leetcode submit region begin(Prohibit modification and deletion)
+#include <iostream>
+#include <string>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <unordered_set>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <cmath>
+
+using namespace std;
+using VI = vector<int>;
+using VS = vector<string>;
+
+
 class Solution {
 public:
-    vector<vector<int>> colorBorder(vector<vector<int>>& grid, int r0, int c0, int color) {
+    int m, n;
+    int vis[55][55];
+    int color, ori_color;
+    vector <VI> a;
 
+    int dir[4][2] = {
+            {0,  1},
+            {0,  -1},
+            {1,  0},
+            {-1, 0},
+    };
+
+    void dfs(int x, int y) {
+        vis[x][y] = 1;
+        for (int i = 0; i < 4; ++i) {
+            int x1 = x + dir[i][0], y1 = y + dir[i][1];
+            if (x1 >= 0 && x1 < m && y1 >= 0 && y1 < n) {
+                if (!vis[x1][y1]) {
+                    if (a[x1][y1] != ori_color) {
+                        a[x][y] = -1;
+                    } else {
+                        dfs(x1, y1);
+                    }
+                }
+            } else {
+                // I am on border
+                a[x][y] = -1;
+            }
+        }
+    }
+
+    vector <vector<int>> colorBorder(vector <vector<int>> &grid, int r0, int c0, int color) {
+        memset(vis, 0, sizeof(vis));
+        a = grid;
+        m = a.size();
+        n = a[0].size();
+        ori_color = grid[r0][c0];
+        dfs(r0, c0);
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (a[i][j] == -1) {
+                    a[i][j] = color;
+                }
+            }
+        }
+        return a;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
