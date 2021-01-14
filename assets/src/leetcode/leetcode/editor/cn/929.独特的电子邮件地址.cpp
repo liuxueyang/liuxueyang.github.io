@@ -38,10 +38,44 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
+#include <iostream>
+#include <string>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <unordered_set>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <cmath>
+
+using namespace std;
+using VI = vector<int>;
+using VS = vector<string>;
+
 class Solution {
 public:
-    int numUniqueEmails(vector<string>& emails) {
+    string normal(string s) {
+        size_t pos = s.find("@");
+        string post = s.substr(pos);
+        string prefix = s.substr(0, pos);
+        string nprefix;
+        for (int i = 0; i < prefix.size(); ++i) {
+            if (prefix[i] == '+') break;
+            else if (prefix[i] == '.') continue;
+            else nprefix = nprefix + prefix[i];
+        }
+        return nprefix + post;
+    }
 
+    int numUniqueEmails(vector <string> &emails) {
+        int len = emails.size();
+        set <string> ns;
+        for (int i = 0; i < len; ++i) {
+            ns.insert(normal(emails[i]));
+        }
+        return ns.size();
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
