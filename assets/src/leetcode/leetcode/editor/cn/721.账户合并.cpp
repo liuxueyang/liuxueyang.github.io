@@ -40,10 +40,77 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
+#include <iostream>
+#include <string>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <unordered_set>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <cmath>
+
+using namespace std;
+using VI = vector<int>;
+using VS = vector<string>;
+
 class Solution {
 public:
-    vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
+    map<string, int> nm;
+    map<int, VS> emails;
 
+    vector <vector<string>> accountsMerge(vector <vector<string>> &accounts) {
+        for (int i = 0; i < accounts.size(); i++) {
+            if (i == 0) {
+                for (int j = 1; j < accounts[i].size(); j++) {
+                    nm[accounts[i][j]] = i;
+                    emails[i].push_back(accounts[i][j]);
+                }
+            } else {
+                int idx = -1;
+                for (int j = 1; j < accounts[i].size(); j++) {
+                    if (nm.find(accounts[i][j]) != nm.end()) {
+                        idx = nm[accounts[i][j]];
+                        break;
+                    }
+                }
+                if (idx == -1) idx = i;
+                for (int j = 1; j < accounts[i].size(); j++) {
+                    if (nm.find(accounts[i][j]) == nm.end()) {
+                        nm[accounts[i][j]] = idx;
+                        emails[idx].push_back(accounts[i][j]);
+                    } else {
+                        int pidx = nm[accounts[i][j]];
+                        if (pidx != idx) {
+                            for (auto &x: emails[pidx]) {
+                                nm[x] = idx;
+                                emails[idx].push_back(x);
+                            }
+                            emails.erase(pidx);
+                        }
+                    }
+                }
+            }
+        }
+        vector <VS> res;
+        for (auto &x : emails) {
+            VS tmp;
+            tmp.push_back(accounts[x.first][0]);
+
+            set <string> ss;
+            for (auto &y : x.second) {
+                ss.insert(y);
+            }
+            for (auto &y: ss) {
+                tmp.push_back(y);
+            }
+            sort(tmp.begin() + 1, tmp.end());
+
+            res.push_back(tmp);
+        }
+        return res;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
