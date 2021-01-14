@@ -42,12 +42,42 @@
 // 进阶：你能实现时间复杂度为 O(n) ，空间复杂度为 O(1) 的解决方案吗？ 
 // 👍 261 👎 0
 
+// 更新 small 为更小的值的时候，不影响结果；因为这意味着 mid 之前本来就有比 mid 更小的
 
 //leetcode submit region begin(Prohibit modification and deletion)
+#include <iostream>
+#include <string>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <unordered_set>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <cmath>
+
+using namespace std;
+using VI = vector<int>;
+using VS = vector<string>;
+
 class Solution {
 public:
-    bool increasingTriplet(vector<int>& nums) {
+    bool increasingTriplet(vector<int> &nums) {
+        int len = nums.size();
+        if (len < 3) return false;
+        int small = INT_MAX, mid = INT_MAX;
 
+        for (int i = 0; i < len; ++i) {
+            if (nums[i] > mid) {
+                if (small < mid) return true;
+            } else if (nums[i] < small) {
+                small = nums[i];
+            } else if (nums[i] > small & nums[i] < mid) {
+                mid = nums[i];
+            }
+        }
+        return false;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
