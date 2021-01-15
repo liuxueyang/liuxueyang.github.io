@@ -44,10 +44,70 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
+#include <iostream>
+#include <string>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <unordered_set>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <cmath>
+
+using namespace std;
+using VI = vector<int>;
+using VS = vector<string>;
+using LL = long long;
+
 class Solution {
 public:
-    int nthUglyNumber(int n, int a, int b, int c) {
+    int a1, b1, c1;
 
+    LL gcd(LL a, LL b) {
+        if (a < b) swap(a, b);
+        if (b == 0) return a;
+        if (a % b == 0) return b;
+        return gcd(b, a % b);
+    }
+
+    LL mtim(LL a, LL b) {
+        return a * b / gcd(a, b);
+    }
+
+    int cx(int x) {
+        LL tmp = mtim(b1, c1);
+        return (x / a1 + x / b1 + x / c1) - (x / mtim(a1, b1) + x / tmp + x / mtim(a1, c1)) +
+               (x / mtim(a1, tmp));
+    }
+
+    int nthUglyNumber(int n, int a, int b, int c) {
+        a1 = a;
+        b1 = b;
+        c1 = c;
+        long long low = min(a, min(b, c)), high = low * n, mid;
+        while (low < high) {
+            mid = (high - low) / 2 + low;
+
+            int tmp{cx(mid)};
+            if (tmp == n) {
+                low = mid;
+                break;
+            } else if (tmp > n) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        low -= min(low % a1, min(low % b1, low % c1));
+        return low;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
+
+int main() {
+    Solution a;
+    a.nthUglyNumber(1000000000, 2, 217983653, 336916467);
+    return 0;
+}
