@@ -18,3 +18,6 @@ inter-1606: inter-1606.cpp
 
 4-view-cn: 4-view-cn.cpp
 	g++ -Wall -std=c++11 -DDEBUG -g 4-view-cn.cpp -o 4-view-cn.exe && ./4-view-cn.exe
+
+1721: 1721.交换链表中的节点.cpp
+	g++ -Wall -std=c++11 -DDEBUG -g 1721.交换链表中的节点.cpp -o 1721.exe && ./1721.exe
