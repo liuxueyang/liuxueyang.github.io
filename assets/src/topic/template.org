@@ -197,5 +197,109 @@
 #+end_src
 ** 堆
    #+begin_src cpp
+     #include <algorithm>
 
+     using namespace std;
+
+     const int N = 100010;
+     // ph[k] 存储第 k 个节点在堆中的下标
+     // hp 是反函数
+     // h 是堆数组
+     // sz 是堆大小
+     int h[N], sz, ph[N], hp[N];
+
+     void heap_swap(int x, int y) {
+       swap(ph[hp[x]], ph[hp[y]]);
+       swap(hp[x], hp[y]);
+       swap(h[x], h[y]);
+     }
+
+     void Down(int x) {
+       int t = x, l = x * 2, r = l + 1;
+       if (l <= sz && h[t] < h[l]) t = l;
+       if (r <= sz && h[t] < h[r]) t = r;
+       if (t == x) return;
+       heap_swap(h[t], h[x]);
+       Down(t);
+     }
+
+     void Up(int x) {
+       while (x / 2 && h[x / 2] < h[x]) {
+         heap_swap(h[x], h[x / 2]);
+         x /= 2;
+       }
+     }
+
+     void init(int n) {
+       for (int i = n / 2; i; --i)
+         Down(i);
+     }
    #+end_src
+** 哈希表
+*** 拉链法
+    #+begin_src cpp
+      #include <cstring>
+
+      const int N = 100003;
+      int h[N], e[N], ne[N], idx;
+
+      void init() { memset(h, -1, sizeof h); }
+
+      void insert(int x) {
+        int k = (x % N + N) % N;
+        e[idx] = x;
+        ne[idx] = h[k];
+        h[k] = idx++;
+      }
+
+      bool find(int x) {
+        int k = (x % N + N) % N;
+        for (int i = h[k]; i != -1; i = ne[i]) {
+          if (e[i] == x) return true;
+        }
+        return false;
+      }
+    #+end_src
+*** 开放寻址法
+    #+begin_src cpp
+      #include <cstring>
+
+      const int N = 200003, nul = 0x3f3f3f3f;
+      int h[N];
+
+      void init() { memset(h, 0x3f, sizeof h); }
+
+      int find(int x) {
+        int k = (x % N + N) % N;
+        while (h[k] != x && h[k] != nul) {
+          ++k;
+          if (k == N) k = 0;
+        }
+        return k;
+      }
+    #+end_src
+*** 字符串哈希
+    #+begin_src cpp
+      #include <cstring>
+
+      typedef unsigned long long ull;
+      // 131 or 13331 是两个比较好的质数
+      const int P = 131, N = 100010;
+      // p[k] 存储 p^k
+      // h[k] 存储 s[1,k] 字符的哈希值
+      ull p[N], h[N];
+      char str[N];
+      int n;
+
+      void init() {
+        p[0] = 1;
+        for (int i = 1; i <= n; ++i) {
+          p[i] = p[i - 1] * P;
+          h[i] = h[i - 1] * P + str[i];
+        }
+      }
+
+      ull get(int l, int r) {
+        return h[r] - h[l - 1] * p[r - l + 1];
+      }
+    #+end_src
