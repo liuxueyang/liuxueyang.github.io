@@ -1,0 +1,201 @@
+* 基础算法模板
+** 单链表
+#+begin_src cpp
+  // head 存储头节点，e[] 存储节点值，ne[] 存储下一个节点指针，idx 表示下一个可以使用的节点下标
+  int head, e[N], ne[N], idx;
+
+  // 初始化
+  void init()
+  {
+    head = -1;
+    idx = 0;
+  }
+
+  // 在链表头插入一个数
+  void insert(int a)
+  {
+    e[idx] = a, ne[idx] = head, head = idx++;
+  }
+
+  // 将头节点删除，假设头节点存在
+  void remove()
+  {
+    head = ne[head];
+  }
+#+end_src
+** 双链表
+#+begin_src cpp
+  // e[] 存储节点值，l[] 存储前续节点，r[] 存储后续节点，idx 表示下一个可以使用的节点下标
+  int e[N], l[N], r[N], idx;
+
+  // 初始化
+  void init()
+  {
+    // 0 是头节点，1 是尾节点
+    r[0] = 1, r[1] = 0;
+    idx = 2;
+  }
+
+  // 在节点 k 的右边插入一个数 x
+  void insert(int k, int x)
+  {
+    e[idx] = x;
+    int q = r[k];
+    l[q] = idx;
+    r[k] = idx;
+    l[idx] = k, r[idx] = q;
+    ++idx;
+  }
+
+  // 删除节点 k
+  void remove(int k)
+  {
+    int p = l[k], q = r[k];
+    r[p] = q, l[q] = p;
+  }
+#+end_src
+** 栈
+#+begin_src cpp
+  // tt 表示栈顶
+  int stk[N], tt = 0;
+
+  // 向栈顶压入一个数字
+  stk[++tt] = x;
+
+  // 从栈顶弹出一个数字
+  --tt;
+
+  // 栈顶的值
+  stk[tt];
+
+  // 判断栈非空
+  if (tt) { }
+#+end_src
+** 队列
+#+begin_src cpp
+  // hh 表示队头，tt 表示队尾
+  int q[N], hh = 0, tt = -1;
+
+  // 向队尾插入一个数字
+  q[++tt] = x;
+
+  // 从队头弹出一个数字
+  ++hh;
+
+  // 取队头的值
+  q[hh];
+
+  // 判断队列非空
+  if (hh <= tt) { }
+#+end_src
+** 循环队列
+#+begin_src cpp
+  // hh 表示队头，tt 表示队尾的后一个位置
+  int q[N], hh = 0, tt = 0;
+
+  // 向队尾插入一个数字
+  q[tt++] = x;
+  if (tt == N) tt = 0;
+
+  // 从队头弹出一个数字
+  ++hh;
+  if (hh == N) hh = 0;
+
+  // 队头的值
+  q[hh];
+
+  // 判断队列非空
+  if (hh != tt) { }
+#+end_src
+** 单调栈
+#+begin_src cpp
+  int tt = 0;
+  for (int i = 1; i <= n; ++i) {
+    while (tt && check(stk[tt], i)) --tt;
+    stk[++tt] = i;
+  }
+#+end_src
+** 单调队列
+#+begin_src cpp
+  int hh = 0, tt = -1;
+  for (int i = 0; i < n; ++i) {
+    while (hh <= tt && check_out(q[hh])) ++hh;
+    while (hh <= tt && check(q[tt], i)) --tt;
+    q[++tt] = i;
+  }
+#+end_src
+** KMP
+#+begin_src cpp
+  // s[] original string
+  // p[] pattern string
+  // n = strlen(s), m = strlen(p + 1)
+
+  // ne[]
+  for (int i = 2, j = 0; i <= m; i++) {
+    while (j && p[i] != p[j+1]) j = ne[j];
+    if (p[i] == p[j+1]) ++j;
+    ne[i] = j;
+  }
+
+  // match
+  for (int i = 1, j = 0; i <= n; i++) {
+    while (j && s[i] != p[j+1]) j = ne[j];
+    if (s[i] == p[j+1]) ++j;
+    if (j == m) {
+      j = ne[j];
+      // match success
+    }
+  }
+#+end_src
+** Trie 树
+#+begin_src cpp
+  int son[N][26], cnt[N], idx;
+
+  void insert(char *str) {
+    int p = 0;
+    for (int i = 0; str[i]; i++) {
+      int u = str[i] - 'a';
+      if (!son[p][u]) son[p][u] = ++idx;
+      p = son[p][u];
+    }
+    ++cnt[p];
+  }
+
+  int query(char *str) {
+    int p = 0;
+    for (int i = 0; str[i]; ++i) {
+      int u = str[i] - 'a';
+      if (!son[p][u]) return 0;
+      p = son[p][u];
+    }
+    return cnt[p];
+  }
+#+end_src
+** 并查集
+#+begin_src cpp
+  const int N = 100000;
+  int fa[N], sz[N];
+
+  int Find(int x) {
+    if (fa[x] == x) return x;
+    return fa[x] = Find(fa[x]);
+  }
+
+  void Union(int x, int y) {
+    int rx = Find(x), ry = Find(y);
+    if (rx == ry) return;
+    fa[ry] = rx;
+    sz[rx] += sz[ry];
+  }
+
+  void init(int n) {
+    for (int i = 0; i < n; ++i) {
+      fa[i] = i;
+      sz[i] = 1;
+    }
+  }
+#+end_src
+** 堆
+   #+begin_src cpp
+
+   #+end_src

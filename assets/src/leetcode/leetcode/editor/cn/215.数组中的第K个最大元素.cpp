@@ -62,15 +62,45 @@ public:
             res = a[j];
             return;
         } else if (j > k - 1) {
-            myqsort(a, left, j-1, k, res);
+            myqsort(a, left, j - 1, k, res);
         } else {
             myqsort(a, j + 1, right, k, res);
         }
     }
 
-    int findKthLargest(vector<int> &nums, int k) {
+    int findKthLargestV2(vector<int> &nums, int k) {
         int res;
         myqsort(nums, 0, nums.size() - 1, k, res);
+        return res;
+    }
+
+    VI h;
+    int sz;
+
+    void Down(int x) {
+        int t = x, l = x * 2, r = l + 1;
+        if (l <= sz && h[l] > h[t]) t = l;
+        if (r <= sz && h[r] > h[t]) t = r;
+        if (t == x) return;
+        swap(h[t], h[x]);
+        Down(t);
+    }
+
+    int findKthLargest(vector<int> &nums, int k) {
+        sz = nums.size();
+        VI _h(sz + 1, 0);
+        for (int i = 0; i < sz; ++i) _h[i + 1] = nums[i];
+        h = _h;
+
+        for (int i = sz / 2; i; --i) Down(i);
+
+        int res = 0;
+        while (k--) {
+            res = h[1];
+            h[1] = h[sz--];
+            Down(1);
+        }
+
         return res;
     }
 };
