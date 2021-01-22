@@ -24,3 +24,9 @@ clean:
 
 2796_1: 2796_1.cpp
 	g++ -Wall -DDEBUG -std=c++98 -g 2796_1.cpp -o 2796_1.exe && ./2796_1.exe
+
+2796_2: 2796_2.cpp
+	g++ -Wall -DDEBUG -std=c++98 -g 2796_2.cpp -o 2796_2.exe && ./2796_2.exe
+
+2833: 2833.cpp
+	g++ -Wall -DDEBUG -std=c++98 -g 2833.cpp -o 2833.exe && ./2833.exe
