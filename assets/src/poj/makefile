@@ -30,3 +30,6 @@ clean:
 
 2833: 2833.cpp
 	g++ -Wall -DDEBUG -std=c++98 -g 2833.cpp -o 2833.exe && ./2833.exe
+
+2833_1: 2833_1.cpp
+	g++ -Wall -DDEBUG -std=c++98 -g 2833_1.cpp -o 2833_1.exe && ./2833_1.exe
