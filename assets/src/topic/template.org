@@ -303,3 +303,98 @@
         return h[r] - h[l - 1] * p[r - l + 1];
       }
     #+end_src
+** 最短路
+*** 单源最短路
+**** 稠密图
+     复杂度 O(n^2), n 为点数
+     #+begin_src cpp
+       #include <cstring>
+       #include <algorithm>
+
+       using namespace std;
+
+       const int N = 1010, INF = 0x3f3f3f3f;
+       int n, g[N][N], st[N], dis[N];
+
+       int dijkstra() {
+         memset(dis, INF, sizeof dis);
+         dis[1] = 0;
+
+         for (int i = 0; i < n; ++i) {
+           int t = -1;
+           for (int j = 1; j <= n; ++j) {
+             if (!st[j] && (t == -1 || dis[j] < dis[t]))
+               t = j;
+           }
+           st[t] = 1;
+    
+           for (int j = 1; j <= n; ++j) {
+             if (g[t][j] != INF) {
+               dis[j] = min(dis[j], dis[t] + g[t][j]);
+             }
+           }
+         }
+
+         return dis[n] == INF ? -1 : dis[n];
+       }
+
+       int main() {
+         return 0;
+       }
+
+     #+end_src
+**** 稀疏图
+     复杂度 O(m*log(n))，m 为边数，n 为点数
+     #+begin_src cpp
+       #include <algorithm>
+       #include <vector>
+       #include <queue>
+       #include <cstring>
+
+       using namespace std;
+       typedef pair<int, int> PII;
+
+       const int N = 1010, INF = 0x3f3f3f3f;
+
+       int n, e[N], ne[N], h[N], idx;
+       int w[N], dis[N], st[N];
+
+       void Add(int a, int b, int c) {
+         e[idx] = b, ne[idx] = h[a], w[idx] = c, h[a] = idx++;
+       }
+
+       int dijkstra() {
+         memset(dis, INF, sizeof dis);
+         dis[1] = 0;
+
+         priority_queue<PII, vector<PII>, greater<PII> > que;
+         que.push(PII(0, 1));
+
+         while (!que.empty()) {
+           PII t = que.top();
+           int ver = t.second, base = t.first;
+           if (st[ver]) continue;
+           st[ver] = 1;
+           for (int j = h[ver]; j != -1; j = ne[j]) {
+             if (base + w[j] < dis[j]) {
+               dis[j] = base + w[j];
+               que.push(PII(dis[j], j));
+             }
+           }
+         }
+
+         return dis[n] == INF ? -1 : dis[n];
+       }
+
+       void Init() {
+         memset(h, -1, sizeof h);
+       }
+
+       int main() {
+         Init();
+
+         return 0;
+       }
+
+     #+end_src
+*** 多源最短路
