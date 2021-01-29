@@ -41,7 +41,6 @@ int dijkstra() {
       int u = e[j];
       if (base + w[j] < dis[u]) {
 	dis[u] = base + w[j];
-	// printf("u=%d dis[u]=%d\n", u, dis[u]);
 	que.push(PII(dis[u], u));
       }
     }
