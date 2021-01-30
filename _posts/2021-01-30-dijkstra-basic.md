@@ -7,7 +7,7 @@ categories: algorithm dijkstra
 
 # 樸素 Dijkstra
 
-![AcWing 849](https://www.acwing.com/problem/content/851/)
+[AcWing 849](https://www.acwing.com/problem/content/851/)
 
 ```cpp
 // 849. Dijkstra求最短路 I
