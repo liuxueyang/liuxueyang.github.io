@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <cstdio>
+
 using namespace std;
 const int N = 200010;
 int n, a[N], c;
