@@ -44,7 +44,6 @@ int main() {
     int cnt = 0;
     cnt = search(0, i - 1, d);
     res += cnt;
-    // printf("d=%lld cnt=%d\n", d, cnt);
   }
   printf("%lld\n", res);
 
