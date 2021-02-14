@@ -16,7 +16,7 @@ int main() {
   #ifdef DEBUG
   freopen("2559.in", "r", stdin);
   #endif
-  
+
   int n;
   while (~scanf("%d", &n) && n) {
     for (int i = 1; i <= n; ++i) scanf("%lld", h+i);
@@ -48,9 +48,9 @@ int main() {
     for (int i = 1; i <= n; ++i) {
       res = max(res, (r[i] - l[i] - 1) * h[i]);
     }
-    
+
     printf("%lld\n", res);
   }
-  
+
   return 0;
 }

@@ -13,10 +13,10 @@ const int N = 100009;
 LL h[N], l[N], r[N];
 
 int main() {
-  #ifdef DEBUG
+#ifdef DEBUG
   freopen("2559.in", "r", stdin);
-  #endif
-  
+#endif
+
   int n;
   while (~scanf("%d", &n) && n) {
     for (int i = 1; i <= n; ++i) scanf("%lld", h+i);
@@ -27,7 +27,7 @@ int main() {
     stack<int> sl, sr;
     while (!sl.empty()) sl.pop();
     while (!sr.empty()) sr.pop();
-    
+
     sl.push(0);
     for (int i = 1; i <= n; ++i) {
       while (!sl.empty() && h[sl.top()] >= h[i]) {
@@ -36,7 +36,7 @@ int main() {
       l[i] = sl.top();
       sl.push(i);
     }
-    
+
     sr.push(n+1);
     for (int i = n; i >= 1; --i) {
       while (!sr.empty() && h[sr.top()] >= h[i]) {
@@ -49,9 +49,9 @@ int main() {
     for (int i = 1; i <= n; ++i) {
       res = max(res, (r[i] - l[i] - 1) * h[i]);
     }
-    
+
     printf("%lld\n", res);
   }
-  
+
   return 0;
 }
