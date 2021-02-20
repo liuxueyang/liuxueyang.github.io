@@ -15,11 +15,9 @@ bool check(int x, int y) { return x >= 0 && x < n && y > 0 && y < m; }
 class Solution {
 public:
   vector<vector<char>> a;
-  bool mark;
 
   void dfs(int x, int y) {
     vis[x][y] = 1;
-    if (mark) a[x][y] = 'X';
 
     for (int i = 0; i < 4; ++i) {
       int x1 = x + dir[i][0], y1 = y + dir[i][1];
@@ -33,7 +31,6 @@ public:
     n = board.size(), m = board[0].size();
     a = board;
     memset(vis, 0, sizeof vis);
-    mark = false;
 
     for (int i = 0; i < n; ++i) {
       for (int j = 0; j < m; ++j) {
@@ -42,14 +39,12 @@ public:
       }
     }
 
-    mark = true;
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; ++i)
       for (int j = 0; j < m; ++j) {
-        if (a[i][j] == 'O' && !vis[i][j]) dfs(i, j);
+        if (a[i][j] == 'O') {
+          if (vis[i][j]) board[i][j] = a[i][j];
+          else board[i][j] = 'X';
+        } else board[i][j] = a[i][j];
       }
-    }
-
-    for (int i = 0; i < n; ++i) for (int j = 0; j < m; ++j)
-                                  board[i][j] = a[i][j];
   }
 };
