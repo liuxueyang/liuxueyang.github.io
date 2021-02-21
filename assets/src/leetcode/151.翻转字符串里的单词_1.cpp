@@ -14,7 +14,7 @@ public:
     }
     if (s[cur-1] == ' ') --cur;
     len = cur;
-    s = s.substr(0, len);
+    s.erase(s.begin() + len, s.end());
 
     for (int i = 0, j = len - 1; i < j; i++, j--) {
       swap(s[i], s[j]);
