@@ -38,10 +38,37 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
+const int N = 12;
+int col[N], d1[N*2], d2[N*2], row[N];
 class Solution {
 public:
-    vector<vector<string>> solveNQueens(int n) {
-
+    using VS = vector<string>;
+    vector<VS> res; int n;
+    void dfs(int k) {
+        if (k == n) {
+            VS cur;
+            for (int i = 0; i < n; ++i) {
+                string s(n, '.'); s[row[i]] = 'Q';
+                cur.push_back(s);
+            }
+            res.push_back(cur); return;
+        }
+        for (int i = 0; i < n; ++i) {
+            if (!col[i] && !d1[k + i] && !d2[k - i + n]) {
+                col[i] = d1[k + i] = d2[k - i + n] = 1;
+                row[k] = i;
+                dfs(k + 1);
+                col[i] = d1[k + i] = d2[k - i + n] = 0;
+            }
+        }
+    }
+    vector<vector<string>> solveNQueens(int _n) {
+        n = _n;
+        memset(col, 0, sizeof col);
+        memset(d1, 0, sizeof d1);
+        memset(d2, 0, sizeof d2);
+        dfs(0);
+        return res;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
