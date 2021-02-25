@@ -37,8 +37,24 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 public:
+    using VI = vector<int>;
+    using PII = pair<int, int>;
     int findMaximizedCapital(int k, int W, vector<int>& Profits, vector<int>& Capital) {
-
+        vector<PII> v;
+        int n = Profits.size();
+        for (int i = 0; i < n; ++i) v.push_back(PII(Profits[i], Capital[i]));
+        sort(v.begin(), v.end(), [](const PII& a, const PII& b) { return a.second < b.second; });
+        int res {W};
+        priority_queue<int, VI, less<int>> p;
+        int idx {};
+        while (k--) {
+            for (int i = idx; i < n; ++i) {
+                if (v[i].second <= res) { ++idx; p.push(v[i].first); }
+            }
+            if (p.empty()) break;
+            res += p.top(); p.pop();
+        }
+        return res;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
