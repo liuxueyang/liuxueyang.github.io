@@ -11,29 +11,20 @@ const int N = 510, M = 10010, INF = 0x3f3f3f3f;
 struct Edge {
   int a, b, c;
 } edge[M];
-
 int n, k, dis[N], bak[N], idx;
 
-void Init() {
-  memset(dis, INF, sizeof dis);
-  idx = 0;
-}
+void Init() {memset(dis, INF, sizeof dis); idx = 0;}
 
 int bellman_ford() {
   dis[1] = 0;
-
   for (int i = 0; i < k; ++i) {
     memcpy(bak, dis, sizeof dis);
-
     for (int j = 0; j < idx; ++j) {
       Edge t = edge[j];
       int a = t.a, b = t.b, c = t.c;
-
       if (bak[a] != INF) {
         int tmp = bak[a] + c;
-        if (tmp < dis[b]) {
-          dis[b] = tmp;
-        }
+        if (tmp < dis[b]) {dis[b] = tmp;}
       }
     }
   }

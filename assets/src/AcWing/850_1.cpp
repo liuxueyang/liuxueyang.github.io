@@ -43,23 +43,18 @@ PII Pop() {
 void Init() {
   memset(st, 0, sizeof st);
   memset(h, -1, sizeof h);
-  idx = 0;
-  sz = 0;
+  idx = 0; sz = 0;
 }
-
 void Add(int a, int b, int c) {
   e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx++;
 }
-
 int dijkstra() {
   memset(dis, INF, sizeof dis);
   dis[1] = 0;
-
   Push(PII(0, 1));
 
   while (sz) {
     PII t = Pop();
-
     int ver = t.second, base = t.first;
     if (st[ver]) continue;
     st[ver] = 1;
@@ -67,9 +62,8 @@ int dijkstra() {
     for (int j = h[ver]; j != -1; j = ne[j]) {
       int u = e[j];
       if (base + w[j] < dis[u]) {
-	dis[u] = base + w[j];
-	// printf("u=%d dis[u]=%d\n", u, dis[u]);
-	Push(PII(dis[u], u));
+        dis[u] = base + w[j];
+        Push(PII(dis[u], u));
       }
     }
   }
@@ -77,14 +71,14 @@ int dijkstra() {
 }
 
 int main() {
-  #ifdef _DEBUG
+#ifdef _DEBUG
   freopen("850.in", "r", stdin);
-  #endif
-  
+#endif
+
   int T;
   while (~scanf("%d%d", &n, &T)) {
     Init();
-  
+
     while (T--) {
       int a, b, c;
       scanf("%d%d%d", &a, &b, &c);
