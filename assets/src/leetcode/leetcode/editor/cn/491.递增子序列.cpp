@@ -21,8 +21,40 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 public:
-    vector<vector<int>> findSubsequences(vector<int>& nums) {
+    using VI = vector<int>;
+    vector <VI> res;
+    VI cur, a, vis;
+    int n;
 
+    void dfs(int k) {
+        if (k == n) {
+            if (cur.size() > 1) res.push_back(cur);
+            return;
+        }
+
+        for (int i = 0; i < k; ++i) {
+            if (a[i] == a[k] && !vis[i]) {
+                dfs(k + 1); return;
+            }
+        }
+
+        dfs(k + 1);
+
+        if (!cur.size() || cur.back() <= a[k]) {
+            cur.push_back(a[k]);
+            vis[k] = 1;
+            dfs(k + 1);
+            vis[k] = 0;
+            cur.pop_back();
+        }
+    }
+
+    vector <vector<int>> findSubsequences(vector<int> &nums) {
+        n = nums.size();
+        vis = VI(n, 0);
+        a = nums;
+        dfs(0);
+        return res;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
