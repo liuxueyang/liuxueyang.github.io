@@ -50,7 +50,6 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 const int N = 110, INF = 0x3f3f3f3f;
 int dis[N], bak[N];
-
 class Solution {
 public:
     int findCheapestPrice(int n, vector<vector<int>>& a, int src, int dst, int K) {
