@@ -36,8 +36,7 @@ public:
        map<int, int> m;
        for (auto &x : nums) ++m[x];
        priority_queue<PII> q;
-       for (auto &p : m) {
-           int x = p.first, cnt = p.second;
+       for (auto [x, cnt] : m) {
            q.push({cnt, x});
        }
        VI res;

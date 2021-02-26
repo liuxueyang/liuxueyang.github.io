@@ -43,11 +43,7 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 const int N = 110, INF = 0x3f3f3f3f;
 int st[N][N], dis[N][N];
-int dir[4][2] {
-        {0, 1}, {0, -1},
-        {1, 0}, {-1, 0},
-};
-
+int dir[4][2] { {0, 1}, {0, -1}, {1, 0}, {-1, 0} };
 class Solution {
 public:
     using PII = pair<int, int>;
@@ -56,15 +52,11 @@ public:
         int n = a.size(), m = a[0].size();
         memset(dis, 0x3f, sizeof dis); memset(st, 0, sizeof dis);
         priority_queue<IPII, vector<IPII>, greater<IPII>> q;
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < m; ++j) {
+        for (int i = 0; i < n; ++i) for (int j = 0; j < m; ++j)
                 if (a[i][j]) { q.push(IPII(0, {i, j})); dis[i][j] = 0; }
-            }
-        }
         while (!q.empty()) {
             auto t = q.top(); q.pop();
-            int base = t.first; PII p = t.second;
-            int x = p.first, y = p.second;
+            int base = t.first; PII p = t.second; int x = p.first, y = p.second;
             if (st[x][y]) continue;
             st[x][y] = 1;
             for (int i = 0; i < 4; ++i) {
