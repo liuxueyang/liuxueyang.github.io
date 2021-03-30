@@ -1,7 +1,9 @@
 class Solution {
 public:
+  using ll = long long;
   int maximum(int a, int b) {
-    int x = a > b;
-    return a * (x) + b * (!x);
+    ll x = a, y = b;
+    int s = 1 + ((x - y) >> 63);
+    return a * s + b * (!s);
   }
 };
