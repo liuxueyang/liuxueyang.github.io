@@ -1,5 +1,5 @@
 clean:
-	rm -rf *.dSYM *.exe *~
+	rm -rf *.dSYM *.exe *~ *.o
 
 inter-1605: inter-1605.cpp
 	g++ -Wall -DDEBUG -g inter-1605.cpp -o inter-1605.exe
