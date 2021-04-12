@@ -98,12 +98,29 @@ void PRINTAV( T1 & vec, T2 x) {
 }
 
 // ==================================================
-
+
+using VI = vector<int>;
 
 class Solution {
 public:
   int getKthMagicNumber(int k) {
+    int p3 = 1, p5 = 1, p7 = 1;
+    VI a {1, 1};
 
+    for (int i = 2; i <= k; ++i) {
+      int x3 = a[p3] * 3, x5 = a[p5] * 5, x7 = a[p7] * 7;
+
+      int t = x3;
+      t = min(t, x5), t = min(t, x7);
+
+      if (t == x3) p3++;
+      if (t == x5) p5++;
+      if (t == x7) p7++;
+
+      a.push_back(t);
+    }
+
+    return a[k];
   }
 };
 
@@ -113,7 +130,6 @@ int main( void ) {
 #ifdef DEBUG
   freopen("inter-1709.in", "r", stdin);
 #endif
-
 
 
   return 0;
