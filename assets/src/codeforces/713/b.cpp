@@ -48,7 +48,8 @@ int main() {
       a[x1][y2] = a[x2][y1] = '*';
     }
 
-    for (int i = 0; i < n; ++i) cout << a[i] << '\n';
+    ostream_iterator<char*> oi(cout, "\n");
+    copy(a, a + n, oi);
   }
 
   return 0;

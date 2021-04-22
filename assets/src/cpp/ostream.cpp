@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <ostream>
+#include <iterator>
 
 using namespace std;
 
@@ -26,6 +27,9 @@ int main() {
     int ar[] = {5, 4, 3, 2, 1};
     copy(ar, ar + n, ot);
   }
+
+  *ot++ = 100;
+  *ot++ = 200;
 
   return 0;
 }
