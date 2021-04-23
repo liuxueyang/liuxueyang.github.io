@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [ $1 = "clean" ]; then
+    rm -rf *.exe *.dSYM
+else
+    g++ -Wall -std=c++11 -D_DEBUG $1.cpp -o $1.exe
+    if [ -e $1.exe ]; then
+	./$1.exe
+    fi
+fi
