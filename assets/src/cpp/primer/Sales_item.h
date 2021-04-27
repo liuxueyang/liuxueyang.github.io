@@ -27,12 +27,6 @@ class Sales_data {
 
   Sales_data& combine(const Sales_data &rhs);
 
-  Sales_data add(const Sales_data &lhs, const Sales_data &rhs) {
-    Sales_data sum = lhs;
-    sum.combine(rhs);
-    return sum;
-  }
-
   Sales_data operator+(const Sales_data &rhs) {
     return add(*this, rhs);
   }
@@ -66,6 +60,7 @@ Sales_data add(const Sales_data&, const Sales_data&);
 istream& read(istream& is, Sales_data& item) {
   double price = 0;
 
+  cout << "Enter bookNo, units_sold and price:" << endl;
   is >> item.bookNo >> item.units_sold >> price;
   if (is) {
     item.revenue = price * item.units_sold;
@@ -77,8 +72,8 @@ istream& read(istream& is, Sales_data& item) {
 }
 
 ostream& print(ostream& os, const Sales_data& item) {
-  os << item.isbn() << ' ' << item.units_sold << ' '
-     << item.revenue << ' ' << item.avg_price();
+  os << "isbn: " << item.isbn() << ' ' << "units: " << item.units_sold << ' '
+     << "revenue: " << item.revenue << ' ' << "avg_price: " << item.avg_price();
 
   return os;
 }
@@ -92,8 +87,12 @@ ostream& operator<<(ostream& os, const Sales_data& item) {
 }
 
 Sales_data& Sales_data::combine(const Sales_data &rhs) {
-  units_sold += rhs.units_sold;
-  revenue += rhs.revenue;
+  if (rhs.isbn() == this->isbn()) {
+    units_sold += rhs.units_sold;
+    revenue += rhs.revenue;
+  } else {
+    cerr << "isbn not match, + failed" << endl;
+  }
 
   return *this;
 }
@@ -104,4 +103,10 @@ Sales_data& Sales_data::operator=(const Sales_data &rhs) {
   revenue = rhs.revenue;
 
   return *this;
+}
+
+Sales_data add(const Sales_data &lhs, const Sales_data &rhs) {
+  Sales_data sum = lhs;
+  sum.combine(rhs);
+  return sum;
 }

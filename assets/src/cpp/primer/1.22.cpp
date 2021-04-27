@@ -5,13 +5,20 @@ using namespace std;
 
 int main() {
   #ifdef _DEBUG
-  freopen("1.20.in", "r", stdin);
+  freopen("1.22.in", "r", stdin);
   #endif
 
-  Sales_data item;
+  Sales_data item, sum;
+
+  cin >> item;
+  cout << item << endl;
+  sum = item;
+
   while (cin >> item) {
     cout << item << endl;
+    sum += item;
   }
+  cout << sum << endl;
 
   return 0;
 }
