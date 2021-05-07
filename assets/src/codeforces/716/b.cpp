@@ -2,10 +2,10 @@
 #include <cmath>
 #include <iostream>
 
+using namespace std;
+
 const int MOD = 1e9 + 7;
 using ll = unsigned long long;
-
-// TODO:
 
 int main() {
   #ifdef _DEBUG
@@ -17,19 +17,11 @@ int main() {
   while (t--) {
     int n, k;
     scanf("%d%d", &n, &k);
-    if (n == 1) {
-      printf("1\n");
-      continue;
+    ll res = 1;
+    while (k--) {
+      res = (res * n) % MOD;
     }
-
-    ll x = ll(n) * (n - 1);
-    printf("x=%lld\n", x);
-    x %= MOD;
-    printf("x=%lld\n", x);
-    x = x * (((1LL << k) - 1) % MOD) % MOD;
-    printf("x=%lld\n", x);
-    x = (x + n - 1) % MOD;
-    printf("%lld\n", x);
+    cout << res << endl;
   }
 
   return 0;
