@@ -12,12 +12,8 @@ sub MAIN ($start-date = Date.today.Str) {
         $res
     }
 
-    my &avaliable-dir-name := -> $a {
-        avaliable-name($a.basename)
-    }
-
+    my &avaliable-dir-name := -> $a { avaliable-name($a.basename) }
     my @problem-set;
-
     my &list-dir := -> $dir {
         for dir($dir) -> $name {
             if avaliable-dir-name($name) {
