@@ -26,7 +26,7 @@ void get_eulers(int n) {
 
 int main() {
   #ifdef _DEBUG
-  freopen("c.in", "r", stdin);
+  freopen("hdu1286.in", "r", stdin);
   #endif
 
   int t;

@@ -23,7 +23,7 @@ void get_primes(int n) {
 
 int main() {
   #ifdef _DEBUG
-  freopen("a.in", "r", stdin);
+  freopen("cf113.in", "r", stdin);
   #endif
 
   int a, b;
