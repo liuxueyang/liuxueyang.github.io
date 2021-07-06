@@ -1,3 +1,5 @@
+;; Emacs Rocks!
+
 ;; add this to .zshrc or .bashrc
 ;; alias clean-emacs="HOME=$HOME/workspace/clean-emacs /usr/local/bin/emacs "
 
