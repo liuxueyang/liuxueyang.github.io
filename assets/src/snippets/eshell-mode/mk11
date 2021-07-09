@@ -2,4 +2,4 @@
 # name: mk11
 # key: mk11
 # --
-g++ -Wall -D_DEBUG -std=c++11 $1.cpp -o $1.exe && ./$1.exe
+g++ -Wall -Wno-unused-variable -D_DEBUG -std=c++11 $1.cpp -o $1.exe && ./$1.exe

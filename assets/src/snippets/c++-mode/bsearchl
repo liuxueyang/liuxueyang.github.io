@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: bsearchl
+# key: bsearchl
+# --
+int l = 0, r = 1e9 + 10, mid;
+while (l < r) {
+  mid = (l + r + 1) / 2;
+  if (check(mid) >= k) l = mid;
+  else r = mid - 1;
+}
