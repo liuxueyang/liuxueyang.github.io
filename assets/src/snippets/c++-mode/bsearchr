@@ -2,9 +2,9 @@
 # name: bsearchr
 # key: bsearchr
 # --
-int l = 0, r = n - 1, mid;
+int l = $1, r = $2, mid;
 while (l < r) {
   mid = (l + r) / 2;
-  if (a[mid] >= x) r = mid;
+  if ($3) r = mid;
   else l = mid + 1;
 }

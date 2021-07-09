@@ -2,9 +2,9 @@
 # name: bsearchl
 # key: bsearchl
 # --
-int l = 0, r = 1e9 + 10, mid;
+ll l = $1, r = $2, mid;
 while (l < r) {
   mid = (l + r + 1) / 2;
-  if (check(mid) >= k) l = mid;
+  if ($3) l = mid;
   else r = mid - 1;
 }
