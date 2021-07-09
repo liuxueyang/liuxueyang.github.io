@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: bsearchl
+# key: bsearchl
+# --
+ll l = $1, r = $2, mid;
+while (l < r) {
+  mid = (l + r + 1) / 2;
+  if ($3) l = mid;
+  else r = mid - 1;
+}
