@@ -12,24 +12,38 @@
       (process-send-string proc text)
       (process-send-eof proc))))
 
-(setq interprogram-cut-function 'paste-to-osx)
+(defun paste-to-win (text &optional push)
+  (let ((process-connection-type nil))
+    (let ((proc (start-process "clip.exe" "*Messages*" "clip.exe")))
+      (process-send-string proc text)
+      (process-send-eof proc))))
 
 (defun copy-from-osx ()
   (shell-command-to-string "pbpaste"))
 
-(setq interprogram-paste-function 'copy-from-osx)
+(defun copy-from-win ()
+  (shell-command-to-string "powershell.exe Get-Clipboard"))
 
-(message "Hello World")
+(when (eq system-type 'macos)
+  (setq interprogram-paste-function 'copy-from-osx)
+  (setq interprogram-cut-function 'paste-to-osx))
 
-(setq template-algorithm "// insert algorithm
-")
+(when (eq system-type 'windows-nt)
+  (load-theme 'manoj-dark t)
+  (set-frame-font "Source Code Pro 13"))
 
-(defun algorithm ()
-  (interactive)
-  (insert template-algorithm))
+(when (eq system-type 'cygwin)
+    (setq interprogram-paste-function 'copy-from-win)
+    (setq interprogram-cut-function 'paste-to-win))
+
+(use-package yasnippet
+	     :ensure t)
 
 (require 'yasnippet)
 (yas-global-mode t)
+
+(use-package smartparens
+	     :ensure t)
 
 (require 'smartparens-config)
 (add-hook 'prog-mode-hook #'smartparens-mode)
@@ -48,7 +62,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-(when (eq system-type 'windows-nt)
-  (load-theme 'manoj-dark t)
-  (set-frame-font "Source Code Pro 13"))
