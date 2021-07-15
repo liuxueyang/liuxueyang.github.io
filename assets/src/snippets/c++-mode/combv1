@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: combv1
+# key: combv1
+# --
+const int N = 2010;
+int n, a[N][N];
+
+void combv1() {
+  for (int i = 0; i < N; ++i) {
+    for (int j = 0; j <= i; ++j) {
+      if (!j) a[i][j] = 1;
+      else a[i][j] = (a[i - 1][j] + a[i - 1][j - 1]) % MOD;
+    }
+  }
+}
