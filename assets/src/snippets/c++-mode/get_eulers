@@ -1,0 +1,25 @@
+# -*- mode: snippet -*-
+# name: geteulers
+# key: geteulers
+# --
+const int N = 40010;
+int primes[N], cnt, eulers[N];
+bool st[N];
+
+void get_eulers(int n) {
+  for (int i = 2; i <= n; ++i) {
+    if (!st[i]) {
+      primes[cnt++] = i;
+      eulers[i] = i - 1;
+    }
+    for (int j = 0; primes[j] <= n / i; ++j) {
+      st[primes[j] * i] = true;
+      if (i % primes[j] == 0) {
+	eulers[i * primes[j]] = eulers[i] * primes[j];
+	break;
+      }
+      eulers[i * primes[j]] = eulers[i] * (primes[j] - 1);
+    }
+  }
+}
+

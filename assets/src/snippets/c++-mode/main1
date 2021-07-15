@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: main1
+# key: main1
+# --
+int main(void)
+{
+#ifdef _DEBUG
+    freopen("`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`.in", "r", stdin);
+#endif
+
+    $0
+    
+    return 0;
+}
