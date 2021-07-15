@@ -3,6 +3,8 @@
 ;; add this to .zshrc or .bashrc
 ;; alias clean-emacs="HOME=$HOME/workspace/clean-emacs /usr/local/bin/emacs "
 
+(global-linum-mode)
+
 (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
                          ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 
