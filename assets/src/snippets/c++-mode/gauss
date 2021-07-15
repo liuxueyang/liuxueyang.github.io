@@ -7,20 +7,22 @@ double a[N][N];
 int n;
 
 int gauss() {
-  int c, r;
-  for (c = 0, r = 0; c < n; ++c) {
-    int t = r;
+  int r = 0, c = 0, t;
+  for (; c < n; ++c) {
+    t = r;
     for (int i = r; i < n; ++i) {
       if (fabs(a[i][c]) > fabs(a[t][c])) t = i;
     }
+
     if (fabs(a[t][c]) < eps) continue;
-    for (int i = c; i <= n; ++i) swap(a[t][i], a[r][i]);
-    for (int i = n; i >= c; --i) a[r][i] /= a[r][c];
+    for (int j = c; j <= n; ++j) swap(a[t][j], a[r][j]);
+    for (int j = n; j >= c; --j) a[r][j] /= a[r][c];
+
     for (int i = r + 1; i < n; ++i) {
       if (fabs(a[i][c]) > eps) {
-	for (int j = n; j >= c; --j) {
-	  a[i][j] -= a[i][c] * a[r][j];
-	}
+        for (int j = n; j >= c; --j) {
+          a[i][j] -= a[i][c] * a[r][j];
+        }
       }
     }
 
@@ -31,7 +33,7 @@ int gauss() {
     for (int i = r; i < n; ++i) {
       if (fabs(a[i][n]) > eps) return 2; // no solution
     }
-    return 1;                   // many solutions
+    return 1;			// many solutions
   }
 
   for (int i = n - 1; i >= 0; --i) {
@@ -39,5 +41,6 @@ int gauss() {
       a[i][n] -= a[i][j] * a[j][n];
     }
   }
-  return 0;
+
+  return 0;			// unique solution
 }

@@ -24,7 +24,7 @@
 (defun copy-from-win ()
   (shell-command-to-string "powershell.exe Get-Clipboard"))
 
-(when (eq system-type 'macos)
+(when (eq system-type 'darwin)
   (setq interprogram-paste-function 'copy-from-osx)
   (setq interprogram-cut-function 'paste-to-osx))
 
