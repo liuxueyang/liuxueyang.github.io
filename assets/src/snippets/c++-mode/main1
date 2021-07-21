@@ -7,8 +7,9 @@ int main(void)
 #ifdef _DEBUG
     freopen("`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`.in", "r", stdin);
 #endif
+    std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
     $0
-    
+
     return 0;
 }
