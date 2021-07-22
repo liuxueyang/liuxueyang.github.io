@@ -1,0 +1,34 @@
+# -*- mode: snippet -*-
+# name: getprimesrange
+# key: getprimesrange
+# --
+const int N = 100010;
+ll primes[N];
+int cnt;
+bool st[N];
+
+void get_primes_range(ll a, ll b) {
+  ll top = sqrt(b);
+  memset(st, false, sizeof st);
+  st[0] = st[1] = true;
+  cnt = 0;
+
+  for (ll i = 2; i <= top; ++i) {
+    if (!st[i]) {
+      primes[cnt++] = i;
+      for (ll j = i * i; j <= top; j += i) {
+	st[j] = true;
+      }
+    }
+  }
+
+  memset(st, false, sizeof st);
+  for (int i = 0; i < cnt; ++i) {
+    ll x = primes[i];
+    for (ll j = max(x * x, (a + x - 1) / x * x); j <= b; j += x) {
+      st[j - a] = true;
+    }
+  }
+
+  if (a == 1) st[0] = true;
+}
