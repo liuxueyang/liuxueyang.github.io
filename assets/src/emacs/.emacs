@@ -8,6 +8,8 @@
 (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
                          ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 
+(tool-bar-mode -1)
+
 (defun paste-to-osx (text &optional push)
   (let ((process-connection-type nil))
     (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
@@ -103,6 +105,19 @@ Version 2020-08-30"
                (replace-match (elt $x 1) "FIXEDCASE" "LITERAL")
                (overlay-put (make-overlay (- (point) (length (elt $x 1))) (point)) 'font-lock-face '(:foreground "red"))))
            $findReplaceMap))))))
+
+(if (display-graphic-p)
+    (setq initial-frame-alist
+          '(
+            (tool-bar-lines . 0)
+            (width . 106)
+            (height . 60)
+            (background-color . "honeydew")
+            (left . 50)
+            (top . 50)))
+  (setq initial-frame-alist '( (tool-bar-lines . 0))))
+
+(setq default-frame-alist initial-frame-alist)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
