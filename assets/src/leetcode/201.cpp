@@ -31,7 +31,7 @@ typedef pair<int, int> PII;
 
 class Solution {
 public:
-  int rangeBitwiseAnd(int left, int right) {
+  int rangeBitwiseAndV1(int left, int right) {
     int n = right - left, cur = 0, x = 1, idx = 0;
     int res = left, remain = 0;
 
@@ -50,6 +50,18 @@ public:
 
       left >>= 1;
     }
+
+    return res;
+  }
+
+  int rangeBitwiseAnd(int left, int right) {
+    int idx = 0;
+    while (left != right) {
+      idx++;
+      left >>= 1;
+      right >>= 1;
+    }
+    int res = left << idx;
 
     return res;
   }
