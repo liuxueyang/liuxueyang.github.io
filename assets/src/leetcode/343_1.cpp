@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Wed Oct 13 20:32:00 2021
 
 #include <cstdio>
 #include <cstring>
@@ -48,3 +44,20 @@ typedef LN* LNP;
 
 #endif
 
+const int N = 100;
+int d[N];
+
+class Solution {
+public:
+  int integerBreak(int n) {
+    memset(d, 0, sizeof d);
+    d[1] = 1;
+    for (int i = 2; i <= n; ++i) {
+      for (int j = 1; j < i; ++j) {
+        d[i] = max(d[i], max(d[j], j) * (i - j));
+      }
+    }
+
+    return d[n];
+  }
+};

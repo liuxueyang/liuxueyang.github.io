@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Wed Oct 13 15:31:31 2021
 
 #include <cstdio>
 #include <cstring>
@@ -47,4 +43,31 @@ typedef ListNode LN;
 typedef LN* LNP;
 
 #endif
+const int N = 1010;
+int d[N][N];
 
+class Solution {
+public:
+  int longestPalindromeSubseq(string s) {
+    int n = s.size();
+    memset(d, 0, sizeof d);
+    int res = 1;
+
+    for (int i = 0; i < n; ++i) d[i][i] = 1;
+    for (int k = 1; k < n; ++k) {
+      for (int i = 0; i + k < n; ++i) {
+        int j = i + k;
+        if (s[i] == s[j]) {
+          d[i][j] = max(d[i + 1][j - 1] + 2,
+                        max(d[i][j - 1], d[i + 1][j]));
+        } else {
+          d[i][j] = max(d[i][j - 1], d[i + 1][j]);
+        }
+
+        res = max(res, d[i][j]);
+      }
+    }
+
+    return res;
+  }
+};
