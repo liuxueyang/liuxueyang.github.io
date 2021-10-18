@@ -66,7 +66,7 @@ public:
     account1--;
     account2--;
 
-    int x = b[account1];
+    ll x = b[account1];
     if (x >= money) {
       b[account2] += money;
       b[account1] -= money;
