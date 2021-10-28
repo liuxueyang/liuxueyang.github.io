@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Thu Oct 28 18:19:00 2021
 
 #include <cstdio>
 #include <cstring>
@@ -58,3 +54,19 @@ typedef ListNode LN;
 typedef LN* LNP;
 typedef TreeNode TN;
 typedef TN* TNP;
+
+const int N = 10010;
+int d[N];
+
+class Solution {
+public:
+  int findLengthOfLCIS(vector<int>& a) {
+    int n = a.size(), res = 1;
+    for (int i = 0; i < n; ++i) d[i] = 1;
+    for (int i = 1; i < n; ++i) {
+      if (a[i] > a[i - 1]) d[i] = d[i - 1] + 1;
+      res = max(res, d[i]);
+    }
+    return res;
+  }
+};

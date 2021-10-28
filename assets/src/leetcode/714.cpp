@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Thu Oct 28 17:59:42 2021
 
 #include <cstdio>
 #include <cstring>
@@ -58,3 +54,22 @@ typedef ListNode LN;
 typedef LN* LNP;
 typedef TreeNode TN;
 typedef TN* TNP;
+
+const int N = 50010;
+int d[N][2];
+
+class Solution {
+public:
+  int maxProfit(vector<int>& a, int f) {
+    int n = a.size();
+    memset(d, 0, sizeof d);
+    d[0][1] = -a[0];
+
+    for (int i = 1; i < n; ++i) {
+      d[i][0] = max(d[i - 1][1] + a[i] - f, d[i - 1][0]);
+      d[i][1] = max(d[i - 1][0] - a[i], d[i - 1][1]);
+    }
+
+    return max(d[n - 1][0], 0);
+  }
+};

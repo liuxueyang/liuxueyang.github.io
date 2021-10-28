@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Thu Oct 28 08:02:28 2021
 
 #include <cstdio>
 #include <cstring>
@@ -58,3 +54,23 @@ typedef ListNode LN;
 typedef LN* LNP;
 typedef TreeNode TN;
 typedef TN* TNP;
+
+class Solution {
+public:
+  unordered_map<TNP, int> d, d1;
+
+  void dfs(TNP ro) {
+    if (!ro) return;
+
+    TNP l = ro->left, r = ro->right;
+    dfs(l), dfs(r);
+    d[ro] = ro->val + d1[l] + d1[r];
+    d1[ro] = max(d[l], d1[l]) + max(d[r], d1[r]);
+  }
+
+  int rob(TreeNode* ro) {
+    d[nullptr] = d1[nullptr] = 0;
+    dfs(ro);
+    return max(d[ro], d1[ro]);
+  }
+};

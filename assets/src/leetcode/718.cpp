@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Thu Oct 28 18:25:13 2021
 
 #include <cstdio>
 #include <cstring>
@@ -58,3 +54,29 @@ typedef ListNode LN;
 typedef LN* LNP;
 typedef TreeNode TN;
 typedef TN* TNP;
+
+const int N = 1010;
+int d[N][N];
+
+class Solution {
+public:
+  int findLength(vector<int>& a, vector<int>& b) {
+    memset(d, 0, sizeof d);
+    int n = a.size(), m = b.size(), res {};
+
+    for (int i = 0; i < n; ++i) {
+      for (int j = 0; j < m; ++j) {
+        if (a[i] == b[j]) {
+          if (i && j) d[i][j] = d[i - 1][j - 1] + 1;
+          else d[i][j] = 1;
+        } else {
+          d[i][j] = 0;
+        }
+
+        res = max(res, d[i][j]);
+      }
+    }
+
+    return res;
+  }
+};

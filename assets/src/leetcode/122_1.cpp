@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Thu Oct 28 14:57:58 2021
 
 #include <cstdio>
 #include <cstring>
@@ -58,3 +54,14 @@ typedef ListNode LN;
 typedef LN* LNP;
 typedef TreeNode TN;
 typedef TN* TNP;
+
+class Solution {
+public:
+  int maxProfit(vector<int>& a) {
+    int n = a.size(), res {};
+    for (int i = 1; i < n; ++i) {
+      if (a[i] > a[i - 1]) res += a[i] - a[i - 1];
+    }
+    return res;
+  }
+};

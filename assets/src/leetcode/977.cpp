@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Thu Oct 28 10:20:40 2021
 
 #include <cstdio>
 #include <cstring>
@@ -58,3 +54,40 @@ typedef ListNode LN;
 typedef LN* LNP;
 typedef TreeNode TN;
 typedef TN* TNP;
+
+class Solution {
+public:
+  vector<int> sortedSquares(vector<int>& a) {
+    VI res;
+    int n = a.size();
+
+    int l = 0, r = n - 1, mid;
+    while (l < r) {
+      mid = (l + r) / 2;
+      if (a[mid] >= 0) r = mid;
+      else l = mid + 1;
+    }
+    if (a[r] >= 0) {
+      int i = r, j = r - 1;
+      while (i < n || j >= 0) {
+        if (i < n && j >= 0) {
+          int x = abs(a[i]), y = abs(a[j]);
+          if (x <= y) {
+            res.push_back(x * x); ++i;
+          } else {
+            res.push_back(y * y); --j;
+          }
+        } else if (i < n) {
+          res.push_back(a[i] * a[i]); ++i;
+        } else if (j >= 0) {
+          res.push_back(a[j] * a[j]); --j;
+        }
+      }
+    } else {
+      for (int i = n - 1; i >= 0; --i) res.push_back(a[i] * a[i]);
+      return res;
+    }
+
+    return res;
+  }
+};
