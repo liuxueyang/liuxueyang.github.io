@@ -68,53 +68,45 @@ typedef TN* TNP;
  */
 class Solution {
 public:
-  bool found;
-  TNP ta;
-
-  void dfs(TNP ro, int key) {
-    if (!ro) return;
-    if (found) return;
-
-    auto x = ro->val;
-    auto l = ro->left, r = ro->right;
-    if (x == key) {
-      found = true;
-      ta = ro;
-      return;
-    }
-
-    dfs(l, key); dfs(r, key);
-  }
-
   TNP find_next(TNP ro) {
-    if (!ro) return ro;
     auto l = ro->left;
     if (l) return find_next(l);
-    else return ro;
+    return ro;
   }
 
   TNP find_prev(TNP ro) {
-    if (!ro) return ro;
     auto r = ro->right;
     if (r) return find_prev(r);
-    else return ro;
+    return ro;
   }
 
+  bool leaf(TNP ro) { return !ro->left && !ro->right; }
+
   TreeNode* deleteNode(TreeNode* ro, int key) {
-    found = false;
-    ta = nullptr;
+    if (!ro) return ro;
 
-    dfs(ro, key);
+    auto x = ro->val;
+    auto l = ro->left, r = ro->right;
 
-    if (!found) return ro;
-
-    auto l = ta->left, r = ta->right;
-    if (!l && !r) {
-      return nullptr;
-    } else if (l) {
-      auto pre = find_prev(l);
-      ta->val = pre->val;
-      
+    if (x > key) {
+      ro->left = deleteNode(l, key);
+      return ro;
+    } else if (x < key) {
+      ro->right = deleteNode(r, key);
+      return ro;
+    } else {
+      if (leaf(ro)) return nullptr;
+      if (l) {
+        auto pre = find_prev(l);
+        ro->val = pre->val;
+        ro->left = deleteNode(l, pre->val);
+        return ro;
+      } else {
+        auto ne = find_next(r);
+        ro->val = ne->val;
+        ro->right = deleteNode(r, ne->val);
+        return ro;
+      }
     }
 
     return ro;
