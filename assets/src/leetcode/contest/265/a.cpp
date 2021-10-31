@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sun Oct 31 10:32:06 2021
 
 #include <cstdio>
 #include <cstring>
@@ -59,3 +55,18 @@ struct TreeNode {
 
 #endif
 
+class Solution {
+public:
+  int smallestEqual(vector<int>& a) {
+    int n = a.size(), res = -1;
+
+    for (int i = 0; i < n; ++i) {
+      if (i % 10 == a[i]) {
+        res = i;
+        break;
+      }
+    }
+
+    return res;
+  }
+};

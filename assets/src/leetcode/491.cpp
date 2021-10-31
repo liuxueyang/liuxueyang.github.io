@@ -55,8 +55,7 @@ typedef LN* LNP;
 typedef TreeNode TN;
 typedef TN* TNP;
 
-const int N = 20;
-bool vis[N];
+const int N = 210;
 
 class Solution {
 public:
@@ -67,51 +66,27 @@ public:
 
   void dfs(int idx) {
     if (idx == n) {
-      if (tmp.size() >= 2) res.push_back(tmp);
       return;
     }
 
-    if (tmp.empty()) {
-      tmp.push_back(a[idx]);
-      vis[idx] = true;
+    bool vis[N] {};
+    for (int i = idx; i < n; ++i) {
+      if (vis[a[i] + 100] || (!tmp.empty() && a[i] < tmp.back()))
+        continue;
 
-      dfs(idx + 1);
+      vis[a[i] + 100] = true;
+
+      tmp.push_back(a[i]);
+      if (tmp.size() >= 2) res.push_back(tmp);
+
+      dfs(i + 1);
 
       tmp.pop_back();
-      vis[idx] = false;
-
-      dfs(idx + 1);
-    } else {
-      int x = tmp[tmp.size() - 1];
-      bool mark = false;
-
-      for (int i = 0; i < idx; ++i) {
-        if (a[i] == a[idx] && !vis[i]) {
-          mark = true;
-          break;
-        }
-      }
-
-      if (mark) return;
-      else {
-        if (a[idx] >= x) {
-          vis[idx] = true;
-          tmp.push_back(a[idx]);
-
-          dfs(idx + 1);
-
-          tmp.pop_back();
-          vis[idx] = false;
-        }
-
-        dfs(idx + 1);
-      }
     }
   }
 
   vector<vector<int>> findSubsequences(vector<int>& _a) {
     a = _a; n = a.size();
-    memset(vis, false, sizeof vis);
 
     dfs(0);
 
