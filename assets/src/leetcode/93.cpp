@@ -1,4 +1,4 @@
-// Date: Sat Oct 30 15:56:23 2021
+// Date: Sun Oct 31 18:49:08 2021
 
 #include <cstdio>
 #include <cstring>
@@ -29,6 +29,11 @@ typedef long long ll;
 typedef vector<int> VI;
 typedef pair<int, int> PII;
 
+#define LN ListNode
+#define LNP ListNode*
+#define TN TreeNode
+#define TNP TreeNode*
+
 #ifdef _DEBUG
 
 struct ListNode {
@@ -50,55 +55,57 @@ struct TreeNode {
 
 #endif
 
-typedef ListNode LN;
-typedef LN* LNP;
-typedef TreeNode TN;
-typedef TN* TNP;
-
-const int N = 20;
-bool d[N][N];
-
 class Solution {
 public:
+  vector<VI> res;
+  VI tmp;
   string s;
   int n;
-  vector<vector<string>> res;
-  vector<string> tmp;
 
-  void dfs(int idx) {
+  string conver(VI &v) {
+    string r;
+    for (int i = 0; i < 3; ++i) r += to_string(v[i]) + ".";
+    r += to_string(v[3]);
+    return r;
+  }
+
+  void dfs(int idx, int cur) {
+    if (tmp.size() > 4) return;
+
     if (idx == n) {
-      res.push_back(tmp);
+      if (tmp.size() == 4) {
+        res.push_back(tmp);
+      }
       return;
     }
 
     for (int i = idx; i < n; ++i) {
-      if (d[idx][i]) {
-        tmp.push_back(s.substr(idx, i - idx + 1));
-        dfs(i + 1);
+      cur = cur * 10 + (s[i] - '0');
+
+      if (!cur) {
+        tmp.push_back(cur);
+        dfs(i + 1, 0);
         tmp.pop_back();
-      }
+        return;
+      } else if (cur >= 1 && cur <= 255) {
+        tmp.push_back(cur);
+        dfs(i + 1, 0);
+        tmp.pop_back();
+      } else break;
     }
   }
 
-  vector<vector<string>> partition(string _s) {
+  vector<string> restoreIpAddresses(string _s) {
     s = _s;
     n = s.size();
-    memset(d, false, sizeof d);
 
-    for (int i = 0; i < n; ++i) d[i][i] = true;
+    dfs(0, 0);
 
-    for (int k = 2; k <= n; ++k) {
-      for (int i = 0; i + k - 1 < n; ++i) {
-        int j = i + k - 1;
-        if (s[i] == s[j]) {
-          if (j - i == 1) d[i][j] = true;
-          else d[i][j] = d[i + 1][j - 1];
-        } else d[i][j] = false;
-      }
+    vector<string> res2;
+
+    for (auto &v : res) {
+      res2.push_back(conver(v));
     }
-
-    dfs(0);
-
-    return res;
+    return res2;
   }
 };
