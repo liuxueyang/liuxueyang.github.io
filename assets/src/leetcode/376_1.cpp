@@ -1,4 +1,4 @@
- // Date: Sun Oct 31 23:21:58 2021
+// Date: Mon Nov  1 15:45:27 2021
 
 #include <cstdio>
 #include <cstring>
@@ -66,18 +66,18 @@ public:
     for (int i = 0; i < n; ++i) d[i][0] = d[i][1] = 1;
 
     for (int i = 1; i < n; ++i) {
-      for (int j = 0; j < i; ++j) {
-        if (a[i] > a[j]) {
-          d[i][0] = max(d[i][0], d[j][1] + 1);
-        } else if (a[i] < a[j]) {
-          d[i][1] = max(d[i][1], d[j][0] + 1);
-        } else {
-          d[i][0] = max(d[i][0], d[j][0]);
-          d[i][1] = max(d[i][1], d[j][1]);
-        }
+      if (a[i] > a[i - 1]) {
+        d[i][0] = max(d[i - 1][0], d[i - 1][1] + 1);
+        d[i][1] = max(d[i][1], d[i - 1][1]);
+      } else if (a[i] < a[i - 1]) {
+        d[i][1] = max(d[i - 1][1], d[i - 1][0] + 1);
+        d[i][0] = max(d[i][0], d[i - 1][0]);
+      } else {
+        d[i][0] = d[i - 1][0];
+        d[i][1] = d[i - 1][1];
       }
-      res = max(max(d[i][0], d[i][1]),
-                res);
+
+      res = max(res, max(d[i][0], d[i][1]));
     }
 
     return res;

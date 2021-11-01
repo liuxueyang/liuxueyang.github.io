@@ -1,4 +1,4 @@
- // Date: Sun Oct 31 23:21:58 2021
+// Date: Mon Nov  1 16:56:59 2021
 
 #include <cstdio>
 #include <cstring>
@@ -55,31 +55,15 @@ struct TreeNode {
 
 #endif
 
-const int N = 1010;
-int d[N][2];
-
 class Solution {
 public:
-  int wiggleMaxLength(vector<int>& a) {
-    int n = a.size(), res = 1;
-    memset(d, 0, sizeof d);
-    for (int i = 0; i < n; ++i) d[i][0] = d[i][1] = 1;
-
-    for (int i = 1; i < n; ++i) {
-      for (int j = 0; j < i; ++j) {
-        if (a[i] > a[j]) {
-          d[i][0] = max(d[i][0], d[j][1] + 1);
-        } else if (a[i] < a[j]) {
-          d[i][1] = max(d[i][1], d[j][0] + 1);
-        } else {
-          d[i][0] = max(d[i][0], d[j][0]);
-          d[i][1] = max(d[i][1], d[j][1]);
-        }
-      }
-      res = max(max(d[i][0], d[i][1]),
-                res);
+  bool canJump(vector<int>& a) {
+    int n = a.size(), cur = 0;
+    for (int i = 0; i <= cur; ++i) {
+      cur = max(cur, i + a[i]);
+      if (cur >= n - 1) return true;
     }
 
-    return res;
+    return false;
   }
 };

@@ -1,4 +1,4 @@
- // Date: Sun Oct 31 23:21:58 2021
+// Date: Mon Nov  1 18:27:00 2021
 
 #include <cstdio>
 #include <cstring>
@@ -13,6 +13,7 @@
 #include <set>
 #include <algorithm>
 #include <utility>
+#include <functional>
 
 using namespace std;
 
@@ -55,31 +56,39 @@ struct TreeNode {
 
 #endif
 
-const int N = 1010;
-int d[N][2];
-
 class Solution {
 public:
-  int wiggleMaxLength(vector<int>& a) {
-    int n = a.size(), res = 1;
-    memset(d, 0, sizeof d);
-    for (int i = 0; i < n; ++i) d[i][0] = d[i][1] = 1;
+  int canCompleteCircuit(vector<int>& g, vector<int>& c) {
+    int n = g.size(), sum {};
+    VI g1(n, 0);
+    for (int i = 0; i < n; ++i) {
+      g1[i] = g[i] - c[i];
+      sum += g1[i];
+    }
+    if (sum < 0) return -1;
 
-    for (int i = 1; i < n; ++i) {
-      for (int j = 0; j < i; ++j) {
-        if (a[i] > a[j]) {
-          d[i][0] = max(d[i][0], d[j][1] + 1);
-        } else if (a[i] < a[j]) {
-          d[i][1] = max(d[i][1], d[j][0] + 1);
-        } else {
-          d[i][0] = max(d[i][0], d[j][0]);
-          d[i][1] = max(d[i][1], d[j][1]);
+    for (int i = 0; i < n; ++i) {
+      if (g1[i] >= 0) {
+        int j = i, cur = g1[i];
+        bool flag = true;
+        ++j;
+        j %= n;
+        while (j != i) {
+          cur += g1[j];
+          if (cur < 0) {
+            flag = false;
+            break;
+          }
+          ++j;
+          j %= n;
         }
+
+        if (flag) return i;
+        if (j < i) return -1;
+        i = j - 1;
       }
-      res = max(max(d[i][0], d[i][1]),
-                res);
     }
 
-    return res;
+    return -1;
   }
 };
