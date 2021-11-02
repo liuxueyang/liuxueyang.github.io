@@ -64,22 +64,16 @@ public:
     for (int i = n - 2; i >= 0; --i) {
       if (a[i] > a[i + 1]) {
         d[i] = d[i + 1] + 1;
-      } else if (a[i] == a[i + 1]) {
-        d[i] = d[i + 1];
       }
     }
-
-    VI d1(n, 1);
     for (int i = 1; i < n; ++i) {
       if (a[i] > a[i - 1]) {
-        d1[i] = d1[i - 1] + 1;
-      } else if (a[i] == a[i - 1]) {
-        d1[i] = d1[i - 1];
+        d[i] = max(d[i], d[i - 1] + 1);
       }
     }
 
     for (int i = 0; i < n; ++i) {
-      res += max(d[i], d1[i]);
+      res += d[i];
     }
 
     return res;
