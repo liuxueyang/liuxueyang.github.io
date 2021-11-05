@@ -60,10 +60,31 @@ struct TreeNode {
 class Solution {
 public:
   bool search(vector<int>& a, int t) {
-    int n = a.size();
-    int l, r, mid, last = a[n - 1];
-    if (t == last) return true;
+    int n = a.size(), last = a[n - 1];
+
+    int r, l, mid;
+    if (last == t) return true;
 
     l = 0, r = n - 1;
+    while (l < r && a[l] == last) ++l;
+
+    while (l < r) {
+      mid = (l + r) / 2;
+      if (a[mid] <= last) r = mid;
+      else l = mid + 1;
+    }
+
+    int start = r;
+    if (a[start] > t) return false;
+    if (t < last) l = start, r = n - 1;
+    else l = 0, r = start - 1;
+
+    while (l < r) {
+      mid = (l + r + 1) / 2;
+      if (a[mid] <= t) l = mid;
+      else r = mid - 1;
+    }
+
+    return a[l] == t;
   }
 };
