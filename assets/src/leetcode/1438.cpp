@@ -58,15 +58,29 @@ struct TreeNode {
 #endif
 
 const int N = 100010;
-int q[N];
+int q1[N], q2[N];
 
 class Solution {
 public:
   int longestSubarray(vector<int>& a, int k) {
     int n = a.size(), res {};
 
-    int hh = 0, tt = -1;
-    
+    int hh1 = 0, tt1 = -1, hh2 = 0, tt2 = -1;
+    for (int i = 0, j = 0; j < n; ++j) {
+      while (tt1 >= hh1 && a[q1[tt1]] > a[j]) --tt1;
+      while (tt2 >= hh2 && a[q2[tt2]] < a[j]) --tt2;
+      q1[++tt1] = j;
+      q2[++tt2] = j;
+
+      while (tt1 >= hh1 && tt2 >= hh2 &&
+             a[q2[hh2]] - a[q1[hh1]] > k) {
+        if (i == q1[hh1]) ++hh1;
+        if (i == q2[hh2]) ++hh2;
+        ++i;
+      }
+
+      res = max(res, j - i + 1);
+    }
 
     return res;
   }
