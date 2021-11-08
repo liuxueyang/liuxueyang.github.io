@@ -1,4 +1,4 @@
-// Date: Mon Nov  8 20:12:50 2021
+// Date: Mon Nov  8 22:41:19 2021
 
 #include <cstdio>
 #include <cstring>
@@ -57,30 +57,32 @@ struct TreeNode {
 
 #endif
 
-const int N = 100010, M = 200010;
+const int N = 10010, M = 500010;
 int n, m, h[N], st[N], dis[N];
 int idx, e[M], ne[M], w[M];
 int s;
 
 void Init() {
   idx = 0;
-  memset(h, -1, sizeof h);
-  memset(st, 0, sizeof st);
   memset(dis, 0x3f, sizeof dis);
+  memset(st, 0, sizeof st);
+  memset(h, -1, sizeof h);
 }
 
 void Add(int a, int b, int c) {
   e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx++;
 }
 
-void dijkstra() {
+void spfa() {
   dis[s] = 0;
+
   priority_queue<PII, vector<PII>, greater<PII>> q;
   q.push({0, s});
 
   while (!q.empty()) {
-    PII t = q.top(); q.pop();
-    int ver = t.second, base = t.first;
+    PII t = q.top();
+    q.pop();
+    int base = t.first, ver = t.second;
     if (st[ver]) continue;
     st[ver] = 1;
 
@@ -97,19 +99,24 @@ void dijkstra() {
 int main(void)
 {
 #ifdef _DEBUG
-  freopen("4779.in", "r", stdin);
+  freopen("3371.in", "r", stdin);
 #endif
   std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
   Init();
   cin >> n >> m >> s;
-  while (m--) {
-    int a, b, c; cin >> a >> b >> c;
+  while (m --) {
+    int a, b, c;
+    cin >> a >> b >> c;
     Add(a, b, c);
   }
-  dijkstra();
-  for (int i = 1; i <= n; ++i) printf("%d ", dis[i] == INF ? ((1<<31) - 1) : dis[i]);
-  puts("");
+
+  spfa();
+
+  for (int i = 1; i <= n; ++i)
+    cout << (dis[i] == INF ? (1LL << 31) - 1 : dis[i]) << ' ';
+
+  cout << endl;
 
   return 0;
 }

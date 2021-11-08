@@ -1,4 +1,4 @@
-// Date: Mon Nov  8 20:12:50 2021
+// Date: Mon Nov  8 23:35:14 2021
 
 #include <cstdio>
 #include <cstring>
@@ -57,59 +57,37 @@ struct TreeNode {
 
 #endif
 
-const int N = 100010, M = 200010;
-int n, m, h[N], st[N], dis[N];
-int idx, e[M], ne[M], w[M];
-int s;
+class Solution {
+public:
+  int maxSumSubmatrix(vector<vector<int>>& a, int K) {
+    int n = a.size(), m = a[0].size();
+    vector<VI> p(n + 1, VI(m + 1, 0));
 
-void Init() {
-  idx = 0;
-  memset(h, -1, sizeof h);
-  memset(st, 0, sizeof st);
-  memset(dis, 0x3f, sizeof dis);
-}
-
-void Add(int a, int b, int c) {
-  e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx++;
-}
-
-void dijkstra() {
-  dis[s] = 0;
-  priority_queue<PII, vector<PII>, greater<PII>> q;
-  q.push({0, s});
-
-  while (!q.empty()) {
-    PII t = q.top(); q.pop();
-    int ver = t.second, base = t.first;
-    if (st[ver]) continue;
-    st[ver] = 1;
-
-    for (int i = h[ver]; i != -1; i = ne[i]) {
-      int j = e[i], tmp = base + w[i];
-      if (tmp < dis[j]) {
-        dis[j] = tmp;
-        q.push({dis[j], j});
+    for (int j = 0; j < m; ++j) {
+      for (int i = 0; i < n; ++i) {
+        p[i + 1][j] = p[i][j] + a[i][j];
       }
     }
+
+    int res = -INF;
+    for (int i = 0; i < n; ++i) {
+      for (int j = i; j < n; ++j) {
+        VI b(m, 0), p1(m + 1, 0);
+        for (int k = 0; k < m; ++k) b[k] = p[j + 1][k] - p[i][k];
+        for (int k = 0; k < m; ++k) p1[k + 1] = p1[k] + b[k];
+
+        set<int> s;
+        s.insert(0);
+        for (int k = 1; k <= m; ++k) {
+          int tmp = p1[k] - K;
+          auto it = s.lower_bound(tmp);
+          if (it != s.end())
+            res = max(res, p1[k] - *it);
+          s.insert(p1[k]);
+        }
+      }
+    }
+
+    return res;
   }
-}
-
-int main(void)
-{
-#ifdef _DEBUG
-  freopen("4779.in", "r", stdin);
-#endif
-  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-
-  Init();
-  cin >> n >> m >> s;
-  while (m--) {
-    int a, b, c; cin >> a >> b >> c;
-    Add(a, b, c);
-  }
-  dijkstra();
-  for (int i = 1; i <= n; ++i) printf("%d ", dis[i] == INF ? ((1<<31) - 1) : dis[i]);
-  puts("");
-
-  return 0;
-}
+};
