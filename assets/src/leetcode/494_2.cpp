@@ -1,4 +1,4 @@
-// Date: Thu Nov 11 18:43:17 2021
+// Date: Thu Nov 11 23:34:34 2021
 
 #include <cstdio>
 #include <cstring>
@@ -57,62 +57,28 @@ struct TreeNode {
 
 #endif
 
-/*
-// Definition for Employee.
-class Employee {
-public:
-int id;
-int importance;
-vector<int> subordinates;
-};
-*/
-
-const int N = 2010, M = 4010;
-int n, m, h[N], st[N], w[N];
-int idx, e[M], ne[M];
-
-
-void Init() {
-  idx = 0;
-  memset(h, -1, sizeof h);
-  memset(st, 0, sizeof st);
-}
-
-void Add(int a, int b) {
-  e[idx] = b, ne[idx] = h[a], h[a] = idx++;
-}
-
 class Solution {
 public:
-  int res;
+  VI a;
+  int n, res, t;
 
-  void dfs(int id) {
-    if (st[id]) return;
-
-    st[id] = 1;
-    res += w[id];
-
-    for (int i = h[id]; i != -1; i = ne[i]) {
-      int j = e[i];
-      if (!st[j]) {
-        dfs(j);
-      }
+  void dfs(int idx, int cur) {
+    if (idx >= n) {
+      if (cur == t) res++;
+      return;
     }
+
+    dfs(idx + 1, cur + a[idx]);
+    dfs(idx + 1, cur - a[idx]);
   }
 
-  int getImportance(vector<Employee*> a, int id) {
-    Init();
+  int findTargetSumWays(vector<int>& nums, int target) {
+    a = nums;
+    n = a.size();
     res = 0;
+    t = target;
 
-    for (auto &e : a) {
-      int i = e->id, x = e->importance;
-      w[i] = x;
-      for (auto &f : e->subordinates) {
-        Add(i, f);
-      }
-    }
-
-    dfs(id);
+    dfs(0, 0);
 
     return res;
   }
