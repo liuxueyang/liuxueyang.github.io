@@ -61,14 +61,15 @@ class Solution {
 public:
   bool checkSubarraySum(vector<int>& a, int k) {
     int n = a.size();
-    for (int i = 0; i < n; ++i) a[i] %= k;
-    VI p(n + 1, 0);
+    unordered_set<int> s;
+
+    vector<ll> p(n + 1, 0);
     for (int i = 0; i < n; ++i) p[i + 1] = (p[i] + a[i]) % k;
-    unordered_set<int> s{0};
-    for (int i = 1; i <= n; ++i) {
-      if (s.find(p[i]) != s.end() && i >= 2) return true;
-      s.insert(p[i]);
+    for (int i = 2; i <= n; ++i) {
+      if (!p[i] || s.find(p[i]) != s.end()) return true;
+      s.insert(p[i - 1]);
     }
+
     return false;
   }
 };
