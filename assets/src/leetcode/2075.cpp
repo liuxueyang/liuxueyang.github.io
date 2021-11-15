@@ -1,4 +1,4 @@
-// Date: Mon Nov 15 17:32:21 2021
+// Date: Sun Nov 14 11:02:14 2021
 
 #include <cstdio>
 #include <cstring>
@@ -57,56 +57,35 @@ struct TreeNode {
 
 #endif
 
-const int N = 1010;
-int fa[N], sz[N];
-
-void Init() {
-  for (int i = 0; i < N; ++i) {
-    fa[i] = i;
-    sz[i] = 1;
-  }
-}
-
-int Find(int x) {
-  if (x == fa[x]) return x;
-  return fa[x] = Find(fa[x]);
-}
-
-void Union(int x, int y) {
-  int rx = Find(x), ry = Find(y);
-  if (rx == ry) return;
-  fa[ry] = rx;
-  sz[rx] += sz[ry];
-}
-
 class Solution {
 public:
-  vector<bool> friendRequests(int n, vector<vector<int>>& a, vector<vector<int>>& b) {
-    Init();
-    int m = b.size();
-    vector<bool> res(m, false);
+  string decodeCiphertext(string a, int n) {
+    int len = a.size();
+    int m = len / n;
 
-    for (int i = 0; i < m; ++i) {
-      auto &v = b[i];
-      int x = v[0], y = v[1];
+    vector<vector<char>> b(n, vector<char>(m, ' '));
 
-      bool flag = true;
-      int x1 = Find(x), y1 = Find(y);
-
-      for (int j = 0; j < a.size(); ++j) {
-        auto &v1 = a[j];
-        int x2 = v1[0], y2 = v1[1];
-        int x3 = Find(x2), y3 = Find(y2);
-
-        if ((PII(x1, y1) == PII(x3, y3)) || (PII(x1, y1) == PII(y3, x3))) {
-          flag = false;
-          break;
-        }
+    for (int i = 0; i < n; ++i) {
+      for (int j = 0; j < m; ++j) {
+        b[i][j] = a[i * m + j];
       }
+    }
 
-      if (flag) Union(x, y);
+    string res;
 
-      res[i] = flag;
+    for (int j = 0; j < m; ++j) {
+      for (int i = 0; i < n && i + j < m; ++i) {
+        res += b[i][i + j];
+      }
+    }
+
+    int len1 = res.size();
+    for (int i = len1 - 1; i >= 0; --i) {
+      while (i >= 0 && res[i] == ' ') {
+        i--;
+      }
+      res = res.substr(0, i + 1);
+      break;
     }
 
     return res;

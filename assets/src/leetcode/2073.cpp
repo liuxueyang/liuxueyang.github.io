@@ -1,4 +1,4 @@
-// Date: Mon Nov 15 17:32:21 2021
+// Date: Sun Nov 14 10:42:21 2021
 
 #include <cstdio>
 #include <cstring>
@@ -57,56 +57,35 @@ struct TreeNode {
 
 #endif
 
-const int N = 1010;
-int fa[N], sz[N];
-
-void Init() {
-  for (int i = 0; i < N; ++i) {
-    fa[i] = i;
-    sz[i] = 1;
-  }
-}
-
-int Find(int x) {
-  if (x == fa[x]) return x;
-  return fa[x] = Find(fa[x]);
-}
-
-void Union(int x, int y) {
-  int rx = Find(x), ry = Find(y);
-  if (rx == ry) return;
-  fa[ry] = rx;
-  sz[rx] += sz[ry];
-}
-
 class Solution {
 public:
-  vector<bool> friendRequests(int n, vector<vector<int>>& a, vector<vector<int>>& b) {
-    Init();
-    int m = b.size();
-    vector<bool> res(m, false);
+  int timeRequiredToBuy(vector<int>& a, int k) {
+    int res {};
+    queue<PII> q;
+    int n = a.size();
 
-    for (int i = 0; i < m; ++i) {
-      auto &v = b[i];
-      int x = v[0], y = v[1];
+    for (int i = 0; i < n; ++i) {
+      q.push({i, a[i]});
+    }
 
-      bool flag = true;
-      int x1 = Find(x), y1 = Find(y);
+    while (!q.empty()) {
+      auto t = q.front();
+      q.pop();
 
-      for (int j = 0; j < a.size(); ++j) {
-        auto &v1 = a[j];
-        int x2 = v1[0], y2 = v1[1];
-        int x3 = Find(x2), y3 = Find(y2);
-
-        if ((PII(x1, y1) == PII(x3, y3)) || (PII(x1, y1) == PII(y3, x3))) {
-          flag = false;
-          break;
-        }
+      auto idx = t.first, r = t.second;
+      if (idx == k && !r) {
+        return res;
       }
 
-      if (flag) Union(x, y);
-
-      res[i] = flag;
+      r--;
+      res++;
+      if (r) {
+        q.push({idx, r});
+      } else {
+        if (idx == k) {
+          return res;
+        }
+      }
     }
 
     return res;

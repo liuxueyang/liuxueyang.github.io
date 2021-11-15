@@ -1,4 +1,4 @@
-// Date: Mon Nov 15 17:32:21 2021
+// Date: Mon Nov 15 10:21:55 2021
 
 #include <cstdio>
 #include <cstring>
@@ -57,58 +57,61 @@ struct TreeNode {
 
 #endif
 
-const int N = 1010;
-int fa[N], sz[N];
-
-void Init() {
-  for (int i = 0; i < N; ++i) {
-    fa[i] = i;
-    sz[i] = 1;
-  }
-}
-
-int Find(int x) {
-  if (x == fa[x]) return x;
-  return fa[x] = Find(fa[x]);
-}
-
-void Union(int x, int y) {
-  int rx = Find(x), ry = Find(y);
-  if (rx == ry) return;
-  fa[ry] = rx;
-  sz[rx] += sz[ry];
-}
-
-class Solution {
+class LRUCache {
 public:
-  vector<bool> friendRequests(int n, vector<vector<int>>& a, vector<vector<int>>& b) {
-    Init();
-    int m = b.size();
-    vector<bool> res(m, false);
+  using IT = list<PII>::iterator;
 
-    for (int i = 0; i < m; ++i) {
-      auto &v = b[i];
-      int x = v[0], y = v[1];
+  unordered_map<int, IT> m;
+  list<PII> lst;
+  int cap;
 
-      bool flag = true;
-      int x1 = Find(x), y1 = Find(y);
+  LRUCache(int capacity) {
+    cap = capacity;
+    m.clear();
+    lst.clear();
+  }
 
-      for (int j = 0; j < a.size(); ++j) {
-        auto &v1 = a[j];
-        int x2 = v1[0], y2 = v1[1];
-        int x3 = Find(x2), y3 = Find(y2);
-
-        if ((PII(x1, y1) == PII(x3, y3)) || (PII(x1, y1) == PII(y3, x3))) {
-          flag = false;
-          break;
-        }
-      }
-
-      if (flag) Union(x, y);
-
-      res[i] = flag;
+  int get(int key) {
+    if (m.find(key) == m.end()) {
+      return -1;
     }
+    auto it = m[key];
+    int res = (*it).second;
+    auto p = *it;
+
+    lst.erase(it);
+    lst.push_front(p);
+    m[key] = lst.begin();
 
     return res;
   }
+
+  void put(int key, int value) {
+    if (m.find(key) == m.end()) {
+      if (m.size() == cap) {
+        auto p = lst.back();
+        int k = p.first, v = p.second;
+        m.erase(k);
+        lst.pop_back();
+
+        lst.push_front({key, value});
+        m[key] = lst.begin();
+      } else {
+        lst.push_front({key, value});
+        m[key] = lst.begin();
+      }
+    } else {
+      get(key);
+      auto it = lst.begin();
+      (*it).second = value;
+      m[key] = it;
+    }
+  }
 };
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache* obj = new LRUCache(capacity);
+ * int param_1 = obj->get(key);
+ * obj->put(key,value);
+ */
