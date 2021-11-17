@@ -57,8 +57,8 @@ struct TreeNode {
 
 #endif
 
-const int N = 510 * 50010;
-int cnt[N], son[N][26], idx;
+const int N = 510 * 5000;
+static int cnt[N], son[N][26], idx;
 
 class WordDictionary {
 public:
@@ -79,8 +79,28 @@ public:
     ++cnt[p];
   }
 
+  bool dfs(int p, string &w, int idx) {
+    for (int i = idx; i < w.size(); ++i) {
+      if (w[i] == '.') {
+        for (int j = 0; j < 26; ++j) {
+          if (son[p][j]) {
+            if (dfs(son[p][j], w, i + 1))
+              return true;
+          }
+        }
+        return false;
+      } else {
+        int u = w[i] - 'a';
+        if (!son[p][u]) return false;
+        p = son[p][u];
+      }
+    }
+
+    return cnt[p] > 0;
+  }
+
   bool search(string word) {
-    
+    return dfs(0, word, 0);
   }
 };
 
