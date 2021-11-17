@@ -1,4 +1,4 @@
-// Date: Wed Nov 17 00:44:00 2021
+// Date: Wed Nov 17 09:53:26 2021
 
 #include <cstdio>
 #include <cstring>
@@ -57,54 +57,41 @@ struct TreeNode {
 
 #endif
 
-const int N = 2000 * 3000;
-int son[N][26], cnt[N], idx;
-
-class Trie {
+class Solution {
 public:
-  Trie() {
-    idx = 0;
-    memset(cnt, 0, sizeof cnt);
-    memset(son, 0, sizeof son);
-  }
+  VI a, tmp;
+  vector<VI> res;
+  vector<bool> vis;
+  int n;
 
-  void insert(string word) {
-    int p = 0;
-    for (auto &c : word) {
-      int u = c - 'a';
-      if (!son[p][u]) son[p][u] = ++idx;
-      p = son[p][u];
+  void dfs(int idx) {
+    if (idx == n) {
+      res.push_back(tmp);
+      return;
     }
 
-    cnt[p]++;
+    for (int i = 0; i < n; ++i) {
+      if (!vis[i]) {
+        vis[i] = true;
+        tmp.push_back(a[i]);
+
+        dfs(idx + 1);
+
+        tmp.pop_back();
+        vis[i] = false;
+      }
+    }
   }
 
-  bool search(string word) {
-    int p = 0;
-    for (auto &c : word) {
-      int u = c - 'a';
-      if (!son[p][u]) return false;
-      p = son[p][u];
-    }
+  vector<vector<int>> permute(vector<int>& _a) {
+    a = _a;
+    res.clear();
+    n = a.size();
+    tmp.clear();
+    vis = vector<bool>(n, false);
 
-    return cnt[p] > 0;
-  }
+    dfs(0);
 
-  bool startsWith(string prefix) {
-    int p = 0;
-    for (auto &c : prefix) {
-      int u = c - 'a';
-      if (!son[p][u]) return false;
-      p = son[p][u];
-    }
-    return true;
+    return res;
   }
 };
-
-/**
- * Your Trie object will be instantiated and called as such:
- * Trie* obj = new Trie();
- * obj->insert(word);
- * bool param_2 = obj->search(word);
- * bool param_3 = obj->startsWith(prefix);
- */

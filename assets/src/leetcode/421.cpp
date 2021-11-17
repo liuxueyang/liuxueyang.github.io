@@ -1,4 +1,4 @@
-// Date: Wed Nov 17 00:44:00 2021
+// Date: Wed Nov 17 14:03:59 2021
 
 #include <cstdio>
 #include <cstring>
@@ -57,54 +57,57 @@ struct TreeNode {
 
 #endif
 
-const int N = 2000 * 3000;
-int son[N][26], cnt[N], idx;
+const int N = 33 * 20010;
+int son[N][2], cnt[N], idx;
 
-class Trie {
+void Init() {
+  idx = 0;
+  memset(son, 0, sizeof son);
+  memset(cnt, 0, sizeof cnt);
+}
+
+void Insert(int x) {
+  int p = 0;
+
+  for (int i = 31; i >= 0; --i) {
+    int u = (x >> i) & 1;
+    if (!son[p][u]) son[p][u] = ++idx;
+    p = son[p][u];
+  }
+
+  cnt[p]++;
+}
+
+class Solution {
 public:
-  Trie() {
-    idx = 0;
-    memset(cnt, 0, sizeof cnt);
-    memset(son, 0, sizeof son);
-  }
+  int findMaximumXOR(vector<int>& nums) {
+    int res {}, tmp {};
+    Init();
 
-  void insert(string word) {
-    int p = 0;
-    for (auto &c : word) {
-      int u = c - 'a';
-      if (!son[p][u]) son[p][u] = ++idx;
-      p = son[p][u];
+    for (auto &x : nums) {
+      int p = 0;
+      tmp = 0;
+
+      for (int i = 31; i >= 0; --i) {
+        int u = (x >> i) & 1;
+        if (son[p][1 - u]) {
+          tmp = (tmp << 1) + (1 - u);
+          p = son[p][1 - u];
+        }
+        else if (son[p][u]) {
+          tmp = (tmp << 1) + u;
+          p = son[p][u];
+        }
+        else break;
+      }
+
+      if (cnt[p] > 0) {
+        res = max(res, tmp ^ x);
+      }
+
+      Insert(x);
     }
 
-    cnt[p]++;
-  }
-
-  bool search(string word) {
-    int p = 0;
-    for (auto &c : word) {
-      int u = c - 'a';
-      if (!son[p][u]) return false;
-      p = son[p][u];
-    }
-
-    return cnt[p] > 0;
-  }
-
-  bool startsWith(string prefix) {
-    int p = 0;
-    for (auto &c : prefix) {
-      int u = c - 'a';
-      if (!son[p][u]) return false;
-      p = son[p][u];
-    }
-    return true;
+    return res;
   }
 };
-
-/**
- * Your Trie object will be instantiated and called as such:
- * Trie* obj = new Trie();
- * obj->insert(word);
- * bool param_2 = obj->search(word);
- * bool param_3 = obj->startsWith(prefix);
- */

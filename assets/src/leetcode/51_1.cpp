@@ -1,4 +1,4 @@
-// Date: Wed Nov 17 00:44:00 2021
+// Date: Wed Nov 17 10:06:38 2021
 
 #include <cstdio>
 #include <cstring>
@@ -57,54 +57,45 @@ struct TreeNode {
 
 #endif
 
-const int N = 2000 * 3000;
-int son[N][26], cnt[N], idx;
+const int N = 11;
+bool col[N], d1[N * 2], d2[N * 2];
 
-class Trie {
+class Solution {
 public:
-  Trie() {
-    idx = 0;
-    memset(cnt, 0, sizeof cnt);
-    memset(son, 0, sizeof son);
-  }
+  int n;
+  vector<vector<string>> res;
+  vector<string> tmp;
 
-  void insert(string word) {
-    int p = 0;
-    for (auto &c : word) {
-      int u = c - 'a';
-      if (!son[p][u]) son[p][u] = ++idx;
-      p = son[p][u];
+  void dfs(int idx) {
+    if (idx == n) {
+      res.push_back(tmp);
+      return;
     }
 
-    cnt[p]++;
+    int i = idx;
+    for (int j = 0; j < n; ++j) {
+      if (!col[j] && !d1[j - i + n] && !d2[j + i]) {
+        col[j] = d1[j - i + n] = d2[j + i] = true;
+        tmp[i][j] = 'Q';
+
+        dfs(i + 1);
+
+        tmp[i][j] = '.';
+        col[j] = d1[j - i + n] = d2[j + i] = false;
+      }
+    }
   }
 
-  bool search(string word) {
-    int p = 0;
-    for (auto &c : word) {
-      int u = c - 'a';
-      if (!son[p][u]) return false;
-      p = son[p][u];
-    }
+  vector<vector<string>> solveNQueens(int _n) {
+    n = _n;
+    memset(col, false, sizeof col);
+    memset(d1, false, sizeof d1);
+    memset(d2, false, sizeof d2);
+    res.clear();
+    tmp = vector<string>(n, string(n, '.'));
 
-    return cnt[p] > 0;
-  }
+    dfs(0);
 
-  bool startsWith(string prefix) {
-    int p = 0;
-    for (auto &c : prefix) {
-      int u = c - 'a';
-      if (!son[p][u]) return false;
-      p = son[p][u];
-    }
-    return true;
+    return res;
   }
 };
-
-/**
- * Your Trie object will be instantiated and called as such:
- * Trie* obj = new Trie();
- * obj->insert(word);
- * bool param_2 = obj->search(word);
- * bool param_3 = obj->startsWith(prefix);
- */
