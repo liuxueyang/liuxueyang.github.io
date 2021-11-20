@@ -66,49 +66,37 @@ public:
 
   void dfs(int cur, int idx) {
     if (tmp.size() > 4) return;
-
-    if (idx == n) {
-      if (tmp.size() == 4) {
+    if (tmp.size() == 4) {
+      if (idx == n) {
         res.push_back(tmp);
       }
       return;
     }
 
-    printf("cur=%d idx=%d, tmp.size() = %d\n", cur, idx, tmp.size());
-    for (int i = 0; i < tmp.size(); ++i) printf("%d ", tmp[i]);
-    puts("");
+    for (int i = idx; i < n; ++i) {
+      cur = cur * 10 + (a[i] - '0');
 
-    int cur1 = cur * 10 + (a[idx] - '0');
-    if (cur1 == 0) {
-      tmp.push_back(cur1);
-      dfs(0, idx + 1);
-      tmp.pop_back();
-    } else {
-      if (cur1 > 0 && cur1 <= 255) {
-        tmp.push_back(cur1);
-        dfs(0, idx + 1);
-        tmp.pop_back();
-
-        dfs(cur1, idx + 1);
-      }
-
-      if (cur > 0 && cur <= 255) {
+      if (cur == 0) {
         tmp.push_back(cur);
-        dfs(a[idx] - '0', idx + 1);
+        dfs(0, i + 1);
         tmp.pop_back();
-      }
+        return;
+      } else if (cur > 0 && cur <= 255) {
+        tmp.push_back(cur);
+        dfs(0, i + 1);
+        tmp.pop_back();
+      } else break;
     }
   }
 
   string conver(VI &t) {
     string r;
     for (int i = 0; i < 3; ++i) r = r + to_string(t[i]) + ".";
-    r = r + to_string(r[3]);
+    r = r + to_string(t[3]);
     return r;
   }
 
   vector<string> restoreIpAddresses(string s) {
-    // TODO:
     res.clear();
     tmp.clear();
     a = s;
