@@ -63,37 +63,39 @@ bool vis[N];
 class Solution {
 public:
   VI a;
-  int n, sum, k, cur, ta;
+  int n, sum, k, cur, ta, cnt;
   VI tmp;
   bool found;
 
-  void dfs(int cur, int idx) {
+  void dfs(int cur) {
     if (cur == ta) {
-      tmp.push_back(cur);
-      idx = 0;
-      cur = 0;
+      cnt++;
     }
-
-    if (tmp.size() == k) {
+    if (cnt == k) {
       found = true;
       return;
     }
-    // printf("tmp.size()=%d idx=%d cur=%d\n", tmp.size(), idx, cur);
-
     if (found) return;
 
-    for (int i = idx; i < n; ++i) {
-      if (vis[i] || a[i] > ta) continue;
-      else if (cur + a[i] <= ta) {
+    for (int i = 0; i < n; ++i) {
+      if (found) return;
+
+      if (vis[i]) continue;
+
+      if (cur + a[i] <= ta) {
+        cur = cur + a[i];
         vis[i] = true;
-        dfs(cur + a[i], i + 1);
+
+        dfs(cur);
+
         vis[i] = false;
+        if (cur == ta) cnt--;
+        cur = cur - a[i];
       }
     }
   }
 
   bool canPartitionKSubsets(vector<int>& nums, int k_) {
-    // TODO:
     memset(vis, false, sizeof vis);
     a = nums;
     n = a.size();
@@ -102,14 +104,19 @@ public:
     for (auto &x : a) sum += x;
     k = k_;
     tmp.clear();
+    cnt = 0;
 
     if (sum % k != 0) return false;
     ta = sum / k;
 
-    for (auto &x : a) if (x > ta) return false;
+    for (auto &x : a)
+      if (x > ta) return false;
 
-    // printf("ta=%d\n", ta);
-    dfs(0, 0);
+    sort(a.begin(), a.end(), [](const int &x, const int &y) {
+      return x >= y;
+    });
+
+    dfs(0);
 
     return found;
   }
