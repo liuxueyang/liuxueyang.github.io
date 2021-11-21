@@ -59,15 +59,40 @@ struct TreeNode {
 
 class RangeFreqQuery {
 public:
-  unordered_map<int, int> m;
+  unordered_map<int, VI> m;
   int n;
 
   RangeFreqQuery(vector<int>& arr) {
-
+    n = arr.size();
+    for (int i = 0; i < n; ++i) {
+      m[arr[i]].push_back(i);
+    }
   }
 
   int query(int left, int right, int value) {
+    VI &v = m[value];
+    if (v.size() == 0) return 0;
 
+    int l = 0, r = v.size() - 1, mid;
+    while (l < r) {
+      mid = (l + r) / 2;
+      if (v[mid] >= left) r = mid;
+      else l = mid + 1;
+    }
+
+    if (v[r] < left) return 0;
+    int l1 = r;
+
+    l = 0, r = v.size() - 1;
+    while (l < r) {
+      mid = (l + r + 1) / 2;
+      if (v[mid] <= right) l = mid;
+      else r = mid - 1;
+    }
+    if (v[l] > right) return 0;
+    int r1 = l;
+
+    return r1 - l1 + 1;
   }
 };
 
