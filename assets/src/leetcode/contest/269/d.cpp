@@ -85,7 +85,7 @@ class Solution {
 public:
   vector<int> findAllPeople(int n_, vector<vector<int>>& a, int fp) {
     sort(a.begin(), a.end(), [](const VI &x, const VI &y) {
-      return x[2] <= y[2];
+      return x[2] < y[2];
     });
 
     n = n_;
@@ -101,46 +101,24 @@ public:
       int t = a[i][2], r0 = Find(0);
       int j = i + 1;
 
-      set<PII> tmp;
-      tmp.insert(PII(a[i][0], a[i][1]));
+      Union(a[i][0], a[i][1]);
 
       while (j < a.size() && a[j][2] == t) {
-        int x = a[j][0], y = a[j][1], rx = Find(x), ry = Find(y), r0 = Find(0);
-
-        if (rx == r0 || ry == r0) {
-          Union(x, 0);
-          Union(y, 0);
-          s.insert(x);
-          s.insert(y);
-          ++j;
-          continue;
-        }
-
-        tmp.insert({a[j][0], a[j][1]});
+        int x = a[j][0], y = a[j][1];
+        Union(x, y);
         ++j;
       }
 
-      bool flag = true;
-
-      while (flag && !tmp.empty()) {
-        flag = false;
-        set<PII> rem;
-
-        for (auto &p : tmp) {
-          int x = p.first, y = p.second, rx = Find(x), ry = Find(y), r0 = Find(0);
-          if (rx == r0 || ry == r0) {
-            flag = true;
-            Union(x, 0);
-            Union(y, 0);
-            flag = true;
-            rem.insert(p);
-            s.insert(x);
-            s.insert(y);
-          }
-        }
-
-        for (auto &p : rem) {
-          tmp.erase(p);
+      for (int k = i; k < j; ++k) {
+        int x = a[k][0], y = a[k][1], rx = Find(x), ry = Find(y), r0 = Find(0);
+        if (rx == r0) {
+          s.insert(x);
+          s.insert(y);
+        } else {
+          fa[x] = x;
+          fa[y] = y;
+          sz[x] = 1;
+          sz[y] = 1;
         }
       }
 
