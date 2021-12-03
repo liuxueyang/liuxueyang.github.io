@@ -73,11 +73,23 @@ public:
     return x >= 0 && x < width && y >= 0 && y < height;
   }
 
-  void step(int n) {
-    int tot = (width - 1) * 2 + (height - 1) * 2 + 4;
-    n %= tot;
+  bool check_corner(int x, int y) {
+    return (!x && !y) || (x == width - 1 && y == 0) ||
+      (x == width - 1 && y == height - 1) ||
+      (x == 0 && y == height - 1);
+  }
 
-    int x = curx, y = cury, x1, y1;
+  void step(int n) {
+    if (!n) return;
+
+    int tot = (width - 1) * 2 + (height - 1) * 2;
+    n %= tot;
+    if (!n && check_corner(curx, cury)) {
+      d = (d - 1 + 4) % 4;
+      return;
+    }
+
+    int x = curx, y = cury, x1 = curx, y1 = cury;
     while (n--) {
       x1 = x + dir[d][0];
       y1 = y + dir[d][1];
