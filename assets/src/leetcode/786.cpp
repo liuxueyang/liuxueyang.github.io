@@ -57,25 +57,43 @@ struct TreeNode {
 
 #endif
 
+VI a;
+
 class Solution {
 public:
-  vector<int> kthSmallestPrimeFraction(vector<int>& a, int k) {
+  struct Node {
+    int i, j;
+
+    Node(int i_ = 0, int j_ = 0)
+      :i(i_), j(j_) {}
+
+    bool operator< (const Node & o) const {
+      return a[i] * 1.0 / a[j] > a[o.i] * 1.0 / a[o.j];
+    }
+  };
+
+  vector<int> kthSmallestPrimeFraction(vector<int>& a_, int k) {
+    a = a_;
+
     int n = a.size();
     VI res(2, 0);
 
-    for (int i = 0; i < n; ++i) {
-      int r = n - 1 - i;
-      if (k > r) {
-        k -= r;
-        continue;
-      } else if (k == r) {
-        res[0] = a[i];
-        res[1] = a[n - 1];
-        return res;
-      } else {
-        res[0] = a[i];
-        res[1] = a[i + k];
-        return res;
+    priority_queue<Node> q;
+    for (int i = 1; i < n; ++i) q.push(Node(0, i));
+
+    while (k--) {
+      auto t = q.top();
+      q.pop();
+
+      if (!k) {
+        res[0] = a[t.i];
+        res[1] = a[t.j];
+        break;
+      }
+
+      int i = t.i, j = t.j;
+      if (i + 1 < j) {
+        q.push(Node(i + 1, j));
       }
     }
 
