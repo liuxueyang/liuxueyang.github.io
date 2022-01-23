@@ -24,26 +24,23 @@ void Add(int a, int b, int c) {
   e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx++;
 }
 
+
 void dijkstra() {
-  st[s] = 1, dis[s] = 0;
+  dis[s] = 0;
   priority_queue<PII, vector<PII>, greater<PII>> q;
   q.push({0, s});
 
   while (!q.empty()) {
-    auto x = q.top();
-    q.pop();
-    int t = x.second;
+    auto t = q.top(); q.pop();
+    int base = t.first, ver = t.second;
+    if (st[ver]) continue;
+    st[ver] = true;
 
-    st[t] = 0;
-
-    for (int i = h[t]; i != -1; i = ne[i]) {
-      int j = e[i];
-      if (dis[t] + w[i] < dis[j]) {
-        dis[j] = dis[t] + w[i];
-        if (!st[j]) {
-          st[j] = 1;
-          q.push({dis[j], j});
-        }
+    for (int i = h[ver]; i != -1; i = ne[i]) {
+      int j = e[i], tmp = base + w[i];
+      if (tmp < dis[j]) {
+        dis[j] = tmp;
+        q.push({dis[j], j});
       }
     }
   }

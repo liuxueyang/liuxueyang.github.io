@@ -21,19 +21,19 @@ void Add(int a, int b, int c) {
 }
 
 void spfa() {
-  st[s] = 1, dis[s] = 0;
-  queue<int> q({s});
+  dis[s] = 0;
+  st[s] = 1;
+  queue<int> q;
+  q.push(s);
 
   while (!q.empty()) {
-    int t = q.front();
-    q.pop();
-
+    auto t = q.front(); q.pop();
     st[t] = 0;
 
     for (int i = h[t]; i != -1; i = ne[i]) {
-      int j = e[i];
-      if (dis[t] + w[i] < dis[j]) {
-        dis[j] = dis[t] + w[i];
+      int j = e[i], tmp = dis[t] + w[i];
+      if (tmp < dis[j]) {
+        dis[j] = tmp;
         if (!st[j]) {
           st[j] = 1;
           q.push(j);
