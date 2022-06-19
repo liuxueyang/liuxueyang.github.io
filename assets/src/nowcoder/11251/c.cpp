@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sat Jun 11 01:57:52 2022
 
 #include <bits/stdc++.h>
 
@@ -74,3 +70,58 @@ struct TreeNode {
 
 #endif
 
+const int N = 100010;
+char a[N];
+int n;
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("c.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  while (~scanf("%s", a + 1)) {
+    int c0 {}, c1 {}, c2 {};
+    int n = strlen(a + 1), r = 0;
+
+    REP1(i, 1, n) {
+      int c = (a[i] - '0') % 3;
+      if (!c && (a[i] - '0')) c0++;
+      else if (c == 1) c1++;
+      else c2++;
+
+      r = (r + c) % 3;
+    }
+
+    if (!r) {
+      if (!c0) {
+        printf("yukari\n"); continue;
+      }
+      c0--;
+
+      if (c1 == c2 && c0) puts("kou");
+      else puts("yukari");
+    } else {
+      if (r == 1) {
+        if (!c1) {
+          puts("yukari"); continue;
+        }
+        c1--;
+
+        if (c1 == c2 && c0) puts("kou");
+        else puts("yukari");
+      } else {
+        if (!c2) {
+          puts("yukari"); continue;
+        }
+        c2--;
+
+        if (c1 == c2 && c0) puts("kou");
+        else puts("yukari");
+      }
+    }
+  }
+
+  return 0;
+}

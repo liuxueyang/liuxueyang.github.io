@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: main2
+# key: main2
+# --
+int main(void)
+{
+#ifdef _DEBUG
+freopen("inputf.in", "r", stdin);
+#endif
+std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+$0
+
+return 0;
+}

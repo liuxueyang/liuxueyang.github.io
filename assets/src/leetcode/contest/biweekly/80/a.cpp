@@ -1,8 +1,6 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+
+
+// Date: Sat Jun 11 22:40:36 2022
 
 #include <bits/stdc++.h>
 
@@ -74,3 +72,24 @@ struct TreeNode {
 
 #endif
 
+class Solution {
+public:
+  bool strongPasswordCheckerII(string a) {
+    int n = SZ(a);
+    if (n < 8) return false;
+
+    string s = "!@#$%^&*()-+";
+    bool digit = false, up = false, low = false, spc = false;
+
+    REP(i, 0, n) {
+      if (isdigit(a[i])) digit = true;
+      else if (isupper(a[i])) up = true;
+      else if (islower(a[i])) low = true;
+      else if (s.find(a[i]) != string::npos) spc = true;
+
+      if (i && a[i] == a[i - 1]) return false;
+    }
+
+    return digit && up && low && spc;
+  }
+};

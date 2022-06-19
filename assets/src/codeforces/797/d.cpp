@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Tue Jun  7 23:06:16 2022
 
 #include <bits/stdc++.h>
 
@@ -40,8 +36,6 @@ const ull Pr = 131;
 #define pb push_back
 #define has(a, x) (a.find(x) != a.end())
 #define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
 
 #ifdef _DEBUG
 #define debug1(x) cout << #x" = " << x << endl;
@@ -73,4 +67,40 @@ struct TreeNode {
 };
 
 #endif
+
+const int N = 200010;
+char s[N];
+int q[N], hh, tt, n, tc, k;
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("d.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  scanf("%d", &tc);
+  while (tc--) {
+    scanf("%d%d", &n, &k);
+    scanf("%s", s + 1);
+
+    hh = 0, tt = -1;
+    int mb = -1, cur = 0;
+
+    REP1(i, 1, n) {
+      while (tt >= hh && i - q[hh] >= k) {
+        if (s[q[hh]] == 'B') cur--;
+        ++hh;
+      }
+      if (s[i] == 'B') cur++;
+      q[++tt] = i;
+      mb = max(mb, cur);
+    }
+
+    if (mb >= k) printf("0\n");
+    else printf("%d\n", k - mb);
+  }
+
+  return 0;
+}
 

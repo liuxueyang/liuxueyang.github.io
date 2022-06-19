@@ -1,0 +1,23 @@
+# -*- mode: snippet -*-
+# name: ufs
+# key: ufs
+# --
+
+const int N = 10010;
+int fa[N], sz[N], n, m;
+
+void Init() {
+  for (int i = 1; i <= n; ++i) fa[i] = i, sz[i] = 1;
+}
+
+int Find(int x) {
+  if (x == fa[x]) return x;
+  return fa[x] = Find(fa[x]);
+}
+
+void Union(int x, int y) {
+  int rx = Find(x), ry = Find(y);
+  if (rx == ry) return;
+  fa[ry] = rx;
+  sz[rx] += sz[ry];
+}

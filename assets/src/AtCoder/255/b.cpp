@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sat Jun 11 20:59:42 2022
 
 #include <bits/stdc++.h>
 
@@ -73,4 +69,69 @@ struct TreeNode {
 };
 
 #endif
+
+const int N = 1010;
+int a[N], n, k;
+PII b[N];
+bool vis[N];
+
+double dist(PII &a, PII &b) {
+  int x1 = a.f1, y1 = a.f2, x2 = b.f1, y2 = b.f2;
+  double dx = x1 - x2, dy = y1 - y2;
+  return dx * dx + dy * dy;
+}
+
+bool check(double len) {
+  memset(vis, false, sizeof vis);
+  REP1(i, 1, k) vis[a[i]] = true;
+  len = len * len;
+
+  REP1(i, 1, n) {
+    if (vis[i]) continue;
+    bool flag = false;
+
+    REP1(j, 1, k) {
+      if ((len - dist(b[i], b[a[j]])) > eps) {
+        flag = true;
+        // debug3(i, j, sqrt(len));
+        break;
+      }
+    }
+
+    if (!flag) {
+      // debug2(i, sqrt(len));
+      return false;
+    }
+  }
+
+  return true;
+}
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("b.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  while (~scanf("%d%d", &n, &k)) {
+    REP1(i, 1, k) scanf("%d", a + i);
+    REP1(i, 1, n) {
+      int x, y; scanf("%d%d", &x, &y);
+      b[i] = {x, y};
+    }
+
+    double l = 0.1, r = 1e7, mid;
+    while (fabs(r - l) > eps) {
+      mid = (l + r) / 2;
+      // debug3(l, r, mid);
+      if (check(mid)) r = mid;
+      else l = mid;
+    }
+
+    printf("%.8lf\n", r);
+  }
+
+  return 0;
+}
 

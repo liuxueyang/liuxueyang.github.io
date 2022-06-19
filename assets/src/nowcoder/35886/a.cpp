@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Fri Jun  3 12:02:32 2022
 
 #include <bits/stdc++.h>
 
@@ -29,10 +25,10 @@ const ull Pr = 131;
 #define TN TreeNode
 #define TNP TreeNode*
 
-#define REP(i, a, b) for (int i = int(a); i < int(b); ++i)
-#define PER(i, a, b) for (int i = int(b) - 1; i >= int(a); --i)
-#define REP1(i, a, b) for (int i = int(a); i <= int(b); ++i)
-#define PER1(i, a, b) for (int i = int(b); i >= int(a); --i)
+#define REP(i, a, b) for (int i = int(a); i < (b); ++i)
+#define PER(i, a, b) for (int i = int(b) - 1; i >= (a); --i)
+#define REP1(i, a, b) for (int i = int(a); i <= (b); ++i)
+#define PER1(i, a, b) for (int i = int(b); i >= (a); --i)
 #define REPE(i, j) for (int i = h[j]; i != -1; i = ne[i])
 
 #define f1 first
@@ -40,8 +36,6 @@ const ull Pr = 131;
 #define pb push_back
 #define has(a, x) (a.find(x) != a.end())
 #define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
 
 #ifdef _DEBUG
 #define debug1(x) cout << #x" = " << x << endl;
@@ -74,3 +68,57 @@ struct TreeNode {
 
 #endif
 
+ll qmi(ll a, ll b, ll c) {
+  ll res = 1 % c;
+  while (b) {
+    if (b & 1) res = res * a % c;
+    a = a * a % c;
+    b >>= 1;
+  }
+  return res;
+}
+
+int sdigit(int n) {
+  int res {};
+  while (n) {
+    res += n % 10; n /= 10;
+  }
+  return res;
+}
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("a.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  int q;
+  scanf("%d", &q);
+  while (q--) {
+    ll x;
+    scanf("%lld", &x);
+    set<ll> vis;
+    queue<ll> q;
+    ll res = x;
+    vis.insert(x);
+
+    q.push(x);
+    while (!q.empty()) {
+      auto t = q.front(); q.pop();
+      t = sdigit(t);
+      auto y = t / 2, z = y;
+      if (t & 1) z++;
+      x = qmi(z, y, MOD);
+      // debug1(x);
+      if (has(vis, x)) continue;
+      res = min(res, x);
+      vis.insert(x);
+      q.push(x);
+    }
+
+    printf("%lld\n", res);
+  }
+
+  return 0;
+}

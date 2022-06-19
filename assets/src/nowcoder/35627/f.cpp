@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sat Jun  4 12:20:53 2022
 
 #include <bits/stdc++.h>
 
@@ -40,8 +36,6 @@ const ull Pr = 131;
 #define pb push_back
 #define has(a, x) (a.find(x) != a.end())
 #define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
 
 #ifdef _DEBUG
 #define debug1(x) cout << #x" = " << x << endl;
@@ -74,3 +68,53 @@ struct TreeNode {
 
 #endif
 
+const int N = 2010;
+int primes[N], cnt;
+bool st[N];
+const int M = 500010;
+int b[M];
+
+void get_primes(int n) {
+  st[0] = st[1] = true;
+  for (int i = 2; i <= n; ++i) {
+    if (!st[i]) {
+      primes[cnt++] = i;
+      for (ll j = ll(i) * i; j <= n; j += i) {
+        st[j] = true;
+      }
+    }
+  }
+}
+
+int gets(int n) {
+  int s {};
+  while (n) {
+    s += n % 10;
+    n /= 10;
+  }
+  return s;
+}
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("f.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  get_primes(2000);
+  int idx = 0;
+  REP1(i, 2, M) {
+    int t = gets(i);
+    if (!st[t]) {
+      b[++idx] = i;
+    }
+  }
+
+  int n;
+  while (~scanf("%d", &n)) {
+    printf("%d\n", b[n]);
+  }
+
+  return 0;
+}

@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sat Jun  4 20:49:38 2022
 
 #include <bits/stdc++.h>
 
@@ -40,8 +36,6 @@ const ull Pr = 131;
 #define pb push_back
 #define has(a, x) (a.find(x) != a.end())
 #define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
 
 #ifdef _DEBUG
 #define debug1(x) cout << #x" = " << x << endl;
@@ -74,3 +68,68 @@ struct TreeNode {
 
 #endif
 
+const int N = 200010, M = 500010;
+int n, m;
+
+int h[N];
+int idx, e[M], ne[M];
+
+void Init() {
+  idx = 0;
+  memset(h, -1, sizeof h);
+}
+
+void Add(int a, int b) {
+  e[idx] = b, ne[idx] = h[a], h[a] = idx++;
+}
+
+int bfs(int x, int k) {
+  queue<PII> q;
+  q.push({x, 0});
+  set<int> vis;
+  vis.insert(x);
+
+  int res = x;
+  while (!q.empty()) {
+    auto t = q.front(); q.pop();
+    int cnt = t.f2;
+    REPE(i, t.f1) {
+      int j = e[i];
+      if (has(vis, j)) continue;
+      vis.insert(j);
+      if (cnt + 1 < k) {
+        res += j;
+        q.push({j, {cnt + 1}});
+      } else if (cnt + 1 == k) {
+        res += j;
+      }
+    }
+  }
+  return res;
+}
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("e.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  while (~scanf("%d%d", &n, &m)) {
+    Init();
+    int a, b;
+    while (m--) {
+      scanf("%d%d", &a, &b);
+      Add(a, b); Add(b, a);
+    }
+    int q;
+    scanf("%d", &q);
+    while (q--) {
+      int x, k;
+      scanf("%d%d", &x, &k);
+      printf("%d\n", bfs(x, k));
+    }
+  }
+
+  return 0;
+}

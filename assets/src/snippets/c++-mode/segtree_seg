@@ -1,0 +1,139 @@
+# -*- mode: snippet -*-
+# name: segtree_seg
+# key: segtree_seg
+# --
+
+struct tag {
+  ll d;
+
+  tag operator + (const tag & r) {
+    tag ans;
+    ans.d = d + r.d;
+    return ans;
+  }
+
+  bool empty() { return d == 0; }
+  void clear() { d = 0; }
+};
+
+struct info {
+  ll v;
+
+  info operator + (const info & r) {
+    info ans;
+    ans.v = max(v, r.v);
+    return ans;
+  }
+
+  info operator + (const tag & r) {
+    info ans;
+    ans.v = v + r.d;
+    return ans;
+  }
+};
+
+template<class T>
+struct segtree {
+  struct Node {
+    info v;
+    tag t;
+  } seg[N * 4];
+  vector<T> a;
+
+  void init(int n) {
+    a.clear();
+    a.resize(n + 10, 0);
+  }
+
+  PII child(int id) {
+    return {id * 2, id * 2 + 1};
+  }
+
+  void update(int id) {
+    auto ch = child(id);
+    seg[id].v = seg[ch.f1].v + seg[ch.second].v;
+  }
+
+  void set_tag(int id, tag t) {
+    seg[id].t = seg[id].t + t;
+    seg[id].v = seg[id].v + t;
+  }
+
+  void push_down(int id) {
+    if (!seg[id].t.empty()) {
+      auto ch = child(id);
+      auto t = seg[id].t;
+      set_tag(ch.f1, t), set_tag(ch.f2, t);
+      seg[id].t.clear();
+    }
+  }
+
+  void build(int id, int l, int r) {
+    if (l > r) return;
+    if (l == r) {
+      seg[id].v = {a[l]};
+      seg[id].t = {0};
+    } else {
+      int mid = (l + r) / 2, id1 = id * 2, id2 = id1 + 1;
+      build(id1, l, mid);
+      build(id2, mid + 1, r);
+
+      update(id);
+    }
+  }
+
+  info query(int id, int l, int r, int ql, int qr) {
+    if (ql > qr) return {};
+
+    if (l == ql && r == qr) {
+      return seg[id].v;
+    }
+
+    push_down(id);
+
+    int mid = (l + r) / 2, id1 = id * 2, id2 = id1 + 1;
+    if (qr <= mid) return query(id1, l, mid, ql, qr);
+    else if (ql > mid) return query(id2, mid + 1, r, ql, qr);
+    else {
+      return query(id1, l, mid, ql, mid) + query(id2, mid + 1, r, mid + 1, qr);
+    }
+  }
+
+  // modify segment
+  void modify(int id, int l, int r, int ql, int qr, tag t) {
+    if (ql > qr) return;
+
+    if (l == ql && r == qr) {
+      set_tag(id, t);
+      return;
+    }
+
+    push_down(id);
+
+    int mid = (l + r) / 2, id1 = id * 2, id2 = id1 + 1;
+    if (qr <= mid) modify(id1, l, mid, ql, qr, t);
+    else if (ql > mid) modify(id2, mid + 1, r, ql, qr, t);
+    else {
+      modify(id1, l, mid, ql, mid, t);
+      modify(id2, mid + 1, r, mid + 1, qr, t);
+    }
+
+    update(id);
+  }
+
+  // chage a point p to value v
+  void change(int id, int l, int r, int p, T v) {
+    if (l == r) {
+      seg[id].v = {v};
+    } else {
+      push_down(id);
+
+      int mid = (l + r) / 2, id1 = id * 2, id2 = id1 + 1;
+      if (p <= mid) change(id1, l, mid, p, v);
+      else change(id2, mid + 1, r, p, v);
+
+      update(id);
+    }
+  }
+};
+

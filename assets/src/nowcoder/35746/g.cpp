@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sun Jun  5 13:37:19 2022
 
 #include <bits/stdc++.h>
 
@@ -40,8 +36,6 @@ const ull Pr = 131;
 #define pb push_back
 #define has(a, x) (a.find(x) != a.end())
 #define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
 
 #ifdef _DEBUG
 #define debug1(x) cout << #x" = " << x << endl;
@@ -74,3 +68,43 @@ struct TreeNode {
 
 #endif
 
+const int N = 1000010;
+int d[N], n;
+char s[N];
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("g.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  while (~scanf("%s", s + 1)) {
+    n = strlen(s + 1);
+    memset(d, 0x3f, (sizeof(int) * (n + 5)));
+    d[0] = 0;
+    d[1] = 1;
+
+    REP1(i, 2, n) {
+      if (i & 1) {
+        d[i] = d[i - 1] + 1;
+        if (s[i] == s[i - 1]) d[i] = min(d[i], d[i - 2]);
+        else d[i] = min(d[i], d[i - 2] + 1);
+
+        if (s[i] == s[i - 2]) d[i] = min(d[i], d[i - 3] + 1);
+      } else {
+        d[i] = d[i - 2] + 2;
+        if (s[i] == s[i - 1]) d[i] = min(d[i], d[i - 2]);
+        else d[i] = min(d[i], d[i - 2] + 1);
+
+        if (s[i] == s[i - 2]) {
+          if (i >= 4) d[i] = min(d[i], d[i - 3] + 1);
+        }
+      }
+    }
+
+    printf("%d\n", d[n]);
+  }
+
+  return 0;
+}

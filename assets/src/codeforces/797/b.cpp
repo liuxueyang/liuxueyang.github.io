@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Tue Jun  7 22:50:07 2022
 
 #include <bits/stdc++.h>
 
@@ -40,8 +36,6 @@ const ull Pr = 131;
 #define pb push_back
 #define has(a, x) (a.find(x) != a.end())
 #define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
 
 #ifdef _DEBUG
 #define debug1(x) cout << #x" = " << x << endl;
@@ -74,3 +68,45 @@ struct TreeNode {
 
 #endif
 
+const int N = 50010;
+int a[N], b[N], n, tc;
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("b.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  scanf("%d", &tc);
+  while (tc--) {
+    scanf("%d", &n);
+    REP1(i, 1, n) scanf("%d", a + i);
+    REP1(i, 1, n) scanf("%d", b + i);
+
+    int gap = -INF;
+    REP1(i, 1, n) {
+      gap = max(gap, a[i] - b[i]);
+    }
+
+    debug1(gap);
+    if (gap < 0) printf("NO\n");
+    else {
+      REP1(i, 1, n) {
+        a[i] = max(0, a[i] - gap);
+      }
+
+      bool flag = true;
+      REP1(i, 1, n) {
+        if (a[i] != b[i]) {
+          flag = false;
+          break;
+        }
+      }
+
+      if (flag) printf("YES\n"); else printf("NO\n");
+    }
+  }
+
+  return 0;
+}

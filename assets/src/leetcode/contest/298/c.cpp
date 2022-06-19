@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sun Jun 19 10:43:33 2022
 
 #include <bits/stdc++.h>
 
@@ -74,3 +70,39 @@ struct TreeNode {
 
 #endif
 
+const int N = 1010;
+int d[N];
+ll v[N];
+
+class Solution {
+public:
+  int longestSubsequence(string s, int k) {
+    int n = SZ(s), res = 0;
+    memset(d, 0, sizeof d);
+    memset(v, 0x3f, sizeof v);
+
+    d[0] = 1;
+    v[0] = s[0] - '0';
+    res = 1;
+
+    REP(i, 1, n) {
+      d[i] = 1;
+
+      REP(j, 0, i) {
+        ll tmp = v[j] * 2 + (s[i] - '0');
+        if (tmp <= k) {
+          if (d[i] < d[j] + 1) {
+            d[i] = d[j] + 1;
+            v[i] = tmp;
+          } else if (d[i] == d[j] + 1) {
+            v[i] = min(v[i], tmp);
+          }
+        }
+      }
+
+      res = max(res, d[i]);
+    }
+
+    return res;
+  }
+};

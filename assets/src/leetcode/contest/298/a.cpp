@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sun Jun 19 10:31:32 2022
 
 #include <bits/stdc++.h>
 
@@ -74,3 +70,29 @@ struct TreeNode {
 
 #endif
 
+class Solution {
+public:
+  string greatestLetter(string s) {
+    int n = SZ(s);
+    VI v1(26, 0), v2(26, 0);
+    REP(i, 0, n) {
+      if (islower(s[i])) v1[s[i] - 'a'] = 1;
+      else v2[s[i] - 'A'] = 1;
+    }
+
+    string res;
+    REP(i, 0, n) {
+      int id = 0;
+      if (islower(s[i])) id = s[i] - 'a';
+      else id = s[i] - 'A';
+      if (v1[id] && v2[id]) {
+        if (nonempty(res) && tolower(res[0]) < tolower(s[i]) || (res.empty())) {
+          res = "";
+          res += toupper(s[i]);
+        }
+      }
+    }
+
+    return res;
+  }
+};

@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sun Jun  5 23:28:26 2022
 
 #include <bits/stdc++.h>
 
@@ -40,8 +36,6 @@ const ull Pr = 131;
 #define pb push_back
 #define has(a, x) (a.find(x) != a.end())
 #define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
 
 #ifdef _DEBUG
 #define debug1(x) cout << #x" = " << x << endl;
@@ -74,3 +68,48 @@ struct TreeNode {
 
 #endif
 
+const int N = 100010;
+int n, tc, a[N];
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("d.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  scanf("%d", &tc);
+  while (tc--) {
+    scanf("%d", &n);
+    REP1(i, 1, n) scanf("%d", a + i);
+    bool flag = false;
+
+    REP(i, 0, 32) {
+      VI pos;
+      int k = (1 << i);
+      REP1(j, 1, n) {
+        if (a[j] & k) {
+          pos.pb(j);
+        }
+      }
+
+      if (pos.size() >= 2) {
+        flag = true;
+        printf("YES\n%d\n", int(pos.size()));
+
+        int pre = 0;
+        REP(j, 0, pos.size() - 1) {
+          printf("%d %d\n", pre + 1, pos[j]);
+          pre = pos[j];
+        }
+        printf("%d %d\n", pos[pos.size()-2] + 1, n);
+
+        break;
+      }
+    }
+
+    if (!flag) printf("NO\n");
+  }
+
+  return 0;
+}

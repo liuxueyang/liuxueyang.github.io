@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sun Jun  5 10:47:08 2022
 
 #include <bits/stdc++.h>
 
@@ -40,8 +36,6 @@ const ull Pr = 131;
 #define pb push_back
 #define has(a, x) (a.find(x) != a.end())
 #define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
 
 #ifdef _DEBUG
 #define debug1(x) cout << #x" = " << x << endl;
@@ -74,3 +68,20 @@ struct TreeNode {
 
 #endif
 
+class Solution {
+public:
+  vector<int> arrayChange(vector<int>& a, vector<vector<int>>& op) {
+    int n = a.size();
+    map<int, int> m;
+    REP(i, 0, n) {
+      m[a[i]] = i;
+    }
+    for (auto v : op) {
+      int x = v[0], y = v[1];
+      int pos = m[x];
+      m[y] = pos;
+      a[pos] = y;
+    }
+    return a;
+  }
+};

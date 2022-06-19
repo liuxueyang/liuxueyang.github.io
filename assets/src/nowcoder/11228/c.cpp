@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Fri Jun  3 19:10:07 2022
 
 #include <bits/stdc++.h>
 
@@ -29,10 +25,10 @@ const ull Pr = 131;
 #define TN TreeNode
 #define TNP TreeNode*
 
-#define REP(i, a, b) for (int i = int(a); i < int(b); ++i)
-#define PER(i, a, b) for (int i = int(b) - 1; i >= int(a); --i)
-#define REP1(i, a, b) for (int i = int(a); i <= int(b); ++i)
-#define PER1(i, a, b) for (int i = int(b); i >= int(a); --i)
+#define REP(i, a, b) for (int i = int(a); i < (b); ++i)
+#define PER(i, a, b) for (int i = int(b) - 1; i >= (a); --i)
+#define REP1(i, a, b) for (int i = int(a); i <= (b); ++i)
+#define PER1(i, a, b) for (int i = int(b); i >= (a); --i)
 #define REPE(i, j) for (int i = h[j]; i != -1; i = ne[i])
 
 #define f1 first
@@ -40,8 +36,6 @@ const ull Pr = 131;
 #define pb push_back
 #define has(a, x) (a.find(x) != a.end())
 #define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
 
 #ifdef _DEBUG
 #define debug1(x) cout << #x" = " << x << endl;
@@ -74,3 +68,37 @@ struct TreeNode {
 
 #endif
 
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("c.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  int a, b, x;
+  while (cin >> a >> b >> x) {
+    int z = x / 2;
+
+    if (a < z || b < z) {
+      cout << -1 << '\n';
+      continue;
+    }
+
+    a -= z; b -= z;
+
+    if ((a & 1) || (b & 1)) {
+      cout << -1 << '\n';
+      continue;
+    }
+    string res;
+
+    while (z--) {
+      res += "01";
+    }
+    while (a--) res += '0';
+    while (b--) res += '1';
+    cout << res << "\n";
+  }
+
+  return 0;
+}

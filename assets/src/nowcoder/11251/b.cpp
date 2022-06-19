@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sat Jun 11 00:59:55 2022
 
 #include <bits/stdc++.h>
 
@@ -74,3 +70,56 @@ struct TreeNode {
 
 #endif
 
+const int N = 200010;
+char s[N];
+int n, a[N];
+ll d[N][2][2];
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("b.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  while (~scanf("%d", &n)) {
+    REP1(i, 1, n) scanf("%d", a + i);
+    scanf("%s", s + 1);
+    memset(d, 0, sizeof d);
+
+    ll res = -1;
+    REP1(i, 1, n) {
+      if (a[i] & 1) {
+        if (s[i] == 'R') {
+          d[i][0][1] = max(d[i - 1][1][0] + a[i], d[i - 1][0][1]);
+          d[i][1][1] = d[i - 1][1][1];
+        } else {
+          d[i][1][1] = max(d[i - 1][0][0] + a[i], d[i - 1][1][1]);
+          d[i][0][1] = d[i - 1][0][1];
+        }
+
+        d[i][0][0] = d[i - 1][0][0];
+        d[i][1][0] = d[i - 1][1][0];
+      } else {
+        if (s[i] == 'R') {
+          d[i][0][0] = max(d[i - 1][0][0], d[i - 1][1][1] + a[i]);
+          d[i][1][0] = d[i - 1][1][0];
+        } else {
+          d[i][1][0] = max(d[i - 1][1][0], d[i - 1][0][1] + a[i]);
+          d[i][0][0] = d[i - 1][0][0];
+        }
+
+        d[i][1][1] = d[i - 1][1][1];
+        d[i][0][1] = d[i - 1][0][1];
+      }
+
+      debug2(d[i][0][0], d[i][0][1]);
+      debug2(d[i][1][0], d[i][1][1]);
+      res = max({res, d[i][0][0], d[i][1][0], d[i][1][1], d[i][0][1]});
+    }
+
+    printf("%lld\n", res);
+  }
+
+  return 0;
+}

@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sat Jun 11 23:23:40 2022
 
 #include <bits/stdc++.h>
 
@@ -74,3 +70,31 @@ struct TreeNode {
 
 #endif
 
+class Solution {
+public:
+  long long countSubarrays(vector<int>& _a, long long k) {
+    ll res = 0;
+    int n = SZ(_a);
+    vector<ll> a(n + 1, 0), p(n + 10, 0);
+
+    REP1(i, 1, n) {
+      a[i] = _a[i - 1];
+      p[i] = p[i - 1] + a[i];
+    }
+
+    int i = 1, j = 1;
+    for (; i <= n; ++i) {
+      ll sum = p[i] - p[j - 1], len = i - j + 1, sc = sum * len;
+      while (sc < k && i <= n) {
+        res += len;
+        ++i;
+        sum = p[i] - p[j - 1], len = i - j + 1, sc = sum * len;
+      }
+      --i;
+      if (sc >= k)
+        ++j;
+    }
+
+    return res;
+  }
+};

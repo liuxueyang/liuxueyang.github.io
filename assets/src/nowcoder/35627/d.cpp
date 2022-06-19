@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sat Jun  4 12:37:20 2022
 
 #include <bits/stdc++.h>
 
@@ -40,8 +36,6 @@ const ull Pr = 131;
 #define pb push_back
 #define has(a, x) (a.find(x) != a.end())
 #define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
 
 #ifdef _DEBUG
 #define debug1(x) cout << #x" = " << x << endl;
@@ -74,3 +68,51 @@ struct TreeNode {
 
 #endif
 
+const int N = 200010;
+int fa[N], sz[N], n, k, a[N];
+
+void Init() {
+  for (int i = 1; i <= n; ++i) fa[i] = i, sz[i] = 1;
+}
+
+int Find(int x) {
+  if (x == fa[x]) return x;
+  return fa[x] = Find(fa[x]);
+}
+
+void Union(int x, int y) {
+  int rx = Find(x), ry = Find(y);
+  if (rx == ry) return;
+  fa[ry] = rx;
+  sz[rx] += sz[ry];
+}
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("d.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  while (~scanf("%d%d", &n, &k)) {
+    Init();
+    REP1(i, 1, n) {
+      scanf("%d", a + i);
+      Union(i, a[i]);
+    }
+
+    REP1(i, 1, n) Find(i);
+    set<int> s;
+    REP1(i, 1, n) {
+      s.insert(Find(i));
+    }
+
+    int res = s.size();
+    if (res - 1 <= k) res = 1;
+    else res -= k;
+
+    printf("%d\n", res);
+  }
+
+  return 0;
+}

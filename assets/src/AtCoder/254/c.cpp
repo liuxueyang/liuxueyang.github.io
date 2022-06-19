@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sat Jun  4 20:11:22 2022
 
 #include <bits/stdc++.h>
 
@@ -40,8 +36,6 @@ const ull Pr = 131;
 #define pb push_back
 #define has(a, x) (a.find(x) != a.end())
 #define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
 
 #ifdef _DEBUG
 #define debug1(x) cout << #x" = " << x << endl;
@@ -74,3 +68,44 @@ struct TreeNode {
 
 #endif
 
+const int N = 200010;
+int n, a[N], k;
+VI b[N];
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("c.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  while (~scanf("%d%d", &n, &k)) {
+    REP1(i, 1, n) scanf("%d", a + i);
+    REP1(i, 1, k) b[i].clear();
+
+    REP1(i, 1, n) {
+      int t = i % k;
+      if (!t) t = k;
+      b[t].push_back(a[i]);
+    }
+    REP1(i, 1, k) sort(b[i].begin(), b[i].end());
+    PER1(i, 1, n) {
+      int t = i % k;
+      if (!t) t = k;
+      a[i] = b[t].back();
+      b[t].pop_back();
+    }
+
+    bool flag = true;
+    REP1(i, 2, n) {
+      if (a[i] < a[i - 1]) {
+        flag = false; break;
+      }
+    }
+
+    if (flag) printf("Yes\n");
+    else printf("No\n");
+  }
+
+  return 0;
+}

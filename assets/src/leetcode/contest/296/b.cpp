@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sun Jun  5 11:40:40 2022
 
 #include <bits/stdc++.h>
 
@@ -40,8 +36,6 @@ const ull Pr = 131;
 #define pb push_back
 #define has(a, x) (a.find(x) != a.end())
 #define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
 
 #ifdef _DEBUG
 #define debug1(x) cout << #x" = " << x << endl;
@@ -74,3 +68,22 @@ struct TreeNode {
 
 #endif
 
+class Solution {
+public:
+  int partitionArray(vector<int>& a, int k) {
+    int n = a.size();
+    sort(a.begin(), a.end());
+
+    int res {}, pre = a[0];
+    res = 1;
+
+    REP(i, 1, n) {
+      if (a[i] - pre <= k) continue;
+      else {
+        pre = a[i];
+        res++;
+      }
+    }
+    return res;
+  }
+};

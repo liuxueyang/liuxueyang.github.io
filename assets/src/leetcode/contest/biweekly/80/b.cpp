@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sat Jun 11 22:48:44 2022
 
 #include <bits/stdc++.h>
 
@@ -74,3 +70,38 @@ struct TreeNode {
 
 #endif
 
+class Solution {
+public:
+  VI b;
+  int n, m;
+  ll K;
+
+  int search(ll x) {
+    int l = 0, r = m - 1, mid;
+    while (l < r) {
+      mid = (l + r) / 2;
+      if (x * b[mid] >= K) r = mid;
+      else l = mid + 1;
+    }
+
+    if (x * b[r] >= K) {
+      return m - r;
+    }
+    return 0;
+  }
+
+  vector<int> successfulPairs(vector<int>& a, vector<int>& _b, long long _K) {
+    K = _K;
+    b = _b;
+
+    n = SZ(a), m = SZ(b);
+    VI res(n, 0);
+    sort(all(b));
+
+    REP(i, 0, n) {
+      res[i] = search(a[i]);
+    }
+
+    return res;
+  }
+};

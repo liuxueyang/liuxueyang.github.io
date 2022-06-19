@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sun Jun 19 11:10:56 2022
 
 #include <bits/stdc++.h>
 
@@ -74,3 +70,25 @@ struct TreeNode {
 
 #endif
 
+class Solution {
+public:
+  int minimumNumbers(int n, int k) {
+    if (!n) return n;
+
+    int res = 0;
+    if (k == 0) {
+      if (n % 10) return -1;
+      return 1;
+    }
+
+    while (n > 0 && (n % 10 != k)) {
+      n -= k;
+      res++;
+    }
+
+    if (n > 0) res++;
+    else if (n < 0) res = -1;
+
+    return res;
+  }
+};

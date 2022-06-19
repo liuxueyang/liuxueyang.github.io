@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Tue Jun  7 23:20:37 2022
 
 #include <bits/stdc++.h>
 
@@ -40,8 +36,6 @@ const ull Pr = 131;
 #define pb push_back
 #define has(a, x) (a.find(x) != a.end())
 #define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
 
 #ifdef _DEBUG
 #define debug1(x) cout << #x" = " << x << endl;
@@ -74,3 +68,74 @@ struct TreeNode {
 
 #endif
 
+const int N = 200010;
+int k, a[N], n, tc;
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("e.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  scanf("%d", &tc);
+  while (tc--) {
+    scanf("%d%d", &n, &k);
+    REP1(i, 1, n) scanf("%d", a + i);
+
+    ll sum = 0;
+    map<int, int> m;
+
+    REP1(i, 1, n) {
+      sum += a[i] / k;
+      a[i] %= k;
+      if (a[i])
+        m[a[i]]++;
+    }
+    debug1(sum);
+
+    REP1(i, 1, k - 1) {
+      if (has(m, i)) {
+        int j = k - i, cnt = m[i];
+
+        debug2(i, cnt);
+
+        REP1(s, j, k - 1) {
+          if (i == s) continue;
+
+          if (has(m, s)) {
+            int cnt1 = min(cnt, m[s]);
+
+            cnt -= cnt1;
+            m[i] -= cnt1;
+
+            m[s] -= cnt1;
+            debug3(i, s, cnt1);
+            sum += cnt1;
+            if (!m[s]) {
+              m.erase(s);
+            }
+
+            if (!cnt) {
+              m.erase(i);
+              break;
+            }
+          }
+        }
+      }
+    }
+
+    REP1(i, 1, k - 1) {
+      if (has(m, i)) {
+        int cnt = m[i];
+        if (cnt >= 2 && (i + i) >= k) {
+          sum += (cnt / 2);
+        }
+      }
+    }
+
+    printf("%lld\n", sum);
+  }
+
+  return 0;
+}

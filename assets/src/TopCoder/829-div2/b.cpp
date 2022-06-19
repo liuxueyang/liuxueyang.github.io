@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Wed Jun  8 18:55:01 2022
 
 #include <bits/stdc++.h>
 
@@ -74,3 +70,15 @@ struct TreeNode {
 
 #endif
 
+class NonbinarySearch {
+public:
+	int search(int n) {
+    int res = 0, l = 1, r = n, mid;
+    while (l < r) {
+      mid = (l + r) / 2;
+      r = mid - 1;
+      res++;
+    }
+    return res;
+	}
+};

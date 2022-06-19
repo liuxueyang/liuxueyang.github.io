@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Tue Jun  7 22:34:44 2022
 
 #include <bits/stdc++.h>
 
@@ -40,8 +36,6 @@ const ull Pr = 131;
 #define pb push_back
 #define has(a, x) (a.find(x) != a.end())
 #define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
 
 #ifdef _DEBUG
 #define debug1(x) cout << #x" = " << x << endl;
@@ -74,3 +68,34 @@ struct TreeNode {
 
 #endif
 
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("a.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  int tc; scanf("%d", &tc);
+  while (tc--) {
+    VI a(4, 0); int n;
+    scanf("%d", &n);
+    int m = n / 3;
+    REP1(i, 1, 3) {
+      a[i] = m;
+    }
+    if (n % 3 == 1) {
+      a[3] += 2;
+      a[1] --;
+    } else if (n % 3 == 2) {
+      a[2]++;
+      a[3] += 2;
+      a[1]--;
+    } else {
+      a[3]++;
+      a[1]--;
+    }
+    printf("%d %d %d\n", a[2], a[3], a[1]);
+  }
+
+  return 0;
+}

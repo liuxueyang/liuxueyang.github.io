@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sun Jun 12 10:38:41 2022
 
 #include <bits/stdc++.h>
 
@@ -74,3 +70,30 @@ struct TreeNode {
 
 #endif
 
+const int N = 110;
+int d[N][N];
+
+class Solution {
+public:
+  int minPathCost(vector<vector<int>>& a, vector<vector<int>>& co) {
+    int m = SZ(a), n = SZ(a[0]);
+    memset(d, 0x3f, sizeof d);
+    REP(j, 0, n) d[0][j] = a[0][j];
+
+    REP(i, 0, m - 1) {
+      REP(j, 0, n) {
+        int v = a[i][j];
+        REP(j1, 0, n) {
+          d[i + 1][j1] = min(d[i + 1][j1], d[i][j] + co[v][j1] + a[i + 1][j1]);
+        }
+      }
+    }
+
+    int res = INF;
+    REP(j, 0, n) {
+      res = min(res, d[m - 1][j]);
+    }
+
+    return res;
+  }
+};

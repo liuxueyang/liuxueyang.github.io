@@ -1,10 +1,22 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sat May 28 20:16:46 2022
 
-#include <bits/stdc++.h>
+#include <cstdio>
+#include <cstring>
+#include <cstdlib>
+#include <cmath>
+#include <climits>
+
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <map>
+#include <set>
+#include <algorithm>
+#include <utility>
+#include <functional>
 
 using namespace std;
 
@@ -29,30 +41,6 @@ const ull Pr = 131;
 #define TN TreeNode
 #define TNP TreeNode*
 
-#define REP(i, a, b) for (int i = int(a); i < int(b); ++i)
-#define PER(i, a, b) for (int i = int(b) - 1; i >= int(a); --i)
-#define REP1(i, a, b) for (int i = int(a); i <= int(b); ++i)
-#define PER1(i, a, b) for (int i = int(b); i >= int(a); --i)
-#define REPE(i, j) for (int i = h[j]; i != -1; i = ne[i])
-
-#define f1 first
-#define f2 second
-#define pb push_back
-#define has(a, x) (a.find(x) != a.end())
-#define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
-
-#ifdef _DEBUG
-#define debug1(x) cout << #x" = " << x << endl;
-#define debug2(x,y) cout << #x" = " << x << " "#y" = " << y << endl;
-#define debug3(x,y,z) cout << #x" = " << x << " "#y" = " << y << " "#z" = " << z << endl;
-#else
-#define debug1
-#define debug2
-#define debug3
-#endif
-
 #ifdef _DEBUG
 
 struct ListNode {
@@ -74,3 +62,32 @@ struct TreeNode {
 
 #endif
 
+ll gcd(ll a, ll b) {
+  return b ? gcd(b, a % b) : a;
+}
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("d.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  ll n, a, b;
+  while (cin >> n >> a >> b) {
+    ll sum0 = (1 + n) * n / 2;
+    ll ka = n / a, kb = n/ b;
+    ll suma = (1 + ka) * ka / 2 * a;
+    ll sumb = (1 + kb) * kb / 2 * b;
+
+    ll c = gcd(a, b);
+    c = a * b / c;
+    ll kc = n / c;
+    ll sumc = (1 + kc) * kc / 2 * c;
+
+    sum0 = sum0 - (suma + sumb - sumc);
+    cout << sum0 << '\n';
+  }
+
+  return 0;
+}

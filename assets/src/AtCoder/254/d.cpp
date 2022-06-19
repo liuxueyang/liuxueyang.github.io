@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sat Jun  4 21:14:22 2022
 
 #include <bits/stdc++.h>
 
@@ -40,8 +36,6 @@ const ull Pr = 131;
 #define pb push_back
 #define has(a, x) (a.find(x) != a.end())
 #define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
 
 #ifdef _DEBUG
 #define debug1(x) cout << #x" = " << x << endl;
@@ -74,3 +68,65 @@ struct TreeNode {
 
 #endif
 
+const int N = 200010;
+ll a[N];
+
+ll prime_facto(ll n) {
+  ll ans = n;
+  map<ll, int> res;
+  for (ll i = 2; i <= n / i; ++i) {
+    while (n % i == 0) {
+      res[i]++;
+      n /= i;
+    }
+  }
+  if (n > 1) res[n]++;
+
+  for (auto p : res) {
+    int x = p.f1, cnt = p.f2;
+    if (cnt % 2 == 0) {
+      while (cnt--) ans /= x;
+    }
+  }
+
+  return ans;
+}
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("d.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  int n;
+  while (~scanf("%d", &n)) {
+    ll res = 0;
+    if (n == 1) {
+      printf("1\n"); continue;
+    }
+
+    map<int, int> m;
+    REP1(i, 2, n) {
+      auto f = prime_facto(i);
+      debug2(i, f);
+      m[f]++;
+    }
+
+    res = n;
+    for (auto [f, cnt] : m) {
+      if (f == 1) {
+        res += cnt * 2;
+      } else {
+        if (cnt >= 2) {
+          debug2(f, cnt);
+          res += cnt * (cnt - 1);
+        }
+      }
+    }
+
+    printf("%lld\n", res);
+  }
+
+  return 0;
+}

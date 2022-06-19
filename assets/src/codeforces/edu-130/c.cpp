@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sun Jun 12 22:57:36 2022
 
 #include <bits/stdc++.h>
 
@@ -74,3 +70,73 @@ struct TreeNode {
 
 #endif
 
+const int N = 100010;
+char s[N], t[N];
+int n, q;
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("c.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  scanf("%d", &q);
+  while (q--) {
+    scanf("%d", &n);
+    scanf("%s%s", s + 1, t  +1);
+
+    VI cnt1(3, 0), cnt2(3, 0);
+    REP1(i, 1, n) cnt1[s[i] - 'a']++;
+    REP1(i, 1, n) cnt2[t[i] - 'a']++;
+
+    if (cnt1 != cnt2) {
+      printf("NO\n");
+      continue;
+    }
+
+    vector<char> s1, t1;
+    REP1(i, 1, n) {
+      if (s[i] == 'a' || s[i] == 'c') s1.pb(s[i]);
+    }
+    REP1(i, 1, n) {
+      if (t[i] == 'a' || t[i] == 'c') t1.pb(t[i]);
+    }
+
+    if (s1 != t1 ) {
+      printf("NO\n");
+      continue;
+    }
+
+    int ca = 0, cc = 0, j = 0, ca1 = 0, cc1 = 0;
+    bool mark = true;
+    REP1(i, 1, n) {
+      if (s[i] == 'a') ca++;
+      if (t[i] == 'a') ca1++;
+
+      if (ca < ca1) {
+        mark = false; break;
+      }
+    }
+    debug2(ca, ca1);
+
+    PER1(i, 1, n) {
+      if (s[i] == 'c') cc++;
+      if (t[i] == 'c') cc1++;
+
+      if (cc < cc1) {
+        mark = false;
+        break;
+      }
+    }
+    debug2(cc, cc1);
+
+    if (mark) {
+      printf("YES\n");
+    } else {
+      printf("NO\n");
+    }
+  }
+
+  return 0;
+}

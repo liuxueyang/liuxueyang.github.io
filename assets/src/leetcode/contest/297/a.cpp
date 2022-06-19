@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sun Jun 12 10:30:08 2022
 
 #include <bits/stdc++.h>
 
@@ -74,3 +70,21 @@ struct TreeNode {
 
 #endif
 
+class Solution {
+public:
+  double calculateTax(vector<vector<int>>& a, int s) {
+    double res = 0, pre = 0;
+    for (auto &v : a) {
+      double u = v[0], p = v[1] / 100.0;
+      if (u >= s) {
+        res += (s - pre) * p;
+        break;
+      } else {
+        res += (u - pre) * p;
+        pre = u;
+      }
+    }
+
+    return res;
+  }
+};

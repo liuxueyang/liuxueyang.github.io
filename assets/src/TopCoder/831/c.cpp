@@ -1,33 +1,33 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Wed Jun  8 19:57:24 2022
 
-#include <bits/stdc++.h>
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <queue>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
 const int INF = 0x3f3f3f3f, MOD = 1e9 + 7;
-const double eps = 1e-8;
-const int dir[8][2] = {
-  {0, 1}, {0, -1},
-  {1, 0}, {-1, 0},
-  {1, 1}, {1, -1},
-  {-1, 1}, {-1, -1},
-};
 
 typedef long long ll;
 typedef unsigned long long ull;
 typedef vector<int> VI;
 typedef pair<int, int> PII;
-
-const ull Pr = 131;
-
-#define LN ListNode
-#define LNP ListNode*
-#define TN TreeNode
-#define TNP TreeNode*
 
 #define REP(i, a, b) for (int i = int(a); i < int(b); ++i)
 #define PER(i, a, b) for (int i = int(b) - 1; i >= int(a); --i)
@@ -53,24 +53,33 @@ const ull Pr = 131;
 #define debug3
 #endif
 
-#ifdef _DEBUG
+class RerollCheater {
+public:
+	vector <int> reroll(vector <int> a, vector <int> b) {
+		priority_queue<PII, vector<PII>, greater<PII>> q;
+    REP(i, 0, SZ(a)) {
+      q.push({a[i], i});
+    }
 
-struct ListNode {
-  int val;
-  ListNode *next;
-  ListNode() : val(0), next(nullptr) {}
-  ListNode(int val) : val(val), next(nullptr) {}
-  ListNode(int val, ListNode *next) : val(val), next(next) {}
+    VI res;
+    int n = SZ(b);
+    VI pob(n + 1, -INF);
+    PER(i, 0, n) {
+      pob[i] = max(b[i], pob[i + 1]);
+    }
+
+    REP(i, 0, n) {
+      if (pob[i] > q.top().f1) {
+        auto t = q.top();
+        q.pop();
+        res.pb(t.f2);
+        t.f1 = b[i];
+        q.push(t);
+      } else {
+        break;
+      }
+    }
+
+    return res;
+	}
 };
-
-struct TreeNode {
-  int val;
-  TreeNode *left;
-  TreeNode *right;
-  TreeNode() : val(0), left(nullptr), right(nullptr) {}
-  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-};
-
-#endif
-

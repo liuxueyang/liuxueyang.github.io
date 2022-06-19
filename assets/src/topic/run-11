@@ -1,10 +1,21 @@
 #!/usr/bin/env bash
 
+if [[ $(uname) = "Darwin" ]]; then
+    CC=g++-11
+else
+    CC=g++
+fi
+
 if [ $1 = "clean" ]; then
     rm -rf *.exe *.dSYM
 else
-    g++ -Wall -std=c++11 -D_DEBUG $1.cpp -o $1.exe
-    if [ -e $1.exe ]; then
-	./$1.exe
+    bname="${1%.*}"
+    src=${bname}.cpp
+    target=${bname}.exe
+
+    # -fsanitize=address -ftrapv
+    $CC -Wall -std=c++11 -D_DEBUG -Wno-unused-const-variable -ftrapv $src -o ${target}
+    if [ -e $target ]; then
+      ./$target
     fi
 fi

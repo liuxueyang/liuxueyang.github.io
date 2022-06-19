@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sun Jun  5 10:31:07 2022
 
 #include <bits/stdc++.h>
 
@@ -40,8 +36,6 @@ const ull Pr = 131;
 #define pb push_back
 #define has(a, x) (a.find(x) != a.end())
 #define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
 
 #ifdef _DEBUG
 #define debug1(x) cout << #x" = " << x << endl;
@@ -74,3 +68,28 @@ struct TreeNode {
 
 #endif
 
+class Solution {
+public:
+  int minMaxGame(vector<int>& a) {
+    int n = a.size();
+    if (n == 1) return a[0];
+
+    VI b;
+
+    while (n > 1) {
+      n /= 2;
+      b = VI(n, 0);
+
+      for (int i = 0; i < n; i += 2) {
+        b[i] = min(a[2 * i], a[2 * i + 1]);
+      }
+      for (int i = 1; i < n; i += 2) {
+        b[i] = max(a[2 * i], a[2 * i + 1]);
+      }
+      
+      a = b;
+    }
+
+    return b[0];
+  }
+};

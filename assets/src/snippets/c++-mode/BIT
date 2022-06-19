@@ -1,0 +1,38 @@
+# -*- mode: snippet -*-
+# name: BIT
+# key: BIT
+# --
+
+template<class T>
+struct BIT {
+  T c[N];
+  int n;
+
+  void resize(int _n) {
+    n = _n;
+    memset(c, 0, sizeof c);
+  }
+
+  int lowbit(int x) {
+    return x & (-x);
+  }
+
+  T query(int x) {
+    T s = 0;
+    assert(x <= n);
+    while (x) {
+      s += c[x];
+      x -= lowbit(x);
+    }
+    return s;
+  }
+
+  void modify(int x, T d) {
+    assert(x != 0);
+    while (x <= n) {
+      c[x] += d;
+      x += lowbit(x);
+    }
+  }
+};
+

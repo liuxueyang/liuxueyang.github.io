@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Fri Jun 10 18:08:17 2022
 
 #include <bits/stdc++.h>
 
@@ -74,3 +70,30 @@ struct TreeNode {
 
 #endif
 
+int n, tc, a, b;
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("d.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  scanf("%d", &tc);
+  while (tc--) {
+    scanf("%d%d", &a, &b);
+    int c = abs(a - b);
+    int res {};
+
+    for (int i = 1; i * i <= c; ++i) {
+      int j = c / i;
+      if (c % i) continue;
+      if (i != j) res += 2;
+      else res++;
+    }
+
+    printf("%d\n", res);
+  }
+
+  return 0;
+}

@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sat Jun 11 22:58:11 2022
 
 #include <bits/stdc++.h>
 
@@ -74,3 +70,32 @@ struct TreeNode {
 
 #endif
 
+class Solution {
+public:
+  bool matchReplacement(string s, string t, vector<vector<char>>& m1) {
+    map<char, set<char>> ma;
+    for (auto &v : m1) {
+      ma[v[0]].insert(v[1]);
+    }
+
+    int n = SZ(s), m = SZ(t);
+    REP(i, 0, n - m + 1) {
+      bool flag = true;
+      int i1 = i;
+      REP(j, 0, m) {
+        if (s[i1] == t[j] || (has(ma, t[j]) && has(ma[t[j]], s[i1]))) {
+          i1++;
+          continue;
+        }
+        else {
+          debug2(i1, j);
+          flag = false;
+          break;
+        }
+      }
+      if (flag) return true;
+    }
+
+    return false;
+  }
+};

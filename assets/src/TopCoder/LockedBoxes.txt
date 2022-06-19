@@ -1,0 +1,98 @@
+PROBLEM STATEMENT
+
+There are N locked boxes. The boxes are numbered from 0 to N-1, inclusive.
+
+
+We used to have a collection of keys, each able to open exactly one of the boxes. However, the person responsible for locking the boxes somehow managed to lock all the keys we had inside some of the boxes.
+
+
+We managed to peek into all boxes and reconstruct the information about all keys: for each valid index i, the box number box[i] now contains a key that can unlock the box number key[i].
+
+
+
+We need to open all the boxes.
+In order to do this, we'll need to break the locks on some of them.
+
+
+Once we open a box (either by breaking its lock or by unlocking it with a key), we get access to its content: keys that may potentially unlock some other boxes.
+
+
+
+Find the smallest total number X of locks we'll need to break in order to open all the boxes.
+Then, find one specific set of exactly X boxes such that if we break them open, we will eventually be able to unlock all other boxes.
+Return a vector <int> with the numbers of the X boxes we should break open.
+
+
+DEFINITION
+Class:LockedBoxes
+Method:openAll
+Parameters:int, vector <int>, vector <int>
+Returns:vector <int>
+Method signature:vector <int> openAll(int N, vector <int> box, vector <int> key)
+
+
+NOTES
+-Any valid optimal solution will be accepted.
+-The return value does not have to be sorted.
+
+
+CONSTRAINTS
+-N will be between 1 and 20, inclusive.
+-box will have between 0 and 1000 elements, inclusive.
+-Each element of box will be between 0 and N-1, inclusive.
+-key will have the same number of elements as box.
+-Each element of key will be between 0 and N-1, inclusive.
+
+
+EXAMPLES
+
+0)
+4
+{}
+{}
+
+Returns: {0, 1, 2, 3 }
+
+Four empty locked boxes. If we want them opened, we have to break all four locks.
+
+1)
+4
+{0, 1, 1, 1, 2, 2, 3, 3, 3, 3, 3}
+{0, 1, 1, 1, 2, 2, 3, 3, 3, 3, 3}
+
+Returns: {0, 1, 2, 3 }
+
+
+Each box contains one or more keys, but sadly each box only contains keys that open its own lock. That's not exactly useful. We still need to break open all four locks.
+
+
+(Note that there can be multiple copies of the same key, and sometimes they may even appear in the same box.)
+
+
+2)
+6
+{3, 1, 3, 0, 2, 4, 4}
+{4, 3, 5, 1, 0, 4, 3}
+
+Returns: {2 }
+
+
+There is no key that opens box 2, so we'll certainly have to break open the lock on that box.
+Once we force box 2 open, we find a key that opens box 0.
+Once we unlock box 0, we find a key that opens box 1.
+Once we unlock box 1, we find a key that opens box 3.
+Once we unlock box 3, we find two new keys: one that opens box 4 and one that opens box 5.
+We can now unlock boxes 4 and 5, and we are done. (Box 4 will give us two more keys, but those are useless at this point in time.)
+
+We have shown that we need to break open at least one box, and we have shown that breaking open box 2 allows us to unlock all other boxes. Thus, {2} must be an optimal solution.
+
+3)
+6
+{0, 1, 2, 3, 4, 5}
+{1, 0, 3, 2, 5, 4}
+
+Returns: {0, 2, 4 }
+
+Three pairs of boxes. Within each pair, each box contains the key that unlocks the other. In each pair we need to break one box open and then we can unlock the other one. Thus, the optimal solutions break open exactly three boxes.
+There are eight distinct optimal sets of locks we can break open. You may return any one of those eight options. For example, {1, 2, 5} and {0, 3, 5} are also optimal solutions.
+Note that not all sets of three boxes are valid solutions. For example, if you break open the locks {0, 1, 2}, you will only be able to unlock box 3 but not boxes 4 and 5.

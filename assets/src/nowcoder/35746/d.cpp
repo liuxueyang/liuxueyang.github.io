@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sun Jun  5 13:15:20 2022
 
 #include <bits/stdc++.h>
 
@@ -40,8 +36,6 @@ const ull Pr = 131;
 #define pb push_back
 #define has(a, x) (a.find(x) != a.end())
 #define nonempty(a) (!a.empty())
-#define all(a) (a).begin(),(a).end()
-#define SZ(a) int((a).size())
 
 #ifdef _DEBUG
 #define debug1(x) cout << #x" = " << x << endl;
@@ -74,3 +68,69 @@ struct TreeNode {
 
 #endif
 
+const int N = 100010;
+int fa[N], sz[N], n, m, a[N], vx[N];
+map<int, int> mcnt[N];
+PII cm[N];
+
+void Init() {
+  for (int i = 1; i <= n; ++i) fa[i] = i, sz[i] = 1, mcnt[i].clear(), cm[i] = {1, a[i]};
+}
+
+int Find(int x) {
+  if (x == fa[x]) return x;
+  int ro = Find(fa[x]);
+
+  fa[x] = ro;
+  return ro;
+}
+
+PII getres(PII a, PII b) {
+  if (a.f1 == b.f1) return a.f2 < b.f2 ? a : b;
+  return a.f1 < b.f1 ? a : b;
+}
+
+void Union(int x, int y) {
+  int rx = Find(x), ry = Find(y);
+  if (rx == ry) return;
+
+  if (sz[rx] < sz[ry]) swap(rx, ry);
+
+  fa[ry] = rx;
+  sz[rx] += sz[ry];
+  auto rz = getres(cm[rx], cm[ry]);
+  cm[rx] = rz;
+
+  for (auto [cnt, x] : mcnt[ry]) {
+    mcnt[rx][x] += cnt;
+    cm[rx] = getres(cm[rx], {mcnt[rx][x], x});
+  }
+}
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("d.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  while (~scanf("%d%d", &n, &m)) {
+    REP1(i, 1, n) scanf("%d", a + i);
+    Init();
+
+    while (m--) {
+      int op, x, y;
+      scanf("%d", &op);
+      if (op == 1) {
+        scanf("%d%d", &x, &y);
+        Union(x, y);
+      } else {
+        scanf("%d", &x);
+        int ro = Find(x);
+        printf("%d\n", cm[ro].f2);
+      }
+    }
+  }
+
+  return 0;
+}

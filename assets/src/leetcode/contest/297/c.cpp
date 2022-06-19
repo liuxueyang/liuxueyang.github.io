@@ -1,8 +1,4 @@
-# -*- mode: snippet -*-
-# name: header
-# key: header
-# --
-// Date: `(current-time-string)`
+// Date: Sun Jun 12 11:23:10 2022
 
 #include <bits/stdc++.h>
 
@@ -74,3 +70,73 @@ struct TreeNode {
 
 #endif
 
+class Solution {
+public:
+  int n, k;
+  VI a;
+
+  bool check(int t) {
+    VI vis(n, 0), tar(n, 1);
+    int k1 = k;
+
+    while (k1--) {
+      if (vis == tar) return true;
+
+      int ma = 0, mas = 0;
+      REP(i, 0, (1 << n)) {
+        int sum = 0, j = i, idx = 0;
+        while (j) {
+          if ((j & 1) && !vis[idx]) {
+            sum += a[idx];
+          }
+          idx++;
+          j /= 2;
+        }
+
+        if (sum > ma && sum <= t) {
+          ma = sum;
+          mas = i;
+        }
+      }
+
+      int idx = 0;
+      while (mas) {
+        if (mas & 1) vis[idx] = 1;
+        idx++;
+        mas /= 2;
+      }
+    }
+
+    return vis == tar;
+  }
+
+  int distributeCookies(vector<int>& _a, int _k) {
+    a = _a;
+    n = SZ(a);
+    k = _k;
+    sort(a.begin(), a.end(), greater<int>());
+
+    int l = 1, r = 1e6, mid;
+    while (l < r) {
+      mid = (l + r) / 2;
+      if (check(mid)) r = mid;
+      else l = mid + 1;
+    }
+
+    return r;
+  }
+};
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("c.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  VI a {8, 15, 10, 20, 8};
+  Solution b;
+  b.distributeCookies(a, 2);
+
+  return 0;
+}
