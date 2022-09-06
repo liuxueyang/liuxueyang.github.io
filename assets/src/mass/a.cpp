@@ -1,4 +1,4 @@
-// Date: Sat Jul 16 12:43:32 2022
+// Date: Mon Aug  1 09:37:38 2022
 
 #include <bits/stdc++.h>
 
@@ -70,24 +70,26 @@ struct TreeNode {
 
 #endif
 
-const int N = 55;
-
-int a[2][N];
-
-class Solution {
-public:
-  int oddCells(int m, int n, vector<vector<int>>& b) {
-    memset(a, 0, sizeof a);
-
-    for (auto &v : b) {
-      int x = v[0], y = v[1];
-      a[0][x]++;
-      a[1][y]++;
-    }
-
-    int res {};
-    REP(i, 0, m) REP(j, 0, n) if ((a[0][i] + a[1][j]) & 1) res++;
-
-    return res;
+int get(ull x) {
+  int res {};
+  while (x) {
+    if (x & 1) res++;
+    x >>= 1;
   }
-};
+  return res;
+}
+
+int main(void)
+{
+#ifdef _DEBUG
+  freopen("a.in", "r", stdin);
+#endif
+  std::ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+  ull x;
+  while (~scanf("%llu", &x)) {
+    printf("%d\n", get(x));
+  }
+
+  return 0;
+}

@@ -1,4 +1,4 @@
-// Date: Sat Jul 16 12:33:52 2022
+// Date: Tue Jul 26 08:59:29 2022
 
 #include <bits/stdc++.h>
 
@@ -70,21 +70,24 @@ struct TreeNode {
 
 #endif
 
-const int N = 60;
-int a[N][N];
-
 class Solution {
 public:
-  int oddCells(int m, int n, vector<vector<int>>& b) {
-    memset(a, 0, sizeof a);
-    for (auto &v : b) {
-      int x = v[0], y = v[1];
-      REP(j, 0, n) a[x][j]++;
-      REP(i, 0, m) a[i][y]++;
-    }
+  int intersectionSizeTwo(vector<vector<int>>& a) {
+    sort(all(a), [](const VI &x, const VI &y) const -> bool {
+      if (x[0] < y[0]) return true;
+      if (x[1] < y[1]) return true;
+      return false;
+    });
 
-    int res {};
-    REP(i, 0, m) REP(j, 0, n) if (a[i][j] & 1) res++;
-    return res;
+    vector<PII> b;
+    PII pre = a[0];
+    b.pb({pre[0], pre[1]});
+
+    REP(i, 1, SZ(a)) {
+      if (a[i][0] >= pre[1]) b.pb({a[i][0], a[i][1]});
+      else {
+        
+      }
+    }
   }
 };
