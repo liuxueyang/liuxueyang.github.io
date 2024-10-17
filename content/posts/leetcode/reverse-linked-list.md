@@ -1,5 +1,5 @@
 +++
-title = '反转链表题单'
+title = '【题单】反转链表'
 date = 2024-10-17T19:49:25+08:00
 tags = [ "linked list" ]
 categories = [ "LeetCode" ]

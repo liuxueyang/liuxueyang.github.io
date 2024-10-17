@@ -1,5 +1,5 @@
 +++
-title = '链表快慢指针题单'
+title = '【题单】链表快慢指针'
 date = 2024-10-17T19:53:49+08:00
 tags = [ "linked list" ]
 categories = [ "LeetCode" ]

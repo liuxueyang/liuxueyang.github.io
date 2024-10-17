@@ -1,5 +1,5 @@
 +++
-title = '不定长滑动窗口——求最长或最大 题单'
+title = '【题单】不定长滑动窗口——求最长或最大'
 date = 2024-10-17T21:10:17+08:00
 tags = [ "two pointers" ]
 categories = [ "LeetCode" ]
