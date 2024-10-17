@@ -1,0 +1,47 @@
+theme = "hugo-coder"
+baseURL = "https://liuxueyang.github.io/"
+title = "Xueyang Liu"
+languagecode = "cn"
+hasCJKLanguage = true
+defaultcontentlanguage = "en-us"
+googleAnalytics = "G-QJNPM85VRF"
+disqusShortname = "liuxueyang"
+paginate = 15
+
+[module]
+[[module.imports]]
+path = "hugo-coder"
+
+[markup.highlight]
+style = "solarized-dark"
+
+[params]
+author = "liuxueyang"
+keywords = "blog,developer,personal"
+avatarurl = "images/favicon.ico"
+faviconSVG = "images/favicon.ico"
+since = 2023
+enableTwemoji = true
+colorScheme = "auto"
+hidecolorschemetoggle = false
+mode = "auto"
+useCDN = true
+fuse = true
+math = true
+useChineseFonts = true
+
+# Menu links
+[[menu.main]]
+name = "Posts"
+weight = 1
+url = "posts/"
+
+[[menu.main]]
+name = "Tags"
+url = "/tags/"
+weight = 2
+
+[[menu.main]]
+name = "Categories"
+url = "/categories/"
+weight = 2
