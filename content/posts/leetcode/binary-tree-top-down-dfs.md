@@ -5,6 +5,8 @@ tags = [ "dfs" ]
 categories = [ "LeetCode" ]
 +++
 
+[二叉树题单](https://leetcode.cn/circle/discuss/K0n2gO/)
+
 1. [104. 二叉树的最大深度](https://leetcode.cn/problems/maximum-depth-of-binary-tree/)
 
 深度从根开始往下递增，到达叶子的时候，深度达到最深，更新答案。

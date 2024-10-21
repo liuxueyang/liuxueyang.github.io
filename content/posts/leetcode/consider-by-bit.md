@@ -5,6 +5,8 @@ tags = [ "bitmasks" ]
 categories = [ "LeetCode" ]
 +++
 
+[位运算题单](https://leetcode.cn/circle/discuss/dHn9Vk/)
+
 1. [477. 汉明距离总和](https://leetcode.cn/problems/total-hamming-distance/)
 
 先考虑两个数字的情况，按位考虑，如果二进制位不同，那么对答案的贡献是 1.

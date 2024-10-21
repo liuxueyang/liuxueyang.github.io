@@ -5,6 +5,8 @@ tags = [ "linked list" ]
 categories = [ "LeetCode" ]
 +++
 
+[链表题单](https://leetcode.cn/circle/discuss/K0n2gO/)
+
 1. [206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)
 
 p1 指向前一个节点，p2 指向当前节点，p3 指向下一个节点。

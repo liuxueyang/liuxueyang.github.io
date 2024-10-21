@@ -6,6 +6,8 @@ categories = [ "LeetCode" ]
 draft = true
 +++
 
+[链表题单](https://leetcode.cn/circle/discuss/K0n2gO/)
+
 1. [876. 链表的中间结点](https://leetcode.cn/problems/middle-of-the-linked-list/)
 
 神奇的技巧。

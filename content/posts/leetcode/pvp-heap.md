@@ -5,6 +5,8 @@ tags = [ "heap" ]
 categories = [ "LeetCode" ]
 +++
 
+[数据结构题单](https://leetcode.cn/circle/discuss/mOr1u6/)
+
 1. [2102. 序列顺序查询](https://leetcode.cn/problems/sequentially-ordinal-rank-tracker/)
 
 维护一个小顶堆 `q1`，代表前 `k` 大的元素。
