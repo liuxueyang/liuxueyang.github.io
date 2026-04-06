@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Two Pointers on Xueyang Liu</title><link>https://liuxueyang.github.io/tags/two-pointers/</link><description>Recent content in Two Pointers on Xueyang Liu</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Thu, 17 Oct 2024 21:10:17 +0800</lastBuildDate><atom:link href="https://liuxueyang.github.io/tags/two-pointers/index.xml" rel="self" type="application/rss+xml"/><item><title>【题单】不定长滑动窗口——求最长或最大</title><link>https://liuxueyang.github.io/posts/leetcode/sliding-window-max-min/</link><pubDate>Thu, 17 Oct 2024 21:10:17 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/sliding-window-max-min/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.cn/circle/discuss/0viNMK/" class="external-link" target="_blank" rel="noopener"&gt;滑动窗口题单&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/" class="external-link" target="_blank" rel="noopener"&gt;3. 无重复字符的最长子串&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;维护一个不定长的滑动窗口：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;加入右端点&lt;/li&gt;
+&lt;li&gt;当不满足条件的时候不断移动左端点&lt;/li&gt;
+&lt;li&gt;维护答案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; &lt;span style="color:#268bd2"&gt;lengthOfLongestSubstring&lt;/span&gt;(string s) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; ans{}, n &lt;span style="color:#719e07"&gt;=&lt;/span&gt; SZ(s);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; map&lt;span style="color:#719e07"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#dc322f"&gt;char&lt;/span&gt;, &lt;span style="color:#dc322f"&gt;int&lt;/span&gt;&lt;span style="color:#719e07"&gt;&amp;gt;&lt;/span&gt; m;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;for&lt;/span&gt; (&lt;span style="color:#dc322f"&gt;int&lt;/span&gt; i &lt;span style="color:#719e07"&gt;=&lt;/span&gt; &lt;span style="color:#2aa198"&gt;0&lt;/span&gt;, j &lt;span style="color:#719e07"&gt;=&lt;/span&gt; &lt;span style="color:#2aa198"&gt;0&lt;/span&gt;; i &lt;span style="color:#719e07"&gt;&amp;lt;&lt;/span&gt; n; &lt;span style="color:#719e07"&gt;++&lt;/span&gt;i) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; m[s[i]]&lt;span style="color:#719e07"&gt;++&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;while&lt;/span&gt; (m[s[i]] &lt;span style="color:#719e07"&gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#2aa198"&gt;1&lt;/span&gt; &lt;span style="color:#719e07"&gt;&amp;amp;&amp;amp;&lt;/span&gt; j &lt;span style="color:#719e07"&gt;&amp;lt;&lt;/span&gt; i) m[s[j&lt;span style="color:#719e07"&gt;++&lt;/span&gt;]]&lt;span style="color:#719e07"&gt;--&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ckmax(ans, i &lt;span style="color:#719e07"&gt;-&lt;/span&gt; j &lt;span style="color:#719e07"&gt;+&lt;/span&gt; &lt;span style="color:#2aa198"&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;return&lt;/span&gt; ans;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;题解区的另外一种写法。&lt;/p&gt;</description></item><item><title>CodeForces 1776H Beppa and SwerChat</title><link>https://liuxueyang.github.io/posts/codeforces/1776h/</link><pubDate>Sun, 24 Dec 2023 21:55:50 +0800</pubDate><guid>https://liuxueyang.github.io/posts/codeforces/1776h/</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://vjudge.net/problem/CodeForces-1776h" class="external-link" target="_blank" rel="noopener"&gt;Beppa and SwerChat&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于 $a$ 中的每个元素 $a_i$，找到它在 $b$ 中的位置 $j$，如果 $j \ne i$，那么说明 $b_j$ 前面的人曾经来过，也就是至少 $j - 1$ 个人曾经来过，对于这 $j - 1$ 个人，需要在数组 $a$ 中跳过。在数组 $a$ 中跳过这 $j - 1$ 个人之后，检查 $b_j$ 之后的元素是否相对顺序在 $a$ 中不变，如果相对顺序改变了，更新答案。&lt;/p&gt;</description></item></channel></rss>

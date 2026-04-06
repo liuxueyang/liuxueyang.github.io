@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Heap on Xueyang Liu</title><link>https://liuxueyang.github.io/tags/heap/</link><description>Recent content in Heap on Xueyang Liu</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Sat, 19 Oct 2024 22:03:46 +0800</lastBuildDate><atom:link href="https://liuxueyang.github.io/tags/heap/index.xml" rel="self" type="application/rss+xml"/><item><title>【题单】对顶堆</title><link>https://liuxueyang.github.io/posts/leetcode/pvp-heap/</link><pubDate>Sat, 19 Oct 2024 22:03:46 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/pvp-heap/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.cn/circle/discuss/mOr1u6/" class="external-link" target="_blank" rel="noopener"&gt;数据结构题单&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://leetcode.cn/problems/sequentially-ordinal-rank-tracker/" class="external-link" target="_blank" rel="noopener"&gt;2102. 序列顺序查询&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;维护一个小顶堆 &lt;code&gt;q1&lt;/code&gt;，代表前 &lt;code&gt;k&lt;/code&gt; 大的元素。
+维护一个大顶堆 &lt;code&gt;q2&lt;/code&gt;，代表其它元素。&lt;/p&gt;
+&lt;p&gt;当新加一个元素的时候，首先加入 &lt;code&gt;q2&lt;/code&gt;，当 &lt;code&gt;q1&lt;/code&gt; 中不足 &lt;code&gt;k&lt;/code&gt; 个元素的时候，把 &lt;code&gt;q2&lt;/code&gt; 的最大元素移动到 &lt;code&gt;q1&lt;/code&gt;。如果 &lt;code&gt;q1&lt;/code&gt; 的堆顶小于 &lt;code&gt;q2&lt;/code&gt; 的堆顶，此时应该交换堆顶，这个交换操作在一次函数调用中最多会发生一次，因为新加入元素的时候，只会产生一个元素的变化。&lt;/p&gt;</description></item></channel></rss>

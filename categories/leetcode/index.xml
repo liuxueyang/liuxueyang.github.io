@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LeetCode on Xueyang Liu</title><link>https://liuxueyang.github.io/categories/leetcode/</link><description>Recent content in LeetCode on Xueyang Liu</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Mon, 21 Oct 2024 21:49:55 +0800</lastBuildDate><atom:link href="https://liuxueyang.github.io/categories/leetcode/index.xml" rel="self" type="application/rss+xml"/><item><title>【题单】字典树基础</title><link>https://liuxueyang.github.io/posts/leetcode/trie/</link><pubDate>Mon, 21 Oct 2024 21:49:55 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/trie/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.cn/circle/discuss/mOr1u6/" class="external-link" target="_blank" rel="noopener"&gt;数据结构题单&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://leetcode.cn/problems/implement-trie-prefix-tree/" class="external-link" target="_blank" rel="noopener"&gt;208. 实现 Trie (前缀树)&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;总共有 $3 \cdot 10^4$ 次插入，每个单词长度 $2000$，字母个数最多是 $6 \cdot 10^7$ 个，考虑到前缀重复的情况，估算字典树中的节点是 $3 \cdot 10^5$ 个&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#719e07"&gt;const&lt;/span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; N &lt;span style="color:#719e07"&gt;=&lt;/span&gt; &lt;span style="color:#2aa198"&gt;300100&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#719e07"&gt;struct&lt;/span&gt; &lt;span style="color:#268bd2"&gt;TrieTree&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; n, idx;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; vector&lt;span style="color:#719e07"&gt;&amp;lt;&lt;/span&gt;VI&lt;span style="color:#719e07"&gt;&amp;gt;&lt;/span&gt; son;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; VI cnt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; TrieTree() {}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; TrieTree(&lt;span style="color:#dc322f"&gt;int&lt;/span&gt; _n) &lt;span style="color:#719e07"&gt;:&lt;/span&gt; n(_n), idx(&lt;span style="color:#2aa198"&gt;0&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; son &lt;span style="color:#719e07"&gt;=&lt;/span&gt; vector&lt;span style="color:#719e07"&gt;&amp;lt;&lt;/span&gt;VI&lt;span style="color:#719e07"&gt;&amp;gt;&lt;/span&gt;(n, VI(&lt;span style="color:#2aa198"&gt;26&lt;/span&gt;, &lt;span style="color:#719e07"&gt;-&lt;/span&gt;&lt;span style="color:#2aa198"&gt;1&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; cnt &lt;span style="color:#719e07"&gt;=&lt;/span&gt; VI(n, &lt;span style="color:#2aa198"&gt;0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;void&lt;/span&gt; &lt;span style="color:#268bd2"&gt;insert&lt;/span&gt;(string &lt;span style="color:#719e07"&gt;&amp;amp;&lt;/span&gt;s) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; p &lt;span style="color:#719e07"&gt;=&lt;/span&gt; &lt;span style="color:#2aa198"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;for&lt;/span&gt; (&lt;span style="color:#719e07"&gt;auto&lt;/span&gt; c : s) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; u &lt;span style="color:#719e07"&gt;=&lt;/span&gt; c &lt;span style="color:#719e07"&gt;-&lt;/span&gt; &lt;span style="color:#2aa198"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;if&lt;/span&gt; (son[p][u] &lt;span style="color:#719e07"&gt;==&lt;/span&gt; &lt;span style="color:#719e07"&gt;-&lt;/span&gt;&lt;span style="color:#2aa198"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; son[p][u] &lt;span style="color:#719e07"&gt;=&lt;/span&gt; &lt;span style="color:#719e07"&gt;++&lt;/span&gt;idx;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; p &lt;span style="color:#719e07"&gt;=&lt;/span&gt; son[p][u];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; cnt[p]&lt;span style="color:#719e07"&gt;++&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;bool&lt;/span&gt; &lt;span style="color:#268bd2"&gt;search&lt;/span&gt;(string &lt;span style="color:#719e07"&gt;&amp;amp;&lt;/span&gt;s) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; p &lt;span style="color:#719e07"&gt;=&lt;/span&gt; &lt;span style="color:#2aa198"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;for&lt;/span&gt; (&lt;span style="color:#719e07"&gt;auto&lt;/span&gt; c : s) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; u &lt;span style="color:#719e07"&gt;=&lt;/span&gt; c &lt;span style="color:#719e07"&gt;-&lt;/span&gt; &lt;span style="color:#2aa198"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;if&lt;/span&gt; (son[p][u] &lt;span style="color:#719e07"&gt;==&lt;/span&gt; &lt;span style="color:#719e07"&gt;-&lt;/span&gt;&lt;span style="color:#2aa198"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;return&lt;/span&gt; &lt;span style="color:#b58900"&gt;false&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; p &lt;span style="color:#719e07"&gt;=&lt;/span&gt; son[p][u];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;return&lt;/span&gt; cnt[p] &lt;span style="color:#719e07"&gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#2aa198"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;bool&lt;/span&gt; &lt;span style="color:#268bd2"&gt;starts_with&lt;/span&gt;(string &lt;span style="color:#719e07"&gt;&amp;amp;&lt;/span&gt;s) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; p &lt;span style="color:#719e07"&gt;=&lt;/span&gt; &lt;span style="color:#2aa198"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;for&lt;/span&gt; (&lt;span style="color:#719e07"&gt;auto&lt;/span&gt; c : s) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; u &lt;span style="color:#719e07"&gt;=&lt;/span&gt; c &lt;span style="color:#719e07"&gt;-&lt;/span&gt; &lt;span style="color:#2aa198"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;if&lt;/span&gt; (son[p][u] &lt;span style="color:#719e07"&gt;==&lt;/span&gt; &lt;span style="color:#719e07"&gt;-&lt;/span&gt;&lt;span style="color:#2aa198"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;return&lt;/span&gt; &lt;span style="color:#b58900"&gt;false&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; p &lt;span style="color:#719e07"&gt;=&lt;/span&gt; son[p][u];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;return&lt;/span&gt; &lt;span style="color:#b58900"&gt;true&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#719e07"&gt;class&lt;/span&gt; &lt;span style="color:#268bd2"&gt;Trie&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#719e07"&gt;public&lt;/span&gt;&lt;span style="color:#719e07"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; TrieTree tr;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Trie() { tr &lt;span style="color:#719e07"&gt;=&lt;/span&gt; TrieTree(N); }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;void&lt;/span&gt; &lt;span style="color:#268bd2"&gt;insert&lt;/span&gt;(string word) { tr.insert(word); }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;bool&lt;/span&gt; &lt;span style="color:#268bd2"&gt;search&lt;/span&gt;(string word) { &lt;span style="color:#719e07"&gt;return&lt;/span&gt; tr.search(word); }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;bool&lt;/span&gt; &lt;span style="color:#268bd2"&gt;startsWith&lt;/span&gt;(string prefix) { &lt;span style="color:#719e07"&gt;return&lt;/span&gt; tr.starts_with(prefix); }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;更好的做法是使用动态创建节点的方式，避免估算不准确。&lt;/p&gt;</description></item><item><title>【题单】对顶堆</title><link>https://liuxueyang.github.io/posts/leetcode/pvp-heap/</link><pubDate>Sat, 19 Oct 2024 22:03:46 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/pvp-heap/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.cn/circle/discuss/mOr1u6/" class="external-link" target="_blank" rel="noopener"&gt;数据结构题单&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://leetcode.cn/problems/sequentially-ordinal-rank-tracker/" class="external-link" target="_blank" rel="noopener"&gt;2102. 序列顺序查询&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;维护一个小顶堆 &lt;code&gt;q1&lt;/code&gt;，代表前 &lt;code&gt;k&lt;/code&gt; 大的元素。
+维护一个大顶堆 &lt;code&gt;q2&lt;/code&gt;，代表其它元素。&lt;/p&gt;
+&lt;p&gt;当新加一个元素的时候，首先加入 &lt;code&gt;q2&lt;/code&gt;，当 &lt;code&gt;q1&lt;/code&gt; 中不足 &lt;code&gt;k&lt;/code&gt; 个元素的时候，把 &lt;code&gt;q2&lt;/code&gt; 的最大元素移动到 &lt;code&gt;q1&lt;/code&gt;。如果 &lt;code&gt;q1&lt;/code&gt; 的堆顶小于 &lt;code&gt;q2&lt;/code&gt; 的堆顶，此时应该交换堆顶，这个交换操作在一次函数调用中最多会发生一次，因为新加入元素的时候，只会产生一个元素的变化。&lt;/p&gt;</description></item><item><title>【题单】位运算——拆位法</title><link>https://liuxueyang.github.io/posts/leetcode/consider-by-bit/</link><pubDate>Thu, 17 Oct 2024 22:02:51 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/consider-by-bit/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.cn/circle/discuss/dHn9Vk/" class="external-link" target="_blank" rel="noopener"&gt;位运算题单&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://leetcode.cn/problems/total-hamming-distance/" class="external-link" target="_blank" rel="noopener"&gt;477. 汉明距离总和&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;先考虑两个数字的情况，按位考虑，如果二进制位不同，那么对答案的贡献是 1.
+接下来考虑多个数字的情况，同样按位考虑，对于某一位来说，设 0 的个数是 $c_1$，1 的个数是 $c_2$，那么这一位对答案的贡献是 $c_1 \cdot c_2$&lt;/p&gt;</description></item><item><title>【题单】不定长滑动窗口——求最长或最大</title><link>https://liuxueyang.github.io/posts/leetcode/sliding-window-max-min/</link><pubDate>Thu, 17 Oct 2024 21:10:17 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/sliding-window-max-min/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.cn/circle/discuss/0viNMK/" class="external-link" target="_blank" rel="noopener"&gt;滑动窗口题单&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/" class="external-link" target="_blank" rel="noopener"&gt;3. 无重复字符的最长子串&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;维护一个不定长的滑动窗口：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;加入右端点&lt;/li&gt;
+&lt;li&gt;当不满足条件的时候不断移动左端点&lt;/li&gt;
+&lt;li&gt;维护答案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; &lt;span style="color:#268bd2"&gt;lengthOfLongestSubstring&lt;/span&gt;(string s) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; ans{}, n &lt;span style="color:#719e07"&gt;=&lt;/span&gt; SZ(s);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; map&lt;span style="color:#719e07"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#dc322f"&gt;char&lt;/span&gt;, &lt;span style="color:#dc322f"&gt;int&lt;/span&gt;&lt;span style="color:#719e07"&gt;&amp;gt;&lt;/span&gt; m;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;for&lt;/span&gt; (&lt;span style="color:#dc322f"&gt;int&lt;/span&gt; i &lt;span style="color:#719e07"&gt;=&lt;/span&gt; &lt;span style="color:#2aa198"&gt;0&lt;/span&gt;, j &lt;span style="color:#719e07"&gt;=&lt;/span&gt; &lt;span style="color:#2aa198"&gt;0&lt;/span&gt;; i &lt;span style="color:#719e07"&gt;&amp;lt;&lt;/span&gt; n; &lt;span style="color:#719e07"&gt;++&lt;/span&gt;i) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; m[s[i]]&lt;span style="color:#719e07"&gt;++&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;while&lt;/span&gt; (m[s[i]] &lt;span style="color:#719e07"&gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#2aa198"&gt;1&lt;/span&gt; &lt;span style="color:#719e07"&gt;&amp;amp;&amp;amp;&lt;/span&gt; j &lt;span style="color:#719e07"&gt;&amp;lt;&lt;/span&gt; i) m[s[j&lt;span style="color:#719e07"&gt;++&lt;/span&gt;]]&lt;span style="color:#719e07"&gt;--&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ckmax(ans, i &lt;span style="color:#719e07"&gt;-&lt;/span&gt; j &lt;span style="color:#719e07"&gt;+&lt;/span&gt; &lt;span style="color:#2aa198"&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;return&lt;/span&gt; ans;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;题解区的另外一种写法。&lt;/p&gt;</description></item><item><title>【题单】二叉树自顶向下 DFS</title><link>https://liuxueyang.github.io/posts/leetcode/binary-tree-top-down-dfs/</link><pubDate>Thu, 17 Oct 2024 21:00:05 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/binary-tree-top-down-dfs/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.cn/circle/discuss/K0n2gO/" class="external-link" target="_blank" rel="noopener"&gt;二叉树题单&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://leetcode.cn/problems/maximum-depth-of-binary-tree/" class="external-link" target="_blank" rel="noopener"&gt;104. 二叉树的最大深度&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;深度从根开始往下递增，到达叶子的时候，深度达到最深，更新答案。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; ans;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;void&lt;/span&gt; &lt;span style="color:#268bd2"&gt;dfs&lt;/span&gt;(TNP root, &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; d) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;if&lt;/span&gt; (&lt;span style="color:#719e07"&gt;!&lt;/span&gt;root)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;return&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;auto&lt;/span&gt; [_, l, r] &lt;span style="color:#719e07"&gt;=&lt;/span&gt; &lt;span style="color:#719e07"&gt;*&lt;/span&gt;root;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;if&lt;/span&gt; (&lt;span style="color:#719e07"&gt;!&lt;/span&gt;l &lt;span style="color:#719e07"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style="color:#719e07"&gt;!&lt;/span&gt;r)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ckmax(ans, d);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; dfs(l, d &lt;span style="color:#719e07"&gt;+&lt;/span&gt; &lt;span style="color:#2aa198"&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; dfs(r, d &lt;span style="color:#719e07"&gt;+&lt;/span&gt; &lt;span style="color:#2aa198"&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; &lt;span style="color:#268bd2"&gt;maxDepth&lt;/span&gt;(TreeNode &lt;span style="color:#719e07"&gt;*&lt;/span&gt;root) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ans &lt;span style="color:#719e07"&gt;=&lt;/span&gt; &lt;span style="color:#2aa198"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; dfs(root, &lt;span style="color:#2aa198"&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;return&lt;/span&gt; ans;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
+&lt;li&gt;&lt;a href="https://leetcode.cn/problems/minimum-depth-of-binary-tree/" class="external-link" target="_blank" rel="noopener"&gt;111. 二叉树的最小深度&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;从根往下访问，访问到孩子节点的时候，深度加一。到达叶子节点的时候更新答案。&lt;/p&gt;</description></item><item><title>【题单】反转链表</title><link>https://liuxueyang.github.io/posts/leetcode/reverse-linked-list/</link><pubDate>Thu, 17 Oct 2024 19:49:25 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/reverse-linked-list/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.cn/circle/discuss/K0n2gO/" class="external-link" target="_blank" rel="noopener"&gt;链表题单&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://leetcode.cn/problems/reverse-linked-list/" class="external-link" target="_blank" rel="noopener"&gt;206. 反转链表&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;p1 指向前一个节点，p2 指向当前节点，p3 指向下一个节点。&lt;/p&gt;
+&lt;p&gt;每次只修改 p2 节点，使它指向 p1，然后向右移动 p1, p2，p3 的作用是记录下一个 p2 的位置。&lt;/p&gt;</description></item><item><title>LeetCode Contest 390 D 最长公共后缀查询</title><link>https://liuxueyang.github.io/posts/leetcode/contest-390-d/</link><pubDate>Sun, 24 Mar 2024 23:28:47 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/contest-390-d/</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://leetcode.cn/problems/longest-common-suffix-queries/description/" class="external-link" target="_blank" rel="noopener"&gt;最长公共后缀查询&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;要求最长的公共后缀字符串，可以把每个字符串逆序，存到字典树里面，在字典树的节点上保存到达当前节点并且原字符串长度最短的字符串长度和下标。对于给定字符串，直接从字典树中查找当前字符串，把树上能够找到的最后一个节点上的信息返回即可。&lt;/p&gt;</description></item><item><title>LeetCode 1012 至少有 1 位重复的数字</title><link>https://liuxueyang.github.io/posts/leetcode/1012/</link><pubDate>Mon, 18 Mar 2024 09:52:34 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/1012/</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://leetcode.cn/problems/numbers-with-repeated-digits/description/" class="external-link" target="_blank" rel="noopener"&gt;至少有 1 位重复的数字&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;要求 $[1, N]$ 中至少有一位重复的数字的数的个数，只要有一位数字重复不好处理，可以反过来求，先求出范围内没有重复数字的数的个数，然后用总数减去没有重复数字的数的个数即可。&lt;/p&gt;</description></item><item><title>LeetCode Contest-377D 转换字符串的最小成本 II</title><link>https://liuxueyang.github.io/posts/leetcode/contest-377-d/</link><pubDate>Mon, 25 Dec 2023 07:29:15 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/contest-377-d/</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://leetcode.cn/problems/minimum-cost-to-convert-string-ii/description/" class="external-link" target="_blank" rel="noopener"&gt;转换字符串的最小成本 II&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;边的个数只有 100，点的个数最多有 200，因此可以使用 floyd 求出所有全源最短路。对于原字符串 $s$，设 $dp[i]$ 为前使得 $s[1, i]$ 区间内的字符和 $t[1, i]$ 相等的最小代价，那么有 $dp_i = min(dp_i, dp_{i - len_j} + d[x_j][y_j])$，其中 $len_j$ 为替换的字符串 $x_j$ 的长度，$d[x_j][y_j]$ 为从点 $x_j$ 到 $y_j$ 的最短路，之前使用 floyd 已经求出。所以只需要枚举要替换的字符串的长度即可，题目有点卡常数，暴力枚举长度范围 $[1, 1000]$ 会超时，先统计出 100 条边的所有的长度，这样长度的范围只有 $100$。&lt;/p&gt;</description></item></channel></rss>

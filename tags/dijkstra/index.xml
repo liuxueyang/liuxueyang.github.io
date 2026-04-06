@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dijkstra on Xueyang Liu</title><link>https://liuxueyang.github.io/tags/dijkstra/</link><description>Recent content in Dijkstra on Xueyang Liu</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Fri, 29 Dec 2023 16:39:16 +0800</lastBuildDate><atom:link href="https://liuxueyang.github.io/tags/dijkstra/index.xml" rel="self" type="application/rss+xml"/><item><title>洛谷P4779 【模板】单源最短路径（标准版）</title><link>https://liuxueyang.github.io/posts/luogu/4779/</link><pubDate>Fri, 29 Dec 2023 16:39:16 +0800</pubDate><guid>https://liuxueyang.github.io/posts/luogu/4779/</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.luogu.com.cn/problem/P4779" class="external-link" target="_blank" rel="noopener"&gt;P4779 【模板】单源最短路径（标准版）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$Dijkstra$ 模板，求解单源最短路，复杂度 $O(m \log(n))$，其中 $n$ 为点数，$m$ 为边数。&lt;/p&gt;
+&lt;p&gt;思想是把已经求出最短距离的点加入到集合中，然后把其它点到起点的距离加入到最小堆中，每次从堆顶取出元素 $i$，用它去做松弛操作，如果能够更新相邻点 $j$，那么把 $j$ 的距离加入到最小堆中。可以保证每次从堆顶取出元素之后，这个元素的最短距离就已经被确定，可以直接把它加入到集合中。&lt;/p&gt;</description></item><item><title>CodeForces 1915G Bicycles</title><link>https://liuxueyang.github.io/posts/codeforces/1915g/</link><pubDate>Fri, 29 Dec 2023 15:57:40 +0800</pubDate><guid>https://liuxueyang.github.io/posts/codeforces/1915g/</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://codeforces.com/contest/1915/problem/G" class="external-link" target="_blank" rel="noopener"&gt;Bicycles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://codeforces.com/blog/entry/123952" class="external-link" target="_blank" rel="noopener"&gt;tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;点的数量 $n \le 1000$，边的数量 $m \le 2000$，然后再记录一下到达每个点的时候的速度 $s_i$，而 $s_i \le 1000$，因此点数最多有 $10^6$ 个。然后使用 $Dijkstra$ 得到 $dis[n][s_i]$，其中 $1 \le s_i \le 1000$，在里面找到最小值。&lt;/p&gt;</description></item></channel></rss>

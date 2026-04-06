@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bitmasks on Xueyang Liu</title><link>https://liuxueyang.github.io/tags/bitmasks/</link><description>Recent content in Bitmasks on Xueyang Liu</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Thu, 17 Oct 2024 22:02:51 +0800</lastBuildDate><atom:link href="https://liuxueyang.github.io/tags/bitmasks/index.xml" rel="self" type="application/rss+xml"/><item><title>【题单】位运算——拆位法</title><link>https://liuxueyang.github.io/posts/leetcode/consider-by-bit/</link><pubDate>Thu, 17 Oct 2024 22:02:51 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/consider-by-bit/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.cn/circle/discuss/dHn9Vk/" class="external-link" target="_blank" rel="noopener"&gt;位运算题单&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://leetcode.cn/problems/total-hamming-distance/" class="external-link" target="_blank" rel="noopener"&gt;477. 汉明距离总和&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;先考虑两个数字的情况，按位考虑，如果二进制位不同，那么对答案的贡献是 1.
+接下来考虑多个数字的情况，同样按位考虑，对于某一位来说，设 0 的个数是 $c_1$，1 的个数是 $c_2$，那么这一位对答案的贡献是 $c_1 \cdot c_2$&lt;/p&gt;</description></item><item><title>CodeForces 1516B AGAGA XOOORRR</title><link>https://liuxueyang.github.io/posts/codeforces/1516b/</link><pubDate>Sat, 13 Jan 2024 22:45:24 +0800</pubDate><guid>https://liuxueyang.github.io/posts/codeforces/1516b/</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://vjudge.net/problem/CodeForces-1516b" class="external-link" target="_blank" rel="noopener"&gt;AGAGA XOOORRR&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;求出前缀 $XOR$ 和，$XOR$ 的简单性质，可以求出任意区间 $[l, r]$ 的 $XOR$ 和。&lt;/p&gt;
+&lt;p&gt;考虑最终局面，有两种情况：1. 只剩下两个数字。2. 只剩下三个数字。其它情况都可以通过操作转化成这两种情况。&lt;/p&gt;</description></item><item><title>CodeForces 1878E Iva &amp; Pav</title><link>https://liuxueyang.github.io/posts/codeforces/1878e/</link><pubDate>Thu, 28 Dec 2023 00:26:55 +0800</pubDate><guid>https://liuxueyang.github.io/posts/codeforces/1878e/</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://vjudge.net/problem/CodeForces-1878e" class="external-link" target="_blank" rel="noopener"&gt;Iva &amp;amp; Pav&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://codeforces.com/blog/entry/120813" class="external-link" target="_blank" rel="noopener"&gt;tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;由于 $f(l, r) = a_l \And a_{l + 1} \ldots \And a_{r}$ 是有单调性的，因此可以考虑二分答案。接下来是如何快速求 $f(l, r)$，可以按位考虑，对每一个二进制位，计算区间内这个二进制位为 1 的个数，如果恰好等于区间的长度，说明区间内所有数字的这位都为 1，累加到答案中。数区间内 1 的个数可以使用前缀和快速得到。&lt;/p&gt;</description></item><item><title>CodeForces 1288D Minimax Problem</title><link>https://liuxueyang.github.io/posts/codeforces/1288d/</link><pubDate>Sun, 24 Dec 2023 23:48:14 +0800</pubDate><guid>https://liuxueyang.github.io/posts/codeforces/1288d/</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://vjudge.net/problem/CodeForces-1288d" class="external-link" target="_blank" rel="noopener"&gt;Minimax Problem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://codeforces.com/blog/entry/73105" class="external-link" target="_blank" rel="noopener"&gt;tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;要求数组 $b$ 的最小值最大，考虑二分，可以对 $min_{k = 1}^m b_k$ 进行二分，对于 $x$，判定是否存在两个数组 $a_i, a_j$，使得它们组成的数组 $b$ 中的所有的值都 $\ge x$，数组 $a_i$ 的个数有 $3 \cdot 10^5$ 个，但是长度只有 $8$，可以想到用二进制表示数组 $a_i$，当 $a_{i,k} \ge x$ 时，对应的二进制位为 1。这样数组 $a_i$ 最多只有 $2^8$ 个，因此一次判定操作的复杂度是 $O(n \cdot 8 + (2^8)^{2})$&lt;/p&gt;</description></item><item><title>CodeForces 1615B And Its Non-Zero</title><link>https://liuxueyang.github.io/posts/codeforces/1615b/</link><pubDate>Sat, 25 Nov 2023 10:58:26 +0800</pubDate><guid>https://liuxueyang.github.io/posts/codeforces/1615b/</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://vjudge.net/problem/CodeForces-1615b" class="external-link" target="_blank" rel="noopener"&gt;And It&amp;rsquo;s Non-Zero&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://codeforces.com/blog/entry/98253" class="external-link" target="_blank" rel="noopener"&gt;tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;只需要找到一个二进制位满足所有数字对应的二进制位都为 1 即可，如果没有，那么找到二进制为 1 的数字个数最大的那个位，然后把这位上为 0 的数字删除。接下来只需要求对于一个二进制位有多少个数字满足这个位为 1，题目给定的是左右端点，所以可以前缀和优化。&lt;/p&gt;</description></item><item><title>CodeForces 1669H Maximal AND</title><link>https://liuxueyang.github.io/posts/codeforces/1669h/</link><pubDate>Thu, 23 Nov 2023 21:16:47 +0800</pubDate><guid>https://liuxueyang.github.io/posts/codeforces/1669h/</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://vjudge.net/problem/CodeForces-1669h" class="external-link" target="_blank" rel="noopener"&gt;Maximal AND&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;按位考虑，只有31位，要使得最后的结果某一位是1，需要所有 $a_i$ 的对应的位为1，统计出每个数字的第 $j$ 个二进制位为1的个数，从高位到低位依次考虑即可。&lt;/p&gt;</description></item></channel></rss>

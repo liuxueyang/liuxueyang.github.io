@@ -1,0 +1,137 @@
+<!doctype html><html lang=zh-cn><head><title>CodeForces 1903C Theofanis Nightmare · Xueyang Liu</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="liuxueyang"><meta name=description content="
+Theofanis&rsquo; Nightmare
+tutorial
+
+假设数组分成 3 组，每组的和分别是 $c_1, c_2, c_3$，那么有：
+$$\begin{equation}
+ans = 1 \cdot c_1 + 2\cdot c_2 + 3 \cdot c_3 \
+= (c_3 + c_2 + c_1) + (c_3 + c_2) + (c_3)
+\end{equation}$$
+可以发现是后缀和的形式，要使得总和最大，只需要把后缀和为正的累加起来即可。"><meta name=keywords content="blog,developer,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="CodeForces 1903C Theofanis Nightmare"><meta name=twitter:description content="Theofanis’ Nightmare tutorial 假设数组分成 3 组，每组的和分别是 $c_1, c_2, c_3$，那么有：
+$$\begin{equation} ans = 1 \cdot c_1 + 2\cdot c_2 + 3 \cdot c_3 \ = (c_3 + c_2 + c_1) + (c_3 + c_2) + (c_3) \end{equation}$$
+可以发现是后缀和的形式，要使得总和最大，只需要把后缀和为正的累加起来即可。"><meta property="og:url" content="https://liuxueyang.github.io/posts/codeforces/1903c/"><meta property="og:site_name" content="Xueyang Liu"><meta property="og:title" content="CodeForces 1903C Theofanis Nightmare"><meta property="og:description" content="Theofanis’ Nightmare tutorial 假设数组分成 3 组，每组的和分别是 $c_1, c_2, c_3$，那么有：
+$$\begin{equation} ans = 1 \cdot c_1 + 2\cdot c_2 + 3 \cdot c_3 \ = (c_3 + c_2 + c_1) + (c_3 + c_2) + (c_3) \end{equation}$$
+可以发现是后缀和的形式，要使得总和最大，只需要把后缀和为正的累加起来即可。"><meta property="og:locale" content="cn"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-12-24T23:26:20+08:00"><meta property="article:modified_time" content="2023-12-24T23:26:20+08:00"><meta property="article:tag" content="Constructive Algorithms"><link rel=canonical href=https://liuxueyang.github.io/posts/codeforces/1903c/><link rel=preload href=/fonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.76922eb2204c1e033cc4a95854999600234f691c48dbfa23978af6479f6f86c5.css integrity="sha256-dpIusiBMHgM8xKlYVJmWACNPaRxI2/ojl4r2R59vhsU=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/images/favicon.ico sizes=any><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/images/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://liuxueyang.github.io/>Xueyang Liu
+</a><input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><i class="fa-solid fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/posts/>Posts</a></li><li class=navigation-item><a class=navigation-link href=/categories/>Categories</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://liuxueyang.github.io/posts/codeforces/1903c/>CodeForces 1903C Theofanis Nightmare</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa-solid fa-calendar" aria-hidden=true></i>
+<time datetime=2023-12-24T23:26:20+08:00>December 24, 2023
+</time></span><span class=reading-time><i class="fa-solid fa-clock" aria-hidden=true></i>
+阅读时间：1 分钟</span></div><div class=categories><i class="fa-solid fa-folder" aria-hidden=true></i>
+<a href=/categories/codeforces/>CodeForces</a></div><div class=tags><i class="fa-solid fa-tag" aria-hidden=true></i>
+<span class=tag><a href=/tags/constructive-algorithms/>Constructive Algorithms</a></span></div></div></header><div class=post-content><ul><li><a href=https://vjudge.net/problem/CodeForces-1903c class=external-link target=_blank rel=noopener>Theofanis&rsquo; Nightmare</a></li><li><a href=https://codeforces.com/blog/entry/122820 class=external-link target=_blank rel=noopener>tutorial</a></li></ul><p>假设数组分成 3 组，每组的和分别是 $c_1, c_2, c_3$，那么有：</p><p>$$\begin{equation}
+ans = 1 \cdot c_1 + 2\cdot c_2 + 3 \cdot c_3 \
+= (c_3 + c_2 + c_1) + (c_3 + c_2) + (c_3)
+\end{equation}$$</p><p>可以发现是后缀和的形式，要使得总和最大，只需要把后缀和为正的累加起来即可。</p><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#586e75>// Date: Sat Dec 23 16:21:56 2023
+</span></span></span><span style=display:flex><span><span style=color:#586e75></span>
+</span></span><span style=display:flex><span><span style=color:#719e07>#include</span> <span style=color:#719e07>&lt;climits&gt;</span><span style=color:#719e07>
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#include</span> <span style=color:#719e07>&lt;cmath&gt;</span><span style=color:#719e07>
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#include</span> <span style=color:#719e07>&lt;cstdio&gt;</span><span style=color:#719e07>
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#include</span> <span style=color:#719e07>&lt;cstdlib&gt;</span><span style=color:#719e07>
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#include</span> <span style=color:#719e07>&lt;cstring&gt;</span><span style=color:#719e07>
+</span></span></span><span style=display:flex><span><span style=color:#719e07></span>
+</span></span><span style=display:flex><span><span style=color:#719e07>#include</span> <span style=color:#719e07>&lt;algorithm&gt;</span><span style=color:#719e07>
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#include</span> <span style=color:#719e07>&lt;functional&gt;</span><span style=color:#719e07>
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#include</span> <span style=color:#719e07>&lt;iomanip&gt;</span><span style=color:#719e07>
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#include</span> <span style=color:#719e07>&lt;iostream&gt;</span><span style=color:#719e07>
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#include</span> <span style=color:#719e07>&lt;map&gt;</span><span style=color:#719e07>
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#include</span> <span style=color:#719e07>&lt;queue&gt;</span><span style=color:#719e07>
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#include</span> <span style=color:#719e07>&lt;set&gt;</span><span style=color:#719e07>
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#include</span> <span style=color:#719e07>&lt;sstream&gt;</span><span style=color:#719e07>
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#include</span> <span style=color:#719e07>&lt;stack&gt;</span><span style=color:#719e07>
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#include</span> <span style=color:#719e07>&lt;string&gt;</span><span style=color:#719e07>
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#include</span> <span style=color:#719e07>&lt;utility&gt;</span><span style=color:#719e07>
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#include</span> <span style=color:#719e07>&lt;vector&gt;</span><span style=color:#719e07>
+</span></span></span><span style=display:flex><span><span style=color:#719e07></span>
+</span></span><span style=display:flex><span><span style=color:#719e07>using</span> <span style=color:#719e07>namespace</span> std;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#719e07>const</span> <span style=color:#dc322f>int</span> INF <span style=color:#719e07>=</span> <span style=color:#2aa198>0x3f3f3f3f</span>, MOD <span style=color:#719e07>=</span> <span style=color:#2aa198>1e9</span> <span style=color:#719e07>+</span> <span style=color:#2aa198>7</span>;
+</span></span><span style=display:flex><span><span style=color:#719e07>const</span> <span style=color:#dc322f>double</span> eps <span style=color:#719e07>=</span> <span style=color:#2aa198>1e-8</span>;
+</span></span><span style=display:flex><span><span style=color:#719e07>const</span> <span style=color:#dc322f>int</span> dir[<span style=color:#2aa198>8</span>][<span style=color:#2aa198>2</span>] <span style=color:#719e07>=</span> {
+</span></span><span style=display:flex><span>    {<span style=color:#2aa198>0</span>, <span style=color:#2aa198>1</span>}, {<span style=color:#2aa198>0</span>, <span style=color:#719e07>-</span><span style=color:#2aa198>1</span>}, {<span style=color:#2aa198>1</span>, <span style=color:#2aa198>0</span>}, {<span style=color:#719e07>-</span><span style=color:#2aa198>1</span>, <span style=color:#2aa198>0</span>}, {<span style=color:#2aa198>1</span>, <span style=color:#2aa198>1</span>}, {<span style=color:#2aa198>1</span>, <span style=color:#719e07>-</span><span style=color:#2aa198>1</span>}, {<span style=color:#719e07>-</span><span style=color:#2aa198>1</span>, <span style=color:#2aa198>1</span>}, {<span style=color:#719e07>-</span><span style=color:#2aa198>1</span>, <span style=color:#719e07>-</span><span style=color:#2aa198>1</span>},
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#719e07>typedef</span> <span style=color:#dc322f>long</span> <span style=color:#dc322f>long</span> ll;
+</span></span><span style=display:flex><span><span style=color:#719e07>typedef</span> <span style=color:#dc322f>unsigned</span> <span style=color:#dc322f>long</span> <span style=color:#dc322f>long</span> ull;
+</span></span><span style=display:flex><span><span style=color:#719e07>typedef</span> vector<span style=color:#719e07>&lt;</span><span style=color:#dc322f>int</span><span style=color:#719e07>&gt;</span> VI;
+</span></span><span style=display:flex><span><span style=color:#719e07>typedef</span> pair<span style=color:#719e07>&lt;</span><span style=color:#dc322f>int</span>, <span style=color:#dc322f>int</span><span style=color:#719e07>&gt;</span> PII;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#719e07>const</span> ull Pr <span style=color:#719e07>=</span> <span style=color:#2aa198>131</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#719e07>#define For(i, a, b) for (int i = int(a); i &lt; int(b); ++i)
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#define Rof(i, a, b) for (int i = int(b) - 1; i &gt;= int(a); --i)
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#define For1(i, a, b) for (int i = int(a); i &lt;= int(b); ++i)
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#define Rof1(i, a, b) for (int i = int(b); i &gt;= int(a); --i)
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#define ForE(i, j) for (int i = h[j]; i != -1; i = ne[i])
+</span></span></span><span style=display:flex><span><span style=color:#719e07></span>
+</span></span><span style=display:flex><span><span style=color:#719e07>#define f1 first
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#define f2 second
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#define pb push_back
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#define has(a, x) (a.find(x) != a.end())
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#define nonempty(a) (!a.empty())
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#define all(a) (a).begin(), (a).end()
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#define SZ(a) int((a).size())
+</span></span></span><span style=display:flex><span><span style=color:#719e07></span>
+</span></span><span style=display:flex><span><span style=color:#719e07>template</span> <span style=color:#719e07>&lt;</span><span style=color:#719e07>typename</span> t<span style=color:#719e07>&gt;</span> istream <span style=color:#719e07>&amp;</span><span style=color:#719e07>operator</span><span style=color:#719e07>&gt;&gt;</span>(istream <span style=color:#719e07>&amp;</span>in, vector<span style=color:#719e07>&lt;</span>t<span style=color:#719e07>&gt;</span> <span style=color:#719e07>&amp;</span>vec) {
+</span></span><span style=display:flex><span>  <span style=color:#719e07>for</span> (t <span style=color:#719e07>&amp;</span>x : vec)
+</span></span><span style=display:flex><span>    in <span style=color:#719e07>&gt;&gt;</span> x;
+</span></span><span style=display:flex><span>  <span style=color:#719e07>return</span> in;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#719e07>template</span> <span style=color:#719e07>&lt;</span><span style=color:#719e07>typename</span> t<span style=color:#719e07>&gt;</span> ostream <span style=color:#719e07>&amp;</span><span style=color:#719e07>operator</span><span style=color:#719e07>&lt;&lt;</span>(ostream <span style=color:#719e07>&amp;</span>out, vector<span style=color:#719e07>&lt;</span>t<span style=color:#719e07>&gt;</span> <span style=color:#719e07>&amp;</span>vec) {
+</span></span><span style=display:flex><span>  <span style=color:#dc322f>int</span> n <span style=color:#719e07>=</span> SZ(vec);
+</span></span><span style=display:flex><span>  For(i, <span style=color:#2aa198>0</span>, n) {
+</span></span><span style=display:flex><span>    out <span style=color:#719e07>&lt;&lt;</span> vec[i];
+</span></span><span style=display:flex><span>    <span style=color:#719e07>if</span> (i <span style=color:#719e07>&lt;</span> n <span style=color:#719e07>-</span> <span style=color:#2aa198>1</span>)
+</span></span><span style=display:flex><span>      out <span style=color:#719e07>&lt;&lt;</span> <span style=color:#2aa198>&#39; &#39;</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#719e07>return</span> out;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#719e07>#ifdef _DEBUG
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#define debug1(x) cout &lt;&lt; #x &#34; = &#34; &lt;&lt; x &lt;&lt; endl;
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#define debug2(x, y) cout &lt;&lt; #x &#34; = &#34; &lt;&lt; x &lt;&lt; &#34; &#34; #y &#34; = &#34; &lt;&lt; y &lt;&lt; endl;
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#define debug3(x, y, z)                                                        \
+</span></span></span><span style=display:flex><span><span style=color:#719e07>  cout &lt;&lt; #x &#34; = &#34; &lt;&lt; x &lt;&lt; &#34; &#34; #y &#34; = &#34; &lt;&lt; y &lt;&lt; &#34; &#34; #z &#34; = &#34; &lt;&lt; z &lt;&lt; endl;
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#else
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#define debug1
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#define debug2
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#define debug3
+</span></span></span><span style=display:flex><span><span style=color:#719e07>#endif
+</span></span></span><span style=display:flex><span><span style=color:#719e07></span>
+</span></span><span style=display:flex><span><span style=color:#719e07>const</span> <span style=color:#dc322f>int</span> N <span style=color:#719e07>=</span> <span style=color:#2aa198>100010</span>;
+</span></span><span style=display:flex><span><span style=color:#dc322f>int</span> t, n, a[N];
+</span></span><span style=display:flex><span>ll p[N];
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#dc322f>int</span> <span style=color:#268bd2>main</span>(<span style=color:#dc322f>void</span>) {
+</span></span><span style=display:flex><span><span style=color:#719e07>#ifdef _DEBUG
+</span></span></span><span style=display:flex><span><span style=color:#719e07></span>  freopen(<span style=color:#2aa198>&#34;1903c.in&#34;</span>, <span style=color:#2aa198>&#34;r&#34;</span>, stdin);
+</span></span><span style=display:flex><span><span style=color:#719e07>#endif
+</span></span></span><span style=display:flex><span><span style=color:#719e07></span>  std<span style=color:#719e07>::</span>ios<span style=color:#719e07>::</span>sync_with_stdio(<span style=color:#b58900>false</span>);
+</span></span><span style=display:flex><span>  cin.tie(<span style=color:#b58900>NULL</span>);
+</span></span><span style=display:flex><span>  cout.tie(<span style=color:#b58900>NULL</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  cin <span style=color:#719e07>&gt;&gt;</span> t;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#719e07>while</span> (t<span style=color:#719e07>--</span>) {
+</span></span><span style=display:flex><span>    cin <span style=color:#719e07>&gt;&gt;</span> n;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    For1(i, <span style=color:#2aa198>1</span>, n) cin <span style=color:#719e07>&gt;&gt;</span> a[i];
+</span></span><span style=display:flex><span>    memset(p, <span style=color:#2aa198>0</span>, <span style=color:#719e07>sizeof</span> p);
+</span></span><span style=display:flex><span>    Rof1(i, <span style=color:#2aa198>1</span>, n) p[i] <span style=color:#719e07>=</span> p[i <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>] <span style=color:#719e07>+</span> a[i];
+</span></span><span style=display:flex><span>    ll ans <span style=color:#719e07>=</span> p[<span style=color:#2aa198>1</span>];
+</span></span><span style=display:flex><span>    For1(i, <span style=color:#2aa198>2</span>, n) {
+</span></span><span style=display:flex><span>      <span style=color:#719e07>if</span> (p[i] <span style=color:#719e07>&gt;</span> <span style=color:#2aa198>0</span>) {
+</span></span><span style=display:flex><span>        ans <span style=color:#719e07>+=</span> p[i];
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    cout <span style=color:#719e07>&lt;&lt;</span> ans <span style=color:#719e07>&lt;&lt;</span> <span style=color:#2aa198>&#39;\n&#39;</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#719e07>return</span> <span style=color:#2aa198>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div><footer><div id=disqus_thread></div><script>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//liuxueyang.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}(),document.addEventListener("themeChanged",function(){document.readyState=="complete"&&DISQUS.reset({reload:!0,config:disqus_config})})</script></footer></article><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css integrity=sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0 crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js integrity=sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4 crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous onload='renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}]})'></script></section></div><footer class=footer><section class=container>©
+2023 -
+2026
+liuxueyang
+·
+技术支持 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/ target=_blank rel=noopener>Coder</a>.</section></footer></main><script src=/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-QJNPM85VRF"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QJNPM85VRF")}</script></body></html>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Trie on Xueyang Liu</title><link>https://liuxueyang.github.io/tags/trie/</link><description>Recent content in Trie on Xueyang Liu</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Mon, 21 Oct 2024 21:49:55 +0800</lastBuildDate><atom:link href="https://liuxueyang.github.io/tags/trie/index.xml" rel="self" type="application/rss+xml"/><item><title>【题单】字典树基础</title><link>https://liuxueyang.github.io/posts/leetcode/trie/</link><pubDate>Mon, 21 Oct 2024 21:49:55 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/trie/</guid><description>&lt;p&gt;&lt;a href="https://leetcode.cn/circle/discuss/mOr1u6/" class="external-link" target="_blank" rel="noopener"&gt;数据结构题单&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://leetcode.cn/problems/implement-trie-prefix-tree/" class="external-link" target="_blank" rel="noopener"&gt;208. 实现 Trie (前缀树)&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;总共有 $3 \cdot 10^4$ 次插入，每个单词长度 $2000$，字母个数最多是 $6 \cdot 10^7$ 个，考虑到前缀重复的情况，估算字典树中的节点是 $3 \cdot 10^5$ 个&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#719e07"&gt;const&lt;/span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; N &lt;span style="color:#719e07"&gt;=&lt;/span&gt; &lt;span style="color:#2aa198"&gt;300100&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#719e07"&gt;struct&lt;/span&gt; &lt;span style="color:#268bd2"&gt;TrieTree&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; n, idx;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; vector&lt;span style="color:#719e07"&gt;&amp;lt;&lt;/span&gt;VI&lt;span style="color:#719e07"&gt;&amp;gt;&lt;/span&gt; son;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; VI cnt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; TrieTree() {}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; TrieTree(&lt;span style="color:#dc322f"&gt;int&lt;/span&gt; _n) &lt;span style="color:#719e07"&gt;:&lt;/span&gt; n(_n), idx(&lt;span style="color:#2aa198"&gt;0&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; son &lt;span style="color:#719e07"&gt;=&lt;/span&gt; vector&lt;span style="color:#719e07"&gt;&amp;lt;&lt;/span&gt;VI&lt;span style="color:#719e07"&gt;&amp;gt;&lt;/span&gt;(n, VI(&lt;span style="color:#2aa198"&gt;26&lt;/span&gt;, &lt;span style="color:#719e07"&gt;-&lt;/span&gt;&lt;span style="color:#2aa198"&gt;1&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; cnt &lt;span style="color:#719e07"&gt;=&lt;/span&gt; VI(n, &lt;span style="color:#2aa198"&gt;0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;void&lt;/span&gt; &lt;span style="color:#268bd2"&gt;insert&lt;/span&gt;(string &lt;span style="color:#719e07"&gt;&amp;amp;&lt;/span&gt;s) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; p &lt;span style="color:#719e07"&gt;=&lt;/span&gt; &lt;span style="color:#2aa198"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;for&lt;/span&gt; (&lt;span style="color:#719e07"&gt;auto&lt;/span&gt; c : s) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; u &lt;span style="color:#719e07"&gt;=&lt;/span&gt; c &lt;span style="color:#719e07"&gt;-&lt;/span&gt; &lt;span style="color:#2aa198"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;if&lt;/span&gt; (son[p][u] &lt;span style="color:#719e07"&gt;==&lt;/span&gt; &lt;span style="color:#719e07"&gt;-&lt;/span&gt;&lt;span style="color:#2aa198"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; son[p][u] &lt;span style="color:#719e07"&gt;=&lt;/span&gt; &lt;span style="color:#719e07"&gt;++&lt;/span&gt;idx;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; p &lt;span style="color:#719e07"&gt;=&lt;/span&gt; son[p][u];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; cnt[p]&lt;span style="color:#719e07"&gt;++&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;bool&lt;/span&gt; &lt;span style="color:#268bd2"&gt;search&lt;/span&gt;(string &lt;span style="color:#719e07"&gt;&amp;amp;&lt;/span&gt;s) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; p &lt;span style="color:#719e07"&gt;=&lt;/span&gt; &lt;span style="color:#2aa198"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;for&lt;/span&gt; (&lt;span style="color:#719e07"&gt;auto&lt;/span&gt; c : s) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; u &lt;span style="color:#719e07"&gt;=&lt;/span&gt; c &lt;span style="color:#719e07"&gt;-&lt;/span&gt; &lt;span style="color:#2aa198"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;if&lt;/span&gt; (son[p][u] &lt;span style="color:#719e07"&gt;==&lt;/span&gt; &lt;span style="color:#719e07"&gt;-&lt;/span&gt;&lt;span style="color:#2aa198"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;return&lt;/span&gt; &lt;span style="color:#b58900"&gt;false&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; p &lt;span style="color:#719e07"&gt;=&lt;/span&gt; son[p][u];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;return&lt;/span&gt; cnt[p] &lt;span style="color:#719e07"&gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#2aa198"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;bool&lt;/span&gt; &lt;span style="color:#268bd2"&gt;starts_with&lt;/span&gt;(string &lt;span style="color:#719e07"&gt;&amp;amp;&lt;/span&gt;s) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; p &lt;span style="color:#719e07"&gt;=&lt;/span&gt; &lt;span style="color:#2aa198"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;for&lt;/span&gt; (&lt;span style="color:#719e07"&gt;auto&lt;/span&gt; c : s) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;int&lt;/span&gt; u &lt;span style="color:#719e07"&gt;=&lt;/span&gt; c &lt;span style="color:#719e07"&gt;-&lt;/span&gt; &lt;span style="color:#2aa198"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;if&lt;/span&gt; (son[p][u] &lt;span style="color:#719e07"&gt;==&lt;/span&gt; &lt;span style="color:#719e07"&gt;-&lt;/span&gt;&lt;span style="color:#2aa198"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;return&lt;/span&gt; &lt;span style="color:#b58900"&gt;false&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; p &lt;span style="color:#719e07"&gt;=&lt;/span&gt; son[p][u];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#719e07"&gt;return&lt;/span&gt; &lt;span style="color:#b58900"&gt;true&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#719e07"&gt;class&lt;/span&gt; &lt;span style="color:#268bd2"&gt;Trie&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#719e07"&gt;public&lt;/span&gt;&lt;span style="color:#719e07"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; TrieTree tr;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Trie() { tr &lt;span style="color:#719e07"&gt;=&lt;/span&gt; TrieTree(N); }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;void&lt;/span&gt; &lt;span style="color:#268bd2"&gt;insert&lt;/span&gt;(string word) { tr.insert(word); }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;bool&lt;/span&gt; &lt;span style="color:#268bd2"&gt;search&lt;/span&gt;(string word) { &lt;span style="color:#719e07"&gt;return&lt;/span&gt; tr.search(word); }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#dc322f"&gt;bool&lt;/span&gt; &lt;span style="color:#268bd2"&gt;startsWith&lt;/span&gt;(string prefix) { &lt;span style="color:#719e07"&gt;return&lt;/span&gt; tr.starts_with(prefix); }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;更好的做法是使用动态创建节点的方式，避免估算不准确。&lt;/p&gt;</description></item><item><title>LeetCode Contest 390 D 最长公共后缀查询</title><link>https://liuxueyang.github.io/posts/leetcode/contest-390-d/</link><pubDate>Sun, 24 Mar 2024 23:28:47 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/contest-390-d/</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://leetcode.cn/problems/longest-common-suffix-queries/description/" class="external-link" target="_blank" rel="noopener"&gt;最长公共后缀查询&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;要求最长的公共后缀字符串，可以把每个字符串逆序，存到字典树里面，在字典树的节点上保存到达当前节点并且原字符串长度最短的字符串长度和下标。对于给定字符串，直接从字典树中查找当前字符串，把树上能够找到的最后一个节点上的信息返回即可。&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,406 @@
+<!doctype html><html lang=zh-cn><head><title>【题单】不定长滑动窗口——求最长或最大 · Xueyang Liu</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="liuxueyang"><meta name=description content="滑动窗口题单
+
+3. 无重复字符的最长子串
+
+维护一个不定长的滑动窗口：
+
+加入右端点
+当不满足条件的时候不断移动左端点
+维护答案
+
+  int lengthOfLongestSubstring(string s) {
+    int ans{}, n = SZ(s);
+    map<char, int> m;
+
+    for (int i = 0, j = 0; i < n; ++i) {
+      m[s[i]]++;
+      while (m[s[i]] > 1 && j < i) m[s[j++]]--;
+      ckmax(ans, i - j + 1);
+    }
+
+    return ans;
+  }
+题解区的另外一种写法。"><meta name=keywords content="blog,developer,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="【题单】不定长滑动窗口——求最长或最大"><meta name=twitter:description content="滑动窗口题单
+3. 无重复字符的最长子串 维护一个不定长的滑动窗口：
+加入右端点 当不满足条件的时候不断移动左端点 维护答案 int lengthOfLongestSubstring(string s) { int ans{}, n = SZ(s); map<char, int> m; for (int i = 0, j = 0; i < n; ++i) { m[s[i]]++; while (m[s[i]] > 1 && j < i) m[s[j++]]--; ckmax(ans, i - j + 1); } return ans; } 题解区的另外一种写法。"><meta property="og:url" content="https://liuxueyang.github.io/posts/leetcode/sliding-window-max-min/"><meta property="og:site_name" content="Xueyang Liu"><meta property="og:title" content="【题单】不定长滑动窗口——求最长或最大"><meta property="og:description" content="滑动窗口题单
+3. 无重复字符的最长子串 维护一个不定长的滑动窗口：
+加入右端点 当不满足条件的时候不断移动左端点 维护答案 int lengthOfLongestSubstring(string s) { int ans{}, n = SZ(s); map<char, int> m; for (int i = 0, j = 0; i < n; ++i) { m[s[i]]++; while (m[s[i]] > 1 && j < i) m[s[j++]]--; ckmax(ans, i - j + 1); } return ans; } 题解区的另外一种写法。"><meta property="og:locale" content="cn"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-10-17T21:10:17+08:00"><meta property="article:modified_time" content="2024-10-17T21:10:17+08:00"><meta property="article:tag" content="Two Pointers"><link rel=canonical href=https://liuxueyang.github.io/posts/leetcode/sliding-window-max-min/><link rel=preload href=/fonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.76922eb2204c1e033cc4a95854999600234f691c48dbfa23978af6479f6f86c5.css integrity="sha256-dpIusiBMHgM8xKlYVJmWACNPaRxI2/ojl4r2R59vhsU=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/images/favicon.ico sizes=any><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/images/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://liuxueyang.github.io/>Xueyang Liu
+</a><input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><i class="fa-solid fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/posts/>Posts</a></li><li class=navigation-item><a class=navigation-link href=/categories/>Categories</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://liuxueyang.github.io/posts/leetcode/sliding-window-max-min/>【题单】不定长滑动窗口——求最长或最大</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa-solid fa-calendar" aria-hidden=true></i>
+<time datetime=2024-10-17T21:10:17+08:00>October 17, 2024
+</time></span><span class=reading-time><i class="fa-solid fa-clock" aria-hidden=true></i>
+阅读时间：7 分钟</span></div><div class=categories><i class="fa-solid fa-folder" aria-hidden=true></i>
+<a href=/categories/leetcode/>LeetCode</a></div><div class=tags><i class="fa-solid fa-tag" aria-hidden=true></i>
+<span class=tag><a href=/tags/two-pointers/>Two Pointers</a></span></div></div></header><div class=post-content><p><a href=https://leetcode.cn/circle/discuss/0viNMK/ class=external-link target=_blank rel=noopener>滑动窗口题单</a></p><ol><li><a href=https://leetcode.cn/problems/longest-substring-without-repeating-characters/ class=external-link target=_blank rel=noopener>3. 无重复字符的最长子串</a></li></ol><p>维护一个不定长的滑动窗口：</p><ul><li>加入右端点</li><li>当不满足条件的时候不断移动左端点</li><li>维护答案</li></ul><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>lengthOfLongestSubstring</span>(string s) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> ans{}, n <span style=color:#719e07>=</span> SZ(s);
+</span></span><span style=display:flex><span>    map<span style=color:#719e07>&lt;</span><span style=color:#dc322f>char</span>, <span style=color:#dc322f>int</span><span style=color:#719e07>&gt;</span> m;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      m[s[i]]<span style=color:#719e07>++</span>;
+</span></span><span style=display:flex><span>      <span style=color:#719e07>while</span> (m[s[i]] <span style=color:#719e07>&gt;</span> <span style=color:#2aa198>1</span> <span style=color:#719e07>&amp;&amp;</span> j <span style=color:#719e07>&lt;</span> i) m[s[j<span style=color:#719e07>++</span>]]<span style=color:#719e07>--</span>;
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><p>题解区的另外一种写法。</p><ul><li>当右端点在窗口中已经存在的时候，不断移动左指针，直到窗口中不存在右端点。</li><li>插入右端点</li><li>维护答案</li></ul><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>lengthOfLongestSubstring</span>(string s) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> ans{}, n <span style=color:#719e07>=</span> SZ(s);
+</span></span><span style=display:flex><span>    set<span style=color:#719e07>&lt;</span><span style=color:#dc322f>char</span><span style=color:#719e07>&gt;</span> vis;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      <span style=color:#719e07>while</span> (has(vis, s[i])) {
+</span></span><span style=display:flex><span>        vis.erase(s[j<span style=color:#719e07>++</span>]);
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      vis.insert(s[i]);
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><ol start=2><li><a href=https://leetcode.cn/problems/maximum-length-substring-with-two-occurrences/ class=external-link target=_blank rel=noopener>3090. 每个字符最多出现两次的最长子字符串</a></li></ol><ul><li>当窗口中的右端点对应的字符出现了至少两次的时候，移动左指针，直到它出现小于两次</li><li>加入右端点</li><li>维护答案</li></ul><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>maximumLengthSubstring</span>(string s) {
+</span></span><span style=display:flex><span>    VI a(<span style=color:#2aa198>26</span>);
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> n{SZ(s)}, ans{};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      <span style=color:#719e07>while</span> (a[s[i] <span style=color:#719e07>-</span> <span style=color:#2aa198>&#39;a&#39;</span>] <span style=color:#719e07>&gt;=</span> <span style=color:#2aa198>2</span>) {
+</span></span><span style=display:flex><span>        a[s[j<span style=color:#719e07>++</span>] <span style=color:#719e07>-</span> <span style=color:#2aa198>&#39;a&#39;</span>]<span style=color:#719e07>--</span>;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      a[s[i] <span style=color:#719e07>-</span> <span style=color:#2aa198>&#39;a&#39;</span>]<span style=color:#719e07>++</span>;
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><ol start=3><li><a href=https://leetcode.cn/problems/longest-subarray-of-1s-after-deleting-one-element/ class=external-link target=_blank rel=noopener>1493. 删掉一个元素以后全为 1 的最长子数组</a></li></ol><p>维护一个滑动窗口，满足窗口内部的 0 的个数最多有 1 个，求窗口内部去掉 1 个数字之后的连续的 1 的个数。</p><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>longestSubarray</span>(vector<span style=color:#719e07>&lt;</span><span style=color:#dc322f>int</span><span style=color:#719e07>&gt;</span> <span style=color:#719e07>&amp;</span>nums) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> n{SZ(nums)}, ans{}, cnt0{};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      <span style=color:#719e07>if</span> (nums[i] <span style=color:#719e07>==</span> <span style=color:#2aa198>0</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#719e07>while</span> (cnt0) {
+</span></span><span style=display:flex><span>          <span style=color:#719e07>if</span> (nums[j] <span style=color:#719e07>==</span> <span style=color:#2aa198>0</span>) {
+</span></span><span style=display:flex><span>            cnt0<span style=color:#719e07>--</span>;
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>          <span style=color:#719e07>++</span>j;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        cnt0<span style=color:#719e07>++</span>;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><ol start=4><li><a href=https://leetcode.cn/problems/get-equal-substrings-within-budget/ class=external-link target=_blank rel=noopener>1208. 尽可能使字符串相等</a></li></ol><p>先预处理出每个位置的变更代价。</p><p>维护一个滑动窗口，使得窗口内部的代价和不超过给定值。求窗口的最大长度。</p><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>equalSubstring</span>(string s, string t, <span style=color:#dc322f>int</span> maxCost) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> n{SZ(s)}, ans{}, cur{};
+</span></span><span style=display:flex><span>    VI a(n);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    For(i, <span style=color:#2aa198>0</span>, n) { a[i] <span style=color:#719e07>=</span> abs(s[i] <span style=color:#719e07>-</span> t[i]); }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      <span style=color:#719e07>while</span> (cur <span style=color:#719e07>+</span> a[i] <span style=color:#719e07>&gt;</span> maxCost) {
+</span></span><span style=display:flex><span>        cur <span style=color:#719e07>-=</span> a[j<span style=color:#719e07>++</span>];
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      cur <span style=color:#719e07>+=</span> a[i];
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><ol start=5><li><a href=https://leetcode.cn/problems/find-the-longest-semi-repetitive-substring/ class=external-link target=_blank rel=noopener>2730. 找到最长的半重复子字符串</a></li></ol><p>维护一个滑动窗口，要求窗口内部相邻字符相等的数对最多有一对，求窗口的最大长度。处理好窗口为空的情况即可。</p><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>longestSemiRepetitiveSubstring</span>(string s) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> n{SZ(s)}, ans{}, cnt{};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      <span style=color:#719e07>if</span> (i <span style=color:#719e07>-</span> <span style=color:#2aa198>1</span> <span style=color:#719e07>&gt;=</span> j) {
+</span></span><span style=display:flex><span>        <span style=color:#719e07>if</span> (s[i] <span style=color:#719e07>==</span> s[i <span style=color:#719e07>-</span> <span style=color:#2aa198>1</span>]) {
+</span></span><span style=display:flex><span>          <span style=color:#719e07>while</span> (cnt) {
+</span></span><span style=display:flex><span>            <span style=color:#719e07>if</span> (s[j] <span style=color:#719e07>==</span> s[j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>]) cnt<span style=color:#719e07>--</span>;
+</span></span><span style=display:flex><span>            <span style=color:#719e07>++</span>j;
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>          cnt<span style=color:#719e07>++</span>;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><ol start=6><li><a href=https://leetcode.cn/problems/fruit-into-baskets/ class=external-link target=_blank rel=noopener>904. 水果成篮</a></li></ol><p>维护一个滑动窗口，要求窗口内部不同数字的个数最多有 2 个，求窗口的最大长度。</p><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>totalFruit</span>(vector<span style=color:#719e07>&lt;</span><span style=color:#dc322f>int</span><span style=color:#719e07>&gt;</span> <span style=color:#719e07>&amp;</span>fruits) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> n{SZ(fruits)}, ans{};
+</span></span><span style=display:flex><span>    map<span style=color:#719e07>&lt;</span><span style=color:#dc322f>int</span>, <span style=color:#dc322f>int</span><span style=color:#719e07>&gt;</span> vis;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      <span style=color:#719e07>while</span> (SZ(vis) <span style=color:#719e07>&gt;=</span> <span style=color:#2aa198>2</span> <span style=color:#719e07>&amp;&amp;</span> <span style=color:#719e07>!</span>has(vis, fruits[i])) {
+</span></span><span style=display:flex><span>        <span style=color:#dc322f>int</span> <span style=color:#719e07>&amp;</span>cnt <span style=color:#719e07>=</span> vis[fruits[j]];
+</span></span><span style=display:flex><span>        <span style=color:#719e07>if</span> (cnt <span style=color:#719e07>==</span> <span style=color:#2aa198>1</span>)
+</span></span><span style=display:flex><span>          vis.erase(fruits[j]);
+</span></span><span style=display:flex><span>        <span style=color:#719e07>else</span>
+</span></span><span style=display:flex><span>          cnt<span style=color:#719e07>--</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#719e07>++</span>j;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      vis[fruits[i]]<span style=color:#719e07>++</span>;
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><ol start=7><li><a href=https://leetcode.cn/problems/maximum-erasure-value/ class=external-link target=_blank rel=noopener>1695. 删除子数组的最大得分</a></li></ol><p>维护一个滑动窗口，要求窗口内部的所有数字都不相同，求窗口内部数字的最大和。
+因为每个时刻窗口内部的数字都不同，因此使用 <code>set</code> 即可。</p><p>如果题目要求某个数字出现次数不超过多少次，此时需要使用 <code>map</code> 维护。</p><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>maximumUniqueSubarray</span>(vector<span style=color:#719e07>&lt;</span><span style=color:#dc322f>int</span><span style=color:#719e07>&gt;</span> <span style=color:#719e07>&amp;</span>nums) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> ans{}, n{SZ(nums)}, cur{};
+</span></span><span style=display:flex><span>    set<span style=color:#719e07>&lt;</span><span style=color:#dc322f>int</span><span style=color:#719e07>&gt;</span> vis;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      <span style=color:#719e07>while</span> (has(vis, nums[i])) {
+</span></span><span style=display:flex><span>        cur <span style=color:#719e07>-=</span> nums[j];
+</span></span><span style=display:flex><span>        vis.erase(nums[j<span style=color:#719e07>++</span>]);
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      cur <span style=color:#719e07>+=</span> nums[i];
+</span></span><span style=display:flex><span>      vis.insert(nums[i]);
+</span></span><span style=display:flex><span>      ckmax(ans, cur);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><ol start=8><li><a href=https://leetcode.cn/problems/length-of-longest-subarray-with-at-most-k-frequency/ class=external-link target=_blank rel=noopener>2958. 最多 K 个重复元素的最长子数组</a></li></ol><p>这道题目和 1695 几乎一样，只需要使用 <code>map</code> 维护每个数字出现的次数即可。</p><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>maxSubarrayLength</span>(vector<span style=color:#719e07>&lt;</span><span style=color:#dc322f>int</span><span style=color:#719e07>&gt;</span> <span style=color:#719e07>&amp;</span>nums, <span style=color:#dc322f>int</span> k) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> n{SZ(nums)}, ans{};
+</span></span><span style=display:flex><span>    map<span style=color:#719e07>&lt;</span><span style=color:#dc322f>int</span>, <span style=color:#dc322f>int</span><span style=color:#719e07>&gt;</span> vis;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      <span style=color:#719e07>while</span> (has(vis, nums[i]) <span style=color:#719e07>&amp;&amp;</span> vis[nums[i]] <span style=color:#719e07>&gt;=</span> k) {
+</span></span><span style=display:flex><span>        vis[nums[j<span style=color:#719e07>++</span>]]<span style=color:#719e07>--</span>;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      vis[nums[i]]<span style=color:#719e07>++</span>;
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><ol start=9><li><a href=https://leetcode.cn/problems/maximum-beauty-of-an-array-after-applying-operation/ class=external-link target=_blank rel=noopener>2779. 数组的最大美丽值</a></li></ol><p>要求的是子序列，不要求连续。
+可以执行任意次操作，并且没有代价，要求操作之后子序列中的元素完全相等，这意味着操作之后子序列中元素的顺序可以任意交换，也就是说操作之前可以任意交换顺序。</p><p>因此想到把数组排序，求一段连续的子数组，要求子数组内部的数字操作之后的数字完全相等，求子数组的最大长度。</p><p>观察到这和子数组的左端点的值有关。设左端点的值是 <code>x</code>，那么要求子数组右端点值 <code>y</code> 满足条件：区间 <code>[x - k, x + k]</code> 与 <code>[y - k, y + k]</code> 的区间不为空，并且 $x \le y$。维护一个滑动窗口，维护这个条件即可，求出窗口的最大长度。上面的条件可以转化成 $y - k \le x + k$</p><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>maximumBeauty</span>(vector<span style=color:#719e07>&lt;</span><span style=color:#dc322f>int</span><span style=color:#719e07>&gt;</span> <span style=color:#719e07>&amp;</span>nums, <span style=color:#dc322f>int</span> k) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> n{SZ(nums)}, ans{};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    sort(all(nums));
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      <span style=color:#719e07>if</span> (i <span style=color:#719e07>-</span> <span style=color:#2aa198>1</span> <span style=color:#719e07>&gt;=</span> j) {
+</span></span><span style=display:flex><span>        <span style=color:#719e07>while</span> (<span style=color:#719e07>!</span>(nums[i] <span style=color:#719e07>-</span> k <span style=color:#719e07>&lt;=</span> nums[j] <span style=color:#719e07>+</span> k)) <span style=color:#719e07>++</span>j;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><p>可以去掉检查窗口非空的判断，因为窗口为空时，<code>while</code> 中的条件一定不满足，此时左端点一定不移动。</p><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>maximumBeauty</span>(vector<span style=color:#719e07>&lt;</span><span style=color:#dc322f>int</span><span style=color:#719e07>&gt;</span> <span style=color:#719e07>&amp;</span>nums, <span style=color:#dc322f>int</span> k) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> n{SZ(nums)}, ans{};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    sort(all(nums));
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      <span style=color:#719e07>while</span> (<span style=color:#719e07>!</span>(nums[i] <span style=color:#719e07>-</span> k <span style=color:#719e07>&lt;=</span> nums[j] <span style=color:#719e07>+</span> k)) <span style=color:#719e07>++</span>j;
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><ol start=10><li><a href=https://leetcode.cn/problems/maximize-the-confusion-of-an-exam/ class=external-link target=_blank rel=noopener>2024. 考试的最大困扰度</a></li></ol><p>维护一个滑动窗口，要求窗口内部的字符相等，在代价不超过 <code>k</code> 的情况下，求窗口长度的最大值。</p><p>可以把窗口内部的字符全部变成 <code>F</code> 或者 <code>T</code>，因此可以对这两个字符分别做两遍。</p><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>maxConsecutiveAnswers</span>(string answerKey, <span style=color:#dc322f>int</span> k) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> n{SZ(answerKey)}, ans{}, cnt{};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      <span style=color:#719e07>if</span> (answerKey[i] <span style=color:#719e07>==</span> <span style=color:#2aa198>&#39;T&#39;</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#719e07>while</span> (cnt <span style=color:#719e07>&gt;=</span> k) {
+</span></span><span style=display:flex><span>          <span style=color:#719e07>if</span> (answerKey[j] <span style=color:#719e07>==</span> <span style=color:#2aa198>&#39;T&#39;</span>) cnt<span style=color:#719e07>--</span>;
+</span></span><span style=display:flex><span>          <span style=color:#719e07>++</span>j;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        cnt<span style=color:#719e07>++</span>;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    cnt <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>;
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      <span style=color:#719e07>if</span> (answerKey[i] <span style=color:#719e07>==</span> <span style=color:#2aa198>&#39;F&#39;</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#719e07>while</span> (cnt <span style=color:#719e07>&gt;=</span> k) {
+</span></span><span style=display:flex><span>          <span style=color:#719e07>if</span> (answerKey[j] <span style=color:#719e07>==</span> <span style=color:#2aa198>&#39;F&#39;</span>) cnt<span style=color:#719e07>--</span>;
+</span></span><span style=display:flex><span>          <span style=color:#719e07>++</span>j;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        cnt<span style=color:#719e07>++</span>;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><p>题解区的有趣做法，只需要做一遍。
+上面每一遍的做法中，其实是求窗口中不超过 <code>k</code> 个 <code>T</code> 或者 <code>k</code> 个 <code>F</code> 的最大窗口长度。这两个条件可以合并为一个条件来维护窗口。</p><p>一个无聊的技巧：观察 <code>T</code> 和 <code>F</code> 的 ASCII 值，发现它们除以 2 之后的奇偶性不同，因此可以根据这一点来统计两个字母的个数。</p><p>涉及到两个字母的统计，条件判断中也包含对它们的判断，因此先加入右端点处理更方便，减少了一些条件判断。</p><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>maxConsecutiveAnswers</span>(string answerKey, <span style=color:#dc322f>int</span> k) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> n{SZ(answerKey)}, ans{};
+</span></span><span style=display:flex><span>    VI cnt(<span style=color:#2aa198>2</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      cnt[(answerKey[i] <span style=color:#719e07>/</span> <span style=color:#2aa198>2</span>) <span style=color:#719e07>&amp;</span> <span style=color:#2aa198>1</span>]<span style=color:#719e07>++</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#719e07>while</span> (cnt[<span style=color:#2aa198>0</span>] <span style=color:#719e07>&gt;</span> k <span style=color:#719e07>&amp;&amp;</span> cnt[<span style=color:#2aa198>1</span>] <span style=color:#719e07>&gt;</span> k) {
+</span></span><span style=display:flex><span>        <span style=color:#dc322f>int</span> idx <span style=color:#719e07>=</span> answerKey[j] <span style=color:#719e07>/</span> <span style=color:#2aa198>2</span>;
+</span></span><span style=display:flex><span>        cnt[idx <span style=color:#719e07>&amp;</span> <span style=color:#2aa198>1</span>]<span style=color:#719e07>--</span>;
+</span></span><span style=display:flex><span>        <span style=color:#719e07>++</span>j;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><ol start=11><li><a href=https://leetcode.cn/problems/max-consecutive-ones-iii/ class=external-link target=_blank rel=noopener>1004. 最大连续 1 的个数 III</a></li></ol><p>维护滑动窗口中 0 的个数不超过 <code>k</code> 的最大窗口长度。</p><p>同样地，先加入右端点比较自然，处理更方便。</p><p>先加入右端点还是先维护窗口，根据具体情况分析，哪种方便写哪种。</p><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>longestOnes</span>(vector<span style=color:#719e07>&lt;</span><span style=color:#dc322f>int</span><span style=color:#719e07>&gt;</span> <span style=color:#719e07>&amp;</span>nums, <span style=color:#dc322f>int</span> k) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> n{SZ(nums)}, ans{}, cnt{};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      <span style=color:#719e07>if</span> (<span style=color:#719e07>!</span>nums[i]) cnt<span style=color:#719e07>++</span>;
+</span></span><span style=display:flex><span>      <span style=color:#719e07>while</span> (cnt <span style=color:#719e07>&gt;</span> k) {
+</span></span><span style=display:flex><span>        <span style=color:#719e07>if</span> (nums[j] <span style=color:#719e07>==</span> <span style=color:#2aa198>0</span>) <span style=color:#719e07>--</span>cnt;
+</span></span><span style=display:flex><span>        <span style=color:#719e07>++</span>j;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><ol start=12><li><a href=https://leetcode.cn/problems/minimum-operations-to-reduce-x-to-zero/ class=external-link target=_blank rel=noopener>1658. 将 x 减到 0 的最小操作数</a></li></ol><p>感觉常规和直接的做法是使用前缀和。</p><p>使用滑动窗口也是可以做的，维护一个滑动窗口，要求窗口内部的数字和恰好等于 <code>x</code>，并且可以把数组的前缀和后缀连起来，常规技巧是把数组加倍。</p><p>窗口长度不固定，因此要求窗口内部必须包含原来数组的第一个元素或者最后一个元素，同时窗口的长度不超过原数组的长度。</p><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>minOperations</span>(vector<span style=color:#719e07>&lt;</span><span style=color:#dc322f>int</span><span style=color:#719e07>&gt;</span> <span style=color:#719e07>&amp;</span>nums, <span style=color:#dc322f>int</span> x) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> n <span style=color:#719e07>=</span> SZ(nums), ans{INF}, cur{}, n1{<span style=color:#2aa198>2</span> <span style=color:#719e07>*</span> n};
+</span></span><span style=display:flex><span>    VI a(n1);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    For(i, <span style=color:#2aa198>0</span>, n) { a[i] <span style=color:#719e07>=</span> a[i <span style=color:#719e07>+</span> n] <span style=color:#719e07>=</span> nums[i]; }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n1; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      cur <span style=color:#719e07>+=</span> a[i];
+</span></span><span style=display:flex><span>      <span style=color:#719e07>while</span> (cur <span style=color:#719e07>&gt;</span> x) {
+</span></span><span style=display:flex><span>        cur <span style=color:#719e07>-=</span> a[j<span style=color:#719e07>++</span>];
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      <span style=color:#719e07>if</span> (cur <span style=color:#719e07>==</span> x <span style=color:#719e07>&amp;&amp;</span> (i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span> <span style=color:#719e07>&lt;=</span> n) <span style=color:#719e07>&amp;&amp;</span>
+</span></span><span style=display:flex><span>          ((j <span style=color:#719e07>&lt;=</span> <span style=color:#2aa198>0</span> <span style=color:#719e07>&amp;&amp;</span> <span style=color:#2aa198>0</span> <span style=color:#719e07>&lt;=</span> i) <span style=color:#719e07>||</span> (j <span style=color:#719e07>&lt;=</span> n <span style=color:#719e07>-</span> <span style=color:#2aa198>1</span> <span style=color:#719e07>&amp;&amp;</span> n <span style=color:#719e07>-</span> <span style=color:#2aa198>1</span> <span style=color:#719e07>&lt;=</span> i)))
+</span></span><span style=display:flex><span>        ckmin(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>if</span> (ans <span style=color:#719e07>==</span> INF) <span style=color:#719e07>return</span> <span style=color:#719e07>-</span><span style=color:#2aa198>1</span>;
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><p>题解区的好做法。
+像这种只能取前缀和后缀的题目，可以考虑反着做：观察剩余元素的性质，在剩余元素上做。这道题目转化成了求剩余元素中，连续子数组和等于给定值的最大子数组的长度。</p><blockquote><p>在剩余元素上求时，需要注意边界情况：要求的窗口长度可能是 0</p></blockquote><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>minOperations</span>(vector<span style=color:#719e07>&lt;</span><span style=color:#dc322f>int</span><span style=color:#719e07>&gt;</span> <span style=color:#719e07>&amp;</span>nums, <span style=color:#dc322f>int</span> x) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> sum{}, ans{<span style=color:#719e07>-</span>INF}, n{SZ(nums)}, cur{};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#719e07>auto</span> <span style=color:#719e07>&amp;</span>x : nums) sum <span style=color:#719e07>+=</span> x;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    sum <span style=color:#719e07>-=</span> x;
+</span></span><span style=display:flex><span>    <span style=color:#719e07>if</span> (<span style=color:#719e07>!</span>sum) <span style=color:#719e07>return</span> n;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      <span style=color:#719e07>while</span> (cur <span style=color:#719e07>+</span> nums[i] <span style=color:#719e07>&gt;</span> sum <span style=color:#719e07>&amp;&amp;</span> j <span style=color:#719e07>&lt;</span> i) {
+</span></span><span style=display:flex><span>        cur <span style=color:#719e07>-=</span> nums[j<span style=color:#719e07>++</span>];
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      cur <span style=color:#719e07>+=</span> nums[i];
+</span></span><span style=display:flex><span>      <span style=color:#719e07>if</span> (cur <span style=color:#719e07>==</span> sum) ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>if</span> (ans <span style=color:#719e07>==</span> <span style=color:#719e07>-</span>INF) <span style=color:#719e07>return</span> <span style=color:#719e07>-</span><span style=color:#2aa198>1</span>;
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> n <span style=color:#719e07>-</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><ol start=13><li><a href=https://leetcode.cn/problems/frequency-of-the-most-frequent-element/ class=external-link target=_blank rel=noopener>1838. 最高频元素的频数</a></li></ol><p>求出现次数最多的元素的出现次数，这和顺序是无关的，因此先把数组排序，显然在连续的一段数组上做操作的代价最小。</p><p>维护一个滑动窗口，要求窗口内部的操作次数不能超过 <code>k</code>，求窗口的最大长度。</p><p>求窗口内部的操作次数可以使用前缀和。</p><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>maxFrequency</span>(vector<span style=color:#719e07>&lt;</span><span style=color:#dc322f>int</span><span style=color:#719e07>&gt;</span> <span style=color:#719e07>&amp;</span>nums, <span style=color:#dc322f>int</span> k) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> n{SZ(nums)}, ans{};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    sort(all(nums));
+</span></span><span style=display:flex><span>    vector<span style=color:#719e07>&lt;</span>ll<span style=color:#719e07>&gt;</span> a(n <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>), b(n <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    For(i, <span style=color:#2aa198>0</span>, n) {
+</span></span><span style=display:flex><span>      a[i <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>] <span style=color:#719e07>=</span> nums[i] <span style=color:#719e07>+</span> a[i];
+</span></span><span style=display:flex><span>      b[i <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>] <span style=color:#719e07>=</span> nums[i];
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>1</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>1</span>; i <span style=color:#719e07>&lt;=</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      <span style=color:#719e07>while</span> (b[i] <span style=color:#719e07>*</span> (i <span style=color:#719e07>-</span> j) <span style=color:#719e07>-</span> (a[i <span style=color:#719e07>-</span> <span style=color:#2aa198>1</span>] <span style=color:#719e07>-</span> a[j <span style=color:#719e07>-</span> <span style=color:#2aa198>1</span>]) <span style=color:#719e07>&gt;</span> k) {
+</span></span><span style=display:flex><span>        <span style=color:#719e07>++</span>j;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><ol start=14><li><a href=https://leetcode.cn/problems/take-k-of-each-character-from-left-and-right/ class=external-link target=_blank rel=noopener>2516. 每种字符至少取 K 个</a></li></ol><p>只能从前缀和后缀取，考虑剩下的元素。</p><p>先考虑一个字符，要求取走的数量 $p_1 \ge k$，设这个字符的总数量是 $t_1$，那么这个字符剩余的数量 $r_1 = t_1 - p_1$，可以得到 $r_1 \le t_1 - k$</p><p>因此问题转化成了，维护一个滑动窗口，要求窗口内部每个字符的出现次数不超过给定数字。这是一个经典的滑动窗口问题。</p><p>注意判断特殊情况：字符剩余个数小于 0，直接返回 -1。如果全为 0，意味着要求的滑动窗口为空，也直接返回数组长度。</p><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>takeCharacters</span>(string s, <span style=color:#dc322f>int</span> k) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> n{SZ(s)}, ans{};
+</span></span><span style=display:flex><span>    VI cnt(<span style=color:#2aa198>3</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#719e07>auto</span> c : s) cnt[c <span style=color:#719e07>-</span> <span style=color:#2aa198>&#39;a&#39;</span>]<span style=color:#719e07>++</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>bool</span> ok{<span style=color:#b58900>true</span>};
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#719e07>auto</span> <span style=color:#719e07>&amp;</span>c : cnt) {
+</span></span><span style=display:flex><span>      c <span style=color:#719e07>-=</span> k;
+</span></span><span style=display:flex><span>      <span style=color:#719e07>if</span> (c <span style=color:#719e07>&lt;</span> <span style=color:#2aa198>0</span>) <span style=color:#719e07>return</span> <span style=color:#719e07>-</span><span style=color:#2aa198>1</span>;
+</span></span><span style=display:flex><span>      <span style=color:#719e07>if</span> (c) ok <span style=color:#719e07>=</span> <span style=color:#b58900>false</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#719e07>if</span> (ok) <span style=color:#719e07>return</span> n;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    VI cnt1(<span style=color:#2aa198>3</span>);
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      cnt1[s[i] <span style=color:#719e07>-</span> <span style=color:#2aa198>&#39;a&#39;</span>]<span style=color:#719e07>++</span>;
+</span></span><span style=display:flex><span>      <span style=color:#719e07>while</span> (cnt1[<span style=color:#2aa198>0</span>] <span style=color:#719e07>&gt;</span> cnt[<span style=color:#2aa198>0</span>] <span style=color:#719e07>||</span> cnt1[<span style=color:#2aa198>1</span>] <span style=color:#719e07>&gt;</span> cnt[<span style=color:#2aa198>1</span>] <span style=color:#719e07>||</span> cnt1[<span style=color:#2aa198>2</span>] <span style=color:#719e07>&gt;</span> cnt[<span style=color:#2aa198>2</span>]) {
+</span></span><span style=display:flex><span>        cnt1[s[j<span style=color:#719e07>++</span>] <span style=color:#719e07>-</span> <span style=color:#2aa198>&#39;a&#39;</span>]<span style=color:#719e07>--</span>;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> n <span style=color:#719e07>-</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><p>因为对每个字符的出现次数有不同的要求 ，此时先维护窗口，再加入右端点比较好处理，因为只有右端点的字符的出现次数会发生改变。因此可以简化滑动窗口的维护条件。</p><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>takeCharacters</span>(string s, <span style=color:#dc322f>int</span> k) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> n{SZ(s)}, ans{};
+</span></span><span style=display:flex><span>    VI cnt(<span style=color:#2aa198>3</span>), cnt1(<span style=color:#2aa198>3</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#719e07>auto</span> c : s) cnt[c <span style=color:#719e07>-</span> <span style=color:#2aa198>&#39;a&#39;</span>]<span style=color:#719e07>++</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>bool</span> ok{<span style=color:#b58900>true</span>};
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#719e07>auto</span> <span style=color:#719e07>&amp;</span>c : cnt) {
+</span></span><span style=display:flex><span>      c <span style=color:#719e07>-=</span> k;
+</span></span><span style=display:flex><span>      <span style=color:#719e07>if</span> (c <span style=color:#719e07>&lt;</span> <span style=color:#2aa198>0</span>) <span style=color:#719e07>return</span> <span style=color:#719e07>-</span><span style=color:#2aa198>1</span>;
+</span></span><span style=display:flex><span>      <span style=color:#719e07>if</span> (c) ok <span style=color:#719e07>=</span> <span style=color:#b58900>false</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#719e07>if</span> (ok) <span style=color:#719e07>return</span> n;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      <span style=color:#dc322f>int</span> idx <span style=color:#719e07>=</span> s[i] <span style=color:#719e07>-</span> <span style=color:#2aa198>&#39;a&#39;</span>;
+</span></span><span style=display:flex><span>      <span style=color:#719e07>while</span> (cnt1[idx] <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span> <span style=color:#719e07>&gt;</span> cnt[idx]) {
+</span></span><span style=display:flex><span>        cnt1[s[j<span style=color:#719e07>++</span>] <span style=color:#719e07>-</span> <span style=color:#2aa198>&#39;a&#39;</span>]<span style=color:#719e07>--</span>;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      cnt1[idx]<span style=color:#719e07>++</span>;
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> n <span style=color:#719e07>-</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><ol start=15><li><a href=https://leetcode.cn/problems/find-the-longest-equal-subarray/ class=external-link target=_blank rel=noopener>2831. 找出最长等值子数组</a></li></ol><p>要求子数组中的元素相等，好像类似要求元素相等的题目都和元素的位置关系不大，因为最终答案子数组的元素一定相等，因此考虑先把数组排序。</p><p>维护一个滑动窗口，要求滑动窗口内部的元素都相等，并且把这些相等元素聚在一起的代价不超过 <code>k</code>，而这个代价是好求的，只需要记录这些相等元素原来的位置，它们的位置间隔的和就是代价。求窗口的最大长度即可。</p><p>当窗口中的代价超过 <code>k</code> 或者左端点的值和右端点的值不相等的时候，移动左端点。</p><p><code>i - 1 >= j</code> 表示当窗口的大小非空（长度大于等于 1）的时候，才移动左端点。
+加入右端点之后，如果窗口长度大于 1，那么累加代价。否则代价清空。</p><div class=highlight><pre tabindex=0 style=color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>  <span style=color:#dc322f>int</span> <span style=color:#268bd2>longestEqualSubarray</span>(vector<span style=color:#719e07>&lt;</span><span style=color:#dc322f>int</span><span style=color:#719e07>&gt;</span> <span style=color:#719e07>&amp;</span>nums, <span style=color:#dc322f>int</span> k) {
+</span></span><span style=display:flex><span>    <span style=color:#dc322f>int</span> n{SZ(nums)}, ans{}, cur{};
+</span></span><span style=display:flex><span>    vector<span style=color:#719e07>&lt;</span>PII<span style=color:#719e07>&gt;</span> a(n);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    For(i, <span style=color:#2aa198>0</span>, n) { a[i] <span style=color:#719e07>=</span> {nums[i], i}; }
+</span></span><span style=display:flex><span>    sort(all(a));
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>auto</span> cost <span style=color:#719e07>=</span> [<span style=color:#719e07>&amp;</span>](<span style=color:#dc322f>int</span> i, <span style=color:#dc322f>int</span> j) { <span style=color:#719e07>return</span> a[i].f2 <span style=color:#719e07>-</span> a[j].f2 <span style=color:#719e07>-</span> <span style=color:#2aa198>1</span>; };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>for</span> (<span style=color:#dc322f>int</span> i <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>, j <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>; i <span style=color:#719e07>&lt;</span> n; <span style=color:#719e07>++</span>i) {
+</span></span><span style=display:flex><span>      <span style=color:#719e07>if</span> (i <span style=color:#719e07>-</span> <span style=color:#2aa198>1</span> <span style=color:#719e07>&gt;=</span> j) {
+</span></span><span style=display:flex><span>        <span style=color:#719e07>while</span> (cur <span style=color:#719e07>+</span> cost(i, i <span style=color:#719e07>-</span> <span style=color:#2aa198>1</span>) <span style=color:#719e07>&gt;</span> k <span style=color:#719e07>||</span> a[i].f1 <span style=color:#719e07>!=</span> a[j].f1) {
+</span></span><span style=display:flex><span>          cur <span style=color:#719e07>-=</span> cost(j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>, j);
+</span></span><span style=display:flex><span>          <span style=color:#719e07>++</span>j;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#719e07>if</span> (i <span style=color:#719e07>&gt;</span> j) {
+</span></span><span style=display:flex><span>        cur <span style=color:#719e07>+=</span> cost(i, i <span style=color:#719e07>-</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>      } <span style=color:#719e07>else</span>
+</span></span><span style=display:flex><span>        cur <span style=color:#719e07>=</span> <span style=color:#2aa198>0</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      ckmax(ans, i <span style=color:#719e07>-</span> j <span style=color:#719e07>+</span> <span style=color:#2aa198>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#719e07>return</span> ans;
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div></div><footer><div id=disqus_thread></div><script>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//liuxueyang.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}(),document.addEventListener("themeChanged",function(){document.readyState=="complete"&&DISQUS.reset({reload:!0,config:disqus_config})})</script></footer></article><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css integrity=sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0 crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js integrity=sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4 crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous onload='renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}]})'></script></section></div><footer class=footer><section class=container>©
+2023 -
+2026
+liuxueyang
+·
+技术支持 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/ target=_blank rel=noopener>Coder</a>.</section></footer></main><script src=/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-QJNPM85VRF"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QJNPM85VRF")}</script></body></html>
