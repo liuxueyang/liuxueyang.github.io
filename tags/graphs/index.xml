@@ -5,10 +5,7 @@
 &lt;li&gt;&lt;a href="https://codeforces.com/contest/1915/problem/G" class="external-link" target="_blank" rel="noopener"&gt;Bicycles&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://codeforces.com/blog/entry/123952" class="external-link" target="_blank" rel="noopener"&gt;tutorial&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;点的数量 $n \le 1000$，边的数量 $m \le 2000$，然后再记录一下到达每个点的时候的速度 $s_i$，而 $s_i \le 1000$，因此点数最多有 $10^6$ 个。然后使用 $Dijkstra$ 得到 $dis[n][s_i]$，其中 $1 \le s_i \le 1000$，在里面找到最小值。&lt;/p&gt;</description></item><item><title>LeetCode Contest-377D 转换字符串的最小成本 II</title><link>https://liuxueyang.github.io/posts/leetcode/contest-377-d/</link><pubDate>Mon, 25 Dec 2023 07:29:15 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/contest-377-d/</guid><description>&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://leetcode.cn/problems/minimum-cost-to-convert-string-ii/description/" class="external-link" target="_blank" rel="noopener"&gt;转换字符串的最小成本 II&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;边的个数只有 100，点的个数最多有 200，因此可以使用 floyd 求出所有全源最短路。对于原字符串 $s$，设 $dp[i]$ 为前使得 $s[1, i]$ 区间内的字符和 $t[1, i]$ 相等的最小代价，那么有 $dp_i = min(dp_i, dp_{i - len_j} + d[x_j][y_j])$，其中 $len_j$ 为替换的字符串 $x_j$ 的长度，$d[x_j][y_j]$ 为从点 $x_j$ 到 $y_j$ 的最短路，之前使用 floyd 已经求出。所以只需要枚举要替换的字符串的长度即可，题目有点卡常数，暴力枚举长度范围 $[1, 1000]$ 会超时，先统计出 100 条边的所有的长度，这样长度的范围只有 $100$。&lt;/p&gt;</description></item><item><title>CodeForces 1676G White-Black Balanced Subtrees</title><link>https://liuxueyang.github.io/posts/codeforces/1676g/</link><pubDate>Sat, 16 Dec 2023 10:47:54 +0800</pubDate><guid>https://liuxueyang.github.io/posts/codeforces/1676g/</guid><description>&lt;ul&gt;
+&lt;p&gt;点的数量 $n \le 1000$，边的数量 $m \le 2000$，然后再记录一下到达每个点的时候的速度 $s_i$，而 $s_i \le 1000$，因此点数最多有 $10^6$ 个。然后使用 $Dijkstra$ 得到 $dis[n][s_i]$，其中 $1 \le s_i \le 1000$，在里面找到最小值。&lt;/p&gt;</description></item><item><title>CodeForces 1676G White-Black Balanced Subtrees</title><link>https://liuxueyang.github.io/posts/codeforces/1676g/</link><pubDate>Sat, 16 Dec 2023 10:47:54 +0800</pubDate><guid>https://liuxueyang.github.io/posts/codeforces/1676g/</guid><description>&lt;ul&gt;
 &lt;li&gt;&lt;a href="https://vjudge.net/problem/CodeForces-1676g" class="external-link" target="_blank" rel="noopener"&gt;White-Black Balanced Subtrees&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;一次 DFS 之后统计出各个节点子树的黑色节点和白色节点的个数。&lt;/p&gt;

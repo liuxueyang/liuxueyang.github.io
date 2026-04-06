@@ -129,10 +129,4 @@
 &lt;p&gt;每次只修改 p2 节点，使它指向 p1，然后向右移动 p1, p2，p3 的作用是记录下一个 p2 的位置。&lt;/p&gt;</description></item><item><title>LeetCode Contest 390 D 最长公共后缀查询</title><link>https://liuxueyang.github.io/posts/leetcode/contest-390-d/</link><pubDate>Sun, 24 Mar 2024 23:28:47 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/contest-390-d/</guid><description>&lt;ul&gt;
 &lt;li&gt;&lt;a href="https://leetcode.cn/problems/longest-common-suffix-queries/description/" class="external-link" target="_blank" rel="noopener"&gt;最长公共后缀查询&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;要求最长的公共后缀字符串，可以把每个字符串逆序，存到字典树里面，在字典树的节点上保存到达当前节点并且原字符串长度最短的字符串长度和下标。对于给定字符串，直接从字典树中查找当前字符串，把树上能够找到的最后一个节点上的信息返回即可。&lt;/p&gt;</description></item><item><title>LeetCode 1012 至少有 1 位重复的数字</title><link>https://liuxueyang.github.io/posts/leetcode/1012/</link><pubDate>Mon, 18 Mar 2024 09:52:34 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/1012/</guid><description>&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://leetcode.cn/problems/numbers-with-repeated-digits/description/" class="external-link" target="_blank" rel="noopener"&gt;至少有 1 位重复的数字&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;要求 $[1, N]$ 中至少有一位重复的数字的数的个数，只要有一位数字重复不好处理，可以反过来求，先求出范围内没有重复数字的数的个数，然后用总数减去没有重复数字的数的个数即可。&lt;/p&gt;</description></item><item><title>LeetCode Contest-377D 转换字符串的最小成本 II</title><link>https://liuxueyang.github.io/posts/leetcode/contest-377-d/</link><pubDate>Mon, 25 Dec 2023 07:29:15 +0800</pubDate><guid>https://liuxueyang.github.io/posts/leetcode/contest-377-d/</guid><description>&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://leetcode.cn/problems/minimum-cost-to-convert-string-ii/description/" class="external-link" target="_blank" rel="noopener"&gt;转换字符串的最小成本 II&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;边的个数只有 100，点的个数最多有 200，因此可以使用 floyd 求出所有全源最短路。对于原字符串 $s$，设 $dp[i]$ 为前使得 $s[1, i]$ 区间内的字符和 $t[1, i]$ 相等的最小代价，那么有 $dp_i = min(dp_i, dp_{i - len_j} + d[x_j][y_j])$，其中 $len_j$ 为替换的字符串 $x_j$ 的长度，$d[x_j][y_j]$ 为从点 $x_j$ 到 $y_j$ 的最短路，之前使用 floyd 已经求出。所以只需要枚举要替换的字符串的长度即可，题目有点卡常数，暴力枚举长度范围 $[1, 1000]$ 会超时，先统计出 100 条边的所有的长度，这样长度的范围只有 $100$。&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;要求最长的公共后缀字符串，可以把每个字符串逆序，存到字典树里面，在字典树的节点上保存到达当前节点并且原字符串长度最短的字符串长度和下标。对于给定字符串，直接从字典树中查找当前字符串，把树上能够找到的最后一个节点上的信息返回即可。&lt;/p&gt;</description></item></channel></rss>
