@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Database on Xueyang Liu</title>
+    <link>https://liuxueyang.github.io/tags/database/</link>
+    <description>Recent content in Database on Xueyang Liu</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 27 May 2026 21:13:40 +0800</lastBuildDate>
+    <atom:link href="https://liuxueyang.github.io/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CMU-15445 2026 Spring Project 1 Buffer Pool Manager</title>
+      <link>https://liuxueyang.github.io/posts/buffer-pool-manager/</link>
+      <pubDate>Wed, 27 May 2026 21:13:40 +0800</pubDate>
+      <guid>https://liuxueyang.github.io/posts/buffer-pool-manager/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://15445.courses.cs.cmu.edu/spring2026/project1/&#34;&gt;Project Page&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;task-1-adaptive-replacement-cache-replacement-policy&#34;&gt;Task 1 Adaptive Replacement Cache Replacement Policy&lt;/h2&gt;
+&lt;p&gt;需要感性理解这个算法的流程。&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;RecordAccess&lt;/code&gt; 函数中，如果命中了 MRU ghost 或者 MFU ghost，我们都需要把它
+移动到 MFU list 中。实现的过程中还是遇到了一个小 Bug，从 MRU ghost 或者 MFU ghost
+移除 page_id 之后，还要记得把它从 &lt;code&gt;ghost_map_&lt;/code&gt; 中移除。这是我新加的数据结构，记录
+当前在任意一个 ghost 列表中存在的 page_id&lt;/p&gt;
+&lt;h2 id=&#34;task-2-disk-scheduler&#34;&gt;Task 2 Disk Scheduler&lt;/h2&gt;
+&lt;p&gt;直接使用已经实现的 Channel 作为线程安全的任务队列。&lt;/p&gt;
+&lt;h2 id=&#34;task-3-buffer-pool-manager&#34;&gt;Task 3 Buffer Pool Manager&lt;/h2&gt;
+&lt;p&gt;这个部分最难。&lt;/p&gt;
+&lt;p&gt;需要注意死锁问题、数据竞争问题。&lt;/p&gt;
+&lt;h3 id=&#34;细节-一&#34;&gt;细节 一&lt;/h3&gt;
+&lt;p&gt;下面是我遇到的一个 Bug，它导致 gradescope ParadiseLostTest 测试失败。
+我在 NewPage 的时候，对新页分配了一个 frame。在 CheckedReadPage/CheckedWritePage 中，
+如果没有 free frame，需要尝试 Evict，但是 Evict 的页有可能是当前请求的 page_id，此时
+old_page_id == page_id，然后我把 old_page_id 从 page_table 中移除了，这就导致了 Bug。
+正确做法应该检查 old_page_id != page_id。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
