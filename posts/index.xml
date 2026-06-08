@@ -6,8 +6,21 @@
     <description>Recent content in Posts on Xueyang Liu</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 27 May 2026 21:13:40 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jun 2026 00:21:50 +0800</lastBuildDate>
     <atom:link href="https://liuxueyang.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>6.824 Lab2B</title>
+      <link>https://liuxueyang.github.io/posts/6.824-lab2b/</link>
+      <pubDate>Tue, 09 Jun 2026 00:21:50 +0800</pubDate>
+      <guid>https://liuxueyang.github.io/posts/6.824-lab2b/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;这篇是2020年12月22日写的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;6824-lab2b&#34;&gt;6.824 Lab2B&lt;/h2&gt;
+&lt;p&gt;做的過程中遇到了很多坑，我覺得把這些坑記錄下來比較有幫助。雖然現在這個實驗幾乎快做完了，很多遇到的坑也快忘記了，先開一個坑，以後慢慢補充吧。我覺得這個實驗做一遍是不夠的，以後再做第二遍。&lt;/p&gt;
+&lt;p&gt;Follower 超時之後，如果它立刻自增 Term 並且發起選舉，並且它的 Log 不如 majority 新，此時它一定會競選失敗，其實它浪費了其它 Server 的時間。假設有一個唯一有資格成爲 Leader 的 Server B 一直收到 Server A 的 RequestVote 請求，並且 Server A 的 Term 比較新，此時 B 需要重置自己的超時時間，這樣 B 的超時一直被 A 打斷。或者如果 B 超時了之後，在 A 接到 B 的 RequestVote 請求之前，A 也超時了，此時 A 會投票給自己，B 還是得不到 A 的選票。這兩種情況如果反覆發生，可能會導致 A 永遠也無法成爲 Leader，這個 cluster 可能在很長的時間內都選不出 Leader。&lt;/p&gt;
+&lt;p&gt;所以 Server 在超時之後，成爲 Candidate 之前，需要進行預選舉，確保自己的 Log 比 majority 都新。這樣就減少了其它 Server 超時被打斷的次數，讓有機會成爲 Leader 的 Server 更容易被選舉出來。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>CMU-15445 2026 Spring Project 1 Buffer Pool Manager</title>
       <link>https://liuxueyang.github.io/posts/buffer-pool-manager/</link>
